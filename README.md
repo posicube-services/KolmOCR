@@ -30,8 +30,9 @@ KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/�
 | code_blocks |  10 | 코드/리스트 혼재      |
 | multicolumn |  10 | 다단문서      |
 
-- 상기 모든 split에 대한 평균 F1 score (Image IoU score는 현재 평가 코드상 오류로 N/A로 표시됨.)
+- 상기 모든 split에 대한 `text_edit`(Text), `table_f1`(Table) `image_iou`(Image IoU), `f1_score` (Heading, List) score가 사용됨. Image IoU 현재 평가 코드상 오류로 N/A로 표시됨.
 
+## LeaderBoard using KolmOCR Benchmark
 | Element        | KolmOCR 7B v251129 (Ours) | Qwen2.5-VL-7B-Instruct | Qwen2.5-VL-32B-Instruct |
 | -------------- | ----------------- | ---------------------- | ----------------------- |
 | **Text**       | 0.5695            | 0.5993                 | 0.5938                  |
@@ -41,8 +42,15 @@ KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/�
 | **Image IoU**  | N/A               | N/A                    | N/A                     |
 | **Code-Block** | 0.0143            | 0.0321                 | 0.037                   |
 
-
-
+## Metrics
+| 메트릭          | 설명                                                                                             | 출력 파일         |
+| --------------- | ------------------------------------------------------------------------------------------------ | ----------------- |
+| `text_edit`     | 본문 기준 Normalized Edit Distance 및 유사도, 헤딩/리스트 F1 점수                                | text_edit.csv     |
+| `table_f1`      | 테이블 블록 매칭 기반 precision/recall/F1 (구조/내용 모두 제공)                                  | table_f1.csv      |
+| `image_iou`     | 이미지 bbox 순서 매칭 기반 평균 IoU                                                              | image_iou.csv     |
+| `code_TED`      | 코드 블록 추출 후 언어별 트리 변환 및 Tree Edit Distance 유사도<br/>(지원: python, c, cpp, java) | code_TED.csv      |
+| `overall`       | 주요 지표 평균: text_edit, reading_order, table_TEDS, table_TEDS_S, formula_cdm                  | overall.csv       |
+| `f1_score`      | 헤딩/리스트 구조 F1 점수만 별도 저장                                                             | f1_score.csv      |
 
 ## Installation (uv 권장)
 
