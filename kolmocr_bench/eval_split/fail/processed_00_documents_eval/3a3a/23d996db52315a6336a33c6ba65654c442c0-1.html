@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="26,40,973,921">
+    <pre><code class="language-markdown"># Math 3110 — Goddard
+
+## Warmup 2: 선형 독립성과 행렬 연산
+
+### 1. 다음이 참(True)인지 거짓(False)인지 판단하고 이유를 설명하십시오.
+
+#### (a) A와 B가 크기가 가=은 정사각행렬이고, A의 모든 열 쌍이 선형적으로 종속적이라면, AB의 모든 열 쌍도 선형적으로 종속적입니다.
+
+**True:** AB의 열은 A의 열의 선형 결합입니다.
+
+#### (b) C가 2×2 행렬이고, b와 b&#x27;가 R^2의 서로 다른 벡터이며, 방정식 Cx = b가 무한히 많은 해를 가졌다면, 방정식 Cx = b&#x27;도 무한히 많은 해를 갖는다고 보장됩니다.
+
+**False:** 무한히 많은 해를 갖는다고 보장하지 않음
+
+#### (c) 두 선형 독립 벡터의 범위는 평면입니다.
+
+**True**
+
+#### (d) v_1, v_2, v_3가 벡터이고 v_3 = v_1 + 2v_2라면, 집합 {v_1, 2v_2, v_3}은 반드시 선형적으로 종속적입니다.
+
+**True:** 3(v_1) + 3(2v_2) - 1(3v_3) = 0
+
+#### (e) 행렬 M이 R^2에서 R^4로의 행렬 변환을 나타낸다면, M은 2×4입니다.
+
+**False:** M은 4×2입니다
+
+---
+
+### 1. 다음 행렬을 고려하십시오.
+
+| A | B |
+|---|---|
+| [1 2 0] | [-1 2 0] |
+| [1 1 1] | [1 -1 0] |
+| [2 -2 0] | [0 1 1] |
+
+#### (a) 3A^T - B를 계산하십시오.
+
+| 4 1 6 |
+|---|---|---|
+| 5 4 -6 |
+| 0 2 -1 |
+
+#### (b) AB를 계산하십시오.
+
+| 1 0 0 |
+|---|---|---|
+| 0 2 1 |
+| -4 6 0 |</code></pre>
+  </div>
+</div>
+</body>
+</html>

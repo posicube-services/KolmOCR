@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="3,27,997,402">
+    <pre><code class="language-markdown"># yaml
+
+---
+
+## title: &quot;Zimbabweans and Temporary Residence Permits in South Africa&quot;
+
+## author: &quot;Dr. Jane Doe&quot;
+
+## date: &quot;2023-03-15&quot;
+
+---
+
+## 주요 내용
+
+### 1.0. ZSP 제도의 개요와 남아프리카의 상황
+
+**짐바브웨인들은 남아프리카에서 일하거나 기타 형태의 거주 허가를 받기 위해 고향으로 돌아가야 하며, 이러한 허가가 반드시 발급될 보장은 없다.**
+
+**그럼에도 불구하고, 이 새로운 임시 거주 허가(7년)의 기간 동안 개인들은 남아프리카에서 오랜 시간 동안 거주하며, 그곳에서 일자리와 사업을 확립할 것이다. 남아프리카 이민 비자를 짐바브웨에서 신청해야 한다는 요구는 ZSPH1과 같은 응답자들에게 &quot;짐바브웨인들을 남아프리카에서 쫓아내는 것&quot;에 해당한다고 여겨졌으며, 그들의 ZSP가 만료될 경우 남아프리카에 계속 머물기 위해 다른 방법을 찾아야 하는 상황이라고 여겨졌다.**
+
+### 2.0. 불법 이민자들의 행태와 문제점
+
+**짐바브웨인들이 2017년에 ZSP가 만료된 후에도 남아프리카에서 불법 체류 상태를 유지하거나 추방된 후 다시 돌아가려는 경우, 그들의 이민 지위 변경은 복잡한 불법 국경 이동과 관련된 다양한 취약성에 노출될 가능성을 야기할 수 있다. 비트브리지 국경에서 불법 이동은 단일한 사건이나 개인 활동이 아니라 다양한 활동을 포함하며, 이는 립포카 가즈을 건너는 것8, 국경 울타리를 넘는 것, 공식 국경을 여행 문서 없이 공직자들의 도움을 받으며 건너는 것 등이 포함된다. 불법 이민자들의 이동은 택시 운영자, 정부 관료, 그리고 다른 이민자들(Aaria, 2009)과 같은 주요 참가자들이 관여한다. 택시 운영자들은 지부아웨의 다양한 지역에서 비트브리지 시내의 특정 지점으로 개인들을 운송한다9. Mr. OM 1은, 잠재적 이민자가 상당한 수(30-40명)가 도착하면, 택시 운영자와 협력하는 가이다(izimpisi10)들이 그들을 특정 통과 지점으로 국경을 건너게 한다고 언급했다. 이 가이다들은 해당 지역에 익숙하며, 남아프리카 경찰서(SAPS)와/또는 남아프리카 국방군(SANDF)이 국경을 순찰하는 상황에서 비교적 안전한 통과 지점을 알고 있다. 불법 이민자들이 국경을 건너면, 택시 운영자들은 비트브리지와 무시나 사이의 고속도로 특정 지점에서 그들을 태운다(Aaria, 2009). 비트브리지 국경에서 이민 절차에 익숙한 이민자들은 동료 이민자들이 남아프리카로 건너갈 수 있도록 돕는다(Aaria, 2009). 마지막으로, 불법 이민자들은 양쪽 국경의 관료들과 협상하여 여행 문서 없이 남아프리카로 입국한다(ZM 1).**
+
+### 3.0. 불법 이민자들의 위험과 해결 방안
+
+**오말라이타와 마呱마呱마의 서비스는 불법 이민자들에게 성공적인 국경 통과를 가능하게 하지만, 이 서비스 자체는 잠재적인 어려움을 내포하고 있다. 블라웨이오의 젊은 남성(ZM3)은 그의 형이 그가 요하네스버그에 도착하면 국경을 건너는 데 비용을 지불할 것이라는 조건으로 오말라이타의 서비스를 이용했다고 설명했다. 남아프리카에 도착한 후, 그의 오말라이타는 형에게 안전하게 국경을 건넜다는 것을 확인하기 위해 전화를 걸었다. 형의 전화가 음성메일로 전환되자, 그들은 무시나에서 그를 버렸다. 돈도 없고, 무시나에 사회적 네트워크나 가족 및 친족도 없는 그는 건설 현장에서 일자리를 구했으며, 그곳에서 계속해서 그의 불법 이민 상태를 받아들이는 고용주에게 일하고 있다.**
+
+### 4.0. 지역 사회의 역할과 정부의 대응
+
+**비트브리지 국경에서의 불법 국경 통과는 개인들이 무책임한 집단인 오마呱마呱마11에 의해 강도와 폭행을 당할 위험성을 감수하는 위험한 여정을 포함할 수 있다. Ndlovu(2013)는 일부 오마呱마呱마가 처음에는 불법적인 짐바브웨인들을 남아프리카로 건너가도록 도왔지만, 이후에 그들이 국경을 건넜던 사람들에게 타겟을 삼는다고 제안했다. Aaria(2009)는 이(ncu와 굽A GV마가 같은 사람일 수 있다고 지적하며, 이는 사람 밀매업자들이 고객에게 반항하는 경우라고 언급했다. 그러나 Mdlongwa와 Moyo(2014)는 이들이 이(ncu와 오말라이타와 독립적으로 작동하는 불량 요소들이라고 제안했다. 다른 연구들은 오마呱마呱마가 조직화된 집단 또는 &quot;립포포 강변에 이주하여 이민자를 노리는 밴디츠&quot; (UN 인도주의 조정 사무소, 2010: 19)일 수 있거나, 또한 홀연용 당배와 같은 고가의 물품 밀매에도 관여한다고 제안했다.**</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="3,440,93,19">
+    <h3>Table 1: Key Points on Zimbabweans and Temporary Residence Permits in South Africa</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="3,469,142,309">
+    <table class="data-table">
+      <thead>
+        <tr><th>**Points**</th><th>**Details**</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>**짐바브웨인들의 거주 허가**</td><td>- 짐바브웨인들은 남아프리카에서 일하거나 기타 형태의 거주 허가를 받기 위해 고향으로 돌아가야 합니다.&lt;br&gt;- 이러한 허가가 반드시 발급될 보장은 없습니다.&lt;br&gt;- 새로운 임시 거주 허가(7년)의 기간 동안 개인들은 남아프리카에서 오랜 시간 동안 거주하며, 그곳에서 일자리와 사업을 확립할 것입니다.</td></tr>
+        <tr><td>**불법 이민자들의 이동과 문제점**</td><td>- 불법 이민자들은 다양한 활동을 포함하며, 이는 립포카 가즈을 건너는 것, 국경 울타리를 넘는 것, 공식 국경을 여행 문서 없이 공직자들의 도움을 받으며 건너는 것 등이 포함됩니다.&lt;br&gt;- 택시 운영자들은 지부아웨의 다양한 지역에서 비트브리지 시내의 특정 지점으로 개인들을 운송합니다.&lt;br&gt;- 비트브리지 국경에서 이민 절차에 익숙한 이민자들은 동료 이민자들이 남아프리카로 건너갈 수 있도록 돕습니다.</td></tr>
+        <tr><td>**불법 이민자들의 위험과 해결 방안**</td><td>- 오말라이타와 마呱마呱마의 서비스는 불법 이민자들에게 성공적인 국경 통과를 가능하게 하지만, 이 서비스 자체는 잠재적인 어려움을 내포하고 있습니다.&lt;br&gt;- 블라웨이오의 젊은 남성(ZM3)은 그의 형이 그가 요하네스버그에 도착하면 국경을 건너는 데 비용을 지불할 것이라는 조건으로 오말라이타의 서비스를 이용했다고 설명했습니다.&lt;br&gt;- 형의 전화가 음성메일로 전환되자, 그들은 무시나에서 그를 버렸다. 돈도 없고, 무시나에 사회적 네트워크나 가족 및 친족도 없는 그는 건설 현장에서 일자리를 구했으며, 그곳에서 계속해서 그의 불법 이민 상태를 받아들이는 고용주에게 일하고 있습니다.</td></tr>
+        <tr><td>**지역 사회의 역할과 정부의 대응**</td><td>- 비트브리지 국경에서의 불법 국경 통과는 개인들이 무책임한 집단인 오마呱마呱마11에 의해 강도와 폭행을 당할 위험성을 감수하는 위험한 여정을 포함할 수 있습니다.&lt;br&gt;- Ndlovu(2013)는 일부 오마呱마呱마가 처음에는 불법적인 짐바브웨인들을 남아프리카로 건너가도록 도왔지만, 이후에 그들이 국경을 건넜던 사람들에게 타겟을 삼는다고 제안했습니다.&lt;br&gt;- Aaria(2009)는 이(ncu와 굽A GV마가 같은 사람일 수 있다고 지적하며, 이는 사람 밀매업자들이 고객에게 반항하는 경우라고 언급했습니다.&lt;br&gt;- 다른 연구들은 오마呱마呱마가 조직화된 집단 또는 &quot;립포포 강변에 이주하여 이민자를 노리는 밴디츠&quot; (UN 인도주의 조정 사무소, 2010: 19)일 수 있거나, 또한 홀연용 당배와 같은 고가의 물품 밀매에도 관여한다고 제안했습니다.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="block" data-id="b004" data-bbox="3,788,0,0">
+    <pre><code></code></pre>
+  </div>
+</div>
+</body>
+</html>

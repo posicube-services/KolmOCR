@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="7,49,993,416">
+    <pre><code class="language-markdown"># Markdown
+
+## 가족 구성원이 노인을 돌보는 것을 선호하는 돌보는 사람들은 또한 모든 의무를 조화롭게 처리해야 한다는 막대한 압박을 느끼는 사람들입니다. 반면, 스웨덴과 가트은 국가에서는 여성의 전업 취업이 일반적인 이 중 소득자/제도적 돌봄 모델의 액략에서 정식 돌봄의 우선성을 기반으로 한 성별 문화가 존재하며, 후자는 정식 돌봄 서비스의 발전에 더 나은 조건을 제공합니다.
+
+### 저자들은 정확히 지적하듯이, 가정 돌봄은 여전히 대부분 비공식적이고 여성의 일로 이루어지는 매우 성별화된 통제 영역입니다. 이는 사실이지만, 그럼에도 불구하고 남성들이 특히 배우자에게 많은 돌봄을 제공한다는 점을 지적해야 합니다. 이는 주로 그들의 삶의 후반부에 발생하며, 일반적으로 은퇴 후에 그렇습니다.
+
+#### 유럽 전체적으로 남성들은 약 1/3의 돌봄을 제공하며, 이는 무시할 수 없는 비율입니다 [Eurofamcare 2005]. 저자들은 정책 입안자들의 의제에 있는 주요 항목 중 하나인 여성의 비공식 돌보는 사람으로서의 지속 가능성에 대해 길게 설명합니다. 여성의 부분적 고용 증가로 인해 돌봄 격차가 발생할 위험은, 특히 대부분의 사람들이 &#x27;장소 유지로 노후를 맞이하기 원한다&#x27;는 선호를 고려할 때, 더 공식적인 가정 돌봄의 필요성을 시사할 수 있습니다. 제4장은 EU의 리스본 의제를 충족하려는 정부들이 점점 늘어가는 인구와 감소하는 자원에 직면하여 직면한 금전적 제약을 명확히 설명합니다.
+
+### 결론적으로, 이 책은 그 목표를 달성했습니다. 즉, 가정 돌봄 통제에 영향을 미치는 다양한 도전 과제에 대한 풍부한 비교적 기록을 제공했습니다. 이는 사회학적, 성별, 경제적, 인구통계적 및 정책 측면을 고려하면서도 특정 국가를 &#x27;최고 사례&#x27;로 내세우지 않으면서 이루어졌습니다. 이는 매우 야심찬 작업으로, 많은 사례 연구를 포함하고 있습니다. 그 주요 약점은 지리적으로 너무 넓은 범위를 다루었다는 점(아시아, 유럽 및 북미)으로, 각국은 완전히 다른 성별 문화와 사회 경제적 조건을 상속받았기 때문입니다. 더 적은 수의 국가 연구가 더 깊이 있는 문제 분석을 가능케 했을 수 있습니다. 그럼에도 불구하고, 이 책은 현재 가정 돌보는
+
+| Name | Position |
+|------|-----------|
+| Frédérique K. Hoffmann | European Centre for Social Welfare Policy and Research, Vienna |
+| Huber, M., R. Rodrigues, F. Hoffmann, K. Gasior and B. Marin | Facts and Figures on Long-Term Care in Europe and North America. Vienna: European Centre for Social Welfare Policy and Research. |
+| Lewinter, M. | A Developments in Home Help for Elderly People in Denmark: the Changing Concept of Home and Institution. International Journal of Social Welfare 13 (1): 89–96. |
+| Mestheneos, E. and J. Triantafillou | EUROFAMCARE: Supporting Family Carers of Older People in Europe – Empirical Evidence, Policy Trends and Future Perspectives. The Pan-European Background Report. Edited by H. Dohner and C. Kofahl. Hamburg: EUROFAMCARE. |
+
+- Jan Drahokoupil: Globalization and the State in Central and Eastern Europe. The Politics of Foreign Direct Investment London and New York 2009: Routledge, 237 pp.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="7,484,19,34">
+    <h3>참고문헌</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="7,536,308,57">
+    <ul>
+      <li>Eurobarometer. 2008. ‘Family Life and the Needs of an Ageing Population.’ Flash Eurobarometer 247 Survey conducted by The Gallup Organization, Hungary upon the request of the Directorate General for Employment, Social Affairs and Equal Opportunities, European Commission.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

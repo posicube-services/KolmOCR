@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="31,49,969,855">
+    <pre><code class="language-markdown"># 일정 및 주요 내용
+
+## 19년 11월
+
+### 장소:
+- **Tagensvej 86 (T86)**
+
+### 회의실 C216
+- **테마 6: 덴마크 병원의 어린이들**
+
+| 시간 | 프로그램 | 주요 인물 |
+| --- | --- | --- |
+| 9:15-15:00 | 덴마크 병원의 어린이들 | 강사 Hanne Selberg, Med.RN |
+
+## 2015년 12월 3일
+
+### 장소:
+- **Tagensvej 86 (T86)**
+
+### 회의실 C216
+- **테마 7: 외과 간호**
+
+| 시간 | 프로그램 | 주요 인물 |
+| --- | --- | --- |
+| 9:15-14:30 (점심 포함) | 외과 간호 | 강사 Lene Brogaard, 성인 학습 및 인적 자원 석사, RN. |
+
+## 2015년 12월 17일
+
+### 장소:
+- **Tagensvej 86 (T86)**
+
+### 회의실 C216
+- **테마 8: 노년층의 낙상 예방**
+
+| 시간 | 프로그램 | 주요 인물 |
+| --- | --- | --- |
+| 9:15-14:00 (점심 포함) | 다양한 낙상 유형 6가지 소개 및 다양한 낙상 예방 전략 이해 | 강사 Lotte Evron, 박사, 교육학 석사, 학사, RN. |</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="31,922,0,0">
+    <pre><code></code></pre>
+  </div>
+</div>
+</body>
+</html>

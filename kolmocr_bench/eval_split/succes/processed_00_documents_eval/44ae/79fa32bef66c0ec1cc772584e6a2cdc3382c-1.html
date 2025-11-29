@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="10,49,990,578">
+    <pre><code class="language-markdown"># 2007년 6월 11일
+
+존경하는 여러분께:
+
+저는 VVSG 초안의 제3권, 제5장, 155페이지에 있는 요구사항에 대해 이의를 제기하고자 합니다.
+
+## 5.2.2-C 전자 기록 투표 개시 인증서 요구사항
+
+---
+
+### 사용 시 즉시 증가하는 하드웨어로 강제된 카운터.
+
+이 기계적 &quot;하드웨어로 강제된&quot; 카운터는 복사기의 카운터와 유사하며, DRE 또는 종이 투표용 스캐너와 같은 투표 기계에서 발생하는 각 &quot;투표&quot; 사이클을 기록할 것으로 보입니다. &quot;하드웨어로 강제된&quot;이라는 용어는 기계적 연결을 의미하는 것으로 보이며, 레버나 특정 투표 메커니즘이 없는 투표 시스템에서는 이는 실현 가능하지 않습니다.
+
+대신, 실제로 소프트웨어로 구동되는 전기-기계적 구현이 가능할 것입니다. 어떤 경우라도 특정 구현을 요구하는 대신 요구사항만을 명시해야 하며, 이는 완전히 적절하지 않은 사항입니다.
+
+보안 목표는 명시되지 않았지만, 투표 기계에서 경험한 투표 사이클의 수와 비교하여 표시된 투표 수를 확인하려는 것으로 보입니다. 어떤 전기-기계적 카운팅 장치도 실제로 장치의 내부 소프트웨어와 퓨어웨어에 의해 구동될 것입니다.
+
+이 보안 목표를 달성하는 더 나은 방법은 투표용지에 고유 식별 번호(시리얼 번호가 아님)를 표시하도록 요구하는 것입니다. 이는 투표용지의 출처를 감사할 수 있도록 합니다. 모든 투표용지는 투표된 상태, 공란 상태, 또는 손상/무효 상태일 수 있습니다. 그런 다음, 선거구별로 모든 투표용지의 수를 개표 전에 생성된 번호가 부여된 투표용지의 수와 비교하거나, 선거 전에 투표용지 작성자에게 할당된 큰 숫자의 집합에서 생성된 수와 비교해야 합니다.
+
+그렇지 않으면, 이 요구사항에서 투표자가 투표할 때마다 증가시키는 기계적 카운터가 필요하다고 믿는 것은 마치 어리석은 일입니다. 이는 부적절한 증가를 방지하기 위한 보호가 필요합니다. 다시 말해, 필요한 메커니즘이 전자적이고 소프트웨어로 구동되는 장치에 연결되어 있다면, DRE에서 기계적으로 구동되도록 만들기는 정말 어렵습니다. 실제로 할 수 있는 일은 DRE의 내부 동작을 반복하는 것뿐이며, DRE 자체에 독립적인 정보를 추가할 수는 없습니다.
+
+전반적으로, 이 특정 항목은 지침에서 다음과 같이 돕보입니다:
+
+---</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="10,644,0,0">
+    <pre><code></code></pre>
+  </div>
+</div>
+</body>
+</html>

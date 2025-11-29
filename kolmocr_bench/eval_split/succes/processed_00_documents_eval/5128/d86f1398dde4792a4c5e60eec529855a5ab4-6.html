@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="12,40,154,23">
+    <p>Sure, here is the text in structured markdown format:</p>
+  </div>
+  <div class="block" data-id="b002" data-bbox="12,78,988,820">
+    <pre><code class="language-markdown"># Document Title
+
+## Section 1: Reference Links
+1. BBC 뉴스. 빅토닉 안경이 맥올라 퇴행 환자의 시력을 향상시킴, 2015년 7월. 2015년 11월 25일에 확인됨. http://www.bbc.co.uk/news/health-33612558
+2. 영국 의학협회 및 영국 왕립 약사회. 영국 국민 약전 70판, 2015.
+3. 국민 건강 및 돌봄 우수성 연구소. 기술 평가 346: 당뇨성 맥올라 부종 치료를 위한 아플리베셉트, 2015. 2015년 11월 25일에 확인됨. https://www.nice.org.uk/guidance/ta346
+
+## Section 2: Additional Information
+참고 2은 더 이상 필요하지 않습니다.
+
+### Exercise Question 5 - 검토 (b)
+명확성을 위해 다음이 추가되었습니다. &#x27;60세 이상 모든 사람은 무료 시력 검사를 받을 권리가 있습니다.&#x27;
+
+### Exercise Question 6 - 검토
+또한, 약사는 환자의 상태가 전문가에 의해 마지막으로 모니터링된 시점을 확인하고 모니터링 간격(각각 12개 월마다 최소한의 간격으로 녹내장, 2년마다 최소한의 간격으로 안구 고혈압 등)을 참조해야 합니다.
+
+### Exercise Question 4 - 사례 연구 (d)
+AREDS 2에서 사용된 것과 유사한 성분을 가진 보충제를 요약한 유용한 웹사이트는 http://www.areds2.org.uk/supplements입니다. 이 사이트는 성분을 비교하는 뿐만 아니라 월별 총 비용을 나열합니다.
+
+### Website Links
+이 섹션의 마지막 부분에 있는 웹사이트 &#x27;http://www.maculardisease.org/page.asp?section=189&amp;ionTitle=Information+Sheets&#x27;는 더 이상 활성화되지 않아 미국 국립 안과 연구소의 연령 관련 안과 질환 연구 결과 요약으로 대체되었습니다. 해당 링크는 https://nei.nih.gov/amd입니다.
+
+### Section 3: Related Problems and Questions
+제5장: 약물 및 질환 관련 안과 문제
+
+P 102 - 개요
+본문은 &#x27;수술 후 안정화를 위해 외용 스테로이드가 필요할 수 있다&#x27;고 명시하고 있습니다. 수술 후 외용 스테로이드의 사용은 단기적이어야 하며, 일반적으로 1개월에서 6주가 표준입니다. 이는 스테로이드로 인한 부작용을 줄일 수 있습니다. 약사는 외용 코르티코스테로이드의 장기 사용을 확인하여 적절한 모니터링이 이루어지고 있는지 확인해야 합니다.
+
+P 103 – P 106 – 약물로 인한 안과 문제
+아미오다론
+아미오다론과 비교하여 드로네다론은 안과 부작용이 보고되지 않았습니다 (http://www.ncbi.nlm.nih.gov/pubmed/12919771).
+
+항머스카린제
+또한, 옥시뷰틴은 더 오래된 항머스카린제의 예입니다. 옥시뷰틴은 소리페낙보다 부작용이 더 흔합니다 (혼합).
+
+항파킨슨증 치료제
+레보도파는 약힌 각막을 가진 환자에게는 긍기입니다. 레보도파는 미iosis와 mydriasis를 모두 유발할 수 있습니다. 52년 동안 레보도파의 다성분 제품과 관련된 녹내장 사례는 단 한 건 보고되었습니다. 1963년부터 2015년까지 흐릿한 시야 (5), 시력 저하 (9), 이중 시야 (2), 및 미iosis (2)와 관련된 보고가 몇 건 있었습니다 (https://www.medicinescomplete.com).
+
+레보도파는 안구기립위기(oculogyric crisis)를 유발할 수 있습니다. BNF(영국 국민 약전)은 레보도파의 부작용으로 구토와 메스꺼움을 포함하며, 드문 부작용으로는 복통, 흐릿한 시야, 눈꺼풀 경련, 이중 시야, 호른 증후군 활성화, 동공 확대, 안구기립위기, 홉초, 그리고 매우 드물게 각막 폐쇄성 녹내장이 포함된다고 명시하고 있습니다 (http://www.evidence.nhs.uk/formulary/bnf/current).
+
+프로사이클리딘의 SPC(사용 설명서)는 이 약물이 구성 성분에 대한 알려진 과민 반응, 치료되지 않은 요로폐색, 폐쇄각 녹내장 및 위장관 폐쇄증을 가진 개인에게 금기임을 명시하고 있습니다 (http://www.medicines.org.uk/EMC/medicine/2171/SPC/Kemadrin+Tablets+5+mg/).
+
+BNF는 현재 항머스카린제가 십이지장-식도 역류 질환, 설사, 궤양성 대장염, 자율신경병증, 급성 심근경색, 고혈압, 심박동이 빠른 상태(감상선 기능 항진증, 심부전, 심장 수술 포함), 발열 및 각막 폐쇄성 녹내장에 취약한 개인에게 조심스럽게 사용되어야 한다고 명시하고 있습니다. 또한 다운 증후군 환자, 어린이 및 노인에게도 조심스럽게 사용되어야 합니다.</code></pre>
+  </div>
+  <div class="block" data-id="b003" data-bbox="12,913,504,47">
+    <p>This markdown structure includes the original sections, references, and website links while maintaining the formatting of the document. The <code>Section</code> labels have been added for clarity.</p>
+  </div>
+</div>
+</body>
+</html>

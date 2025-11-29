@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="4,49,996,462">
+    <pre><code class="language-markdown">Holmes가 다른 어떤 존재인지 여부는, 방금 언급된 진실과 결합하여 거짓말을 암시합니다. 즉, Holmes는 자신이 Holmes일 수 없도록 하는 특징을 가지고 있다는 것입니다. Kripke가 말하듯이, 그에 대해 다른 어떤 것도 확신하지 않더라도, Holmes는 Holmes 역할에 적합하지 않은 존재가 아니라는 것이 명확하지 않습니까? 그렇다면, (SFP)의 관점에서 보면, Holmes가 존재한다는 것은 거짓에 가까운 것입니다.
+
+여기 모인 논문들—예를 들어, &quot;Frege의 의미론과 참조 이론&quot;, &quot;Russell의 범위 개념&quot;, &quot;제1인칭&quot; 등—이 철학적 공통점을 가지고 있다고 생각하지 않습니다. 하지만 메타철학적 측면에서 공통된 무언가를 감지하는 것 같습니다. &quot;나의 경우라면, 나는 조금 더 느리고 철학이 느리다는 생각이 든다&quot;거나, &quot;참조와 같은 개념에 대한 철학적 분석은 실패할 가능성이 매우 높다&quot;는 말, &quot;마음과 몸의 문제는 여전히 매우 혼란스럽고 개방적이다&quot; 또는 &quot;Tarski의 계층 체계의 유령은 여전히 우리와 함께 있다&quot;와 같은 언급에서 이를 볼 수 있습니다. (특정) 문제의 방대함과 지속성에 대한 감각, 그리고 그것들을 만족스럽게 해결할 가능성을 의심하는 태도가 드러납니다. 또한, Kripke가 계속해서 옛날에 폐기된 것으로 여겨지는 이론들에 매료되어 있으며, 그것들을 최선의 형태로 발전시키기 위해 기발한 노력을 기울이는 태도도 보입니다. (예를 들어, Frege의 참조에서 의미로의 역방향 길이 없다는 문제를 해결하기 위해 Russellian의 친근성 개념이 등장합니다.) 그는 이렇게 말합니다: &quot;나는 그때까지 내가 버린 Frege와 Russell로부터 비롯된 복잡한 사상의 힘에 대해 적절한 경의를 표하지 않을 수 없다...&quot; ([Kripke(1980)]).
+
+위에서 언급한 논문들로 인해 누군가가 소홀히 느낄 수는 없을 것입니다. &quot;옛 철학적 문제들은 우리가 풀려고 해서는 안 되는 종류의 문제&quot;라는 말이 있습니다. Kripke가 이에 동의하지 않을 것이라고는 상상하지 않습니다. 하지만 그는, 약한 의미에서라도, 우리의 고민이 끝나지 않는다는 점을 생각할 수도 있습니다.
+
+
+# References
+
+- [Fine(2012)] K. Fine. A difficulty for the possible worlds analysis of counterfactuals. *Synthese*, pages 1–29, 2012.
+
+- [Harman(1973)] Gilbert Harman. *Thought*. Princeton University Press, Princeton, NJ, 1973.
+
+- [Kripke(1980)] Saul Kripke. *Naming and Necessity*. Harvard University Press, Cambridge, Mass., 1980.
+
+- [Kripke et al.(1974)] Saul Kripke et al. Intentionality, language, and translation: First general discussion session. In *Synthese*, volume 27, pages 471–508, 1974.
+
+- [Kripke(2011)] Saul A. Kripke. *Philosophical Troubles: Collected Papers, Volume 1*. Oxford University Press, 2011.
+
+- [Quine(1960)] Willard Van Orman Quine. *Word and Object*. The MIT Press, Cambridge, MA, 1960.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="4,529,106,28">
+    <p><strong>Note</strong>: 이미지 내용을 markdown 형식으로 작성했지만, 이미지를 포함한 내용은 그대로 유지하였습니다.</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="7,28,993,368">
+    <pre><code class="language-markdown"># Markdown
+
+## 전문가로서의 조언
+
+전환국가에 대한 국가이론과 신그람시안 국제정치경제학에 독특한 전략적 관계론적 접근을 유지한 지식의 중요한 기여물입니다.
+
+### Marian Gorynia
+- 포즈난 경제대학 국제비즈니스 및 경제학부
+- `m.gorynia@ue.poznan.pl`
+- 포즈난 공과대학 경영공학부
+- `katarzyna.blanke-lawniczak@put.poznan.pl`
+
+### 참고문헌
+1. Dunning, J. H. (ed.) 2003. *Making Globalization Good*. The Moral Challenges of Global Capitalism. Oxford: Oxford University Press.
+2. Manuela Sofia Stănculescu and Tine Stanovnik (eds.): *Activity, Incomes and Social Welfare* Aldershot and Vienna 2009: Ashgate and European Centre for Social Welfare Policy and Research, 286 pp.
+
+### 책 내용 요약
+이 책은 슬로베니아, 헝가리, 불가리아, 루마니아 등 4개의 새로운 EU 가입국을 활동과 소득 분배의 관점에서 비교 분석하고 있습니다. 비교적 맥크로 경제 데이터와 가계예산조사 데이터를 기반으로 한 분석입니다. 전환 과정 초기 몇 년 동안 모든 전환국가에서 불평등이 증가했다는 것은 널리 알려져 있습니다 [Flemming and Micklewright 2000; World Bank 2000; Rutkowski 2001]. 이 책은 전환의 첫 단계 이후 발생한 노동시장 활동, 사회 보호 및 소득 분배의 변화를 설명하고 있습니다. 분석된 기간은 주로 1993년에서 2003년으로, 이 기간은 전환적 경기 침체의 &#x27;저점&#x27;을 포함하며, 이후 모든 국가에서 경제 회복의 단계가 이어졌지만, 경기 침체의 심각도와 회복 속도는 차이가 있었습니다.
+
+## 폴란드의 FDI 유입
+
+그러나 폴란드를 언급하며 제기된 이 상황에 대한 설명에는 부분적으로만 동의할 수 있습니다. 폴란드로의 외국직접투자(FDI) 유입이 낮은 수준이었던 것이 국가의 독특한 내향적 전략 때문이라고 보는 견해에 쉽게 동의하기 어렵습니다. 외국 투자자들이 폴란드를 피한 이유는 투자 조건이 불리했기 때문(예: 부족한 운송 및 통신 인프라, 국경 통과 문제 등)이며, 세계 다른 지역에서 투자가 더 매력적이었던 것입니다. 즉, 1990년대 초반에 FDI 유입이 적었던 것은 물리적 인프라의 기본적인 문제 때문이었으며, 이를 드라호쿠필이 과대평가한 대리 서비스 부문의 부족 때문이 아니었습니다. 이 논평은 폴란드뿐만 아니라 다른 국가에도 적용될 수 있습니다.
+
+셋째, 드라호쿠필이 정확히 지적한 중앙유럽(CEE) 국가들에서의 FDI에 대한 경제 정책의 수렴은 더 일반적인 과정의 일부로 보입니다. 결국, 경쟁적인 국가 행위는 전 세계적으로 경제에 동참하는 다수의 국가에서 일반적인 현상이며, CEE에만 국한된 것은 아닙니다. 우리는 관찰된 FDI에 대한 경제 정책의 수렴 경향이 특정 CEE 국가 내부의 상황보다는 외부(세계적) 요인에 의해 더 크게 좌우된다고 보고 있습니다.
+
+마지막으로, 폴란드 독자들은 드라호쿠필이 폴란드의 전환 과정을 묘사하는 데 있어 일관성 없는 점을 명확히 볼 수 있습니다. 15페이지에서는 이를 &#x27;점진적 전환&#x27;이라고 언급하고, 36페이지에서는 제프리 샤크스의 &#x27;OCK(OCK: 충격 요법)&#x27;이라고 표현하고 있습니다.
+
+전반적으로, 이 비스테그라드 4개국의 외국직접투자 정치에 대한 혁신적이고 영감을 주는 분석은 국제관계, 국제비즈니스 및 경제학을 공부하는 학생들뿐만 아니라, 정치인과 국회의원들에게도 존경받고 비판적 인 학자로서의 전문적인 조언이 될 수 있습니다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="7,407,11,19">
+    <h3>Table</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="7,437,79,162">
+    <table class="data-table">
+  <tr>
+    <td>Marian Gorynia</td>
+  </tr>
+  <tr>
+    <td>포즈난 경제대학 국제비즈니스 및 경제학부</td>
+  </tr>
+  <tr>
+    <td>m.gorynia@ue.poznan.pl</td>
+  </tr>
+  <tr>
+    <td>Katarzyna Blanke-Lawniczak</td>
+  </tr>
+  <tr>
+    <td>포즈난 공과대학 경영공학부</td>
+  </tr>
+  <tr>
+    <td>katarzyna.blanke-lawniczak@put.poznan.pl</td>
+  </tr>
+</table>
+  </div>
+  <div class="block" data-id="b004" data-bbox="7,610,24,19">
+    <h3>References</h3>
+  </div>
+  <div class="block" data-id="b005" data-bbox="7,639,288,71">
+    <table class="data-table">
+  <tr>
+    <td>Dunning，J.H.(ed.). 2003. "MakingGlobalizationGood".TheMoralChallengesofGlobalCapitalism.Oxford：OxfordUniversityPress.</td>
+  </tr>
+  <tr>
+    <td>ManuelaSofiaStanculescuandTineStanovnik(eds.): "Activity，IncomesandSocialWelfare"AldershotandVienna2009：AshgateandEuropeanCentreforSocialWelfarePolicyandResearch，286pp.</td>
+  </tr>
+</table>
+  </div>
+  <div class="block" data-id="b006" data-bbox="7,721,64,19">
+    <h3>Notes on Poland&#x27;s FDI Inflows</h3>
+  </div>
+  <div class="block" data-id="b007" data-bbox="7,751,288,222">
+    <table class="data-table">
+  <tr>
+    <td>그러나폴란드를언급하며제기된이상황에대한설명에는부분적으로만동의할수있습니다.폴란드로의외국직접투자(FDI)유입이낮은수준이었던것이국가의독특한내향적전략때문이라고보는견해에쉽게동의하기어렵습니다.외국투자자들이폴란드를피한이유는투자조건이불리했기때문(예：부족한운송및통신인프라，국경통과문제등)이며，세계다른지역에서투자가더매력적이었던것입니다.즉，1990년대초반에FDI유입이적었던것은물리적인프라의기본적인문제때문이었으며，이를드라호쿠필이과대평가한대리서비스부문의부족때문이아니었습니다.이논평은폴란드뿐만아니라다른국가에도적용될수있습니다.</td>
+  </tr>
+  <tr>
+    <td>셋째，드라호쿠필이정확히지적한중앙유럽(CEE)국가들에서의FDI에대한경제정책의수렴은더일반적인과정의일부로보입니다.결국，경쟁적인국가행위는전세계적으로경제에동참하는다수의국가에서일반적인현상이며，CEE에만국한된것은아닙니다.우리는관찰된FDI에대한경제정책의수렴경향이특정CEE국가내부의상황보다는외부(세계적)요인에의해더크게좌우된다고보고있습니다.</td>
+  </tr>
+  <tr>
+    <td>마지막으로，폴란드독자들은드라호쿠필이폴란드의전환과정을묘사하는데있어일관성없는점을명확히볼수있습니다.15페이지에서는이를'점진적전환'이라고언급하고，36페이지에서는제프리샤크스의'OCK(OCK：충격요법)'이라고표현하고있습니다.</td>
+  </tr>
+  <tr>
+    <td>전반적으로，이비스테그라드4개국의외국직접투자정치에대한혁신적이고영감을주는분석은국제관계，국제비즈니스및경제학을공부하는학생들뿐만아니라，정치인과국회의원들에게도존경받고비판적인학자로서의전문적인조언이될수있습니다.</td>
+  </tr>
+</table>
+  </div>
+</div>
+</body>
+</html>

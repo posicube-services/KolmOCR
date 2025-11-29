@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="10,38,990,923">
+    <pre><code class="language-markdown"># 커廷 대학교 헬스 서비스
+
+## 일반 진료 환자 치료 제공
+
+### 서비스 내용
+
+- 임상 실습이 포함된 과목에 등록한 학생들을 위한 건강 검진.
+- 모든 건강 문제 관리.
+- 생활 스타일 조언, 스트레스 관리, 성 건강 및 약물 관련 정보.
+- 예방 건강 관리 – 건강 위험 요인 평가 및 관리, 흡연 중단 지원 및 건강한 생활 습관 변경 계획.
+- 스포츠 부상 관리 및 스쿠버 다이빙 의료.
+- 여행 조언 및 여행 전 예방 접종.
+- 영양 조언 – 다이어트 상담사와의 약속 가능.
+- 임신 관련 상담 및 치료.
+- 간호 서비스 – 부상 드레싱, 예방 접종(여행, 아동, 알레르기), 건강 교육.
+- 캠퍼스 내 사고나 갑작스러운 질병에 대한 헬스 서비스 직원의 지원 요청에 대한 대응.
+- 상담 서비스
+
+## 위치 및 연락처
+
+- 위치: 커틴 벤터리 캠퍼스, 건물 109
+- 전화: +61 8 9266 7345
+- 운영 시간: 월요일부터 금요일, 오전 8:30 - 오후 4:30
+- 간호사 근무 시간: 월요일부터 금요일, 오전 8:00 - 오후 6:00
+
+## 인쇄 및 복사 - Managed Print Services
+
+- [Managed Print Services](http://cits.curtin.edu.au/students/computers/printing.cfm)
+
+## 카드 활성화 단계
+
+1. **첫 번째 단계: 카드 활성화**
+   - MPS 계정에 액세스하려면 먼저 커틴 대학교 학생 ID 카드를 활성화해야 합니다. 이는 Abacus Labs 건물 303, 408 및 501, 도서관 건물 105, CBS 건물 402, 공학 건물 204 및 인문학 건물 201에 있는 활성화 스테이션 또는 EFTPOS 키오스크에서 가능합니다. 카드를 활성화하려면 카드 리더기에 카드를 스와이프하면 빛이 녹색으로 바뀌고 카드 리더기가 비프 소리를 낼 것입니다. OASIS 계정 및 비밀번호로 로그인하여 화면의 지침에 따라 카드를 활성화하세요.
+
+2. **두 번째 단계: 신용 추가**
+   1. 파란 동전/지폐 자동 로더. 카드 리더기에 카드를 스와이프하면 계정 잔액이 화면에 표시됩니다. 동전이나 지폐를 넣고 완료되면 종료 버튼을 누릅니다.
+   2. 은색 동전/지폐/카드/영수증 자동 로더. 기계에 카드를 삽입하면 계정 잔액이 화면에 표시됩니다. 동전이나 지폐를 넣고 완료되면 종료 버튼을 누릅니다. 은색 자동 로더는 방문자 카드를 3.20달러에 발급할 수 있습니다.
+   3. EFTPOS 키오스크 (저축/체크/신용 카드).
+
+## 인쇄
+
+1. 카드 리더기에 카드를 탭합니다. 리더기가 카드를 읽은 후 비프 소리를 낼 것입니다.
+
+## 유용한 정보
+
+- 업데이트: 2017년 5월
+- 제작: 간호, 산후조리 및 파라메디슨 학교
+- © 커틴 대학교 2017
+- CICOS 제공자 코드 00301J
+
+&lt;/div&gt;</code></pre>
+  </div>
+</div>
+</body>
+</html>

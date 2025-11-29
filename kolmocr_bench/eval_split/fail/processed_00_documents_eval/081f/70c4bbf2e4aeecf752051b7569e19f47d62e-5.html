@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="2,34,998,80">
+    <pre><code class="language-markdown"># 드라마와 죽음
+
+**엘로드라마는 디킨스가 동시대의 극장에서 관객들과 소통할 수 있는 매개체였으며, 퓨어스와 세익스피어의 비극도 마찬가지였다. 소설가로서 그가 극장의 어떤 측면에 지속적으로 몰입해 있던 것은 그의 성공에 필수적인 부분이었다. 의심할 여지 없이, 그는 의식적으로는 아니지만 세익스피어로부터 많은 것을 배웠다. 디킨스와 세익스피어는 공통점이 있었다: 그들은 모두 가상 명백한 수준에서 문학에 전문적으로 현신했으며, 다양한 관객에게 무언가를 제공했고, 동시에 구체적이고 신화적인 의미를 지닌 큰 상징적 구조를 추구했다. 따라서 디킨스가 세익스피어의 두 번째 인물이라고 자랑하는 것은 단순한 과장이 아니라 정확한 평행선을 보여주는 것이다. 그러나 그의 진정한 사랑은 벤 존슨이었다. 존슨의 풍자적 유머의 통찰력은 1850년 이전의 디킨스 작품에서 뚜렷하게 나타난다. 소설가 자신은 벤 존슨을 연기했고, 자신의 작품과 의문이 달린 가치를 가진 퓨어스와 로맨틱 코미디를 작곡, 연출, 연기했다. 사실 그는 극장, 생생한 관객의 분위기, 화장과 밑밑 조명을 통해 창조되고 살아가는 가짜 현실에 매료되었다. 이는 &quot;실제&quot; 생활에서 그가 짜증스럽고, 잔인하고, 지배적이며, 우울한 성격을 가진 소설가의 성격을 이해하는 데 큰 도움을 준다. 그러나 어떤 종류의 관객이 있더라도, 그는 모방, 활기찬 정신, 거의 허스티컬한 웃음으로 빛나는 존재로 호흡하고 확장되었다. 또한, 그가 안정된 상태(격어도 길로르는)에 이르렀을 때, 그는 어린 시절 트라우마의 뿌리에서 비롯된 깊은 강박감 때문에 계속해서 금전적, 사회적으로 돈을 벌기 위해 자신을 강화하려는 충동에 몰두했고, 그로 인해 그는 독자들과의 옛날의 민감한 친밀감을 잃어버렸다. 그는 자연스럽게 공개적인 낭독이라는 기술로 물두하게 되었다. 이는 그가 작사가로서의 힘을 관객에게 통제할 수 있는 기쁨을 다시 한번 느낄 수 있게 해주었으며, 자신이 눈으로 물리적 효과를 볼 수 있는 추가적인 이점도 있었다. 그의 낭독은 주로 초기 소설과 크리스마스 이야기들에서 이루어졌으며, 이는 그들의 민중적 매력을 보여주는 뚜렷한 예였다. (그는 맨체스터의 기술자들에게서부터 유행하는 사회의 지도자들까지 다양한 관객에게 낭독했다.) 낭독 자체보다는 디킨스가 그 속에서 발견한 매력이 그를 마지막으로, 예언적으로 매혹적인 질병처럼 만들었다. 우리는 디킨스의 심장박동을 기록하고 있으며, 그가 낭독할 때마다 심장박동이 놀라울 정도로 빨라졌다. 그는 관객과 함께 시대의 숨겨진 갈등과 강박을 연기했다. 올리버 트위스트에서 낸시의 살해는 그의 인기 있는 작품이 되었고, 디킨스는 공연 중에 기절하는 여성들의 수를 명적 인 만족감으로 기록했다. 그는 의사들로부터 더 이상 공연하지 않도록 금지되었지만, 그는 어떤 종류의 격렬한 열정으로 계속 공연을 이어갔다. 그가 경고를 듣고 행동했을 때는 이미 너무 늦었고, 그는 지친 상태로 마비된 채 죽었다. 한편으로, 그의 관객, 또는 그가 관객에 대한 열정을 품었던 점이 그를 파괴했지만, 그의 예술가로서의 열정은 공연자의 가면 아래에서 관객을 형성하고 재창조했으며, 그 과정에서 19세기 영국의 상상적 풍경을 형성했다.**
+
+**가브리엘 피어슨**</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="2,126,70,840">
+    <table class="data-table">
+  <tr>
+    <td>LAURENCE&WISHART에서출판된 최근 및 예정</td>
+  </tr>
+  <tr>
+    <td>된 작품들</td>
+  </tr>
+  <tr>
+    <td>가치론의 연구</td>
+  </tr>
+  <tr>
+    <td>R.L. 미크</td>
+  </tr>
+  <tr>
+    <td>노동가치론의 진화에 대한 비판적 조사로，현대 비판의 유효성을 논의하는 데 기여한다.</td>
+  </tr>
+  <tr>
+    <td>가용성：30s.</td>
+  </tr>
+  <tr>
+    <td>톰 맨과 그의 시대Vol .11856-1890</td>
+  </tr>
+  <tr>
+    <td>도나 토르</td>
+  </tr>
+  <tr>
+    <td>영국 노동조합 역사의 결정적 시기의 뛰어난 기록. 톰맨의 생애와 1889년 대크리크 스트라이크까지의 활동을 다룬다.</td>
+  </tr>
+  <tr>
+    <td>가용성：21s.</td>
+  </tr>
+  <tr>
+    <td>우토피아에서의 여행존프랜시스브레이</td>
+  </tr>
+  <tr>
+    <td>영국 사회주의 선구자로 알려진 저작가의 미발표 작품. 1830년대 영국을 우토피아 방문자의 시각으로 보여준다.M.F. 라이디-프리차드， M.A.，Ph.D.가 편집및 서문을 담당했다.</td>
+  </tr>
+  <tr>
+    <td>가용성：2월 14일21s.</td>
+  </tr>
+  <tr>
+    <td>티베트：여행의 기록앨런 윈닝턴</td>
+  </tr>
+  <tr>
+    <td>티베트의 사람들과 품습에 대한 가장 완전한 그림. 봉건적 과거에서 탈피하는 사회에 대한 깊이 있는 분석.</td>
+  </tr>
+  <tr>
+    <td>가용성：2월 21일 25s.</td>
+  </tr>
+  <tr>
+    <td>러시아연방공화국경제：통계요약최근소련정부의출판물로，러시아의경제상황에대한 가장완전하고드러난데이터를제공한다.</td>
+  </tr>
+  <tr>
+    <td>가용성：2월 14일21s.</td>
+  </tr>
+  <tr>
+    <td>성가족또는비판적비판의비판마르크스와 엔겔스</td>
+  </tr>
+  <tr>
+    <td>“젊은헤겔파"에대한유명한논쟁，처음으로영어로번역됨.</td>
+  </tr>
+  <tr>
+    <td>가용성：3월 21일7s.6d.</td>
+  </tr>
+  <tr>
+    <td>토마스 윌커의 특이한 사례프리다 나이트</td>
+  </tr>
+  <tr>
+    <td>특별한 전기 연구一프랑스혁명시기에 10년 동안 자신의 급진적 견해 때문에 핍박받았던 맨체스터 기술자의 이야기.</td>
+  </tr>
+  <tr>
+    <td>가용성：4월 18일21s.</td>
+  </tr>
+  <tr>
+    <td>모든 서점에서 구매 가능</td>
+  </tr>
+</table>
+  </div>
+</div>
+</body>
+</html>

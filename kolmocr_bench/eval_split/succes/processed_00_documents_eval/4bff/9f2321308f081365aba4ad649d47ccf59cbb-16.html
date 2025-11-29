@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="11,49,989,208">
+    <pre><code class="language-markdown"># markdown
+
+## 요약
+
+이러한 요인들은 임무가 부과한 막대한 일정 압력을 극복하는 데 핵심적이었습니다. 결과적으로, 이 우주선은 화려한 예산과 긴 개발 프로그램 없이도 유용한 우주 과학이 달성될 수 있음을 보여주었을 것입니다. 기존 시스템을 활용함으로써 많은 성과를 거둘 수 있습니다. 그러나 우주선은 챌린저호에 탑재된 상태에서 파괴되었지만, 우리는 이 설계 접근 방식이 SPARTAN 우주선을 지능적이고 독창적으로 활용한 것이라고 생각합니다.
+
+우리는 매우 복잡한 임무를 수행하기 위해 &quot;기본으로 돌아가기&quot;라는 방식으로 간단하고 저렴한 우주선을 활용할 수 있음을 보여주었으며, 이러한 임무는 적응형 임무 우선순위를 반영하는 일정 내에서 수행될 수 있음을 입증했습니다.
+
+우리는 챌린저호의 최종 승무원 팀의 친구들에게 경의를 표합니다. 그들의 헌신과 개인적인 노력은 임무 준비에 크게 기여했습니다. 또한, GSFC 특수 임무 부서의 휴리데이 팀과 콜로라도 대학의 대기 및 우주 물리 연구소의 헌신적인 노력에 감사의 뜻을 전합니다. 그들의 노력 없이는 우주선이 건설되지 못했을 뿐만 아니라 일정도 유지되지 못했을 것입니다. &quot;어스터를 향해 험난한 길을 걸어라!&quot; (Ad astra per aspera!)</code></pre>
+  </div>
+</div>
+</body>
+</html>

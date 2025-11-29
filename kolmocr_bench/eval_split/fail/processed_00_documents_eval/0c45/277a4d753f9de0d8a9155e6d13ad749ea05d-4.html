@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="9,12,991,976">
+    <pre><code class="language-markdown"># 피서의 상관관계 분석
+
+## Table 3: 피서의 상관계수 (r) FVC 및 FEV1과 나이, 키 및 체중에 대한
+
+|       | 남자          | 여자        |
+|-------|---------------|-------------|
+|       | FVC           | FEV1        | FVC           | FEV1        |
+| 나이   | r=0.89 p&lt;0.0001 | r=0.89 p&lt;0.0001 | r=0.85 p&lt;0.0001 | r=0.87 p&lt;0.0001 |
+| 키     | r=0.92 p&lt;0.0001 | r=0.92 p&lt;0.0001 | r=0.88 p&lt;0.0001 | r=0.86 p&lt;0.0001 |
+| 체중   | r=0.86 p&lt;0.0001 | r=0.84 p&lt;0.0001 | r=0.84 p&lt;0.0001 | r=0.83 p&lt;0.0001 |
+
+## Discussion
+
+우리는 델리 지역에 거주하는 6세에서 17세 사이의 북 인도계 어린이들을 대상으로 한 다양한 체내기능검사 파라미터에 대한 예측 방정식을 제시했다. 이는 현재 ATS/ERS 작업그룹이 권장하는 표준화된 프로토콜에 따라 수행된 체내기능검사에서 유래되었다. 10 FVC, FEV1, PEFR, F50, F75 및 F25-75는 모두 남녀 어린이들에게서 나이, 키 및 체중과 중등도에서 강한 상관관계를 보였다. FEV1/FVC는 남자들에게서 나이나 키와 상관관계가 없었으며, 여자들에게서는 키와 상관관계가 없었지만, 후자의 경우 나이와 약한 상관관계를 보였다.
+
+## Table 4: 피서의 상관계수 (r) PEFR, F25-75, F50 및 F75와 나이, 키 및 체중에 대한
+
+|       | 남자          | 여자        |
+|-------|---------------|-------------|
+|       | PEFR          | F25-75      | F50          | F75        | PEFR          | F25-75      | F50          | F75        |
+| 나이   | r=0.87 p&lt;0.0001 | r=0.81 p&lt;0.0001 | r=0.77 p&lt;0.0001 | r=0.77 p&lt;0.0001 | r=0.82 p&lt;0.0001 | r=0.73 p&lt;0.0001 | r=0.76 p&lt;0.0001 | r=0.69 p&lt;0.0001 |
+| 키     | r=0.87 p&lt;0.0001 | r=0.82 p&lt;0.0001 | r=0.77 p&lt;0.0001 | r=0.69 p&lt;0.0001 | r=0.81 p&lt;0.0001 | r=0.76 p&lt;0.0001 | r=0.76 p&lt;0.0001 | r=0.68 p&lt;0.0001 |
+| 체중   | r=0.78 p&lt;0.0001 | r=0.71 p&lt;0.0001 | r=0.69 p&lt;0.0001 | r=0.60 p&lt;0.0001 | r=0.74 p&lt;0.0001 | r=0.68 p&lt;0.0001 | r=0.68 p&lt;0.0001 | r=0.66 p&lt;0.0001 |
+
+## Table 5: 체내기능검사 파라미터에 대한 회귀 방정식
+
+Equation: 체내기능검사 파라미터 = 상수 + (키에 대한 β 계수 × 키(cm)) + (나이에 대한 β 계수 × 나이(년)) + (체중에 대한 β 계수 × 체중(Kg))
+
+5번째 백분위수는 정상 범위의 하 bound SD, 50번째 백분위수는 5번째 백분위수, 95번째 백분위수는 50번째 백분위수와 함께 표시되어 있다. 
+
+| 남자 | 여자 |
+|-----|------|
+| 84.41 ± 5.86 | 88.45 ± 5.86 |
+| 73.96 | 84.57 |
+| 94.11 | 97.32 |
+
+## Table 6: FEV1/FVC의 기술적 통계
+
+| 남자 | 여자 |
+|-----|------|
+| 0.70 ± 0.08 | 0.68 ± 0.08 |
+
+## HTML Table for Regression Parameters
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;남자&lt;/th&gt;
+    &lt;th&gt;키에 대한 β 계수&lt;/th&gt;
+    &lt;th&gt;나이에 대한 β 계수&lt;/th&gt;
+    &lt;th&gt;체중에 대한 β 계수&lt;/th&gt;
+    &lt;th&gt;추정 오차 표준편차&lt;/th&gt;
+    &lt;th&gt;R²&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;FVC&lt;/td&gt;
+    &lt;td&gt;-3.226&lt;/td&gt;
+    &lt;td&gt;0.032&lt;/td&gt;
+    &lt;td&gt;0.066&lt;/td&gt;
+    &lt;td&gt;0.014&lt;/td&gt;
+    &lt;td&gt;0.394&lt;/td&gt;
+    &lt;td&gt;0.872&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;FEV1&lt;/td&gt;
+    &lt;td&gt;-2.763&lt;/td&gt;
+    &lt;td&gt;0.026&lt;/td&gt;
+    &lt;td&gt;0.080&lt;/td&gt;
+    &lt;td&gt;0.008&lt;/td&gt;
+    &lt;td&gt;0.360&lt;/td&gt;
+    &lt;td&gt;0.856&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;PEFR&lt;/td&gt;
+    &lt;td&gt;-5.043&lt;/td&gt;
+    &lt;td&gt;0.050&lt;/td&gt;
+    &lt;td&gt;0.267&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;0.926&lt;/td&gt;
+    &lt;td&gt;0.790&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;F25-75&lt;/td&gt;
+    &lt;td&gt;-2.704&lt;/td&gt;
+    &lt;td&gt;0.030&lt;/td&gt;
+    &lt;td&gt;0.111&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;0.620&lt;/td&gt;
+    &lt;td&gt;0.686&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;F50&lt;/td&gt;
+    &lt;td&gt;-2.540&lt;/td&gt;
+    &lt;td&gt;0.027&lt;/td&gt;
+    &lt;td&gt;0.145&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;0.772&lt;/td&gt;
+    &lt;td&gt;0.618&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;F75&lt;/td&gt;
+    &lt;td&gt;-1.617&lt;/td&gt;
+    &lt;td&gt;0.014&lt;/td&gt;
+    &lt;td&gt;0.081&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;0.537&lt;/td&gt;
+    &lt;td&gt;0.491&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;여자&lt;/th&gt;
+    &lt;th&gt;키에 대한 β 계수&lt;/th&gt;
+    &lt;th&gt;나이에 대한 β 계수&lt;/th&gt;
+    &lt;th&gt;체중에 대한 β 계수&lt;/th&gt;
+    &lt;th&gt;추정 오차 표준편차&lt;/th&gt;
+    &lt;th&gt;R²&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;FVC&lt;/td&gt;
+    &lt;td&gt;-1.733&lt;/td&gt;
+    &lt;td&gt;0.019&lt;/td&gt;
+    &lt;td&gt;0.073&lt;/td&gt;
+    &lt;td&gt;0.015&lt;/td&gt;
+    &lt;td&gt;0.291&lt;/td&gt;
+    &lt;td&gt;0.840&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;FEV1&lt;/td&gt;
+    &lt;td&gt;-1.633&lt;/td&gt;
+    &lt;td&gt;0.017&lt;/td&gt;
+    &lt;td&gt;0.078&lt;/td&gt;
+    &lt;td&gt;0.010&lt;/td&gt;
+    &lt;td&gt;0.256&lt;/td&gt;
+    &lt;td&gt;0.847&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;PEFR&lt;/td&gt;
+    &lt;td&gt;-2.474&lt;/td&gt;
+    &lt;td&gt;0.030&lt;/td&gt;
+    &lt;td&gt;0.211&lt;/td&gt;
+    &lt;td&gt;0.014&lt;/td&gt;
+    &lt;td&gt;0.771&lt;/td&gt;
+    &lt;td&gt;0.725&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;F25-75&lt;/td&gt;
+    &lt;td&gt;-2.662&lt;/td&gt;
+    &lt;td&gt;0.032&lt;/td&gt;
+    &lt;td&gt;0.082&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;0.573&lt;/td&gt;
+    &lt;td&gt;0.603&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;F50&lt;/td&gt;
+    &lt;td&gt;-1.229&lt;/td&gt;
+    &lt;td&gt;0.017&lt;/td&gt;
+    &lt;td&gt;0.118&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;0.708&lt;/td&gt;
+    &lt;td&gt;0.544&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;F75&lt;/td&gt;
+    &lt;td&gt;-1.791&lt;/td&gt;
+    &lt;td&gt;0.018&lt;/td&gt;
+    &lt;td&gt;0.060&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;0.504&lt;/td&gt;
+    &lt;td&gt;0.431&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+  </div>
+</div>
+</body>
+</html>

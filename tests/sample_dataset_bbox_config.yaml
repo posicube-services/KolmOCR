@@ -1,0 +1,60 @@
+project_name: olmocr-bbox-test
+run_name: sample-dataset-bbox
+
+model:
+  name: Qwen/Qwen2.5-VL-7B-Instruct
+  trust_remote_code: true
+  torch_dtype: bfloat16
+  device_map: auto
+  use_flash_attention: true
+  attn_implementation: flash_attention_2
+
+dataset:
+  train:
+    - name: sample_dataset_bbox
+      root_dir: tests/sample_dataset_bbox
+      pipeline:
+        - name: FrontMatterParser
+          front_matter_class: PageResponse
+          verbose: false
+        - name: FilterOutRotatedDocuments
+          verbose: false
+        - name: ReformatLatexBoldItalic
+        - name: DatasetTextRuleFilter
+          verbose: false
+        - name: PDFRenderer
+          target_longest_image_dim: 1024
+          verbose: false
+        - name: RotationAugmentation
+          probability: 0.02
+        - name: NewYamlFinetuningPromptWithNoAnchoring
+        - name: FrontMatterOutputFormat
+        - name: InstructUserMessages
+          prompt_first: true
+        - name: Tokenizer
+          masking_index: -100
+          end_of_message_token: "<|im_end|>"
+  eval: []
+
+training:
+  output_dir: outputs/sample_dataset_bbox_test
+  num_train_epochs: 1
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  logging_steps: 1
+  gradient_checkpointing: false
+  dataloader_num_workers: 0
+  dataloader_drop_last: false
+  evaluation_strategy: steps
+  eval_steps: 1
+  save_strategy: steps
+  save_steps: 1
+  save_total_limit: 1
+  learning_rate: 1e-5
+  lr_scheduler_type: linear
+  warmup_ratio: 0.1
+  optim: adamw_torch
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  torch_compile: false

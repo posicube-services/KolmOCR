@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="5,49,995,531">
+    <pre><code class="language-markdown"># 저 레닌 고혈압(LREH)의 특징
+
+저 레닌 고혈압(LREH)은 고혈압 환자 집단의 중요한 하위 집단을 차지하며, 소금 민감성과 이뇨제 반응과 관련이 있으며, 흔한 환자들에서 흔히 관찰됩니다.
+
+LREH의 흥미로운 특징 중 하나는 정상 수준의 혈장 알도스테론이 존재한다는 것입니다. 1,2 혈장 알도스테론과 레닌 활성의 비율은 부신 종양 및 과대증을 검출하는 데 사용되며, 혈장 레닌 활성이 ng/mL/hr로 표현되고 알도스테론 농도가 ng/dL로 표현될 때 일반적으로 100 이상입니다. LREH에서는 혈장 알도스테론/혈장 레닌 활성 비율이 약간 높을 수 있습니다 (30 이상이지만 100 미만), 특히 24시간 동안의 소변 나트륨 배설량이 200 mEq를 초과할 경우 더욱 중요합니다.
+
+이 상황에서 알도스테론 분비를 조절하는 메커니즘이나 실제 미네랄코르티코이드 과잉 여부는 아직 명확하지 않습니다. LREH에서 심한 소금 제한 또는 체액 부족으로 인한 혈장 레닌 활성의 지속적인 억제에 대한 과도한 이전의 강조는 문제가 될 수 있으며, 1 노인에서 혈장 레닌 활성과 기본 알도스테론 분비의 억제도 LREH 분석을 복잡하게 만들 수 있습니다.
+
+## Fisher 등2의 연구
+
+Fisher 등2의 연구는 LREH, 정상 레닌 고혈압, 그리고 정상 대조군에서 식이 소금 섭취에 따른 부신 및 알박 반응에 초점을 맞추고 있습니다. 특히 LREH와 정상 혈장 레닌 활성(NMEH)을 가진 &quot;비조절&quot; 고혈압 간의 기능적 유사점이 두드러지며, 이는 다음과 같은 특징을 포함합니다: (1) 혈압의 소금 민감성; (2) 5일간 엄격한 식이 나트륨 제한 후 Ang II 투여 및 수적 자세에 대한 혈장 알도스테론 반응의 감소; (3) 상대적으로 낮은 기본 혈장 알도스테론 농도. 이들 특징은 식이 소금 섭취를 200 mEq로 증가시키면 정상 대조군과 &quot;조절&quot; 고혈압 환자와의 차이가 사라집니다. 이 결과는 고소금 섭취 시 혈장 Ang II 활성의 억제와 Ang II 수용체의 재감수성 및 Ang II 반응성의 향상과 일치합니다. 따라서 나트륨 제한 시 Ang II 반응성의 감소는 지속적인 Ang II 생성과 Ang II 수용체의下调과 관련이 있을 수 있습니다.
+
+### LREH 정의와 Ang II 반응성
+
+Fisher 등2는 LREH와 Ang II 반응성의 정의를 5일간의 나트륨 제한(10 mEq/24시간)을 받은 환자 기준으로 설정했습니다. &quot;짧은&quot; 프로토콜과 함께 이뇨제를 병용 투여하는 것보다 더 긴 제한 기간을 사용한 것입니다. 연구 대상이 실제로 나트륨 균형에 도달했는지 확인하는 것이 중요합니다. 이는 기본 혈장 알도스테론 농도의 해석에 영향을 미칠 수 있기 때문입니다. LREH 및 NMEH 환자의 낮은 기본 혈장 알도스테론 농도는 식이 소금 제한에도 불구하고 상대적 체액 확장의 결과일 수 있습니다. 이와 관련하여, 5일째에 이르면 이 2개 그룹의 24시간 소변 나트륨 배설률은 정상 대조군 및 정상 조절 고혈압 환자에 비해 약간(하지만 유의하게) 높았습니다 (참조 2의 Table 1 참조).
+
+## 신장관 운반체 결함에 대한 이해
+
+최근 몇 년 동안 신장관 운반체 결함에 대한 우리의 이해가 확장되었습니다. 이는 상피 운반체 과정 및 이러한 운반체의 돌연변이로 인해 발생하는 임상 증후군에 대한 독특한 통찰을 제공합니다. 6 연구의 주요 초점 중 하나는 상피 나트륨 채널(ENaC)으로, 이는 미네랄코르티코이드 반응성 신장수집관에서 나트륨 흡수를 조절하는 속도 결정 장벽입니다. 7 ENaC은 돌연변이 또는 미네랄코르티코이드에 대한 반응 또는 생성의 변화에 의해 직접 영향을 받을 수 있습니다. 8,9 결과적으로,我们现在定义了孟德尔综合征，其中ENaC活性“失调”，随后发展为可归因于原发性肾机制的系统性血压紊乱。ENaC 채널의 서브유닛에 직접 영향을 미치는 돌연변이는 기능获得(리들 증후군) 또는 기능 상실(가짜 저알도스테론증 1형)을 초래하며, 영향받은 개인의 예측 가능한 임상 양상을 나타냅니다. 식이 소금 과잉에 대한 정상 반응은 ENaC 활성의下跌으로, 수질관에서의 나트륨 재흡수가 감소됩니다. 이 과정에 문제가 있으면 ENaC 활성의 조절 실패, 지속적인 나트륨 재흡수 및 체액 확장이 발생할 수 있습니다.
+
+## 리들 증후군의 재조명
+
+리들 증후군의 원래 설명은 유럽계 환자에서 이루어졌습니다. 10,11 임상 양상에 대한 재조명 후, 12 아프리카계 조상의 환자에서도 심한 저 레닌 고혈압과 알도스테론 분비의 극심한 억제가 관찰되었으며, 종종 저칼륨성 대사성 알칼로지와 동반되었습니다. 13 이 중요한 대상 집단에서 LREH의 원인을 정의하는 데 있어 회망이 있음에도 불구하고, 다양한 민족 집단에 대한 수많은 검사 노력은 리들 증후군이 인간 LREH의 드문 원인이라는 원래의 견해를 바꾸지 못했습니다. ENaC 서브유닛의 다형성이 ENaC의 cAMP 민감도를 증가시켜거나 14 알도스테론 분비를 억제하는 데 관련될 수 있지만, 이는 LREH의 주요 원인으로 간주되지 않습니다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="5,598,57,190">
+    <table class="data-table">
+      <thead>
+        <tr><th>날짜</th><th>2023-10-01</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>저 레닌 고혈압(LREH)의 특징</td><td></td></tr>
+        <tr><td>Fisher 등2의 연구</td><td></td></tr>
+        <tr><td>LREH 정의와 Ang II 반응성</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

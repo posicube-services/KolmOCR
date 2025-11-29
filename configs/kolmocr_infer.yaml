@@ -1,0 +1,12 @@
+# Default inference configuration for batch image-to-markdown generation.
+checkpoint: /AIEngine7T/nfs_dir107/checkpoints/olmocr-qwen2.5-vl-7b-1epoch-mix1128/qwen2.5-vl-7b-olmocrv4_1epoch_ko_mix1128/checkpoint-500
+# Required: tokenizer/processor path (must be specified explicitly).
+tokenizer: /AIEngine7T/nfs_dir107/checkpoints/olmocr-qwen2.5-vl-7b-1epoch-mix1128/qwen2.5-vl-7b-olmocrv4_1epoch_ko_mix1128/checkpoint-500
+input_dir: /home/jheum/olmocr/kolmocr_bench/table
+output_dir: output/kolmocr_bench_test
+prompt: "이 문서를 구조화된 markdown으로 만들어줘."
+max_new_tokens: 4000
+# Optional: device_map can be set here; defaults to "auto" when CUDA is available.
+# device_map: auto
+# Optional: multiprocessing. Set to 1 for single-process. Each worker loads its own model.
+num_workers: 8

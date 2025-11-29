@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="31,32,969,906">
+    <pre><code class="language-markdown"># 알칼로미아와 관련된 정보
+
+## 일반적인 내용
+
+- **형태**: 알칼로미아는 대사성 알칼로미아와 호흡성 알칼로미아로 나눌 수 있습니다.
+- **원인**: 알칼로미아의 원인은 다양하며, 대사적, 호흡적, 탄소소음 등으로 분류될 수 있습니다.
+
+## 대사성 알칼로미아
+
+- **정의**: 대사성 알칼로미아는 대사성 산소증과 함께 발생하는 알칼로미아입니다.
+- **원인**: 대사성 산소증, 대사성 알칼로미아, 대사성 탄소소음 등이 원인이 됩니다.
+
+## 호흡성 알칼로미아
+
+- **정의**: 호흡성 알칼로미아는 호흡기 기능이 떨어져 발생하는 알칼로미아입니다.
+- **원인**: 호흡기 질환, 호흡기 감염, 호흡기 장애 등이 원인이 됩니다.
+
+## 알칼로미아의 관리
+
+- **목표**: 알칼로미아의 관리는 대사성 알칼로미아와 호흡성 알칼로미아를 구분하여 진행됩니다.
+- **방법**: 알칼로미아의 관리는 약물치료, 산소치료, 영양요법 등 다양한 방법이 있습니다.
+
+## 알칼로미아와 관련된 연구
+
+- **연구 내용**: 알칼로미아와 관련된 연구는 알칼로미아의 원인과 발생 메커니즘, 그리고 관리를 위한 방법을 규명하기 위해 수행됩니다.
+
+## 알칼로미아의 예방 및 관리
+
+- **예방**: 알칼로미아의 예방은 주로 건강한 생활 습관과 정기적인 건강 체크를 통해 이루어집니다.
+- **관리**: 알칼로미아의 관리는 약물치료, 산소치료, 영양요법 등 다양한 방법을 사용합니다.
+
+## 알칼로미아와 관련된 질환
+
+- **질환**: 알칼로미아와 관련된 질환은 대사성 알칼로미아와 호흡성 알칼로미아로 나눌 수 있습니다.
+- **증상**: 알칼로미아의 증상은 대사성 알칼로미아와 호흡성 알칼로미아에 따라 다르게 나타납니다.
+
+## 알칼로미아의 진단
+
+- **진단**: 알칼로미아의 진단은 알칼로미아의 원인과 발생 메커니즘을 규명하기 위해 수행됩니다.
+- **방법**: 알칼로미아의 진단은 혈액 검사, 산소 검사, 탄소소음 검사 등 다양한 방법을 사용합니다.
+
+## 알칼로미아와 관련된 치료
+
+- **치료**: 알칼로미아의 치료는 알칼로미아의 원인과 발생 메커니즘을 규명하기 위해 수행됩니다.
+- **방법**: 알칼로미아의 치료는 약물치료, 산소치료, 영양요법 등 다양한 방법을 사용합니다.
+
+## 알칼로미아와 관련된 연구
+
+- **연구 내용**: 알칼로미아와 관련된 연구는 알칼로미아의 원인과 발생 메커니즘, 그리고 관리를 위한 방법을 규명하기 위해 수행됩니다.
+- **결과**: 알칼로미아와 관련된 연구의 결과는 알칼로미아의 원인과 발생 메커니즘을 규명하고, 관리를 위한 방법을 개발하는데 도움이 됩니다.
+
+## 알칼로미아와 관련된 질환
+
+- **질환**: 알칼로미아와 관련된 질환은 대사성 알칼로미아와 호흡성 알칼로미아로 나눌 수 있습니다.
+- **증상**: 알칼로미아의 증상은 대사성 알칼로미아와 호흡성 알칼로미아에 따라 다르게 나타납니다.
+
+## 알칼로미아와 관련된 질환
+
+- **질환**: 알칼로미아와 관련된 질환은 대사성 알칼로미아와 호흡성 알칼로미아로 나눌 수 있습니다.
+- **증상**: 알칼로미아의 증상은 대사성 알칼로미아와 호흡성 알칼로미아에 따라 다르게 나타납니다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="31,950,717,19">
+    <p>이 문서는 대략적인 구조를 제공하며, 실제 문서의 구조나 내용은 추가되어야 할 수 있습니다.</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="20,49,980,231">
+    <pre><code class="language-markdown"># EdgeX Foundry Core Working Group
+
+## 플러스 시스템 관리 및 UI
+
+- 네, 우리는 CORS 문제를 해결하고 싶습니다.
+- 네, 공통 방식으로 처리하고 싶지만 edgex-go, SDKs에서 별도의 코드로 구현해야 합니다. ■ 부트스트랩에서 공통 요청 처리가 이루어지고 있나요? ■ 부트스트랩은 HTTP 핸들러를 설정하지만 CORS 설정을 처리할 수 있나요?
+- Kong을 통해 CORS 문제를 해결해야 할까요? (Kong에서 CORS 플러그인을 활성화해야 합니다) ■ [https://docs.konghq.com/hub/kong-inc/cors/](https://docs.konghq.com/hub/kong-inc/cors/)
+- 자카르타 관련 문제
+- 이벤트 태깅 (각 SDK Go 915) - 클라우드의 제안이 승인됨
+- autoevent 주기 이름을 interval로 변경 - 클라우드의 제안에 따라 승인됨</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="20,303,44,43">
+    <h2>Table</h2>
+  </div>
+  <div class="block" data-id="b003" data-bbox="20,364,879,389">
+    <table class="data-table">
+      <thead>
+        <tr><th>Item</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>CORS</td><td>We want to solve the CORS problem.</td></tr>
+        <tr><td>Implementation</td><td>We want to handle it in a common way, but we need additional code in edgex-go and SDKs. Is it already implemented in Bootstrap for common request handling? Bootstrap sets up HTTP handlers but can&#x27;t handle CORS settings.</td></tr>
+        <tr><td>Kong</td><td>Should we use Kong to solve the CORS problem? (CORS plugin needs to be enabled in Kong.) [https://docs.konghq.com/hub/kong-inc/cors/](https://docs.konghq.com/hub/kong-inc/cors/)</td></tr>
+        <tr><td>Jakarta</td><td>Related issues</td></tr>
+        <tr><td>Event Tagging</td><td>Approved by cloud&#x27;s proposal</td></tr>
+        <tr><td>autoevent</td><td>Rename recurring event name to interval - approved by cloud&#x27;s proposal</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="block" data-id="b004" data-bbox="20,771,0,0">
+    <pre><code></code></pre>
+  </div>
+</div>
+</body>
+</html>

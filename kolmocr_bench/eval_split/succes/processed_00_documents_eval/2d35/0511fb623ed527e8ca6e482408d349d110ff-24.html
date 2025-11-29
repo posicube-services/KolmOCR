@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="12,49,987,485">
+    <pre><code class="language-markdown"># Markdown
+
+- 프로그램은 학생들이 접근할 수 있도록 프로그램 학습 목표와 과정 학습 목표(CLOs)를 여러 위치에 게시합니다.
+
+## RN-BSN, 아스펜 대학
+
+- BSN을 취득한 간호사의 잠재적 급여와 직업 전망은 우리 웹사이트에 나열되어 있습니다. 학위 프로그램의 학비 투명성과 합리성, 관련 프로그램 비용에 대한 정보도 제공되며, 인증 지원에 대한 정보도 포함됩니다. 또한, RN-BSN 핸드북도 공개적으로 제공됩니다.
+
+## RN-BSN, 아스펜 대학
+
+- 아스펜 대학은 RN-BSN 웹페이지(https://www.aspen.edu/nursing/rn-bsn/)에서 간호사의 급여 및 고용 통계와 관련된 정보를 제공합니다.
+
+## RN-BSN, 아스펜 대학
+
+- 프로그램 정보는 기관 웹사이트, 카탈로그, 그리고 브로셔/플라이어를 통해 일반 대중에게 쉽게 제공됩니다. 이 정보에는 프로그램 개요, 프로그램 결과, 과정 요약, 의료 보조원의 일반적인 업무, 프로그램 기간, 그리고 관련 DOL 정보 링크와 함께 제공되는 직업 정보가 포함됩니다. 프로그램 비용은 웹사이트의 &#x27;학비 및 수수료&#x27; 링크 아래에 나열되어 있습니다.
+
+## 의료 보조 자격증, 마틴즈버그 칼리지
+
+- 칼리지는 웹사이트에서 학생 성과 정보를 제공하며, 이 정보에는 졸업률 데이터(졸업까지의 시간 포함)가 포함되며, 성별, 인종, 민족별로 분류되어 있습니다.
+
+## 마틴즈버그 칼리지</code></pre>
+  </div>
+</div>
+</body>
+</html>

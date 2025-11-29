@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="11,49,989,485">
+    <pre><code class="language-markdown"># Markdown
+
+## 조사 결과 요약
+
+### 조사 내용
+기구는 5개 주요 전투 지역에서 라티노들이 대통령 선거에서 어떤 위치를 차지하고 있는지 조사했다: 플로리다 외에도, 오하이오, 콜로라도, 네바다, 노스캐롤라이나의 히스패닉 유권자들이 포함되었다. 조사는 9월 15일부터 9월 19일까지 실시되었다.
+
+### 히스패닉 지지율
+이번 조사에서도 클린턴의 히스패닉 지지율은 오바마 대통령이 2008년과 2012년 플로리다에서 승리할 때 받았던 지지율 마진보다 약간 낮은 것으로 나타났다. 2008년 오바마는 히스패닉 지지율의 57%를 받았고, 2012년 선거에서는 60%를 받았다.
+
+### 주별 지지율 변화
+이번 조사에 포함된 다른 4개 주에서도 같은 양상이 나타났으며, 히스패닉 지지율이 가장 큰 감소를 보인 주는 네바다였다. 클린턴은 현재 네바다에서 트럼프(25% 지지율)에 비해 54%의 지지율을 받고 있지만, 2008년 오바마는 76%의 히스패닉 지지율을 받았고, 2012년에는 71%를 받았다.
+
+### 전망 및 해석
+&quot;히스패닉은 미국에서 가장 빠르게 성장하는 인구 집단 중 하나입니다. 공화당은 히스패닉 유권자들로부터의 성과가 부족한 상태로 계속 갈 수 없으며, 일부 전투 지역 주들을 승리할 현실적인 가능성을 유지할 수 없습니다.&quot;라고 FAU 정치학 교수이자 이니셔티브 연구원인 케빈 워너 박사가 말했다. &quot;공화당이 이러한 큰 마진을 좁히지 못한다면, 선거 지도는 점점 더 공화당에게 어렵게 될 것입니다.&quot;
+
+각 주의 히스패닉들은 클린턴이 그들이 조사받은 모든 주요 선거 문제를 더 잘 처리할 후보라고 보고 있다.
+
+## HTML Table (if applicable)
+
+There is no table in the provided text.</code></pre>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="22,49,977,439">
+    <pre><code class="language-markdown"># Reference List
+
+## 1. Iwakiri H, Nagata O, Matsukawa T, Ozaki M, Sessler DI (2003) 프로포폴의 효과 부위 농도는 펜타닐 효과 부위 농도와 거의 독립적으로 의식 회복에 영향을 미친다. Anesth Analg 96: 1651-1655.
+
+## 2. Shafer SL, Varvel JR, Aziz N, Scott JC (1990) 컴퓨터 제어 주입 펌프를 통한 펜타닐 투여의 약동학. Anesthesiology 73:1091-1102.
+
+## 3. Ouchi K, Ohara S, Sunada K, Nagata O. (2008) [펜타닐에서 레미펜타닐로 진통제를 변경하여 총체적 정맥 마취 시 안정된 순환 동역학 경험]. J Clin Anesth (Jpn) 32:782-784.
+
+## 4. Kaneda K, Han TH (2009) 비선형 혼합 효과 모델링을 사용한 펜타닐의 비교 인구 약동학: 화상 vs. 비화상. Burns 35: 790-797.
+
+## 5. Abrams JT, Horrow JC, Bennett JA, Van Riper DF, Storella RJ (1996) 수페네타닐로 인
+
+## 6. Ackerman WE, Phero JC, Theodore GT (1990) 정맥 내 미다졸람과 펜타닐 투여 후 가슴 벽 경직으로 인한 의식 유지 상태에서의 통기 부족. Anesth Prog. 37:46-48.
+
+## 7. Bennett JA, Abrams JT, Van Riper DF, Horrow JC (1997) 수페네타닐로 인해 발생한 마취 후 어려운 또는 불가능한 통기는 주로 목소리 락의 폐쇄로 인해 발생한다. Anesthesiology 87: 1070-1074.
+
+## 8. Comstock MK, Carter JG, Moyers JR, Stevens WC (1981) 높은 농도의 펜타닐로 인해 발생한 마취 시 경직과 고탄소혈증. Anesth Analg60: 362-363.
+
+## 9. Ouchi K, Uno H, Sugiyama K (2012) [로쿠로늄의 예비 투여가 레미펜타닐에 의한 어려운 통기 예방에 미치는 영향]. J Clin Anesth (Jpn). 36:1601-1606.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="22,506,763,28">
+    <p>This is the markdown version of the reference list. The table of references is structured in a numbered list format as per the original text.</p>
+  </div>
+</div>
+</body>
+</html>

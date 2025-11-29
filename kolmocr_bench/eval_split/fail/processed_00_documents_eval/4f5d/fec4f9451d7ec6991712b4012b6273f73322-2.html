@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="9,49,991,300">
+    <pre><code class="language-markdown">B. 이 비용인
+
+36,689.47은 2011년 1월 19일 기준으로 임차인개선비(TI) 비용으로 분할될 것입니다. 이 시점에서 TI의 미분할 부분은 총 1,488,044.45가 될 것입니다. 미분할 TI (1,488,044.45)와 새로운 TI비용(36,689.47)을 합하면 총 1,524,733.92가 됩니다. 이 비용은 105개월동안 0.004355가 될 것입니다.
+
+임대계약 또는 보충 임대계약 제1호에서 TI 비용을 참조하는 모든 부분은 2011년 1월 19일부터 2019년 10월 18일까지 연간 $174,255.31의 새로운 TI 임대료로 반영하도록 수정됩니다.
+
+
+C. 보충 임대계약 제1호에 의해 수정된 임대계약의 제3항은 전체가 삭제되고 다음으로 대체됩니다:
+
+&quot;3. 정부는 2009년 10월 19일부터 2011년 1월 18일까지 월 228,502.60의 기준으로 연간 2,742,031.22의 임대료를 임대인에게 지급해야 합니다. 또한 정부는 2011년 1월 19일부터 2019년 10월 18일까지 월 229,443.03의 기준으로 연간 2,753,316.36의 임대료를 임대인에게 지급해야 합니다. 운영 비용은 CPI 조정에 따라 연간 조정될 수 있습니다. 짧은 기간의 임대료는 비례적으로 계산됩니다. 지금은 다음과 전자적으로 이루어져야 합니다: Liberty Property Limited Partnership, 500 Chesterfield Parkway, Malvern, PA 19355-8707.&quot;
+
+초기 서명: [서명]
+임대인 정부</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="9,367,375,57">
+    <p>(Note: The text is in Korean and does not contain any images or tables that need to be converted into HTML. If you have any specific requests for formatting or additional details, please let me know.)</p>
+  </div>
+</div>
+</body>
+</html>

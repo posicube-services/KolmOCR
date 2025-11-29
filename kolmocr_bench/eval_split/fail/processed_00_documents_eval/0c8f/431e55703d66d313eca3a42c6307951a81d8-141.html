@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="14,38,986,852">
+    <pre><code class="language-markdown"># Computer Security Technology Planning Study -- Vol II
+
+## 1. 원래 활동 (법인 저자)
+- **James P. Anderson Company**
+  - **Box 42**
+  - **Fort Washington, Penna. 19034**
+
+## 2. 보고서 보안 분류 및 그룹
+- **2a. 보고서 보안 분류:** UNCLASSIFIED
+- **2b. 그룹:** 
+
+## 3. 보고서 제목
+- **Computer Security Technology Planning Study -- Vol II**
+
+## 4. 설명적 주석 (보고서 유형 및 포함 기간)
+- 최종 보고서 1972년 2월 ~ 9월
+
+## 5. 저자(성, 이름, 성)
+- **James P. Anderson**
+
+## 6. 보고서 날짜
+- **1972년 10월**
+
+## 7. 총 페이지 수 및 참고 문헌 수
+- **7a. 총 페이지 수:** 131
+- **7b. 참고 문헌 수:** 4
+
+## 8. 계약 또는 연구비 번호 및 프로젝트 번호
+- **8a. 계약 또는 연구비 번호:** F19628-72-C-0198
+- **8b. 프로젝트 번호:** 6917
+- **9a. 작성자의 보고서 번호:** ESD-TR-73-51 VOL II
+
+## 9. 기타 보고서 번호 (이 보고서에 할당된 기타 번호)
+- **9b. 기타 보고서 번호:** 
+
+## 10. 배포 선언
+- **10. 배포 선언:** 
+
+## 11. 보충 주석
+- **11. 보충 주석:** 
+
+## 12. 후원 군사 활동
+- **Electronic Systems Division, AFSC**
+  - **L. G. Hanscom Field**
+  - **Bedford, Mass. 01730**
+
+## 13. 초록
+- 미국 공군의 컴퓨터 보안 요구사항에 대한 계획 연구의 세부사항이 제시됩니다. 개방형 다수 수준 보안 컴퓨팅 기능을 확보하기 위한 개발 프로그램이 설명됩니다. 관련 통신 보안 제품 개발 계획과 현재의 보안 컴퓨팅 문제에 대한 중간 해결책도 제시됩니다. 마지막으로, 제안된 개발 계획과 보완적인 연구 계획도 포함되어 있습니다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="14,905,48,26">
+    <h3>이미지 정보</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="14,945,562,18">
+    <pre><code class="language-markdown">&lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABmJLR0QA/wD/AP+gvaeTAAAAL3RSTlMAAAAqJCATASQz25eHAAAAlklEQVR4nO3BAQ0AIAxAP/6+z2gAAAAASUVORK5CYII=&quot;/&gt;</code></pre>
+  </div>
+</div>
+</body>
+</html>

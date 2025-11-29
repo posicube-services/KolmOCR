@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="22,58,564,137">
+    <pre><code class="language-markdown"># YAML
+
+```yaml
+title: &quot;Spinal Anesthesia in Circumcision Operation in a Child with Bidirectional Superior Cavapulmonary Shunt&quot;
+author: &quot;Esra ÇALIŞKAN *, Mesut ŞENER *, Hatice İZMİRLİ *, Aysu KOÇUM *, Aniş ARİBOĞAN **&quot;</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="22,223,38,51">
+    <h2>요약</h2>
+  </div>
+  <div class="block" data-id="b003" data-bbox="22,295,956,101">
+    <p>양방향 대동맥-폐동맥 분기 (Bidirectional Cavapulmonary Shunt, BCPS)는 다양한 청색 심장 선천성 이상증에서 시행되며, 주로 단일 심실 수술을 포함한 경우에 사용됩니다(1). 이 분기는 상대정맥의 분리된 끝과 분리되지 않은 우폐동맥 사이에 동맥 분기 (anastomosis)를 포함합니다. 양방향 대동맥-폐동맥 분기를 가진 환자에서는 기침, 기관내 삽관, 수술 후 혼란으로 인한 평균 기도 압력 증가 또는 숨을 멈추는 행동이 심한 폐혈류 (PBF) 감소를 초래하여, 따라서 심한 산소포화도 저하를 유발할 수 있습니다.</p>
+  </div>
+  <div class="block" data-id="b004" data-bbox="22,417,956,68">
+    <p>BCPS 환자에서 전신마취를 받은 경우, 부드럽고 조기 기관내 삽관 제거와 함께 자연 호흡을 유지하는 것은 환자의 체내 산소 수준을 안전하게 유지하는 방법입니다. 척추마취는 기관내 삽관 없이도 적절한 기도 관리를 제공하는 전신마취의 대안적인 기술이 될 수 있습니다.</p>
+  </div>
+  <div class="block" data-id="b005" data-bbox="22,512,38,51">
+    <h2>서론</h2>
+  </div>
+  <div class="block" data-id="b006" data-bbox="22,584,595,34">
+    <p>본 연구에서는 BCPS 병력을 가진 소아가 척추마취 하에서 성공적으로 절개 수술을 받은 사례를 보고합니다.</p>
+  </div>
+  <div class="block" data-id="b007" data-bbox="22,639,295,302">
+    <pre><code>
+## Table
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;키워드&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;척추마취, 소아외과, 양방향 대동맥-폐동맥 분기&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+  </div>
+</div>
+</body>
+</html>

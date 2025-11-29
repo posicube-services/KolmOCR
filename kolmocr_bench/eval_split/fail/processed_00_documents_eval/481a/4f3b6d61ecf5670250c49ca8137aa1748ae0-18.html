@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="16,46,984,614">
+    <pre><code class="language-markdown"># 교사 평가 시스템의 이해와 적용
+
+## 지역 교장들의 역할
+
+### 교사 평가 시스템의 채택 및 지원
+
+- **지역의 교장들이** 교사 평가 시스템을 채택하고 사용하도록 지원하는 조치가 필요합니다.
+- 지역은 교사 평가를 일반적으로 지원하며, 교장들이 이 분야에서의 작업을 지원하는 몇 가지 중요한 방식으로 할 수 있습니다.
+
+#### 첫째, 지역은 새로운 교사 평가 시스템이 도입될 때 학교와 교사들에게 시기적절하고 투명한 소통을 제공하는 데 주의를 기울여야 합니다. 교사들이 숙련되고 강력한 교사 실천이 어떤 모습인지 더 깊이 이해할 수 있도록 지속적인 학습 기회를 제공하는 것이 현명할 것입니다.
+
+#### 이러한 조치는 교사들이 교사 평가 과정에 대한 신뢰를 구축하는 데 기초를 마련할 수 있습니다.
+
+#### 예를 들어, SLO 프로세스는 다양한 지역 도구와 루틴이 교사 평가 과정의 요소들과 일치하는지, 그리고 교사들이 이러한 루틴과 도구에 익숙해지는 데 주의를 기울여야 합니다.
+
+## 교장 준비 프로그램의 역할
+
+- **교장 준비 프로그램도 후보자들이 교장직을 향해 준비하는 데 필요한 학습 요구를 지원하는 데 중요한 역할을 할 수 있습니다.**
+- 이 때문에, 준비 프로그램은 새로운 교사 평가 시스템에 대해 배우고, 교수 지도 과정, 교장 임무 경험, 그리고 이러한 새로운 시스템 간의 일치를 적극적으로 구축하여 교사 평가 시스템의 더 강력한 실행을 위해 필요한 개념적 이해를 키울 수 있도록 해야 합니다.
+
+- 또한, 교장 후보자들은 새로운 교장 평가 시스템에 대해 익숙해지고, 어떻게 평가될지 이해하려 노력해야 합니다.
+
+## 참고 문헌
+
+- 65 Firestone 등, &quot;교사 실천 평가 도구에 대한 훈련 전략: 뉴저지 주 교사 평가 시범 지역의 조언.&quot;
+- 66 Halverson, Kelley 및 Kimball, &quot;교사 평가 시스템의 도입&quot;; 뉴저지 주 교육부, &quot;평가 시범 자문 위원회 최종 보고서&quot;.
+- 67 뉴저지 주 교육부, &quot;평가 시범 자문 위원회 최종 보고서&quot;.
+- 68 뉴저지 주 교육부, &quot;평가 시범 자문 위원회 최종 보고서&quot;.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="16,679,28,32">
+    <h3>Table</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="16,728,481,225">
+    <table class="data-table">
+  <tr>
+    <th>참고 문헌</th>
+    <th>제목</th>
+  </tr>
+  <tr>
+    <td>65 Firestone 등</td>
+    <td>"교사 실천 평가 도구에 대한 훈련 전략: 뉴저지 주 교사 평가 시범 지역의 조언."</td>
+  </tr>
+  <tr>
+    <td>66 Halverson, Kelley 및 Kimball</td>
+    <td>"교사 평가 시스템의 도입"</td>
+  </tr>
+  <tr>
+    <td>뉴저지 주 교육부</td>
+    <td>"평가 시범 자문 위원회 최종 보고서".</td>
+  </tr>
+  <tr>
+    <td>뉴저지 주 교육부</td>
+    <td>"평가 시범 자문 위원회 최종 보고서".</td>
+  </tr>
+</table>
+  </div>
+  <div class="block" data-id="b004" data-bbox="16,970,0,0">
+    <pre><code></code></pre>
+  </div>
+</div>
+</body>
+</html>

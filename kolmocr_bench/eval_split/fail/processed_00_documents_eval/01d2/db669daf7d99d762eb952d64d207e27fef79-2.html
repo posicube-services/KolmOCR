@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="9,23,991,342">
+    <pre><code class="language-markdown"># Liddle 증후군과 ENaC 활성 및 알도스테론 수치
+
+## 1. 개요
+Liddle 증후군은 LREH의 유전적 극단으로 간주될 수 있으며, 명확한 소급 민감성 고혈압이 특징입니다. 이는 플라즈마 렌닌 활성과 알도스테론 분비의 크게 억제되어 &quot;가짜 알도스테론증&quot;이라는 표현이 사용되었습니다.
+
+## 2. 연구와 결과
+- **Fisher 등 (1974)**: 이 후 2년이 지나면서 그 녀의 플라즈마 렌닌 활성과 알도스테론 수치는 상정으로 회복되었으며, 자세 변화와 식이 소금 제한에 대한 적절한 반응도 나타났습니다. 이러한 발견은 Liddle 증후군에서 플라즈마 렌닌 활성의 억제가 ENaC 복합체의 기능获得 변이의 결과임을 보여줍니다. 식이 소금 제한에도 불구하고 알도스테론 배출이 지속적으로 억제되는 것은 만성적 체액 증가로 인한 부신 알도스테론 합성 효소 활성의 만성적 억제 때문으로 가장 잘 설명됩니다.
+
+- **Dunn MJ, Tannen RL (1974)**: 저렌닌 고혈압. Kidney Int. 1974;5:317–315.
+
+- **Fisher NDH, Hurwitz S, Ferri C, Jeunemaitre X, Hollenberg NK, Williams GH (1999)**: 저렌닌 본태 고혈압에서의 부신의 암지오텐신 II 민감도 변화. Hypertension. 1999;34:388–394.
+
+- **Weinberger MH, Fineberg NS (1993)**: 원발성 알도스테론증의 진단 및 두 가지 주요 하위형의 구분. Arch Intern Med. 1993;153:2125–2129.
+
+- **Holland OB (1995)**: 원발성 알도스테론증. Semin Nephrol. 1995;15:116–125.
+
+- **Blood C, Gherondache C, Pincus G, Taft JF, Taft SA, Willoughby S (1967)**: 노인에서의 알도스테론의 대사 및 분비. J Clin Invest. 1967;46:960–966.
+
+- **Seidman JS, Guay-Woodford LM, Thakker RV, Warnock DG (1999)**: 신장 전해질 운반의 유전적 장애. N Engl J Med. 1999;340:1177–1187.
+
+- **Rossier BC (1996)**: Homer Smith Award Lecture. Cum grano salis: 상피 나트륨 채널과 혈압 조절. J Am Soc Nephrol. 1997;8:980–992.
+
+- **Warnock DG (1999)**: 상피 나트륨 채널과 고혈압. Curr Hypertens Rep. 1999;1:158–163.
+
+- **Lifton RP (1996)**: 인간 혈압 변이의 분자유전학. Science. 1996;272:676–680.
+
+- **Shimkets RA, Warnock DG, Bositis CM, Nelson-Williams C, Hansson JH, Schambelan M, Gill JRJ, Ulick S, Milora RV, Findling JW, Caucusesmi CM, Rossier BC, Lifton RP (1994)**: 상피 나트륨 채널의 \(\beta\) 서브유닛 돌연변이로 인한 유전적 인간 고혈압. Cell. 1994;79:407–414.
+
+- **Jeunemaitre X, Bassilana F, Persu A, Dumont C, Champigny G, Lazdunski M, Corvol P, Barbuy P (1997)**: 새로운 발견된 Liddle 증후군 가족의 유전형-표현형 분석. J Hypertens. 1997;15:1091–1100.
+
+- **Botero-Velez M, Curtis JJ, Warnock DG (1994)**: Liddle 증후군 재검토. New Eng J Med. 1994;330:178–182.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="9,375,33,16">
+    <h3>3. 참고문헌</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="9,399,409,204">
+    <ol>
+      <li>Dunn MJ, Tannen RL. 저렌닌 고혈압. Kidney Int. 1974;5:317–315.</li>
+      <li>Fisher NDH, Hurwitz S, Ferri C, Jeunemaitre X, Hollenberg NK, Williams GH. 저렌닌 본태 고혈압에서의 부신의 암지오텐신 II 민감도 변화. Hypertension. 1999;34:388–394.</li>
+      <li>Weinberger MH, Fineberg NS. 원발성 알도스테론증의 진단 및 두 가지 주요 하위형의 구분. Arch Intern Med. 1993;153:2125–2129.</li>
+      <li>Holland OB. 원발성 알도스테론증. Semin Nephrol. 1995;15:116–125.</li>
+      <li>Blood C, Gherondache C, Pincus G, Taft JF, Taft SA, Willoughby S. 노인에서의 알도스테론의 대사 및 분비. J Clin Invest. 1967;46:960–966.</li>
+      <li>Seidman JS, Guay-Woodford LM, Thakker RV, Warnock DG. 신장 전해질 운반의 유전적 장애. N Engl J Med. 1999;340:1177–1187.</li>
+      <li>Rossier BC. 1996 Homer Smith Award Lecture. Cum grano salis: 상피 나트륨 채널과 혈압 조절. J Am Soc Nephrol. 1997;8:980–992.</li>
+      <li>Warnock DG. 상피 나트륨 채널과 고혈압. Curr Hypertens Rep. 1999;1:158–163.</li>
+      <li>Lifton RP. 인간 혈압 변이의 분자유전학. Science. 1996;272:676–680.</li>
+      <li>Shimkets RA, Warnock DG, Bositis CM, Nelson-Williams C, Hansson JH, Schambelan M, Gill JRJ, Ulick S, Milora RV, Findling JW, Caucasesmi CM, Rossier BC, Lifton RP. Liddle 증후군: 상피 나트륨 채널의 \(\beta\) 서브유닛 돌연변이로 인한 유전적 인간 고혈압. Cell. 1994;79:407–414.</li>
+      <li>Jeunemaitre X, Bassilana F, Persu A, Dumont C, Champigny G, Lazdunski M, Corvol P, Barbuy P. 새로운 발견된 Liddle 증후군 가족의 유전형-표현형 분석. J Hypertens. 1997;15:1091–1100.</li>
+      <li>Botero-Velez M, Curtis JJ, Warnock DG. Liddle 증후군 재검토. New Eng J Med. 1994;330:178–182.</li>
+    </ol>
+  </div>
+  <div class="block" data-id="b004" data-bbox="9,612,20,16">
+    <h3>4. 주석</h3>
+  </div>
+  <div class="block" data-id="b005" data-bbox="9,637,409,204">
+    <ol>
+      <li>Dunn MJ, Tannen RL. 저렌닌 고혈압. Kidney Int. 1974;5:317–315.</li>
+      <li>Fisher NDH, Hurwitz S, Ferri C, Jeunemaitre X, Hollenberg NK, Williams GH. 저렌닌 본태 고혈압에서의 부신의 암지오텐신 II 민감도 변화. Hypertension. 1999;34:388–394.</li>
+      <li>Weinberger MH, Fineberg NS. 원발성 알도스테론증의 진단 및 두 가지 주요 하위형의 구분. Arch Intern Med. 1993;153:2125–2129.</li>
+      <li>Holland OB. 원발성 알도스테론증. Semin Nephrol. 1995;15:116–125.</li>
+      <li>Blood C, Gherondache C, Pincus G, Taft JF, Taft SA, Willoughby S. 노인에서의 알도스테론의 대사 및 분비. J Clin Invest. 1967;46:960–966.</li>
+      <li>Seidman JS, Guay-Woodford LM, Thakker RV, Warnock DG. 신장 전해질 운반의 유전적 장애. N Engl J Med. 1999;340:1177–1187.</li>
+      <li>Rossier BC. 1996 Homer Smith Award Lecture. Cum grano salis: 상피 나트륨 채널과 혈압 조절. J Am Soc Nephrol. 1997;8:980–992.</li>
+      <li>Warnock DG. 상피 나트륨 채널과 고혈압. Curr Hypertens Rep. 1999;1:158–163.</li>
+      <li>Lifton RP. 인간 혈압 변이의 분자유전학. Science. 1996;272:676–680.</li>
+      <li>Shimkets RA, Warnock DG, Bositis CM, Nelson-Williams C, Hansson JH, Schambelan M, Gill JRJ, Ulick S, Milora RV, Findling JW, Caucasesmi CM, Rossier BC, Lifton RP. Liddle 증후군: 상피 나트륨 채널의 \(\beta\) 서브유닛 돌연변이로 인한 유전적 인간 고혈압. Cell. 1994;79:407–414.</li>
+      <li>Jeunemaitre X, Bassilana F, Persu A, Dumont C, Champigny G, Lazdunski M, Corvol P, Barbuy P. 새로운 발견된 Liddle 증후군 가족의 유전형-표현형 분석. J Hypertens. 1997;15:1091–1100.</li>
+      <li>Botero-Velez M, Curtis JJ, Warnock DG. Liddle 증후군 재검토. New Eng J Med. 1994;330:178–182.</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>

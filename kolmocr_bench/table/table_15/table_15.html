@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>외화예금계좌개설신청서</title>
+
+  <style>
+    /* ===== 기본 문서 형식 ===== */
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px;
+      background: #ffffff;
+      padding: 30px;
+    }
+
+    .document-container {
+      max-width: 190mm;
+      margin: 0 auto;
+      padding: 25px 30px;
+      border: 1px solid #cccccc;
+      background: #ffffff;
+    }
+
+    /* 문서 제목 */
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      color: #444;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #555;
+      font-weight: 700;
+    }
+
+    /* 문서번호 */
+    .doc-number {
+      text-align: right;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    /* 테이블 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      border: 1px solid #c8c8c8;
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    /* 섹션 헤더 */
+    .section-title {
+      background: #555;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    /* 서브 헤더 */
+    .sub-title {
+      background: #666;
+      color: #fff;
+      font-weight: 600;
+      font-size: 12px;
+      text-align: center;
+      padding: 6px;
+    }
+
+    /* 라벨 */
+    .label {
+      background: #efefef;
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* 값 */
+    .value {
+      background: #fff;
+      text-align: right;
+      color: #111;
+    }
+
+    /* 도장 */
+    .seal {
+      color: #777;
+      font-weight: 700;
+      border: 2px dashed #aaa;
+      padding: 5px 10px;
+      display: inline-block;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="document-container">
+
+    <div class="doc-number">문서번호: FX-2025-001</div>
+    <h1>외화예금계좌개설신청서</h1>
+
+    <!-- ===================================================== -->
+    <!-- ① 개인정보 입력 -->
+    <!-- ===================================================== -->
+    <table>
+      <tr>
+        <th colspan="4" class="section-title">개인정보 입력</th>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="sub-title">기본 정보</th>
+      </tr>
+      <tr>
+        <td class="label">신분증 종류</td>
+        <td class="value">주민등록증</td>
+        <td class="label">신분증 번호</td>
+        <td class="value">920315-1******</td>
+      </tr>
+      <tr>
+        <td class="label">발급일자</td>
+        <td class="value">2021-08-23</td>
+        <td class="label">비고</td>
+        <td class="value"></td>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="sub-title">주소 정보</th>
+      </tr>
+      <tr>
+        <td class="label">거주지 주소</td>
+        <td class="value">서울특별시 서초구 반포대로 212, 601호</td>
+        <td class="label">우편 수령 주소</td>
+        <td class="value">서울특별시 강남구 삼성로 421, 302호</td>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="sub-title">연락처 및 이메일</th>
+      </tr>
+      <tr>
+        <td class="label">휴대전화</td>
+        <td class="value">010-8723-5512</td>
+        <td class="label">자택 전화</td>
+        <td class="value">02-3456-7821</td>
+      </tr>
+      <tr>
+        <td class="label">긴급 연락처</td>
+        <td class="value">010-4421-8292</td>
+        <td class="label">이메일</td>
+        <td class="value">minsu.kim92@gmail.com</td>
+      </tr>
+      <tr>
+        <td class="label">SMS 수신 동의</td>
+        <td class="value">Y</td>
+        <td class="label">푸시 알림 동의</td>
+        <td class="value">Y</td>
+      </tr>
+    </table>
+
+    <!-- ===================================================== -->
+    <!-- ② 계좌 정보 설정 -->
+    <!-- ===================================================== -->
+    <table>
+      <tr>
+        <th colspan="4" class="section-title">계좌정보 설정</th>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="sub-title">통화 및 계좌 유형</th>
+      </tr>
+      <tr>
+        <td class="label">계좌 통화</td>
+        <td class="value">USD</td>
+        <td class="label">계좌 목적</td>
+        <td class="value">해외 송금 및 외화 보관</td>
+      </tr>
+      <tr>
+        <td class="label">외화 한도</td>
+        <td class="value">50,000</td>
+        <td class="label">계좌 유형</td>
+        <td class="value">외화 보통예금</td>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="sub-title">계좌명 및 별칭</th>
+      </tr>
+      <tr>
+        <td class="label">계좌명</td>
+        <td class="value">김민수 외화예금 계좌</td>
+        <td class="label">계좌 별칭</td>
+        <td class="value">해외여행·송금용</td>
+      </tr>
+      <tr>
+        <td class="label">비고</td>
+        <td colspan="3" class="value">연말정산 증빙용 계좌</td>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="sub-title">계좌 연동 및 자동이체</th>
+      </tr>
+      <tr>
+        <td class="label">연동 계좌번호</td>
+        <td class="value">110-234-567890</td>
+        <td class="label">연동 은행명</td>
+        <td class="value">신한은행</td>
+      </tr>
+      <tr>
+        <td class="label">연동 계좌 소유자</td>
+        <td class="value">김민수</td>
+        <td class="label">자동이체 여부</td>
+        <td class="value">Y</td>
+      </tr>
+      <tr>
+        <td class="label">이체 금액</td>
+        <td class="value">100,000</td>
+        <td class="label">이체 일자</td>
+        <td class="value">2025-06-01</td>
+      </tr>
+    </table>
+
+    <!-- ===================================================== -->
+    <!-- ③ 거래 권한 -->
+    <!-- ===================================================== -->
+    <table>
+      <tr>
+        <th colspan="4" class="section-title">거래 권한</th>
+      </tr>
+
+      <tr>
+        <th class="label">권한 종류</th>
+        <th class="label">설정값</th>
+        <th class="label">보안 수단</th>
+        <th class="label">비고</th>
+      </tr>
+
+      <tr>
+        <td class="label">인터넷뱅킹</td>
+        <td class="value">Y</td>
+        <td class="value">OTP 인증</td>
+        <td class="value">본인 확인 완료</td>
+      </tr>
+
+      <tr>
+        <td class="label">모바일뱅킹</td>
+        <td class="value">Y</td>
+        <td class="value">보안카드 + OTP</td>
+        <td class="value">정상 사용 가능</td>
+      </tr>
+
+      <tr>
+        <td class="label">일일 외화거래 한도</td>
+        <td class="value">5,000 USD</td>
+        <td class="value">고등급 보안</td>
+        <td class="value">추가 인증 필요시 안내</td>
+      </tr>
+    </table>
+
+  </div>
+</body>
+
+</html>
