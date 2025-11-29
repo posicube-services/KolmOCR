@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="8,49,992,208">
+    <pre><code class="language-markdown">### III. 이 개념에 대한 간단한 설명을 마친 후, 우리는 특별히 관심 있는 주제를 다룰 것입니다. 이 주제는 특정 규범이 사회가 허용하는 부정의의 한계를 넘어서는 경우를 판단하는 것과 관련이 있으며, 따라서 그것이 더 이상 의무적 행위의 지침으로 간주되지 않는 시점에 대해 다룹니다.
+
+앞서 언급한 바와 같이, 합리적으로 정의로운 제도를 갖춘 사회 시스템에서, 규범이 그것에 의해 의무화된 사람의 특정 정의 개념과 상충하더라도, 일반적으로 그 규범의 의무성을 상실시키거나 이를 위반하는 것을 정당화하지는 않습니다. 의무적 법적 규범을 위반하는 것은, 해당 규범이 정치적 공동체가 &quot;받을 수 있는&quot; 부정의의 특정한 한계를 초과할 경우에만 연구 중인 이론의 관점에서 정당화될 수 있습니다. 이러한 &quot;받을 수 있는&quot; 부정의의 한계를 식별하는 것이 이 작업의 첫 번째 목표가 될 것입니다.
+
+모든 사회는 복잡한 협력 구조로서, 자원과 행동의 배분과 분배를 결정하는 규칙과 규범을 가지고 있습니다. 이러한 일반 규칙의 정의성은 그것이 윤리적 기준과 사회적 다수의 정의 개념에 적합한지에 따라 결정됩니다. 그러나 이는 그것이 특정 사례에 적용될 때 항상 정의로운 결과를 보장하는 것은 아닙니다. 또한 정의로운 원칙 위에 조직된 사회에서도 일반적으로 부정의한 규칙이 존재하지 않는다는 보장도 없습니다. 이 두 가지 상황은 대부분 피할 수 없으며, 완전히 정의로운 정치적 시스템이 실무에서 알려지지 않았기 때문입니다.
+
+따라서 이러한 수준의 부정의는 조직된 사회적 공존의 필수적인 비용으로, 사회가 수용하고 감내해야 하는 불가피한 부담으로 나타납니다. 그러나 -앞서 언급한 바와 같이- 모든 사회 시스템에 내재하는 부정의는 특정 수준까지만 개인에게 의무적입니다. 이러한 수준을 초과하면, 개인은 자유와 권리를 법 앞에서 우선시할 수 있는 능력을 회복합니다.
+
+개인들이 권위의 명령에 불복종할 수 있는 부정의의 수준을 결정하기 위해, 우리는 철학, 도덕 및 정치의 관점에서 이 문제를 다룰 것입니다.</code></pre>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="35,12,857,976">
+    <p>java<br>
+import java.io.*;<br>
+import java.util.*;<br>
+class Student implements Serializable {<br>
+    private static final long serialVersionUID = 1L;<br>
+    String name;<br>
+    Map&lt;String, Integer&gt; scores = new LinkedHashMap&lt;&gt;();<br>
+    public Student(String name) {<br>
+        this.name = name;<br>
+    }<br>
+    public double getAverage() {<br>
+        if (scores.isEmpty()) return 0.0;<br>
+        int sum = 0;<br>
+        for (int v : scores.values()) sum += v;<br>
+        return sum / (double) scores.size();<br>
+    }<br>
+    @Override<br>
+    public String toString() {<br>
+        return String.format(&quot;%s (avg=%.2f)&quot;, name, getAverage());<br>
+    }<br>
+}<br>
+public class StudentGradeApp {<br>
+    private static final String DATA_FILE = &quot;students.ser&quot;;<br>
+    private List&lt;Student&gt; students = new ArrayList&lt;&gt;();<br>
+    private Scanner scanner = new Scanner(System.in);<br>
+    public static void main(String[] args) {<br>
+        StudentGradeApp app = new StudentGradeApp();<br>
+        app.load();<br>
+        app.run();<br>
+    }<br>
+    private void run() {<br>
+        while (true) {<br>
+            printMenu();<br>
+            String choice = scanner.nextLine().trim();<br>
+            switch (choice) {<br>
+                case &quot;1&quot;: list(); break;<br>
+                case &quot;2&quot;: addStudent(); break;<br>
+                case &quot;3&quot;: addScore(); break;<br>
+                case &quot;4&quot;: ranking(); break;<br>
+                case &quot;0&quot;: save(); System.out.println(&quot;Bye.&quot;); return;<br>
+                default: System.out.println(&quot;Unknown menu.&quot;);<br>
+            }<br>
+        }<br>
+    }<br>
+    private void printMenu() {<br>
+        System.out.println(&quot;\n==== Student Grade System ====&quot;);<br>
+        System.out.println(&quot;1. List students&quot;);<br>
+        System.out.println(&quot;2. Add student&quot;);<br>
+        System.out.println(&quot;3. Add/Update score&quot;);<br>
+        System.out.println(&quot;4. Show ranking&quot;);<br>
+        System.out.println(&quot;0. Exit&quot;);<br>
+        System.out.print(&quot;Select: &quot;);<br>
+    }<br>
+    private void list() {<br>
+        if (students.isEmpty()) {<br>
+            System.out.println(&quot;No students.&quot;);<br>
+            return;<br>
+        }<br>
+        for (Student s : students) {<br>
+            System.out.println(s);<br>
+            for (Map.Entry&lt;String, Integer&gt; e : s.scores.entrySet()) {<br>
+                System.out.println(&quot;  &quot; + e.getKey() + &quot;: &quot; + e.getValue());<br>
+            }<br>
+        }<br>
+    }<br>
+    private Student findStudent(String name) {<br>
+        for (Student s : students) {<br>
+            if (s.name.equalsIgnoreCase(name)) return s;<br>
+        }<br>
+        return null;<br>
+    }<br>
+    private void addStudent() {<br>
+        System.out.print(&quot;Student name: &quot;);<br>
+        String name = scanner.nextLine().trim();<br>
+        if (name.isEmpty()) {<br>
+            System.out.println(&quot;Name required.&quot;);<br>
+            return;<br>
+        }<br>
+        if (findStudent(name) != null) {<br>
+            System.out.println(&quot;Already exists.&quot;);<br>
+            return;<br>
+        }<br>
+        students.add(new Student(name));<br>
+        System.out.println(&quot;Added.&quot;);<br>
+    }<br>
+    private void addScore() {<br>
+        System.out.print(&quot;Student name: &quot;);<br>
+        String name = scanner.nextLine().trim();<br>
+        Student s = findStudent(name);<br>
+        if (s == null) {<br>
+            System.out.println(&quot;Student not found.&quot;);<br>
+            return;<br>
+        }<br>
+        System.out.print(&quot;Subject: &quot;);<br>
+        String subject = scanner.nextLine().trim();<br>
+        System.out.print(&quot;Score (0-100): &quot;);<br>
+        String v = scanner.nextLine().trim();<br>
+        try {<br>
+            int score = Integer.parseInt(v);<br>
+            s.scores.put(subject, score);<br>
+            System.out.println(&quot;Updated.&quot;);<br>
+        } catch (NumberFormatException e) {<br>
+            System.out.println(&quot;Invalid score.&quot;);<br>
+        }<br>
+    }<br>
+    private void ranking() {<br>
+        if (students.isEmpty()) {<br>
+            System.out.println(&quot;No students.&quot;);<br>
+            return;<br>
+        }<br>
+        List&lt;Student&gt; copy = new ArrayList&lt;&gt;(students);<br>
+        copy.sort(Comparator.comparingDouble(Student::getAverage).reversed());<br>
+        System.out.println(&quot;\n[Ranking]&quot;);<br>
+        int rank = 1;<br>
+        for (Student s : copy) {<br>
+            System.out.printf(&quot;%d. %s (avg=%.2f)\n&quot;, rank++, s.getAverage(), s.getAverage());<br>
+            // Actually display with name<br>
+            System.out.printf(&quot;   %s\n&quot;, s.name);<br>
+        }<br>
+    }<br>
+    @SuppressWarnings(&quot;unchecked&quot;)<br>
+    private void load() {<br>
+        File f = new File(DATA_FILE);<br>
+        if (!f.exists()) return;<br>
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f))) {<br>
+            students = (List&lt;Student&gt;) ois.readObject();<br>
+            System.out.println(&quot;Loaded &quot; + students.size() + &quot; students.&quot;);<br>
+        } catch (Exception e) {<br>
+            System.out.println(&quot;Failed to load data: &quot; + e.getMessage());<br>
+        }<br>
+    }<br>
+    private void save() {<br>
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))) {<br>
+            oos.writeObject(students);<br>
+            System.out.println(&quot;Saved &quot; + students.size() + &quot; students.&quot;);<br>
+        } catch (IOException e) {<br>
+            System.out.println(&quot;Failed to save data: &quot; + e.getMessage());<br>
+        }<br>
+    }<br>
+}</p>
+  </div>
+</div>
+</body>
+</html>

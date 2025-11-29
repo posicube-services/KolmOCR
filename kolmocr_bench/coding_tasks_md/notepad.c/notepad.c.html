@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="35,10,659,979">
+    <p>c<br>
+#include &lt;stdio.h&gt;<br>
+#include &lt;stdlib.h&gt;<br>
+#include &lt;string.h&gt;<br>
+#define MAX_TITLE 100<br>
+#define MAX_CONTENT 1000<br>
+#define DATA_FILE &quot;memos.txt&quot;<br>
+typedef struct {<br>
+    int id;<br>
+    char title[MAX_TITLE];<br>
+    char content[MAX_CONTENT];<br>
+} Memo;<br>
+void print_menu() {<br>
+    printf(&quot;\n==== Simple Text Notepad ====\n&quot;);<br>
+    printf(&quot;1. List memos\n&quot;);<br>
+    printf(&quot;2. Add memo\n&quot;);<br>
+    printf(&quot;3. View memo\n&quot;);<br>
+    printf(&quot;4. Delete memo\n&quot;);<br>
+    printf(&quot;0. Exit\n&quot;);<br>
+    printf(&quot;Select: &quot;);<br>
+}<br>
+void list_memos() {<br>
+    FILE *fp = fopen(DATA_FILE, &quot;r&quot;);<br>
+    if (!fp) {<br>
+        printf(&quot;No memos yet.\n&quot;);<br>
+        return;<br>
+    }<br>
+    Memo m;<br>
+    int found = 0;<br>
+    printf(&quot;\n[Memo List]\n&quot;);<br>
+    while (fread(&amp;m, sizeof(Memo), 1, fp) == 1) {<br>
+        printf(&quot;ID: %d | Title: %s\n&quot;, m.id, m.title);<br>
+        found = 1;<br>
+    }<br>
+    if (!found) {<br>
+        printf(&quot;No memos saved.\n&quot;);<br>
+    }<br>
+    fclose(fp);<br>
+}<br>
+int get_next_id() {<br>
+    FILE *fp = fopen(DATA_FILE, &quot;r&quot;);<br>
+    if (!fp) return 1;<br>
+    Memo m;<br>
+    int max_id = 0;<br>
+    while (fread(&amp;m, sizeof(Memo), 1, fp) == 1) {<br>
+        if (m.id &gt; max_id) max_id = m.id;<br>
+    }<br>
+    fclose(fp);<br>
+    return max_id + 1;<br>
+}<br>
+void add_memo() {<br>
+    Memo m;<br>
+    m.id = get_next_id();<br>
+    printf(&quot;Title: &quot;);<br>
+    fgets(m.title, MAX_TITLE, stdin);<br>
+    if (m.title[strlen(m.title) - 1] == &#x27;\n&#x27;)<br>
+        m.title[strlen(m.title) - 1] = &#x27;\0&#x27;;<br>
+    printf(&quot;Content (end with a single &#x27;.&#x27; on a line):\n&quot;);<br>
+    char line[256];<br>
+    m.content[0] = &#x27;\0&#x27;;<br>
+    while (1) {<br>
+        if (!fgets(line, sizeof(line), stdin)) break;<br>
+        if (strcmp(line, &quot;.\n&quot;) == 0 || strcmp(line, &quot;.\r\n&quot;) == 0) break;<br>
+        if (strlen(m.content) + strlen(line) &lt; MAX_CONTENT - 1) {<br>
+            strcat(m.content, line);<br>
+        } else {<br>
+            printf(&quot;Content too long, truncating.\n&quot;);<br>
+            break;<br>
+        }<br>
+    }<br>
+    FILE *fp = fopen(DATA_FILE, &quot;ab&quot;);<br>
+    if (!fp) {<br>
+        printf(&quot;Failed to open data file.\n&quot;);<br>
+        return;<br>
+    }<br>
+    fwrite(&amp;m, sizeof(Memo), 1, fp);<br>
+    fclose(fp);<br>
+    printf(&quot;Memo saved with ID %d.\n&quot;, m.id);<br>
+}<br>
+void view_memo() {<br>
+    int id;<br>
+    printf(&quot;Enter memo ID: &quot;);<br>
+    if (scanf(&quot;%d&quot;, &amp;id) != 1) {<br>
+        printf(&quot;Invalid input.\n&quot;);<br>
+        while (getchar() != &#x27;\n&#x27;);<br>
+        return;<br>
+    }<br>
+    while (getchar() != &#x27;\n&#x27;);<br>
+    FILE *fp = fopen(DATA_FILE, &quot;r&quot;);<br>
+    if (!fp) {<br>
+        printf(&quot;No memos.\n&quot;);<br>
+        return;<br>
+    }<br>
+    Memo m;<br>
+    int found = 0;<br>
+    while (fread(&amp;m, sizeof(Memo), 1, fp) == 1) {<br>
+        if (m.id == id) {<br>
+            printf(&quot;\n[Memo %d]\nTitle: %s\nContent:\n%s\n&quot;, m.id, m.title, m.content);<br>
+            found = 1;<br>
+            break;<br>
+        }<br>
+    }<br>
+    if (!found) printf(&quot;Memo not found.\n&quot;);<br>
+    fclose(fp);<br>
+}<br>
+void delete_memo() {<br>
+    int id;<br>
+    printf(&quot;Enter memo ID to delete: &quot;);<br>
+    if (scanf(&quot;%d&quot;, &amp;id) != 1) {<br>
+        printf(&quot;Invalid input.\n&quot;);<br>
+        while (getchar() != &#x27;\n&#x27;);<br>
+        return;<br>
+    }<br>
+    while (getchar() != &#x27;\n&#x27;);<br>
+    FILE *fp = fopen(DATA_FILE, &quot;r&quot;);<br>
+    if (!fp) {<br>
+        printf(&quot;No memos.\n&quot;);<br>
+        return;<br>
+    }<br>
+    FILE *temp = fopen(&quot;memos_tmp.txt&quot;, &quot;wb&quot;);<br>
+    if (!temp) {<br>
+        printf(&quot;Failed to open temp file.\n&quot;);<br>
+        fclose(fp);<br>
+        return;<br>
+    }<br>
+    Memo m;<br>
+    int deleted = 0;<br>
+    while (fread(&amp;m, sizeof(Memo), 1, fp) == 1) {<br>
+        if (m.id == id) {<br>
+            deleted = 1;<br>
+            continue;<br>
+        }<br>
+        fwrite(&amp;m, sizeof(Memo), 1, temp);<br>
+    }<br>
+    fclose(fp);<br>
+    fclose(temp);<br>
+    remove(DATA_FILE);<br>
+    rename(&quot;memos_tmp.txt&quot;, DATA_FILE);<br>
+    if (deleted) printf(&quot;Deleted memo %d.\n&quot;, id);<br>
+    else printf(&quot;Memo not found.\n&quot;);<br>
+}<br>
+int main() {<br>
+    int choice;<br>
+    while (1) {<br>
+        print_menu();<br>
+        if (scanf(&quot;%d&quot;, &amp;choice) != 1) {<br>
+            printf(&quot;Invalid input.\n&quot;);<br>
+            while (getchar() != &#x27;\n&#x27;);<br>
+            continue;<br>
+        }<br>
+        while (getchar() != &#x27;\n&#x27;); // clear buffer<br>
+        switch (choice) {<br>
+            case 1: list_memos(); break;<br>
+            case 2: add_memo(); break;<br>
+            case 3: view_memo(); break;<br>
+            case 4: delete_memo(); break;<br>
+            case 0: printf(&quot;Bye.\n&quot;); return 0;<br>
+            default: printf(&quot;Unknown menu.\n&quot;);<br>
+        }<br>
+    }<br>
+    return 0;<br>
+}</p>
+  </div>
+</div>
+</body>
+</html>

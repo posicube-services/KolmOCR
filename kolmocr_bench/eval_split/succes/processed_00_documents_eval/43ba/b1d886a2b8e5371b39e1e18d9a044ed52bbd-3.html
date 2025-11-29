@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="35,49,965,739">
+    <pre><code class="language-markdown"># Markdown
+
+## 엘레나 세자리저
+
+- 극장 손님 - 에브게니 미하일로비치 페퍼.
+- 안나 파블로바에 대해 이야기; 고전 발레
+- 올해로 그녀의 탄생 120주년
+
+| Year | Event |
+|------|-------|
+| 1881 | 마리insky 극장 발레 |
+
+- 8살 때, 《잠자는 미녀》를 보고, 마치 얼어붙은 듯 보았다.
+- 오로라처럼 춤을 추고 싶었다. 발레에 마음을 주고, 계속
+- 1899 - 18세 - 솔로 공연을 했고, 극장 학교를 졸업했다.
+- 1906 - 프리마 발레리나 타이틀.
+
+| Year | Event |
+|------|-------|
+| 1908 | 그녀와 20명의 러시아 예술가 첫 공연. 유럽에서 성공을 거두었다. |
+- 대중: 그녀가 어디를 가든 환영받았다 - 해외에서도 언제나 그랬다.
+- 그녀의 레퍼토리나 공연을 모두 열거하기는 불가능하다.
+- 《백조의 호수》, 《지젤》, 《잠자는 미녀》, 《호두까기 인형》
+- 《죽어가는 백조》를 춤추며 - 러시아 발레의 상징
+- 그녀가 이 춤을 추면, 백조가 살아나는 듯했다. &quot;Плясс умирающей лебедь.&quot;
+- 고향병이 심했고, 상트페테르부르크를 사랑했다 - 어린 시절, 첫 성공과 공연, 해외에서의 휴식 시간처럼, 축제처럼 느껴졌다.
+- 러시아로 돌아가고 싶었다
+
+| Year | Event |
+|------|-------|
+| 1931 | 사망. |
+- 그녀가 러시아 춤꾼이라는 자부심과 기쁨.</code></pre>
+  </div>
+</div>
+</body>
+</html>

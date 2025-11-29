@@ -1,0 +1,11 @@
+# Default config for running vLLM-based Qwen2.5-VL inference.
+model: Qwen/Qwen2.5-VL-7B-Instruct
+api_base: "http://localhost:8000/v1"
+api_key: "EMPTY" # vLLM 기본 server면 dummy 값으로 둡니다.
+input_dir: kolmocr_bench/table
+output_dir: output/kolmocr_bench_vllm/table
+prompt: "이 문서를 구조화된 markdown으로 만들어줘. Table은 html형식으로 출력해줘. 이미지인 경우에는 주석으로 1000,1000으로 normalization된 bbox[x0,y0,width, height]를 포함해줘.\n"
+max_new_tokens: 4000
+temperature: 0.7
+top_p: 0.9
+num_workers: 4

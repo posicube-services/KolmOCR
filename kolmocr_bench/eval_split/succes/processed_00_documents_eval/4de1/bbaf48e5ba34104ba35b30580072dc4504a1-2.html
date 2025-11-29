@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="5,49,995,462">
+    <pre><code class="language-markdown"># CASE REPORT
+
+6세 소년(체중 18 kg, 키 115 cm)이 병원에 입원하여 혈관 절제술이 계획되었습니다. 그의 건강 상태는 복잡한 상태로, 이중출구 우심실, 식스 인버스 드렉토카디아, 삼첨판 역류(3-4도), 폐동맥 밴딩, 심실 septal 결손이 포함되었습니다. 그는 3개월 때 BCPS 수술을 받았습니다. 수술 전, 아이는 활발했으며, 경미한 청색증과 낙상이 있었습니다. 방내 공기에서의 산소포화도 (SpO_2)는 80 %였습니다. 그는 수술 3일 전에 중단된 아스피린을 복용하고 있었습니다. 실험실 검사에서 백혈구 수치는 8000 mm^3, 혈소판 수치는 285,000 mm^3, 혈색소와 혈액량 수치는 각각 17.8 g/L과 52.5 %였습니다. 혈액학화 및 응고 검사 결과는 정상이었습니다. 심장 X선 촬영은 경미한 심장 비대와 맑은 폐 필드를 보여주었습니다. 수술 전, 환자는 입원하여 수면 전 8시간 동안 고체 음식 섭취가 금지되었습 니다. 주변 정맥 액세스를 설정한 후, 수술 전 대체액으로 5 % 포도당에 0.45 % 염화나트륨 정맥액이 투여되었습니다.
+
+수술실에서, 5채널 심전도(EEG), 맥박 산소계 및 비침습적 혈압 측정이 지속적으로 모니터링되었습니다. 환자는 정맥으로 미다졸람 1 mg과 펜타닐 10 μg을 동시에 투여받아 진정되었으며, 2 L min^-1의 보충 산소가 마스크를 통해 공급되었습니다. 그 후, 침습적 동맥 캐뉼レーション이 계획되었고, 환자는 측면 자세로 놓였습니다. L4-L5 척추 간격을 통해 중앙 접근 법으로 26 G 아트루칸(Braun, Melsungen, Germany) 소아 척추 주사기로 척추수액 주사가 이루어졌으며, 0.5 % 초과밀도 부피카인 0.3 mg kg^-1이 척수 내로 주입되었습니다. 5분 이내에 하지 근육 마비가 발생했습니다. 근육 마비의 정도는 수정된 브 로메이지 척도(6)에 따라 2로 나타났습니다. 10분 후 피부 차가운 테스트를 통해 T6-7 수준에 감각 마비가 확인되었으며, 그 후 피부 절개가 시작되었습니다. 수술 중, 5 % 포도당에 0.45 % 염화나트륨(5 mL kg^-1) 정맥 내)으로 수액 유지가 제공되었습니다. 수술은 25분 동안 진행되었으며, 수술 중 환자의 상태는 편안했고, 혈동학적 상태는 안정적이었습니다.
+
+수술후, 15 mg kg^-1의 정맥 투여 파라세타몰이 수술후 통증을 예방하기 위해 투여되었으며, 환자들은 회복실로 이송되었습니다. 또한 수술 중과 수술후 첫 시간 동안 진통제가 필요하지 않았습니다. 수술후, 근육 마비는 수술후 75분에 완전히 회복되었습니다. 그는 수술후 첫 시간 동안 회복실에서 모니터링되었으며, 그 후 소아 외과 병동으로 이송되었습니다.
+
+
+## DISCUSSION
+
+BCPS는 단일 심실 생리학을 가진 소아 환자들에게 최종적으로 완화 수술을 받게 될 중요한 중간 단계가 되었습니다(1).
+
+이러한 환자의 마취 관리는 여러 위험과挑견과 관련이 있습니다. 깨어남 또는 가벼운 마취의 PVR을 증가 시킬 수 있습니다. 높은 PVR이 BCPS 수술 후 폐혈류 감소와 시스템적 저산소혈증을 초래할 수 있다는 점이 지적되었습니다(2). 수술 중 관리의 목표는 적절한 혈관내 부피를 유지하여 PBF를 증가시키고, BCPS 환자의 PVR을 최소화하는 것입니다(2). 일반 마취와 기도 내관 삽관은 BCPS 환자에서 비정상적인 혈동학적 및 호흡 반응 및 생명을 위협하는 기관지瘞攀을 유발할 수 있습니다.
+
+또한, 기계적 양압 기도 통기, 지연된 기도 내관 제거 및 수술후 혼란과 평균 기도 압력 증가 및 통증과 같은 유해한 자극은 PVR의 급격한 증가를 유발할 수 있습니다. 일반 마취 관리에서는 이러한 환자에서 체내 산소 수준을 유지하기 위해 자연 호흡과 부드럽고 조기 기도 내관 제거가 안전한 절차로 강조됩니다.
+
+지역 마취는 일반 마취의 대안 및 보완 기술로 고령 환자에서 사용됩니다. 그러나 1980년대까지 소아 마취 관리에서 이 기술의 사용은 드물었습니다. 1980년대에 척추 마취는 특히 하부 복부 수술을 계획한 미숙아 에서 안전하고 효율적인 마취 기술로 묘사되었습니다(3). Abajian 등은 1984년 고위험 미숙아에서 척추 마취를 사용한 사례를 보고했으며, 이는 이 소아 환자들에게 척추 접근을 통한 지역 마취가 안전하고 효과적임을 고려했습니다(3). 그러나 척추 마취는 미숙아뿐만 아니라 더 큰 소아와 청소년에게도 적용 가능한 기술입니다(4).
+
+또한 이 기술은 적절한 수술 조건, 우수한 이완, 그리고 효과적인 수술후 통증 완화를 제공하는 것으로 보입니다. 중추신경계</code></pre>
+  </div>
+</div>
+</body>
+</html>

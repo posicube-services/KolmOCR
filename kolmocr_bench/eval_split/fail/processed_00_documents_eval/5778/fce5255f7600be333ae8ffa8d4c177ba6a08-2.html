@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="1,42,146,618">
+    <pre><code class="language-markdown"># markdown
+
+## 2.2.7. Type 10, Type 4, Type 5 또는 Type 6 방수 중 하나.
+
+## 2.2.8. Type RR-1. 계획서에 명시된 두께의 보호 코스를 가진 부틸 라이너 또는 EPDM 막, 아스팔트 판 또는 아스팔트 매트.
+
+### 3. 건설
+
+#### 3.1. 일반. 방수 재료를 손상이 발생하지 않도록 저장하십시오. 모든 시간에 재료를 건조 상태로 유지하고, 추운 날씨에 사용하기 전에는 따뜻한 장소에 보관하고, 더운 날씨에는 직사광선을 피하도록 하십시오. 아스팔트 판, 아스팔트 매트 및 아스팔트 패널을 변형 및 파손을 방지할 수 있도록 보관하십시오.
+
+##### 3.1.1. 콘크리트 덱 및 방수 처리될 기타 형성되지 않은 콘크리트 표면에 목재 플로트상을 제공하십시오. 방수 처리될 콘크리트 표면은 방수 처리를 시작하기 전에 최소 7일 동안 응결시키거나, 방수 처리 재료 제조업체의 지침에 따라 처리하십시오.
+
+##### 3.1.2. 방수 처리될 강철 또는 콘크리트 덱 표면이 깨끗하고 건조하며 매끄럽고, 날개, 날카로운 가장자리 및 느슨한 물질이 없는지 확인하십시오. 필요에 따라 그라인더를 사용하여 방수 막을 짧을 수 있는 돌출부를 제거하십시오. 표면에 형성제제거제, 왁스 기반 응결제, 기름, 그리고 기름때와 같은 오염물이 없는지 확인하십시오. 오염물을 제거하기 위해 애브라시브 블래스트 클리닝을 사용하십시오. 완성된 방수 처리 표면의 수평 표면에 움푹 들어간 곳이나 주머니가 없는지 확인하십시오.
+
+##### 3.1.3. 확장 접합부 및 기타 홍수 DMS-6300 &quot;Waterproofing&quot;의 요구 사항에 부합하는 플라스틱 시멘트로 채우십시오. 계획서에 다른 요구 사항이 없는 경우. 접합부를 채우기 전에 건조하고 깨끗한 상태로 유지하십시오. 약간 과잉 채우기를 통해 건조 중의 수축을 허용하십시오.
+
+##### 3.1.4. 방수 처리될 영역을 철저히 휩쓸거나 진공 청소하거나 공기로 불어내어 먼지, 더러움 및 느슨한 이물질을 제거하십시오. 방수 처리가 완료될 때까지 덕을 깨끗한 상태로 유지하십시오.
+
+##### 3.1.5. 방수 처리 작업이 시작되거나 작업이 완료되고 커버 시트가 설치되고 덱에 적절한 블라스트 쿠션이 설치될 때까지, 다리에 차량 또는 장비 교통을 허용하지 마십시오. 방수 처리를 모든 원인으로부터 보호하십시오.
+
+##### 3.1.6. DMS-6300 &quot;Waterproofing&quot;에서 정의된 대로 지지대 뒷면, 보조벽 또는 기초에 방수 보호가 표시된 경우, 지상 아래에 아스팔트를 사용하여 닫으십시오. DMS-6300 &quot;Waterproofing&quot;에서 정의된 대로 다리 덱의 방수 처리에 지상 위에 아스팔트를 사용하여 닫으십시오.
+
+#### 3.2. Type 1. 습한 날씨 또는 주변 온도가 50°F 이하일 때 방수 처리를 적용하지 마십시오. 라이너 막이 찢임, 주머니 또는 접힌 부분이 없는지 확인하십시오.
+
+#### 3.2.1. 배수 구멍 및 캐스팅에 막을 걸어 넣으십시오. 방수 처리될 구성 요소의 측면 및 끝 부분에서 방수 처리가 효과적으로 작동하도록 특별히 주의하십시오.
+
+##### 3.2.1.1. 부틸 라이너 막을 설치하기 위해 먼저 막 제조업체의 권장대로 접착제를 적용하십시오. 방수 처리될 표면 및 필요한 접합부에 접착제를 적용하십시오. 가장자리에서 약 36인치 뒤로 확장된 고체 영역에 적용하십시오. 이전에 적용된 접착제에 단단하고 균일하게 압력을 가하여 막을 설치하십시오. 주름과 구겨짐을 피하십시오. 막 제조업체의 권장 절차에 따라 접합부, 겹침 및 플라싱을 수행하십시오.
+
+#### 3.2.2. Type 2. 아스팔트 닦기 전에 최소 24시간 전에 아스팔트 프라이머를 적용하십시오. 닦기 전에 프라이머가 완전히 건조되었는지 확인하십시오. 프라이머를 균일한 코팅을 제공하도록 작업하십시오. 닦기용 아스팔트는 방열 온도계가 장착된 주전자에서 가열하되, 350°F를 초과하지 않도록 하십시오. 가열 중에 아스팔트를 자주 저어주십시오. 표면 100 제곱 피트당 최소 4 갤런의 속도로 닦기 코팅을 적용하십시오. 불완전한 부분이 나타나면 수정될 때까지 추가 코팅을 적용하십시오.
+
+##### 3.2.2.1. Type 3. 아스팔트 닦기 전에 최소 24시간 전에 아스팔트 프라이머를 적용하십시오. 닦기 전에 프라이머가 완전히 건조되었는지 확인하십시오. 프라이머를 균일한 코팅을 제공하도록 작업하십시오. 닦기용 아스팔트는 방열 온도계가 장착된 주전자에서 가열하되, 350°F를 초과하지 않도록 하십시오. 가열 중에 아스팔트를 자주 저어주십시오. 사용하십시오.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="1,675,2,25">
+    <h4>Table:</h4>
+  </div>
+  <div class="block" data-id="b003" data-bbox="1,715,41,123">
+    <table class="data-table">
+      <thead>
+        <tr><th>Type</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Type 10</td><td>Type 1, Type 4, Type 5 또는 Type 6 방수 중 하나.</td></tr>
+        <tr><td>Type RR-1</td><td>계획서에 명시된 두께의 보호 코스를 가진 부틸 라이너 또는 EPDM 막, 아스팔트 판 또는 아스팔트 매트.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="block" data-id="b004" data-bbox="1,854,3,25">
+    <h4>Figure:</h4>
+  </div>
+  <div class="block" data-id="b005" data-bbox="1,893,999,40">
+    <pre><code class="language-html">&lt;div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;&quot;&gt;
+  &lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABZpJREFUeNrs291rVZcUXPfXzK//mD+//v6+//v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7</code></pre>
+  </div>
+</div>
+</body>
+</html>

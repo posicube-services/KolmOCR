@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="19,49,847,57">
+    <p>다음은 제공된 텍스트를 구조화된 Markdown 형식으로 작성한 것입니다. 또한, 이미지의 경우 주석으로 1000x1000 normalization된 bounding box를 포함하여 나타내었습니다.</p>
+  </div>
+  <div class="block" data-id="b002" data-bbox="19,124,981,439">
+    <pre><code class="language-markdown"># References
+
+| Authors | Title | Journal of Retailing | Volume | Number | Page Range |
+|---------|-------|---------------------|--------|--------|------------|
+| Donovan, Robert J., Rossiter, John R., Marcooly, Gilian &amp; Nesdale, Andrew (1994) | &quot;Store Atmosphere and Purchasing Behavior&quot; | Vol. 70, No. 3 | pp. 283-294 |
+| Drèze, Xavier, Hoch, Stephen, J. &amp; Purk, Mary J. (1994) | &quot;Shelf Management and Space Elasticity&quot; | Vol. 70, No. 4 | pp. 301-326 |
+| Easterby-Smith, Mark, Thorpe, Richard &amp; Lowe, Andy (2003) | &quot;Management Research: An Introduction&quot; | Sage Publications Ltd: London |
+| Engel, James F., Blackwell, Roger D. &amp; Miniard, Paul W. (1995) | &quot;Consumer Behavior&quot; | Dryden Press: Orlando |
+| Foxall, Gordon (1997) | &quot;Affective responses to consumer situations&quot; | The International Review of Retail, Distribution and Consumer Research | Vol. 7, No. 3 | pp. 191-224 |
+| Foxall, Gordon R. &amp; Bhate, Seema (1993) | &quot;Cognitive Style and Personal Involvement as Explicators of Innovative Purchasing of &#x27;Healthy&#x27; Food Brands&quot; | European Journal of Marketing | Vol. 27, No 2 |
+| Gagnon, Jean Paul &amp; Osterhaus, Jane T. (1985) | &quot;Research Note: Effectiveness of Floor Displays on the sales of Retail Products&quot; | Journal of Retailing | Vol. 61, No. 1 | pp 104-116 |
+| Garbarino, Ellen C. &amp; Edell, Julie, A. (1997) | &quot;Cognitive effort, affect, and choice&quot; | Journal of Consumer Research | Vol. 24, No. 2 | pp. 147-158 |
+| Gilbert, Linda (1999) | &quot;Shoppers reach beyond basic nutrition for better health&quot; | Beverage Industry | May |
+| Grossbart, Sanford, Hampton, Ronald, Rammohan B. &amp; Lapidus, Richard S. (1990) | &quot;Environmental Dispositions and Customer Response to Store Atmospherics&quot; | Journal of Business Research | Vol. 21, No. 3 | pp. 225-242 |
+| Holt, Douglas B. (1998) | &quot;Does Structural Capital Structure American Consumption?&quot; | The Journal of Consumer Research | Vol. 25, No. 1 | pp. 1-25 |
+| Hsee, Christopher, K. &amp; Leclerc, France (1998) | &quot;Will products look more attractive when presented separately or together?&quot; | Journal of Consumer Research | Vol. 25, No. 2 | pp. 175-186 |
+| Iyer, Easwar S. (1989) | &quot;Unplanned Purchasing: Knowledge of Shopping Environment and Time Pressure&quot; | Journal of Retailing | Vol. 65, No. 1 | pp. 40-57 |
+| Jansson, Cathrine, Marlow, Nigel &amp; Bristow, Matthew (2004) | &quot;The influence of colour on visual search times in cluttered environments&quot; | Journal of Marketing Communications | Vol.10 | pp. 183-193 |
+| Kotler, Philip (1973) | &quot;Atmospherics as a Marketing Tool&quot; | Journal of Retailing | Vol. 49, No. 4 | pp. 48-64 |</code></pre>
+  </div>
+  <div class="block" data-id="b003" data-bbox="19,580,779,28">
+    <p>이렇게 구조화된 Markdown 형식에서 각 논문의 정보가 정리되어 있으며, 각 논문의 저자, 제목, 저널, 권호, 번호, 페이지 범위 등의 정보가 명확하게 표시됩니다.</p>
+  </div>
+</div>
+</body>
+</html>

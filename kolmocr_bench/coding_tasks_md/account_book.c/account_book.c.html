@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="35,17,707,965">
+    <p>c<br>
+#include &lt;stdio.h&gt;<br>
+#include &lt;stdlib.h&gt;<br>
+#include &lt;string.h&gt;<br>
+#define MAX_CAT 50<br>
+#define DATA_FILE &quot;account_book.txt&quot;<br>
+typedef struct {<br>
+    char type; // &#x27;I&#x27; income, &#x27;E&#x27; expense<br>
+    char category[MAX_CAT];<br>
+    int amount;<br>
+} Record;<br>
+void print_menu() {<br>
+    printf(&quot;\n==== Simple Account Book ====\n&quot;);<br>
+    printf(&quot;1. Add record\n&quot;);<br>
+    printf(&quot;2. List records\n&quot;);<br>
+    printf(&quot;3. Summary\n&quot;);<br>
+    printf(&quot;0. Exit\n&quot;);<br>
+    printf(&quot;Select: &quot;);<br>
+}<br>
+void add_record() {<br>
+    Record r;<br>
+    char line[128];<br>
+    printf(&quot;Type (I=income, E=expense): &quot;);<br>
+    fgets(line, sizeof(line), stdin);<br>
+    r.type = line[0] == &#x27;E&#x27; || line[0] == &#x27;e&#x27; ? &#x27;E&#x27; : &#x27;I&#x27;;<br>
+    printf(&quot;Category: &quot;);<br>
+    fgets(r.category, MAX_CAT, stdin);<br>
+    if (r.category[strlen(r.category) - 1] == &#x27;\n&#x27;)<br>
+        r.category[strlen(r.category) - 1] = &#x27;\0&#x27;;<br>
+    printf(&quot;Amount: &quot;);<br>
+    fgets(line, sizeof(line), stdin);<br>
+    r.amount = atoi(line);<br>
+    FILE *fp = fopen(DATA_FILE, &quot;a&quot;);<br>
+    if (!fp) {<br>
+        printf(&quot;Failed to open file.\n&quot;);<br>
+        return;<br>
+    }<br>
+    fprintf(fp, &quot;%c,%s,%d\n&quot;, r.type, r.category, r.amount);<br>
+    fclose(fp);<br>
+    printf(&quot;Record added.\n&quot;);<br>
+}<br>
+void list_records() {<br>
+    FILE *fp = fopen(DATA_FILE, &quot;r&quot;);<br>
+    if (!fp) {<br>
+        printf(&quot;No records.\n&quot;);<br>
+        return;<br>
+    }<br>
+    printf(&quot;\n[Records]\n&quot;);<br>
+    char line[256];<br>
+    while (fgets(line, sizeof(line), fp)) {<br>
+        char type, category[MAX_CAT];<br>
+        int amount;<br>
+        if (sscanf(line, &quot;%c,%49[^,],%d&quot;, &amp;type, category, &amp;amount) == 3) {<br>
+            printf(&quot;%s: %-10s %d\n&quot;, type == &#x27;I&#x27; ? &quot;Income &quot; : &quot;Expense&quot;, category, amount);<br>
+        }<br>
+    }<br>
+    fclose(fp);<br>
+}<br>
+void summary() {<br>
+    FILE *fp = fopen(DATA_FILE, &quot;r&quot;);<br>
+    if (!fp) {<br>
+        printf(&quot;No records.\n&quot;);<br>
+        return;<br>
+    }<br>
+    int total_income = 0, total_expense = 0;<br>
+    char line[256];<br>
+    while (fgets(line, sizeof(line), fp)) {<br>
+        char type, category[MAX_CAT];<br>
+        int amount;<br>
+        if (sscanf(line, &quot;%c,%49[^,],%d&quot;, &amp;type, category, &amp;amount) == 3) {<br>
+            if (type == &#x27;I&#x27;) total_income += amount;<br>
+            else total_expense += amount;<br>
+        }<br>
+    }<br>
+    fclose(fp);<br>
+    printf(&quot;\n[Summary]\n&quot;);<br>
+    printf(&quot;Total income : %d\n&quot;, total_income);<br>
+    printf(&quot;Total expense: %d\n&quot;, total_expense);<br>
+    printf(&quot;Balance      : %d\n&quot;, total_income - total_expense);<br>
+}<br>
+int main() {<br>
+    char line[16];<br>
+    while (1) {<br>
+        print_menu();<br>
+        if (!fgets(line, sizeof(line), stdin)) break;<br>
+        int choice = atoi(line);<br>
+        switch (choice) {<br>
+            case 1: add_record(); break;<br>
+            case 2: list_records(); break;<br>
+            case 3: summary(); break;<br>
+            case 0: printf(&quot;Bye.\n&quot;); return 0;<br>
+            default: printf(&quot;Unknown menu.\n&quot;);<br>
+        }<br>
+    }<br>
+    return 0;<br>
+}</p>
+  </div>
+</div>
+</body>
+</html>

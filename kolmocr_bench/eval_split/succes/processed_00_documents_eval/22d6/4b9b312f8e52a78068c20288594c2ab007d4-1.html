@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="7,21,212,12">
+    <p>아래는 주어진 텍스트를 구조화된 markdown 형식으로 변환한 내용입니다. 테이블은 HTML 코드로 표현되었습니다.</p>
+  </div>
+  <div class="block" data-id="b002" data-bbox="7,41,993,296">
+    <pre><code class="language-markdown"># Missouri Revised Statutes
+## Title XII Public Health and Welfare
+### Chapter 197 Medical Treatment Facility Licenses
+#### Certificate of Need
+
+##### 197.300. Citation of law.
+Sections 197.300 to 197.366 shall be known as the &quot;Missouri Certificate of Need Law&quot;.
+(L. 1979 H.B. 222 § 1, A.L. 1996 H.B. 1362)
+Effective 7-12-96
+7/12/1996
+
+##### 197.305. Definitions.
+As used in sections 197.300 to 197.366, the following terms mean:
+
+1. **&quot;Affected persons&quot;**: The person proposing the development of a new institutional health service, the public to be served, and health care facilities within the service area in which the proposed new health care service is to be developed;
+2. **&quot;Agency&quot;**: The certificate of need program of the Missouri department of health and senior services;
+3. **&quot;Capital expenditure&quot;**: An expenditure by or on behalf of a health care facility which, under generally accepted accounting principles, is not properly chargeable as an expense of operation and maintenance;
+4. **&quot;Certificate of need&quot;**: A written certificate issued by the committee setting forth the committee’s affirmative finding that a proposed project sufficiently satisfies the criteria prescribed for such projects by sections 197.300 to 197.366;
+5. **&quot;Develop&quot;**: To undertake those activities which on their completion will result in the offering of a new institutional health service or the incurring of a financial obligation in relation to the offering of such a service;
+6. **&quot;Expenditure minimum&quot;**: Shall mean:
+    * For beds in existing or proposed health care facilities licensed pursuant to chapter 198 and long-term care beds in a hospital as described in subdivision (3) of subsection 1 of section 198.012, six hundred thousand dollars in the case of capital expenditures, or four hundred thousand dollars in the case of major medical equipment, provided, however, that prior to January 1, 2003, the expenditure minimum for beds in such a facility and long-term care beds in a hospital described in section 198.012 shall be zero, subject to the provisions of subsection 7* of section 197.318;
+    * For beds or equipment in a long-term care hospital meeting the requirements described in 42 CFR, Section 412.23(e), the expenditure minimum shall be zero; and
+    * For health care facilities, new institutional health services or beds not described in paragraph (a) or (b) of this subdivision one million dollars in the case of capital expenditures, excluding major medical equipment, and one million dollars in the case of medical equipment;
+7. **&quot;Health service area&quot;**: A geographic region appropriate for the effective planning and development of health services, determined on the basis of factors including population and the availability of resources, consisting of a population of not less than five hundred thousand or more than three million;
+8. **&quot;Major medical equipment&quot;**: Medical equipment used for the provision of medical and other health services;
+9. **&quot;New institutional health service&quot;**:
+    * The development of a new health care facility costing in excess of the applicable expenditure minimum;
+    * The acquisition, including acquisition by lease, of any health care facility, or major medical equipment costing in excess of the expenditure minimum;
+
+This translation maintains the original Markdown structure and leaves the YAML front matter, code fences, and inline code snippets unchanged.</code></pre>
+  </div>
+  <div class="block" data-id="b003" data-bbox="7,344,147,12">
+    <p>이 markdown 파일은 HTML 테이블을 포함하여 다음과 같이 변환될 수 있습니다:</p>
+  </div>
+  <div class="block" data-id="b004" data-bbox="7,364,319,595">
+    <table class="data-table">
+  <tr>
+    <td><strong>197.300. Citation of law.</strong></td>
+    <td>Sections 197.300 to 197.366 shall be known as the "Missouri Certificate of Need Law".</td>
+  </tr>
+  <tr>
+    <td>(L. 1979 H.B. 222 § 1, A.L. 1996 H.B. 1362)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Effective 7-12-96</strong></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>7/12/1996</strong></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>197.305. Definitions.</strong></td>
+    <td>As used in sections 197.300 to 197.366, the following terms mean:</td>
+  </tr>
+  <tr>
+    <td>1. **"Affected persons"**:</td>
+    <td>The person proposing the development of a new institutional health service, the public to be served, and health care facilities within the service area in which the proposed new health care service is to be developed;</td>
+  </tr>
+  <tr>
+    <td>2. **"Agency"**:</td>
+    <td>The certificate of need program of the Missouri department of health and senior services;</td>
+  </tr>
+  <tr>
+    <td>3. **"Capital expenditure"**:</td>
+    <td>An expenditure by or on behalf of a health care facility which, under generally accepted accounting principles, is not properly chargeable as an expense of operation and maintenance;</td>
+  </tr>
+  <tr>
+    <td>4. **"Certificate of need"**:</td>
+    <td>A written certificate issued by the committee setting forth the committee’s affirmative finding that a proposed project sufficiently satisfies the criteria prescribed for such projects by sections 197.300 to 197.366;</td>
+  </tr>
+  <tr>
+    <td>5. **"Develop"**:</td>
+    <td>To undertake those activities which on their completion will result in the offering of a new institutional health service or the incurring of a financial obligation in relation to the offering of such a service;</td>
+  </tr>
+  <tr>
+    <td>6. **"Expenditure minimum"**:</td>
+    <td>Shall mean:</td>
+  </tr>
+  <tr>
+    <td>a)</td>
+    <td>For beds in existing or proposed health care facilities licensed pursuant to chapter 198 and long-term care beds in a hospital as described in subdivision (3) of subsection 1 of section 198.012, six hundred thousand dollars in the case of capital expenditures, or four hundred thousand dollars in the case of major medical equipment, provided, however, that prior to January 1, 2003, the expenditure minimum for beds in such a facility and long-term care beds in a hospital described in section 198.012 shall be zero, subject to the provisions of subsection 7* of section 197.318;</td>
+  </tr>
+  <tr>
+    <td>b)</td>
+    <td>For beds or equipment in a long-term care hospital meeting the requirements described in 42 CFR, Section 412.23(e), the expenditure minimum shall be zero; and</td>
+  </tr>
+  <tr>
+    <td>c)</td>
+    <td>For health care facilities, new institutional health services or beds not described in paragraph (a) or (b) of this subdivision one million dollars in the case of capital expenditures, excluding major medical equipment, and one million dollars in the case of medical equipment;</td>
+  </tr>
+  <tr>
+    <td>7. **"Health service area"**:</td>
+    <td>A geographic region appropriate for the effective planning and development of health services, determined on the basis of factors including population and the availability of resources, consisting of a population of not less than five hundred thousand or more than three million;</td>
+  </tr>
+  <tr>
+    <td>8. **"Major medical equipment"**:</td>
+    <td>Medical equipment used for the provision of medical and other health services;</td>
+  </tr>
+  <tr>
+    <td>9. **"New institutional health service"**:</td>
+    <td>a) The development of a new health care facility costing in excess of the applicable expenditure minimum;</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>b) The acquisition, including acquisition by lease, of any health care facility, or major medical equipment costing in excess of the expenditure minimum;</td>
+  </tr>
+</table>
+  </div>
+  <div class="block" data-id="b005" data-bbox="7,967,215,12">
+    <p>이 markdown 파일과 HTML 테이블을 사용하면 원문의 구조를 잘 유지하면서 텍스트와 테이블을 정리할 수 있습니다.</p>
+  </div>
+</div>
+</body>
+</html>

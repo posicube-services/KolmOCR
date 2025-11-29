@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="6,61,994,144">
+    <pre><code class="language-markdown">Wilcox, 1992)에 따르면, 9500만 년 전에 새로운 해양 지각이 형성되었습니다 (Boger, 2010; Veevers and Eittreim, 1988). 라이팅의 마지막 단계는 신시대기 후반기에 (Reeves and de Witt, 2000) 뉴질랜드가 서남극에서 분리된 때였으며, 서남극 라이팅 시스템 (WARS)이 로스 해를 열기 시작하고 TAM을 마리 바드 랜드에서 분리시켰습니다 (그림 1-6). 이는 백악암에서 라이올라이트까지의 광범위한 화산 활동을觸발했습니다 (LeMasurier and Rex, 1991). 그 후, 라이팅 계곡은 주변 지역에서 침식된 약 600m의 퇴적물과 해양 퇴적물로 채워졌습니다 (Rooney et al., 1991; Scherer et al., 1998).
+
+그림 1-6 - WARS의 지리. 현재의 좌표로 동남극과 서남극이 표시되어 있으며, 제이지아와 오스트레일리아는 곤다와나 대륙이 분리되기 전의 근사 위치로 복원되어 있습니다 (Mortimer et al., 2011). 지리적 특징 및 표본 채취자: STR=남 티스마니아 부상, SGI=수지언 섬, TAM=남극 횡단 산맥, NVL=북부 빅토리아 랜드, SVL=남부 빅토리아 랜드, IB=이셀린 뱅크, CAP=캠페벨 플래테오, CAI=캠페벨 섬, FDL=피오드랜드, MBL=마리 바드 랜드, XC=.Executive Committee Range, MM=마이어리 산, EWM=엘스워스 산맥. 지질 단위: do=델라메리안 오르겐, lo=라천 오르겐, wv=월슨 테라네, b=보워스 테라네, fs=로버트슨 베이 테라네, bu=булпеп 테라네, tk=티카카 테라네, mb=메디안 비톨리트, ep=동부 지방, wars=서남극 라이팅.
+
+![](https://example.com/image.png)</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="6,228,0,0">
+    <pre><code></code></pre>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="35,28,737,943">
+    <pre><code class="language-markdown"># 이사회 위원 명단
+
+## 이사회 위원 (2020년 Q3 기준)
+
+1. Kathryn Cassidy* (디지털 레포지토리 아일랜드 - 듀브린 트리니티 칼리지) (2019-2022)
+   - 행동 코드 소위원회 위원
+2. Jon Dunn* (인디애나 대학교)
+   - 재정 소위원회 위원
+3. Jyrki Ilva* (헬싱키 대학교)
+   - 레포지토리 소위원회 위원
+4. Claire Knowles* (리즈 대학교) (2019+)
+   - 부의장
+   - 행동 코드 소위원회 위원장
+   - 재정 소위원회 위원
+5. Liz Krzmarich (DataCite)
+   - 2021년 프로그램 공동 의장
+6. Iryna Kuchma (EIFL)
+   - 2021년 프로그램 공동 의장
+7. Jessica Lindholm (칼럼스 대학교) (2020-2023)
+   - 행동 코드 소위원회 위원
+8. David Minor* (캘리포니아 대학교 샌디에이고)
+   - 레포지토리 소위원회 위원장
+9. Tomasz Neugebauer* (콘코드리아 대학교) (2019-2022)
+   - 2020년 프로그램 위원회
+10. Torsten Reimer* (브리티시 라이브러리) (2019-2022)
+    - 레포지토리 소위원회 위원
+    - 재정 소위원회 위원
+11. Andrea Schweer* (와이카토 대학교)
+12. Sarah Shreeves* (애리조나 대학교)
+   - 의장
+   - 재정 소위원회 위원장
+   - 행동 코드 소위원회 위원
+13. Leila Sterman* (몬태나 주립 대학교) (2020-2023)
+   - 2021년 프로그램 공동 의장
+14. Washington Luis Ribeiro de Carvalho Segundo* (브라질 과학기술 정보 연구소) (2020-2023)
+
+*asterisk(*)는 상임 이사회위원을 나타냅니다.
+
+## 과거 상임위원회 위원
+
+1. Adrian Burton
+2. Les Carr
+3. Sayeed Choudhury
+4. Tom Cramer
+5. Dermot Frost
+6. Mike Giarlo
+7. Richard Green
+8. Wolfram Horstmann
+9. John Howard
+10. Michelle Kimpton
+11. John Leggett
+12. Mark Leggott
+13. Norbert Lossau
+14. Clifford Lynch
+15. Liz Lyon
+16. Stuart MacDonald
+17. Jonathan Markow
+18. Mark McFarland
+19. Holly Mercer
+20. Carol Minton-Morris
+21. William Nixon
+22. Sandy Payette
+23. Matthias Razum
+24. Peter Sefton
+25. MacKenzie Smith
+26. Julie Speer
+27. Elin Stangeland
+28. Imma Subirats
+29. Tyler Walters
+30. Simeon Warner</code></pre>
+  </div>
+</div>
+</body>
+</html>

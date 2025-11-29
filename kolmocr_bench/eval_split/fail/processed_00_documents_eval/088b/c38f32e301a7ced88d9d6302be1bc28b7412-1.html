@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="15,28,985,918">
+    <pre><code class="language-markdown"># Exercise 5.1.
+
+가정: \( B = v_1, \ldots, v_n \)은 \(\mathbb{R}^n\)의 직교 기저이다. \(B\)가 \(\mathbb{R}^n\)의 기저임을 보여라. (4점)
+
+# Exercise 5.2.
+
+가정: \( A \in \mathbb{R}^{n \times n} \)는 직교 행렬이다. 다음을 보여라:
+
+a) 임의의 \( x \in \mathbb{R}^n \)에 대해: \( |Ax| = |x| \),
+
+b) 임의의 \( x, y \in \mathbb{R}^n \)에 대해: \( \langle Ax, Ay \rangle = \langle x, y \rangle \). (8점)
+
+# Exercise 5.3.
+
+가정: \( s_\tau : \mathbb{R}^n \to \mathbb{R}^n \)는 \(x\)의 항목을 \(\tau\)만큼 순환적으로 이동시키는 함수로, \( s_\tau(x) := (x_{\tau}, x_{\tau+1}, \ldots, x_n, x_1, \ldots, x_{\tau-1})^T \).
+
+a) 행렬 \( S_\tau \in \mathbb{R}^{n \times n} \)를 구성하라.
+
+b) \( S_\tau \)는 어떤 성질을 가지는가? 올바른 모든 선택지를 표시하라 (그리고 단지 그것들만):
+
+□ \(S\)는 정사각 행렬이다,
+□ \(S\)는 대칭 행렬이다,
+□ \(S\)는 가역 행렬이다,
+□ \(S\)는 직교 행렬이다,
+□ \(S\)는 항등 행렬의 배수이다,
+□ \(S\)는 그래프의 인접 행렬일 수 있다. (6점)
+
+# Exercise 5.4.
+
+가정: \(v^{(1)}, \ldots, v^{(n)}\)는 \(\mathbb{R}^n\)의 직교 정규 기저이다. 임의의 \( x \in \mathbb{R}^n \)에 대해, \( y \in \mathbb{R}^n \)을 \( x \)를 \( v^{(1)}, \ldots, v^{(n)} \)에 대한 계수 벡터로 나타낸다 (즉, \( y = (y_1, \ldots, y_n)^T \)이며 \( x = \sum_{j=1}^n y_j v^{(j)} \)).
+
+a) 다음을 보여라: \( |y| = |x| \).
+
+b) \( \tilde{y} := \sum_{j=1}^k y_j v^{(j)} \ (k &lt; n) \)라고 하며, \( \sum_{j=1}^k (y_j)^2 \geq 0.9 \sum_{j=1}^n (y_j)^2 \)를 가정하자. \( |\tilde{y}| \)와 \( |y| \)를 비교하여 무엇을 말할 수 있는가? (6점)
+
+# Exercise 5.5.
+
+가정: \( A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix} \in \mathbb{R}^{2 \times 2} \)이다. \(\lambda \in \mathbb{R}\)가 \(A\)의 고윳값임을 보이기 위해서는 \(\lambda\)가 다음 방정식을 만족해야 한다:
+\[ \lambda^2 - (a + d)\lambda + ad - bc = 0. \]
+
+이 방정식의 해를 계산하는 공식을 제시하라. (4점)
+
+# Exercise 5.6.
+
+가정: \( A \in \mathbb{R}^{m \times n} \)는 정사각 행렬이다.
+
+a) 행렬 \( B \in \mathbb{R}^{n \times m} \)가 존재한다고 가정하자 (즉, 행과 열의 수가 각각 바뀌었다!) \( BA = I \in \mathbb{R}^{n \times n} \)는 \( n \times n \) 항등 행렬이다; 이러한 행렬 \( B \)는 \( A \)의 왼쪽 역행렬이라고 한다. 모든 \( b \in \mathbb{R}^m \)에 대해, 선형 방정식 시스템
+\[ Ax = b \]
+
+이 해를 가지는지 보여라. 해는 반드시 유일한가. 아니면 여러 개일 수 있는가? (3점)
+
+b) \( A \in \mathbb{R}^{n \times n} \)라고 하자. \( A \)가 가역임을 보이기 위해서는 모든 \( b \in \mathbb{R}^n \)에 대해 선형 방정식 시스템 \( Ax = b \)가 정확히 하나의 해 \( x \in \mathbb{R}^n \)를 가지는지 보여라. (6점)
+
+c) \( A \in m \times n \)라고 하며, \( A \)에 기본 행 연산을 적용하여 행 계단형 행렬 \( A&#x27; \)를 얻는다고 가정하자.
+
+다음 두 명제를 고려하라:
+
+(i) 임의의 \( b \in \mathbb{R}^m \)에 대해, 방정식 시스템 \( Ax = b \)은 해 \( x \in \mathbb{R}^n \)를 가지며;
+
+(ii) 행렬 \( A&#x27; \)의 계수는 \( m \)이며, 즉, 정확히 \( m \)개의 주요 원소를 가진다.
+
+이 두 명제가 동치임을 보여라, 즉, 하나가 다른 하나를 함의함을 보여라. 또한 (ii)가 \( m \leq n \)을 함의함을 보여라. (7점)
+
+d) \( A \)와 \( A&#x27; \)는 Part c)에서와 같이 정의한다고 가정하자. 다음 두 명제를 고려하라:
+
+(iii) 임의의 \( b \in \mathbb{R}^m \)에 대해, 방정식 시스템 \( Ax = b \)는 정확히 하나의 해 \( x \in \mathbb{R}^n \)를 가지며;
+
+(iv) \( m = n \)이며, 행렬 \( A&#x27; \)의 계수는 \( n \)이며, \( n \)개의 대각선 상의 비례로 항목, 대각선 아래의 항목은 0이며, 대각선 위의 항목은 임의의 값이 가능하다 (즉, \( A&#x27; \)의 항목 \$ a&#x27;(ij) \$는 a(ii) \$ \neq 0 \$이고 a(iii) \$ = 0 \$ (\( i &gt; j \)), 1 \$ \leq q \$ \leq n \$를 만족한다).
+
+명제 (iii)와 (iv)가 동치임을 보여라. (6점)</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="15,956,329,16">
+    <p><strong>Note:</strong> The bounding box coordinates for the image were not included in the provided text.</p>
+  </div>
+</div>
+</body>
+</html>

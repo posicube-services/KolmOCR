@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="4,49,996,786">
+    <pre><code class="language-markdown"># 연구 논문 검토
+
+## 목차
+1. **Introduction** ..... 915
+2. **Characterizations of EABs** ..... 916
+3. **Bioelectricity** ..... 916
+4. **Bio-hydrogen** ..... 917
+5. **High-value chemicals** ..... 919
+6. **Bioinspired nanomaterials** ..... 920
+7. **Future perspectives** ..... 922
+8. **Acknowledgment** ..... 922
+9. **References** ..... 922
+
+## 1. Introduction
+
+전기화학적으로 활성 미생물에 의해 생성된 전기화학적으로 활성 생물막(EABs)은 생물에너지 및 녹색 화학물질 생산에서의 잠재적 응용으로 인해 많은 관심을 받고 있다(Borole et al., 2011; Erable et al., 2010). EABs는 다양한 자연적 장소에서 발견되며, 바닷물 퇴적물, 토양 및 다양한 폐수(예: 시설 폐수, 염료 폐수, 돼지 폐수 등)에서도 존재한다(Erable et al., 2010; Logan and Rabaey, 2012). 일반적으로 이종적 금속 감소 세균은 호흡을 위해 철 또는 맨ガン 산화물 같은 전자 수용체를 사용한다(EI-Naggar et al., 2008; Lovley, 2011). 최근 연구에서는 EABs가 전도성 전극에 부착함으로써 극화된 전극을 최종 전자 수용체로 사용할 수 있음을 보여주었다(Logan and Rabaey, 2012; Pant et al., 2012). 이러한 발견은 EABs가 생체전기화학 시스템(BESs)에서 생물적 촉매로 작용할 수 있게 한다. EABs에서 전도성 전극으로의 전자 전달 메커니즘은 광범위하게 연구되었지만, 실제 메커니즘은 완전히 이해되지 않았다(EI-Naggar et al., 2008; Malvankar et al., 2011, 2012c; Polizzi et al., 2012; Reguera et al., 2005; Snider et al., 2012; Strycharz-Glaven and Tender, 2012; Strycharz-Glaven et al., 2011). 세 가지 주요 전자 전달 메커니즘이 사용되었으며,
+
+## Keywords:
+- 전기화학적으로 활성 생물막
+- 생물전기
+- 생물수소
+- 녹색 화학물질
+- 생체모방 나노재료
+
+## Abstract
+
+미생물은 환경적 스트레스, 영양분 부족 또는 불균형과 같은 문제로부터 보호받기 위해 자연적으로 고체 표면에 생물막을 형성한다. 이러한 생물막은 일반적으로 인간 건강에 위험을 초래할 수 있다. 반면, 최근 연구에서는 전기화학적으로 활성 생물막(EABs)이 전기화학 반응을 촉매하거나 제어할 수 있는 특성을 가지며, 생물에너지 생산, 생물재생, 화학/생물 합성, 생물부식 완화 및 바이오센서 개발 등 다양한 분야에서 활용될 수 있음을 제안했다. EABs는 미생물 연료전지와 미생물 전해지와 같은 생체전기화학 시스템(BESs)에서 생물카타이드 또는 생물만오이드 촉매로 작용하며, 많은 관심을 받고 있다. 최근에는 EABs를 이용해 금속 나노입자 및 금속 나노복합체를 합성할 수 있다는 보고가 있었다. EAB를 매개로 한 금속 및 금속-반도체 나노복합체의 합성은 기존 합성 방법에 비해 효율과 속도가 뛰어난 녹색 나노재료 합성의 새로운 길을 열 것으로 기대된다. 본 검토는 EAB의 일반적인 소개뿐만 아니라, BESs에서의 EAB의 응용, 생물수소, 고가치 화학물질 및 생체모방 나노재료의 생산에 대한 내용을 다룬다.
+
+### Authors:
+Shafeer Kalathil, Mohammad Mansoob Khan, Jintae Lee, Moo Hwan Cho
+Department of Chemistry, Gyeongsang National University, Gyeongsan, Korea
+
+### Article Info
+Accessed on: May 13, 2013</code></pre>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="6,49,994,485">
+    <pre><code class="language-markdown"># markdown
+
+The following cases suggest that in the criminal area, a continuance should be granted for absence of a party only where the disability is involuntary, and a physician&#x27;s certificate attests to the fact that to go to trial would endanger the defendant&#x27;s health. Where the trial judge can personally observe the defendant, the certificate may be disregarded if the judge finds that the defendant can stand trial.
+
+## Conclusions and Recommendations
+
+It is apparent from the foregoing discussion that no one rule could or should be formulated to cover all situations which may give rise to a motion for a continuance. Thus, several suggestions are offered to cover the situations discussed. Methods of implementing these policies are also discussed.
+
+### Counsel
+
+In the case of withdrawal or discharge of counsel, the good faith of the moving party is of paramount importance. When counsel wishes to withdraw or is discharged from a civil suit, his client should be required to execute a stipulation to the effect that no further delays will be requested on this ground. In criminal cases, the use of the stipulation is also recommended. However, because the right to counsel is strenuously safeguarded, it is recommended that no withdrawal or discharge be permitted within two weeks prior to the trial date. A change occurring two weeks or more before the trial would allow the defendant sufficient time to obtain other representation to prepare the case.
+
+In the area of docket conflicts, it is recommended that adequate notice of the trial date be agreed upon by the parties at the pre-trial hearing. This will allow counsel to arrange their schedules so as to eliminate conflicts.
+
+Since there is no right to a particular attorney, except in unusual instances, it is recommended that in civil cases the matter be brought to trial regardless of conflict. Where a party is left without counsel, substitute counsel must be used, or the party should be forced to trial without counsel. Such a procedure has been instituted in the Common Pleas Court of Pittsburgh, Pennsylvania, very successfully. While such sanctions appear to be harsh, they prove to be seldom invoked. Charles H. Starrett, Jr., Administrator of the Pittsburgh Court of Common Pleas, stated:
+
+...because of the effect upon a lawyer&#x27;s reputation and the effect of such activity on his malpractice insurance, the trial bar has quickly learned to avoid situations which would require the court to invoke such a sanction.
+
+154 Letter from Silvestri Silvestri, Judge, Com. Pl. Ct., Allegheny County, to Samuel J. Roberts, Justice of the Supreme Ct. of Pa., May 1, 1972.
+
+155 Letter from Charles H. Starrett, Jr. to Steven J. Madson, May 25, 1972. See Budget Laundry Co. v. Munter, No. 2362 (Allegheny County Common Pleas, Pa., April, 1970).</code></pre>
+  </div>
+</div>
+</body>
+</html>

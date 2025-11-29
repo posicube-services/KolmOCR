@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>OTP 발급 신청서</title>
+
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #ffffff;
+      color: #222;
+      margin: 20px auto;
+      max-width: 190mm;
+      font-size: 11pt;
+      line-height: 1.55;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22pt;
+      font-weight: 700;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #003a8c;
+      color: #003a8c;
+    }
+
+    /* 섹션 헤더 */
+    .section-header {
+      background: #003a8c;
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      padding: 10px;
+      font-size: 13pt;
+      border: 1px solid #002d6b;
+      margin-top: 22px;
+    }
+
+    /* 서브 헤더 */
+    .sub-header {
+      background: #d3ddf0;
+      color: #003a8c;
+      text-align: center;
+      font-weight: 700;
+      padding: 8px;
+      font-size: 11.5pt;
+      border: 1px solid #bcc9df;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 0 18px 0;
+      table-layout: fixed;
+      font-size: 11pt;
+    }
+
+    th {
+      background: #e8eef8;
+      color: #003a8c;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid #c0cce0;
+      padding: 8px;
+      vertical-align: middle;
+    }
+
+    td {
+      background: #ffffff;
+      border: 1px solid #cfd8e5;
+      padding: 8px;
+      text-align: left;
+      color: #111;
+      vertical-align: middle;
+    }
+
+    .label {
+      background: #e8eef8;
+      color: #003a8c;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .value-cell {
+      background: #ffffff;
+      text-align: left;
+      color: #111;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .right {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>OTP 발급 신청서</h1>
+
+
+  <!-- **************************************** -->
+  <!-- 1. 신청자 기본 정보 -->
+  <!-- **************************************** -->
+  <div class="section-header">1. 신청자 기본 정보</div>
+
+  <table>
+    <tr>
+      <th colspan="2" class="sub-header">개인 식별 정보</th>
+      <th colspan="2" class="sub-header">주소 및 연락처</th>
+    </tr>
+
+    <tr>
+      <td class="label">신분증 종류</td>
+      <td class="value-cell">주민등록증</td>
+      <td class="label">거주지 주소</td>
+      <td class="value-cell">서울특별시 강남구 테헤란로 123</td>
+    </tr>
+
+    <tr>
+      <td class="label">신분증 번호</td>
+      <td class="value-cell">900101-1234567</td>
+      <td class="label">우편번호</td>
+      <td class="value-cell">06123</td>
+    </tr>
+
+    <tr>
+      <td class="label">유효기간</td>
+      <td class="value-cell">2030-12-31</td>
+      <td class="label">휴대폰 번호</td>
+      <td class="value-cell">010-1234-5678</td>
+    </tr>
+
+    <tr>
+      <td class="label">이메일 주소</td>
+      <td colspan="3" class="value-cell">user@example.com</td>
+    </tr>
+  </table>
+
+
+  <!-- **************************************** -->
+  <!-- 2. OTP 발급 정보 -->
+  <!-- **************************************** -->
+  <div class="section-header">2. OTP 발급 정보</div>
+
+  <table>
+    <tr>
+      <th colspan="2" class="sub-header">발급 유형</th>
+      <th colspan="2" class="sub-header">장치 정보</th>
+    </tr>
+
+    <tr>
+      <td class="label">OTP 종류</td>
+      <td class="value-cell">SMS OTP</td>
+      <td class="label">장치 모델명</td>
+      <td class="value-cell">iPhone 15 Pro</td>
+    </tr>
+
+    <tr>
+      <td class="label">발급 용도</td>
+      <td class="value-cell">온라인 거래 인증</td>
+      <td class="label">OS 버전</td>
+      <td class="value-cell">iOS 17.4</td>
+    </tr>
+
+  </table>
+
+  <!-- 🔽 여기부터 약관 동의 간소화 버전 -->
+  <table>
+    <tr>
+      <th class="sub-header" style="width: 25%;">OTP 약관 동의</th>
+      <td class="value-cell" style="background:#f5f8ff; font-weight:600; text-align:left;">
+        동의함
+        <span style="margin-left: 15px; color:#003a8c; font-weight:500; ">(필수)</span>
+      </td>
+    </tr>
+  </table>
+
+  <!-- **************************************** -->
+  <!-- 3. 계좌 및 거래 정보 -->
+  <!-- **************************************** -->
+  <div class="section-header">3. 계좌 및 거래 정보</div>
+
+  <table>
+    <tr>
+      <th colspan="2" class="sub-header">계좌 정보</th>
+      <th colspan="2" class="sub-header">거래 내역 요약</th>
+    </tr>
+
+    <tr>
+      <td class="label">은행명</td>
+      <td class="value-cell">국민은행</td>
+      <td class="label">최근 3개월 거래</td>
+      <td class="value-cell">총 12건 / 3,450,000원</td>
+    </tr>
+
+    <tr>
+      <td class="label">계좌번호</td>
+      <td class="value-cell">123-456-789012</td>
+      <td class="label"></td>
+      <td class="value-cell"></td>
+    </tr>
+
+    <tr>
+      <th colspan="4" class="sub-header">거래 상세 내역</th>
+    </tr>
+
+    <tr>
+      <th class="label">날짜</th>
+      <th class="label">내용</th>
+      <th class="label">금액</th>
+      <th class="label">잔액</th>
+    </tr>
+
+    <tr>
+      <td class="value-cell">2024-03-01</td>
+      <td class="value-cell">식비 결제</td>
+      <td class="value-cell right">50,000</td>
+      <td class="value-cell right">1,200,000</td>
+    </tr>
+
+    <tr>
+      <td class="value-cell">2024-03-05</td>
+      <td class="value-cell">교통비 결제</td>
+      <td class="value-cell right">15,000</td>
+      <td class="value-cell right">1,185,000</td>
+    </tr>
+  </table>
+
+
+  <!-- **************************************** -->
+  <!-- 4. 서명 및 확인 -->
+  <!-- **************************************** -->
+  <div class="section-header">4. 서명 및 확인</div>
+
+  <table>
+    <tr>
+      <td class="label">신청자 서명</td>
+      <td class="value-cell">홍길동</td>
+      <td class="label">신청일자</td>
+      <td class="value-cell">2024-06-01</td>
+    </tr>
+
+    <tr>
+      <td class="label">담당자 이름</td>
+      <td class="value-cell">김은행</td>
+      <td class="label">확인 일시</td>
+      <td class="value-cell">2024-06-01 14:30</td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

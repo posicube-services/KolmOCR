@@ -1,0 +1,24 @@
+# YAML config for running olmocr.kolmocr_eval.scripts.evaluate
+# Fill in the benchmark directories (pred_dir/gt_dir) before running.
+# Example usage (from repo root):
+#   python -m olmocr.kolmocr_eval.scripts.evaluate --config configs/kolmocr_eval.yaml
+
+gt_dir: kolmocr_bench/table # GT md 루트 (pred_dir와 동일 구조)
+pred_dir: output/kolmocr_bench_vllm/table # 모델이 생성한 md 결과 루트
+output_dir: output/kolmocr_table_eval # 결과 csv/요약이 저장될 경로
+
+# 실행할 메트릭 리스트 (src/metrics/registry.py 참고)
+metrics:
+  - text_edit
+  - table_f1
+  - table_TEDS
+  - table_TEDS_S
+  - image_iou
+  - code_TED
+  - reading_order
+  - overall
+
+threshold_headings: 1 # heading 매칭 edit distance 문턱치
+threshold_table: 0.6 # table_f1 매칭 유사도 문턱치(0~1)
+version: "1.10" # 모델 버전(선택), text_edit에서 1.9일 때만 추가 전처리
+text_include_f1: true # text_edit 실행 시 heading F1 컬럼 포함 여부

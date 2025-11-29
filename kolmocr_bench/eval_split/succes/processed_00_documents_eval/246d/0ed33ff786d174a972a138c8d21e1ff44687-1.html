@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="7,49,993,300">
+    <pre><code class="language-markdown"># FSB, 러시아에 대한 동료 평가 완료
+
+## 금융 안정 보드(FSB)는 오늘 러시아에 대한 동료 평가를 발표했습니다.
+
+### 이 동료 평가는 두 가지 주제를 다루었습니다: 매크로 금융 정책 프레임워크 및 도구; 그리고 은행 해결 프레임워크. 이 주제들은 FSB 회원국 전체의 금융 안정에 관련이 있으며, 다른 FSB 국가 동료 평가에서도 다루어지고 있습니다. 이 평가는 러시아 당국이 이 두 분야에서 개혁을 실행하기 위해 취한 조치를 중점적으로 조사했으며, 2011년 국제통화기금(IMF)의 금융 부문 평가 프로그램(FSAP) 보고서에서 제시된 관련 권고 사항을 이행하는 과정도 포함되었습니다.
+
+#### 동료 평가는 러시아 당국이 이 두 주제에 대한 FSAP 권고 사항을 처리하는 데 있어 좋은 진전을 보였지만, 추가로 해야 할 작업이 남아 있음을 결론지었습니다. 매크로 금융 정책 측면에서는 당국이 금융 안정 보장 국립 위원회(FSC)의 임무를 명확히 하고, 러시아 중앙은행(CBR)의 매크로 금융 정책 프레임워크를 구체화해야 한다고 지적했습니다. 은행 해결 측면에서는 당국이 즉각적인 보완 조치 프레임워크를 더욱 강화하고, 해결 도구의 범위를 확대하며, 실패한 시스템적 은행의 재활 프로세스를 검토하여 효율성과 효과성을 더욱 향상시키는 것이 필요하다고 권고했습니다.
+
+##### 특히, 동료 평가는 러시아 당국이 FSAP 이후 금융 안정을 위한 기관적 프레임워크를 강화했다고 밝혔습니다. CBR은 명시적인 금융 안정 임무를 부여받았으며, 매크로 금융 정책 결정 과정을 제도화하고, 시스템적 위험 모니터링 능력을 향상시키며, 매크로 금융 정책에 사용할 수 있는 도구의 범위를 확대하는 데 적극적으로 노력하고 있습니다. 최근 몇 년 동안 이러한 도구들은 혁신적인 방식으로 활용되어, 금융 안정 우려를 일으켰던 무담보 소비자 대출의 급격한 성장세를 억제하는데 기여했습니다. 또한, FSC는 최근에 다부처 자문 기구로 설립되었으며, 당국은 이 기구가 금융 안정 문제에 대한 고위급 논의를 위한 유용한 플랫폼으로 작용되고 있다고 언급했습니다.
+
+###### 매크로 금융 정책 프레임워크의 효율성을 더욱 향상시키기 위해, 동료 평가는 다음과 같은 권고 사항을 제시했습니다:
+- FSC의 매크로 금융 정책 프레임워크 내 역할을 명확히 하여 CBR과의 임무 및 책임의 중복 가능성을 제거하는 것.
+- FSC의 기관적 및 운영적 구조를 강화하는 것, 예를 들어, CBR의 역할을 강화하고, 의무된 임무를 수행하기 위한 공식적 구조를 발전시키며, 공공 부문 당국에 대해 준수 또는 설명 기반으로 권고를 내릴 수 있는 권한을 부여하는 것.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="7,367,0,0">
+    <pre><code></code></pre>
+  </div>
+</div>
+</body>
+</html>

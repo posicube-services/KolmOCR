@@ -1,0 +1,86 @@
+model:
+  name: Qwen/Qwen2.5-VL-7B-Instruct
+  trust_remote_code: false
+  load_in_8bit: false
+  load_in_4bit: false
+  device_map: auto
+  torch_dtype: auto
+  use_flash_attention: true
+  attn_implementation: null
+  freeze_vision_tower: false
+  freeze_language_model: false
+  use_lora: false
+  lora_rank: 8
+  lora_alpha: 32
+  lora_dropout: 0.1
+  lora_target_modules:
+  - q_proj
+  - v_proj
+  - k_proj
+  - o_proj
+  lora_modules_to_save: null
+dataset:
+  train: []
+  eval: []
+training:
+  output_dir: ./outputs
+  num_train_epochs: 1
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 2.0e-05
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.1
+  lr_scheduler_kwargs: {}
+  optim: adamw_torch
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-08
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  muon_momentum: 0.95
+  muon_lr_multiplier_head: 11.0
+  muon_lr_multiplier_embed: 30.0
+  muon_lr_multiplier_scalar: 2.0
+  gradient_checkpointing: false
+  gradient_checkpointing_kwargs:
+    use_reentrant: false
+  evaluation_strategy: steps
+  eval_steps: 500
+  save_strategy: steps
+  save_steps: 500
+  save_total_limit: 3
+  load_best_model_at_end: true
+  metric_for_best_model: eval_loss
+  greater_is_better: false
+  logging_dir: null
+  logging_strategy: steps
+  logging_steps: 10
+  logging_first_step: true
+  report_to:
+  - wandb
+  seed: 42
+  data_seed: 42
+  dataloader_drop_last: true
+  dataloader_num_workers: 16
+  max_train_samples: null
+  max_eval_samples: null
+  collator_max_token_len: null
+  remove_unused_columns: false
+  torch_compile: false
+  torch_compile_backend: inductor
+  torch_compile_mode: default
+  torch_compile_fullgraph: false
+  torch_compile_dynamic: false
+  use_early_stopping: false
+  early_stopping_patience: 3
+  early_stopping_threshold: 0.0
+project_name: olmocr-training
+run_name: null
+tags: []
+notes: null
+experiment_tracker: tensorboard
+wandb_project: null
+wandb_entity: null
+distributed: false
+local_rank: -1

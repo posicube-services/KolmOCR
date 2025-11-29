@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 11pt;
+            color: #111;
+            margin: 24px;
+            background: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 18pt;
+            margin-bottom: 22px;
+            font-weight: 700;
+            color: #1f2b40;
+            letter-spacing: -0.5px;
+        }
+
+        /* 기본 table 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #222;
+            table-layout: fixed;
+            margin-bottom: 22px;
+        }
+
+        th {
+            background: #1f2b40;
+            color: #fff;
+            padding: 7px 6px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid #222;
+            font-size: 11pt;
+        }
+
+        td {
+            padding: 6px 6px;
+            border: 1px solid #ccc;
+            font-size: 10pt;
+            vertical-align: middle;
+            background: #ffffff;
+        }
+
+        /* 섹션 헤더 */
+        .section-header {
+            background: #1f2b40;
+            color: #fff;
+            text-align: center;
+            font-weight: 700;
+            padding: 8px;
+            font-size: 13pt;
+        }
+
+        /* 서브 섹션 */
+        .subsection-header {
+            background: #4c5563;
+            color: #fff;
+            text-align: center;
+            font-weight: 600;
+            padding: 6px;
+            border: 1px solid #333;
+            font-size: 11pt;
+        }
+
+        /* key(라벨) */
+        .field-label {
+            font-weight: 600;
+            background: #efefef;
+            text-align: center !important;
+            white-space: nowrap;
+            font-size: 9.5pt;
+            color: #333;
+        }
+
+        /* value */
+        .field-value {
+            background: #ffffff;
+            text-align: center !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 10.5pt;
+            color: #111;
+        }
+
+        table td.field-value,
+        table td.field-label {
+            display: table-cell;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>정기예금가입신청서</h1>
+
+    <!-- 개인정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">개인정보</th></tr>
+
+        <tr><th colspan="4" class="subsection-header">기본정보</th></tr>
+
+        <tr>
+            <th colspan="2" class="subsection-header">신분증정보</th>
+            <th colspan="2" class="subsection-header">연락처</th>
+        </tr>
+
+        <tr>
+            <td class="field-label">주민등록번호</td>
+            <td class="field-value">900101-1234567</td>
+            <td class="field-label">휴대폰번호</td>
+            <td class="field-value">010-5235-9281</td>
+        </tr>
+
+        <tr>
+            <td class="field-label">이메일주소</td>
+            <td class="field-value">itsme@gmail.com</td>
+            <td class="field-label">우편번호</td>
+            <td class="field-value">06320</td>
+        </tr>
+
+        <tr>
+            <td class="field-label">상세주소</td>
+            <td class="field-value">서울특별시 강남구 테헤란로 42-1 502호</td>
+            <td class="field-label">거주지와 동일</td>
+            <td class="field-value">Y</td>
+        </tr>
+
+        <tr>
+            <td class="field-label">통장수령지 주소</td>
+            <td class="field-value" colspan="3">서울특별시 강남구 테헤란로 42-1 502호</td>
+        </tr>
+    </table>
+
+    <!-- 예금정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">예금정보</th></tr>
+
+        <tr><th colspan="4" class="subsection-header">예금종류</th></tr>
+
+        <tr>
+            <th colspan="2" class="subsection-header">정기예금</th>
+            <th colspan="2" class="subsection-header">자동이체</th>
+        </tr>
+
+        <tr>
+            <td class="field-label">예금기간</td>
+            <td class="field-value">12개월</td>
+            <td class="field-label">자동이체계좌</td>
+            <td class="field-value">230-521-789012</td>
+        </tr>
+
+        <tr>
+            <td class="field-label">이자지급방법</td>
+            <td class="field-value">만기일일괄지급</td>
+            <td class="field-label">이체일</td>
+            <td class="field-value">2025-06-01</td>
+        </tr>
+
+        <tr><th colspan="4" class="subsection-header">예금금액</th></tr>
+
+        <tr>
+            <th colspan="2" class="subsection-header">원화예금</th>
+            <th colspan="2" class="subsection-header">외화예금</th>
+        </tr>
+
+        <tr>
+            <td class="field-label">예금금액(원화)</td>
+            <td class="field-value">10000000</td>
+            <td class="field-label">통화유형</td>
+            <td class="field-value">USD</td>
+        </tr>
+
+        <tr>
+            <td class="field-label">이자율(%)</td>
+            <td class="field-value">3.5</td>
+            <td class="field-label">예금금액(외화)</td>
+            <td class="field-value">10000</td>
+        </tr>
+    </table>
+
+    <!-- 계좌정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+
+        <tr>
+            <th colspan="2" class="subsection-header">입출금계좌</th>
+            <th colspan="2" class="subsection-header">계좌연계</th>
+        </tr>
+
+        <tr>
+            <td class="field-label">계좌번호</td>
+            <td class="field-value">412-612-789012</td>
+            <td class="field-label">자동이체연계</td>
+            <td class="field-value">Y</td>
+        </tr>
+
+        <tr>
+            <td class="field-label">계좌명의자</td>
+            <td class="field-value">홍길동</td>
+            <td class="field-label">연동서비스</td>
+            <td class="field-value">모바일뱅킹, 인터넷뱅킹</td>
+        </tr>
+    </table>
+
+    <!-- 거래내역 -->
+    <table>
+        <tr><th colspan="4" class="section-header">거래내역</th></tr>
+
+        <tr>
+            <th colspan="2" class="subsection-header">최근거래</th>
+            <th colspan="2" class="subsection-header">이체내역</th>
+        </tr>
+
+        <tr>
+            <td class="field-label">거래일자</td>
+            <td class="field-value">2025-05-01</td>
+            <td class="field-label">이체계좌</td>
+            <td class="field-value">230-521-789012</td>
+        </tr>
+
+        <tr>
+            <td class="field-label">거래금액</td>
+            <td class="field-value">500000</td>
+            <td class="field-label">이체일시</td>
+            <td class="field-value">2025-05-01 14:30</td>
+        </tr>
+    </table>
+
+</body>
+</html>

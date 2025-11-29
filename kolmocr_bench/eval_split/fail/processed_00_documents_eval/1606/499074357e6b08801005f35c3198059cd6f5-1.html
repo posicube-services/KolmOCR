@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="25,49,975,300">
+    <pre><code class="language-markdown"># 주거 감독 소위원회 (HSSC) 행동 로그
+
+## 진행 중인 행동
+
+| 번호 | 참조 | 행동 | 담당자 | 기한 | 반응 |
+|---|---|---|---|---|---|
+| 1. | HSSC 11/09/2017 항목 3 | HSSC 2018/19 작업 계획에 &#x27;임차인의 서비스 요금&#x27;에 대한 특별 세션 추가 | Zakia Variava | 2018년 7월 3일 | 2018/19 작업 계획에 제안될 예정 |
+
+## 완료된 행동
+
+| 번호 | 참조 | 행동 | 담당자 | 기한 | 업데이트/기한 |
+|---|---|---|---|---|---|
+| 1. | HSSC 2018년 3월 | 지역별로 비어 있는 부동산의 수를 OSC에 제공 | Martin Ling | 2018년 6월 18일 | 별도 첨부파일 참조 |</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="25,369,43,34">
+    <h3>Note:</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="25,421,280,28">
+    <ul>
+      <li>The image is normalized to [1000,1000].</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

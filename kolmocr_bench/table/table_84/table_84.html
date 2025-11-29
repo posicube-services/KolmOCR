@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>법인인감증명서 첨부양식</title>
+
+  <style>
+    /* ==============================
+     A4 PRINT OPTIMIZATION
+  =============================== */
+    @page {
+      size: A4;
+      margin: 12mm 14mm 14mm 14mm;
+    }
+
+    @media print {
+      body {
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* ==============================
+     기본 문서 스타일
+  =============================== */
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 11pt;
+      background: #ffffff;
+      color: #222;
+      max-width: 190mm;
+      margin: 18mm auto;
+      line-height: 1.55;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22pt;
+      font-weight: 700;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #003a8c;
+      color: #003a8c;
+    }
+
+    /* ==============================
+     테이블 스타일
+  =============================== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 22px;
+      table-layout: fixed;
+    }
+
+    th {
+      background: #003a8c;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px;
+      border: 1px solid #2b4f80;
+      font-size: 12pt;
+      text-align: center;
+    }
+
+    td {
+      background: #eef5ff;
+      border: 1px solid #cfd8e5;
+      padding: 8px;
+      font-size: 11pt;
+      color: #111;
+      vertical-align: middle;
+      word-break: break-all;
+    }
+
+    /* ==============================
+     라벨 및 값
+  =============================== */
+    .label {
+      background: #d9e6f7;
+      font-weight: 600;
+      text-align: center;
+      color: #003a8c;
+    }
+
+    .value {
+      background: #ffffff;
+      text-align: left;
+      color: #111;
+    }
+
+    /* ==============================
+     섹션 헤더
+  =============================== */
+    .section-header {
+      background: #003a8c;
+      color: #ffffff;
+      padding: 9px;
+      font-size: 14pt;
+      font-weight: 700;
+      text-align: center;
+      border: 1px solid #2b4f80;
+    }
+
+    .sub-header {
+      background: #d9e6f7;
+      color: #003a8c;
+      font-weight: 600;
+      padding: 7px;
+      font-size: 12pt;
+      text-align: center;
+      border: 1px solid #bfcfe5;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .right {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>법인인감증명서 첨부양식</h1>
+
+  <!-- ============================
+     1. 기본정보
+============================ -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">기본정보</th>
+    </tr>
+
+    <tr>
+      <td class="label">법인명</td>
+      <td class="value">삼성전자 주식회사</td>
+      <td class="label">사업자등록번호</td>
+      <td class="value">123-45-67890</td>
+    </tr>
+
+    <tr>
+      <td class="label">법인등록번호</td>
+      <td class="value">11011-123456789</td>
+      <td class="label">대표자명</td>
+      <td class="value">김삼성</td>
+    </tr>
+
+    <tr>
+      <td class="label">대표자 직위</td>
+      <td class="value">대표이사</td>
+      <td class="label">대표 연락처</td>
+      <td class="value">02-1234-5678</td>
+    </tr>
+  </table>
+
+  <!-- ============================
+     2. 인감정보
+============================ -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">인감정보</th>
+    </tr>
+
+    <tr>
+      <td class="label">인감 종류</td>
+      <td class="value">대표이사 인감</td>
+      <td class="label">인감 등록일</td>
+      <td class="value">2020-03-15</td>
+    </tr>
+
+    <tr>
+      <td class="label">인감부본 파일</td>
+      <td class="value">인감부본_20250101.pdf</td>
+      <td class="label">부본 확인일</td>
+      <td class="value">2025-01-05</td>
+    </tr>
+  </table>
+
+  <!-- ============================
+     3. 첨부서류
+============================ -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">첨부서류</th>
+    </tr>
+
+    <tr>
+      <td class="label">법인등기부등본</td>
+      <td class="value">등기부등본_20250101.pdf</td>
+      <td class="label">사업자등록증 사본</td>
+      <td class="value">사업자등록증_20250101.jpg</td>
+    </tr>
+
+    <!-- 세부 서류 테이블 -->
+    <tr>
+      <th colspan="4" class="sub-header">첨부서류 목록</th>
+    </tr>
+
+    <tr>
+      <th>서류명</th>
+      <th>발행일자</th>
+      <th>유효기간</th>
+      <th>첨부여부</th>
+    </tr>
+
+    <tr>
+      <td class="value">법인등기부등본</td>
+      <td class="center value">2025-01-01</td>
+      <td class="center value">2026-01-01</td>
+      <td class="center value">Y</td>
+    </tr>
+
+    <tr>
+      <td class="value">사업자등록증</td>
+      <td class="center value">2025-01-02</td>
+      <td class="center value">2026-01-02</td>
+      <td class="center value">Y</td>
+    </tr>
+
+    <tr>
+      <td class="value">대표자 신분증</td>
+      <td class="center value">2025-01-03</td>
+      <td class="center value">2026-01-03</td>
+      <td class="center value">Y</td>
+    </tr>
+
+  </table>
+
+  <!-- ============================
+     4. 사용 목적 및 활용 내역
+============================ -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">사용 목적 및 활용 내역</th>
+    </tr>
+
+    <tr>
+      <td class="label">사용 목적</td>
+      <td colspan="3" class="value">금융 거래, 계약서 발급, 대외 제출용</td>
+    </tr>
+
+    <tr>
+      <th colspan="4" class="sub-header">활용 내역</th>
+    </tr>
+
+    <tr>
+      <th>날짜</th>
+      <th>활용 내용</th>
+      <th>담당자</th>
+      <th>비고</th>
+    </tr>
+
+    <tr>
+      <td class="center value">2025-01-10</td>
+      <td class="value">은행 계좌 개설 제출</td>
+      <td class="center value">이은행</td>
+      <td class="center value">완료</td>
+    </tr>
+
+    <tr>
+      <td class="center value">2025-02-15</td>
+      <td class="center value">신용카드 발급 심사 제출</td>
+      <td class="center value">박카드</td>
+      <td class="center value">진행중</td>
+    </tr>
+
+    <tr>
+      <td class="center value">2025-03-05</td>
+      <td class="center value">대출 심사 서류 제출</td>
+      <td class="center value">김대출</td>
+      <td class="center value">대기</td>
+    </tr>
+
+    <tr>
+      <td class="label">사용 제한 사항</td>
+      <td colspan="3" class="value">본 서류는 타인에게 양도하거나 위임할 수 없습니다.</td>
+    </tr>
+
+  </table>
+
+  <!-- ============================
+     5. 서명 및 날인
+============================ -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">서명 및 날인</th>
+    </tr>
+
+    <tr>
+      <td class="label">대표자 서명</td>
+      <td class="value">김삼성</td>
+      <td class="label">법인 인감 날인</td>
+      <td class="value">※ 인감 날인 완료</td>
+    </tr>
+
+    <tr>
+      <td class="label">작성일자</td>
+      <td class="value">2025-04-01</td>
+      <td class="label">비고</td>
+      <td class="value"></td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

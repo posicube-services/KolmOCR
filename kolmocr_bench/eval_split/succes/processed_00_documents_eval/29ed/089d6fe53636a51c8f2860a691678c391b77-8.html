@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="18,32,290,19">
+    <p>Here is the document converted to structured Markdown format:</p>
+  </div>
+  <div class="block" data-id="b002" data-bbox="18,63,982,856">
+    <pre><code class="language-markdown"># 감사의 글
+
+## Reference List
+
+1. R. Stein, L. Razin, E. Fried, In vitro methylation of hamster adenine phosphoribosyltransferase gene inhibits its expression in mouse L cells. Proc. Natl. Acad. Sci. USA. 89, 623–627 (1992).
+2. M. Busslinger, J. Hurst, P. R. Flavell, DNA methylation regulates expression of the insulin gene. Cell. 39, 179–186 (1984).
+3. M. Wigler, D. Levy, M. Perucchio, The somatic repair of DNA by human bone marrow cells. Nature. 241, 33–40 (1981).
+4. C. K. Meloni, N. Chaille, T. H. Bestor, Transcription of L1AP endogenous retroviruses is constrained by cytosine methylation. Nature. 395, 113–117 (1998).
+5. E. J. Bérard, P. Jaenisch, Role for DNA methylation in genomic imprinting. Nature. 386, 550–553 (1997).
+6. S. J. Koss, N. Landsberger, A. P. Wolffe, DNA methylation controls cell type-dependent repression of transcription initiation. Curr. Biol. 7, 157–165 (1997).
+7. C. Bujard, J. Strahl, F. Rethig, M. Graessmann, A. Graessmann, Chromatin structure is read and altered by transcription in the methylated herpes simplex virus thymidine kinase gene. Proc. Natl. Acad. Sci. U.S.A. 84, 1183–1187 (1987).
+8. I. M. Caballero, J. Hansen, D. Lierdall, S. M. Thomsen, S. H. Merlie, The MeCP2, Mbd2 and Kaiso are dispensable for mouse embryogenesis but play crucial roles in neural development and differentiation. PLoS One. 4, e4315 (2009).
+9. M. O’Geen et al., Histone-modifying enzymes interact with DNA methyltransferases. Annu. Rev. Biochem. 74, 481–514 (2005).
+10. M. Zhang, A. Zill, Controls endogenous retrovirus in embryonic stem cells. Nature. 465, 297–301 (2010).
+11. K. Mandado, Y. Wang, M. Shintata, A. G. Clark, M. J. Garcia-Garcia, TRIM28 controls germ line inheritance of X chromosome dissort mechanisms during and after early embryonic-wide reprogramming. Cell Rep. 13, 316–327 (2015).
+12. G. S. Gopal et al., Structure of KAP1 triple-zipper domain reveals molecular interfaces required for retroelement silencing. Proc. Natl. Acad. Sci. U.S.A. 111, E1542–E1551 (2014).
+13. D. Wolf, S. F. Goff, Embryonic stem cells use two types of silencing viral DNAs. Nature. 458, 1201–1204 (2009).
+14. N. Zacharias, Y. Akimoto, G. Hart, The O-GlcNAc modification in histone H3. Glycobiology, A. Varki, Ed. (Cold Spring Harbor Laboratory Press, NY, 3 ed. 2017), pp. 358–376.
+15. G. Magdala, R. J. Clifford, L. Katozurski, J. Tabernero, T. S. Bestor, Envirotype-specific endogenous retroviruses are genomic suppressors. Proc. Natl. Acad. Sci. U.S.A. 106, 9020–9025 (2009).
+16. T. S. Macfarlan et al., Endogenous non-LTR retroelements and L1s are coordinately repressed by LSD1/KDM1A. Genome Res. 25, 594–607 (2011).
+17. C. O. C. Yee, Y. Liu, L. Feng, Utilizes the L1-ORF1bST-PAD1 complex and controls the function of L1-type zinc fingers. PLoS One 3, e3255 (2008).
+18. S. P. Rowbotham et al., Maintenance of silent chromatin through replication requires SWI/SNF-like chromatin remodeler SMARCA5. Genes Dev. 25, 1086–1098 (2011).
+19. S. Covellino, P. Asp, R. Percipalle, A. J.-O. Farrant, The WSTF-SNF2h chromatin remodeling complex recruits several nuclear proteins in transcription. J. Biol. Chem. 281, 16261–16271 (2006).
+20. M. O’Geen, A. Meissner, J. Müller, Essential role of the glycosyltransferase superfamily in polycomb repression. Science 325, 93–96 (2009).
+21. J. Reichmann et al., Microarray analysis of LTR-retrotransposon silencing identifies Head as a regulator of retrotransposon expression in mouse embryonic stem cells. BMC Genomics 8, e1002465 (2012).
+22. X. Lu et al., The MOV10 helicase inhibits LINE mobility in vivo. Nature. 489, 2149–21160 (2013).
+23. L. Zhou et al., ENU mutagenesis screen identifies novel and known genes involved in epigenetic processes in the mouse. Genome Biol. 13, R81 (2012).
+24. Y. Zhang, L. LeRoy, H.-P. Seelig, W. S. Lane, D. Reinberg, The dermatomyositis-specific autoantigen Mi2 is a component of a complex containing histone deacetylase and nucleosome remodeling activities. Cell 95, 279–289 (1998).
+25. X. Zhu et al., O-GlcNAcylation of histone deacetylases 1 in hepatocellular carcinoma progression. Glycobiology 26, 820–833 (2016).
+26. P. G. Murray et al., 3-M syndrome: A growth hormone-releasing peptide receptor mutation. Endocr. Connect. 2, 225–235 (2013).
+27. C. Stadler et al., O-GlcNAcase maintains microtubule and genome integrity. Mol. Cell 54, 91–94 (2014).
+28. C. Schmiedt, J. Müller, A critical perspective of the diverse roles of O-GlcNAc transferase on chromatin. Chromosomes 124, 429–442 (2015).
+29. K. Shafi et al., The O-GlcNAc transferase encoded by Gm13056 on the X chromosome and is essential for embryonic stem cell viability and mouse ontogeny. Proc. Natl. Acad. Sci. U.S.A. 107, 7251–7256 (2010).
+30. R. L. Dennis et al., Structure and mechanism of an O-GlcNAc transferase lacking O-GlcNACase activity. Nat. Struct. Mol. Biol. 13, 365–371 (2006).
+31. M. A. DeBenedictis, P. Reber-Palacios, D. Bourcis, An epigenetic switch ensures permanent repression via dynamic loss of DNA methylation in embryonic stem cells. eLife 5, R87 (2016).
+32. A. S. Tey et al., O-GlcNAc transferase suppresses necroptosis and liver fibrosis. JCI Insight 2, 90505 (2017).
+33. A. Skinner et al., Conserved serine-rich phosphoprotein triggered by phosphorylation controls differential gene expression. Proc. Natl. Acad. Sci. U.S.A. 114, 13453–13458 (2017).
+34. H. Muñoz et al., PGL2 is regulated by O-linked N-acetylgalactosamine (O-GlcNAc). J. Biol. Chem. 278, 14046–14052 (2003).
+35. M. R. Cooper et al., The cAMP-responsive transcription (CBP) binding protein interacts preferentially with the glycosylated form of CBP. Mol. Cell. Biol. 24, 5152–5162 (2004).
+36. J. O’Donnell, O-GlcNAc regulates RNA polymerase II transcription by directly acting on large components of the pluripotency network. Cell Stem Cell 11, 62–74 (2012).
+37. E. T. Comer, G. W. Hart, Reciprocity between the lysine acetyltransferase GCN5 and the carboxy-terminal domain of RNA polymerase II. Biochemistry 40, 7845–7852 (2001).
+38. R. G. Warren, T. B. Hahnerman, W. W. Hart, B. A. Lewis, Evidence for the involvement of O-GlcNAcylation of human RNA polymerases II CTD in transcription in vitro and in vivo. J. Biol. Chem. 287, 23549–23558 (2012).
+39. R. Bruno, M. Mahgoub, T. S. Macfarian, The arms race between KRAB-zinc finger proteins and RNA polymerase II: the impact on mammalian gene regulation. Annu. Rev. Genet. 53, 393–416 (2019).
+40. Y. Li, L. Zhang, M. Blumenkach, W. Cheng, A common mode of recognition for methylated DNA by bromodomain proteins. Nucleic Acids Res. 41, 1504–1513 (2013).
+41. S. Dume et al., A Pelicanret growth factor is inserted in mouse embryos by the zinc finger protein ZFP568. Science 356, 767–759 (2017).
+42. H. Lei et al., De novo DNA cytosine methylation in mouse embryonic stem cells. Development 121, 319–325 (1995).
+43. A. L. Edwards, T. S. Bestor, RXL1 protects Polycomb-bound genes from hypermethylation. Nat. Genet. 47, 479–485 (2015).
+44. Y. Zhang et al., Model-based analysis of Massively Parallel Sequencing (MASS). Genome Biol. 9, R137 (2008).
+45. S. J. Elissa, E. N. Non, N. Diaz, O. C. Allis, A. L. Parnesky, Histone H3K9me2 is required for endogenous retroviral element silencing in embryonic stem cells. Proc. Natl. Acad. Sci. U.S.A. 112, E2390–E244 (2015).
+46. W. Xie et al., Base-resolution analyses of de novo and parent-of-origin dependent DNA methylation in the mouse genome. Cell 149, 1211–1221 (2014).
+47. S. P. Jackson, K. Tjian, Purification and analysis of RNA polymerase II transcription factors by using gel filtration and affinity chromatography. Proc. Natl. Acad. Sci. U.S.A. 84, 7643–7647 (1987).
+48. D. T. Trig, M. Kyba, G. Q. Daley, Inducible transgene expression in mouse stem cells. Methods Mol. Biol. 261, 15–26 (2005).
+49. S. K. Ooi et al., Dynamic instability of gene expression patterns in pluripotent stem cells. Epigenetics Chromatin 3, 17 (2010).
+50. J. Kingsmead, S. L. Salzberg, Fast gapped-read realignment with Bowtie 2. Nat. Methods 9, 357–359 (2012).
+51. Y. Kim et al., Randal2: Accurate alignment of transcriptomes in the presence of insertions, deletions and gene fusions. Genome Biol. 14, R36 (2013).
+52. Y. Liao, G. K. Smyth, W. Shi, FeatureCounts: gene-wise comparison of Illumina whole-genome shotgun reads to genomic features. Bioinformatics 30, 923–930 (2014).</code></pre>
+  </div>
+  <div class="block" data-id="b003" data-bbox="18,930,580,19">
+    <p>Note: This text includes references that may need to be linked to specific resources or databases for full context and verification.</p>
+  </div>
+</div>
+</body>
+</html>

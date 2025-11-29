@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="13,49,986,347">
+    <pre><code class="language-markdown"># Markdown
+
+## SECTION 11.1 특정 주차장 요구사항
+
+사용, 건물 또는 추가물, 그리고 해당 사용의 강도 변화에 필요한 주차장 공간의 양은 다음 요구사항에 따라 결정되며, 이러한 공간은 지구분할 및 건축 허가 신청서에 명시되어야 하며 해당 용도로 보존되어야 합니다. 동일 건물에 두 가지 이상의 용도가 있는 경우, 각 개별 용도는 본 조례의 본 절에 따른 주차장 요구사항에 따라야 합니다.
+
+| 용도 유형 | 필요한 주차 공간 수 |
+|----------|---------------------|
+| A. 공항, 철도 여객역 및 버스 터미널 | 대기 승객을 위한 4석당 1개의 주차 공간, 그리고 최대 근로자 수의 근무자 2명당 1개의 주차 공간. |
+| B. 자동차 세탁소 | 근로자 1명당 1개의 주차 공간, 소유자 또는 관리자 1명당 1개의 주차 공간, 그리고 시설 용량의 5배에 해당하는 보관 공간. |
+| C. 자동차 서비스 스테이션 | 각 가스 펌프 섬당 1개의 주차 공간, 각 작업 베이당 2개의 주차 공간, 그리고 최대 근로자 수의 근무자 1명당 1개의 주차 공간. |
+| D. 미용실 및 미용실 | 미용실 및/또는 미용실 운영자 1명당 2개의 주차 공간. |
+| E. 블링장 | 각 레인당 5개의 주차 공간, 그리고 최대 근로자 수의 근무자 2명당 1개의 주차 공간. |
+| F. 시 및/또는 카운티 정부 | 총 바닥 면적 200평방피트당 1개의 주차 공간. |
+| G. 상업 또는 기술 학교 | 학교 설계 용량 기준으로 학생 2명당 1개의 주차 공간, 그리고 근로자 1명당 1개의 주차 공간. |</code></pre>
+  </div>
+</div>
+</body>
+</html>

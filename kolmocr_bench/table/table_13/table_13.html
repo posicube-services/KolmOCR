@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>거래정지해제신청서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12px;
+            background: #ffffff;
+            color: #1a1a1a;
+            margin: 0;
+            padding: 30px;
+            line-height: 1.45;
+        }
+
+        .document-container {
+            max-width: 190mm;
+            margin: 0 auto;
+            padding: 25px 30px;
+            border: 1px solid #cdd4dc;
+            background: #fff;
+        }
+
+        .document-title {
+            text-align: center;
+            font-size: 22px;
+            color: #0b2a4a;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #0b2a4a;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin-bottom: 16px;
+        }
+
+        .section-header {
+            background: #0a1f35;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #0a1f35;
+        }
+
+        .subsection-header {
+            background: #0b2a4a;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            padding: 6px;
+            border: 1px solid #0b2a4a;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d6dd;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        th,
+        .label-cell {
+            background: #f3f5f7;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .value-cell {
+            background: #ffffff;
+            text-align: center;
+            color: #222;
+            font-size: 11px;
+        }
+
+        /* 거래내역 전용 셀 */
+        .transaction-table th {
+            background: #0b2a4a;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .transaction-table td {
+            background: #ffffff;
+            padding: 7px;
+        }
+
+        .date-col {
+            text-align: center;
+        }
+
+        .content-col {
+            text-align: center;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="document-container">
+
+        <div class="document-title">거래정지해제신청서</div>
+
+        <!-- 1. 신청인 정보 -->
+        <table>
+            <tr>
+                <th colspan="4" class="section-header">신청인 기본정보</th>
+            </tr>
+
+            <tr>
+                <th colspan="2" class="subsection-header">개인정보</th>
+                <th colspan="2" class="subsection-header">주소정보</th>
+            </tr>
+
+            <tr>
+                <td class="label-cell">주민등록번호</td>
+                <td class="value-cell">920315-1******</td>
+                <td class="label-cell">우편번호</td>
+                <td class="value-cell">06523</td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">성명</td>
+                <td class="value-cell">김민수</td>
+                <td class="label-cell">기본주소</td>
+                <td class="value-cell">서울특별시 서초구 반포대로 212</td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">생년월일</td>
+                <td class="value-cell">1992-03-15</td>
+                <td class="label-cell">상세주소</td>
+                <td class="value-cell">601호</td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">휴대폰번호</td>
+                <td class="value-cell">010-8723-5512</td>
+                <td colspan="2" class="value-cell"></td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">이메일</td>
+                <td class="value-cell">minsu.kim92@gmail.com</td>
+                <td colspan="2" class="value-cell"></td>
+            </tr>
+        </table>
+
+        <!-- 2. 계좌정보 -->
+        <table>
+            <tr>
+                <th colspan="4" class="section-header">계좌정보</th>
+            </tr>
+
+            <tr>
+                <th colspan="2" class="subsection-header">계좌개요</th>
+                <th colspan="2" class="subsection-header">계좌소유자</th>
+            </tr>
+
+            <tr>
+                <td class="label-cell">계좌번호</td>
+                <td class="value-cell">110-234-567890</td>
+                <td class="label-cell">소유자명</td>
+                <td class="value-cell">김민수</td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">은행명</td>
+                <td class="value-cell">신한은행</td>
+                <td class="label-cell">관계</td>
+                <td class="value-cell">본인</td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">계좌유형</td>
+                <td class="value-cell">입출금(보통예금)</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+
+        <!-- 3. 거래정지 사유 -->
+        <table>
+            <tr>
+                <th colspan="4" class="section-header">거래정지 사유 및 해제 요청</th>
+            </tr>
+
+            <tr>
+                <th colspan="2" class="subsection-header">정지 사유 설명</th>
+                <th colspan="2" class="subsection-header">해제 요청 사유</th>
+            </tr>
+
+            <tr>
+                <td class="label-cell">사유 분류</td>
+                <td class="value-cell">비정상 로그인 탐지</td>
+                <td class="label-cell">해제 근거</td>
+                <td class="value-cell">고객 본인 확인 완료 및 보안 인증 재설정 완료</td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">상세 설명</td>
+                <td class="value-cell">해외 IP 기반의 로그인 시도가 반복적으로 발생함</td>
+                <td class="label-cell">첨부서류 목록</td>
+                <td class="value-cell">신분증 사본, 본인확인서, 최근 거래확인서</td>
+            </tr>
+        </table>
+
+        <!-- 4. 거래내역 -->
+        <table class="transaction-table">
+            <tr>
+                <th colspan="4" class="section-header">거래내역 요약</th>
+            </tr>
+            <tr>
+                <th colspan="4" class="subsection-header">최근 거래 내역</th>
+            </tr>
+
+            <tr>
+                <th class="date-col">일자</th>
+                <th class="content-col">내용</th>
+                <th>금액</th>
+                <th>잔액</th>
+            </tr>
+
+            <tr>
+                <td class="date-col">2025-03-01</td>
+                <td class="content-col">월급 입금</td>
+                <td>3,200,000</td>
+                <td>3,200,000</td>
+            </tr>
+
+            <tr>
+                <td class="date-col">2025-03-05</td>
+                <td class="content-col">카드 대금 출금</td>
+                <td>-520,000</td>
+                <td>2,680,000</td>
+            </tr>
+
+            <tr>
+                <td class="date-col">2025-03-08</td>
+                <td class="content-col">공과금 자동이체</td>
+                <td>-185,000</td>
+                <td>2,495,000</td>
+            </tr>
+
+            <tr>
+                <td class="date-col">2025-03-10</td>
+                <td class="content-col">온라인 쇼핑 결제</td>
+                <td>-149,000</td>
+                <td>2,346,000</td>
+            </tr>
+
+            <tr>
+                <th colspan="4" class="subsection-header">비정상 거래 여부</th>
+            </tr>
+
+            <tr>
+                <td class="label-cell">확인 여부</td>
+                <td class="value-cell">비정상 패턴 일부 존재(고객 확인 완료)</td>
+                <td class="label-cell">종합 판단</td>
+                <td class="value-cell">해제 가능</td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+
+</html>

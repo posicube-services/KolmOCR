@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="5,49,995,439">
+    <pre><code class="language-markdown"># Markdown
+
+제품 선택. 또한, 많은 소비자들이 펜을 사용하여 구매한 제품을 체크하는 경우가 많아서, 관찰자로서 이를 쇼핑 리스트임을 확인하는 것이 상대적으로 쉬웠다.
+
+## Study Package (선택된 제품) 및 Study Packages (선택된 제품 이외의 제품)
+
+패키지 연구는 분명히 제품 조합 연구와 관련이 있지만, 이 경우 소비자가 다른 제품을 비교하거나 선택된 제품을 연구하는 더 직접적인 대안 평가를 의미한다. Study Assortment과 마찬가지로, 이 변수는 관여도와 관련이 있으며, 패키지를 연구하는 것은 브라우징의 한 형태로 간주될 수 있다. 제품을 연구한다는 것은 제품을 집어 들고 연구하는 것을 의미한다. 이는 제품을 뒤집어 뒷면을 살펴보는 것일 수도 있고, 영양 정보가 앞면에 표시된 경우라면 패키지 앞면을 읽는 것일 수도 있다. 일반적으로 소비자가 패키지에 적힌 내용 중 일부를 읽는 것처럼 보이는 것이 중요했다. 만약 그가 제품을 집어 들고 잠깐만 보고 바구니에 넣거나 다시 선반에 놓는다면, 우리는 그가 패키지를 연구한다고 보지 않았다.
+
+### Study Assortment
+
+관여도와 관련된 또 다른 요소는 대안(제품 조합)의 검색 및 평가가 어느 정도 이루어지는지에 대한 것이다. 높은 관여도는 제품 선택 시 인지적 노력이 증가하여 제품 조합 연구를 증가시킬 수 있다(Lockshin et al., 1997). 소비자가 어떻게 제품 조합을 연구하는지 관찰하기 위해 우리는 소비자 옆에서 서서 Underhill(2003)가 제안한 바와 가트이 그에게 영향을 미치지 않도록 했다. 일부 소비자는 제품 조합을 연구하지 않고 바로 제품으로 이동했다. 다른 소비자는 제품 조합을 연구하기 위해 선반 앞에 서 있거나 걸어다니는 경우도 있었다. 대부분의 경우 두 가지가 결합되어 사용되었기 때문에, 우리는 소비자가 제품 조합을 연구했는지 또는 바로 선택된 제품으로 이동했는지만 관찰했다.
+
+### 과도한 통로 혼잡도
+
+Grossbart et al.(1990)에 따르면, 혼잡은 소비자 행동에 영향을 미칠 수 있으며, 예를 들어 시간 소비와 브라우징에 영향을 줄 수 있다. 통로가 혼잡한지 여부를 측정하기 위해, 소비자와 동시에 통로에 다른 사람들이 있는지를 관찰했다. 이는 관찰자 외에 다른 사람들이 통로에 들어오거나 소비자가 통로에 있을 때 이미 통로에 있던 경우에 해당했다. 통로에 머문 시간은 고려하지 않았다. 이 변수는 간격별로 측정되었으며, 소비자와 관찰자 외에 추가로 한 명의 사람이 통로에 있을 때부터 시작했다.
+
+### Large Price Signs 연구
+
+가격 표지판은 소매점에서 소비자에게 영향을 미치고, 일반 제품과 할인 제품 모두의 판매를 촉진할 수 있다(McKinnon et al., 1981). Sinha와 Uniyal(2005)의 연구에 따르면, 가격 표지판을 연구하는 것은 소비자가 가격 검색에 얼마나 중요한지를 나타낼 수 있으며, 따라서 소비자가 더 절약하는 행동을 하는지 여부를 알 수 있다. 가격 표지판 연구는 관여도 수준과도 관련이 있으며, Lockshin et al.(1997)이 제안한 바와 같이 높은 소비자 관여도로 인해 발생하는 브라우징의 연장으로 볼 수 있다. 고객이 가격 표지판을 연구했는지 관찰하기 위해 우리는 고객과 비교적 가까이 있어야 했지만, 동시에 그 바로 뒤에 서지 않도록 주의해야 했다. 만약 고객이 머리를 돌려 더 긴 시간 동안 큰 가격 표지판을 바라보는 경우, 우리는 그가 가격 표지판을 연구했다고 가정했다. 또한, 소비자가 동행자에게 가격을 언급하는 경우도 있어, 가격 표지판이 연구되었는지 쉽게 확인할 수 있었다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="5,506,226,57">
+    <p>This markdown document includes the text from the image, with proper formatting and structure. The <code>table</code> tag was not included in this markdown as it is not present in the image content.</p>
+  </div>
+</div>
+</body>
+</html>

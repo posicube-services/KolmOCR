@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>대출한도조회동의서</title>
+
+  <style>
+    /* ====================================
+       A4 PRINT OPTIMIZATION
+    ==================================== */
+    @page {
+      size: A4;
+      margin: 12mm 14mm 14mm 14mm;
+    }
+
+    @media print {
+      body {
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* ====================================
+       기본 문서 스타일
+    ==================================== */
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 10.5pt;
+      background: #ffffff;
+      color: #222;
+      margin: 18mm;          /* 화면에서 볼 때만 적용 */
+      line-height: 1.55;
+      max-width: 190mm;      /* A4 내부 폭에 맞춤 */
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 20pt;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #666;
+      color: #333;
+    }
+
+    /* ====================================
+       테이블 스타일
+    ==================================== */
+    table {
+      width: 100%;
+      max-width: 190mm;      /* A4 너비 초과 방지 */
+      margin: 0 0 22px 0;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th {
+      background: #4b4b4b;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px;
+      border: 1px solid #5a5a5a;
+      text-align: center;
+      font-size: 11pt;
+    }
+
+    td {
+      background: #fafafa;
+      border: 1px solid #d0d0d0;
+      padding: 8px;
+      font-size: 10.5pt;
+      color: #111;
+      vertical-align: middle;
+    }
+
+    /* ====================================
+       라벨/값 정리
+    ==================================== */
+    .label {
+      background: #e5e5e5;
+      font-weight: 600;
+      text-align: center;
+      color: #333;
+    }
+
+    .value {
+      background: #ffffff;
+      text-align: left;
+      color: #111;
+    }
+
+    .value-right {
+      text-align: right;
+    }
+
+    /* ====================================
+       섹션/서브 헤더
+    ==================================== */
+    .section-header {
+      background: #666;
+      color: #fff;
+      padding: 8px;
+      font-weight: 700;
+      font-size: 13.5pt;
+      text-align: center;
+      border: 1px solid #555;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-header {
+      background: #7a7a7a;
+      color: #fff;
+      padding: 7px;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid #555;
+      font-size: 11pt;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <h1>대출한도조회동의서</h1>
+
+  <!-- ========================================================= -->
+  <!-- 1. 개인정보 수집 및 이용 동의 -->
+  <!-- ========================================================= -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">개인정보 수집 및 이용 동의</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">기본 정보</th>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="sub-header">신원 확인 정보</th>
+      <th colspan="2" class="sub-header">연락처 정보</th>
+    </tr>
+
+    <tr>
+      <td class="label">성명</td>
+      <td class="value">홍길동</td>
+      <td class="label">휴대폰 번호</td>
+      <td class="value">010-1234-5678</td>
+    </tr>
+
+    <tr>
+      <td class="label">생년월일</td>
+      <td class="value">1990-01-01</td>
+      <td class="label">이메일 주소</td>
+      <td class="value">user@example.com</td>
+    </tr>
+
+    <tr>
+      <td class="label">성별</td>
+      <td class="value">남성</td>
+      <td class="label">주소</td>
+      <td class="value">서울특별시 강남구 테헤란로 123</td>
+    </tr>
+
+    <tr>
+      <th colspan="4" class="sub-header">동의 사항</th>
+    </tr>
+
+    <tr>
+      <td class="label">개인정보 이용 목적</td>
+      <td colspan="3" class="value">대출 한도 조회 및 심사</td>
+    </tr>
+
+    <tr>
+      <td class="label">보유 및 이용 기간</td>
+      <td colspan="3" class="value">3년</td>
+    </tr>
+
+    <tr>
+      <td class="label">제3자 제공 동의</td>
+      <td colspan="3" class="value">동의함</td>
+    </tr>
+  </table>
+
+
+  <!-- ========================================================= -->
+  <!-- 2. 대출 한도 조회 요청 정보 -->
+  <!-- ========================================================= -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">대출 한도 조회 요청 정보</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">대출 유형 선택</th>
+    </tr>
+
+    <tr>
+      <td class="label">대출 종류</td>
+      <td class="value">신용대출</td>
+      <td class="label">신청 금액</td>
+      <td class="value-right value">50,000,000원</td>
+    </tr>
+
+    <tr>
+      <td class="label">상환 기간</td>
+      <td class="value">36개월</td>
+      <td class="label">소득 구분</td>
+      <td class="value">정규직</td>
+    </tr>
+
+    <tr>
+      <td class="label">연소득</td>
+      <td class="value-right value">60,000,000원</td>
+      <td class="label">재산 현황</td>
+      <td class="value">자택 소유, 자동차 1대</td>
+    </tr>
+
+    <tr>
+      <th colspan="4" class="sub-header">조회 결과</th>
+    </tr>
+
+    <tr>
+      <td class="label">최대 한도</td>
+      <td class="value-right value">50,000,000원</td>
+      <td class="label">금리 범위</td>
+      <td class="value">연 3.5% ~ 연 7.2%</td>
+    </tr>
+
+    <tr>
+      <td class="label">상환 방식</td>
+      <td colspan="3" class="value">원리금 균등분할 상환</td>
+    </tr>
+  </table>
+
+
+  <!-- ========================================================= -->
+  <!-- 3. 계좌 정보 및 인증 -->
+  <!-- ========================================================= -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">계좌 정보 및 인증</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">계좌 등록</th>
+    </tr>
+
+    <tr>
+      <td class="label">은행명</td>
+      <td class="value">국민은행</td>
+      <td class="label">계좌번호</td>
+      <td class="value">123-456-789012</td>
+    </tr>
+
+    <tr>
+      <td class="label">예금주 명</td>
+      <td class="value">홍길동</td>
+      <td class="label">본인 인증</td>
+      <td class="value">휴대폰 인증</td>
+    </tr>
+
+    <tr>
+      <td class="label">인증 번호</td>
+      <td class="value">123456</td>
+      <td class="label">인증 완료 시간</td>
+      <td class="value">2025-04-05 14:30:00</td>
+    </tr>
+  </table>
+
+
+  <!-- ========================================================= -->
+  <!-- 4. 서명 및 동의 -->
+  <!-- ========================================================= -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">서명 및 동의</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">전자 서명</th>
+    </tr>
+
+    <tr>
+      <td class="label">서명 이미지</td>
+      <td class="value">서명_이미지_참조</td>
+      <td class="label">서명 날짜</td>
+      <td class="value">2025-04-05</td>
+    </tr>
+
+    <tr>
+      <td class="label">서명자 이름</td>
+      <td class="value">홍길동</td>
+      <td class="label">동의 여부</td>
+      <td class="value">동의함</td>
+    </tr>
+
+    <tr>
+      <td class="label">동의 일시</td>
+      <td class="value">2025-04-05 14:30:00</td>
+      <td class="label">동의 방식</td>
+      <td class="value">전자동의</td>
+    </tr>
+  </table>
+
+
+  <!-- ========================================================= -->
+  <!-- 5. 기타 정보 및 참고사항 -->
+  <!-- ========================================================= -->
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">기타 정보 및 참고사항</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">유의사항</th>
+    </tr>
+
+    <tr>
+      <td class="label">대출 조건</td>
+      <td class="value">연소득 3,000만원 이상, 신용평점 기준 충족 시 이용 가능</td>
+      <td class="label">부가 서비스</td>
+      <td class="value">무료 상담, 우대금리 적용(조건 충족 시)</td>
+    </tr>
+
+    <tr>
+      <td class="label">문의처</td>
+      <td class="value">1588-1234</td>
+      <td class="label">개인정보 처리방침</td>
+      <td class="value">https://www.bank-example.com/privacy</td>
+    </tr>
+
+    <tr>
+      <td class="label">약관 동의</td>
+      <td colspan="3" class="value">대출 한도 조회를 위한 관련 약관 및 개인정보 처리방침에 동의함</td>
+    </tr>
+
+  </table>
+
+</body>
+
+</html>

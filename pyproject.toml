@@ -1,0 +1,216 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# See https://setuptools.pypa.io/en/latest/userguide/quickstart.html for more project configuration options.
+name = "olmocr"
+description = "Fast, efficient, and high quality OCR powered by open visual language models"
+dynamic = ["version"]
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+authors = [
+    {name = "Allen Institute for Artificial Intelligence", email = "jakep@allenai.org"}
+]
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "accelerate>=1.12.0",
+    "beaker-py",
+    "beautifulsoup4>=4.14.2",
+    "bleach",
+    "boto3",
+    "cached-path",
+    "cryptography",
+    "deepspeed",
+    "filelock",
+    "ftfy",
+    "httpx",
+    "levenshtein>=0.27.3",
+    "lingua-language-detector",
+    "markdown2",
+    "markdownify",
+    "matplotlib>=3.10.7",
+    "nltk>=3.9.2",
+    "numpy>=1.24,<2.3",
+    "openai>=2.8.1",
+    "orjson",
+    "Pillow",
+    "pandas>=2.3.3",
+    "PyYAML>=6.0",
+    "pypdf>=5.2.0",
+    "pypdfium2",
+    "requests",
+    "scikit-learn>=1.7.2",
+    "smart_open",
+    "torch>=2.7.0",
+    "transformers==4.55.2",
+    "vllm>=0.11.0",
+    "zstandard",
+]
+license = {file = "LICENSE"}
+
+[project.urls]
+Homepage = "https://github.com/allenai/olmocr"
+Repository = "https://github.com/allenai/olmocr"
+Changelog = "https://github.com/allenai/olmocr/blob/main/CHANGELOG.md"
+# Documentation = "https://olmocr.readthedocs.io/"
+
+[project.optional-dependencies]
+gpu = [
+    "vllm==0.11.0"
+]
+
+dev = [
+    "ruff",
+    "mypy",
+    "black",
+    "isort",
+    "pytest",
+    "pytest-sphinx",
+    "pytest-cov",
+    "pytest-asyncio",
+    "twine>=1.11.0",
+    "build",
+    "setuptools",
+    "wheel",
+    "Sphinx>=4.3.0,<7.1.0",
+    "furo==2023.7.26",
+    "myst-parser>=1.0,<2.1",
+    "sphinx-copybutton==0.5.2",
+    "sphinx-autobuild==2021.3.14",
+    "sphinx-autodoc-typehints==1.23.3",
+    "packaging",
+    "necessary",
+    "peft",
+    "datasets",
+    "omegaconf",
+    "spacy",
+    "wandb",
+    "trl",
+]
+
+bench = [
+    "tinyhost",
+    "fuzzysearch",
+    "rapidfuzz",
+    "sequence_align",
+    "syntok",
+    "openai",
+    "google-genai",
+    "anthropic",
+    "playwright",
+    "mistralai",
+    "lxml",
+    "flask",
+]
+
+train = [
+    "torch",
+    "torchvision",
+    "accelerate",
+    "trl",
+    "peft",
+    "wandb",
+    "omegaconf",
+    "einops",
+    "augraphy",
+    "playwright"
+]
+
+elo = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "matplotlib"
+]
+
+[tool.setuptools.packages.find]
+exclude = [
+    "*.tests",
+    "*.tests.*",
+    "tests.*",
+    "tests",
+    "docs*",
+    "scripts*"
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+olmocr = [
+    "py.typed",
+    "viewer/*.html",
+    "eval/*.html",
+    "bench/katex/*.js",
+    "bench/katex/*.css",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "olmocr.version.VERSION"}
+
+[tool.black]
+line-length = 160
+include = '\.pyi?$'
+exclude = '''
+(
+      __pycache__
+    | \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | \.vscode
+    | \.venv
+    | \bdist\b
+    | \bdoc\b
+)
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+# You can override these pyright settings by adding a personal pyrightconfig.json file.
+[tool.pyright]
+reportPrivateImportUsage = false
+
+[tool.ruff]
+line-length = 160
+target-version = "py311"
+exclude = ["olmocr/train/molmo", "tests/*"]
+ignore = ["E722", "F541"] #igore bare except, and f string without placeholders
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.mypy]
+ignore_missing_imports = true
+no_site_packages = true
+check_untyped_defs = true
+exclude = ["olmocr/train/molmo/", "tests/*"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+strict_optional = false
+
+[tool.pytest.ini_options]
+testpaths = "tests/"
+python_classes = [
+  "Test*",
+  "*Test"
+]
+log_format = "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+log_level = "DEBUG"
+markers = [
+    "nonci: mark test as not intended for CI runs"
+]
+addopts = "-m 'not nonci'"
+
+[tool.flake8]
+max-line-length = 160
+extend-ignore = ["E501"]

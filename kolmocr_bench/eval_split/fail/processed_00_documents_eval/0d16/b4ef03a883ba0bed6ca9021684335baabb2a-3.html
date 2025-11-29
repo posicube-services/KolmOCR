@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="9,38,991,320">
+    <pre><code class="language-markdown"># 목표
+
+짧은 기간 내에 뇌를 가르치기 위해서는 교사가 뇌해부학의 모든 기능과 수준을 극도로 집중적이고 체계적인 방식으로 다루어야 합니다. 뇌의 계층 구조를 세심하고 체계적인 접근 없이 이 자료를 가르치려는 모든 시도는 실패로 끝날 수밖에 없습니다. 따라서 논리적이고 체계적인 방식으로 그 해부학의 각 수준을 따라가는 단위를 준비하는 것이 필요합니다. 이것이 다이어그램 기반 접근법이 방정식에 맞춰지는 지점입니다.
+
+포괄적인 스키마 다이어그램을 만드는 목표는 수업이 뇌의 다양한 수준의 기능을 분해할 수 있도록 하는 방식으로 달성될 수 있습니다. 학생들은 시스템의 복잡성을 이해하면서도 뇌의 지리적 구조와 기능을 종이에 적을 수 있는 형태로 단순화해야 합니다. 이는 주제를 과도하게 복잡한 전체로 다루는 대신 소화하기 쉬운 조각으로 나누어 학습한 내용을 나중에 기억하는 데 도움을 줄 것입니다.
+
+이 과정은 결국 학생들이 자신의 방식으로 학습할 수 있도록 허용될 때 더 성공적으로 이 자료를 배울 수 있다는 이해 위에 기반하고 있습니다. 이 때문에 학생들은 그들에게 제시된 다이어그램을 단순히 복사하도록 요구받지 않을 것입니다. 그들은 필요한 정보를 보여주는 한도 내에서 최소 또는 최대의 추상화를 사용하여 다이어그램을 그릴 자유를 가질 것입니다. 단위의 초기 단계에서는 변동이 거의 없을 수 있지만, 단위의 끝부분에는 학생들 간의 작업에서 큰 다양성이 나타날 것입니다.
+
+이 단위의 목적으로는 이 과정을 다음의 특정 학습 목표로 분해할 것입니다. 각 목표는 하나의 완전한 수업을 나타내며, 수업실에서 하루 이상 지속될 수 있습니다.
+
+이 단위를 통해 학생들은 다음을 할 수 있게 될 것입니다.
+
+1. 신경 세포의 부분과 기능을 식별할 수 있다.
+2. 신경계의 수준과 기능을 설명하고 시각화할 수 있다. a. 신경 세포 b. 중추신경계와 말초신경계 c. 자율신경계 (교감신경계와 부교감신경계) d. 체성신경계 (감각신경계와 운동신경계)
+3. 내분비계를 분석하고 다이어그램화할 수 있다.
+4. 뇌간을 분석하고 다이어그램화할 수 있다.
+5. 대뇌피질의 루브와 구조 및 그 기능을 분석하고 다이어그램화할 수 있다.
+6. 뇌, 신경계 및 내분비계의 포괄적인 다이어그램을 작성하여 그 수준, 상호작용, 기능 및 행동에 미치는 영향을 보여줄 수 있다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="9,372,406,438">
+    <p>| --- |<br>
+| <strong>목표</strong> |<br>
+| 짧은 기간 내에 뇌를 가르치기 위해서는 교사가 뇌해부학의 모든 기능과 수준을 극도로 집중적이고 체계적인 방식으로 다루어야 합니다. 뇌의 계층 구조를 세심하고 체계적인 접근 없이 이 자료를 가르치려는 모든 시도는 실패로 끝날 수밖에 없습니다. 따라서 논리적이고 체계적인 방식으로 그 해부학의 각 수준을 따라가는 단위를 준비하는 것이 필요합니다. 이것이 다이어그램 기반 접근법이 방정식에 맞춰지는 지점입니다. |<br>
+| 포괄적인 스키마 다이어그램을 만드는 목표는 수업이 뇌의 다양한 수준의 기능을 분해할 수 있도록 하는 방식으로 달성될 수 있습니다. 학생들은 시스템의 복잡성을 이해하면서도 뇌의 지리적 구조와 기능을 종이에 적을 수 있는 형태로 단순화해야 합니다. 이는 주제를 과도하게 복잡한 전체로 다루는 대신 소화하기 쉬운 조각으로 나누어 학습한 내용을 나중에 기억하는 데 도움을 줄 것입니다. |<br>
+| 이 과정은 결국 학생들이 자신의 방식으로 학습할 수 있도록 허용될 때 더 성공적으로 이 자료를 배울 수 있다는 이해 위에 기반하고 있습니다. 이 때문에 학생들은 그들에게 제시된 다이어그램을 단순히 복사하도록 요구받지 않을 것입니다. 그들은 필요한 정보를 보여주는 한도 내에서 최소 또는 최대의 추상화를 사용하여 다이어그램을 그릴 자유를 가질 것입니다. 단위의 초기 단계에서는 변동이 거의 없을 수 있지만, 단위의 끝부분에는 학생들 간의 작업에서 큰 다양성이 나타날 것입니다. |<br>
+| 이 단위의 목적으로는 이 과정을 다음의 특정 학습 목표로 분해할 것입니다. 각 목표는 하나의 완전한 수업을 나타내며, 수업실에서 하루 이상 지속될 수 있습니다. |<br>
+| 이 단위를 통해 학생들은 다음을 할 수 있게 될 것입니다. |<br>
+| 1. 신경 세포의 부분과 기능을 식별할 수 있다. |<br>
+| 2. 신경계의 수준과 기능을 설명하고 시각화할 수 있다. a. 신경 세포 b. 중추신경계와 말초신경계 c. 자율신경계 (교감신경계와 부교감신경계) d. 체성신경계 (감각신경계와 운동신경계) |<br>
+| 3. 내분비계를 분석하고 다이어그램화할 수 있다. |<br>
+| 4. 뇌간을 분석하고 다이어그램화할 수 있다. |<br>
+| 5. 대뇌피질의 루브와 구조 및 그 기능을 분석하고 다이어그램화할 수 있다. |<br>
+| 6. 뇌, 신경계 및 내분비계의 포괄적인 다이어그램을 작성하여 그 수준, 상호작용, 기능 및 행동에 미치는 영향을 보여줄 수 있다. |</p>
+  </div>
+</div>
+</body>
+</html>

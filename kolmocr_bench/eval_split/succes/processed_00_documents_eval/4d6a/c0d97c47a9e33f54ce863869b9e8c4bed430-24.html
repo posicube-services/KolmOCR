@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="28,49,971,347">
+    <pre><code class="language-markdown"># Markdown
+
+**형사사건에서도 유사한 절차가 권장됩니다.**
+- 협상된 항소는 사전 심리 회의에서 이루어져야 하며,
+- 그 시점에 변호사의 조언을 바탕으로 법원에서 확고한 재판 날짜를 설정해야 합니다.
+- 이후 회의는 필요하지 않게 여겨집니다.
+
+**이러한 권장 사항은 대부분의 일정 관리 시스템, 특히 개인 일정 시스템에서도 실현 가능하다고 예상됩니다.**
+- 이 시스템에서는 각 판사가 사건을 여러 소송 단계를 거치며 처리해왔기 때문에 해당 사건에 대해 완전한 지식을 가지고 있습니다.
+- 따라서 일정 충돌 문제나 증인의 출석 불가 시 증언록 사용과 같은 문제는 해당 사건을 심리할 판사가 사전 심리 단계에서 효과적으로 해결할 수 있습니다.
+- 재판 중에는 판사가 연기가 필요한 시점을 알 수 있습니다.
+
+**이 권장 사항은 합리적인 연기 정책 개발을 위한 시작점에 불과합니다.**
+- 이러한 제안은 법원의 엄청난 사건 백로그를 직접적으로 해결하지는 않지만,
+- 현재 법원을 압박하고 있는 사건의 늪에서 벗어나기 위한 첫걸음으로 제시됩니다.</code></pre>
+  </div>
+</div>
+</body>
+</html>

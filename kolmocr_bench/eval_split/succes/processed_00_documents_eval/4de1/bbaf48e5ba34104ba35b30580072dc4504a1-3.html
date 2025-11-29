@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="7,49,993,601">
+    <pre><code class="language-markdown"># Markdown
+
+## Blockade in Young Children
+
+The blockade in young children is characterized by remarkable hemodynamic stability (4). Volume loading before such blocks, commonly practiced in adults, is unnecessary in this age group. This phenomenon is advantageous for patients with BCPS.
+
+이와 같은 블록 전에 성인에서 일반적으로 실시되는 볼륨 로딩은 이 연령대에서는 필요하지 않다. 이 현상은 BCPS 환자에게 상당히 유리한 점을 제공한다.
+
+이러한 혜택에도 불구하고, 척추마취에서는 여전히 논란의 여지가 있는 몇 가지 문제들이 있다. 이 문제들 중 하나는 진정이다. 깨어 있는 상태에서 블록을 수행하는 것은 불가능하거나 위험할 수 있다. 블록 적용 중에 어린이가 통제되지 않은 움직임을 할 수 있기 때문이다. 이 연령대의 어린이들은 진정제가 필요할 수 있다. 진정의 목표는 첨자 중에 진통, 불안 완화, 그리고 운동 제어를 제공하는 것이다 (5). 척추마취와 함께 사용되는 일부 진정제는 호흡 정지의 위험을 증가시키는 것으로 보인다 (5). 따라서 어린이들은 진정 중에 밀접하게 모니터링되어야 한다.
+
+우리 환자에서 수술 기간 동안 호흡 부작용, 혼란, 그리고 통증을 관찰하지 못했다. 우리는 척추마취와 예방적 파라세타몰을 통해 적절한 진통을 제공했다.
+
+초기 수술 후 기간 동안 추가 진통제(예: 오피오이드 또는 NSAIDs)는 필요하지 않았다.
+
+심장 질환을 가진 어린이들이 비심장 수술을 받을 경우, 다른 어린이들에 비해 수술 기간 동안의 합병증 및 사망률이 높아진다. 이 어린이들은 마취에 있어 심각한挑전을 제기한다. 일반 마취가 사용될 경우, 자발적 호흡과 빠른 의식 회복이 원칙이다. 이는 기관내 삽관 후 어린이가 완전한 기도 통제를 할 수 있도록 하기 위함이다. 이전 연구들에서 일반 마취와 비교했을 때, 척추마취는 심혈관 및 호흡기 합병증이 적고, 수술 후 기계적 호흡의 필요성이 적으며, 병원 입원 기간이 짧다는 것이 제안되었다 (6). 이러한 요인들로 인해, 척추마취는 심장 질환을 가진 어린이들의 비심장 수술, 특히 하부 복부 수술에 대해 신뢰할 수 있고 안전한 마취 기법으로 보인다.
+
+결론적으로, 척추마취를 통해 원활하고 부작용 없는 수술 후 회복이 가능하다고 생각한다. 우리는 BCPS 환자들에게 척추마취가 일반 마취의 신뢰할 수 있는 대안 기법이 될 수 있다고 생각한다.
+
+## References
+
+1. Leyvi G, Wasnick JD. Single-ventricle patient: pathophysiology and anesthetic management. J Cardiothorac Vasc Anesth 2010;24(1):121-130. http://dx.doi.org/10.1053/j.jvca.2009.07.018 PMid:19664163
+2. Yuki K, Casta A, Iweno S. Anesthetic management of noncardiac surgery for patients with single ventricle physiology. J Anesth 2011;25(2):247-256. http://dx.doi.org/10.1007/s00540-010-1081-4
+3. Abajian JC, Mellish RW, Browne AF, Perkins FM, Lamberti DM, Mazuzan JE Jr. Spinal anesthesia for surgery in the high-risk infant. Anesth Analg 1984;63:359-362. http://dx.doi.org/10.1213/00000539-198403000-00015
+4. Bosenberg A. Benefits of regional anesthesia in children. Pediatr Anesth 2012;22(1):10-18. http://dx.doi.org/10.1111/j.1460-9592.2011.03691.x
+5. Kokki H. Spinal blocks. Pediatr Anesth 2012;22(1):56-64. http://dx.doi.org/10.1111/j.1460-9592.2011.03693.x
+6. White MC. Approach to managing children with heart disease for noncardiac surgery. Pediatric Anesth 2011;21:522-529. http://dx.doi.org/10.1111/j.1460-9592.2010.03416.x PMid:20850154</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="7,667,300,57">
+    <p>이 문서는 구조화된 markdown 형식으로 작성되었으며, 각 문단은 주제별로 나누어져 있습니다. 참고문헌은 각 문단 아래에 표시되었으며, 각 참고문헌은 고유한 번호와 함께 저널, 제목, 출판년도, 페이지, DOI, 그리고 PMID를 포함합니다.</p>
+  </div>
+</div>
+</body>
+</html>

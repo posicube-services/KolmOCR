@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="5,37,995,786">
+    <pre><code class="language-markdown"># 예측치와 지역의 토지 이용 및 서식지 데이터(예: GIS 를 통해)를 통합하여 예방적 벡터 위생 및 노출 경고문의 문제를 해결할 수 있습니다.
+
+## 이러한 예측 플랫폼의 주요 구성 요소는 도표 1에 스 키마로 제시되어 있습니다. 모든 구성 요소는 현재 사용 가능하며 충분히 검증되었습니다. 주요 과제는 관련 모든 구성 요소를 통합하는 것이며, 이어지는 필요한 한 최적화 및 교정 및 특정 지역에 대한 검증입니다.
+
+### 개념 증명을 위해, 우리는 최적화된 중규모 모델17- 19와 벡터 발생 모델10을 사용하여 인도에서 몇 가지 날짜를 피뜨린 기간 동안 발생 시뮬레이션을 수행했습니다. 시뮬레이션은 일일 변동성에 일관되며 유의미한 것으로 나타났으며, 일부 예상된 위치에서 피크가 관찰되었습니다. 2012년 9월의 다양한 날짜에 대한 이러한 예측의 일부는 도표 2에 표시되어 있습니다. 이 결과는 엄격한 검증을 나타내지는 않지만, 접근 방식의 잠재력을 보여줍니다.
+
+## 이러한 플랫폼은 현재 기술로 구현 가능하며, 중요한 구성 요소는 특정 지역에 대해 테스트 및 교정되었습 니다. 예를 들어, 첫 번째 요구 사항인 기상 변수에 의해 구동되는 벡터 발생 모델은 특정 지역에 대해 개발, 교정 및 검증되었습니다. 10 주요 요구 사항은 충분히 높은 공간적 및 시간적 해상도로 발생 매개변수를 모 니터링하는 것이며, 이어지는 검증은 고해상도 예측입니다. 중요한 측면은 정보의 배포이며, 개념과 기술에 익숙하지 않은 최종 사용자들을 사이에서 적절한 커뮤니케이션 도구를 통해 사용 가능성을 보장하는 것입니다. 또 다른 과제는 적절한 의료 시설에서 멀리 떨어진 원격 지역에 사는 사람들에게 완화 조치를 전파하는 것입니다. 따라서 효과적인 경고문을 위해 현대적인 경보 및 통신 기술의 통합이 필요합니다.
+
+### 실제 구현 측면에서, 예측 기관은 기상 변수의 고밀도 모니터링 및 고해상도 예측을 통해 벡터의 위치와 시기를 생성할 수 있습니다. 이러한 데이터를 기반으로 벡터 위생 프로그램 및 노출 경고문을 필요한 간격으로 생성하고, 취약 지역(인류 서식지와의 가까움)의 예 방적 벡터 위생을 위해 공중보건 센터와 같은 실행기관에 전달할 수 있습니다. 경고문의 배포는 다양한 지역 언어로 된 커뮤니케이션 채널을 통해 이루어질 수 있습니다. 또한, 이러한 지속적인 모니터링 및 예측이 장기간에 걸쳐 일일 규모로 축적되면 지역 기후 변화가 말라리아에 미치는 영향에 대한 더 신뢰할 수 있는 추정치를 제공할 수 있습니다. 20 동시에, 기후 변화 21과 삶출제 저항성 22과 같은 요인으로 인한 말라리아 증가에 대비한 강화된 대비책을 제공할 수 있습니다. 동시에, 인도에서 수행된 인구 증가 및 기후 변화가 모기 발생에 미치는 영향의 정량적 분석은 말라리아 통제를 위한 더 나은 정책 수립에 도움을 줄 수 있습니다.
+
+## 참고문헌
+
+1. Kiszewski, A. E. and Teklehaimanot, A., Am. J. Trop. Med. Hyg., 2004, 71, 128–135.
+2. The maiEERA consultative group on drugs, PLoS Med., 2011, 8(1), e1000402.
+3. Mohapatra, P. K., Narain, K., Prakash, A., Bhattacharyya, D. R. and Mahanta, J., Natl. Med. J. India, 2001, 14(3), 139–142.
+4. Sharma, S. K., Tyagi, P. K., Padhan, K., Adak, T. and Subbarao, S. K., Ann. Trop. Med. Parasitol., 2004, 98, 459–568.
+5. Singh, N., Saxena, A. and Singh, M. P., Trop. Med. Int. Health, 2004, 9, 364–371.
+6. Singh, N., Awadhiya, S. B., Dash, A. P. and Shrivastava, R., World Health Forum, 2005, 9, 7–18.
+7. Yadav, R. S., Bhatt, R. M., Kohli, V. K. and Sharma, V. P., Ann. Trop. Med. Parasitol., 2003, 97, 793–802.
+8. Singh, N. and Saxena, A., Am. J. Trop. Med. Hyg., 2005, 72, 26–29.
+9. Dev, V., Dash, A. P. and Khound, K., Curr. Sci., 2006, 90, 32–36.
+10. Dev, V., Phookan, S., Sharma, V. P., Dash, A. P. and Anand, S. P., J. Infect. Dis., 2006, 52, 131–139.
+11. Srivastava, A., Nagpal, N. B., Saxena, R. V., Dev, V. and Subbarao, S. K., GIS, 2005, 19, 91–97.
+12. Srivastava, A. et al., Comput. Methods Prog. Biomed., 2003, 77, 63–75.
+13. Satyanarayana, T. P., Susan, K. G., Vijay, P. O., Aditya, P. D. and Kamaraju, R., Malar. J., 2010, 9, 179.
+14. Nanda, N., Joshi, H., Subbarao, S. K., Yadav, R. S., Shukla, R. P., Dua, V. K. and Sharma, V. P., J. Am. Mosq. Control Assoc., 1996, 12(1), 147–149.
+15. Leeson, H. S., Bull. Entomol. Res., 1939, 30, 103–301.
+16. Billett, J. D., In The Effects of Meteorological Factors upon Parasites (eds Taylor, R. E. and Muller, R.), Blackwell Scientific Publication, 1974, pp. 79–95.
+17. Koenraadt, C. J., Paaijmans, K. P., Githeko, A. K., Knols, B. G. and Takken, W., Malar. J., 2003, 2, 20.
+18. Paaijmans, K. P., Blanford, S., Chan, B. H. and Thomas, M. B., Biol. Lett., 2011, 8, 465–468.
+19. Hoshen, M. B. and Morse, A. P., Malar. J., 2004, 6, 3–32.
+20. Smith, D. L., Battle, K. E., Hay, S. I., Barker, C. M., Scott, T. W. and Ross, Macdonald, PLoS Pathog., 2012, 8(4), e1002588.
+21. Paaijmans, K. P. et al., Proc. Natl. Acad. Sci. USA, 2010, 107(34), 15135–15139.
+22. Goswami, P., Suryanarayana, M. U., Srinivasa, M. R., Avinash, K. and Swathi, T. K., PLoS One, 2012, 7(11), e49713f.
+
+
+## 저자 헌사
+본 연구는 CSIR, 뉴델리에서 지원하는 프로젝트 &#x27;영향, 완화 및 지속 가능성의 통합 분석&#x27;의 지원을 받았습니다.
+
+## 수신일
+2014년 11월 25일; 수락일: 2014년 12월 16일
+
+## P. GOSWAMI
+CSIR 수학적 모델링 및 컴퓨터 시뮬레이션 센터(재편성된 CSIR 제4 패러다임 연구소), 인도 벵갈루루 560 037
+이메일: goswami@csir4pi.in</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="5,837,9,26">
+    <h3>Note:</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="5,877,167,43">
+    <ul>
+      <li>The table was not included as it was not specified in the instructions to include a table in the markdown format.</li>
+      <li>The image has been described in text form, and the bounding box coordinates have been normalized to 1000x1000 dimensions.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

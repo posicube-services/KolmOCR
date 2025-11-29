@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="6,47,994,862">
+    <pre><code class="language-markdown"># Markdown Document
+
+## Department of State
+### SPECIAL STATE DISTRIBUTION
+### CIRCULAR TELEGRAM
+### INFO URGENT
+
+The Department (DEPT) sent the UGABEL revision proposed by India&#x27;s draft RES on Korea, suggesting that the USG might be prepared to consider this if absolutely necessary. The revision affirms that force should not be used either to prevent or affect repatriation POWs. It requests GA PRESS to transmit to KMS and CHI COMMISTS&#x27; proposals for settlement of the POW problem through ESTAB Repatriation COMM responsible to GA composed of Czech, Poland, Sweden, and India, or, alternatively, four states exclusive of any permanent SC member, one of which WLD be nominated by each side. Four nations X comprising this COMM will appoint an umpire, or if agreement on the umpire cannot be reached within three weeks after the first meeting, then the umpire WLD be selected by GA.
+
+Proposals WLD require incorporation into the armistice agreement at Panmun. Within 60 days after the coming into effect of the armistice agreement, POWs WLD will be released into custody COMM for classification according to nationality and domicile, and WLD will then be free to return home. While in custody COMM, each party WLD has reasonable access to POWs to explain their rights. Red Cross and sons of both sides WLD have access to POWs while in custody COMM. POWs to be free to inform COMM or any agencies working with it of their desires. Within thirty days from signing the armistice agreement, COMM must submit a report to GA. This redraft takes care particular.
+
+## 주요 변경점:
+
+- **Department of State**: 국무부
+- **SPECIAL STATE DISTRIBUTION**: 특별 경부 배포
+- **CIRCULAR TELEGRAM**: 순환 전보
+- **INFO URGENT**: 정보 긴급
+
+- **DEPT sent UGABEL revision proposed Indian draft RES on Korea that USG might be prepared consider if absolutely necessary.**: 국무부는 한국에 대한 인도가 제안한 잠정안을 수정한 UGABEL을 보냈으며, 이는 미국 정부가 절실히 필요하다고 판단할 경우 검토할 수 있도록 제안한 것입니다.
+
+- **Revision affirms, both in preambular and operative paragraphs, that force shall not be used either to prevent or affect repatriation POWs.**: 수정안은 서문 및 본문 모두에서 강제력을 사용하여 포로의 송환을 방해하거나 영향을 미치지 않을음을 확인합니다.
+
+- **It requests GA PRESS to transmit to KMS and CHI COMMISTS proposals for settlement POW problem through ESTAB Repatriation COMM responsible to GA composed of Czech, Poland, Sweden, and India, or, alternatively, four states exclusive of any permanent SC member, one of which WLD be nominated by each side.**: 이는 GA(총회)에 제안을 전달하여 KMS(한국민주국민당)와 CHI(중국) 공산주의자들과 포로 문제를 해결하기 위한 송환 위원회(ESTAB Repatriation COMM)를 설립하는 것을 요청합니다. 이 위원회는 GA에 의해 구성되며 청소슬로바키아, 폴란드, 스웨덴, 인도로 구성되거나, 또는 영구 안전보장이사회의 임원국이 제외된 4개국으로 구성될 수 있으며, 각각의 측에서 한 명씩 추천합니다.
+
+- **Four nations X comprising this COMM WLD appoint umpire, or if agreement on umpire cannot be reached within three weeks after first mtg, then umpire WLD be selected by GA.**: 이 위원회를 구성하는 4개국은 중재자를 임명할 수 있으며, 첫 회의 이후 3주 이내에 중재자에 대한 합의가 이루어지지 않을 경우, 중재자는 GA에 의해 선출됩니다.
+
+- **Proposals WLD require incorporation into armistice agreement at Panmun.**: 이 제안은 판문점에서 체결될 휴전 협정에 포함되어야 합니다.
+
+- **Within 60 days after coming into effect of armistice agreement POWs WLD be released into custody COMM for classification according to nationality and domicile and WLD then be free return home.**: 휴전 협정이 발효된 후 60일 이내에 포로들은 국적과 거주지에 따라 분류를 위해 위원회에 인도되며, 그 후 자유롭게 귀향할 수 있습니다.
+
+- **While in custody COMM each party WLD have reasonable access POWs to explain their rights.**: 위원회에 인도된 동안 각 당사국은 포로들에게 합리적인 접근을 제공하여 그들의 권리를 설명할 수 있습니다.
+
+- **Red Cross and sons of both sides WLD have access POWs while custody COMM.**: 빨간십자가와 양측의 가족들은 포로들이 위원회에 인도된 동안 접근할 수 있습니다.
+
+- **POWs to be free inform COMM or any agencies working with it of their desires.**: 포로들은 위원회 또는 그와 협력하는 기관에 자신의 의사로 자유롭게 알릴 수 있습니다.
+
+- **Within thirty days from signing armistice agreement, COMM to submit report to GA.**: 휴전 협정이 체결된 후 30일 이내에 위원회는 GA에 보고서를 제출해야 합니다.
+
+- **This redraft takes care particular**: 이 수정안은 특정 사항을 처리합니다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="6,926,129,27">
+    <p><strong>Note:</strong> The bounding box coordinates [0, 0, 1000, 1000] represent the full image dimensions.</p>
+  </div>
+</div>
+</body>
+</html>

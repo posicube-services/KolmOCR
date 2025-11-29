@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="8,41,992,919">
+    <pre><code class="language-markdown">## Biglycan과 utrophin의 만남
+
+### Tim Fulmer, 선임 작가
+
+**브라운 대학 연구진은 체내 전달을 통해 외부 기질 단백질인 biglycan을 제공하면, 근육이 퇴화된 마우스의 근육 병리학이 감소하고 근육 기능이 향상된다는 것을 발견했습니다. 이 발견은 Tivorsan Pharmaceuticals Inc.에 라이선스가 부여되었으며, Tivorsan은 브라운 대학 팀과 협력하여 류마티스 근육 질환 환자에게 제공할 수 있도록 재조합 biglycan을 최적화하고 있습니다.**
+
+| **Title:** Biglycan and Utrophin: A Novel Therapeutic Approach in Muscular Dystrophy&lt;br&gt;**Authors:** Tim Fulmer&lt;br&gt;**Source:** Tivorsan Pharmaceuticals Inc.&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** Researchers at Brown University found that providing extracellular matrix proteins like biglycan to muscle cells can prevent the progression of muscular dystrophy. The findings have been licensed to Tivorsan Pharmaceuticals Inc., which is working with Brown University researchers to develop this therapy for patients with rheumatoid arthritis. |
+| --- |
+
+**브라운 대학의 Justin Fallon 교수와 동료들이 이전에 수행한 마우스 연구에서, biglycan (BGN)은 재생 근육에서 풍부하게 존재하며, dystrophin 관련 단백질 복합체 (DAPC)의 다양한 구성 요소의 발현을 조절하는 데 도움을 줍니다. 근육 퇴화 환자에서는 dystrophin 단백질의 돌연변이가 DAPC의 기능을 방해하여 심각한 근육 병리학과 근육 기능의 상실을 초래합니다.**
+
+| **Title:** The Role of Biglycan in Regulating Dystrophin-Associated Protein Complexes&lt;br&gt;**Authors:** Justin Fallon et al.&lt;br&gt;**Source:** Brown University&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** Researchers at Brown University discovered that biglycan, a glycoprotein found in regenerating muscle, regulates the expression of various components of the dystrophin-associated protein complex (DAPC). In patients with muscular dystrophy, mutations in dystrophin can impair the function of DAPC, leading to severe muscle pathology and muscle weakness. |
+| --- |
+
+**이 발견을 바탕으로, Fallon의 그룹은 biglycan이 근육 퇴화 환자에서 DAPC의 기능을 증가시킬 수 있다고 가정했습니다. Fallon 교수는 브라운 대학 신경과학 교수로, 2008년에 Tivorsan을 공동 설립했습니다.**
+
+| **Title:** The Potential of Biglycan in Treating Muscular Dystrophy&lt;br&gt;**Authors:** Fallon Research Group&lt;br&gt;**Source:** Brown University&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** Based on their discovery, the Fallon research group hypothesized that biglycan could increase the function of the dystrophin-associated protein complex (DAPC) in patients with muscular dystrophy. Dr. Justin Fallon, a neuroscientist at Brown University, co-founded Tivorsan in 2008. |
+| --- |
+
+**이 가설을 테스트하기 위해 연구진은 먼저 biglycan 결핍 마우스를 조사하여, biglycan의 부족이 utrophin의 수준에 영향을 미치는지 살펴보았습니다. utrophin은 근육 발달 과정에서 발현되는 단백질로, dystrophin과 매우 유사하며 DAPC와 상호작용하는 것으로 알려져 있습니다. 동물 데이터는 dystrophin이 없는 상태에서 utrophin 수준을 높이면 근육 퇴화에 길게 수정 효과가 있을 수 있음을 시사합니다.**
+
+| **Title:** The Effect of Biglycan Deficiency on Utrophin Expression in Mouse Models of Muscular Dystrophy&lt;br&gt;**Authors:** Research Team&lt;br&gt;**Source:** Brown University&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** To test their hypothesis, researchers investigated biglycan-deficient mice and observed that dystrophin, a protein similar to biglycan and involved in DAPC function, is expressed at higher levels when utrophin is elevated. This suggests that increasing utrophin levels may help prevent muscle degeneration in dystrophic conditions. |
+| --- |
+
+**실제로, biglycan 결핍 마우스의 근육 조직은 야생형 마우스의 근육 조직에 비해 utrophin 수준이 유의미하게 낮았습니다 (p&lt;0.0001). 또한, 단백질 결핍 상태의 문화된 마우스 근육 세포에 재조합 biglycan을 추가하면 세포막에서 utrophin의 발현이 증가했습니다. 따라서 biglycan은 utrophin의 활성을 직접 증가시킵니다.**
+
+| **Title:** The Impact of Biglycan Deficiency on Utrophin Expression in Mouse Models of Muscular Dystrophy&lt;br&gt;**Authors:** Research Team&lt;br&gt;**Source:** Brown University&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** In biglycan-deficient mice, the muscle tissue showed significantly lower utrophin levels compared to wild-type mice (p&lt;0.0001). Additionally, the addition of recombinant biglycan to cultured myotubes resulted in increased utrophin expression. These findings suggest that biglycan directly increases utrophin activity. |
+| --- |
+
+**Fallon의 팀은 다음으로 dystrophin 결핍 (dmd; mdx) 마우스에 재조합 형태의 biglycan을 제공했습니다. 이는 근육 퇴화의 표준 마우스 모델입니다.**
+
+| **Title:** The Provision of Recombinant Biglycan to Dystrophin-Deficient Mice (dmd; mdx)&lt;br&gt;**Authors:** Fallon Research Team&lt;br&gt;**Source:** Brown University&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** Following their discovery, the Fallon research team provided recombinant biglycan to dystrophin-deficient mice (dmd; mdx), a standard model for studying muscular dystrophy. |
+| --- |
+
+**동물실험에서, 단일 체내 전달의 biglycan은 근육 병리학을 유의미하게 감소시키고 근육 기능을 향상시켰습니다 (각각 p=0.028 및 p=0.02). 이 치료는 장기 독성을 동반하지 않았습니다.**
+
+| **Title:** The Effectiveness of Intramuscular Biglycan Delivery in Animal Models of Muscular Dystrophy&lt;br&gt;**Authors:** Fallon Research Team&lt;br&gt;**Source:** Brown University&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** Intramuscular delivery of biglycan significantly reduced muscle pathology and improved muscle function in animal models of muscular dystrophy (p=0.028 and p=0.02, respectively). Importantly, this treatment was well-tolerated with no long-term toxicity observed. |
+| --- |
+
+**이 발견은 National Academy of Sciences의 Proceedings에 게재되었습니다.**
+
+| **Title:** Publication in National Academy of Sciences Proceedings&lt;br&gt;**Authors:** Fallon Research Team&lt;br&gt;**Source:** National Academy of Sciences&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** The research findings were published in the Proceedings of the National Academy of Sciences. |
+| --- |
+
+**Tivorsan의 CEO 겸 공동 설립자인 Joel Braunstein에 따르면, 회사는 Fallon의 연구실과 협력하여 &quot;FDA 에 IND를 신청하기 위해 필요한 추가 최적화 작업을 수행하고, 필요한 생물학적 시험, 독성학 및 약동학 연구를 설정하고 있습니다.&quot;**
+
+| **Title:** Collaboration between Tivorsan and Fallon for FDA Approval&lt;br&gt;**Authors:** Joel Braunstein&lt;br&gt;**Source:** Tivorsan&lt;br&gt;**Date:** [Publication Date]&lt;br&gt;**Abstract:** According to Joel Braunstein, CEO and co-founder of Tivorsan, the company is collaborating with Fallon&#x27;s research lab to complete additional optimization work and set up necessary preclinical studies, toxicology, and pharmacokinetic assessments to prepare an Investigational New Drug (IND) application. |
+| --- |</code></pre>
+  </div>
+</div>
+</body>
+</html>

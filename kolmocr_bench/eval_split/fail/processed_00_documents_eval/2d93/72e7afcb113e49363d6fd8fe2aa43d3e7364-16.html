@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="16,49,984,508">
+    <pre><code class="language-markdown">## FCPF 준비기금
+
+### 제안된 2011 회계연도 연간 예산 (운영비)
+
+| 준비기금 활동¹ | 2011 회계연도 예산 ($000) |
+| --- | --- |
+| REDD 국가를 위한 서비스 | - |
+| 국가별 이행 지원 (20+5) | 2,025 |
+| 국가별 자문 서비스 | 959 |
+| REDD 방법론 지원 (공유 비용 총액)² | 1,489 |
+| 그 중 예상 준비기금 비율 | 1,229 |
+| 그 중 예상 탄소기금 비율 | 260 |
+| FCPF 사무국 (공유 비용 총액)² | - |
+| 그 중 예상 준비기금 비율 | 1,432 |
+| 그 중 예상 탄소기금 비율 | 303 |
+| 준비기금 행정 | 472 |
+| 총액 – 준비기금 | 6,117 |
+
+### 주: 2011 회계연도 제안된 공유 비용 총액 | 3,224
+
+1. 이탤릭체로 표시된 항목 활동은 참조용이며 준비기금의 총 예상 예산에 포함되지 않습니다.
+2. 수치는 PC의 고려를 위해 공유 시설 비용에 대한 FMT의 권고를 반영하며, 탄소기금이 운영에 들어서면 65% (준비기금)와 35% (탄소기금)의 비용 분담이 이루어질 예정입니다. 예상 비율은 탄소기금이 2010년 12월 31일까지 운영에 들어설 것으로 예상된 기준으로 산출되었습니다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="16,577,96,34">
+    <h3>Image Description</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="16,629,541,23">
+    <pre><code class="language-plaintext">#(0,0,1000,1000) The image is a Korean document detailing the budget for the FCPF (Forest Carbon Partnership Facility) preparation fund in 2011.</code></pre>
+  </div>
+</div>
+</body>
+</html>

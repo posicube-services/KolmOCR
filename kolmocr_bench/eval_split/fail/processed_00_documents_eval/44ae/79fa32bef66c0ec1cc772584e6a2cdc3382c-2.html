@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="17,61,983,459">
+    <pre><code class="language-markdown"># Open Voting Solutions, Inc.
+
+**CEO:** Richard C. Johnson, Ph.D.
+
+**Address:** 3 Silver Beech Court, Poquott, NY 11733
+
+## 정성으로,
+
+Richard C. Johnson
+
+### 주요 내용
+1. 철저히 고려되지 않은 상태
+2. 모니터링하려는 전기기계 장치에 독립적으로 작동하지 않는 한 진정으로 하드웨어 주도로 만들 수 없음
+3. 문제를 제시하기보다 해결책을 지정함으로써 결함이 있음
+4. 종이 투표가 없는 DRE의 감사 요구사항에 묶여, 가정된 문제에 대한 대안적 해결책을 배제함
+5. 투표 시스템이 오프더셰프(OTS) 하드웨어를 포함할 수 있도록 허용하는 대신 투표에 특화된 하드웨어를 의무화함. 이 문제는 의도적이든 아니든 간에, 이 조항은 삭제되어야 하며, 명시된 보안 또는 감사 목표를 달성하기 위한 구체적인 요구사항으로 대체되어야 함.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="17,544,29,42">
+    <h3>Table</h3>
+  </div>
+  <div class="block" data-id="b003" data-bbox="17,608,740,330">
+    <table class="data-table">
+  <tr>
+    <td>1.</td>
+    <td>철저히 고려되지 않은 상태</td>
+  </tr>
+  <tr>
+    <td>2.</td>
+    <td>모니터링하려는 전기기계 장치에 독립적으로 작동하지 않는 한 진정으로 하드웨어 주도로 만들 수 없음</td>
+  </tr>
+  <tr>
+    <td>3.</td>
+    <td>문제를 제시하기보다 해결책을 지정함으로써 결함이 있음</td>
+  </tr>
+  <tr>
+    <td>4.</td>
+    <td>종이 투표가 없는 DRE의 감사 요구사항에 묶여, 가정된 문제에 대한 대안적 해결책을 배제함</td>
+  </tr>
+  <tr>
+    <td>5.</td>
+    <td>투표 시스템이 오프더셰프(OTS) 하드웨어를 포함할 수 있도록 허용하는 대신 투표에 특화된 하드웨어를 의무화함. 이 문제는 의도적이든 아니든 간에, 이 조항은 삭제되어야 하며, 명시된 보안 또는 감사 목표를 달성하기 위한 구체적인 요구사항으로 대체되어야 함.</td>
+  </tr>
+</table>
+  </div>
+</div>
+</body>
+</html>

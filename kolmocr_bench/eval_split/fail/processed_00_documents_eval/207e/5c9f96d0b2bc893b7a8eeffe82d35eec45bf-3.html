@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="17,38,982,428">
+    <pre><code class="language-markdown">yaml
+---
+
+(d) 임시 노령문제 특별위원회가 제87회 의회에서 상원 결의안 제33호에 따라 설립된 모든 기록 및 문서는 특별 위원회로 이전된다.
+
+(e) (이행됨.)
+
+83.2 인디언 문제 위원회
+
+제105조. (a)(1) 상원의장은 다수당 지도자와 소수당 지도자의 추천을 받아, 상원의 다수당 소속 의원 4명과 소수당 소속 의원 3명을 임명하여 임시 인디언 문제 특별위원회(이하 &quot;특별위원회&quot;라고 함)를 설립한다. 특별위원회는 위원들 중에서 의장을 선출한다.
+
+(2) 위원회의 사무 처리를 위한 쿼럼은 위원의 다수로 구성되며, 증언을 받기 위한 목적으로는 특별위원회가 더 적은 수를 쿼럼으로 설정할 수 있다. 특별위원회는 본 조항과 상원의 상설 위원회를 관리하는 규정에 부합하지 않는 절차 규정을 채택할 수 있다.
+
+(3) 특별위원회의 위원 자격에 발생하는 공석은 잔여 위원들이 특별위원회의 기능을 수행할 수 있는 권한에 영향을 미치지 않는다.
+
+(4) 상원의 상설 규칙 제25조 제4항$^7$의 목적에 있어서, 상원의원이 특별위원회의 위원 또는 의장으로서의 역할은 고려되지 않는다.
+
+(b)(1) 인디언 문제와 관련된 모든 제안된 입법안, 메시지, 청원서, 기념문서 및 기타 사항은 특별위원회로 회부된다.
+
+(2) 특별위원회는 인디언의 문제와 기회에 관한 모든 사항을 조사하는 것이 의무이며, 이는 인디언 땅 관리와 신뢰 책임, 인디언
+
+$^6$ 1993년 2월 24일 S. Res. 71, 103–1에 따라 &quot;인디언 문제 특별위원회&quot;라는 이름이 변경됨.
+$^7$ 상원 규칙 제25조 제3(c)항의 번호 회원에 대한 내용은 상원 매뉴얼 25–3(c)항을 참조.
+$^8$ 1979년 11월 14일 S. Res. 274, 96–1의 채택으로 &quot;제6항&quot;에서 변경됨.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="17,480,761,329">
+    <p>| --- |<br>
+| | (d) 임시 노령문제 특별위원회가 제87회 의회에서 상원 결의안 제33호에 따라 설립된 모든 기록 및 문서는 특별 위원회로 이전된다. |<br>
+| | (e) (이행됨.) |<br>
+| | 83.2 인디언 문제 위원회 |<br>
+| | 제105조. (a)(1) 상원의장은 다수당 지도자와 소수당 지도자의 추천을 받아, 상원의 다수당 소속 의원 4명과 소수당 소속 의원 3명을 임명하여 임시 인디언 문제 특별위원회(이하 &quot;특별위원회&quot;라고 함)를 설립한다. 특별위원회는 위원들 중에서 의장을 선출한다. |<br>
+| | (2) 위원회의 사무 처리를 위한 쿼럼은 위원의 다수로 구성되며, 증언을 받기 위한 목적으로는 특별위원회가 더 적은 수를 쿼럼으로 설정할 수 있다. 특별위원회는 본 조항과 상원의 상설 위원회를 관리하는 규정에 부합하지 않는 절차 규정을 채택할 수 있다. |<br>
+| | (3) 특별위원회의 위원 자격에 발생하는 공석은 잔여 위원들이 특별위원회의 기능을 수행할 수 있는 권한에 영향을 미치지 않는다. |<br>
+| | (4) 상원의 상설 규칙 제25조 제4항$^7$의 목적에 있어서, 상원의원이 특별위원회의 위원 또는 의장으로서의 역할은 고려되지 않는다. |<br>
+| | (b)(1) 인디언 문제와 관련된 모든 제안된 입법안, 메시지, 청원서, 기념문서 및 기타 사항은 특별위원회로 회부된다. |<br>
+| | (2) 특별위원회는 인디언의 문제와 기회에 관한 모든 사항을 조사하는 것이 의무이며, 이는 인디언 땅 관리와 신뢰 책임, 인디언 |<br>
+| | $^6$ 1993년 2월 24일 S. Res. 71, 103–1에 따라 &quot;인디언 문제 특별위원회&quot;라는 이름이 변경됨. |<br>
+| | $^7$ 상원 규칙 제25조 제3(c)항의 번호 회원에 대한 내용은 상원 매뉴얼 25–3(c)항을 참조. |<br>
+| | $^8$ 1979년 11월 14일 S. Res. 274, 96–1의 채택으로 &quot;제6항&quot;에서 변경됨. |</p>
+  </div>
+</div>
+</body>
+</html>

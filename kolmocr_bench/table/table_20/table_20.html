@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>외국환매도신청서</title>
+
+<style>
+  /* ---------------------------
+     기본 문서 스타일 (대형은행 공문 스타일)
+  --------------------------- */
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11pt;
+    margin: 20mm;
+    background: #ffffff;
+    color: #111;
+    line-height: 1.45;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #2c3e50;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #2c3e50;
+    margin-bottom: 18px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #c0c0c0;
+    font-weight: 600;
+    color: #4d4d4d;
+  }
+
+  /* ---------------------------
+     테이블 공통
+  --------------------------- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-bottom: 20px;
+  }
+
+  th {
+    background: #2f3b52;
+    color: #fff;
+    font-weight: 600;
+    padding: 7px;
+    border: 1px solid #4a4a4a;
+    text-align: center;
+    font-size: 10pt;
+  }
+
+  td {
+    background: #f4f4f6;
+    border: 1px solid #d0d0d0;
+    padding: 7px;
+    font-size: 10pt;
+    word-break: break-all;
+  }
+
+  .label {
+    background: #e1e4e8;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+  }
+
+  .value {
+    background: #fafafa;
+    text-align: left;
+    color: #111;
+  }
+
+  .value.right {
+    text-align: right;
+  }
+
+  /* ---------------------------
+     섹션 타이틀
+  --------------------------- */
+  .section-title {
+    font-size: 13pt;
+    font-weight: 700;
+    margin: 25px 0 10px 0;
+    color: #2f3b52;
+    padding-left: 4px;
+    border-left: 4px solid #2f3b52;
+  }
+
+  .subsection-title {
+    background: #3d4b65;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px;
+    font-size: 10.5pt;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>외국환매도신청서</h1>
+
+<div class="header">
+  <div>대형은행 내부용 문서</div>
+  <div>양식번호: FX-2025-003</div>
+</div>
+
+<!-- 1. 신청인 기본정보 -->
+<div class="section-title">1. 신청인 기본정보</div>
+
+<table>
+  <tr><th colspan="4" class="subsection-title">개인 정보</th></tr>
+  <tr>
+    <td class="label">성명</td><td class="value">김민수</td>
+    <td class="label">주민등록번호</td><td class="value">920315-1******</td>
+  </tr>
+  <tr>
+    <td class="label">신분증 종류</td><td class="value">주민등록증</td>
+    <td class="label">신분증 번호</td><td class="value">123456-1234567</td>
+  </tr>
+  <tr>
+    <td class="label">연락처</td><td class="value">010-8723-5512</td>
+    <td class="label">이메일</td><td class="value">minsu.kim92@gmail.com</td>
+  </tr>
+  <tr>
+    <td class="label">주소</td>
+    <td class="value" colspan="3">서울특별시 서초구 반포대로 212, 601호</td>
+  </tr>
+
+  <tr><th colspan="4" class="subsection-title">입금 예정 계좌정보</th></tr>
+  <tr>
+    <td class="label">예금주명</td><td class="value">김민수</td>
+    <td class="label">계좌번호</td><td class="value">110-234-567890</td>
+  </tr>
+  <tr>
+    <td class="label">은행명</td>
+    <td class="value" colspan="3">신한은행</td>
+  </tr>
+</table>
+
+<!-- 2. 외국환 매도 정보 -->
+<div class="section-title">2. 외국환 매도 정보</div>
+
+<table>
+  <tr><th colspan="4" class="subsection-title">매도 통화 및 환율</th></tr>
+  <tr>
+    <td class="label">매도 통화</td><td class="value">USD (미국달러)</td>
+    <td class="label">매도 금액</td><td class="value right">1,500.00</td>
+  </tr>
+  <tr>
+    <td class="label">적용 환율</td><td class="value">1,352.20 KRW/USD</td>
+    <td class="label">원화 환산금액</td><td class="value right">2,028,300 KRW</td>
+  </tr>
+
+  <tr><th colspan="4" class="subsection-title">거래 목적 및 외화 출처</th></tr>
+  <tr>
+    <td class="label">거래 목적</td>
+    <td class="value" colspan="3">해외 출장 후 잔여 외화 환전</td>
+  </tr>
+  <tr>
+    <td class="label">외화 출처</td>
+    <td class="value" colspan="3">회사 출장비 중 잔여분</td>
+  </tr>
+
+  <tr>
+    <td class="label">거래일자</td><td class="value">2025-04-05</td>
+    <td class="label">거래유형</td><td class="value">현금매도 (Cash Sell)</td>
+  </tr>
+</table>
+
+<!-- 3. 고객확인(KYC) / AML -->
+<div class="section-title">3. 고객확인(KYC) 및 자금세탁방지(AML)</div>
+
+<table>
+  <tr><th colspan="4" class="subsection-title">고객확인 체크리스트</th></tr>
+  <tr>
+    <td class="label">1만달러 초과 여부</td><td class="value">해당 없음</td>
+    <td class="label">신고대상 외국환거래 여부</td><td class="value">아님</td>
+  </tr>
+  <tr>
+    <td class="label">거래 목적 확인</td><td class="value">확인 완료</td>
+    <td class="label">의심거래 여부</td><td class="value">없음</td>
+  </tr>
+</table>
+
+<!-- 4. 서명 및 확인 -->
+<div class="section-title">4. 신청인 서명 및 은행 확인</div>
+
+<table>
+  <tr><th colspan="4" class="subsection-title">신청인 서명</th></tr>
+  <tr>
+    <td class="label">서명 이미지</td><td class="value">minsu_signature.png</td>
+    <td class="label">서명일자</td><td class="value">2025-04-05</td>
+  </tr>
+
+  <tr><th colspan="4" class="subsection-title">은행 확인</th></tr>
+  <tr>
+    <td class="label">담당자명</td><td class="value">이은영</td>
+    <td class="label">확인일자</td><td class="value">2025-04-05</td>
+  </tr>
+  <tr>
+    <td class="label">처리상태</td>
+    <td class="value" colspan="3">정상 처리 완료</td>
+  </tr>
+</table>
+
+</body>
+</html>

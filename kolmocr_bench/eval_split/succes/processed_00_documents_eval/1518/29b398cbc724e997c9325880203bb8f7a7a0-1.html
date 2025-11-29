@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="3,49,997,370">
+    <pre><code class="language-markdown"># XIX ENCUENTRO DE LA ASOCIACIÓN DE JÓVENES LINGÜISTAS (AJL)
+
+## UNIVERSITAT DE VALÈNCIA, 10-12 MARZO 2004
+
+### &quot;인지적 관점에서 본 도메인 부여의 메타포적 사례&quot;
+
+**M. Sandra Peña Cervel**
+
+본 제안에서는 도메인 부여 관점에서 설명이 필요한 몇 가지 메타포적 표현을 분석하려고 시도합니다. 우리의 분석은 인지언어학의 틀 내에서 이루어지며, 메타포는 출처 도메인과 대상 도메인 간의 일련의 대응 관계로 정의됩니다 (Lakoff and Johnson, 1999; Lakoff, 1993). 감정의 도메인은 메타포적으로 개념화된 것으로 발견되었습니다 (Kövecses, 2000). 예를 들어, Her own intense excitement had given way to a hollow feeling in her stomach라는 문장에서, **a hollow feeling**은 무시할 만한 감정이 아니라, 빈 느낌을 유발하는 특성을 가진 감정입니다. 형용사는 상위 도메인인 감정의 하위 도메인을 가리킵니다. 이 예문의 표면적 분석은 감정이라는 크게 형상화되지 않은 도메인을 이미지 스키마로 재개념화하는데 메타포 시스템 **EMOTIONS ARE CONTAINERS**가 허용한다고 믿게 만들 수 있습니다. 이 관점에서, **a hollow feeling**은 내용이 없어서 중요하지 않다고 여겨질 수 있습니다. 그러나 더 깊이 있는 분석을 통해, 형용사가 강조하는 하위 도메인은 적절하게 해석되기 위해 다른 메타포가 필요하다는 결론에 도달할 수 있습니다: **A PERSON IS A CONTAINER FOR EMOTIONS**. 만약 감정이 누군가에게 빈 느낌을 주면, 그 사람은 감정이 없는 용기로 보입니다. 마지막으로, **in her stomach**라는 표현은 우리의 분석을 더 세밀하게 하게 하고, **DIFFERENT PARTS OF THE BODY ARE CONTAINERS FOR EMOTIONS**라는 메타포를 기본 동기화 장치로 삼게 합니다. 또한, 혼합 이론 연구가 종종 독특하고 독창적인 개념화에 초점을 맞추는 경향이 있어, 이러한 모든 예문들이 이 틀 내에서 분석될 수 있음을 생각하게 합니다 (Fauconnier, 1994).
+
+## REFERENCES
+
+- Fauconnier, G. 1994. Mental Spaces. 2nd ed. New York: Cambridge University Press.
+- Kövecses, Z. 2000. Metaphor and Emotion. Cambridge: Cambridge University Press.
+- Lakoff, G. 1993. The contemporary theory of metaphor. Metaphor and Thought. Ed. Andrew Ortony. 2nd ed. Cambridge: Cambridge University Press. 202-251.
+- Lakoff, G. and Johnson, M. 1999. Philosophy in the Flesh. The Embodied Mind and its Challenge to Western Thought. New York: Basic Books.</code></pre>
+  </div>
+</div>
+</body>
+</html>

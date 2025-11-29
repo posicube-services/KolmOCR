@@ -1,0 +1,228 @@
+<!-- front_matter
+primary_language: en
+is_rotation_valid: True
+rotation_correction: 0
+is_table: False
+is_diagram: False
+-->
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+/* Prevent page breaks during printing */
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+/* Table styling */
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Math rendering */
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+/* Block styling */
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+/* List styling */
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+/* Figure styling */
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Heading styling */
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+/* Paragraph styling */
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  startup: {
+    ready: () => {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(() => {
+        console.log('MathJax rendering complete');
+      });
+    }
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="22,39,480,91">
+    <p>$\beta = 1/k_B T$이며, $k_B$는 볼츠만 상수입니다. 이 방정식은 $b(r, \sigma_1, \sigma_2)$, 즉 so-called bridge function에 대한 근사식을 추가해야 합니다. 이 함수의 정식 정의는 밀도에 대한 무한 급수이지만, 실용적인 지침을 제공하는 데는 제한이 있습니다. $c$에 대한 대부분의 근사적 폐합은 $b$를 암시적으로 정의합니다.</p>
+  </div>
+  <div class="block" data-id="b002" data-bbox="22,25,978,974">
+    <p>OZ 방정식의 수치적 평가는 푸리에 변환 표현에서 더 간단합니다. 이 표현은 $r$에 대한 적분을 분해합니다. 따라서 변환 공간에서 식 (3)은 다음과 같이 됩니다:<br>
+$$
+\widetilde{\gamma}(k, \sigma_1, \sigma_2) = \rho \int_0^{\infty} d\sigma_3 f(\sigma_3) \widetilde{c}(k, \sigma_1, \sigma_3) 
+\widetilde{\gamma}(k, \sigma_1, \sigma_3) \widetilde{c}(k, \sigma_3, \sigma_2),
+$$<br>
+여기서 하나의 적분만 남아 있습니다. 또한, 2차원에서 원형 대칭 함수의 푸리에 변환은 한켈 변환으로 변환됩니다:<br>
+$$
+\widetilde{w}(k) = 2\pi \int_0^{\infty} dr\, rw(r)J_0(kr),
+$$<br>
+여기서 $J_0(x)$는 0차 비셀 함수입니다. (6)의 역변환은 다음과 같습니다:<br>
+$$
+w(r) = \frac{1}{2\pi} \int_0^{\infty} dk\, k \widetilde{w}(k)J_0(kr).
+$$<br>
+식 (5)의 마지막 적분도 제거될 수 있으며, 모든 $\sigma$에 의존하는 함수를 직교 다항식 $p_j(\sigma)$, $j = 0, 1, 2, \ldots$로 전개하여 OZ 방정식의 평가를 대수로 줄일 수 있습니다. 이 다항식은 다음과 같이 정의됩니다:<br>
+$$
+\int_0^{\infty} d\sigma f(\sigma)p_i(\sigma)p_j(\sigma) = \delta_{ij},
+$$<br>
+여기서 $\delta_{ij}$는 크로네커 델타입니다. 그리고<br>
+$$
+\widetilde{\gamma}_i(k, \sigma_1, \sigma_2) = \sum_{j=0}^{\infty} \widetilde{\gamma}_{ij}(k,p_i(\sigma_1)p_j(\sigma_2))
+$$<br>
+와 유사한 $\widetilde{c}(k, \sigma_1, \sigma_2)$의 전개를 통해 식 (5)는 다음과 같이 됩니다:<br>
+$$
+\widetilde{\gamma}_{ij}(k) = \rho \sum_l [\widetilde{c}_{il}(k) + \widetilde{\gamma}_{il}(k)]\widetilde{c}_{lj}(k),
+$$<br>
+또는 행렬 표기로:<br>
+$$
+\Gamma(k) = \rho[\widetilde{C}(k) + \Gamma(k)]\widetilde{C}(k) = \rho \widetilde{C}(k)\widetilde{C}(k)[I - \rho \widetilde{C}(k)]^{-1}.
+$$<br>
+이 방정식들에서 $\Gamma(k), \widetilde{C}(k)$는 요소 $\widetilde{\gamma}<em>{ij}(k), \widetilde{c}</em>{ij}(k)$를 가지는 대칭 행렬이며, $I$는 단위 행렬입니다. 직교성은 식 (9)의 역산을 쉽게 수행할 수 있게 합니다:<br>
+$$
+\widetilde{\gamma}_{ij}(k) = \int d\sigma_1 d\sigma_2 f(\sigma_1)f(\sigma_2)\widetilde{\gamma}(k, \sigma_1, \sigma_2)p_i(\sigma_1)p_j(\sigma_2).
+$$<br>
+$r$ 공간의 함수에 대한 유사한 전개와 역산도 가능합니다.</p>
+  </div>
+  <div class="block" data-id="b003" data-bbox="520,212,480,91">
+    <p>$J_0$ 변환 (6)과 (7)을 해당 사인 변환으로 대체하면, 이 요소들은 2차원 다이스퍼즈된 유체와 3차원 다이스퍼즈된 유체$^{16}$의 요소와 동일해지며, 동일한 수치적 절차로 해결할 수 있습니다. 새로운 특징인 한켈 변환은 직교성을 유지하는 알고리즘$^{17}$을 사용하여 계산됩니다.</p>
+  </div>
+  <div class="block" data-id="b004" data-bbox="520,318,366,69">
+    <p>일반화된 쌍 분포 함수<br>
+[<br>
+g(r, \sigma_1, \sigma_2) = \exp[-\beta \phi(r, \sigma_1, \sigma_2)</p>
+  </div>
+  <div class="block" data-id="b005" data-bbox="520,401,480,228">
+    <ul>
+      <li>\gamma(r, \sigma_1, \sigma_2) + b(r, \sigma_1, \sigma_2)] \] 은 (OZ+폐합) 방정식의 자가일관적 해로부터 계수 $\gamma_{ij}(r)$를 구하여 구성됩니다. 이로부터 직접 계산 가능한 열역학적 양은 내부 에너지 $U$, \[ \frac{\beta U}{N} = \frac{1}{2\rho} \int dr d\sigma d\sigma&#x27; f(\sigma)f(\sigma&#x27;) \times g(r, \sigma, \sigma&#x27;)\beta \phi(r, \sigma, \sigma&#x27;), \] 와 압력 $p$, \[ \frac{\beta p}{\rho} = 1 - \frac{1}{4\rho} \int dr d\sigma d\sigma&#x27; f(\sigma)f(\sigma&#x27;) \times g(r, \sigma, \sigma&#x27;) r \frac{d\beta \phi(r, \sigma, \sigma&#x27;)}{dr} \] 입니다. 또한, 등온 압축률 $K_T$, \[ \frac{1}{\rho k_B T K_T} = \rho \left( \frac{\partial p}{\partial \rho} \right)_T = 1 - \rho \int dr d\sigma d\sigma&#x27; f(\sigma)f(\sigma&#x27;)c(r, \sigma, \sigma&#x27;) = 1 - \rho \widetilde{c}_{00}(0), \] 은 직접 상관 함수로부터 계산됩니다.</li>
+    </ul>
+  </div>
+  <div class="block" data-id="b006" data-bbox="520,642,480,183">
+    <p>관심 있는 쌍 함수는 계산된 계수로 직접 표현될 수 있습니다. 특히, 수-수 쌍 분포 함수와 수-수 구조 함수$^{18}$는 각각 다음과 같습니다:<br>
+$$
+g_{NN}(r) = \int d\sigma_1 d\sigma_2 f(\sigma_1)f(\sigma_2)g(r, \sigma_1, \sigma_2) = g_{00}(r),
+$$<br>
+[<br>
+S_{NN}(k) = \int d\sigma_1 d\sigma_2 [L(f(\sigma_1)\delta(\sigma_1 - \sigma_2)</p>
+  </div>
+  <div class="block" data-id="b007" data-bbox="520,840,480,160">
+    <ul>
+      <li>\rho f(\sigma_1)f(\sigma_2)\widetilde{h}(k, \sigma_1, \sigma_2)] = 1 + \rho \widetilde{h}_{00}(k). \] 또한, $g(r, \sigma_1, \sigma_2)$의 낮은 차수 계수는 물리적 해석이 가능합니다. 따라서, 밀도와 크기의 국소 변동은 정규화된 형태로 다음과 같이 표현됩니다: \[ \delta \rho(r) = \frac{1}{\rho} \left| \sum_{j=1}^N \delta(r - r_j) - \rho \right|, \] \[ \delta p_1(r) = \frac{1}{\sigma_{p_1} s} \left| \sum_{j=1}^N \sigma_j \delta(r - r_j) - \overline{\sigma} \rho \right|. \] 그들의 공간 상관은 다음과 같습니다:</li>
+    </ul>
+  </div>
+</div>

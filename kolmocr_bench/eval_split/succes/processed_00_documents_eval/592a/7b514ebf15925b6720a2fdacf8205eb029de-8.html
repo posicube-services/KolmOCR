@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="8,49,992,277">
+    <pre><code class="language-markdown"># Markdown
+
+&quot;이것이 부당하다고 생각하는 경우, 그 준수로 인해 발생하는 손해와 상관없이 이를 준수하지 않아도 된다&quot;라고 한다. 만약 이 최대치를 보편적 법칙으로 받아들인다면, 즉 모든 사람들이 법이 자신의 정의 개념에 반대될 때마다 법을 준수하지 않는다면, 아마도 사회적 혼란이 발생하여 어떤 정치적 또는 법적 체제도 지탱하기 어려워질 것이다. 따라서 칸트의 관점에서 볼 때, 부당한 법이 특정한 가치나 권리, 특히 중요한 것으로 여겨지는 가치나 권리를 침해할 때만 도덕적으로 법을 준수하지 않을 수 있다는 결론이 나온다.
+
+이러한 가치와 권리 중 어떤 것들이 법을 준수하지 않을 수 있는 근거를 제공하는지 확인하기 위해, 우리는 존 로尔斯(John Rawls)의 《정의론》에서 제시된 개념으로 다시 돌아갈 것이다. 이 책에서 로尔斯는 모든 협력적 사회 구조가 공유해야 할 기본적인 정의의 원칙을 식별하려고 한다. 이를 위해 다음의 질문을 제기한다: 정치적 공동체의 구성원들이 이상적인 협상 상황에서 어떤 기본적인 분배 규칙에 합의할 것인가? 이 이상적인 협상 상황은 로尔斯가 &quot;원래의 위치(original position)&quot;라고 명명한 것으로, 두 가지 특징을 가지고 있다:
+
+- a. 사회적 기본 자원의 평등 분배.
+- b. 협상의 당사자들은 자신의 사회적 위치나 자원 및 재능 분배에서의 운명에 대한 정보를 가지고 있지 않다. 또한, 다른 당사자들이 가지고 있는 정보도 알지 못한다. 다른 말로 표현하자면, 모든 당사자는 불완전한 정보를 가지고 있다(로尔斯는 이를 &quot;무지의 망토&quot;라고 부른다).
+
+로尔斯는 이러한 협상 조건 하에서, 각 당사자가 자신의 이익을 최대화하려고 할 때, 공평하고 정당한 분배 규칙에 합의할 것이라고 주장한다. 특히, 원래의 위치에서 합의가 이뤄질 두 가지 정의의 원칙은 다음과 같다:
+- 정의의 첫 번째 원칙: 모든 개인은 다른 모든 개인에게도 동일한 자유를 보장하는 가장 넓은 기본 자유의 체계에 대한 동등한 권리를 가져야 한다.
+- 정의의 두 번째 원칙: 사회적 및 경제적 불평등은 다음과 같이 구성되어야 한다: a) 합리적으로 모든 사람에게 이익이 되도록, b) 모든 사람에게 접근 가능한 직책과 직업과 관련되어야 한다.</code></pre>
+  </div>
+</div>
+</body>
+</html>

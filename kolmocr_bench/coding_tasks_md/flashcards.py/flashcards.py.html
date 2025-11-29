@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="35,20,786,961">
+    <p>python<br>
+import json<br>
+import os<br>
+import random<br>
+DATA_FILE = &quot;flashcards.json&quot;<br>
+def load_cards():<br>
+    if not os.path.exists(DATA_FILE):<br>
+        return []<br>
+    with open(DATA_FILE, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:<br>
+        try:<br>
+            return json.load(f)<br>
+        except json.JSONDecodeError:<br>
+            return []<br>
+def save_cards(cards):<br>
+    with open(DATA_FILE, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:<br>
+        json.dump(cards, f, ensure_ascii=False, indent=2)<br>
+def print_menu():<br>
+    print(&quot;\n==== Flashcard Trainer ====&quot;)<br>
+    print(&quot;1. List cards&quot;)<br>
+    print(&quot;2. Add card&quot;)<br>
+    print(&quot;3. Practice (random)&quot;)<br>
+    print(&quot;4. Practice wrong ones only&quot;)<br>
+    print(&quot;0. Exit&quot;)<br>
+    return input(&quot;Select: &quot;).strip()<br>
+def list_cards(cards):<br>
+    if not cards:<br>
+        print(&quot;No cards.&quot;)<br>
+        return<br>
+    for i, c in enumerate(cards, start=1):<br>
+        print(f&quot;{i}. {c[&#x27;front&#x27;]} -&gt; {c[&#x27;back&#x27;]} (correct: {c.get(&#x27;correct&#x27;, 0)}, wrong: {c.get(&#x27;wrong&#x27;, 0)})&quot;)<br>
+def add_card(cards):<br>
+    front = input(&quot;Front (question): &quot;).strip()<br>
+    back = input(&quot;Back (answer): &quot;).strip()<br>
+    if not front or not back:<br>
+        print(&quot;Both sides are required.&quot;)<br>
+        return<br>
+    cards.append({&quot;front&quot;: front, &quot;back&quot;: back, &quot;correct&quot;: 0, &quot;wrong&quot;: 0})<br>
+    print(&quot;Card added.&quot;)<br>
+def practice(cards, only_wrong=False):<br>
+    if not cards:<br>
+        print(&quot;No cards to practice.&quot;)<br>
+        return<br>
+    pool = cards<br>
+    if only_wrong:<br>
+        pool = [c for c in cards if c.get(&quot;wrong&quot;, 0) &gt; c.get(&quot;correct&quot;, 0)]<br>
+        if not pool:<br>
+            print(&quot;No cards with more wrong answers than correct ones.&quot;)<br>
+            return<br>
+    print(&quot;Enter &#x27;q&#x27; to quit practice.\n&quot;)<br>
+    while True:<br>
+        card = random.choice(pool)<br>
+        print(f&quot;Q: {card[&#x27;front&#x27;]}&quot;)<br>
+        ans = input(&quot;Your answer: &quot;).strip()<br>
+        if ans.lower() == &quot;q&quot;:<br>
+            break<br>
+        if ans.lower() == card[&quot;back&quot;].lower():<br>
+            print(&quot;✅ Correct!&quot;)<br>
+            card[&quot;correct&quot;] = card.get(&quot;correct&quot;, 0) + 1<br>
+        else:<br>
+            print(f&quot;❌ Wrong. Correct answer: {card[&#x27;back&#x27;]}&quot;)<br>
+            card[&quot;wrong&quot;] = card.get(&quot;wrong&quot;, 0) + 1<br>
+def main():<br>
+    cards = load_cards()<br>
+    while True:<br>
+        choice = print_menu()<br>
+        if choice == &quot;1&quot;:<br>
+            list_cards(cards)<br>
+        elif choice == &quot;2&quot;:<br>
+            add_card(cards)<br>
+            save_cards(cards)<br>
+        elif choice == &quot;3&quot;:<br>
+            practice(cards, only_wrong=False)<br>
+            save_cards(cards)<br>
+        elif choice == &quot;4&quot;:<br>
+            practice(cards, only_wrong=True)<br>
+            save_cards(cards)<br>
+        elif choice == &quot;0&quot;:<br>
+            save_cards(cards)<br>
+            print(&quot;Bye.&quot;)<br>
+            break<br>
+        else:<br>
+            print(&quot;Unknown menu.&quot;)<br>
+if __name__ == &quot;__main__&quot;:<br>
+    main()</p>
+  </div>
+</div>
+</body>
+</html>

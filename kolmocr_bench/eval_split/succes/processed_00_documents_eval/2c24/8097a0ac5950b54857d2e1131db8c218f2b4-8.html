@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="10,49,990,208">
+    <pre><code class="language-markdown"># markdown
+
+## Figure 6. 첫 번째 가상 창문의 중심에서의 열 유출량 (시간에 따른 함수로, 수치 계산의 불확실성 범위의 최소/최대 경계를 포함하여 30초 평균).
+
+## Figure 7. 화실에서 0.5m 떨어진 외벽 앞에서 PT(열전도계)를 통해 얻은 결과 온도.
+
+## Figures 7과 8에서 우리는 화실에서 0.5m 떨어진 PT와 화실 상단 가장자리에서 2.1m 높이로 외부로 가리키는 하나의 PT를 통해 화염 원을 측정했다. (가상 창문의 열 유출량 계기 옆에 위치). 이 측정은 방법에서 규정된 표준화된 측정에 추가로 이루어졌다. 실험 데이터는 세 가지 다른 방화제를 포함하는 외벽 시스템, 하나의 석면 벽과 가연绝緣재, 그리고 폴리프로필렌绝緣재로 직접 노출된绝緣재를 포함하는 세 가지 테스트에서 얻어졌다.
+
+이 다섯 가지 테스트의 데이터는 평균값과 표준편차를 계산하기 위해 사용되었으며, 시뮬레이션 결과와 비교되었다. 우리는 시뮬레이션의 시간(30초)을 조정하여 Figure 7의 노출 시간과 대략적으로 일치시키고, 질적 및 양적 측면에서 상당히 좋은 일치를 발견했다.</code></pre>
+  </div>
+</div>
+</body>
+</html>

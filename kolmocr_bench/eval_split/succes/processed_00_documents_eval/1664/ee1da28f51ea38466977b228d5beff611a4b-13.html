@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="7,49,993,300">
+    <pre><code class="language-markdown"># Markdown
+
+FRCL (its TR version) 및 LTG4. 모든 보고된 분류 정확도 값은 학습자가 현재까지 훈련한 모든 작업에 대한 평균 분류 정확도를 반영합니다. 더 구체적으로, 연속 학습자가 작업 t에 대한 훈련을 마쳤다고 가정하면, 시간 t 에서 보고된 분류 정확도는 각각 작업 1, 2, ..., t에 속하는 동일한 크기의 집합에서 테스트를 통해 얻은 평균 정확도 값입니다. 모든 분류 실험에서 보고된 통계는 10번의 반복의 평균값입니다. 각 실험에서 마지막 두 작업 이 완료된 후 얻은 평균 분류 정확도의 통계적 유의성 및 표준 오차는 부록 B 섹션에서 표시됩니다.
+
+그림 1에서 볼 수 있듯이, CLAW는 모든 여섯 가지 실험에서 최신의 분류 정확도를 달성합니다. Split MNIST의 미니배치 크기는 128이며, 다른 모든 실험의 미니배치 크기는 256입니다. 각 실험의 결과에 대한 더 자세한 설명은 다음과 같습니다:
+
+## Permutated MNIST
+
+MNIST를 사용하여 생성된 Permutated MNIST는 표준 연속 학습 벤치마크입니다 (Goodfellow et al., 2014a; Kirkpatrick et al., 2017; Zenke et al., 2017). 각 작업 t에 대해, 해당 데이터셋은 라벨링된 MNIST 이미지에 고정된 랜덤 순열 과정을 수행하여 생성됩니다. 이 랜덤 순열은 작업마다 고유하며, 즉 각 작업마다 다릅니다.
+
+EWC의 하이퍼파라미터 \lambda는 이전 데이터의 전체 기여를 조절하는 데 사용되며, 우리는 \lambda = 1과 \lambda = 100 두 가지 값을 실험했습니다. 우리는 후자를 보고합니다. 이는 이 실험에서 \lambda = 1의 EWC 보다 항상 더 우수한 성능을 보였기 때문입니다. \lambda = 100의 EWC는 이전에 최고의 EWC 분류 결과를 제공한 바 있습니다 (Nguyen et al., 2018). 이 실험에서, 두 개의 은닉 층을 가진 완전 연결 단일 헤드 네트워크가 사용됩니다. 각 층에는 100개의 은닉 유닛이 있으며, ReLU 활성화 함수를 사용합니다. 6개의 실험에서 사용된 최적화기는 Adam (Kingma and Ba, 2015)이며, \eta = 0.001, \beta_1 = 0.9, \beta_2 = 0.999로 설정되었습니다. 추가로
+
+4경쟁자들의 하이퍼파라미터 값이나 신경망 아키텍처의 특성을 나타내는 검증 과정이 없는 경우, 이는 각각의 논문에서 명시된 최적 설정과 공통 기반에서 비교하기 위해 수행됩니다.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="7,367,300,85">
+    <p>This markdown is structured to closely resemble the content of the image, including references to external sources such as Goodfellow et al., 2014a, Kirkpatrick et al., 2017, Zenke et al., 2017, Nguyen et al., 2018, and Kingma and Ba, 2015. The table is represented in HTML format, and any image references are included with bounding box dimensions.</p>
+  </div>
+</div>
+</body>
+</html>

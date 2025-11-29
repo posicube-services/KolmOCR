@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="18,28,982,885">
+    <pre><code class="language-markdown"># Reference List
+
+## Articles
+
+- Gordon, S. L. (2011). 예외 상태에 있는 이주민: 아파트헤이트 이후의 국가와 외국인 혐오. M. S. Mapadimeng 및 S. Khan (편집), 《아프리카의 현대 사회 문제: 가보네,坎培拉 및 더반의 사례》, pp. 45-64. 프리투리아: 남아프리카 아프리카 연구소.
+
+- Hammerstad, A. (2011). 남아프리카의 이민 정책과 징바브웨 외교의 연계. SAIIA 정책 브리핑 42. 요하네스버그: SAIIA.
+
+- International Organization for Migration (IOM). (2010). 양의 외투를 입은 늑대: 남아프리카 림포포 주 무시나에서의 인신매매 급속 평가. 제네바: 국제이주기구.
+
+- Landau, L. (2010). 차별과 발전? 남아프리카 급진된 도시에서의 이주, 도시화 및 지속 가능한 생계. J. Crush 및 B. Frayne (편집), 《이동 중 생존: 남아프리카의 이주, 빈곤 및 발전》, pp. 66-75. 케이프타운: IDASA 및 남아프리카 개발은행.
+
+- Mdlongwa, T. 및 Moyo, T. (2014). 징바브웨에 새로운 이주가 올아닥친다. Zimbabwe Independent. 출처: http://www.theindependent.co.zw/2014/05/02/renewed-exodus-hits-zimbabwe/20022215.
+
+- Muzondidyia, J. (2010). 마크웨레크웨: 징바브웨인의 이주, 시민권 및 정치성. J. McGregor 및 R. Primora (편집), 《징바브웨의 새로운 이주민: 이주와 생존의 정치》, pp. 37-58. 뉴욕 및 옥스포드: 베르하인 북스.
+
+- Ndlovu, I. (2013). 그들은 별처럼 곳곳에 있다: 징바브웨인 이주민의 경험을 잠은 에세이로 풀어보기. 유럽 인문 및 사회과학 저널, 22(1): 1143-1158.
+
+- Ngandji, I. (2002). 징바브웨의 불법 자금이 남아프리카로 흘러들어오다. 일요일 타임즈: 8.
+
+- Nyamnjoh, F. (2006). 내부인과 외부인: 현대 남아프리카의 시민권과 외국인 혐오. 다카르, 런던 및 뉴욕: CODESIRA 및 Zed Books.
+
+- Nyamnjoh, F. (2007). 제한된 시민권에서 유연한 시민권으로: 아프리카의 교훈. 시민권 연구, 11(1): 73-82.
+
+- Peberdy, S. 및 Crush, J. (1998). 인종주의의 뿌리: 외국인 통제법의 기원. J. Crush (편집), 《제어를 넘어: 민주적 남아프리카에서의 이민과 인권》, pp. 18-36. 남아프리카 이주 프로젝트. 케이프타운: IDASA.
+
+- Peberdy, S. (1999). 이민자를 선택하다: 1990년대 이후 남아프리카로의 지역 이주 패턴. D. Simon (편집), 《남아프리카의 재구성: 지역 재구성》, pp. 187-205. 런던: 제임스 커리.
+
+- Peberdy, S. (2001). 이민 상상하기: 1990년 이후 요하네스버그의 포용적 경제성과 배제적 정책. 아프리카 투데이, 48(3): 15-32.
+
+## Laws and Regulations
+
+- Republic of South Africa. (1991). 1991년 제96호 외국인 통제법. 정부 인쇄소: 프리투리아.
+
+- Republic of South Africa. (1995). 1995년 제76호 외국인 통제법 개정법. 정부 인쇄소: 프리투리아.
+
+- Republic of South Africa. (1997). 1997년 제95호 기본 고용 조건법. 정부 인쇄소: 프리투리아.
+
+- Republic of South Africa. (2002). 2002년 제11호 기본 고용 조건법. 정부 인쇄소: 프리투리아.
+
+- Republic of South Africa. (2002). 2002년 제13호 이민법. 정부 인쇄소: 프리투리아.
+
+- Republic of South Africa. (2004). 2004년 제19호 이민법 개정법. 정부 인쇄소: 프리투리아.
+
+- Republic of South Africa. (2007). 2007년 제3호 이민법 개정법. 정부 공보, 제554권, 제34561호: 케이프타운.
+
+- Republic of South Africa. (2010). 이민법 개정법안. 정부 인쇄소: 프리투리아.
+
+- Republic of South Africa. (2011). 2011년 제13호 이민법 개정법. 정부 공보, 제505권, 제30095호: 케이프타운. 정부 인쇄소: 케이프타운.
+
+- Republic of South Africa. (2013). 사람들의 인신매매 방지 및 근절법 제7호. 정부 공보, 제577권, 제36715호: 케이프타운.
+
+- Republic of South Africa. (2014). 이민 규정. 정부 규정 공보 제587권, 제37679호: 프리투리아.
+
+## News Articles
+
+- Scheen, T. (2011). 징바브웨 이주인이 남아프리카 북부를 불안정하게 만든다. 러월 21, (1): 16-17.
+
+- Seale, L. 및 Tromp, B. (2009). 정치인들이 시간을 끌 때 징바브웨인 한 명이 죽는다. The Star, 2009년 2월 24일: 3.
+
+- Segatti, A. (2012). SADC 국가의 지역 통합 정책 및 이주 개혁: 양자주의를 넘어갈 것인가. J. Streiff-Fenart 및 A. Segatti (편집), 《문턱의 도전: 아프리카의 국경 폐쇄 및 이주 움직임》, pp. 17-38. 플라이머스: 렉싱턴 북스.
+
+## Reports and Studies
+
+- United Nations Office for the Coordination of Humanitarian Affairs. (2010). 2010년 인도주의 호소: 통합 호소 프로세스: 중간년도 검토. 출처: chadms.unocha.org/.../04.5.2.1_Sector_Response_MAP_Food-Zimbabwe_10060154.
+
+- Wentzel, M. (2003). 남아프리카와 그 인접국가 간의 이주의 역사적 및 현대적 차원. 2003년 3월 17-20일 프리투리아에서 열린 HSRC 이주 워크숍에서 발표된 미출판 논문.</code></pre>
+  </div>
+  <div class="block" data-id="b002" data-bbox="18,923,784,33">
+    <p>Note: The references are formatted in Korean, so it's important to ensure they are correctly interpreted and translated into English if needed. Also, some of the links provided in the text are URLs which may not be fully functional here as they are in a markdown format.</p>
+  </div>
+</div>
+</body>
+</html>

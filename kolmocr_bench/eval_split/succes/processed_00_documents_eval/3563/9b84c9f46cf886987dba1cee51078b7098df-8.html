@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="5,61,995,578">
+    <pre><code class="language-markdown">## 환경친화적이다. 또 다른 돋보이는 특징은 일반적인 수용성 및 산성 환경에서 작동할 수 있다는 점이다.
+
+### 나노재료 합성은 생에너지, 촉매(Levis, 1993), 전자공학(Li et al., 2005), 광학(Murphy et al., 2005), 의학(Salata, 2004) 및 환경 복구(Gupta et al., 2011) 등 다양한 분야에서의 잠재적 응용 가능성이 있어 매우 흥미로운 분야이다. 금속 나노입자 및 금속-반도체 나노복합체를 합성하기 위한 다양한 방법(화학적, 물리적 및 생물학적)이 존재한다(Kalathil et al., 2011b, in press; Khan et al., 2012, 2013a,b.). 일반적으로 사용되는 나노입자 합성용 화학적 방법은 NaBH₄ 또는 시트레이트와 같은 강력한 환원제를 사용하며, 나노입자를 오염시킬 수 있는 대량의 화학물질을 필요로 한다(Dornjgiann et al., 2008). 많은 미생물, 예를 들어 박테리아(Kalimuth et al., 2008; Klaus et al., 1999; Nair and Pradeep, 2002; Zhang et al., 2005), 곰팡이(Mukherjee et al., 2001; Vigneshwaran et al., 2007), 그리고 효모(Kowshik et al.,
+
+| 이미지 | 설명 |
+|---|---|
+| ![a](https://example.com/image_a.png) | 생성된 금 나노입자의 저배율 TEM 이미지 |
+| ![b](https://example.com/image_b.png) | 생성된 금 나노입자의 SAED 패턴 |
+| ![c](https://example.com/image_c.png) | 육각형 |
+| ![d](https://example.com/image_d.png) | 지오이드 |
+| ![e](https://example.com/image_e.png) | 삼각형 |
+| ![f](https://example.com/image_f.png) | 절단 삼각형 |
+| ![g](https://example.com/image_g.png) | 피라미드형 |
+| ![h](https://example.com/image_h.png) | 보트 |
+| ![i](https://example.com/image_i.png) | 오각형 막대 |
+| ![j](https://example.com/image_j.png) | 샌드위치 |
+| ![k](https://example.com/image_k.png) | 및 생성된 금 나노입자의 손기락 모양 구조 |
+| ![l](https://example.com/image_l.png) | 구형 다중 이중 구조 |
+
+그림 7. 미생물을 연료전지 음극에서 다양한 이국적인 형태로 생성된 금 나노입자의 TEM 이미지. (a) 생성된 금 나노입자의 저배율 TEM 이미지, (b) 생성된 금 나노입자의 SAED 패턴, (c) 육각형, (d) 지오이드, (e) 삼각형, (f) 절단 삼각형, (g) 피라미드형, (h) 보트, (i) 오각형 막대, (j) 샌드위치, (k) 및 생성된 금 나노입자의 손기락 모양 구조. (l) 구형 다중 이중 구조(Kalathil et al., 2013에 의한 수정 후 그림).</code></pre>
+  </div>
+</div>
+</body>
+</html>

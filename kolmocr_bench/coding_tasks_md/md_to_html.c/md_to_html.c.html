@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+  <div class="block" data-id="b001" data-bbox="35,24,500,952">
+    <p>c<br>
+#include &lt;stdio.h&gt;<br>
+#include &lt;stdlib.h&gt;<br>
+#include &lt;string.h&gt;<br>
+#include &lt;stdbool.h&gt;<br>
+#define LINE_BUF 1024<br>
+void usage(const char *prog) {<br>
+    printf(&quot;Usage: %s input.md output.html\n&quot;, prog);<br>
+}<br>
+int main(int argc, char *argv[]) {<br>
+    if (argc &lt; 3) {<br>
+        usage(argv[0]);<br>
+        return 1;<br>
+    }<br>
+    FILE *in = fopen(argv[1], &quot;r&quot;);<br>
+    if (!in) {<br>
+        printf(&quot;Failed to open input.\n&quot;);<br>
+        return 1;<br>
+    }<br>
+    FILE *out = fopen(argv[2], &quot;w&quot;);<br>
+    if (!out) {<br>
+        printf(&quot;Failed to open output.\n&quot;);<br>
+        fclose(in);<br>
+        return 1;<br>
+    }<br>
+    fprintf(out, &quot;&lt;html&gt;&lt;body&gt;\n&quot;);<br>
+    char line[LINE_BUF];<br>
+    bool in_list = false;<br>
+    while (fgets(line, sizeof(line), in)) {<br>
+        size_t len = strlen(line);<br>
+        while (len &gt; 0 &amp;&amp; (line[len-1] == &#x27;\n&#x27; || line[len-1] == &#x27;\r&#x27;)) {<br>
+            line[--len] = &#x27;\0&#x27;;<br>
+        }<br>
+        if (len == 0) {<br>
+            if (in_list) {<br>
+                fprintf(out, &quot;&lt;/ul&gt;\n&quot;);<br>
+                in_list = false;<br>
+            }<br>
+            continue;<br>
+        }<br>
+        if (strncmp(line, &quot;# &quot;, 2) == 0) {<br>
+            if (in_list) { fprintf(out, &quot;&lt;/ul&gt;\n&quot;); in_list = false; }<br>
+            fprintf(out, &quot;&lt;h1&gt;%s&lt;/h1&gt;\n&quot;, line + 2);<br>
+        } else if (strncmp(line, &quot;## &quot;, 3) == 0) {<br>
+            if (in_list) { fprintf(out, &quot;&lt;/ul&gt;\n&quot;); in_list = false; }<br>
+            fprintf(out, &quot;&lt;h2&gt;%s&lt;/h2&gt;\n&quot;, line + 3);<br>
+        } else if (strncmp(line, &quot;### &quot;, 4) == 0) {<br>
+            if (in_list) { fprintf(out, &quot;&lt;/ul&gt;\n&quot;); in_list = false; }<br>
+            fprintf(out, &quot;&lt;h3&gt;%s&lt;/h3&gt;\n&quot;, line + 4);<br>
+        } else if (line[0] == &#x27;-&#x27; || line[0] == &#x27;*&#x27;) {<br>
+            const char *text = line + 1;<br>
+            while (*text == &#x27; &#x27; || *text == &#x27;\t&#x27;) text++;<br>
+            if (!in_list) {<br>
+                fprintf(out, &quot;&lt;ul&gt;\n&quot;);<br>
+                in_list = true;<br>
+            }<br>
+            fprintf(out, &quot;&lt;li&gt;%s&lt;/li&gt;\n&quot;, text);<br>
+        } else {<br>
+            if (in_list) { fprintf(out, &quot;&lt;/ul&gt;\n&quot;); in_list = false; }<br>
+            fprintf(out, &quot;&lt;p&gt;%s&lt;/p&gt;\n&quot;, line);<br>
+        }<br>
+    }<br>
+    if (in_list) fprintf(out, &quot;&lt;/ul&gt;\n&quot;);<br>
+    fprintf(out, &quot;&lt;/body&gt;&lt;/html&gt;\n&quot;);<br>
+    fclose(in);<br>
+    fclose(out);<br>
+    return 0;<br>
+}</p>
+  </div>
+</div>
+</body>
+</html>

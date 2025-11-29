@@ -1,0 +1,218 @@
+<!-- front_matter
+primary_language: en
+is_rotation_valid: True
+rotation_correction: 0
+is_table: False
+is_diagram: False
+-->
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.document {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.document.columns-2 {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.document.columns-3 {
+  column-count: 3;
+  column-gap: 2rem;
+}
+
+/* Prevent page breaks during printing */
+@media print {
+  body, .document, .block {
+    page-break-inside: avoid;
+  }
+}
+
+/* Table styling */
+table,
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  break-inside: avoid;
+  border: 1px solid #999;
+}
+
+table th,
+table td,
+table.data-table th,
+table.data-table td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+table th,
+table.data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border: 1px solid #666;
+}
+
+table tbody tr:nth-child(even),
+table.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover,
+table.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Math rendering */
+.math-display {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+/* Block styling */
+.block {
+  margin: 1rem 0;
+  width: fit-content;
+}
+
+/* List styling */
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+
+/* Figure styling */
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Heading styling */
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem 0;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 1.3rem 0 0.4rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.3rem 0;
+}
+
+h4, h5, h6 {
+  margin: 1rem 0 0.3rem 0;
+}
+
+/* Paragraph styling */
+p {
+  margin: 0.5rem 0;
+}
+</style>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  startup: {
+    ready: () => {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(() => {
+        console.log('MathJax rendering complete');
+      });
+    }
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<div class="document">
+  <div class="block" data-id="b001" data-bbox="28,58,438,35">
+    <p>우리는 대체를 수행합니다: $s = \frac{1 - r^n}{1 + r^n}$, 그리고 결과적인 적분</p>
+  </div>
+  <div class="block" data-id="b002" data-bbox="28,114,419,67">
+    <p>$$
+4 \int_0^1 (e^{-as} - e^{-a/s})(1 - s)^{-1 + 1/n}(1 + s)^{-1 - 1/n} ds
+$$</p>
+  </div>
+  <div class="block" data-id="b003" data-bbox="28,203,972,34">
+    <p>에서 $(0, a^{1/2})$ 구간 이외의 모든 것을 제외합니다. 그러면 대수적 인자들을 상수로 대체할 수 있으며, 결정해야 할 양은 다음보다 큽니다:</p>
+  </div>
+  <div class="block" data-id="b004" data-bbox="28,258,218,71">
+    <p>$$
+K_3 \int_0^{a^{1/2}} (e^{-a} - e^{-a/s}) ds.
+$$</p>
+  </div>
+  <div class="block" data-id="b005" data-bbox="28,350,832,34">
+    <p>각 구간 $[(j-1)a, ja]$ (j = 1, 2, $\cdots$, $[a^{-1/2}]$)를 따로 고려합니다. j번째 구간에서 적분의 최솟값은 다음과 같습니다:</p>
+  </div>
+  <div class="block" data-id="b006" data-bbox="28,406,266,31">
+    <p>$$
+e^{-a} - e^{-a/j} > -a + j^{-1} - j^{-2},
+$$</p>
+  </div>
+  <div class="block" data-id="b007" data-bbox="28,458,265,34">
+    <p>따라서 적분의 값은 다음보다 큽니다:</p>
+  </div>
+  <div class="block" data-id="b008" data-bbox="28,514,327,89">
+    <p>$$
+a \sum_{j=1}^{[a^{-1/2}]} [-a + j^{-1} - j^{-2}] > K_4 a |\log a|.
+$$</p>
+  </div>
+  <div class="block" data-id="b009" data-bbox="28,624,438,34">
+    <p>이제 $k = 2, 3, \cdots$에 대해 $a_k = k^{-1}(\log k)^{-3/2}$라고 하고,</p>
+  </div>
+  <div class="block" data-id="b010" data-bbox="28,680,283,65">
+    <p>$$
+f(z) = \exp \left( - \sum a_k \frac{1 + z^n k}{1 - z^n k} \right).
+$$</p>
+  </div>
+  <div class="block" data-id="b011" data-bbox="28,766,607,34">
+    <p>만약 $n_k \to \infty$가 충분히 빠르게 이루어진다면, $f$는 다시 원하는 성질을 갖게 됩니다.</p>
+  </div>
+  <div class="block" data-id="b012" data-bbox="28,821,65,34">
+    <p>참고문헌</p>
+  </div>
+  <div class="block" data-id="b013" data-bbox="28,877,953,68">
+    <ol>
+      <li>S. N. Mergeljan, On an integral connected with analytic functions, Izv. Akad. Nauk SSSR Ser. Mat. 15(1951), 395-400. (러시아어)</li>
+      <li>W. Rudin, The radial variation of analytic functions, Duke Math. J. 22(1955), 235-242.</li>
+    </ol>
+  </div>
+  <div class="block" data-id="b014" data-bbox="28,966,101,34">
+    <p>미시간 대학교</p>
+  </div>
+</div>
