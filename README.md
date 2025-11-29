@@ -130,8 +130,8 @@ print("hello kolmocr")
 ## License
 - 'kolmocr_bench' 폴더의 데이터는 CC-BY-NC 4.0 기준으로 배포합니다. 
 - 나머지 소스코드의 경우 Apache 2.0 으로 배포합니다.
-기존 olmocr에 대한 README.md
-
+  
+## 기존 olmocr의 README.md
 ---
 
 <div align="center">
