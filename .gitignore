@@ -54,7 +54,26 @@ dist/
 pip-wheel-metadata/
 uv.lock
 
+# Large data files
+*.tar.gz
+*.tar
+*.rar
 
+# Model checkpoints
+*.pth
+*.ckpt
+*.safetensors
+checkpoints/
+models/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
 
 # dev tools
 
@@ -100,4 +119,14 @@ site/
 
 # large data files
 evalset_pool/
+output/
+
+
+# Development tool settings
+.claude/
+.crossnote/
+
+
+.vscode/settings.json
+.pytest_cache
 output/
