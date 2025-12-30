@@ -31,9 +31,9 @@ KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/�
 
 ## LeaderBoard using KolmOCR Benchmark
 
-- KolmOCR Benchmark 모든 split에 대한 `text_edit`(Text), `table_f1`(Table) `image_iou`(Image IoU), `f1_score` (Heading, List) score의 평균 값이 사용됨. Image IoU 현재 평가 코드상 오류로 N/A로 표시됨.
+- KolmOCR Benchmark 모든 split에 대한 `text_edit`(Text), `table_f1`(Table) `image_iou`(Image IoU), `f1_score` (Heading, List) score의 평균 값이 사용됨.
 
-| Element        | KolmOCR 7B v251129 (Ours) | Qwen2.5-VL-7B-Instruct | Qwen2.5-VL-32B-Instruct |
+| Element        | KolmOCR 7B(Ours) | Qwen2.5-VL-7B-Instruct | Qwen2.5-VL-32B-Instruct |
 | -------------- | ------------------------- | ---------------------- | ----------------------- |
 | **Text**       | 0.8146                    | 0.5816                 | 0.5144                  |
 | **Heading**    | 0.3661                    | 0.4677                 | 0.2425                  |
