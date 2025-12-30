@@ -33,14 +33,17 @@ KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/�
 
 - KolmOCR Benchmark 모든 split에 대한 `text_edit`(Text), `table_f1`(Table) `image_iou`(Image IoU), `f1_score` (Heading, List) score의 평균 값이 사용됨.
 
-| Element        | [KolmOCR_v251229 7B](https://huggingface.co/posicube/KolmOCR_v251229) (Ours) | Qwen2.5-VL-7B-Instruct | Qwen2.5-VL-32B-Instruct |
-| -------------- | ------------------------- | ---------------------- | ----------------------- |
-| **Text**       | 0.8146                    | 0.5816                 | 0.5144                  |
-| **Heading**    | 0.3661                    | 0.4677                 | 0.2425                  |
-| **List**       | 0.6782                    | 0.5072                 | 0.5575                  |
-| **Table**      | 0.7248                    | 0.6837                 | 0.4996                  |
-| **Image IoU**  | 0.3363                    | 0.1309                 | 0.1469                  |
-| **Code-Block** | 0.2122                    | 0.047                  | 0.0952                  |
+| Element        | [KolmOCR_v251229 7B](https://huggingface.co/posicube/KolmOCR_v251229) (Ours) | Qwen2.5-VL-7B-Instruct | Qwen2.5-VL-32B-Instruct |gpt-4o-gs-2024-11-20 |
+| -------------- | ------------------------- | ---------------------- | ----------------------- |----------------------- |
+| **Text**       | **0.8146**                | 0.5816                 | 0.5144                  | *0.6974*                 |
+| **Heading**    | *0.3661*             | **0.4677**                 | 0.2425                  | 0.1626                  |
+| **List**       | **0.6782**                    | 0.5072                 | *0.5575*                  | 0.4588                  |
+| **Table**      | *0.7248*                    | 0.6837                 | 0.4996                  | **0.7339**                  |
+| **Image IoU**  | **0.3363**                    | 0.1309                 | 0.1469                  | *0.2534*                  |
+| **Code-Block** | **0.2122**                    | 0.047                  | 0.0952                  | *0.1661*                 |
+| **Average** |     **0.5220**                             |  0.4030                      |      0.3427                   |     *0.4120*                     |
+
+
 
 ## Metrics
 
