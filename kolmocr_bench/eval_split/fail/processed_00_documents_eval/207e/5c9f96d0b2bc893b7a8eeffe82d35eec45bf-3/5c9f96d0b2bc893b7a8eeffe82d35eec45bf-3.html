@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h2 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #000;
+  text-align: left;
+}
+
+.block[data-id="b002"] p,
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b005"] p,
+.block[data-id="b006"] p,
+.block[data-id="b007"] p,
+.block[data-id="b008"] p,
+.block[data-id="b009"] p,
+.block[data-id="b010"] p,
+.block[data-id="b011"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+  color: #000;
+  text-align: justify;
+}
+
+/* Footnotes and references in block b011 */
+.block[data-id="b011"] p sup {
+  font-size: calc(0.8em * var(--font-scale));
+  vertical-align: super;
+  line-height: 0;
+}
+
+.block[data-id="b011"] p br {
+  display: block;
+  margin: 5px 0;
+}
+
+/* Table-like structure in block b011 (using | --- | and | | for visual separation) */
+.block[data-id="b011"] p::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #000;
+  margin: 10px 0;
+}
+
+.block[data-id="b011"] p::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #000;
+  margin: 10px 0;
+}
+
+/* Adjust spacing for footnotes */
+.block[data-id="b011"] p sup + br {
+  display: none;
+}
+
+.block[data-id="b011"] p sup + span {
+  display: block;
+  margin-top: 5px;
+  font-size: calc(0.9em * var(--font-scale));
+  color: #555;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+
+/* Ensure no extra margin for the first block */
+.block:first-child {
+  margin-top: 0;
+}
+
+/* Handle the special formatting in block b011 */
+.block[data-id="b011"] p {
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
+}
+
+/* Fix for the vertical alignment of footnotes */
+.block[data-id="b011"] p sup {
+  font-size: calc(0.8em * var(--font-scale));
+  vertical-align: top;
+  line-height: 1;
+}
+
+/* Ensure footnotes are not indented */
+.block[data-id="b011"] p sup + span {
+  margin-left: 0;
+  text-indent: 0;
+}
+
+/* Optional: Add a subtle border for the document body */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.32rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #fdfbf6;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #1e130c;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.block[data-class="header"] {
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  color: #9a8b7c;
+}
+
+
+.block[data-class="quotation"] {
+  font-style: italic;
+  border-left: 3px solid #d97706;
+  padding-left: 16px;
+}
+
+.block[data-class="figure"] {
+  border: 1px dashed rgba(55, 65, 81, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1e130c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #9a8b7c;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #9a8b7c;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.07rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #ccc !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,43,165,62">
+<h2>yaml</h2>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,77,905,102">
+<p>(d) 임시 노령문제 특별위원회가 제87회 의회에서 상원 결의안 제33호에 따라 설립된 모든 기록 및 문서는 특별 위원회로 이전된다.</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,116,190,128">
+<p>(e) (이행됨.)</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b004" data-bbox="104,142,270,155">
+<p>83.2 인디언 문제 위원회</p>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,169,905,207">
+<p>제105조. (a)(1) 상원의장은 다수당 지도자와 소수당 지도자의 추천을 받아, 상원의 다수당 소속 의원 4명과 소수당 소속 의원 3명을 임명하여 임시 인디언 문제 특별위원회(이하 "특별위원회"라고 함)를 설립한다. 특별위원회는 위원들 중에서 의장을 선출한다.</p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,221,905,260">
+<p>(2) 위원회의 사무 처리를 위한 쿼럼은 위원의 다수로 구성되며, 증언을 받기 위한 목적으로는 특별위원회가 더 적은 수를 쿼럼으로 설정할 수 있다. 특별위원회는 본 조항과 상원의 상설 위원회를 관리하는 규정에 부합하지 않는 절차 규정을 채택할 수 있다.</p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,273,905,299">
+<p>(3) 특별위원회의 위원 자격에 발생하는 공석은 잔여 위원들이 특별위원회의 기능을 수행할 수 있는 권한에 영향을 미치지 않는다.</p>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,313,905,338">
+<p>(4) 상원의 상설 규칙 제25조 제4항$^7$의 목적에 있어서, 상원의원이 특별위원회의 위원 또는 의장으로서의 역할은 고려되지 않는다.</p>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,352,874,365">
+<p>(b)(1) 인디언 문제와 관련된 모든 제안된 입법안, 메시지, 청원서, 기념문서 및 기타 사항은 특별위원회로 회부된다.</p>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,378,905,404">
+<p>(2) 특별위원회는 인디언의 문제와 기회에 관한 모든 사항을 조사하는 것이 의무이며, 이는 인디언 땅 관리와 신뢰 책임, 인디언</p>
+</div>
+<div class="block" data-class="reference" data-id="b011" data-bbox="104,425,905,936">
+<p>$^6$ 1993년 2월 24일 S. Res. 71, 103–1에 따라 "인디언 문제 특별위원회"라는 이름이 변경됨.<br/>
+$^7$ 상원 규칙 제25조 제3(c)항의 번호 회원에 대한 내용은 상원 매뉴얼 25–3(c)항을 참조.<br/>
+$^8$ 1979년 11월 14일 S. Res. 274, 96–1의 채택으로 "제6항"에서 변경됨.<br/>
+| --- |<br/>
+| | (d) 임시 노령문제 특별위원회가 제87회 의회에서 상원 결의안 제33호에 따라 설립된 모든 기록 및 문서는 특별 위원회로 이전된다. |<br/>
+| | (e) (이행됨.) |<br/>
+| | 83.2 인디언 문제 위원회 |<br/>
+| | 제105조. (a)(1) 상원의장은 다수당 지도자와 소수당 지도자의 추천을 받아, 상원의 다수당 소속 의원 4명과 소수당 소속 의원 3명을 임명하여 임시 인디언 문제 특별위원회(이하 "특별위원회"라고 함)를 설립한다. 특별위원회는 위원들 중에서 의장을 선출한다. |<br/>
+| | (2) 위원회의 사무 처리를 위한 쿼럼은 위원의 다수로 구성되며, 증언을 받기 위한 목적으로는 특별위원회가 더 적은 수를 쿼럼으로 설정할 수 있다. 특별위원회는 본 조항과 상원의 상설 위원회를 관리하는 규정에 부합하지 않는 절차 규정을 채택할 수 있다. |<br/>
+| | (3) 특별위원회의 위원 자격에 발생하는 공석은 잔여 위원들이 특별위원회의 기능을 수행할 수 있는 권한에 영향을 미치지 않는다. |<br/>
+| | (4) 상원의 상설 규칙 제25조 제4항$^7$의 목적에 있어서, 상원의원이 특별위원회의 위원 또는 의장으로서의 역할은 고려되지 않는다. |<br/>
+| | (b)(1) 인디언 문제와 관련된 모든 제안된 입법안, 메시지, 청원서, 기념문서 및 기타 사항은 특별위원회로 회부된다. |<br/>
+| | (2) 특별위원회는 인디언의 문제와 기회에 관한 모든 사항을 조사하는 것이 의무이며, 이는 인디언 땅 관리와 신뢰 책임, 인디언 |<br/>
+| | $^6$ 1993년 2월 24일 S. Res. 71, 103–1에 따라 "인디언 문제 특별위원회"라는 이름이 변경됨. |<br/>
+| | $^7$ 상원 규칙 제25조 제3(c)항의 번호 회원에 대한 내용은 상원 매뉴얼 25–3(c)항을 참조. |<br/>
+| | $^8$ 1979년 11월 14일 S. Res. 274, 96–1의 채택으로 "제6항"에서 변경됨. |</p>
+</div>
+</div>
+</body>
+</html>

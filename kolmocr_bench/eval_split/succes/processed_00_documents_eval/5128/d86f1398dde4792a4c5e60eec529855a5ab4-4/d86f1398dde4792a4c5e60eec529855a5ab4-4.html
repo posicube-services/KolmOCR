@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b010"] h2,
+.block[data-id="b012"] h2,
+.block[data-id="b017"] h2,
+.block[data-id="b020"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b007"] p,
+.block[data-id="b009"] p,
+.block[data-id="b011"] p,
+.block[data-id="b013"] p,
+.block[data-id="b015"] p,
+.block[data-id="b018"] p,
+.block[data-id="b019"] p,
+.block[data-id="b022"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 10px 0;
+}
+
+.block[data-id="b004"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b005"] .table-container {
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.block[data-id="b005"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.block[data-id="b005"] .data-table th,
+.block[data-id="b005"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.block[data-id="b005"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.block[data-id="b006"] h3,
+.block[data-id="b008"] h4,
+.block[data-id="b014"] h3,
+.block[data-id="b021"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 15px 0 10px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b016"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.block[data-id="b016"] li {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 5px 0;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Optional: Add some padding to the document body for better readability */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.28rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f4f4f2;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #0c0c0c;
+}
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.9;
+}
+
+.block[data-class="title"] {
+  font-size: 2.2rem;
+  letter-spacing: 0.3rem;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.9rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.8rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.7rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="header"] {
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.6rem;
+  color: #0c0c0c;
+}
+
+.block[data-class="text"] {
+  font-size: 1.6rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.37rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,39,237,55">
+<h1>markdown</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="104,78,210,92">
+<h2>P 83 – 치료</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,113,896,135">
+<p>문헌은 "치료의 목표는 안압을 20~40% 감소시키고, 더 이상의 시신경과 시야 손상을 방지하는 것"이라고 명시하고 있으며, 목표 안압은 개인별로 설정된다는 점을 주목할 가치가 있다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="104,152,473,167">
+<h2>P 84 – 표 7: 녹내장의 일반적인 약물 치료</h2>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="105,188,907,251">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>치료제</th><th>효과</th></tr>
+</thead>
+<tbody>
+<tr><td>프로스타글란딘 유사체와 프로스타미드</td><td>1선 치료제, 베타 차단제는 2선 치료제, 탄산안hydrase 억제제와 시냅토미메틱은 3선 치료제이며, 마이오틱은 녹내장 치료에서 매우 드물게 사용된다.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b006" data-bbox="104,268,256,282">
+<h3>시냅토미메틱 드랍</h3>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,302,781,313">
+<p>추가로, 시냅토미메틱인 아프라클로니딘은 수술 전 안압을 조절하기 위해 단기적으로 사용될 수 있다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b008" data-bbox="104,330,425,343">
+<h4>프로스타글란딘 유사체와 프로스타미드</h4>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,363,865,374">
+<p>프로스타글란딘 유사체와 프로스타미드는 속눈썹의 성장을 유발할 수 있으며, 눈 주변의 피부가 어두워질 수 있다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b010" data-bbox="104,391,144,405">
+<h2>검진</h2>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="104,426,887,448">
+<p>문헌은 "녹내장 환자의 1차 친족은 무료 눈 검사를 받을 수 있다"고 명시하고 있으나, 이는 "녹내장 환자의 1차 친족은 40세 이상일 경우 무료 눈 검사를 받을 수 있다"로 수정되어야 한다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b012" data-bbox="104,465,210,480">
+<h2>P 89 – 치료</h2>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="104,501,890,523">
+<p>문헌은 "당뇨병성 맥락망 부종이 란비즈루알(NICE 승인 적응증)에 포함되었다"고 명시하고 있다. 이는 또한 아플리베셉트(Eylea®)에 대한 NICE 개선된 적응증이다.</p>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,540,741,553">
+<h3>추가로, 다른 치료가 효과가 없을 경우 안내액 코르티코스테로이드가 사용된다.</h3>
+</div>
+<div class="block" data-class="text" data-id="b015" data-bbox="104,573,903,596">
+<p>플루오신올론 아세톤라이드 안내액 임플란트는 만성 당뇨병성 맥락망 부종을 앓는 사람들에게 가능한 치료로 추천되며, 다음 조건이 충족될 경우:</p>
+</div>
+<div class="block" data-class="text" data-id="b016" data-bbox="129,611,511,636">
+<ul>
+<li>임플란트가 인공 수정체가 있는 눈에 사용되고</li>
+<li>다른 치료로 당뇨병성 맥락망 부종이 호전되지 않은 경우.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b017" data-bbox="104,653,364,667">
+<h2>P 90 – 나이 관련 맥락망 퇴행</h2>
+</div>
+<div class="block" data-class="text" data-id="b018" data-bbox="104,688,898,721">
+<p>문헌은 "세계보건기구에 따르면, 나이 관련 맥락망 퇴행(ARMD)으로 인해 심각한 실명을 겪는 사람이 800만 명에 달한다"고 명시하고 있다. 이 통계는 2003년의 자료이다. The Lancet은 2014년에 2020년까지 ARMD를 앓는 사람 수가 1억 9,600만 명에 이를 것으로 예측했으며, 2040년에는 2억 8,800만 명으로 증가할 것으로 보고했다.</p>
+</div>
+<div class="block" data-class="text" data-id="b019" data-bbox="104,737,904,793">
+<p>문헌은 "세계적 문헌고찰에 따르면, 영국에서 ARMD로 인해 실명하거나 시력이 저하된 사람이 18만 2,000명 에서 30만 명 사이로 추정된다"고 명시하고 있다. 이 데이터는 2003년에 보고되었으며, 현재는 해당 참조가 더 이상 찾을 수 없어 NHS Choices의 정보로 대체되었다. NHS Choices(2015년 8월 업데이트)에 따르면, ARMD는 영국에서 60만 명 이상의 사람을 영향받고 있으며, 시력 손실의 주요 원인이다. 2020년까지 영국에서 ARMD의 후기 단계를 앓는 사람이 약 70만 명에 이를 것으로 예측된다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b020" data-bbox="104,810,210,824">
+<h2>P 91 – 치료</h2>
+</div>
+<div class="block" data-class="text" data-id="b021" data-bbox="104,847,841,860">
+<h3>추가로, ARMD 분야에서는 임플란트(보이스 아이)를 대상으로 한 수술 시험도 진행 중이다.</h3>
+</div>
+<div class="block" data-class="text" data-id="b022" data-bbox="104,880,901,948">
+<p>또한, 아플리베셉트, 페가프타니브, 란비즈루맙은 혈관내피생장인자 억제제로, 혈관형성(습성) 나이 관련 맥락망 퇴행(ARMD) 치료에 사용되는 허가된 약물이다. 아플리베셉트는 중앙색소망 정맥폐쇄로 인한 맥락망 부종과 당뇨병성 맥락망 부종 치료에도 허가되어 있으며, 란비즈루맙은 당뇨병성 맥락망 부종으로 인한 시력 저하, 분기색소망 정맥폐쇄 또는 중앙색소망 정맥폐쇄로 인한 맥락망 부종, 병리적 근시로 인한 맥락망 혈관형성을 치료하는데 허가되어 있다. 베바시즈루맙은 다른 약물과 함께 다양한 적응증이 있으나, ARMD 치료에는 허가되지 않았다. 2012년 NICE의 최신 지침에 따르면, 페가프타니브는 습성 ARMD 환자에게는 권장되지 않는다.</p>
+</div>
+</div>
+</body>
+</html>

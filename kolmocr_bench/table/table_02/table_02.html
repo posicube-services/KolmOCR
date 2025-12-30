@@ -1,246 +1,610 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>적금가입신청서</title>
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            margin: 30px;
-            padding: 0;
-            max-width: 950px;
-            line-height: 1.45;
-        }
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
 
-        h1 {
-            text-align: center;
-            color: #0b2a4a;
-            font-size: 22px;
-            margin: 25px 0;
-            padding-bottom: 12px;
-            border-bottom: 2.2px solid #0b2a4a;
-            letter-spacing: -0.5px;
-            font-weight: 700;
-        }
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
 
-        .section-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #0b2a4a;
-            margin: 28px 0 10px 0;
-            letter-spacing: -0.3px;
-        }
+.page {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            margin-bottom: 26px;
-            border: 0.8px solid #b8c1cc;
-        }
 
-        .sub-header th {
-            background: #0a1f35;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 12px;
-            padding: 7px 6px;
-            border: 0.8px solid #0a1f35;
-            text-align: center;
-        }
 
-        th {
-            background: #0b2a4a;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 12px;
-            border: 0.8px solid #0a1f35;
-            padding: 7px 6px;
-            text-align: center;
-        }
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
 
-        .header-cell {
-            background: #f3f5f7;
-            color: #333;
-            font-weight: 600;
-            font-size: 12px;
-            text-align: center;
-            border: 0.8px solid #c7ced6;
-        }
 
-        td {
-            background: #ffffff;
-            color: #222;
-            padding: 7px;
-            font-size: 12px;
-            border: 0.8px solid #d0d6dd;
-            text-align: left;
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block[data-id="b001"] h1 {
+  text-align: center;
+  font-size: calc(18pt * var(--font-scale));
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 2px solid #333;
+}
+
+.block[data-id="b002"],
+.block[data-id="b004"],
+.block[data-id="b007"],
+.block[data-id="b010"],
+.block[data-id="b013"] {
+  width: fit-content;
+}
+
+.block[data-id="b002"] p,
+.block[data-id="b004"] p,
+.block[data-id="b007"] p,
+.block[data-id="b010"] p,
+.block[data-id="b013"] p {
+  font-size: calc(12pt * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #333;
+}
+
+/* Table styles for all data tables */
+.table-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(11pt * var(--font-scale));
+}
+
+.data-table th,
+.data-table td {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #1a365d;
+  color: white;
+  font-weight: bold;
+  font-size: calc(12pt * var(--font-scale));
+}
+
+.data-table td {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.data-table tr:nth-child(even) td {
+  background-color: #f1f5f9;
+}
+
+.data-table th[colspan="4"] {
+  font-size: calc(13pt * var(--font-scale));
+  padding: 10px 12px;
+  text-align: center;
+}
+
+/* Specific styling for each block's table */
+.block[data-id="b003"] .data-table th[colspan="4"] {
+  background-color: #1a365d;
+  color: white;
+  font-size: calc(14pt * var(--font-scale));
+}
+
+.block[data-id="b005"] .data-table th[colspan="4"] {
+  background-color: #1a365d;
+  color: white;
+  font-size: calc(14pt * var(--font-scale));
+}
+
+.block[data-id="b008"] .data-table th[colspan="4"] {
+  background-color: #1a365d;
+  color: white;
+  font-size: calc(14pt * var(--font-scale));
+}
+
+.block[data-id="b011"] .data-table th[colspan="4"] {
+  background-color: #1a365d;
+  color: white;
+  font-size: calc(14pt * var(--font-scale));
+}
+
+.block[data-id="b014"] .data-table th[colspan="4"] {
+  background-color: #1a365d;
+  color: white;
+  font-size: calc(14pt * var(--font-scale));
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Optional: Add a subtle shadow or border for visual separation */
+.block {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Footer or bottom spacing */
+.document > :last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.30rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #fdfbf6;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #1e130c;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.block[data-class="header"] {
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  color: #9a8b7c;
+}
+
+
+.block[data-class="quotation"] {
+  font-style: italic;
+  border-left: 3px solid #d97706;
+  padding-left: 16px;
+}
+
+.block[data-class="figure"] {
+  border: 1px dashed rgba(55, 65, 81, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1e130c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #9a8b7c;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #9a8b7c;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.11rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
         }
-    </style>
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
-
-    <h1>적금가입신청서</h1>
-
-    <!-- 개인정보 -->
-    <div class="section-title">개인정보</div>
-    <table>
-        <tr class="sub-header">
-            <th colspan="4">기본정보</th>
-        </tr>
-        <tr>
-            <th colspan="2">신분증 정보</th>
-            <th colspan="2">연락처 정보</th>
-        </tr>
-        <tr>
-            <th class="header-cell">신분증 종류</th>
-            <td>주민등록증</td>
-            <th class="header-cell">휴대전화</th>
-            <td>010-8723-5512</td>
-        </tr>
-        <tr>
-            <th class="header-cell">신분증 번호</th>
-            <td>920315-1******</td>
-            <th class="header-cell">이메일</th>
-            <td>kimms92@gmail.com</td>
-        </tr>
-        <tr>
-            <th class="header-cell">발급일자</th>
-            <td>2021-08-23</td>
-            <th class="header-cell">주소</th>
-            <td>서울특별시 서초구 반포대로 212, 601호</td>
-        </tr>
-    </table>
-
-    <!-- 적금 계좌 정보 -->
-    <div class="section-title">적금 계좌 정보</div>
-    <table>
-        <tr class="sub-header">
-            <th colspan="4">적금 상품 선택</th>
-        </tr>
-        <tr>
-            <th class="header-cell">상품명</th>
-            <td>스마트 정기적금(12개월)</td>
-            <th class="header-cell">적금 기간(개월)</th>
-            <td>12</td>
-        </tr>
-        <tr>
-            <th class="header-cell">월 납입금액</th>
-            <td colspan="3">300,000원</td>
-        </tr>
-
-        <tr class="sub-header">
-            <th colspan="4">자동이체 설정</th>
-        </tr>
-        <tr>
-            <th class="header-cell">은행명</th>
-            <td>신한은행</td>
-            <th class="header-cell">자동이체일</th>
-            <td>매월 10일</td>
-        </tr>
-        <tr>
-            <th class="header-cell">이체 계좌번호</th>
-            <td>110-234-567890</td>
-            <th class="header-cell">예금주명</th>
-            <td>김민수</td>
-        </tr>
-    </table>
-
-    <!-- 동의사항 -->
-    <div class="section-title">거래내역 동의사항</div>
-    <table>
-        <tr class="sub-header">
-            <th colspan="4">이용약관 동의</th>
-        </tr>
-        <tr>
-            <th class="header-cell">약관 1</th>
-            <td>적금 상품 이용 약관(필수)</td>
-            <th class="header-cell">약관 2</th>
-            <td>개인정보 수집 및 이용에 관한 동의(필수)</td>
-        </tr>
-        <tr>
-            <th class="header-cell">약관 3</th>
-            <td>전자금융거래약관(필수)</td>
-            <th class="header-cell">동의 여부</th>
-            <td>동의함</td>
-        </tr>
-
-        <tr class="sub-header">
-            <th colspan="4">개인정보 처리 동의</th>
-        </tr>
-        <tr>
-            <th class="header-cell">수집 목적 1</th>
-            <td>적금 계약의 체결 및 이행</td>
-            <th class="header-cell">수집 목적 2</th>
-            <td>고객 상담 및 민원 처리</td>
-        </tr>
-        <tr>
-            <th class="header-cell">보유기간</th>
-            <td>거래 종료 후 5년간 보관</td>
-            <th class="header-cell">동의 여부</th>
-            <td>동의함</td>
-        </tr>
-    </table>
-
-    <!-- 서명 -->
-    <div class="section-title">서명 및 제출</div>
-    <table>
-        <tr class="sub-header">
-            <th colspan="4">서명란</th>
-        </tr>
-        <tr>
-            <th class="header-cell">신청자 서명</th>
-            <td>김민수</td>
-            <th class="header-cell">서명일자</th>
-            <td>2025-03-12</td>
-        </tr>
-
-        <tr class="sub-header">
-            <th colspan="4">제출 정보</th>
-        </tr>
-        <tr>
-            <th class="header-cell">제출방법</th>
-            <td>모바일 앱 제출</td>
-            <th class="header-cell">제출일시</th>
-            <td>2025-03-12 09:42:15</td>
-        </tr>
-        <tr>
-            <th class="header-cell">담당자 확인</th>
-            <td colspan="3">이소영 계장</td>
-        </tr>
-    </table>
-
-    <!-- 부가정보 -->
-    <div class="section-title">부가정보</div>
-    <table>
-        <tr class="sub-header">
-            <th colspan="4">추가서류 목록</th>
-        </tr>
-        <tr>
-            <th class="header-cell">첨부파일 1</th>
-            <td>주민등록증_사본.pdf</td>
-            <th class="header-cell">첨부파일 2</th>
-            <td>재직증명서.pdf</td>
-        </tr>
-        <tr>
-            <th class="header-cell">첨부파일 3</th>
-            <td>급여명세서_최근3개월.pdf</td>
-            <th class="header-cell">서류 제출 여부</th>
-            <td>제출완료</td>
-        </tr>
-
-        <tr class="sub-header">
-            <th colspan="4">이벤트 참여</th>
-        </tr>
-        <tr>
-            <th class="header-cell">참여 여부</th>
-            <td>참여함</td>
-            <th class="header-cell">이벤트 코드</th>
-            <td>JOIN2025-SPRING</td>
-        </tr>
-    </table>
-
+<div class="page">
+<div class="block" data-bbox="414,31,585,64" data-class="title" data-id="b001">
+<h1>적금가입신청서</h1>
+</div>
+<div class="block" data-bbox="76,75,135,92" data-class="section_title_lv2" data-id="b002">
+<p>개인정보</p>
+</div>
+<div class="block" data-bbox="76,103,925,229" data-class="key_value" data-id="b003">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">기본정보</th>
+</tr>
+<tr>
+<th colspan="2">신분증 정보</th>
+<th colspan="2">연락처 정보</th>
+</tr>
+<tr>
+<th>신분증 종류</th>
+<td>주민등록증</td>
+<th>휴대전화</th>
+<td>010-8723-5512</td>
+</tr>
+<tr>
+<th>신분증 번호</th>
+<td>920315-1******</td>
+<th>이메일</th>
+<td>kimms92@gmail.com</td>
+</tr>
+<tr>
+<th>발급일자</th>
+<td>2021-08-23</td>
+<th>주소</th>
+<td>서울특별시 서초구 반포대로 212, 601호</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-bbox="76,239,172,256" data-class="section_title_lv2" data-id="b004">
+<p>적금 계좌 정보</p>
+</div>
+<div class="block" data-bbox="76,267,925,421" data-class="key_value" data-id="b005">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">적금 상품 선택</th>
+</tr>
+<tr>
+<th>상품명</th>
+<td>스마트 정기적금(12개월)</td>
+<th>적금 기간(개월)</th>
+<td>12</td>
+</tr>
+<tr>
+<th>월 납입금액</th>
+<td colspan="3">300,000원</td>
+</tr>
+<tr>
+<th colspan="4">자동이체 설정</th>
+</tr>
+<tr>
+<th>은행명</th>
+<td>신한은행</td>
+<th>자동이체일</th>
+<td>매월 10일</td>
+</tr>
+<tr>
+<th>이체 계좌번호</th>
+<td>110-234-567890</td>
+<th>예금주명</th>
+<td>김민수</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-bbox="76,432,197,449" data-class="section_title_lv2" data-id="b007">
+<p>거래내역 동의사항</p>
+</div>
+<div class="block" data-bbox="76,460,925,614" data-class="key_value" data-id="b008">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">이용약관 동의</th>
+</tr>
+<tr>
+<th>약관 1</th>
+<td>적금 상품 이용 약관(필수)</td>
+<th>약관 2</th>
+<td>개인정보 수집 및 이용에 관한 동의(필수)</td>
+</tr>
+<tr>
+<th>약관 3</th>
+<td>전자금융거래약관(필수)</td>
+<th>동의 여부</th>
+<td>동의함</td>
+</tr>
+<tr>
+<th colspan="4">개인정보 처리 동의</th>
+</tr>
+<tr>
+<th>수집 목적 1</th>
+<td>적금 계약의 체결 및 이행</td>
+<th>수집 목적 2</th>
+<td>고객 상담 및 민원 처리</td>
+</tr>
+<tr>
+<th>보유기간</th>
+<td>거래 종료 후 5년간 보관</td>
+<th>동의 여부</th>
+<td>동의함</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-bbox="76,624,157,641" data-class="section_title_lv2" data-id="b010">
+<p>서명 및 제출</p>
+</div>
+<div class="block" data-bbox="76,652,925,783" data-class="key_value" data-id="b011">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">서명란</th>
+</tr>
+<tr>
+<th>신청자 서명</th>
+<td>김민수</td>
+<th>서명일자</th>
+<td>2025-03-12</td>
+</tr>
+<tr>
+<th colspan="4">제출 정보</th>
+</tr>
+<tr>
+<th>제출방법</th>
+<td>모바일 앱 제출</td>
+<th>제출일시</th>
+<td>2025-03-12 09:42:15</td>
+</tr>
+<tr>
+<th>담당자 확인</th>
+<td colspan="3">이소영 계장</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-bbox="76,793,135,810" data-class="section_title_lv2" data-id="b013">
+<p>부가정보</p>
+</div>
+<div class="block" data-bbox="76,821,925,952" data-class="key_value" data-id="b014">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">추가서류 목록</th>
+</tr>
+<tr>
+<th>첨부파일 1</th>
+<td>주민등록증_사본.pdf</td>
+<th>첨부파일 2</th>
+<td>재직증명서.pdf</td>
+</tr>
+<tr>
+<th>첨부파일 3</th>
+<td>급여명세서_최근3개월.pdf</td>
+<th>서류 제출 여부</th>
+<td>제출완료</td>
+</tr>
+<tr>
+<th colspan="4">이벤트 참여</th>
+</tr>
+<tr>
+<th>참여 여부</th>
+<td>참여함</td>
+<th>이벤트 코드</th>
+<td>JOIN2025-SPRING</td>
+</tr>
+</table></div>
+</div>
+</div>
 </body>
 </html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Document</title>
+  <style>
+    :root {
+      --font-scale: 1;
+      --base-font-size: 10pt;
+      --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+    }
+
+    .document {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 15mm 20mm;
+      box-sizing: border-box;
+      background: #fff;
+      column-count: 1;
+      column-gap: 10mm;
+      column-fill: balance;
+      overflow: visible;
+      transform: none;
+      font-size: var(--body-font-size);
+    }
+
+
+
+    :root {
+      --font-scale: 1;
+      --base-font-size: calc(10pt * var(--font-scale));
+      --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+    }
+
+
+
+    /* Block-specific styles */
+    .block[data-id="b001"] h1 {
+      font-size: calc(1.5em * var(--font-scale));
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 10px 0;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .block[data-id="b002"] h2,
+    .block[data-id="b006"] h2,
+    .block[data-id="b008"] h2,
+    .block[data-id="b012"] h2,
+    .block[data-id="b014"] h2 {
+      font-size: calc(1.2em * var(--font-scale));
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0 10px 0;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 5px;
+    }
+
+    .block[data-id="b003"] .table-container,
+    .block[data-id="b007"] .table-container,
+    .block[data-id="b011"] .table-container,
+    .block[data-id="b013"] .table-container,
+    .block[data-id="b015"] .table-container,
+    .block[data-id="b016"] .table-container {
+      width: 100%;
+      overflow: auto;
+      margin: 10px 0;
+      border-collapse: collapse;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .block[data-id="b003"] .data-table,
+    .block[data-id="b007"] .data-table,
+    .block[data-id="b011"] .data-table,
+    .block[data-id="b013"] .data-table,
+    .block[data-id="b015"] .data-table,
+    .block[data-id="b016"] .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: calc(0.9em * var(--font-scale));
+    }
+
+    .block[data-id="b003"] .data-table th,
+    .block[data-id="b007"] .data-table th,
+    .block[data-id="b011"] .data-table th,
+    .block[data-id="b013"] .data-table th,
+    .block[data-id="b015"] .data-table th,
+    .block[data-id="b016"] .data-table th {
+      background-color: #f2f2f2;
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .block[data-id="b003"] .data-table td,
+    .block[data-id="b007"] .data-table td,
+    .block[data-id="b011"] .data-table td,
+    .block[data-id="b013"] .data-table td,
+    .block[data-id="b015"] .data-table td,
+    .block[data-id="b016"] .data-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .block[data-id="b004"] h2 {
+      font-size: calc(1.2em * var(--font-scale));
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0 10px 0;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 5px;
+    }
+
+    .block[data-id="b005"] p,
+    .block[data-id="b009"] p,
+    .block[data-id="b010"] p {
+      font-size: calc(0.9em * var(--font-scale));
+      line-height: 1.5;
+      color: #333;
+      margin: 10px 0;
+      text-align: justify;
+    }
+
+    .block[data-id="b009"] p {
+      font-style: italic;
+      margin: 10px 0;
+    }
+
+    .block[data-id="b015"] .data-table,
+    .block[data-id="b016"] .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: calc(0.85em * var(--font-scale));
+    }
+
+    .block[data-id="b015"] .data-table th,
+    .block[data-id="b016"] .data-table th {
+      background-color: #f2f2f2;
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .block[data-id="b015"] .data-table td,
+    .block[data-id="b016"] .data-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    /* Ensure consistent spacing between blocks */
+    .block+.block {
+      margin-top: 15px;
+    }
+
+    /* Responsive adjustments for tables */
+    @media (max-width: 600px) {
+
+      .block[data-id="b003"] .data-table,
+      .block[data-id="b007"] .data-table,
+      .block[data-id="b011"] .data-table,
+      .block[data-id="b013"] .data-table,
+      .block[data-id="b015"] .data-table,
+      .block[data-id="b016"] .data-table {
+        font-size: calc(0.8em * var(--font-scale));
+      }
+    }
+
+
+
+    /* Enforce title/author to body ratio and minimum readable size */
+    .block[data-class="title"],
+    .block[data-class="author"] {
+      font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+    }
+
+    .block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+      font-size: clamp(5px, var(--body-font-size), 999px);
+    }
+
+
+
+    /* Target table blocks specifically */
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      column-span: all !important;
+      -webkit-column-span: all !important;
+      display: block !important;
+      margin: 2rem 0 !important;
+      padding: 0.04rem !important;
+      background: rgba(250, 250, 250, 0.3) !important;
+      border: 1px solid #e8e8e8 !important;
+      border-radius: 4px !important;
+    }
+
+    .block[data-class="table"] .table-container,
+    .block[data-class*="table"] .table-container {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      min-height: 50px !important;
+      position: static !important;
+    }
+
+    @media print {
+
+      .block[data-class="table"] .table-container,
+      .block[data-class*="table"] .table-container {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+      }
+    }
+
+    .block[data-class="table"] table,
+    .block[data-class*="table"] table {
+      width: 100% !important;
+      display: table !important;
+      table-layout: auto !important;
+      border-collapse: separate !important;
+      border-spacing: 3px !important;
+      min-height: 40px !important;
+      position: static !important;
+    }
+
+    .block[data-class="table"] td,
+    .block[data-class="table"] th,
+    .block[data-class*="table"] td,
+    .block[data-class*="table"] th {
+      padding: 7px 9px !important;
+      border: 1px solid #000 !important;
+      min-height: 1.5em !important;
+      line-height: 1.4 !important;
+      position: static !important;
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    .block[data-class="table"] th,
+    .block[data-class*="table"] th {
+      background: #f0f0f0 !important;
+      font-weight: bold !important;
+    }
+
+    .block[data-class="table"] tr:nth-child(even),
+    .block[data-class*="table"] tr:nth-child(even) {
+      background: #fafafa !important;
+    }
+
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      overflow: visible !important;
+    }
+
+
+    body {
+      background: #161b22;
+      color: #346bd7;
+      font-family: "Noto Sans CJK KR", sans-serif;
+    }
+
+    .block {
+      margin-bottom: 20px;
+      line-height: 1.7;
+      color: #38383b;
+    }
+
+    .block[data-class="title"] {
+      font-size: 1.9rem;
+      letter-spacing: 0.25rem;
+      color: #091e87;
+    }
+
+    .block[data-class="subtitle"] {
+      color: #0d62c3;
+      font-size: 1.2rem;
+    }
+
+    .block[data-class="header"] {
+      font-size: 0.8rem;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+    }
+
+    .block[data-class="table"] {
+      font-family: "Noto Sans CJK KR", monospace;
+      border: 1px solid rgba(14, 71, 163, 0.45);
+      padding: 12px;
+      background: rgba(9, 65, 154, 0.404);
+    }
+
+    .block[data-class="figure_caption"] {
+      font-size: 1.0rem;
+      color: #93c5fd;
+      font-style: italic;
+    }
+
+    .block[data-class="table_caption"] {
+      font-size: 1.0rem;
+      color: #93c5fd;
+    }
+
+    .block[data-class="formula_caption"] {
+      font-size: 1.0rem;
+      color: #2e2503;
+      font-style: italic;
+    }
+
+    .block[data-class="QRCode"] {
+      font-size: 0.9rem;
+      color: #93c5fd;
+    }
+
+    .block[data-class="seal"] {
+      font-size: 1rem;
+      color: #f87171;
+      border: 1px dashed #f87171;
+    }
+
+    .block[data-class="invoice_header"] {
+      font-size: 1.1rem;
+      color: #bbf7d0;
+    }
+
+    .block[data-class="key_value"] {
+      font-size: 1rem;
+      color: #2b406b;
+    }
+
+    .block[data-class="section_title_lv1"] {
+      font-size: 1.5rem;
+      color: #313755;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .block[data-class="section_title_lv2"] {
+      font-size: 1.3rem;
+      color: #527092;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .block[data-class="section_title_lv3"] {
+      font-size: 1.2rem;
+      color: #527092;
+      font-weight: 400;
+      text-transform: capitalize;
+    }
+
+    .block[data-class="text"] {
+      font-size: 1.1rem;
+    }
+
+    /* Target table blocks specifically */
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      column-span: all !important;
+      -webkit-column-span: all !important;
+      display: block !important;
+      margin: 2rem 0 !important;
+      padding: 0.38rem !important;
+      background: transparent !important;
+      border: 1px solid #f0f0f0 !important;
+      border-radius: 4px !important;
+    }
+
+    .block[data-class="table"] .table-container,
+    .block[data-class*="table"] .table-container {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      min-height: 50px !important;
+      position: static !important;
+    }
+
+    @media print {
+
+      .block[data-class="table"] .table-container,
+      .block[data-class*="table"] .table-container {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+      }
+    }
+
+    .block[data-class="table"] table,
+    .block[data-class*="table"] table {
+      width: 100% !important;
+      display: table !important;
+      table-layout: auto !important;
+      border-collapse: collapse !important;
+      min-height: 40px !important;
+      position: static !important;
+    }
+
+    .block[data-class="table"] td,
+    .block[data-class="table"] th,
+    .block[data-class*="table"] td,
+    .block[data-class*="table"] th {
+      padding: 8px 10px !important;
+      border: none !important;
+      border-bottom: 1px solid #ddd !important;
+      min-height: 1.5em !important;
+      line-height: 1.4 !important;
+      position: static !important;
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    .block[data-class="table"] th,
+    .block[data-class*="table"] th {
+      background: #ddd !important;
+      font-weight: bold !important;
+    }
+
+    .block[data-class="table"] tr:nth-child(even),
+    .block[data-class*="table"] tr:nth-child(even) {
+      background: #fcfcfc !important;
+    }
+
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      overflow: visible !important;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          MathJax.startup.promise.then(() => {
+            console.log('MathJax initial rendering complete');
+            // Force re-typeset after DOM is fully loaded
+            MathJax.typesetPromise().then(() => {
+              console.log('MathJax re-typeset complete');
+            }).catch((err) => console.log('MathJax typeset error:', err));
+          });
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+  <div class="document">
+    <div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="104,26,322,37">
+      <h1>피서의 상관관계 분석</h1>
+    </div>
+    <div class="block" data-class="table_caption" data-id="b002" data-bbox="113,72,685,82">
+      <h2>Table 3: 피서의 상관계수 (r) FVC 및 FEV1과 나이, 키 및 체중에 대한</h2>
+    </div>
+    <div class="block" data-class="table" data-id="b003" data-bbox="114,111,898,178">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>남자</th>
+              <th>여자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>FVC</td>
+              <td>FEV1</td>
+            </tr>
+            <tr>
+              <td>나이</td>
+              <td>r=0.89 p&lt;0.0001</td>
+              <td>r=0.89 p&lt;0.0001</td>
+            </tr>
+            <tr>
+              <td>키</td>
+              <td>r=0.92 p&lt;0.0001</td>
+              <td>r=0.92 p&lt;0.0001</td>
+            </tr>
+            <tr>
+              <td>체중</td>
+              <td>r=0.86 p&lt;0.0001</td>
+              <td>r=0.84 p&lt;0.0001</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="104,205,226,215">
+      <h2>Discussion</h2>
+    </div>
+    <div class="block" data-class="text" data-id="b005" data-bbox="104,226,905,261">
+      <p>우리는 델리 지역에 거주하는 6세에서 17세 사이의 북 인도계 어린이들을 대상으로 한 다양한 체내기능검사 파라미터에 대한 예측 방정식을 제시했다. 이는 현재 ATS/ERS 작업그룹이 권장하는 표준화된
+        프로토콜에 따라 수행된 체내기능검사에서 유래되었다. 10 FVC, FEV1, PEFR, F50, F75 및 F25-75는 모두 남녀 어린이들에게서 나이, 키 및 체중과 중등도에서 강한 상관관계를
+        보였다. FEV1/FVC는 남자들에게서 나이나 키와 상관관계가 없었으며, 여자들에게서는 키와 상관관계가 없었지만, 후자의 경우 나이와 약한 상관관계를 보였다.</p>
+    </div>
+    <div class="block" data-class="table_caption" data-id="b006" data-bbox="113,292,809,302">
+      <h2>Table 4: 피서의 상관계수 (r) PEFR, F25-75, F50 및 F75와 나이, 키 및 체중에 대한</h2>
+    </div>
+    <div class="block" data-class="table" data-id="b007" data-bbox="114,331,898,398">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>남자</th>
+              <th>여자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>PEFR</td>
+              <td>F25-75</td>
+            </tr>
+            <tr>
+              <td>나이</td>
+              <td>r=0.87 p&lt;0.0001</td>
+              <td>r=0.81 p&lt;0.0001</td>
+            </tr>
+            <tr>
+              <td>키</td>
+              <td>r=0.87 p&lt;0.0001</td>
+              <td>r=0.82 p&lt;0.0001</td>
+            </tr>
+            <tr>
+              <td>체중</td>
+              <td>r=0.78 p&lt;0.0001</td>
+              <td>r=0.71 p&lt;0.0001</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="block" data-class="table_caption" data-id="b008" data-bbox="113,428,542,438">
+      <h2>Table 5: 체내기능검사 파라미터에 대한 회귀 방정식</h2>
+    </div>
+    <div class="block" data-class="equation" data-id="b009" data-bbox="104,466,905,480">
+      <p>Equation: 체내기능검사 파라미터 = 상수 + (키에 대한 β 계수 × 키(cm)) + (나이에 대한 β 계수 × 나이(년)) + (체중에 대한 β 계수 × 체중(Kg))</p>
+    </div>
+    <div class="block" data-class="text" data-id="b010" data-bbox="104,488,905,502">
+      <p>5번째 백분위수는 정상 범위의 하 bound SD, 50번째 백분위수는 5번째 백분위수, 95번째 백분위수는 50번째 백분위수와 함께 표시되어 있다.</p>
+    </div>
+    <div class="block" data-class="table" data-id="b011" data-bbox="114,529,898,582">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>남자</th>
+              <th>여자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>84.41 ± 5.86</td>
+              <td>88.45 ± 5.86</td>
+            </tr>
+            <tr>
+              <td>73.96</td>
+              <td>84.57</td>
+            </tr>
+            <tr>
+              <td>94.11</td>
+              <td>97.32</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="block" data-class="table_caption" data-id="b012" data-bbox="113,613,406,622">
+      <h2>Table 6: FEV1/FVC의 기술적 통계</h2>
+    </div>
+    <div class="block" data-class="table" data-id="b013" data-bbox="114,652,898,679">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>남자</th>
+              <th>여자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0.70 ± 0.08</td>
+              <td>0.68 ± 0.08</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="block" data-class="table_caption" data-id="b014" data-bbox="113,709,490,719">
+      <h2>HTML Table for Regression Parameters</h2>
+    </div>
+    <div class="block" data-class="table" data-id="b015" data-bbox="114,748,898,838">
+      <div class="table-container">
+        <table class="data-table">
+          <tr>
+            <th>남자</th>
+            <th>키에 대한 β 계수</th>
+            <th>나이에 대한 β 계수</th>
+            <th>체중에 대한 β 계수</th>
+            <th>추정 오차 표준편차</th>
+            <th>R²</th>
+          </tr>
+          <tr>
+            <td>FVC</td>
+            <td>-3.226</td>
+            <td>0.032</td>
+            <td>0.066</td>
+            <td>0.014</td>
+            <td>0.394</td>
+            <td>0.872</td>
+          </tr>
+          <tr>
+            <td>FEV1</td>
+            <td>-2.763</td>
+            <td>0.026</td>
+            <td>0.080</td>
+            <td>0.008</td>
+            <td>0.360</td>
+            <td>0.856</td>
+          </tr>
+          <tr>
+            <td>PEFR</td>
+            <td>-5.043</td>
+            <td>0.050</td>
+            <td>0.267</td>
+            <td></td>
+            <td>0.926</td>
+            <td>0.790</td>
+          </tr>
+          <tr>
+            <td>F25-75</td>
+            <td>-2.704</td>
+            <td>0.030</td>
+            <td>0.111</td>
+            <td></td>
+            <td>0.620</td>
+            <td>0.686</td>
+          </tr>
+          <tr>
+            <td>F50</td>
+            <td>-2.540</td>
+            <td>0.027</td>
+            <td>0.145</td>
+            <td></td>
+            <td>0.772</td>
+            <td>0.618</td>
+          </tr>
+          <tr>
+            <td>F75</td>
+            <td>-1.617</td>
+            <td>0.014</td>
+            <td>0.081</td>
+            <td></td>
+            <td>0.537</td>
+            <td>0.491</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="block" data-class="table" data-id="b016" data-bbox="114,865,898,955">
+      <div class="table-container">
+        <table class="data-table">
+          <tr>
+            <th>여자</th>
+            <th>키에 대한 β 계수</th>
+            <th>나이에 대한 β 계수</th>
+            <th>체중에 대한 β 계수</th>
+            <th>추정 오차 표준편차</th>
+            <th>R²</th>
+          </tr>
+          <tr>
+            <td>FVC</td>
+            <td>-1.733</td>
+            <td>0.019</td>
+            <td>0.073</td>
+            <td>0.015</td>
+            <td>0.291</td>
+            <td>0.840</td>
+          </tr>
+          <tr>
+            <td>FEV1</td>
+            <td>-1.633</td>
+            <td>0.017</td>
+            <td>0.078</td>
+            <td>0.010</td>
+            <td>0.256</td>
+            <td>0.847</td>
+          </tr>
+          <tr>
+            <td>PEFR</td>
+            <td>-2.474</td>
+            <td>0.030</td>
+            <td>0.211</td>
+            <td>0.014</td>
+            <td>0.771</td>
+            <td>0.725</td>
+          </tr>
+          <tr>
+            <td>F25-75</td>
+            <td>-2.662</td>
+            <td>0.032</td>
+            <td>0.082</td>
+            <td></td>
+            <td>0.573</td>
+            <td>0.603</td>
+          </tr>
+          <tr>
+            <td>F50</td>
+            <td>-1.229</td>
+            <td>0.017</td>
+            <td>0.118</td>
+            <td></td>
+            <td>0.708</td>
+            <td>0.544</td>
+          </tr>
+          <tr>
+            <td>F75</td>
+            <td>-1.791</td>
+            <td>0.018</td>
+            <td>0.060</td>
+            <td></td>
+            <td>0.504</td>
+            <td>0.431</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #fff;
+      color: #222;
+      margin: 20px;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    th {
+      background: #003a8c;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #999;
+      padding: 8px;
+      font-size: 14px;
+    }
+    td {
+      background: #e9f2ff;
+      text-align: left;
+      border: 1px solid #999;
+      padding: 8px;
+      font-size: 14px;
+      word-break: break-all;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .section-header {
+      background: #003a8c;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #999;
+    }
+    .subsection-header {
+      background: #003a8c;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 6px;
+      font-size: 14px;
+      border: 1px solid #999;
+    }
+    .nested-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    .nested-table th,
+    .nested-table td {
+      padding: 5px;
+      font-size: 13px;
+      border: 1px solid #999;
+    }
+    .nested-table th {
+      background: #003a8c;
+      color: #fff;
+      font-weight: bold;
+    }
+    .nested-table td {
+      background: #e9f2ff;
+      text-align: center;
+    }
+    .label-cell {
+      width: 25%;
+      font-weight: bold;
+      text-align: center;
+      background: #003a8c;
+      color: #fff;
+      border: 1px solid #999;
+    }
+    .value-cell {
+      width: 25%;
+      text-align: left;
+      background: #e9f2ff;
+      border: 1px solid #999;
+    }
+    .full-width {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<h1>카드이용정지신청서</h1>
+
+<!-- 섹션 1: 신청자 기본정보 -->
+<table>
+  <tr><th colspan="4" class="section-header">신청자 기본정보</th></tr>
+  <tr><th colspan="4" class="subsection-header">개인식별정보</th></tr>
+  <tr>
+    <td class="label-cell">신청자 성명</td>
+    <td class="value-cell">홍길동</td>
+    <td class="label-cell">주민등록번호</td>
+    <td class="value-cell">900101-1234567</td>
+  </tr>
+  <tr>
+    <td class="label-cell">휴대폰 번호</td>
+    <td class="value-cell">010-1234-5678</td>
+    <td class="label-cell">이메일 주소</td>
+    <td class="value-cell">hong@example.com</td>
+  </tr>
+  <tr>
+    <td class="label-cell">우편번호</td>
+    <td class="value-cell">12345</td>
+    <td class="label-cell">상세 주소</td>
+    <td class="value-cell">서울특별시 강남구 테헤란로 123</td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">카드정보</th></tr>
+  <tr>
+    <td class="label-cell">카드 종류</td>
+    <td class="value-cell">신용카드</td>
+    <td class="label-cell">카드 번호</td>
+    <td class="value-cell">1234-5678-9012-3456</td>
+  </tr>
+  <tr>
+    <td class="label-cell">카드 소유자 성명</td>
+    <td class="value-cell">홍길동</td>
+    <td class="label-cell">카드 발급일</td>
+    <td class="value-cell">2020-05-15</td>
+  </tr>
+  <tr>
+    <td class="label-cell">카드 상태</td>
+    <td class="value-cell">정상</td>
+    <td class="label-cell">최종 사용일</td>
+    <td class="value-cell">2024-06-01</td>
+  </tr>
+</table>
+
+<!-- 섹션 2: 정지 신청 사유 -->
+<table>
+  <tr><th colspan="4" class="section-header">정지 신청 사유</th></tr>
+  <tr><th colspan="4" class="subsection-header">사유 선택</th></tr>
+  <tr>
+    <td class="label-cell">정지 사유 분류</td>
+    <td class="value-cell">분실/도난</td>
+    <td class="label-cell">상세 사유</td>
+    <td class="value-cell">지갑 분실로 인한 카드 도난 우려</td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">사유 설명</th></tr>
+  <tr>
+    <td class="label-cell">사유 설명</td>
+    <td colspan="3" class="value-cell">분실된 카드를 찾지 못해 정지 요청합니다.</td>
+  </tr>
+  <tr>
+    <td class="label-cell">첨부 서류</td>
+    <td colspan="3" class="value-cell">분실신고 확인서</td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">긴급연락망</th></tr>
+  <tr>
+    <td class="label-cell">긴급 연락처 성명</td>
+    <td class="value-cell">김철수</td>
+    <td class="label-cell">긴급 연락처 전화번호</td>
+    <td class="value-cell">02-123-4567</td>
+  </tr>
+</table>
+
+<!-- 섹션 3: 거래내역 및 정지 범위 -->
+<table>
+  <tr><th colspan="4" class="section-header">거래내역 및 정지 범위</th></tr>
+  <tr><th colspan="4" class="subsection-header">정지 적용 카드</th></tr>
+  <tr>
+    <td class="label-cell">정지 적용 카드 목록</td>
+    <td colspan="3" class="value-cell">1234-5678-9012-3456, 2345-6789-0123-4567</td>
+  </tr>
+  <tr>
+    <td class="label-cell">제외 카드 목록</td>
+    <td colspan="3" class="value-cell">3456-7890-1234-5678</td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">정지 기간 설정</th></tr>
+  <tr>
+    <td class="label-cell">정지 시작일</td>
+    <td class="value-cell">2024-06-10</td>
+    <td class="label-cell">정지 종료일</td>
+    <td class="value-cell">2024-06-30</td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">정지 관련 거래 내역</th></tr>
+  <tr>
+    <td class="label-cell">최근 거래 내역</td>
+    <td colspan="3" class="value-cell">
+      <table class="nested-table">
+        <tr>
+          <th>날짜</th>
+          <th>금액</th>
+          <th>가맹점</th>
+          <th>상태</th>
+        </tr>
+        <tr>
+          <td>2024-06-01</td>
+          <td>50,000원</td>
+          <td>스타벅

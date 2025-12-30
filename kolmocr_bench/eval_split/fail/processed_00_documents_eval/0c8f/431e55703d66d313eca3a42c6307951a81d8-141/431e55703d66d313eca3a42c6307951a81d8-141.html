@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 10px 0;
+  padding: 0;
+  border-bottom: 1px solid #000;
+  color: #000;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b004"] h2,
+.block[data-id="b006"] h2,
+.block[data-id="b008"] h2,
+.block[data-id="b010"] h2,
+.block[data-id="b012"] h2,
+.block[data-id="b014"] h2,
+.block[data-id="b016"] h2,
+.block[data-id="b018"] h2,
+.block[data-id="b020"] h2,
+.block[data-id="b022"] h2,
+.block[data-id="b024"] h2,
+.block[data-id="b026"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #000;
+}
+
+.block[data-id="b003"] ul,
+.block[data-id="b005"] ul,
+.block[data-id="b007"] ul,
+.block[data-id="b009"] ul,
+.block[data-id="b011"] ul,
+.block[data-id="b013"] ul,
+.block[data-id="b015"] ul,
+.block[data-id="b017"] ul,
+.block[data-id="b019"] ul,
+.block[data-id="b021"] ul,
+.block[data-id="b023"] ul,
+.block[data-id="b025"] ul,
+.block[data-id="b027"] ul {
+  margin: 5px 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.block[data-id="b003"] li,
+.block[data-id="b005"] li,
+.block[data-id="b007"] li,
+.block[data-id="b009"] li,
+.block[data-id="b011"] li,
+.block[data-id="b013"] li,
+.block[data-id="b015"] li,
+.block[data-id="b017"] li,
+.block[data-id="b019"] li,
+.block[data-id="b021"] li,
+.block[data-id="b023"] li,
+.block[data-id="b025"] li,
+.block[data-id="b027"] li {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  color: #000;
+}
+
+.block[data-id="b028"] h3 {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #000;
+}
+
+.block[data-id="b029"] img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* General list styling */
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin: 5px 0;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+
+/* Ensure no extra padding/margin on body or document */
+body, 
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.29rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1px solid #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.32rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,35,902,127">
+<h1>Computer Security Technology Planning Study -- Vol II</h1>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="104,141,323,152">
+<h2>1. 원래 활동 (법인 저자)</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="129,165,365,188">
+<ul>
+<li>Box 42</li>
+<li>Fort Washington, Penna. 19034</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b004" data-bbox="104,203,356,214">
+<h2>2. 보고서 보안 분류 및 그룹</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b005" data-bbox="129,227,404,250">
+<ul>
+<li>2a. 보고서 보안 분류: UNCLASSIFIED</li>
+<li>2b. 그룹:</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b006" data-bbox="104,264,235,275">
+<h2>3. 보고서 제목</h2>
+</div>
+<div class="block" data-class="title" data-id="b007" data-bbox="129,290,767,333">
+<ul>
+<li>Computer Security Technology Planning Study -- Vol II</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b008" data-bbox="104,348,484,359">
+<h2>4. 설명적 주석 (보고서 유형 및 포함 기간)</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b009" data-bbox="129,372,358,382">
+<ul>
+<li>최종 보고서 1972년 2월 ~ 9월</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b010" data-bbox="104,396,286,408">
+<h2>5. 저자(성, 이름, 성)</h2>
+</div>
+<div class="block" data-class="author" data-id="b011" data-bbox="129,421,324,435">
+<ul>
+<li>James P. Anderson</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="104,449,235,460">
+<h2>6. 보고서 날짜</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b013" data-bbox="129,473,223,483">
+<ul>
+<li>1972년 10월</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b014" data-bbox="104,497,390,508">
+<h2>7. 총 페이지 수 및 참고 문헌 수</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b015" data-bbox="129,521,288,544">
+<ul>
+<li>7a. 총 페이지 수: 131</li>
+<li>7b. 참고 문헌 수: 4</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b016" data-bbox="104,558,489,570">
+<h2>8. 계약 또는 연구비 번호 및 프로젝트 번호</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b017" data-bbox="129,583,485,619">
+<ul>
+<li>8a. 계약 또는 연구비 번호: F19628-72-C-0198</li>
+<li>8b. 프로젝트 번호: 6917</li>
+<li>9a. 작성자의 보고서 번호: ESD-TR-73-51 VOL II</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b018" data-bbox="104,633,570,645">
+<h2>9. 기타 보고서 번호 (이 보고서에 할당된 기타 번호)</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b019" data-bbox="129,658,289,668">
+<ul>
+<li>9b. 기타 보고서 번호:</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b020" data-bbox="104,682,226,693">
+<h2>10. 배포 선언</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b021" data-bbox="129,706,233,716">
+<ul>
+<li>10. 배포 선언:</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b022" data-bbox="104,730,226,741">
+<h2>11. 보충 주석</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b023" data-bbox="129,754,233,764">
+<ul>
+<li>11. 보충 주석:</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b024" data-bbox="104,778,273,789">
+<h2>12. 후원 군사 활동</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b025" data-bbox="129,802,292,825">
+<ul>
+<li>L. G. Hanscom Field</li>
+<li>Bedford, Mass. 01730</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b026" data-bbox="104,839,179,851">
+<h2>13. 초록</h2>
+</div>
+<div class="block" data-class="text" data-id="b027" data-bbox="129,864,896,906">
+<ul>
+<li>미국 공군의 컴퓨터 보안 요구사항에 대한 계획 연구의 세부사항이 제시됩니다. 개방형 다수 수준 보안 컴퓨팅 기능을 확보하기 위한 개발 프로그램이 설명됩니다. 관련 통신 보안 제품 개발 계획과 현재의 보안 컴퓨팅 문제에 대한 중간 해결책도 제시됩니다. 마지막으로, 제안된 개발 계획과 보완적인 연구 계획도 포함되어 있습니다.</li>
+</ul>
+</div>
+<div class="block" data-class="figure" data-id="b028" data-bbox="104,920,193,930">
+<h3>이미지 정보</h3>
+</div>
+<div class="block" data-class="figure" data-id="b029" data-bbox="104,943,908,952">
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABmJLR0QA/wD/AP+gvaeTAAAAL3RSTlMAAAAqJCATASQz25eHAAAAlklEQVR4nO3BAQ0AIAxAP/6+z2gAAAAASUVORK5CYII="/></p>
+</div>
+</div>
+</body>
+</html>

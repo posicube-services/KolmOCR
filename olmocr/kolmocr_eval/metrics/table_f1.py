@@ -29,6 +29,12 @@ class TableF1Evaluator(Metric):
             md_gt = read_md(gt_dir)
             parsed_pred = parse_md(md_pred)
             parsed_gt = parse_md(md_gt)
+            pred_tables = parsed_pred["tables"]
+            gt_tables = parsed_gt["tables"]
+            missing_tables = max(len(gt_tables) - len(pred_tables), 0)
+            if missing_tables > 0:
+                pred_tables = pred_tables + [""] * missing_tables  # 부족한 pred 테이블은 0 점수로 처리
+
             table_type = parsed_gt["table_type"] or parsed_pred["table_type"]
             has_table_gt = len(parsed_gt["tables"]) > 0
             if not has_table_gt:
@@ -36,10 +42,10 @@ class TableF1Evaluator(Metric):
                 continue
 
             struct_scores = compute_table_f1_scores(
-                parsed_pred["tables"], parsed_gt["tables"], table_type, threshold=threshold, include_text=False
+                pred_tables, gt_tables, table_type, threshold=threshold, include_text=False
             )
             semantic_scores = compute_table_f1_scores(
-                parsed_pred["tables"], parsed_gt["tables"], table_type, threshold=threshold, include_text=True
+                pred_tables, gt_tables, table_type, threshold=threshold, include_text=True
             )
 
             records.append(

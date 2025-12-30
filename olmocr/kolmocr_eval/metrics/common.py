@@ -1,9 +1,14 @@
 import re
+import math
+from functools import lru_cache
 from itertools import zip_longest
 from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass, field
 
 from bs4 import BeautifulSoup
 from Levenshtein import distance as edit_distance
+import unicodedata
+import html
 
 from olmocr.kolmocr_eval.utils.data_io import clean_text
 from olmocr.kolmocr_eval.utils.parser import extract_formulas
@@ -26,6 +31,43 @@ def similarity_from_distance(distance: float) -> float:
 
 def average(values: List[float]) -> float:
     return sum(values) / len(values) if values else 0.0
+
+
+def align_sequences(pred_items: List[object], gt_items: List[object], sim_fn) -> List[Tuple[int, int]]:
+    """
+    Adjacency-style sequence 매칭: global alignment (Needleman-Wunsch)으로
+    총 유사도를 극대화하며 GT/Pred 순서를 유지한 매칭 쌍 리스트를 반환.
+    gap penalty는 0으로 두어 unmatched는 유사도 0으로 취급.
+    """
+    m, n = len(gt_items), len(pred_items)
+    if m == 0 or n == 0:
+        return []
+
+    dp = [[0.0] * (n + 1) for _ in range(m + 1)]
+    # fill DP backwards
+    for i in range(m - 1, -1, -1):
+        for j in range(n - 1, -1, -1):
+            match = sim_fn(pred_items[j], gt_items[i]) + dp[i + 1][j + 1]
+            skip_gt = dp[i + 1][j]
+            skip_pred = dp[i][j + 1]
+            dp[i][j] = max(match, skip_gt, skip_pred)
+
+    # backtrack to collect pairs
+    pairs: List[Tuple[int, int]] = []
+    i = j = 0
+    while i < m and j < n:
+        score = dp[i][j]
+        match = sim_fn(pred_items[j], gt_items[i]) + dp[i + 1][j + 1]
+        if abs(score - match) < 1e-12:
+            pairs.append((i, j))
+            i += 1
+            j += 1
+            continue
+        if abs(score - dp[i + 1][j]) < 1e-12:
+            i += 1
+        else:
+            j += 1
+    return pairs
 
 
 def round_numeric(df: pd.DataFrame, decimals: int = 4) -> pd.DataFrame:
@@ -72,6 +114,33 @@ def _parse_posicube_table(table_block: str) -> List[List[Dict[str, object]]]:
     return rows
 
 
+def _normalize_html_table(table_html: str) -> str:
+    """OmniDocBench식 HTML 테이블 정리: th->td, thead/span 제거, math alttext 삽입, style/attr 제거."""
+    if not table_html:
+        return ""
+    soup = BeautifulSoup(table_html, "html.parser")
+    for th in soup.find_all("th"):
+        th.name = "td"
+    for thead in soup.find_all("thead"):
+        thead.unwrap()
+    for math_tag in soup.find_all("math"):
+        alttext = math_tag.get("alttext", "")
+        alttext = f"${alttext}$" if alttext else ""
+        math_tag.replace_with(alttext)
+    for span in soup.find_all("span"):
+        span.unwrap()
+
+    # drop common style/size attrs
+    for tag in soup.find_all():
+        for attr in ["style", "height", "width", "align", "class"]:
+            if attr in tag.attrs:
+                tag.attrs.pop(attr, None)
+
+    html_str = html.unescape(str(soup))
+    html_str = unicodedata.normalize("NFKC", html_str).strip()
+    return html_str
+
+
 def _serialize_table(rows: List[List[Dict[str, object]]], include_text: bool) -> str:
     parts = []
     for row in rows:
@@ -89,30 +158,30 @@ def _serialize_table(rows: List[List[Dict[str, object]]], include_text: bool) ->
 
 def compute_table_scores(pred_tables: List[str], gt_tables: List[str], table_type: Optional[str]) -> Dict[str, float]:
     """
-    테이블 블록 리스트를 받아 논문 Table-TEDS(Tree Edit Distance Similarity) 방식으로 점수를 계산.
-    - 삽입/삭제 비용: 1
-    - 대체 비용: 태그가 같으면 텍스트 normalized edit distance(텍스트 없으면 0), 다르면 1
-    - 정규화: 1 - TED / max(|pred|, |gt|)
+    테이블 블록 리스트를 받아 OmniDocBench 스타일 Table-TEDS를 계산.
+    - 테이블을 단순 tree(table->tr->cell)로 변환
+    - 삽입/삭제 비용: 서브트리 크기
+    - 치환 비용: 태그 불일치(1) + (옵션) 셀 텍스트 NED
+    - 유사도: exp(-TED / |GT|)
     """
 
-    def parse_block(block: str) -> List[List[Dict[str, object]]]:
-        if not block:
-            return []
-        if table_type == "posicube":
-            return _parse_posicube_table(block)
-        return _parse_html_table(block)
+    structure_sims = [0.0] * len(gt_tables)
+    semantic_sims = [0.0] * len(gt_tables)
 
-    structure_scores = []
-    semantic_scores = []
-    for gt_block, pred_block in zip_longest(gt_tables, pred_tables, fillvalue=""):
-        gt_parsed = parse_block(gt_block)
-        pred_parsed = parse_block(pred_block)
-        structure_scores.append(_table_teds_similarity(pred_parsed, gt_parsed, include_text=False))
-        semantic_scores.append(_table_teds_similarity(pred_parsed, gt_parsed, include_text=True))
+    def _sim_struct(pred_block, gt_block):
+        return _table_teds_similarity_omni(pred_block, gt_block, table_type, include_text=False)
+
+    def _sim_sem(pred_block, gt_block):
+        return _table_teds_similarity_omni(pred_block, gt_block, table_type, include_text=True)
+
+    pairs = align_sequences(pred_tables, gt_tables, _sim_struct)
+    for gi, pi in pairs:
+        structure_sims[gi] = _sim_struct(pred_tables[pi], gt_tables[gi])
+        semantic_sims[gi] = _sim_sem(pred_tables[pi], gt_tables[gi])
 
     return {
-        "table_teds": average(structure_scores) if structure_scores else 1.0,
-        "table_teds_s": average(semantic_scores) if semantic_scores else 1.0,
+        "table_teds": average(structure_sims) if structure_sims else 1.0,
+        "table_teds_s": average(semantic_sims) if semantic_sims else 1.0,
     }
 
 
@@ -187,6 +256,148 @@ def _table_teds_similarity(
     return similarity_from_distance(distance / denom)
 
 
+# ---------- OmniDocBench Table TEDS ----------
+@dataclass
+class _TableNode:
+    tag: str
+    text: str = ""
+    children: List["_TableNode"] = field(default_factory=list)
+
+    def add(self, child: "_TableNode") -> None:
+        self.children.append(child)
+
+
+_WS_RE = re.compile(r"\s+")
+
+
+def _normalize_cell_text(text: str) -> str:
+    if text is None:
+        return ""
+    return _WS_RE.sub(" ", text.strip())
+
+
+def _table_block_to_tree(table_block: str, table_type: Optional[str], include_text: bool) -> Optional[_TableNode]:
+    """
+    Convert a table block into a simple ordered tree (table->tr->cell).
+    """
+    if not table_block:
+        return None
+
+    # posicube 포맷을 HTML 테이블처럼 취급
+    if table_type == "posicube":
+        rows = _parse_posicube_table(table_block)
+    else:
+        rows = _parse_html_table(_normalize_html_table(table_block))
+
+    if not rows:
+        return None
+
+    root = _TableNode("table")
+    for row in rows:
+        row_node = _TableNode("tr")
+        for cell in row:
+            txt = _normalize_cell_text(cell.get("text", "")) if include_text else ""
+            row_node.add(_TableNode("cell", txt))
+        root.add(row_node)
+    return root
+
+
+def _table_tree_size(node: Optional[_TableNode]) -> int:
+    if node is None:
+        return 0
+    return 1 + sum(_table_tree_size(ch) for ch in node.children)
+
+
+def _table_ted_distance(a: Optional[_TableNode], b: Optional[_TableNode], include_text: bool) -> float:
+    """
+    Ordered tree edit distance where ins/del cost = subtree size,
+    sub cost = tag mismatch + optional text NED.
+    """
+    id_map_a: Dict[int, _TableNode] = {}
+    id_map_b: Dict[int, _TableNode] = {}
+    children_a: Dict[int, List[int]] = {}
+    children_b: Dict[int, List[int]] = {}
+    size_a: Dict[int, int] = {}
+    size_b: Dict[int, int] = {}
+
+    def build_maps(root: Optional[_TableNode], id_map, child_map, size_map):
+        def dfs(node: _TableNode) -> int:
+            nid = id(node)
+            id_map[nid] = node
+            child_ids = []
+            total = 1
+            for ch in node.children:
+                cid = dfs(ch)
+                child_ids.append(cid)
+                total += size_map[cid]
+            child_map[nid] = child_ids
+            size_map[nid] = total
+            return nid
+
+        if root is None:
+            return None
+        return dfs(root)
+
+    root_a_id = build_maps(a, id_map_a, children_a, size_a)
+    root_b_id = build_maps(b, id_map_b, children_b, size_b)
+
+    @lru_cache(maxsize=None)
+    def ted(nid_a: Optional[int], nid_b: Optional[int]) -> float:
+        if nid_a is None and nid_b is None:
+            return 0.0
+        if nid_a is None:
+            return float(size_b[nid_b])
+        if nid_b is None:
+            return float(size_a[nid_a])
+
+        na = id_map_a[nid_a]
+        nb = id_map_b[nid_b]
+        tag_cost = 0.0 if na.tag == nb.tag else 1.0
+        text_cost = normalized_edit_distance(na.text, nb.text) if include_text else 0.0
+        node_sub_cost = tag_cost + text_cost
+
+        ca = children_a[nid_a]
+        cb = children_b[nid_b]
+        m, n = len(ca), len(cb)
+        dp = [[0.0] * (n + 1) for _ in range(m + 1)]
+        for i in range(1, m + 1):
+            dp[i][0] = dp[i - 1][0] + size_a[ca[i - 1]]
+        for j in range(1, n + 1):
+            dp[0][j] = dp[0][j - 1] + size_b[cb[j - 1]]
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                del_cost = size_a[ca[i - 1]]
+                ins_cost = size_b[cb[j - 1]]
+                sub_cost = ted(ca[i - 1], cb[j - 1])
+                dp[i][j] = min(
+                    dp[i - 1][j] + del_cost,
+                    dp[i][j - 1] + ins_cost,
+                    dp[i - 1][j - 1] + sub_cost,
+                )
+        return node_sub_cost + dp[m][n]
+
+    return ted(root_a_id, root_b_id)
+
+
+def _table_teds_similarity_omni(pred_block: str, gt_block: str, table_type: Optional[str], include_text: bool) -> float:
+    """
+    OmniDocBench Table-TEDS 유사도: exp(-TED / |GT|)
+    """
+    pred_tree = _table_block_to_tree(pred_block, table_type, include_text)
+    gt_tree = _table_block_to_tree(gt_block, table_type, include_text)
+
+    if pred_tree is None and gt_tree is None:
+        return 1.0
+    if pred_tree is None or gt_tree is None:
+        return 0.0
+
+    ted_val = _table_ted_distance(pred_tree, gt_tree, include_text=include_text)
+    gt_size = float(_table_tree_size(gt_tree))
+    if gt_size == 0:
+        return 1.0 if ted_val == 0 else 0.0
+    return math.exp(-ted_val / gt_size)
+
+
 def compute_table_f1_scores(
     pred_tables: List[str],
     gt_tables: List[str],
@@ -220,25 +431,12 @@ def compute_table_f1_scores(
     matched = 0
     sims: List[float] = [0.0] * len(gt_parsed)  # 매칭되지 않은 GT는 0으로 채워 평균 계산
 
-    # 모든 조합을 유사도 내림차순으로 정렬 후, 중복 없이 greedy 매칭
-    combos: List[Tuple[float, int, int]] = []
-    for gi, gt_tab in enumerate(gt_parsed):
-        for pi, pred_tab in enumerate(pred_parsed):
-            combos.append((_table_similarity(pred_tab, gt_tab, include_text=include_text), gi, pi))
-    combos.sort(key=lambda x: x[0], reverse=True)
-
-    used_gt = set()
-    used_pred = set()
-    for sim, gi, pi in combos:
-        if gi in used_gt or pi in used_pred:
-            continue
+    pairs = align_sequences(pred_parsed, gt_parsed, lambda p, g: _table_similarity(p, g, include_text=include_text))
+    for gi, pi in pairs:
+        sim = _table_similarity(pred_parsed[pi], gt_parsed[gi], include_text=include_text)
         sims[gi] = sim
         if sim >= threshold:
             matched += 1
-        used_gt.add(gi)
-        used_pred.add(pi)
-        if len(used_gt) == len(gt_parsed) or len(used_pred) == len(pred_parsed):
-            break
 
     precision = matched / num_pred if num_pred > 0 else 0.0
     recall = matched / num_gt if num_gt > 0 else 0.0

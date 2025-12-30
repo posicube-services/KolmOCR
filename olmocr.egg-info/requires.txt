@@ -30,6 +30,8 @@ torch>=2.7.0
 transformers==4.55.2
 vllm>=0.11.0
 zstandard
+playwright>=1.56.0
+pdf2image>=1.17.0
 
 [bench]
 tinyhost

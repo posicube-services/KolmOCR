@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #666;
+  margin-bottom: 1em;
+}
+
+.block[data-id="b002"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.block[data-id="b003"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0.5em 0;
+  text-align: justify;
+}
+
+.block[data-id="b004"] h2,
+.block[data-id="b007"] h2,
+.block[data-id="b009"] h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  font-weight: bold;
+  color: #444;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.block[data-id="b005"] p,
+.block[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0.5em 0;
+  text-align: justify;
+}
+
+.block[data-id="b006"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  font-style: italic;
+  color: #555;
+  margin: 0.5em 0;
+  text-align: left;
+}
+
+.block[data-id="b010"] ol {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+  list-style-type: decimal;
+}
+
+.block[data-id="b010"] ol li {
+  margin: 0.3em 0;
+}
+
+/* General paragraph styling for all blocks */
+.block p {
+  font-family: "맑은 고딕", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 1em;
+}
+
+/* Ensure headings are not too close to content */
+h1, h2 {
+  page-break-inside: avoid;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.04rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #fdfbf6;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #1e130c;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.block[data-class="header"] {
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  color: #9a8b7c;
+}
+
+
+.block[data-class="quotation"] {
+  font-style: italic;
+  border-left: 3px solid #d97706;
+  padding-left: 16px;
+}
+
+.block[data-class="figure"] {
+  border: 1px dashed rgba(55, 65, 81, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1e130c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #9a8b7c;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #9a8b7c;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.19rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,70,736,86">
+<p>Sure, here is the document converted to markdown with the table in HTML format:</p>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,122,260,153">
+<h1>Markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,174,905,228">
+<p>에너지 및 탄소 균형을 고려한 공정. 이 프로젝트는 지역 상수처리 시설의 폐수를 부산물로 활용하여 미생물 양분을 재배하는 것을 시도할 예정이며, 이를 통해 생태계 기반 관리 프레임워크 내에서 환경적 및 경제적 지속 가능성을 보장하는 도구로 활용할 계획입니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="104,255,290,280">
+<h2>METHODOLOGY</h2>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,300,905,373">
+<p>본 연구는 두 개의 잘 갖춰진 실험실에서 수행되었습니다: a) "Fisheries Research Institute" 실험실 (www.inale.gr)은 화학 분석, 생태-생리학 및 육상 미생물 재배에 대한 경험을 보유하고 있으며, b) Department of Petroleum and Natural Gas Technology의 Biofuels 실험실은 바이오연료, 촉매 및 응용 분야에 대한 경험을 보유하고 있습니다.</p>
+</div>
+<div class="block" data-class="figure_caption" data-id="b006" data-bbox="104,394,820,408">
+<p>Figure 2. 그리스 Fisheries Research Institute에서 신선한 물 클로로필 균주의 재배 (1-4) 및 수확 (5-9) 시설.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="104,436,420,460">
+<h2>RESULTS AND DISCUSSION</h2>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,480,905,610">
+<p>본 프로젝트는 초기 구현 단계에 있습니다. 국산 신선한 물 클로로필 균주 (Fig. 1)가 다양한 규모의 육상 시설 (Fig. 2)에서 성공적으로 선택 및 재배되었습니다. 영양원으로는 상업용 비료 (Nutrilat 30-10-10, 70 µmol/l) 또는 Nea Peramos 상수처리 시설의 2차 처리 및 UV 소독된 폐수 (100%)가 사용되었습니다. 수확 가능한 미생물을 수확량을 최적화하기 위해, 중의 생태-생리학, 먹이 사슬 및 자연적인 생물 플로케이션의 영향에 대한 더 깊은 이해가 필요합니다 [5]. 그러나 본 연구의 결과는 상수처리 폐수에서 미생물을 재배하는 것이 영양물질 제거와 바이오디젤 원료로 사용 가능한 미생물 생산을 결합할 수 있으며, 동부 마케도니아 연안의 이영화 현상을 최소화하는데 기여할 수 있음을 시사합니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b009" data-bbox="104,638,260,662">
+<h2>REFERENCES</h2>
+</div>
+<div class="block" data-class="reference" data-id="b010" data-bbox="127,682,895,822">
+<ol>
+<li>Demirbas A. Biodiesel: a realistic fuel alternative for Diesel engines. London: Springer; 2008.</li>
+<li>Campbell A., Doswald, N. The impacts of biofuel production on biodiversity: A review of the current literature. UNEP-WCMC, Cambridge, UK; 2009.</li>
+<li>www.fao.org/bioenergy/aquaticbiofuels.</li>
+<li>Wijffels R. H., Barbosa M. J. An outlook on Microalgal biofuels, Science 329, pp. 796-799, 2010.</li>
+<li>Park J.B.K., Craggs R.J., Shilton A.N. Wastewater treatment high rate algal ponds for biofuel production, Bioresource Technology 102, pp. 35-42, 2011. The figure mentioned (Figure 2) was not provided as an image, so it cannot be included directly. If you have the image or need further assistance, please let me know!</li>
+</ol>
+</div>
+</div>
+</body>
+</html>

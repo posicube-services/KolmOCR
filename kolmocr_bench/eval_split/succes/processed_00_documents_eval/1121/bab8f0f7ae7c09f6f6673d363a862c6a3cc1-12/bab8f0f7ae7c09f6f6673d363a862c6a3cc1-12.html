@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b004"] h2,
+.block[data-id="b006"] h2,
+.block[data-id="b008"] h2,
+.block[data-id="b010"] h2,
+.block[data-id="b012"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #000;
+  text-align: left;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b005"] p,
+.block[data-id="b007"] p,
+.block[data-id="b009"] p,
+.block[data-id="b011"] p,
+.block[data-id="b013"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  text-align: left;
+  color: #333;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Optional: Add a subtle border or background for better readability */
+.block {
+  break-inside: avoid;
+}
+
+/* Ensure links are styled appropriately */
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure line breaks in paragraphs are preserved */
+.block p br {
+  display: block;
+  margin: 0.5em 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.33rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ccd0d8;
+  color: #162537;
+  font-family: "Noto Sans CJK KR", sans-serif;
+}
+
+
+.block {
+  margin-bottom: 22px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.25rem;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2193c3;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #38bdf8;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.2rem;
+}
+
+.block[data-class="equation"] {
+  font-family: "Noto Sans CJK KR", serif;
+  font-size: 1.2rem;
+  color: #37362e;
+  background: rgba(253, 224, 71, 0.15);
+  border-radius: 14px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #1a1f21;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #171919;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #fef9c3;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #38bdf8;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #f87171;
+  border: 1px dashed #f87171;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #1e2122;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #4c4d4f;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.11rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="reference" data-id="b001" data-bbox="127,44,344,60">
+<h1>참고 관리 소프트웨어</h1>
+</div>
+<div class="block" data-class="reference" data-id="b002" data-bbox="127,110,424,123">
+<h2>Elsevier의 저널 출판물에 대한 참고</h2>
+</div>
+<div class="block" data-class="reference" data-id="b003" data-bbox="127,165,867,218">
+<p>Van der Geer, J., Hanaraads, J. A. J., &amp; Lupton R.A. (2000). The art of writing a scientific article. Journal of Scientific Communications, 163, 51-59.<br/>
+[dataset] Oguro, M., Imahiro, S., Saito, S., Nakashizuka, T. (2015). Mortality data for Japanese oak wilt disease and surrounding forest compositions. Mendeley Data, v1.<br/>
+http://dx.doi.org/10.17632/xwjq98nb39r.1</p>
+</div>
+<div class="block" data-class="reference" data-id="b004" data-bbox="127,265,246,278">
+<h2>책에 대한 참고</h2>
+</div>
+<div class="block" data-class="reference" data-id="b005" data-bbox="127,320,809,330">
+<p>Strunk, W., Jr., &amp; White, E. B. (1979). The elements of style. (3rd ed). New York: Macmillan.</p>
+</div>
+<div class="block" data-class="reference" data-id="b006" data-bbox="127,377,347,390">
+<h2>편집된 책의 장에 대한 참고</h2>
+</div>
+<div class="block" data-class="reference" data-id="b007" data-bbox="127,432,882,453">
+<p>Mettam, G.R., &amp; Adams, L. B. (1994). How to prepare an electronic version of your article. In B. S. Jones &amp; R. Z. Smith (Eds.), Introduction to the electronic age (pp.281-304). New York: E-Publishing.</p>
+</div>
+<div class="block" data-class="reference" data-id="b008" data-bbox="127,500,223,513">
+<h2>비디오 자료</h2>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="127,554,879,671">
+<p>Elsevier는 과학적 연구를 지원하고 강화하기 위해 비디오 자료와 애니메이션 시퀀스를 수용합니다. 비디오 파일이나 애니메이션 파일을 논문과 함께 제출하려는 저자들은 반드시 논문 본문 내에 해당 링크를 포함하는 것이 권장됩니다. 이는 그림이나 표와 같은 방식으로 비디오 또는 애니메이션 콘텐츠를 참조하고 본문 텍스트에서 해당 위치를 표시하는 방식으로 이루어질 수 있습니다. 제출된 모든 파일은 콘텐츠와 직접 관련이 있도록 적절히 라벨링되어야 합니다. 비디오 또는 애니메이션 자료가 직접 사용 가능하도록 하기 위해, 권장 파일 형식 중 하나로 제출하시며, 파일당 최대 150 MB, 총 1 GB의 크기를 권장합니다. 제공된 비디오 및 애니메이션 파일은 Elsevier 웹 제품, 특히 ScienceDirect에서 논문의 전자 버전에 함께 온라인으로 게시됩니다. 파일과 함께 '스틸'(still) 이미지를 제공하십시오: 비디오 또는 애니메이션에서 선택한 프레임이나 별도의 이미지를 사용할 수 있습니다. 이 이미지는 표준 아이콘 대신 사용되며, 비디오 데이터 링크를 개인화하는 데 사용됩니다. 자세한 지침은 비디오 지침 페이지를 방문하십시오. 주의: 비디오와 애니메이션은 인쇄 버전의 저널에 내장할 수 없으므로, 해당 콘텐츠를 참조하는 논문의 부분에 대해 전자 버전과 인쇄 버전 모두에 텍스트를 제공하십시오.</p>
+</div>
+<div class="block" data-class="reference" data-id="b010" data-bbox="127,719,241,732">
+<h2>데이터 시각화</h2>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="127,773,868,794">
+<p>출판물에 상호 데이터 시각화를 포함하여 독자들이 연구와 더 밀접하게 상호작용할 수 있도록 하십시오. 여기의 지침을 따라 이용 가능한 데이터 시각화 옵션을 확인하고 논문에 어떻게 포함할 수 있는지 알아보십시오.</p>
+</div>
+<div class="block" data-class="reference" data-id="b012" data-bbox="127,842,205,854">
+<h2>부록 자료</h2>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="127,896,882,938">
+<p>응용 프로그램, 이미지, 음성 클립과 같은 부록 자료를 논문과 함께 게시하여 논문을 풍부하게 만들 수 있습니다. 제출된 부록 자료는 그대로 게시되며(Excel 또는 PowerPoint 파일은 온라인에서 그대로 표시됩니다). 논문과 함께 부록 자료를 제출하시고, 각 부록 파일에 간결하고 설명적인 캡션을 제공하십시오. 부록 자료를 수정하려는 경우,</p>
+</div>
+</div>
+</body>
+</html>

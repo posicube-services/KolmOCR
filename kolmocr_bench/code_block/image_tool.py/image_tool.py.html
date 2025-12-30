@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko"><head><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+
+<body>
+  <meta charset="utf-8">
+  <title>Document</title>
+
+  <!-- Prism (python) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <style>
+    /* ✅ 페이지 마진 제거: 여백은 .page padding으로만 관리 */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      padding: 10mm;
+      /* ✅ 단 하나의 여백 */
+      box-sizing: border-box;
+      overflow: hidden;
+      /* 1페이지 보장 */
+      position: relative;
+      background: #fff;
+    }
+
+    /* 화면에서 용지 느낌(원치 않으면 삭제 가능) */
+    @media screen {
+      body {
+        background: #f3f4f6;
+      }
+
+      .page {
+        margin: 16px auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    /* ✅ 스케일링 래퍼 */
+    .fit {
+      --fit-scale: 1;
+      transform: scale(var(--fit-scale));
+      transform-origin: top left;
+      width: calc(100% / var(--fit-scale));
+    }
+
+    .document {
+      column-count: 1;
+      column-gap: 0;
+    }
+
+    .code-card {
+      background: #0b1220;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-sizing: border-box;
+    }
+
+    .block {
+      margin: 0;
+      width: 100%;
+    }
+
+    .block+.block {
+      margin-top: 2px;
+    }
+
+    .block p {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 8.35pt;
+      line-height: 1.22;
+      color: #e5e7eb;
+    }
+
+    .block p code {
+      white-space: pre;
+    }
+
+    @media print {
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+
+      body {
+        background: #fff;
+      }
+    }
+
+    .block:last-child {
+      margin-bottom: 0;
+    }
+
+    .document {
+      padding-bottom: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+
+
+
+  <div class="page" id="page">
+    <div class="fit" id="fit" style="--fit-scale: 1;" data-fit-locked="1">
+      <div class="document">
+        <div class="code-card">
+
+          <!-- 각 .block이 DLA에서 paragraph bbox 단위가 되도록 설계 -->
+          <div class="block" data-id="b001" data-bbox="64,43,872,30">
+            <p><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">import</span> os</code></p>
+          </div>
+
+          <div class="block" data-id="b002" data-bbox="64,75,872,59">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\n== Simple Image Tool =="</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"1.Resize  2.Grayscale  3.Rotate  0.Exit"</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"&gt; "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b003" data-bbox="64,136,872,74">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">open_img</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    path <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Image path: "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Not found."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token boolean">None</span></code></p>
+          </div>
+
+          <div class="block" data-id="b004" data-bbox="64,212,872,74">
+            <p><code class="language-python">    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">,</span> path
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Open failed:"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token boolean">None</span></code></p>
+          </div>
+
+          <div class="block" data-id="b005" data-bbox="64,289,872,119">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">save_img</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> src<span class="token punctuation">,</span> suffix<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    base<span class="token punctuation">,</span> ext <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>splitext<span class="token punctuation">(</span>src<span class="token punctuation">)</span>
+    out <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>base<span class="token punctuation">}</span></span><span class="token string">_</span><span class="token interpolation"><span class="token punctuation">{</span>suffix<span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">{</span>ext<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        img<span class="token punctuation">.</span>save<span class="token punctuation">(</span>out<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Saved:"</span><span class="token punctuation">,</span> out<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Save failed:"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b006" data-bbox="64,409,872,149">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">resize_img</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    img<span class="token punctuation">,</span> path <span class="token operator">=</span> open_img<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> img <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token keyword">return</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        w <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Width : "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        h <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Height: "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> ValueError<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Invalid size."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    save_img<span class="token punctuation">(</span>img<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> path<span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>w<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>h<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b007" data-bbox="64,560,872,59">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">grayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    img<span class="token punctuation">,</span> path <span class="token operator">=</span> open_img<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> img <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token keyword">return</span>
+    save_img<span class="token punctuation">(</span>img<span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token string">"L"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> path<span class="token punctuation">,</span> <span class="token string">"gray"</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b008" data-bbox="64,621,872,134">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">rotate_img</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    img<span class="token punctuation">,</span> path <span class="token operator">=</span> open_img<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> img <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token keyword">return</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        deg <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Degrees: "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> ValueError<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Invalid degrees."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    save_img<span class="token punctuation">(</span>img<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>deg<span class="token punctuation">,</span> expand<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span> path<span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f"rot</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">int</span><span class="token punctuation">(</span>deg<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b009" data-bbox="64,757,872,119">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        c <span class="token operator">=</span> menu<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> c <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">:</span> resize_img<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> c <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">:</span> grayscale<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> c <span class="token operator">==</span> <span class="token string">"3"</span><span class="token punctuation">:</span> rotate_img<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> c <span class="token operator">==</span> <span class="token string">"0"</span><span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Bye."</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Unknown."</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b010" data-bbox="64,878,872,30">
+            <p><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function highlightThenFit() {
+      if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+      requestAnimationFrame(() => requestAnimationFrame(fitToOnePage));
+    }
+
+    function fitToOnePage() {
+      const page = document.getElementById("page");
+      const fit = document.getElementById("fit");
+      if (!page || !fit) return;
+
+      // reset
+      fit.style.setProperty("--fit-scale", 1);
+
+      // ✅ padding 제외한 사용 가능 높이로 계산
+      const styles = getComputedStyle(page);
+      const padTop = parseFloat(styles.paddingTop) || 0;
+      const padBot = parseFloat(styles.paddingBottom) || 0;
+      const availableH = page.clientHeight - padTop - padBot;
+
+      const contentH = fit.scrollHeight;
+
+      if (contentH > availableH) {
+        let scale = availableH / contentH;
+        scale = Math.floor(scale * 10000) / 10000;
+        fit.style.setProperty("--fit-scale", scale);
+      }
+    }
+
+    window.addEventListener("load", highlightThenFit);
+    window.addEventListener("resize", fitToOnePage);
+    window.addEventListener("beforeprint", fitToOnePage);
+  </script>
+
+
+
+
+
+
+</body></html>

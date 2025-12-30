@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>여행자수표구매신청서</title>
+  <style>
+    body { 
+      font-family: 'Noto Sans KR', sans-serif; 
+      font-size: 12pt; 
+      color: #111; 
+      margin: 20px;
+      background: #fff;
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 18pt; 
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .document-container {
+      max-width: 190mm;
+      margin: 0 auto;
+    }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      table-layout: fixed; 
+      word-break: break-all;
+      border: 1px solid #999;
+      margin-bottom: 15px;
+    }
+    th { 
+      background: #999999; 
+      color: #fff; 
+      font-weight: bold; 
+      padding: 6px; 
+      text-align: center; 
+      border: 1px solid #999;
+      font-size: 11pt;
+    }
+    td { 
+      background: #f0f0f0; 
+      border: 1px solid #ddd; 
+      padding: 6px; 
+      text-align: left; 
+      font-size: 11pt;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .section-header {
+      background: #999999;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      font-size: 12pt;
+      border: 1px solid #999;
+    }
+    .label {
+      font-weight: bold;
+      text-align: right;
+      padding-right: 8px;
+      background: #e0e0e0;
+    }
+    .value {
+      text-align: left;
+      background: #f8f8f8;
+    }
+    .sub-table {
+      width: 100%;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+    .sub-table td {
+      border: none;
+      padding: 2px;
+      background: transparent;
+    }
+    .sub-table th {
+      border: none;
+      padding: 2px;
+      background: transparent;
+      text-align: center;
+    }
+    .signature-row {
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="document-container">
+    <h1>여행자수표구매신청서</h1>
+
+    <!-- 섹션 1: 신청인 기본정보 -->
+    <table>
+      <tr><td colspan="4" class="section-header">신청인 기본정보</td></tr>
+      <tr>
+        <td class="label">신분증 종류</td>
+        <td class="value">여권</td>
+        <td class="label">신분증 번호</td>
+        <td class="value">M12345678</td>
+      </tr>
+      <tr>
+        <td class="label">유효기간</td>
+        <td class="value">2030-12-31</td>
+        <td class="label">휴대폰 번호</td>
+        <td class="value">010-1234-5678</td>
+      </tr>
+      <tr>
+        <td class="label">이메일 주소</td>
+        <td class="value">user@example.com</td>
+        <td class="label">거주지 주소</td>
+        <td class="value">서울시 강남구 테헤란로 123</td>
+      </tr>
+      <tr>
+        <td class="label">우편번호</td>
+        <td class="value">06123</td>
+        <td colspan="2"></td>
+      </tr>
+    </table>
+
+    <!-- 섹션 2: 수표 구매 정보 -->
+    <table>
+      <tr><td colspan="4" class="section-header">수표 구매 정보</td></tr>
+      <tr>
+        <td class="label">통화 선택</td>
+        <td class="value">USD</td>
+        <td class="label">총 구매 금액</td>
+        <td class="value">2000</td>
+      </tr>
+      <tr>
+        <td class="label">수표 장수</td>
+        <td class="value">4</td>
+        <td colspan="2"></td>
+      </tr>
+      <tr><td colspan="4" class="section-header">수표 금액별 구성</td></tr>
+      <tr>
+        <th>금액</th>
+        <th>장수</th>
+        <th colspan="2">비고</th>
+      </tr>
+      <tr>
+        <td class="value">500</td>
+        <td class="value">2</td>
+        <td class="value" colspan="2">미국 여행용</td>
+      </tr>
+      <tr>
+        <td class="value">1000</td>
+        <td class="value">1</td>
+        <td class="value" colspan="2">유럽 여행용</td>
+      </tr>
+      <tr>
+        <td class="value">500</td>
+        <td class="value">1</td>
+        <td class="value" colspan="2">예비용</td>
+      </tr>
+    </table>
+
+    <!-- 섹션 3: 지불 및 결제 정보 -->
+    <table>
+      <tr><td colspan="4" class="section-header">지불 및 결제 정보</td></tr>
+      <tr>
+        <td class="label">계좌번호</td>
+        <td class="value">123-456-789012</td>
+        <td class="label">카드번호</td>
+        <td class="value">4111-1111-1111-1111</td>
+      </tr>
+      <tr>
+        <td class="label">수수료 금액</td>
+        <td class="value">50</td>
+        <td class="label">부가세</td>
+        <td class="value">10</td>
+      </tr>
+    </table>
+
+    <!-- 섹션 4: 여행 정보 -->
+    <table>
+      <tr><td colspan="4" class="section-header">여행 정보</td></tr>
+      <tr>
+        <td class="label">여행 목적</td>
+        <td class="value">관광</td>
+        <td class="label">출발일</td>
+        <td class="value">2025-06-01</td>
+      </tr>
+      <tr>
+        <td class="label">귀국일</td>
+        <td class="value">2025-06-15</td>
+        <td class="label">방문 국가</td>
+        <td class="value">미국</td>
+      </tr>
+    </table>
+
+    <!-- 섹션 5: 서명 및 확인 -->
+    <table>
+      <tr><td colspan="4" class="section-header">서명 및 확인</td></tr>
+      <tr>
+        <td class="label">신청인 서명</td>
+        <td class="value signature-row">홍길동</td>
+        <td class="label">날짜 확인</td>
+        <td class="value signature-row">2025-05-20</td>
+      </tr>
+      <tr>
+        <td class="label">은행 직원 이름</td>
+        <td class="value signature-row">김은행</td>
+        <td class="label">은행 직원 서명</td>
+        <td class="value signature-row">김은행</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>신용회복지원신청서</title>
+    <style>
+        body {
+            font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+            margin: 20px;
+            background: #fff;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #444;
+            table-layout: fixed;
+            word-break: break-all;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #666;
+            text-align: center;
+        }
+        th {
+            background: #666666;
+            color: #fff;
+            font-weight: bold;
+        }
+        td {
+            background: #f0f0f0;
+            text-align: left;
+        }
+        .section-header {
+            background: #666666;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #444;
+        }
+        .sub-header {
+            background: #888888;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            border: 1px solid #666;
+        }
+        .label-cell {
+            background: #666666;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            width: 25%;
+        }
+        .value-cell {
+            background: #f0f0f0;
+            text-align: left;
+            padding: 8px;
+            width: 25%;
+        }
+        .full-width {
+            width: 100%;
+        }
+        .two-col {
+            width: 50%;
+        }
+        .three-col {
+            width: 33.33%;
+        }
+        .four-col {
+            width: 25%;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .no-border {
+            border: none;
+        }
+        .small-padding {
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>신용회복지원신청서</h1>
+
+    <!-- 섹션 1: 신청인 기본정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">신청인 기본정보</th></tr>
+        <tr><th colspan="4" class="sub-header">개인식별정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">신원확인</th>
+            <th colspan="2" class="sub-header">연락처정보</th>
+        </tr>
+        <tr>
+            <td class="label-cell">주민등록번호</td>
+            <td class="value-cell">900101-1234567</td>
+            <td class="label-cell">휴대전화</td>
+            <td class="value-cell">010-1234-5678</td>
+        </tr>
+        <tr>
+            <td class="label-cell">성명</td>
+            <td class="value-cell">홍길동</td>
+            <td class="label-cell">이메일</td>
+            <td class="value-cell">user@example.com</td>
+        </tr>
+        <tr>
+            <td class="label-cell">생년월일</td>
+            <td class="value-cell">1990-01-01</td>
+            <td class="label-cell">주소</td>
+            <td class="value-cell">서울특별시 강남구 테헤란로 123</td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">가족관계</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">배우자정보</th>
+            <th colspan="2" class="sub-header">자녀정보</th>
+        </tr>
+        <tr>
+            <td class="label-cell">성명</td>
+            <td class="value-cell">김영희</td>
+            <td class="label-cell">자녀 목록</td>
+            <td class="value-cell">자녀 정보를 입력하세요.</td>
+        </tr>
+        <tr>
+            <td class="label-cell">주민등록번호</td>
+            <td class="value-cell">850505-2345678</td>
+            <td colspan="2" class="value-cell"></td>
+        </tr>
+    </table>
+
+    <!-- 섹션 2: 재무현황 -->
+    <table>
+        <tr><th colspan="4" class="section-header">재무현황</th></tr>
+        <tr><th colspan="4" class="sub-header">소득정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">근로소득</th>
+            <th colspan="2" class="sub-header">기타소득</th>
+        </tr>
+        <tr>
+            <td class="label-cell">월평균소득</td>
+            <td class="value-cell">2500000</td>
+            <td class="label-cell">연금/투자수익</td>
+            <td class="value-cell">300000</td>
+        </tr>
+        <tr>
+            <td class="label-cell">소득원천</td>
+            <td class="value-cell">회사 임금</td>
+            <td colspan="2" class="value-cell"></td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">부채현황</th></tr>
+        <tr><th colspan="4" class="sub-header">금융기관별 부채</th></tr>
+        <tr>
+            <td class="label-cell">금융기관명</td>
+            <td class="value-cell">은행A</td>
+            <td class="label-cell">잔액</td>
+            <td class="value-cell">5000000</td>
+        </tr>
+        <tr>
+            <td class="label-cell">이자율</td>
+            <td class="value-cell">5.0%</td>
+            <td class="label-cell">상환일</td>
+            <td class="value-cell">2026-06-01</td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">비금융부채</th></tr>
+        <tr>
+            <td class="label-cell">세금/공과금</td>
+            <td class="value-cell">500000</td>
+            <td class="label-cell">민간채권</td>
+            <td class="value-cell">1000000</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 3: 신용회복계획 -->
+    <table>
+        <tr><th colspan="4" class="section-header">신용회복계획</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">상환계획</th>
+            <th colspan="2" class="sub-header">지원요청사항</th>
+        </tr>
+        <tr>
+            <td class="label-cell">월상환금액</td>
+            <td class="value-cell">500000</td>
+            <td class="label-cell">지원유형</td>
+            <td class="value-cell">채무조정</td>
+        </tr>
+        <tr>
+            <td class="label-cell">상환기간(개월)</td>
+            <td class="value-cell">24</td>
+            <td class="label-cell">요청사유</td>
+            <td class="value-cell">신용회복을 요청하는 사유를 상세히 입력하세요.</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 4: 서명 및 동의 -->
+    <table>
+        <tr><th colspan="4" class="section-header">서명 및 동의</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">신청인 서명</th>
+            <th colspan="2" class="sub-header">개인정보 수집·이용 동의</th>
+        </tr>
+        <tr>
+            <td class="label-cell">서명날짜</td>
+            <td class="value-cell">2025-04-05</td>
+            <td class="label-cell">동의여부</

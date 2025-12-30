@@ -1,0 +1,18 @@
+# Evaluation defaults for transformer 파이프라인.
+# {run_id}는 필요 시 수동으로 치환하거나 파이프라인에서 채워줍니다.
+pred_dir: output/transformer/preds/{run_id}
+gt_dir: output/transformer/gt_md
+output_dir: output/transformer/eval/{run_id}
+metrics:
+  - text_edit
+  - table_f1
+  - table_TEDS
+  - table_TEDS_S
+  - code_TED
+  - image_iou
+  - reading_order
+  - overall
+threshold_headings: 1
+threshold_table: 0.6
+version: "1.10"
+text_include_f1: true

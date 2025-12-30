@@ -49,6 +49,7 @@ class FinetuningPromptConfig(PipelineStepConfig):
     """Configuration for FinetuningPrompt step."""
 
     name: str = "FinetuningPrompt"
+    prompt_func: str = "build_finetuning_prompt"
 
 
 @dataclass
@@ -71,6 +72,12 @@ class FrontMatterOutputFormatConfig(PipelineStepConfig):
 
     name: str = "FrontMatterOutputFormat"
 
+
+@dataclass
+class NoFrontMatterOutputFormatConfig(PipelineStepConfig):
+    """Configuration for NoFrontMatterOutputFormat step."""
+
+    name: str = "NoFrontMatterOutputFormat"
 
 @dataclass
 class JSONOutputFormatConfig(PipelineStepConfig):
@@ -175,6 +182,7 @@ class ModelConfig:
     """Configuration for model."""
 
     name: str = "Qwen/Qwen2.5-VL-7B-Instruct"
+    tokenizer_name: Optional[str] = None  # If None, use name
     trust_remote_code: bool = False
 
     # Model initialization
@@ -295,6 +303,9 @@ class Config:
     tags: List[str] = field(default_factory=list)
     notes: Optional[str] = None
 
+    # Pipelines (for YAML anchors, not directly used)
+    pipelines: Optional[Dict[str, Any]] = None
+
     # Experiment tracking
     experiment_tracker: str = "tensorboard"  # "tensorboard", "wandb", "mlflow"
     wandb_project: Optional[str] = None
@@ -390,6 +401,7 @@ class Config:
             FilterOutRotatedDocuments,
             FinetuningPrompt,
             FrontMatterOutputFormat,
+            NoFrontMatterOutputFormat,
             FrontMatterParser,
             InstructUserMessages,
             JSONOutputFormat,
@@ -426,7 +438,7 @@ class Config:
                 steps.append(StaticLengthDocumentAnchoring(target_anchor_text_len=step_config.get("target_anchor_text_len", 6000)))
 
             elif step_name == "FinetuningPrompt":
-                steps.append(FinetuningPrompt())
+                steps.append(FinetuningPrompt(prompt_func=step_config.get("prompt_func", "build_finetuning_prompt")))
 
             elif step_name == "NewYamlFinetuningPromptWithAnchoring":
                 steps.append(NewYamlFinetuningPromptWithAnchoring())
@@ -439,7 +451,10 @@ class Config:
 
             elif step_name == "FrontMatterOutputFormat":
                 steps.append(FrontMatterOutputFormat())
-
+                
+            elif step_name == "NoFrontMatterOutputFormat":
+                steps.append(NoFrontMatterOutputFormat())
+                
             elif step_name == "InstructUserMessages":
                 steps.append(InstructUserMessages(prompt_first=step_config.get("prompt_first", False)))
 
@@ -447,11 +462,24 @@ class Config:
                 steps.append(LatexBracketNormalizer())
 
             elif step_name == "Tokenizer":
-                if processor is None:
+                # Check if a specific tokenizer path is provided in the step config
+                tokenizer_path = step_config.get("tokenizer_path")
+                step_processor = processor
+                
+                if tokenizer_path:
+                    from transformers import AutoProcessor
+                    # Load the specific processor/tokenizer
+                    try:
+                        step_processor = AutoProcessor.from_pretrained(tokenizer_path, trust_remote_code=True)
+                    except Exception as e:
+                        raise ValueError(f"Failed to load tokenizer from {tokenizer_path}: {e}")
+
+                if step_processor is None:
                     raise ValueError("Processor must be provided for Tokenizer step")
+                    
                 steps.append(
                     Tokenizer(
-                        processor=processor,
+                        processor=step_processor,
                         masking_index=step_config.get("masking_index", -100),
                         end_of_message_token=step_config.get("end_of_message_token", "<|im_end|>"),
                     )

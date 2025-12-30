@@ -73,7 +73,7 @@ dataset:
       pipeline: *basic_pipeline
     - name: processed_03_national_archives_eval
       root_dir: /my_home/ycahn-home/olmocr/outputs/korean/processed_03_national_archives_eval/
-      pipeline: *basic_pipeline         
+      pipeline: *basic_pipeline
 
 
 # Training configuration

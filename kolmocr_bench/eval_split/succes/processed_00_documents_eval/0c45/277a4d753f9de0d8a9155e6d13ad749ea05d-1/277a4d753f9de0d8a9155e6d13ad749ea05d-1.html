@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: left;
+  line-height: 1.3;
+}
+
+[data-id="b002"] p,
+[data-id="b003"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+[data-id="b004"] h2,
+[data-id="b010"] h2,
+[data-id="b012"] h2,
+[data-id="b017"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 10px 0;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+[data-id="b005"] p,
+[data-id="b006"] p,
+[data-id="b007"] p,
+[data-id="b008"] p,
+[data-id="b009"] p,
+[data-id="b013"] p,
+[data-id="b014"] p,
+[data-id="b015"] p,
+[data-id="b016"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.6;
+  margin: 10px 0;
+  text-align: justify;
+}
+
+[data-id="b011"] ul {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.6;
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+[data-id="b011"] li {
+  margin: 5px 0;
+}
+
+[data-id="b018"] .table-container {
+  overflow-x: auto;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-id="b018"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b018"] .data-table th,
+[data-id="b018"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+[data-id="b018"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+[data-id="b019"] pre {
+  font-family: monospace;
+  font-size: calc(0.8em * var(--font-scale));
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 10px;
+  overflow-x: auto;
+  margin: 15px 0;
+  border-radius: 4px;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+
+/* Adjust for small screen readability */
+@media (max-width: 600px) {
+  
+
+  [data-id="b001"] h1 {
+    font-size: calc(1.3em * var(--font-scale));
+  }
+
+  [data-id="b004"] h2,
+  [data-id="b010"] h2,
+  [data-id="b012"] h2,
+  [data-id="b017"] h2 {
+    font-size: calc(1.1em * var(--font-scale));
+  }
+
+  [data-id="b018"] .data-table th,
+  [data-id="b018"] .data-table td {
+    padding: 6px 8px;
+    font-size: calc(0.8em * var(--font-scale));
+  }
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.05rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f5f7fb;
+  color: #111827;
+  font-family: "맑은 고딕", "은 궁서", sans-serif;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.25rem;
+  color: #111827;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.6rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #1d4ed8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.block[data-class="text"] {
+  font-size: 1.5rem;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(14, 165, 233, 0.15);
+  border-left: 4px solid #0ea5e9;
+  padding-left: 18px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #111827;
+}
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.31rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,32,845,129">
+<h1>폐기능 검사에서의 회귀 방정식: 델리 지역 6세에서 17세 아동을 대상으로</h1>
+</div>
+<div class="block" data-class="author" data-id="b002" data-bbox="104,140,773,152">
+<p><strong>저자:</strong> S.K. Chhabra¹, V.K. Vijayan², M. Rahman³, V. Mittal¹ 및 P.D. Singh¹</p>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="104,165,901,183">
+<p>1심폐호흡 생리학 부서, 2전임소장, 3생물통계학, 비스 완타난 가슴 병원, 발라브하이 파텔 가슴 연구소, 델리 대학, 인도 델리</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="104,197,144,208">
+<h2>요약</h2>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,227,905,256">
+<p>배경. 인도에서 아동을 대상으로 폐기능 검사의 회귀 방정식을 개발하기 위해 수행된 대부분의 연구는 몇 년에서 몇 십 년 전의 것이며, 이후 변경된 장비와 측정 프로토콜을 사용했다. 현재의 폐기능 검사 표준화 프로토콜을 사용한 예측 방정식은 아직 제공되지 않았다. 또한, 인구의 폐 건강 상태도 변화했을 가능성이 있다.</p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,270,843,278">
+<p>목적. 델리 지역의 북 인도 출신 6세에서 17세 아동을 대상으로 폐기능 검사의 회귀 방정식을 개발하는 것이다.</p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,293,905,341">
+<p>방법. 어머니의 모국어와 부모의 출신지를 기준으로 북 인도 출신으로 확인된 6세에서 17세의 학교 아동들은 건강 설문지와 신체 검진을 통해 선별되었으며, "정상"으로 판정된 아동들은 2005년 미국 폐과학회/유럽 호흡학회(ATS/ERS) 태스크포스가 권장한 표준화된 절차에 따라 폐기능 검사를 받았다. 피어슨 상관분석을 통해 폐기능 검사 매개변수의 예측 변수를 식별했다. 예측 방정식은 다중 선형 회귀 절차를 사용하여 개발되었다. 독립 변수는 순서대로 키, 나이, 체중으로 입력되었다. R², 조정된 R², R² 변화, 추정 오차 (SEE), 그리고 회귀 계수의 추정치를 얻었으며, 적합도를 검토했다.</p>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,356,905,405">
+<p>결과. 365명의 남아와 305명의 여아에서 데이터가 수집되었다. 강제 기도량(FVC), 1초 강제 호흡량 (FEV₁), 최대 호흡량(PeFR), 중요 기도량의 50%와 75% 배출 시의 강제 호흡량(F₅₀ 및 F₇₅), 그리고 중요 기도량의 중간 50%에서의 평균 강제 호흡량(F₂₅−₇₅)은 남녀 모두에서 나이, 키, 체중과 중등도에서 강한 상관관계를 보였다. 두 성별 모두에서 R² 값에 의해 보여진 바와 같이, FVC, FEV₁ 및 PEFR의 변동성이 매우 높게 설명되었다. 흐름률의 변동성은 낮았으며, 특히 F₇₅의 변동성이 가장 낮았다.</p>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,419,905,448">
+<p>결론. 델리 지역의 북 인도 출신 아동을 대상으로 한 폐기능 검사 변수의 회귀 방정식이 개발되었다. 이는 2005년 ATS/ERS 태스크포스가 폐기능 검사 표준화 지침을 발표한 이후 인도에서 처음으로 시도된 것이다.[Indian J Chest Dis Allied Sci 2012;54:59-63]</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b010" data-bbox="104,463,164,474">
+<h2>키워드</h2>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="129,493,209,565">
+<ul>
+<li>폐기능</li>
+<li>폐기능 검사</li>
+<li>정상치</li>
+<li>아동</li>
+<li>델리</li>
+<li>회귀 방정식</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b012" data-bbox="104,580,144,591">
+<h2>서론</h2>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="104,610,905,658">
+<p>폐기능은 인체 측정, 성별, 환경, 유전적, 사회경제적 및 기술적 요인에 의해 영향을 받는다. 폐기능을 예측하기 위해 인체 측정 변수, 성별 및 인종에 따른 변동성이 광범위하게 연구되고 서양 문헌에 기록되어 있다. 인도의 다양한 지역에서 수행된 몇 가지 연구[1–8]는 아동의 폐기능 및 그 결정 요인에 대한 정보를 제공했으며, 예측 방정식도 설명되었다. 연구들은 표본 크기, 장비 및 결과에서 차이를 보였다. 일반적으로, 남아는 더 큰 중요 기도량을 보였으며, 키는 가장 중요한 결정 요인으로, 나이, 체중 및 기타 몇 가지 신체 측정치가 변동적으로 기여했다.</p>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,673,905,722">
+<p>기술의 발전은 더 큰 자동화와 새로운 전자 측정 방법을 가능하게 했다. 측정 프로토콜은 시간이 지남에 따라 수정되었다. 폐기능 검사의 최신 표준화는 미국 폐과학회와 유럽 호흡학회(ATS/ERS)의 공동 태스크포스에 의해 수행되었으며, 2005년에 발표되었다.[9] 대부분의 위의 인도 연구는 장비와 측정 프로토콜이 변경된 몇 년에서 몇 십 년 전에 수행되었다. 따라서, 이들 연구는 더 이상 유효하지 않을 가능성이 있다. 이는 데이터 해석에 영향을 미칠 가능성이 있다. 폐기능 데이터의 올바른 해석은</p>
+</div>
+<div class="block" data-class="footer" data-id="b015" data-bbox="104,736,480,744">
+<p>[검수: 2011년 9월 5일; 수정 후 수락: 2011년 12월 20일]</p>
+</div>
+<div class="block" data-class="key_value" data-id="b016" data-bbox="104,759,905,777">
+<p>문의 및 재인쇄 요청: Dr. S.K. Chhabra, 발라브하이 파텔 가슴 연구소 심폐호흡 생리학 부서 교수 및 부서장, 델리 대학, 델리 - 110 007, 인도; 이메일: skchhabra@mailcity.com</p>
+</div>
+<div class="block" data-class="table_caption" data-id="b017" data-bbox="112,820,161,832">
+<h2>Table</h2>
+</div>
+<div class="block" data-class="table" data-id="b018" data-bbox="113,874,899,905">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Column 1</th><th>Column 2</th></tr>
+</thead>
+<tbody>
+<tr><td>Value 1</td><td>Value 2</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="figure" data-id="b019" data-bbox="104,942,905,953">
+<pre><code></code></pre>
+</div>
+</div>
+</body>
+</html>

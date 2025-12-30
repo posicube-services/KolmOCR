@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>개인신용정보조회동의서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12pt;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24pt;
+      margin: 10px 0 20px;
+      font-weight: bold;
+    }
+    .document-container {
+      background: #999;
+      padding: 20px;
+      border-radius: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-bottom: 15px;
+      background: #999;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+      border: none;
+      vertical-align: top;
+    }
+    th {
+      font-weight: bold;
+      color: #fff;
+      background: #999;
+      font-size: 11pt;
+    }
+    td {
+      background: #e8e8e8;
+      color: #111;
+      font-size: 11pt;
+    }
+    .section-header {
+      background: #888;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      font-size: 12pt;
+      margin: 15px 0 5px;
+    }
+    .sub-header {
+      background: #888;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 6px;
+      font-size: 11pt;
+    }
+    .label {
+      font-weight: normal;
+      text-align: left;
+      padding-right: 8px;
+    }
+    .value {
+      text-align: right;
+      font-family: 'Courier New', monospace;
+      font-weight: normal;
+    }
+    .two-column {
+      display: flex;
+      gap: 20px;
+    }
+    .two-column > div {
+      flex: 1;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .cell {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .cell-label {
+      width: 120px;
+      font-weight: bold;
+      text-align: right;
+      padding-right: 10px;
+    }
+    .cell-value {
+      flex: 1;
+      background: #e8e8e8;
+      padding: 6px;
+      text-align: right;
+      font-family: 'Courier New', monospace;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .notice {
+      font-size: 10pt;
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+    .footer {
+      background: #000;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>개인신용정보조회동의서</h1>
+  <div class="document-container">
+
+    <!-- 섹션: 개인정보 수집 및 이용 동의 -->
+    <div class="section-header">개인정보 수집 및 이용 동의</div>
+
+    <div class="sub-header">기본 정보</div>
+    <div class="sub-header">신분 확인 정보</div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">신분증 종류</div>
+        <div class="cell-value">주민등록증</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">신분증 번호</div>
+        <div class="cell-value">900101-1234567</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">생년월일</div>
+        <div class="cell-value">1990-01-01</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">성별</div>
+        <div class="cell-value">남성</div>
+      </div>
+    </div>
+
+    <div class="sub-header">연락처 정보</div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">휴대전화 번호</div>
+        <div class="cell-value">010-1234-5678</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">이메일 주소</div>
+        <div class="cell-value">user@example.com</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">우편번호</div>
+        <div class="cell-value">12345</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">주소</div>
+        <div class="cell-value">서울시 강남구 테헤란로 123</div>
+      </div>
+    </div>
+
+    <!-- 섹션: 신용정보 조회 동의 -->
+    <div class="section-header">신용정보 조회 동의</div>
+
+    <div class="sub-header">조회 목적 및 범위</div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">조회 목적 코드</div>
+        <div class="cell-value">C01</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">조회 목적 상세</div>
+        <div class="cell-value">신용카드 발급 심사</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">신용정보기관</div>
+        <div class="cell-value">NICE</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">조회 기간</div>
+        <div class="cell-value">2020-01-01 ~ 2025-12-31</div>
+      </div>
+    </div>
+
+    <div class="sub-header">조회 기관 및 정보 제공자</div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">기관명</div>
+        <div class="cell-value">OO은행</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">기관 식별자</div>
+        <div class="cell-value">BANK001</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">정보 제공자 목록</div>
+        <div class="cell-value">OO은행, XX카드, YY보험</div>
+      </div>
+    </div>
+
+    <!-- 섹션: 동의 및 서명 -->
+    <div class="section-header">동의 및 서명</div>
+
+    <div class="sub-header">동의 조항</div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">개인정보 수집 동의</div>
+        <div class="cell-value">Y</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">신용정보 조회 동의</div>
+        <div class="cell-value">Y</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">동의 철회 권리 안내</div>
+        <div class="cell-value">동의 후 언제든지 철회 가능</div>
+      </div>
+    </div>
+
+    <div class="sub-header">서명 및 날짜</div>
+    <div class="row">
+      <div class="cell">
+        <div class="cell-label">서명</div>
+        <div class="cell-value">홍길동</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">작성일자</div>
+        <div class="cell-value">2025-04-05</div>
+      </div>
+    </div>
+
+    <!-- 섹션: 부가정보 및 참고사항 -->
+    <div class="section-header">부가정보 및 참고사항</div>
+
+    <div class="sub-header">법적 고지사항</div>
+    <div class="row">
+      <div class="cell">

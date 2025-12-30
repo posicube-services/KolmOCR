@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] p {
+  font-family: "맑은 고딕", serif;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  padding: 0;
+}
+
+.block[data-id="b002"] p {
+  font-family: "맑은 고딕", serif;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  padding: 0;
+}
+
+.block[data-id="b003"] p {
+  font-family: "맑은 고딕", serif;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  padding: 0;
+}
+
+.block[data-id="b004"] p {
+  font-family: "맑은 고딕", serif;
+  font-weight: bold;
+  font-size: calc(1.2em * var(--font-scale));
+  line-height: 1.5;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.block[data-id="b005"] p {
+  font-family: "맑은 고딕", serif;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  padding: 0;
+}
+
+.block[data-id="b006"] p {
+  font-family: "맑은 고딕", serif;
+  font-weight: bold;
+  font-size: calc(1.2em * var(--font-scale));
+  line-height: 1.5;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.block[data-id="b007"] p {
+  font-family: "맑은 고딕", serif;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  padding: 0;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+.block[data-id="b008"] p {
+  font-family: "맑은 고딕", serif;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  padding: 0;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+.block[data-id="b009"] pre, .block[data-id="b009"] code {
+  font-family: "나눔명조", monospace;
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.5;
+  white-space: pre-wrap;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.38rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f7f7f4;
+  color: #1c1c1c;
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+}
+
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.block[data-class="title"] {
+  font-family: "맑은 고딕", serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+
+.block[data-class^="section_title"] {
+  font-family: "나눔명조", serif;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.block[data-class="author"] {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  text-indent: -1.4em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 3px solid #10b981;
+  padding-left: 16px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1c1c1c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2f2f2f;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.48rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,58,905,163">
+<p>다른 방법.137 그러나, 질병이 갑작스럽고 증언을 기록할 시간이 없다면 이 요구 사항이 무효화된다는 점을 주 목하십시오.138 당사자의 증언이 가능하다면, 계속보기를 여전히 거부할 수 있습니다.139 당사자가 병에 걸렸 고 법원이 변호사에게 증언을 확보할 시간을 부여한 경우, 후속으로 증언을 위해 계속보기를 요청한 것은 적절 히 거부되었으며, 당사자가 증언을 기록하는 데 충분히 병이 심하지 않다는 것을 입증하지 못했기 때문입니 다.140 연방 법원에서, 당사자가 병에 걸렸더라도 계속보기를 적절히 거부한 것으로 판결되었으며, 법원은 여 전히 증언을 확보할 수 있었다고 언급했습니다.141</p>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,188,905,239">
+<p>마찬가지로, 증언이 협정142 또는 자백143을 통해 얻을 수 있었던 경우, 계속보기는 적절히 거부되었습니다. 일부 주에서는 그들의 법령과 법원 규칙에서 자백을 계속보기 거부의 근거로 명시하고 있습니다.144 또한, 부 재 중인 당사자의 서명이 이미 증거로 제출된 경우에도 계속보기는 적절히 거부되었습니다.146</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,264,905,316">
+<p>따라서, 중요한 증인으로서의 당사자가 불가피하게 부재하고 그의 증언이 증언 기록 또는 기타 방법으로 얻을 수 없을 때, 계속보기를 부여해야 한다는 것이 명백해집니다. 만약 당사자가 자발적으로 부재하거나, 그의 증언 이 다른 방법으로 얻을 수 있다면, 계속보기를 부여해서는 안 됩니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="104,342,144,361">
+<p><strong>형사</strong></p>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,385,905,419">
+<p>형사 사건에서, 피고인이 자신의 재판에 참석할 권리는 제6조의 대면권과 제5조 및 제14조의 정당 절차 조항에 의해 보장됩니다.</p>
+</div>
+<div class="block" data-class="reference" data-id="b006" data-bbox="106,445,186,464">
+<p><strong>참조문헌</strong></p>
+</div>
+<div class="block" data-class="reference" data-id="b007" data-bbox="106,490,905,664">
+<p>137 Engelstad v. Dufresne, 116 F. 582 (9th Cir. 1902).<br/>
+138 Roberts v. Sinkey, 136 Kan. 292, 15 P.2d 427 (1932).<br/>
+139 Davis v. United Fruit Co., 402 F.2d 328 (2nd Cir. 1968), cert. denied, 393 U.S. 1085 (1969); Gordan v. Butter, 182 Neb. 626, 156 N.W.2d 778 (1968); Merriman v. Lary, 205 S.W.2d 100 (Tex. Civ. App. 1947), rehearing denied, (1947); Kaiser v. Hutcheson, 112 S.W.2d 1058 (Tex. Civ. App. 1937).<br/>
+140 Roseberg v. Scott, 120 Kan. 576, 244 P. 1063 (1926).<br/>
+141 Ballard v. Nye, 18 F.2d 98 (5th Cir. 1927).<br/>
+142 Kitchens v. Hutchins, 44 Ga. 620 (1872).<br/>
+143 See Haflin v. United States, 223 F.2d 371 (5th Cir. 1955), rev'd. on other grounds, 358 U.S. 415 (1959); Brooks v. Bast, 242 Md. 350, 219 A.2d 84 (1966); Powell v. State, 39 Ala. App. 246, 100 So.2d 38, cert. denied, 267 Ala. 100, 100 So.2d 46 (1957); Moody v. Vickers, 90 Ohio App. 210, 72 N.E.2d 280 (1947).</p>
+</div>
+<div class="block" data-class="reference" data-id="b008" data-bbox="106,689,905,816">
+<p>144 이 경우의 자백은 다음과 같은 절차로 이루어지는 법적 절차를 의미합니다: 계속보기를 요청하는 당사자가 부재 중인 증인의 증언 내용을 서면으로 제출하고, 상대방 당사자가 그 증인이 그렇게 증언할 것이라고 진술하면, 그 서면은 증언 기록으로 간주되어 증거로 제출되고 계속보기가 거부됩니다. 아래 145 참조.<br/>
+145 ARK. STAT. ANN. ch. 27, § 1403 (1947); CODE OF GA. ANN. § 81-1411 (1935); IDAHO CODE ANN. § 10-109 (1948); ILL. PRAC. ACT &amp; SUP. CT. R. 231(b); IND. STAT. ANN. § 9-1401 (1971 Burns); KY. CIV. R. 43.03; LA. CODE OF CIV. P. art. 710; MISS. CODE ANN. § 2522 (1942); MO. STAT. ANN. § 510.110 (1942 Vernon); N. M. STAT. ANN. § 21-8-1 (1953); ORE. REV. STAT. § 17.050 (1971); S. D. COMP. LAWS § 15-19-1 (1967).<br/>
+146 Lewis v. Barley, 300 F.2d 788 (7th Cir. 1962); Skinner v. Lundy, 149 F.Supp. 57 (W. D. Ky. 1957).</p>
+</div>
+<div class="block" data-class="figure" data-id="b009" data-bbox="104,840,905,841">
+<pre><code></code></pre>
+</div>
+</div>
+</body>
+</html>

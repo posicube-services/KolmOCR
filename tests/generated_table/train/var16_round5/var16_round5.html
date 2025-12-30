@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>외화송금신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #fff;
+      color: #222;
+      margin: 20px;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .section-title {
+      font-size: 1.4em;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      margin-bottom: 20px;
+      font-size: 0.95em;
+      border: 1px solid #999;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #999;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #003a8c;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+    }
+    td {
+      background: #e9f2ff;
+      text-align: left;
+    }
+    .header-row th {
+      background: #003a8c;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid #999;
+    }
+    .sub-header {
+      background: #cce0ff;
+      font-weight: bold;
+      text-align: center;
+    }
+    .cell-content {
+      word-break: break-all;
+      white-space: normal;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .half-width {
+      width: 50%;
+    }
+    .quarter-width {
+      width: 25%;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>외화송금신청서</h1>
+
+  <!-- 기본정보 섹션 -->
+  <div class="section-title">기본정보</div>
+  <div class="section">
+    <table>
+      <tr><th colspan="4" class="header-row">신청자 정보</th></tr>
+      <tr><th colspan="4" class="sub-header">개인정보</th></tr>
+      <tr><th colspan="4" class="sub-header">신분증 정보</th></tr>
+      <tr>
+        <th class="quarter-width">신분증 종류</th>
+        <td class="quarter-width cell-content">주민등록증</td>
+        <th class="quarter-width">신분증 번호</th>
+        <td class="quarter-width cell-content">123456-1234567</td>
+      </tr>
+      <tr>
+        <th class="quarter-width">발급일자</th>
+        <td class="quarter-width cell-content">2020-05-15</td>
+        <th class="quarter-width"></th>
+        <td class="quarter-width cell-content"></td>
+      </tr>
+      <tr><th colspan="4" class="sub-header">연락처 정보</th></tr>
+      <tr>
+        <th class="quarter-width">휴대폰 번호</th>
+        <td class="quarter-width cell-content">010-1234-5678</td>
+        <th class="quarter-width">이메일 주소</th>
+        <td class="quarter-width cell-content">user@example.com</td>
+      </tr>
+      <tr>
+        <th class="quarter-width">주소</th>
+        <td class="quarter-width cell-content">서울시 강남구 테헤란로 123</td>
+        <th class="quarter-width"></th>
+        <td class="quarter-width cell-content"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <table>
+      <tr><th colspan="4" class="header-row">수취인 정보</th></tr>
+      <tr><th colspan="4" class="sub-header">기본정보</th></tr>
+      <tr><th colspan="4" class="sub-header">수취인 신원</th></tr>
+      <tr>
+        <th class="quarter-width">수취인 이름</th>
+        <td class="quarter-width cell-content">김철수</td>
+        <th class="quarter-width">국적</th>
+        <td class="quarter-width cell-content">미국</td>
+      </tr>
+      <tr>
+        <th class="quarter-width">수취인 주소</th>
+        <td class="quarter-width cell-content">123 Main St, New York, USA</td>
+        <th class="quarter-width"></th>
+        <td class="quarter-width cell-content"></td>
+      </tr>
+      <tr><th colspan="4" class="sub-header">계좌 정보</th></tr>
+      <tr>
+        <th class="quarter-width">은행명</th>
+        <td class="quarter-width cell-content">Bank of America</td>
+        <th class="quarter-width">계좌번호</th>
+        <td class="quarter-width cell-content">1234567890</td>
+      </tr>
+      <tr>
+        <th class="quarter-width">SWIFT 코드</th>
+        <td class="quarter-width cell-content">BOFAUS3N</td>
+        <th class="quarter-width"></th>
+        <td class="quarter-width cell-content"></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 송금정보 섹션 -->
+  <div class="section-title">송금정보</div>
+  <div class="section">
+    <table>
+      <tr><th colspan="4" class="header-row">송금 상세</th></tr>
+      <tr><th colspan="4" class="sub-header">금액 및 통화</th></tr>
+      <tr><th colspan="4" class="sub-header">송금 금액</th></tr>
+      <tr>
+        <th class="quarter-width">송금 금액</th>
+        <td class="quarter-width cell-content">1000.00</td>
+        <th class="quarter-width">송금 통화</th>
+        <td class="quarter-width cell-content">USD</td>
+      </tr>
+      <tr>
+        <th class="quarter-width">환율</th>
+        <td class="quarter-width cell-content">1350.50</td>
+        <th class="quarter-width"></th>
+        <td class="quarter-width cell-content"></td>
+      </tr>
+      <tr><th colspan="4" class="sub-header">수수료 정보</th></tr>
+      <tr>
+        <th class="quarter-width">보내는 분 수수료</th>
+        <td class="quarter-width cell-content">30.00</td>
+        <th class="quarter-width">수취인 수수료</th>
+        <td class="quarter-width cell-content">20.00</td>
+      </tr>
+      <tr>
+        <th class="quarter-width">총 수수료</th>
+        <td class="quarter-width cell-content">50.00</td>
+        <th class="quarter-width"></th>
+        <td class="quarter-width cell-content"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <table>
+      <tr><th colspan="4" class="header-row">송금 목적</th></tr>
+      <tr><th colspan="4" class="sub-header">목적 분류</th></tr>
+      <tr>
+        <th class="quarter-width">송금 목적 분류</th>
+        <td class="quarter-width cell-content">유학비</td>
+        <th class="quarter-width">상세 목적</th>
+        <td class="quarter-width cell-content">대학 학비</td>
+      </tr>
+      <tr>
+        <th class="quarter-width">목적 코드</th>
+        <td class="quarter-width cell-content">EDU001</td>
+        <th class="quarter-width"></th>
+        <td class="quarter-width cell-content"></td>
+      </tr>
+      <tr><th colspan="4" class="sub-header">관련 서류</th></tr>
+      <tr>
+        <th class="quarter-width">서류 참조 ID</th>
+        <td class="quarter-width cell-content">DOC20240515001</td>
+        <th class="quarter-width">서류 업로드 일자</th>
+        <td class="quarter-width cell-content">2024-05-15</td>
+      </tr>
+      <tr>
+        <

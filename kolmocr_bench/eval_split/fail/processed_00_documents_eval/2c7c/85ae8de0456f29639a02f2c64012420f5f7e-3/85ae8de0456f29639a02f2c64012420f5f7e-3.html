@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1em 0;
+  color: #333;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5em;
+}
+
+[data-id="b002"] h3,
+[data-id="b005"] h3,
+[data-id="b012"] h3,
+[data-id="b014"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 1.5em 0 0.5em 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2em;
+}
+
+[data-id="b003"] p,
+[data-id="b006"] h4,
+[data-id="b008"] h4,
+[data-id="b010"] h4 {
+  font-weight: bold;
+  color: #16a045;
+  margin: 1em 0 0.5em 0;
+}
+
+[data-id="b004"] ul,
+[data-id="b007"] ul,
+[data-id="b009"] ul,
+[data-id="b011"] ul,
+[data-id="b013"] ul,
+[data-id="b015"] ul {
+  margin: 0.5em 0 1em 1.5em;
+  padding-left: 0;
+  list-style-type: disc;
+}
+
+[data-id="b004"] ul li,
+[data-id="b007"] ul li,
+[data-id="b009"] ul li,
+[data-id="b011"] ul li,
+[data-id="b013"] ul li,
+[data-id="b015"] ul li {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 0.3em 0;
+}
+
+[data-id="b016"] .table-container,
+[data-id="b017"] .table-container {
+  width: 100%;
+  margin: 1em 0;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.4;
+  color: #333;
+}
+
+[data-id="b016"] .data-table,
+[data-id="b017"] .data-table {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+[data-id="b016"] .data-table td,
+[data-id="b017"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: left;
+  vertical-align: top;
+}
+
+[data-id="b016"] .data-table td:first-child,
+[data-id="b017"] .data-table td:first-child {
+  background-color: #f9f9f9;
+}
+
+[data-id="b016"] .data-table td:last-child,
+[data-id="b017"] .data-table td:last-child {
+  background-color: #f0f0f0;
+}
+
+[data-id="b016"] .data-table tr:nth-child(even) td,
+[data-id="b017"] .data-table tr:nth-child(even) td {
+  background-color: #f8f8f8;
+}
+
+[data-id="b016"] .data-table tr:nth-child(odd) td,
+[data-id="b017"] .data-table tr:nth-child(odd) td {
+  background-color: #ffffff;
+}
+
+[data-id="b016"] .data-table td,
+[data-id="b017"] .data-table td {
+  word-break: break-word;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 1em;
+}
+
+/* Adjust for small screen readability */
+@media (max-width: 600px) {
+  
+
+  [data-id="b001"] h1 {
+    font-size: calc(1.3em * var(--font-scale));
+  }
+
+  [data-id="b002"] h3,
+  [data-id="b005"] h3,
+  [data-id="b012"] h3,
+  [data-id="b014"] h3 {
+    font-size: calc(1.1em * var(--font-scale));
+  }
+
+  [data-id="b004"] ul li,
+  [data-id="b007"] ul li,
+  [data-id="b009"] ul li,
+  [data-id="b011"] ul li,
+  [data-id="b013"] ul li,
+  [data-id="b015"] ul li {
+    font-size: calc(0.9em * var(--font-scale));
+  }
+
+  [data-id="b016"] .data-table td,
+  [data-id="b017"] .data-table td {
+    padding: 0.3em;
+    font-size: calc(0.85em * var(--font-scale));
+  }
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.43rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ededed;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #111111;
+}
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block {
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.2rem;
+  color: #111111;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.38rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="128,29,882,80">
+<h1>겨울철에의 첨생조류의 다양성과 생물량</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,136,899,156">
+<h3>겨울철에는 첨생조류의 다양성과 생물량이 낮았는데, 이는 연구 기간 동안 모든 연구 지역에서 해당 식물이 존재하지 않았기 때문입니다.</h3>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b003" data-bbox="104,185,267,193">
+<p><strong>C. demersum의 특징:</strong></p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="129,216,904,274">
+<ul>
+<li>침식을 초래한 강수: 이는 식물이 뿌리가 없이 자유롭게 떠다니는 특성을 가지고 있습니다.</li>
+<li>종의 수가 더 많았으며: 이는 이전 연구와 일관된 결과이기 때문에 예상된 결과였습니다.</li>
+<li>계절적 및 공간적 변동: 다양한 환경 조건과 이 조건에 반응하는 첨생조류의 영향으로 인해 발생했습니다.</li>
+<li>종의 수는 여름에 가장 많았으며, 생물량은 봄에 가장 많았습니다.</li>
+<li>두 계절 동안 온도와 광층의 증가 때문일 수 있습니다.</li>
+<li>현재 연구의 결과는 여름과 봄의 수온이 각각 29도와 21도, 그리고 광층이 각각 89cm와 87cm로 기록된 점에서 이러한 설명을 뒷받침합니다.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="104,307,248,316">
+<h3>연구 지역별 특징:</h3>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b006" data-bbox="104,344,213,352">
+<h4>지역 4와 1에서:</h4>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="129,375,902,390">
+<ul>
+<li>최고의 다양성과 첨생조류의 총수가 관찰되었는데, 이는 해당 지역이 농업 지역과 방목 활동으로 둘러싸여 있어, 이전 연구에서 설명된 유기 오염에 취약할 수 있었기 때문일 가능성이 있습니다.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b008" data-bbox="104,419,184,426">
+<h4>지역 3에서:</h4>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="129,449,670,457">
+<ul>
+<li>종의 수와 생물량이 낮게 관찰되었으며, 이는 수영 및 어업 활동 때문일 가능성입니다.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b010" data-bbox="104,485,184,493">
+<h4>지역 2에서:</h4>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="129,516,692,524">
+<ul>
+<li>감소는 인근 전력 발전소에서 유입되는 오염된 배수로 인해 발생했을 가능성이 있습니다.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="104,556,225,565">
+<h3>기타 첨생조류:</h3>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="129,591,903,622">
+<ul>
+<li>Cocconies, Rhocosphenia, Gomphonema, Navicula, Nitzchia 및 Synedra는 연구 기간 동안 지속적으로 존재했는데, 이는 주변 환경 조건에 대한 내성과 호스트 수생식물에 부착하는 안정적인 위치 때문입니다.</li>
+<li>Cocconies 속은 석회질 형태로 부착하며, Rhocosphenia와 Gomphonema는 짧거나 긴 줄기로 부착하고, Navicula와 Nitzchia는 점액관을 통해 부착하며, Synedra는 점액패드를 통해 부착합니다.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b014" data-bbox="104,654,248,664">
+<h3>연구 결과의 비교:</h3>
+</div>
+<div class="block" data-class="figure_caption" data-id="b015" data-bbox="129,689,900,721">
+<ul>
+<li>Figure 2. Tigris 강에 서식하는 C. demersum에 서식하는 첨생조류의 총 수의 계절적 변동: 연구 기간 동안 Wassit 주의 모든 연구 지역에서 관찰됨.</li>
+<li>Figure 3. Wassit 주의 Tigris 강에 서식하는 C. demersum에 서식하는 첨생조류의 종류별 백분율:</li>
+<li>Figure 4. Wassit 주의 Tigris 강 연구 지역에서 C. demersum에 서식하는 첨생조류의 총 수의 백분율:</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b016" data-bbox="104,749,905,818">
+<div class="table-container"><table class="data-table">
+<tr>
+<td>겨울철에는 첨생조류의 다양성과 생물량이 낮았는데，</td>
+</tr>
+<tr>
+<td>이는 연구 기간 동안 모든 연구 지역에서 해당 식물이</td>
+</tr>
+<tr>
+<td>존재하지 않았기 때문입니다. 호스트 식물의 부재는</td>
+</tr>
+<tr>
+<td>C.demersum의 침식을 초래한 강수 때문이었으며，</td>
+</tr>
+<tr>
+<td>이 식물은 뿌리가 없이 자유롭게 떠다니는 특성을 가</td>
+</tr>
+<tr>
+<td>지고 있습니다(9).</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="text" data-id="b017" data-bbox="104,845,905,957">
+<div class="table-container"><table class="data-table">
+<tr>
+<td>연구 지역 4와 1에서 최고의 다양성과 첨생조류의 총수가 관찰되었는데，이는 해당 지역이 농업 지역과 방목활동으로 둘러싸여 있어，이전 연구에서 설명된 유기 오염에 취약할 수 있었기 때문일 가능성이 있습니</td>
+</tr>
+<tr>
+<td>다(33)。연구 지역 3에서는 종의 수와 생물량이 낮게 관찰되었으며，이는 수영 및 어업 활동 때문일 가능성</td>
+</tr>
+<tr>
+<td>이 있습니다。연구 지역 2에서의 감소는 인근 전력 발전소에서 유입되는 오염된 배수로 인해 발생했을 가능성이 있습니다。일부 속，예를 들어，Cocconies，Rhocosphenia，Gomphonema，Navicula，Nitzchia 및 Synedra는 연구 기간 동안 지속적으로 존재했는데，이는 주변 환경 조건에 대한 내성과 호스트 수생식물에 부착하는 안정적인 위치 때문입니다。Cocconies 속은 석회질 형태로 부착하며，Rhocosphenia와 Gomphonema는 짧거나 긴 줄기로 부착하고，Navicula와 Nitzchia는 점액관을 통해 부착하며，Synedra는 점액패드를 통해 부착합니다(32，34)。</td>
+</tr>
+<tr>
+<td>Figure 2.Tigris강에서식하는C.demersum에서식</td>
+</tr>
+<tr>
+<td>하는 첨생조류의총수의계절적변동。연구기간동안</td>
+</tr>
+<tr>
+<td>Wassit주의모든연구지역에서관찰됨.</td>
+</tr>
+<tr>
+<td>Figure 3.Wassit주의Tigris강에서식하는C.demersum에서식하는첨생조류의종류별백분율。</td>
+</tr>
+</table></div>
+</div>
+</div>
+</body>
+</html>

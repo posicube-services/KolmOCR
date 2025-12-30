@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Heading */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #222;
+  line-height: 1.3;
+}
+
+/* Block b002: Table container */
+[data-id="b002"] .table-container {
+  width: 100%;
+  overflow: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 15px 0;
+}
+
+[data-id="b002"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+[data-id="b002"] .data-table th,
+[data-id="b002"] .data-table td {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+[data-id="b002"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b002"] .data-table tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+[data-id="b002"] .data-table tr:hover td {
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+[data-id="b002"] .data-table td strong {
+  color: #d63384;
+  font-weight: bold;
+}
+
+/* Handle <br> in text content */
+[data-id="b002"] .data-table td br {
+  display: block;
+  margin: 4px 0;
+}
+
+/* Ensure consistent spacing for empty cells */
+[data-id="b002"] .data-table td:empty {
+  height: 1em;
+}
+
+/* Optional: Add a subtle shadow to the table for better visual separation */
+[data-id="b002"] .table-container {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Ensure the table doesn't overflow its container */
+[data-id="b002"] .data-table {
+  min-width: 100%;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.48rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #fdfbf6;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #1e130c;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.block[data-class="header"] {
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  color: #9a8b7c;
+}
+
+
+.block[data-class="quotation"] {
+  font-style: italic;
+  border-left: 3px solid #d97706;
+  padding-left: 16px;
+}
+
+.block[data-class="figure"] {
+  border: 1px dashed rgba(55, 65, 81, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1e130c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #9a8b7c;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #9a8b7c;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.31rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv2" data-id="b001" data-bbox="104,56,291,82">
+<h1>2.1 창의적 움직임</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,99,905,525">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>학습 결과</th><th>비고</th></tr>
+</thead>
+<tbody>
+<tr><td>2.1.1 신체 인식</td><td>- 다양한 신체 모양 만들기 (예: 고양이, 공 등이 되어보기).&lt;br&gt;- 전신으로 단일 개념 표현하기 (예: 물체, 숫자, 문자 등이 되어보기).&lt;br&gt;- 자세 바꾸기 (친구의 자세를 따라하는 거울 운동 등).</td></tr>
+<tr><td>2.1.2 신체 움직임</td><td>- 걷기와 뛰기 – 학습자는 천천히 걷다가 점점 더 빠르게 걷고, 뛰기로 전환하기.&lt;br&gt;- 움직임 – 학습자는 신체의 모양과 움직임과 관련된 다양한 활동을 수행하기.</td></tr>
+<tr><td>2.1.3 공간</td><td>- 방향을 갑자기 바꾸기 – (예: 앞으로 가다가 뒤로 가기, 옆으로 가기 등).&lt;br&gt;- 다양한 높이 탐색하기 – (예: 씨앗이 자라는 것처럼, 아이스크림이 녹는 것처럼).&lt;br&gt;- 다양한 리듬에 신체 움직임으로 반응하기 (예: 점프, 뛰기, 팔움직이기 등).</td></tr>
+<tr><td><strong>Note:</strong> The image is not included in the markdown format as it's not provided in the text. If you have the image, you can refer to it with a bounding box annotation like this:</td><td></td></tr>
+<tr><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

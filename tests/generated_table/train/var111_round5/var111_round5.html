@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>외국환거래신고서</title>
+    <style>
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+            font-size: 13pt;
+            line-height: 1.6;
+            color: #222;
+            margin: 20px;
+            background: #fff;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24pt;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .document-section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            word-break: break-all;
+        }
+        th {
+            background: #707070;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #999;
+            font-size: 12pt;
+        }
+        td {
+            background: #f9f9f9;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 12pt;
+        }
+        .section-header {
+            background: #707070;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+            font-size: 14pt;
+        }
+        .subsection-header {
+            background: #888;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+            padding: 8px;
+            font-size: 13pt;
+        }
+        .field-label {
+            font-weight: bold;
+            text-align: right;
+            padding-right: 10px;
+            background: #999;
+            color: #fff;
+        }
+        .field-value {
+            text-align: left;
+            background: #f9f9f9;
+            padding-left: 10px;
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+        }
+        .two-column > div {
+            padding: 8px;
+        }
+        .full-width {
+            width: 100%;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>외국환거래신고서</h1>
+
+    <div class="document-section">
+        <div class="section-header">기본정보</div>
+        <div class="subsection-header">신고자 정보</div>
+        <div class="subsection-header">개인정보</div>
+        <div class="subsection-header">신원 확인</div>
+        <table>
+            <tr>
+                <th class="field-label">성명</th>
+                <td class="field-value">홍길동</td>
+                <th class="field-label">주민등록번호</th>
+                <td class="field-value">900101-1234567</td>
+            </tr>
+            <tr>
+                <th class="field-label">국적</th>
+                <td class="field-value">대한민국</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <div class="subsection-header">연락처</div>
+        <table>
+            <tr>
+                <th class="field-label">전화번호</th>
+                <td class="field-value">010-1234-5678</td>
+                <th class="field-label">이메일</th>
+                <td class="field-value">hong@example.com</td>
+            </tr>
+            <tr>
+                <th class="field-label">주소</th>
+                <td class="field-value">서울시 강남구 테헤란로 123</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="document-section">
+        <div class="section-header">기본정보</div>
+        <div class="subsection-header">신고자 정보</div>
+        <div class="subsection-header">법인 정보</div>
+        <div class="subsection-header">법인 등록</div>
+        <table>
+            <tr>
+                <th class="field-label">법인명</th>
+                <td class="field-value">삼성전자 주식회사</td>
+                <th class="field-label">사업자등록번호</th>
+                <td class="field-value">123-45-67890</td>
+            </tr>
+            <tr>
+                <th class="field-label">대표자명</th>
+                <td class="field-value">이재용</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <div class="subsection-header">법인 주소</div>
+        <table>
+            <tr>
+                <th class="field-label">법인 주소</th>
+                <td class="field-value">서울시 서초구 반포대로 123</td>
+                <th class="field-label">지점명</th>
+                <td class="field-value">강남지점</td>
+            </tr>
+            <tr>
+                <th class="field-label">업종</th>
+                <td class="field-value">전자제품 제조업</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="document-section">
+        <div class="section-header">거래 유형</div>
+        <div class="subsection-header">수출입</div>
+        <div class="subsection-header">수출</div>
+        <table>
+            <tr>
+                <th class="field-label">수출일자</th>
+                <td class="field-value">2025-03-15</td>
+                <th class="field-label">수출금액</th>
+                <td class="field-value">50000000</td>
+            </tr>
+            <tr>
+                <th class="field-label">수출통화</th>
+                <td class="field-value">USD</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <div class="subsection-header">수입</div>
+        <table>
+            <tr>
+                <th class="field-label">수입일자</th>
+                <td class="field-value">2025-02-20</td>
+                <th class="field-label">수입금액</th>
+                <td class="field-value">30000000</td>
+            </tr>
+            <tr>
+                <th class="field-label">수입통화</th>
+                <td class="field-value">EUR</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="document-section">
+        <div class="section-header">거래 유형</div>
+        <div class="subsection-header">투자</div>
+        <div class="subsection-header">해외투자</div>
+        <table>
+            <tr>
+                <th class="field-label">투자일자</th>
+                <td class="field-value">2025-01-10</td>
+                <th class="field-label">투자금액</th>
+                <td class="field-value">100000000</td>
+            </tr>
+            <tr>
+                <th class="field-label">투자국가</th>
+                <td class="field-value">미국</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <div class="subsection-header">외국인투자</div>
+        <table>
+            <tr>
+                <th class="field-label">외국인투자일자</th>
+                <td class="field-value">2025-04-05</td>
+                <th class="field-label">외국인투자금액</th>
+                <td class="field-value">200000000</td>
+            </tr>
+            <tr>
+                <th class="field-label">투자원국</th>
+                <td class="field-value">일본</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

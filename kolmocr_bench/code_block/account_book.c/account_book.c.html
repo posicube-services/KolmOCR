@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <meta charset="utf-8">
+  <title>Document</title>
+
+  <!-- Prism theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+
+  <style>
+    /* =========================
+       Print: A4 hard fit (NO margin)
+       - 페이지 마진은 0
+       - 여백은 .page padding으로만 관리
+    ========================= */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #333;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* =========================
+       A4 page box
+       - ✅ padding을 단 하나의 여백으로 사용 (권장 8~12mm)
+    ========================= */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      padding: 10mm;
+      /* ✅ 여기만 여백 */
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+      background: #fff;
+    }
+
+    @media screen {
+      body {
+        background: #f3f4f6;
+      }
+
+      .page {
+        margin: 16px auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    /* =========================
+       Fit wrapper
+    ========================= */
+    .fit {
+      --fit-scale: 1;
+      transform: scale(var(--fit-scale));
+      transform-origin: top left;
+      width: calc(100% / var(--fit-scale));
+    }
+
+    .document {
+      column-count: 1;
+      column-gap: 0;
+    }
+
+    .code-card {
+      margin: 0;
+      padding: 8px 10px;
+      background: #0f172a;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-sizing: border-box;
+    }
+
+    .block {
+      margin: 0;
+      width: 100%;
+    }
+
+    .block+.block {
+      margin-top: 2px;
+    }
+
+    .block p {
+      margin: 0;
+      padding: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 8.4pt;
+      line-height: 1.25;
+      color: #e5e7eb;
+      white-space: pre;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .block p code {
+      white-space: pre;
+    }
+
+    .token.comment {
+      color: #94a3b8;
+    }
+
+    .token.keyword {
+      color: #60a5fa;
+    }
+
+    .token.string {
+      color: #a7f3d0;
+    }
+
+    .token.number {
+      color: #fcd34d;
+    }
+
+    .token.function {
+      color: #f472b6;
+    }
+
+    @media print {
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+
+      body {
+        background: #fff;
+      }
+    }
+
+    .block:last-child {
+      margin-bottom: 0;
+    }
+
+    .document {
+      padding-bottom: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+
+
+
+  <div class="page" id="page">
+    <div class="fit" id="fit" style="--fit-scale: 0.989;" data-fit-locked="1">
+      <div class="document">
+        <div class="code-card">
+
+          <div class="block" data-id="b001" data-bbox="61,42,877,44">
+            <p><code
+                class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span></code>
+            </p>
+          </div>
+
+          <div class="block" data-id="b002" data-bbox="61,88,877,30">
+            <p><code
+                class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX_CAT</span> <span class="token expression"><span class="token number">50</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DATA_FILE</span> <span class="token string">"account_book.txt"</span></span></code>
+            </p>
+          </div>
+
+          <div class="block" data-id="b003" data-bbox="61,119,877,74">
+            <p><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> type<span class="token punctuation">;</span>               <span class="token comment">// 'I' income, 'E' expense</span>
+    <span class="token keyword">char</span> category<span class="token punctuation">[</span>MAX_CAT<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> amount<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> Record<span class="token punctuation">;</span></code></p>
+          </div>
+
+          <div class="block" data-id="b004" data-bbox="61,195,877,59">
+            <p><code class="language-c"><span class="token keyword">void</span> <span class="token function">print_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n==== Account Book ====\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"1. Add\n2. List\n3. Summary\n0. Exit\n&gt; "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></p>
+          </div>
+
+          <div class="block" data-id="b005" data-bbox="61,256,877,311">
+            <p><code class="language-c"><span class="token keyword">void</span> <span class="token function">add_record</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Record r<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Type (I/E): "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fgets</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">.</span>type <span class="token operator">=</span> <span class="token punctuation">(</span>buf<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'E'</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token char">'E'</span> <span class="token operator">:</span> <span class="token char">'I'</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Category: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fgets</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>category<span class="token punctuation">,</span> MAX_CAT<span class="token punctuation">,</span> <span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">.</span>category<span class="token punctuation">[</span><span class="token function">strcspn</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>category<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Amount: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fgets</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    r<span class="token punctuation">.</span>amount <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    FILE <span class="token operator">*</span>fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fp<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token function">fprintf</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token string">"%c,%s,%d\n"</span><span class="token punctuation">,</span> r<span class="token punctuation">.</span>type<span class="token punctuation">,</span> r<span class="token punctuation">.</span>category<span class="token punctuation">,</span> r<span class="token punctuation">.</span>amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></p>
+          </div>
+
+          <div class="block" data-id="b006" data-bbox="61,568,877,207">
+            <p><code class="language-c"><span class="token keyword">void</span> <span class="token function">summary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    FILE <span class="token operator">*</span>fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> in <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> out <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> line<span class="token punctuation">[</span><span class="token number">128</span><span class="token punctuation">]</span><span class="token punctuation">,</span> cat<span class="token punctuation">[</span>MAX_CAT<span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> amt<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fp<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">fgets</span><span class="token punctuation">(</span>line<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">sscanf</span><span class="token punctuation">(</span>line<span class="token punctuation">,</span> <span class="token string">"%c,%49[^,],%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>t<span class="token punctuation">,</span> cat<span class="token punctuation">,</span> <span class="token operator">&amp;</span>amt<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span>
+            <span class="token punctuation">(</span>t <span class="token operator">==</span> <span class="token char">'I'</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">(</span>in <span class="token operator">+=</span> amt<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>out <span class="token operator">+=</span> amt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Income:%d  Expense:%d  Balance:%d\n"</span><span class="token punctuation">,</span> in<span class="token punctuation">,</span> out<span class="token punctuation">,</span> in <span class="token operator">-</span> out<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></p>
+          </div>
+
+          <div class="block" data-id="b007" data-bbox="61,777,877,178">
+            <p><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">print_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">fgets</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token function">atoi</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span> <span class="token function">add_record</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span> <span class="token function">summary</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">0</span><span class="token operator">:</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function highlightThenFit() {
+      if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+      requestAnimationFrame(() => requestAnimationFrame(fitToOnePage));
+    }
+
+    function fitToOnePage() {
+      const page = document.getElementById("page");
+      const fit = document.getElementById("fit");
+      if (!page || !fit) return;
+
+      // reset
+      fit.style.setProperty("--fit-scale", 1);
+
+      // ✅ padding을 제외한 사용 가능 높이로 계산
+      const styles = getComputedStyle(page);
+      const padTop = parseFloat(styles.paddingTop) || 0;
+      const padBot = parseFloat(styles.paddingBottom) || 0;
+      const availableH = page.clientHeight - padTop - padBot;
+
+      const contentH = fit.scrollHeight;
+
+      if (contentH > availableH) {
+        let scale = availableH / contentH;
+        scale = Math.floor(scale * 10000) / 10000;
+        fit.style.setProperty("--fit-scale", scale);
+      }
+    }
+
+    window.addEventListener("load", highlightThenFit);
+    window.addEventListener("resize", fitToOnePage);
+    window.addEventListener("beforeprint", fitToOnePage);
+  </script>
+
+
+
+
+</body>
+
+</html>

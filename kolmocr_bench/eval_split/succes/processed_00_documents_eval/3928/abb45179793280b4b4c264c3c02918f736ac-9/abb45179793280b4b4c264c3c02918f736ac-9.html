@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 5px;
+  color: #222;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b008"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #333;
+}
+
+.block[data-id="b004"] h3,
+.block[data-id="b006"] h3,
+.block[data-id="b009"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 10px 0;
+  color: #444;
+  border-left: 4px solid #0066cc;
+  padding-left: 10px;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b005"] p,
+.block[data-id="b007"] p,
+.block[data-id="b010"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 10px 0;
+  color: #333;
+  text-align: justify;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Optional: Improve readability for Korean text */
+body {
+  font-family: 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.00rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #742004;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.75rem;
+  color: rgba(156, 47, 11, 0.841);
+  border-left: 4px solid #b84304;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #ef5b05d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #cf3704;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(239, 107, 6, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 1.0rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(221, 64, 7, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.25rem;
+  color: #5a2202;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #c05c05;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.4rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.3rem;
+  color: #161211;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.17rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,58,836,168">
+<h1>Depo-Provera 캠페인에 대한 논의</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="104,191,303,214">
+<h2>1. 캠페인의 배경</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,228,905,263">
+<p>Depo-Provera에 대한 캠페인은 DP의 부적절하고 인종차별적인 사용에 초점을 맞추었지만, 동시에 더 넓은 범위에서 흑인 여성의 생식 정의에 대한 논의와 행동의 장으로 기능했다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b004" data-bbox="122,278,299,294">
+<h3>1.1 흑인 여성의 입장</h3>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,309,905,382">
+<p>백인 페미니스트들이 요구에 따라堕胎을 주장하는 동안, 흑인 여성들은 흑인 여성들이 백인 여성보다 더 쉽게堕胎을 받고, 요청하지 않았음에도 불구하고堕胎을 권유받는 비례적인 방식에 대해 캠페인을 벌였다. 흑인 여성과 백인 노동계급 여성들은 건강 전문가와 정책 입안자들에 의해堕胎과 장기 피임약을 목표로 삼았는데, 이들은 그들이 번식하지 않아야 한다는 견해를 가지고 있었다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b006" data-bbox="122,397,344,413">
+<h3>1.2 Depo-Provera의 사용</h3>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,427,905,500">
+<p>Depo-Provera의 사용은 매우 다른 건강 관리 접근 방식에서 비롯되었다. 이 접근 방식은 비판 없이 지배적 가정을 수용하는 것—이 경우 흑인 출생률을 줄이는 것이 바람직하다는 점과 흑인 여성의 무지와 신뢰성 부족이라는 가정—에 기반하고 있으며, 이러한 가정에 따라 사람들의 행동을 바꾸려는 시도를 포함한다. 이러한 과정에서 발생하는 고통은 무시된다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b008" data-bbox="104,520,303,543">
+<h2>2. 캠페인의 진행</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="122,556,499,572">
+<h3>2.1 Brent Community Health Council 1981</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,586,905,754">
+<p>흑인 여성들은 풍부한 잠재력을 가진 여성으로 여겨지면서도 무능력하다고 간주되는 편견에 맞서 투쟁하고, 흑인 여성들 사이에서 Depo-Provera의 부당한 사용에 반대하는 캠페인을 벌였다. 1982년 4월, 건강부 장관은 Upjohn Ltd에 장기 사용 허가를 부여하지 않기로 결정했다. 이 결정은 부분적으로 Depo-Provera에 대한 캠페인의 지속적인 공격(1982년 Timmins)에 기인한다. 의약품 안전 위원회는 과학적 증거를 기반으로 Depo-Provera를 승인할 준비가 되어 있었지만, 건강부 장관(Kenneth Clarke)은 취약한 여성들이 정보를 충분히 제공받지 않은 상태에서 Depo-Provera를 투여받을 수 있다는 주장에 설득되어 위원회의 조언을 수용하지 않았다 (1982년 Timmins). Upjohn은 이 결정에 항소했고, 1968년 의약품법에 따라 1983년 4월 공개 청문회가 열려 Depo-Provera의 장기 사용 허가에 대해 논의했다. 공개 청문회 이후, 결정은 여전히 Depo-Provera를 단기 피임약으로만 허가해야 한다는 것이었다.</p>
+</div>
+</div>
+</body>
+</html>

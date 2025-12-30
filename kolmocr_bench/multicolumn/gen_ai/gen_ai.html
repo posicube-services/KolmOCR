@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>생성형 AI | robi G</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #111;
+        }
+
+        /* Canvas (wide like the screenshot) */
+        .page {
+            width: 700mm;
+            /* user's prior convention */
+            height: 350mm;
+            margin: 0 auto;
+            background: #fff;
+            box-sizing: border-box;
+            padding: 10mm 12mm;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Global rhythm */
+        .block {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 0 5mm 0;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        /* Tight bbox for all content blocks */
+        .side-title .block,
+        h2.block,
+        h3.block,
+        p.block,
+        .k.block,
+        ul.block,
+        .caption,
+        .hero-card.block,
+        .app-shot.block,
+        .figure.block,
+        .icon.block {
+            width: fit-content;
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Center align figures and images */
+        .hero-card.block,
+        .app-shot.block,
+        .figure.block,
+        .icon.block {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 26pt;
+            margin: 0 0 3mm 0;
+            font-weight: 900;
+            letter-spacing: -0.6px;
+        }
+
+        h2 {
+            font-size: 16pt;
+            margin: 0 0 2.5mm 0;
+            font-weight: 900;
+            letter-spacing: -0.3px;
+        }
+
+        h3 {
+            font-size: 12.5pt;
+            margin: 0 0 2mm 0;
+            font-weight: 900;
+            letter-spacing: -0.15px;
+        }
+
+        p,
+        li {
+            font-size: 10.2pt;
+            line-height: 1.55;
+            margin: 0 0 2mm 0;
+            color: #222;
+        }
+
+        ul {
+            margin: 0 0 0 1.05em;
+            padding: 0;
+        }
+
+        li {
+            margin: 0 0 1.4mm 0;
+        }
+
+        /* Layout */
+        .layout {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 35% 1fr;
+            row-gap: 0;
+        }
+
+        /* Top hero area like screenshot: left text + hero video image / right product intro + big app image */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 12mm;
+            align-items: start;
+        }
+
+        .side-title {
+            color: #333;
+        }
+
+        .side-title .kicker {
+            font-weight: 900;
+            font-size: 11pt;
+            margin-bottom: 5mm;
+        }
+
+        .side-title .brand {
+            font-weight: 900;
+            font-size: 12pt;
+            margin-bottom: 2mm;
+        }
+
+        .side-title .sub {
+            font-size: 10pt;
+            color: #444;
+        }
+
+        .hero-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .hero-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .hero h2 {
+            margin-bottom: 2mm;
+        }
+
+        .hero .lead {
+            margin-bottom: 3mm;
+            color: #333;
+        }
+
+        .app-shot {
+            margin-top: 3mm;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .app-shot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .caption {
+            font-size: 9.5pt;
+            color: #666;
+            margin-top: 1.8mm;
+        }
+
+        /* Middle content: feature cards + architecture + comparison + process + business area */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 12mm;
+            align-items: start;
+            height: 100%;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8mm;
+            margin-top: 3mm;
+        }
+
+        .card {
+            border: 1px solid #ededed;
+            border-radius: 12px;
+            background: #fff;
+            padding: 6mm 6mm 5mm 6mm;
+            min-height: 40mm;
+        }
+
+        .card h3 {
+            margin-bottom: 2mm;
+        }
+
+        .icon {
+            width: 39px;
+            height: 39px;
+            display: block;
+            margin: 0 auto 3mm auto;
+        }
+
+        .icon img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section {
+            border-radius: 12px;
+            padding: 6mm;
+            background: #fff;
+        }
+
+        .figure {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Comparison table */
+        .cmp-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.6pt;
+        }
+
+        .cmp-wrap th,
+        .cmp-wrap td {
+            border: 1px solid #e0e0e0;
+            padding: 6px 8px;
+            vertical-align: top;
+        }
+
+        .cmp-wrap thead th {
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .cmp-wrap tbody td {
+            color: #222;
+        }
+
+        /* Process row */
+        .process {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr 40px 1fr;
+            align-items: start;
+            column-gap: 8mm;
+            margin-top: 3mm;
+        }
+
+        .step {
+            border-radius: 12px;
+            background: #FFF9F0;
+            padding: 5mm;
+            min-height: 34mm;
+        }
+
+        .arrow {
+            text-align: center;
+            color: #FF8C00;
+            font-weight: 900;
+            font-size: 16pt;
+            align-self: center;
+        }
+
+        .step .st {
+            font-size: 9.6pt;
+            color: #FF8C00;
+            font-weight: 900;
+            margin-bottom: 1.5mm;
+        }
+
+        .step .img-4 {
+            width: 60px;
+            display: block;
+            margin: 0 auto 3mm auto;
+        }
+
+        .step .img-4 img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .step h3 {
+            margin: 0 0 2mm 0;
+            font-size: 12pt;
+        }
+
+        /* Business area chips like screenshot */
+        .biz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6mm;
+            margin-top: 3mm;
+        }
+
+        .biz {
+            background: #FFF4E6;
+            border: 1px solid #FFD7A3;
+            border-radius: 12px;
+            padding: 5mm;
+            min-height: 22mm;
+        }
+
+        .biz .k {
+            font-weight: 900;
+            margin-bottom: 1.3mm;
+            color: #FF8C00;
+        }
+
+        /* image sizing to prevent overflow */
+        .img-20 img {
+            max-height: 52mm;
+        }
+
+        .img-26 img {
+            max-height: 78mm;
+        }
+
+        .img-35 img {
+            max-height: 70mm;
+        }
+
+        .img-4 img {
+            max-height: 10mm;
+        }
+
+        .block {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+    </style>
+    <script>
+        function updateBBoxes() {
+            const page = document.querySelector(".page");
+            if (!page) return;
+            const pageRect = page.getBoundingClientRect();
+            const blocks = page.querySelectorAll(".block[data-id]");
+            blocks.forEach((el) => {
+                const r = el.getBoundingClientRect();
+                const x = Math.round(r.left - pageRect.left);
+                const y = Math.round(r.top - pageRect.top);
+                const w = Math.round(r.width);
+                const h = Math.round(r.height);
+                el.setAttribute("data-bbox", `${x},${y},${w},${h}`);
+            });
+        }
+
+        function afterImagesLoad(callback) {
+            const imgs = Array.from(document.images || []);
+            if (imgs.length === 0) return callback();
+            let left = imgs.length;
+            const done = () => { left -= 1; if (left <= 0) callback(); };
+            imgs.forEach(img => {
+                if (img.complete) return done();
+                img.addEventListener("load", done, { once: true });
+                img.addEventListener("error", done, { once: true });
+            });
+        }
+
+        window.addEventListener("load", () => {
+            requestAnimationFrame(() => {
+                updateBBoxes();
+                afterImagesLoad(() => {
+                    updateBBoxes();
+                    setTimeout(updateBBoxes, 350);
+                    setTimeout(updateBBoxes, 900);
+                });
+            });
+        });
+        window.addEventListener("resize", updateBBoxes);
+    </script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="layout">
+            <div class="hero">
+                <div>
+                    <div class="side-title">
+                        <div class="kicker block" data-bbox="15,33,21,17" data-id="b001a">생성형 AI</div>
+                        <div class="brand block" data-bbox="15,67,16,18" data-id="b001b">robi G</div>
+                        <div class="sub block" data-bbox="15,91,40,15" data-id="b001c">대화형 Gen-AI 서비스</div>
+                    </div>
+                    <div class="hero-card block img-20" data-bbox="114,123,116,171" data-id="b002">
+                        <img alt="robi G 소개 이미지" src="imgs/ai_gen_1.jpg" />
+                    </div>
+                </div>
+                <div>
+                    <h2 class="block" data-bbox="343,33,117,24" data-id="b003">엔터프라이즈를 위한 생성형 AI, robi G</h2>
+                    <p class="lead block" data-bbox="343,64,226,18" data-id="b004">robi G는 LLM에 포지쿼브의 AI 서비스 개발 및 운영
+                        노하우를 담아 더욱 강력하고 편리한 기업용 생성형 서비스입니다.</p>
+                    <p class="lead block" data-bbox="343,92,255,18" data-id="b005">고객사 상황과 목적에 따라 활용 방식은 물론 세부 기능까지
+                        자유롭게 조절할 수 있어 비즈니스에 최적화된 서비스를 제공해드립니다.</p>
+                    <div class="app-shot block img-26" data-bbox="429,120,141,256" data-id="b006">
+                        <img alt="robi G 웹 어플리케이션 화면 예시" src="imgs/ai_gen_2.jpg" />
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="content">
+                <div>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="icon img-4 block" data-bbox="58,390,13,34" data-id="b008a">
+                                <img alt="아이콘" src="imgs/ai_gen_3.jpg" />
+                            </div>
+                            <h3 class="block" data-bbox="23,434,47,19" data-id="b008b">기업 내부 문서 활용</h3>
+                            <p class="block" data-bbox="23,460,82,73" data-id="b008c">기업이 보유한 문서라면 HTML, PDF, Word,
+                                Excel 등 웹 및 파일 형태의 모든 자료를 데이터셋으로 구축하여 AI 검색에 활용할 수 있습니다.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <div class="icon img-4 block" data-bbox="161,390,22,34" data-id="b009a">
+                                <img alt="아이콘" src="imgs/ai_gen_4.jpg" />
+                            </div>
+                            <h3 class="block" data-bbox="131,434,44,19" data-id="b009b">할루시네이션 차단</h3>
+                            <p class="block" data-bbox="131,460,82,73" data-id="b009c">robi G는 고객사 데이터로 구성한 지식 베이스에
+                                근거하여 GPT 챗봇의 주요 문제였던 힐루시네이션 없이 믿을 수 있는 답변만 제공합니다.</p>
+                        </div>
+                        <div class="card">
+                            <div class="icon img-4 block" data-bbox="269,390,22,34" data-id="b010a">
+                                <img alt="아이콘" src="imgs/ai_gen_5.jpg" />
+                            </div>
+                            <h3 class="block" data-bbox="239,434,58,19" data-id="b010b">완전 자동화된 AI 서비스</h3>
+                            <p class="block" data-bbox="239,460,82,55" data-id="b010c">robi G는 데이터 소스 관리부터 데이터 업로드, 인덱스
+                                생성 등 서비스 전반의 기능을 관리콘솔을 통해 자동화할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h3 class="block" data-bbox="23,586,56,19" data-id="b011">robi G 소프트웨어 구성</h3>
+                        <p class="block" data-bbox="23,622,298,37" data-id="b012">robi G는 문서 기반의 생성형 AI 플랫폼 서비스로 기업 내부
+                            문서를 의미 단위로 임베딩하여 사용자의 질문 의도에 맞는 답변을 생성합니다. 이때, 사용자 권한에
+                            따라 사용 가능한 기능을 제한하거나 보안 모니터링 기능 등을 적용하여 고객사의 민감정보를 안전하게 보호합니다.</p>
+                        <div class="figure img-35 block" data-bbox="65,675,214,230" data-id="b013">
+                            <img alt="robi G 소프트웨어 구성도" src="imgs/ai_gen_6.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="section cmp-wrap">
+                        <h3 class="block" data-bbox="351,380,23,19" data-id="b014">기능 비교</h3>
+                        <table class="block" data-bbox="351,415,298,199" data-id="b015"
+                            style="margin: auto; width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="text-align: center; font-weight: 900; background: #FFF4E6;">기능</td>
+                                <td style="text-align: center; font-weight: 900; background: #FFF4E6;">robi G</td>
+                                <td style="text-align: center; font-weight: 900; background: #FFF4E6;">ChatGPT</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">기업 내부 문서 활용</td>
+                                <td style="text-align: left;">✓ HTML, PDF, Word, Excel 등 기업이 보유한 내부 문서를 Azure 상의 기업 전용
+                                    테널트에 업로드하여 활용 가능</td>
+                                <td style="text-align: left;">✗ 기업 기밀이나 개인 정보의 유출 위험이 크기 때문에 기업 내부 문서 업로드하지 않도록 권고함</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">도메인 특화</td>
+                                <td style="text-align: left;">✓ 각 산업별로 특화된 전문 용어 및 약어 등 각종 지식 베이스로 학습한 AI 활용 가능</td>
+                                <td style="text-align: left;">✗ 2021년까지 온라인 상에 공개된 범용 데이터를 학습하여 전문적인 답을 얻기 어려울 수 있음</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">답변 출처 제공</td>
+                                <td style="text-align: left;">✓ 답변에 인용한 자료나 그 요약문을 함께 제시하는 등 기업의 활용 목적에 따라 도입 단계에서 답변 방식
+                                    조절 가능</td>
+                                <td style="text-align: left;">✗ 답변에 활용된 구체적인 출처를 명시적으로 제공하지 않아 답변을 신뢰하기 어려울</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">부가기능 간편 추가</td>
+                                <td style="text-align: left;">✓ Azure 기반의 서비스로 Azure에서 제공하는 각종 기능 및 3rd Party 등을 빠르고 쉽게
+                                    추가 가능</td>
+                                <td style="text-align: left;">✗ 기본적으로 불가능하며, 별도의 파인튜닝을 거쳐 부가기능을 추가할 수도 있으나, 비용 및 유지보수
+                                    문제가 생긴</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="section">
+                        <h3 class="block" data-bbox="351,657,33,19" data-id="b016">도입 프로세스</h3>
+                        <p class="block" data-bbox="351,693,191,18" data-id="b017">간단한 3단계 프로세스로 컨설팅부터 도입 후 유지 관리까지 쉽고
+                            간편하게 robi G를 도입해 보세요.</p>
+                        <p class="block" data-bbox="351,727,216,18" data-id="b018">포지쿱브의 AI 전문가들이 안전하고 정확한 GPT 서비스로 귀사의
+                            비즈니스 혁신을 돕기 위해 기다리고 있습니다.</p>
+                        <div class="process">
+                            <div class="step">
+                                <div class="img-4 block" data-bbox="379,779,20,33" data-id="b019a">
+                                    <img alt="아이콘" src="imgs/ai_gen_7.jpg" />
+                                </div>
+                                <h3 class="block" data-bbox="357,821,42,18" data-id="b019b">도입협의 및 컨설팅</h3>
+                                <ul class="block" data-bbox="357,846,40,87" data-id="b019c">
+                                    <li>기업요구사항정의</li>
+                                    <li>샘플데이터확인</li>
+                                    <li>기업DB구축현황파악</li>
+                                    <li>AI모델링</li>
+                                </ul>
+                            </div>
+                            <div class="arrow">›</div>
+                            <div class="step">
+                                <div class="img-4 block" data-bbox="490,779,20,33" data-id="b020a">
+                                    <img alt="아이콘" src="imgs/ai_gen_8.jpg" />
+                                </div>
+                                <h3 class="block" data-bbox="468,821,28,18" data-id="b020b">구축 및 운영</h3>
+                                <ul class="block" data-bbox="468,846,50,87" data-id="b020c">
+                                    <li>DB 보안 연결 및 임베딩</li>
+                                    <li>벡터 검색 엔진 적용</li>
+                                    <li>UIUX 디자인</li>
+                                    <li>프롬프트 엔지니어링 적용</li>
+                                </ul>
+                            </div>
+                            <div class="arrow">›</div>
+                            <div class="step">
+                                <div class="img-4 block" data-bbox="601,779,20,33" data-id="b021a">
+                                    <img alt="아이콘" src="imgs/ai_gen_9.jpg" />
+                                </div>
+                                <h3 class="block" data-bbox="578,821,28,18" data-id="b021b">유지 및 관리</h3>
+                                <ul class="block" data-bbox="578,846,56,87" data-id="b021c">
+                                    <li>프롬프트 최적화</li>
+                                    <li>AI 모델 업데이트 제공</li>
+                                    <li>시스템 유지보수 및 업데이트</li>
+                                    <li>장애 대응 서비스 제공</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column 3: Business area + extra text blocks -->
+                <div>
+                    <div class="section">
+                        <h3 class="block" data-bbox="679,380,45,19" data-id="b022">비즈니스 활용 영역</h3>
+                        <p class="block" data-bbox="679,415,181,18" data-id="b023">robi G는 셀프 고객 서비스나 사내 업무 가이드 등 다양한 업무
+                            환경에서 활용하실 수 있습니다.</p>
+                        <p class="block" data-bbox="679,450,205,18" data-id="b024">금융, 제조, 유통 등 글로벌 기업부터 공공기관이나 연구소 등
+                            비영리 단체까지 어디서나 활용도가 높습니다.</p>
+                        <div class="biz-grid">
+                            <div class="biz">
+                                <div class="k block" data-bbox="686,502,24,18" data-id="b025a">A사 | 제조</div>
+                                <p class="block" data-bbox="686,524,81,37" data-id="b025b">외부 정보(뉴스, 컨텐츠 등) DB를 활용한 특정
+                                    정보 검색 및 요약 챗봇</p>
+                            </div>
+                            <div class="biz">
+                                <div class="k block" data-bbox="788,502,24,18" data-id="b026a">B사 | 건설</div>
+                                <p class="block" data-bbox="788,524,81,37" data-id="b026b">공사, 용역, 자제 등 계약서 검토 및 정보 검색
+                                    서포트 가능한 챗봇</p>
+                            </div>
+                            <div class="biz">
+                                <div class="k block" data-bbox="890,502,28,18" data-id="b027a">C사 | 연구소</div>
+                                <p class="block" data-bbox="890,524,81,37" data-id="b027b">기술지원 매뉴얼에 대한 임직원이나 외부 고객용 정보
+                                    가이드 챗봇</p>
+                            </div>
+                            <div class="biz">
+                                <div class="k block" data-bbox="686,632,24,18" data-id="b028a">D사 | 금융</div>
+                                <p class="block" data-bbox="686,654,81,37" data-id="b028b">대출이나 적금 등 금융 상품 추천이 가능한 대고객용
+                                    챗봇</p>
+                            </div>
+                            <div class="biz">
+                                <div class="k block" data-bbox="788,632,38,18" data-id="b029a">E시청 | 공공기관</div>
+                                <p class="block" data-bbox="788,654,81,37" data-id="b029b">내부 AICC시스템, 유통 시스템과 연계가 가능한
+                                    대고객용 챗봇</p>
+                            </div>
+                            <div class="biz">
+                                <div class="k block" data-bbox="890,632,23,18" data-id="b030a">F사 | 유통</div>
+                                <p class="block" data-bbox="890,654,81,37" data-id="b030b">일반 민원(CS) 응대 챗봇 및 임직원 업무 가이드용
+                                    챗봇</p>
+                            </div>
+                        </div>
+                        <p class="block" data-bbox="679,738,73,18" data-id="b031" style="margin-top:4mm;">* 실제 포지쿼브와
+                            논의한 고객사 사례</p>
+                    </div>
+                </div>
+            </div><!-- /content -->
+        </div><!-- /layout -->
+    </div><!-- /page -->
+</body>
+
+</html>

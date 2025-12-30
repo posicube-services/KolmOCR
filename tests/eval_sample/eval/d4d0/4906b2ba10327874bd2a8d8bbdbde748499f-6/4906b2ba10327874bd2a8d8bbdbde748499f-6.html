@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root {
+  --font-scale: 1;
+  --base-font-size: 10pt;
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+  width: 210mm;
+  margin: 0 auto;
+  padding: 15mm 20mm;
+  box-sizing: border-box;
+  background: #fff;
+  column-count: 2;
+  column-gap: 10mm;
+  column-fill: balance;
+  overflow: visible;
+  transform: none;
+  font-size: var(--body-font-size);
+}
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b002"] {
+  break-inside: avoid;
+  font-weight: bold;
+  font-size: calc(1.2em * var(--font-scale));
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.block[data-id="b003"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b004"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b005"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b006"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b007"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b008"] {
+  break-inside: avoid;
+  font-weight: bold;
+  font-size: calc(1.2em * var(--font-scale));
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.block[data-id="b009"] {
+  break-inside: avoid;
+  font-weight: bold;
+  font-size: calc(1.1em * var(--font-scale));
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.block[data-id="b010"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b011"] {
+  break-inside: avoid;
+  font-weight: bold;
+  font-size: calc(1.1em * var(--font-scale));
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.block[data-id="b012"] {
+  break-inside: avoid;
+  margin-bottom: 1em;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+/* Table styling */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Image styling */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em 0;
+}
+
+/* List styling */
+ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+
+ol li {
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+/* Ensure consistent spacing between columns */
+
+
+/* Prevent text from breaking across columns inappropriately */
+.block {
+  break-inside: avoid;
+}
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+  font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+  font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"], 
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.17rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+                
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+                
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+                
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+                
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f4f4f2;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #0c0c0c;
+}
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.9;
+}
+
+.block[data-class="title"] {
+  font-size: 2.2rem;
+  letter-spacing: 0.3rem;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="header"] {
+  font-size: 0.8rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0c0c0c;
+}
+
+.block[data-class="title"],
+.block[data-class="author"] {
+  column-span: all;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"], 
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.16rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+                
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+                
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+                
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+                
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+                
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<style id="fitpage-css">
+.page { width:210mm; height:297mm; margin:10mm auto; background:#fff; box-sizing:border-box; overflow:hidden; position:relative; }
+.page-inner { transform-origin: top left; transform: scale(1); }
+mjx-container[jax="SVG"] {
+  max-width: 100%;
+}
+ 
+mjx-container[jax="SVG"] > svg {
+  max-width: 100%;
+  height: auto;
+}
+/* block 공통 */
+.block {
+  width: 100%;
+}
+
+</style>
+<script>
+  function fitFontToPageOnce() {
+    const page = document.querySelector('.page');
+    const doc  = document.querySelector('.document');
+    if (!page || !doc) return;
+ 
+    const pageHeight = page.clientHeight;
+    const pageWidth  = page.clientWidth;
+ 
+    const MIN_SCALE_HEIGHT = 0.2;
+    const MIN_SCALE_WIDTH = 0.35;
+    const MAX_SCALE = 1.0;
+ 
+    document.documentElement.style.setProperty('--font-scale', String(MAX_SCALE));
+    void doc.offsetHeight;   
+ 
+    let low  = MIN_SCALE_HEIGHT;
+    let high = MAX_SCALE;
+    let best = MIN_SCALE_HEIGHT;
+ 
+    for (let i = 0; i < 12; i++) {
+      const mid = (low + high) / 2;
+      document.documentElement.style.setProperty('--font-scale', String(mid));
+      void doc.offsetHeight;
+ 
+      const contentHeight = doc.scrollHeight;
+      const contentWidth  = doc.scrollWidth;
+ 
+      if (contentHeight <= pageHeight && contentWidth <= pageWidth) {
+        best = mid;
+        low  = mid;
+      } else {
+        high = mid;
+      }
+    }
+ 
+    const finalScaleCandidate = Math.max(MIN_SCALE_HEIGHT, best * 0.98);
+    let finalScale = finalScaleCandidate;
+
+    // If we can afford a slightly larger width, bump up to MIN_SCALE_WIDTH.
+    if (finalScale < MIN_SCALE_WIDTH) {
+      document.documentElement.style.setProperty('--font-scale', String(MIN_SCALE_WIDTH));
+      void doc.offsetHeight;
+      const widthOK = doc.scrollWidth <= pageWidth;
+      const heightOK = doc.scrollHeight <= pageHeight;
+      if (widthOK && heightOK) {
+        finalScale = MIN_SCALE_WIDTH;
+      }
+    }
+
+    document.documentElement.style.setProperty('--font-scale', String(finalScale));
+    console.log('final font scale =', finalScale);
+  }
+ 
+  function scheduleFit() {
+    fitFontToPageOnce();
+    setTimeout(fitFontToPageOnce, 200);
+    setTimeout(fitFontToPageOnce, 600);
+  }
+ 
+  window.addEventListener('load', () => {
+    scheduleFit();
+  });
+</script>
+</head>
+<body>
+<div class="page"><div class="page-inner">
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+<div class="block" data-class="text" data-id="b001" data-bbox="105,93,390,142">
+<p>• 숲의 낙엽 지역에서는 세 개의 층이 존재하지만, 허브식물이 우세한 특징을 보인다.<br/>
+우리는 이 조사에서 식물구성의 진화 과정에서 네 가지 주요 단계를 구분한다고 믿는다:<br/>
+1단계 "허브식물"은 간섭 기간 동안 우발적 식물로 구성된다,<br/>
+2단계 "허브식물/관목"은 간섭 기간 이후 2~4년에 대부분 반지하성(半地下性)의 큰 다년생 허브식물로 특징지어진다,<br/>
+3단계 "관목/관목"은 간섭 기간 이후 5회에 걸쳐 관목군이 풀군과 숲군 사이의 전환을 나타낸다,<br/>
+4단계 "숲으로의 이행"은 간섭 기간 이후 15~20회에 걸쳐 숲군과 식물군(2차림) 사이의 전환을 나타내는 나무군으로 특징지어진다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="525,84,390,16">
+<p>3.5. 환경 파라미터가 군집에 미치는 영향</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="525,109,390,103">
+<p>식물구성의 변이와 생태학적 변이 간의 관계는 직접적인 경사 분석을 통해 강조되었다. 얻어진 결과는 CCA(Canonical Correspondence Analysis)의 첫 번째 두 축(그림 5)에 조사가 분포하는 것을 보여준다. 첫 번째 축은 종의 회복과 토양의 질감에 대한 증가 경사와 관련된 것으로 보이며, 두 번째 축은 고도와 경사와 더 관련이 있다.<br/>
+첫 번째 두 축은 종과 환경 파라미터 간의 관계의 61.3%를 설명하며, 종-환경 및 환경 변수는 두 번째 축에서 71.1%를 차지한다. 일반적으로 환경 변수와 식물구성 변이 간의 관계는 매우 유의미하다(표 4).</p>
+</div>
+<div class="block" data-class="table" data-id="b004" data-bbox="105,263,818,173">
+<div class="table-container"><table class="data-table">
+<tr>
+<th>축</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+<tr>
+<th>고유값:</th>
+<td>0.319</td>
+<td>0.204</td>
+<td>0.155</td>
+<td>0.093</td>
+</tr>
+<tr>
+<th>종-환경 상관:</th>
+<td>0.961</td>
+<td>0.715</td>
+<td>0.601</td>
+<td>0.628</td>
+</tr>
+<tr>
+<th>종 데이터의 누적 변이 퍼센트:</th>
+<td>31.9</td>
+<td>52.2</td>
+<td>67.8</td>
+<td>77.1</td>
+</tr>
+<tr>
+<th>종-환경 관계:</th>
+<td>45.3</td>
+<td>61.3</td>
+<td>69.9</td>
+<td>75.6</td>
+</tr>
+<tr>
+<th>모든 고유값의 합계:</th>
+<td colspan="4">1.000</td>
+</tr>
+<tr>
+<th>모든 캐노니컬 고유값의 합계 :</th>
+<td colspan="4">71.1%</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="105,473,390,64">
+<p>이 10개의 군집은 계층적 상승 분류에서 나온 덴드로그램(그림 5)에서 식별 가능하다. CCA의 첫 번째 두 축에 조사가 분포하는 방식과 이들 식물사회학적 규범에 기반한 두 축의 계산 결과는 축 1이 p &lt; 0.001로 성공적 경사와 관련된 것으로 보이며, 축 2에 따른 조사의 배열은 고도와 경사와 더 관련이 있음을 보여준다(p &lt;0.001).</p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="105,546,390,134">
+<p><img alt="KBNP 중고고도에서 수행된 10개 조사에 대해 수행된 주성분 분석. 5개의 환경 변수를 기반으로." src="images/dla_matched_1.png" width="38%"/><br/>
+이 식물 종들은 토양의 영양소 가용성에 민감하다. 특히 두 형성 사이에서는 다음과 같은 상황(그림 5)이 관찰된다:</p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="105,689,390,82">
+<ol>
+<li>낙엽 지역에서, 종들은 경사와 고도와 같은 생태학적 파라미터에 따라 축을 따라 분포하며, 토양 pH는 산성종(산성성 식물)의 범위를 사용하여 숲 가장자리에 종의 적응을 영향 미친다. 후자는 주로 원시 암석의 성질과 잔해 및 삽입물의 성질에 의존한다.</li>
+<li>수직면 덮개 요인과 토양 질감은 숲 낙엽과 숲 가장자리에서 덜 영향을 미친다.</li>
+</ol>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b008" data-bbox="105,779,390,13">
+<ol>
+<li>논의</li>
+</ol>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="105,801,390,16">
+<p>4.1. 알베르틴 분지의 숲 가장자리와 Chablis의 중요성</p>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="525,464,390,167">
+<p>숲 가장자리와 Chablis는 농업과 도시화 동력에 의해 주도된 오랜 숲 분할 역사로 인해 많은 알베르틴 분지 지역에서 널리 퍼져 있는 풍경 요소들이다. 숲 가장자리가 다세포 생물다양성에 중요한 역할을 한다는 점은 이전에 인정되었지만, 가장자리 효과의 방향과 정도에 대한 변동을 설명하는 메커니즘은 드물게 탐구되었다(Plumptre et al. 2011, Mangambu et al 2017).<br/>
+가장자리 효과의 정도는 숲 Chablis와 인접한 개방형 서식지 간의 대비와 풍경 분할의 정도, 숲 서식지 면적 및 다중 가장자리의 누적 효과와 함께 증가할 수 있다. 숲 Chablis와 가장자리는 땅 관리에 대한 도전 과제이다(Vail lancourt 2008). 그들은 높은 생물다양성을 포함하고, 생태학적 과정을 조절하며, 농업과 산림에 환경 서비스를 제공한다. 따라서, 숲 Chablis와 가장자리 다양성에 적응된 관리 조치를 제안하기 위해 숲 Chablis와 가장자리가 식물에 미치는 영향을 정확히 평가하고 측정하는 것이 필요하다(Whitney 1989; White and Jentsch 2001; Colin et al. 2009).</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b011" data-bbox="525,640,390,16">
+<p>4.2. Pteridiae의 다양성 지수 및 특정 풍부도의 변동</p>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="525,665,390,283">
+<p>다양성 지수는 커뮤니티의 다양성을 평가하는 객관적인 기준이다(Ramade 1994). 이 식물사회학적 방법은 우리가 사용한 소프트웨어의 도움을 받아 사회적 그룹을 구성하는 식물사회학적 그룹으로 일관된 집합을 구성하도록 설계되었다(Legendre and Legendre 2012).<br/>
+이 논문에서 얻어진 결과는, 고도, 토양의 성질, 낙엽의 질감 및 다양한 숲 형성에도 불구하고, 다양성 지수 y가 유의미하고 F 지수가 조사 간의 유사성을 보여준다는 것이다. 특히, 모든 이러한 지수의 최고 값은 숲의 낙엽 지역에서 수행된 조사에서 얻어졌다. 또한, 전체적인 종의 풍부도 분석은 허브 층에서 가장 높았으며, 그 다음은 관목 층에서 종과 개체 수로 나타났다. 결과는 Kivu 호수 동쪽 능선에서 Habiyaremye(1997)가 얻은 결과와 일치한다. 저자는 Pteridium aquilinum과 Pteridio-Panicetum adenophori 연합의 우세 조사가 허브와 준관목 층에서 풍부하다고 보여준다.<br/>
+가족의 비율에 관해서는 각각 Aspleniaceae, Asteraceae, Euphorbiaceae, Fabaceae, Apocynaceae 및 Rubiaceae 가족이 더 다양한 종을 보인다는 것을 발견했다. Amami et al.(2008)과 Habiyaremye(1997)는 KBNP의 대나무가 아닌 지역에서 동일한 결과를 발견했으며, Kivu 호수 동쪽 능선에서 Pteridio-Panicetum adenophori 연합에서도 동일한 가족을 인식했다. 두 저자는 Rubiaceae, Fabaceae, Lamiaceae, Asteraceae 및 Poaceae 가족을 인정했다. 이 식물학적 유사성은 주로 생태학적 및 식물지리학적 유사성과 관련이 있다. White(1983)에 따르면, 아프리카의 모든 열대 몬타나 숲에서 Rubiaceae, Fabaceae, Asteraceae 및 Poaceae 가족은 개인과 종 모두에서 가장 풍부하다.</p>
+</div>
+</div>
+</div></div>
+</body>
+</html>

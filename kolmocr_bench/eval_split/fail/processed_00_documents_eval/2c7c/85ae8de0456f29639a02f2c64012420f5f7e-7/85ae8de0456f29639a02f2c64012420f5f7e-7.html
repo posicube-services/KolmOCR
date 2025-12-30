@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Table title */
+[data-id="b001"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: left;
+}
+
+/* Block b002: Table container */
+[data-id="b002"] .table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-id="b002"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+  margin: 0;
+}
+
+[data-id="b002"] .data-table th,
+[data-id="b002"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: center;
+  word-break: break-all;
+}
+
+[data-id="b002"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b002"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+[data-id="b002"] .data-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Block b003: Paragraph with references */
+[data-id="b003"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+[data-id="b003"] p {
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Block b004: Paragraph with references */
+[data-id="b004"] p {
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Block b005: Conclusion heading */
+[data-id="b005"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Block b006: Conclusion paragraph */
+[data-id="b006"] p {
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Block b007: Conflict of interest */
+[data-id="b007"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Block b008: References heading */
+[data-id="b008"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Block b009: References list */
+[data-id="b009"] ol {
+  margin: 0 0 10px 0;
+  padding-left: 20px;
+  list-style-type: decimal;
+  line-height: 1.5;
+  color: #333;
+}
+
+[data-id="b009"] li {
+  margin: 5px 0;
+}
+
+/* General paragraph styling for consistency */
+.document p {
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Ensure table is properly aligned and not too wide */
+[data-id="b002"] .data-table {
+  min-width: 100%;
+  table-layout: fixed;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.33rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  margin: 0;
+  background: #f0f2f5;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #0f172a;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.block[data-class="header"],
+.block[data-class="footer"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.1em;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid #94a3b8;
+  padding: 10px;
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #475569;
+  text-indent: -1.5em;
+  padding-left: 1.6em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.02rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="table_caption" data-id="b001" data-bbox="97,42,888,53">
+<h2>Table 4: 연구 기간 동안 C.demersum에서 서식하는 청생 다이아토의 다양성 지수의 계절 평균</h2>
+</div>
+<div class="block" data-class="table" data-id="b002" data-bbox="98,82,904,572">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Parameters</th><th>Autumn 2017</th><th>Winter 2018</th><th>Spring 2018</th><th>Summer 2018</th></tr>
+</thead>
+<tbody>
+<tr><td>Air Temp.(C°)</td><td>25.8 ±5</td><td>22.5 ±5.6</td><td>25 ±4.2</td><td>37 ±5</td></tr>
+<tr><td>Water Temp.(C°)</td><td>19.3 ±2.2</td><td>17 ±2.1</td><td>21 ±3.8</td><td>29±2</td></tr>
+<tr><td>Light intensity(cm)</td><td>65.12±12.14</td><td>60±9.3</td><td>87±8</td><td>89.3±6.2</td></tr>
+<tr><td>Electrical conductivity E.C(μs/cm)</td><td>1087.12±31</td><td>1029±142.5</td><td>888.6±141</td><td>1217±101</td></tr>
+<tr><td>Salinity (%)</td><td>0.6±0.01</td><td>0.6±0.08</td><td>0.5±0.08</td><td>0.7±0.06</td></tr>
+<tr><td>T.D.S (mg/l)</td><td>695.7±20</td><td>658±91</td><td>568±90</td><td>778.9±64</td></tr>
+<tr><td>T.S.S(mg/l)</td><td>0.4±0.2</td><td>0.8±0.6</td><td>2±0.7</td><td>0.6±0.3</td></tr>
+<tr><td>pH</td><td>7.4±0.07</td><td>7.7±0.19</td><td>7.15±0.4</td><td>7.4±0.2</td></tr>
+<tr><td>Dissolved oxygen(mg/l)</td><td>9.4±1.05</td><td>10±0.7</td><td>6.6±1.7</td><td>4±1.5</td></tr>
+<tr><td>BOD</td><td>2.05±1.05</td><td>1.7±0.5</td><td>2.5±0.6</td><td>2.3±1</td></tr>
+<tr><td>Total Alkalinity</td><td>125±85</td><td>202±42.3</td><td>254±18</td><td>136.8±65</td></tr>
+<tr><td>Total Hardness</td><td>333±113.4</td><td>382±97</td><td>367.5±110</td><td>342±89</td></tr>
+<tr><td>Calcium(mg/L)</td><td>123.9±29.9</td><td>134.7±33.5</td><td>96.3±25.2</td><td>68.1±6.5</td></tr>
+<tr><td>Magnesium(mg/L)</td><td>12.2±3.4</td><td>41.7±20.2</td><td>23±14.1</td><td>18.6±17</td></tr>
+<tr><td>Total phosphate(mg/L)</td><td>0.5±0.28</td><td>0.74±0.26</td><td>1±0.2</td><td>1.6±0.9</td></tr>
+<tr><td>Total Nitrogen(mg/L)</td><td>2.8±1.6</td><td>4.5±1</td><td>3.3±0.4</td><td>2.1±0.6</td></tr>
+<tr><td>Indices</td><td>Season Site</td><td>Autumn</td><td>Winter</td><td>Spring</td></tr>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>Richness Index</td><td>St.1</td><td>5.1</td><td>5.1</td><td>4.6</td></tr>
+<tr><td></td><td>St.2</td><td>3.1</td><td>1</td><td>3.4</td></tr>
+<tr><td></td><td>St.3</td><td>3.5</td><td>4</td><td>4.5</td></tr>
+<tr><td></td><td>St.4</td><td>6</td><td>5</td><td>4.3</td></tr>
+<tr><td>Shannon Index</td><td>St.1</td><td>3.1</td><td>2.7</td><td>2.7</td></tr>
+<tr><td></td><td>St.2</td><td>2.2</td><td>1.5</td><td>1.5</td></tr>
+<tr><td></td><td>St.3</td><td>2</td><td>2.8</td><td>2.8</td></tr>
+<tr><td></td><td>St.4</td><td>3.2</td><td>3.2</td><td>3.2</td></tr>
+<tr><td>Evenness Index</td><td>St.1</td><td>0.6</td><td>0.55</td><td>0.53</td></tr>
+<tr><td></td><td>St.2</td><td>0.4</td><td>0.3</td><td>0.5</td></tr>
+<tr><td></td><td>St.3</td><td>0.42</td><td>0.5</td><td>0.58</td></tr>
+<tr><td></td><td>St.4</td><td>0.6</td><td>0.65</td><td>0.48</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="95,602,904,659">
+<h3>물리화학적 요인들은 Table 5에 설명되어 있다. 기온은 여름에 높은 값을 기록했으며, 이라크의 기후 변동에 따라 겨울에 최저값을 보였다 (38). 전기 전도도, 염도, 총 용질물질의 값은 온도와 관련하여 여름에 증가했으며, 이는 염분의 용해 증가 때문이며, 이러한 매개변수의 낮은 값은 수위 증가로 인한 회석으로 인해 발생했다 (10). 총 알칼리도는 봄에 수위 증가와 동근 지역의 배수 증가로 인해 증가했다 (38). pH 값은 약간의 변화를 보였는데, 이는 이라크의 수생생태계가 버퍼 특성을 가지고 있기 때문이다 (39).</h3>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="95,684,898,749">
+<p>용존산소의 값은 겨울에 증가하고 여름에 감소했는데, 이는 온도의 증가로 인해 용존산소가 감소하기 때문이다 (40).<br/>
+봄에 BOD의 증가는 생물의 활동과 유기물의 증가와 관련이 있다 (1). 알칼리도는 분해 과정의 증가로 인해 봄에 증가했다 (40). 총경도의 결과는 이전의 한계에 따라 강이 매우 경도가 높다는 것을 보여준다 (41). 이 결과는 이전 연구와 일치한다 (42). 기록된 칼슘이온의 농도는 마그네슘이온보다 높았으며, 이는 물의 일반적인 특징이다 (43). 총인산염 농도는 여름에 증가하고 봄에 감소했다.<br/>
+총窒농도는 겨울에 둘러싸인 지역의 배수로 인해 증가했으며, 여름에 낮은 농도는 질소를 포함하는 흐름의 감소 때문일 수 있다 (44,45).</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="95,774,135,784">
+<h3>결론:</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="95,808,891,826">
+<p>결과는 청생 조류의 변화가 근처 지역의 활동 유형과 온도, 투명도, 영양소와 같은 계절적 요인의 변화에 영향을 받음을 보여주었다. Bacillariophyceae는 가장 우세한 분류군이었다.</p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="95,852,286,862">
+<h3>이해상의 이해충돌: 없음.</h3>
+</div>
+<div class="block" data-class="reference" data-id="b008" data-bbox="97,887,171,897">
+<h3>참고문헌:</h3>
+</div>
+<div class="block" data-class="reference" data-id="b009" data-bbox="122,921,892,948">
+<ol>
+<li>Salman JM, Jawad HJ, Nassar AJ, Hassan FM. A Study of Phytoplankton Communities and Related Environmental Factors in Euphrates River (between Two Cities: Al-Musayab and Hindiya ), Iraq. J Environ Prot (Irvine, Calif). 2013;4(10):1071–9.</li>
+</ol>
+</div>
+</div>
+</body>
+</html>

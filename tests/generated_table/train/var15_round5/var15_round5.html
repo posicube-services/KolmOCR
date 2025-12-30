@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>외화예금계좌개설신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 12pt;
+      margin: 20mm;
+      background: #fff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18pt;
+      margin-bottom: 10px;
+    }
+    header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .doc-number {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 11pt;
+      color: #444;
+    }
+    table {
+      border: 1px solid #000;
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+    th {
+      background: #4d4d4d;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #999;
+      padding: 6px;
+      vertical-align: middle;
+    }
+    td {
+      background: #f5f5f5;
+      height: 28px;
+      text-align: left;
+      padding: 6px;
+      border: 1px solid #999;
+      vertical-align: middle;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .seal {
+      color: #b00;
+      font-weight: bold;
+      border: 2px solid #b00;
+      padding: 4px 8px;
+      display: inline-block;
+      font-size: 11pt;
+    }
+    .section-title {
+      background: #555;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      font-size: 14pt;
+      border: 1px solid #000;
+    }
+    .sub-title {
+      background: #666;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 4px;
+      font-size: 12pt;
+      border: 1px solid #000;
+    }
+    .label {
+      font-weight: bold;
+      background: #ddd;
+      text-align: center;
+      padding: 4px;
+      border: 1px solid #999;
+    }
+    .value {
+      background: #fff;
+      text-align: left;
+      padding: 4px;
+      border: 1px solid #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>외화예금계좌개설신청서</h1>
+    <div class="doc-number">문서번호: FX-2025-001</div>
+  </header>
+
+  <!-- 섹션 1: 개인정보 입력 -->
+  <table>
+    <tr><th colspan="4" class="section-title">개인정보 입력</th></tr>
+    <tr>
+      <th rowspan="5" class="label">기본 정보</th>
+      <th colspan="2" class="sub-title">신분 확인</th>
+      <th rowspan="5" class="label">주소 정보</th>
+    </tr>
+    <tr>
+      <td class="label">신분증 종류</td>
+      <td class="value">주민등록증</td>
+    </tr>
+    <tr>
+      <td class="label">신분증 번호</td>
+      <td class="value">123456-1234567</td>
+    </tr>
+    <tr>
+      <td class="label">발급일자</td>
+      <td class="value">2020-05-15</td>
+    </tr>
+    <tr>
+      <td class="label">거주지 주소</td>
+      <td class="value">서울시 강남구 테헤란로 123</td>
+    </tr>
+    <tr>
+      <td class="label">우편 수령 주소</td>
+      <td class="value">서울시 서초구 반포대로 456</td>
+      <td colspan="2" class="value"></td>
+    </tr>
+    <tr>
+      <th rowspan="3" class="label">연락처 및 이메일</th>
+      <th colspan="2" class="sub-title">연락처</th>
+      <th class="sub-title">이메일 및 알림</th>
+    </tr>
+    <tr>
+      <td class="label">휴대전화</td>
+      <td class="value">010-1234-5678</td>
+      <td class="value" rowspan="2">user@example.com</td>
+    </tr>
+    <tr>
+      <td class="label">자택 전화</td>
+      <td class="value">02-8765-4321</td>
+    </tr>
+    <tr>
+      <td class="label">긴급 연락처</td>
+      <td class="value">010-9876-5432</td>
+      <td class="label">SMS 수신 동의</td>
+      <td class="value">Y</td>
+    </tr>
+    <tr>
+      <td class="label">푸시 알림 동의</td>
+      <td class="value">Y</td>
+      <td colspan="2" class="seal">※ 공식 도장 영역</td>
+    </tr>
+  </table>
+
+  <!-- 섹션 2: 계좌정보 설정 -->
+  <table>
+    <tr><th colspan="4" class="section-title">계좌정보 설정</th></tr>
+    <tr>
+      <th rowspan="4" class="label">통화 및 계좌 유형</th>
+      <th colspan="2" class="sub-title">통화 선택</th>
+      <th rowspan="4" class="label">계좌명 및 별칭</th>
+    </tr>
+    <tr>
+      <td class="label">계좌 통화</td>
+      <td class="value">USD</td>
+    </tr>
+    <tr>
+      <td class="label">계좌 목적</td>
+      <td class="value">해외 송금</td>
+    </tr>
+    <tr>
+      <td class="label">외화 한도</td>
+      <td class="value">50000</td>
+    </tr>
+    <tr>
+      <td class="label">계좌명</td>
+      <td class="value">홍길동 외화예금</td>
+      <td class="label">계좌 별칭</td>
+      <td class="value">해외여행용</td>
+    </tr>
+    <tr>
+      <td class="label">비고</td>
+      <td colspan="3" class="value">연말정산용 계좌</td>
+    </tr>
+    <tr>
+      <th rowspan="3" class="label">계좌 연동 정보</th>
+      <th colspan="2" class="sub-title">연동 계좌</th>
+      <th class="sub-title">자동이체 설정</th>
+    </tr>
+    <tr>
+      <td class="label">연동 계좌번호</td>
+      <td class="value">123-456-789012</td>
+      <td class="value" rowspan="2">Y</td>
+    </tr>
+    <tr>
+      <td class="label">연동 은행명</td>
+      <td class="value">국민은행</td>
+    </tr>
+    <tr>
+      <td class="label">연동 계좌 소유자</td>
+      <td class="value">홍길동</td>
+      <td class="label">이체 금액</td>
+      <td class="value">100000</td>
+    </tr>
+    <tr>
+      <td class="label">자동이체 설정</td>
+      <td class="value">Y</td>
+      <td class="label">이체 일자</td>
+      <td class="value">2025-06-01</td>
+    </tr>
+  </table>
+
+  <!-- 섹션 3: 거래내역 및 권한 -->
+  <table>
+    <tr><th colspan="4" class="section-title">거래내역 및 권한</th></tr>
+    <tr>
+      <th rowspan="3" class="label">거래 권한 설정</th>
+      <th colspan="2" class="sub-title">권한 유형</th>
+      <th rowspan="3

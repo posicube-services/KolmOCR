@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1em 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5em;
+}
+
+[data-id="b002"] h2,
+[data-id="b004"] h2,
+[data-id="b007"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #0056b3;
+  margin: 1.5em 0 0.5em 0;
+}
+
+[data-id="b003"] p,
+[data-id="b005"] p,
+[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0.5em 0;
+  text-align: justify;
+}
+
+[data-id="b006"] ul {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+[data-id="b006"] li {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0.25em 0;
+}
+
+[data-id="b009"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  background-color: #f9f9f9;
+  border-left: 4px solid #0056b3;
+  color: #333;
+  font-style: italic;
+}
+
+/* General paragraph styling */
+.document p {
+  margin: 0.5em 0;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 1em;
+}
+
+/* Remove default margin from h2 to avoid double spacing */
+h2 {
+  margin: 0 0 0.5em 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.36rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #0f172a;
+  font-family: "Noto Sans CJK KR", "맑은 고딕", sans-serif;
+  color: #0f172a;
+}
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.85;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block[data-class="subtitle"] {
+  color: #475569;
+  font-size: 1.2rem;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.85rem;
+  color: #475569;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="header"] {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #475569;
+  font-style: italic;
+}
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+}
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+  font-style: italic;
+}
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #475569;
+}
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.2rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.42rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="181,65,828,191">
+<h1>Summary of Facts and Submissions</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="104,261,278,282">
+<h2>I. 상고심에 대한 항소</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,308,673,325">
+<p>상고인(특허권자)은 유럽특허 제 1525187이 무효화된 결정에 대해 항소를 제기했다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="104,351,284,372">
+<h2>II. 대응인의 반대 통보</h2>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,399,905,434">
+<p>대응인 I부터 III(반대자 1부터 3)는 특허 전체가 무효화되도록 요청하는 반대 통보를 제출했다. 이는 특히 특허법 제100(a)조에 따른 신규성 부족 등을 근거로 하였다. 이와 관련하여 다음 문서가 인용되었다:</p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="129,458,320,475">
+<ul>
+<li>(1a) RU899538 (영어 번역)</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="104,500,286,522">
+<h2>III. 반대심판부의 판단</h2>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,548,905,601">
+<p>상고심 판결에서, 반대심판부는 현재 주요 청구서에 포함된 청구항 1의 주제(즉, 특허가 부여된 상태) 및 보조 청구서 2부터 4의 주제가 문서 (1a) 등에 공개된 내용과 비교하여 신규성이 부족하다고 판단했다. 또한 현재 보조 청구서 1의 주제는 유럽특허법 제123(2)조를 위반한다고 판단했다. 주요 청구서의 청구항 1은 다음과 같았다:</p>
+</div>
+<div class="block" data-class="quotation" data-id="b009" data-bbox="117,631,897,719">
+<p>&gt; "우레아 공장의 용량을 증가시키는 방법, 이는 압축 섹션, 고압 합성 섹션, 우레아 회수 섹션(우레아 용융체가 형성되는 곳), 선택적으로 우레아 그라우팅 섹션을 포함하며, 특징은 우레아 공장의 용량을 증가시키기 위해 멜라민 공장이 추가로 설치되며, 우레아 공장의 우레아 회수 섹션에서 생성된 우레아 용융체가 멜라민 공장으로 전체 또는 일부로 공급되고, 멜라민 공장에서 발생하는 잔류 가스가 전체 또는 일부로 고압 합성 섹션 및/또는 우레아 공장의 우레아 회수 섹션으로 반환되는 것이다."</p>
+</div>
+</div>
+</body>
+</html>

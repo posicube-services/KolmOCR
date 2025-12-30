@@ -1,0 +1,147 @@
+---
+primary_language: en
+is_rotation_valid: True
+rotation_correction: 0
+is_table: True
+is_diagram: False
+---
+# 기업대출심사자료제출서
+
+기본정보
+
+<table>
+<tr>
+<th colspan="2">기업개요</th>
+<th colspan="2">연락처 및 주소</th>
+</tr>
+<tr>
+<td><strong>법인정보</strong></td>
+<td class="value-cell">123-45-67890</td>
+<td><strong>본사정보</strong></td>
+<td class="value-cell">06000</td>
+</tr>
+<tr>
+<td><strong>상호명</strong></td>
+<td class="value-cell">한국기업주식회사</td>
+<td><strong>본사주소</strong></td>
+<td class="value-cell">서울시 강남구 테헤란로 123</td>
+</tr>
+<tr>
+<td><strong>대표자명</strong></td>
+<td class="value-cell">김대표</td>
+<td><strong>본사전화번호</strong></td>
+<td class="value-cell">02-1234-5678</td>
+</tr>
+<tr>
+<td><strong>설립일자</strong></td>
+<td class="value-cell">2010-03-15</td>
+<td><strong>담당자명</strong></td>
+<td class="value-cell">이담당</td>
+</tr>
+<tr>
+<td><strong>자본금</strong></td>
+<td class="value-cell">500000000</td>
+<td><strong>담당자직위</strong></td>
+<td class="value-cell">재무팀장</td>
+</tr>
+<tr>
+<td><strong>업종</strong></td>
+<td class="value-cell">제조업</td>
+<td><strong>담당자이메일</strong></td>
+<td class="value-cell">contact@company.com</td>
+</tr>
+</table>
+
+재무정보
+
+<table>
+<tr>
+<th colspan="2">재무제표</th>
+<th colspan="2">재무비율</th>
+</tr>
+<tr>
+<td><strong>총자산</strong></td>
+<td class="value-cell">1000000000</td>
+<td><strong>유동성비율</strong></td>
+<td class="value-cell">2.0</td>
+</tr>
+<tr>
+<td><strong>유동자산</strong></td>
+<td class="value-cell">600000000</td>
+<td><strong>순이익</strong></td>
+<td class="value-cell">150000000</td>
+</tr>
+<tr>
+<td><strong>비유동자산</strong></td>
+<td class="value-cell">400000000</td>
+<td><strong>영업이익률</strong></td>
+<td class="value-cell">18.75</td>
+</tr>
+<tr>
+<td><strong>총부채</strong></td>
+<td class="value-cell">300000000</td>
+<td><strong>부채비율</strong></td>
+<td class="value-cell">42.86</td>
+</tr>
+<tr>
+<td><strong>자본금</strong></td>
+<td class="value-cell">700000000</td>
+<td><strong>ROE</strong></td>
+<td class="value-cell">21.43</td>
+</tr>
+<tr>
+<td><strong>매출액</strong></td>
+<td class="value-cell">800000000</td>
+<td><strong>ROA</strong></td>
+<td class="value-cell">15.00</td>
+</tr>
+<tr>
+<td><strong>매출원가</strong></td>
+<td class="value-cell">500000000</td>
+<td><strong>총이익률</strong></td>
+<td class="value-cell">37.50</td>
+</tr>
+<tr>
+<td><strong>판매비와 관리비</strong></td>
+<td class="value-cell">150000000</td>
+<td><strong>현금비율</strong></td>
+<td class="value-cell">1.5</td>
+</tr>
+</table>
+
+거래내역
+
+<table>
+<tr>
+<th colspan="2">은행거래내역</th>
+<th colspan="2">거래처 정보</th>
+</tr>
+<tr>
+<td><strong>은행명</strong></td>
+<td class="value-cell">국민은행</td>
+<td><strong>주요거래처</strong></td>
+<td class="value-cell">A기업</td>
+</tr>
+<tr>
+<td><strong>계좌번호</strong></td>
+<td class="value-cell">123-456-789012</td>
+<td><strong>거래처 연락처</strong></td>
+<td class="value-cell">02-9876-5432</td>
+</tr>
+<tr>
+<td><strong>계좌유형</strong></td>
+<td class="value-cell">일반예금</td>
+<td><strong>연간거래량</strong></td>
+<td class="value-cell">1200000000</td>
+</tr>
+<tr>
+<td><strong>거래일자</strong></td>
+<td class="value-cell">2024-01-15</td>
+<td><strong>공급처명</strong></td>
+<td class="value-cell">B공급업체</td>
+</tr>
+<tr>
+<td><strong>거래금액</strong></td>
+<td class="value-cell">50000000</td>
+<td><strong>공급처 연락처</strong></td>
+      &lt;td class="</tr></table>

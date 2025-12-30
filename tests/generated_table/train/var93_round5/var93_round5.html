@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>여신거래약정서</title>
+  <style>
+    body { 
+      font-family: 'Noto Serif KR', serif; 
+      font-size: 12pt; 
+      margin: 20mm;
+      background: white;
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 18pt;
+      margin-bottom: 5mm;
+    }
+    header { 
+      border-bottom: 2px solid #333; 
+      padding-bottom: 5px; 
+      margin-bottom: 10px; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .doc-number { 
+      font-size: 10pt; 
+      color: #444; 
+      font-weight: normal;
+    }
+    table { 
+      border: 1px solid #000; 
+      border-collapse: collapse; 
+      width: 100%; 
+      table-layout: fixed; 
+      word-break: break-all;
+      margin-bottom: 10mm;
+    }
+    th { 
+      background: #4d4d4d; 
+      color: #fff; 
+      font-weight: bold; 
+      text-align: center; 
+      border: 1px solid #999; 
+      padding: 4px;
+      font-size: 11pt;
+    }
+    td { 
+      background: #f5f5f5; 
+      height: 28px; 
+      text-align: left; 
+      padding: 4px; 
+      vertical-align: top;
+      font-size: 11pt;
+    }
+    .seal { 
+      color: #b00; 
+      font-weight: bold; 
+      border: 2px solid #b00; 
+      padding: 2px 6px; 
+      display: inline-block;
+      font-size: 11pt;
+    }
+    .section-header {
+      background: #555;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 4px;
+      font-size: 12pt;
+    }
+    .right-align {
+      text-align: right;
+    }
+    .center-align {
+      text-align: center;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .note {
+      font-size: 9pt;
+      color: #666;
+    }
+    .signature-box {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>여신거래약정서</h1>
+    <span class="doc-number">문서번호: 2025-001</span>
+  </header>
+
+  <!-- 1. 개인정보 수집 및 이용 동의 -->
+  <table>
+    <tr><th colspan="4" class="section-header">개인정보 수집 및 이용 동의</th></tr>
+    <tr>
+      <th>성명</th>
+      <td>홍길동</td>
+      <th>주민등록번호</th>
+      <td>900101-1234567</td>
+    </tr>
+    <tr>
+      <th>생년월일</th>
+      <td>1990-01-01</td>
+      <th>휴대폰 번호</th>
+      <td>010-1234-5678</td>
+    </tr>
+    <tr>
+      <th>이메일 주소</th>
+      <td>user@example.com</td>
+      <th>주소</th>
+      <td>서울시 강남구 테헤란로 123</td>
+    </tr>
+  </table>
+
+  <!-- 2. 계좌정보 및 금융거래 설정 -->
+  <table>
+    <tr><th colspan="4" class="section-header">계좌정보 및 금융거래 설정</th></tr>
+    <tr>
+      <th>계좌 유형</th>
+      <td>예금계좌</td>
+      <th>계좌번호</th>
+      <td>123-456-789012</td>
+    </tr>
+    <tr>
+      <th>은행명</th>
+      <td>국민은행</td>
+      <th>일일 출금 한도</th>
+      <td class="right-align">1,000,000</td>
+    </tr>
+    <tr>
+      <th>월간 거래 한도</th>
+      <td class="right-align">5,000,000</td>
+      <th>기타 한도 설정</th>
+      <td>해외 결제 한도 200만원</td>
+    </tr>
+  </table>
+
+  <!-- 3. 거래내역 및 정산 조건 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래내역 및 정산 조건</th></tr>
+    <tr>
+      <th>현금 인출 수수료</th>
+      <td class="right-align">1,000</td>
+      <th>타행 이체 수수료</th>
+      <td class="right-align">3,000</td>
+    </tr>
+    <tr>
+      <th>온라인 결제 수수료</th>
+      <td class="right-align">0</td>
+      <th>정산 주기</th>
+      <td>매월</td>
+    </tr>
+    <tr>
+      <th>정산 방법</th>
+      <td>자동이체</td>
+      <th>정산 계좌번호</th>
+      <td>123-456-789012</td>
+    </tr>
+  </table>
+
+  <!-- 4. 약관 및 동의 항목 -->
+  <table>
+    <tr><th colspan="4" class="section-header">약관 및 동의 항목</th></tr>
+    <tr>
+      <th>이자율 조항</th>
+      <td>연 5.0%</td>
+      <th>연체 조항</th>
+      <td>연체 시 연 15% 가산 이자 부과</td>
+    </tr>
+    <tr>
+      <th>해지 조항</th>
+      <td>계약일로부터 30일 이후 해지 가능</td>
+      <th>제3자 제공 동의</th>
+      <td>동의함</td>
+    </tr>
+    <tr>
+      <th>정보 보관 기간</th>
+      <td>5년</td>
+      <th>정보 이용 목적</th>
+      <td>금융거래 및 고객관리</td>
+    </tr>
+  </table>
+
+  <!-- 5. 서명 및 확인란 -->
+  <table>
+    <tr><th colspan="4" class="section-header">서명 및 확인란</th></tr>
+    <tr>
+      <th>서명 이미지</th>
+      <td>※ 서명 이미지 첨부</td>
+      <th>서명 날짜</th>
+      <td>2025-04-05</td>
+    </tr>
+    <tr>
+      <th>서명자 성명</th>
+      <td>홍길동</td>
+      <th>담당자 이름</th>
+      <td>김은행</td>
+    </tr>
+    <tr>
+      <th>확인 일시</th>
+      <td>2025-04-05 10:30</td>
+      <th>확인 서명</th>
+      <td>※ 직원 서명 첨부</td>
+    </tr>
+  </table>
+
+  <!-- 6. 부속 문서 및 첨부파일 -->
+  <table>
+    <tr><th colspan="4" class="section-header">부속 문서 및 첨부파일</th></tr>
+    <tr>
+      <th>신분증 사본</th>
+      <td>첨부됨</td>
+      <th>소득증명서</th>
+      <td>첨부됨</td>
+    </tr>
+    <tr>
+      <th>재산목록</th>
+      <td>첨부됨</td>
+      <th>문서 버전</th>
+      <td>v1.0</td>
+    </tr>
+    <tr>
+      <th>최종 수정일</th>
+      <td>2025-04-05</td>
+      <th class="seal">도장</th>
+      <td class="seal">서명자 도장</td>
+    </tr>
+  </table>
+</body>
+</html>

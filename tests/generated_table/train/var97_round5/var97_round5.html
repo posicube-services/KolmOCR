@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>거주자확인서</title>
+  <style>
+    body { 
+      font-family: 'Noto Serif KR', serif; 
+      font-size: 12pt; 
+      margin: 0;
+      padding: 20px;
+      background: white;
+    }
+    h1 { 
+      text-align: center; 
+      margin: 10px 0 5px 0;
+      font-size: 18pt;
+      font-weight: bold;
+    }
+    header { 
+      border-bottom: 2px solid #333; 
+      padding-bottom: 5px; 
+      margin-bottom: 10px; 
+      position: relative;
+    }
+    .doc-number { 
+      position: absolute; 
+      right: 20px; 
+      top: 5px; 
+      font-size: 10pt; 
+      color: #444; 
+      font-weight: normal;
+    }
+    table { 
+      border: 1px solid #000; 
+      border-collapse: collapse; 
+      width: 100%; 
+      table-layout: fixed; 
+      word-break: break-all;
+      margin-bottom: 15px;
+    }
+    th { 
+      background: #4d4d4d; 
+      color: #fff; 
+      font-weight: bold; 
+      text-align: center; 
+      border: 1px solid #999; 
+      padding: 6px 4px;
+      font-size: 11pt;
+    }
+    td { 
+      background: #f9f9f9; 
+      height: 26px; 
+      text-align: left; 
+      padding: 4px 8px;
+      word-break: break-all; 
+      white-space: normal;
+      font-size: 11pt;
+      vertical-align: top;
+    }
+    .seal { 
+      color: #b00; 
+      font-weight: bold; 
+      border: 2px solid #b00; 
+      padding: 4px 8px; 
+      display: inline-block;
+      font-size: 12pt;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .section-header {
+      background: #4d4d4d;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      font-size: 12pt;
+    }
+    .section-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .section-cell {
+      flex: 1 1 50%;
+      min-width: 250px;
+      display: flex;
+      border: 1px solid #999;
+    }
+    .section-label {
+      background: #4d4d4d;
+      color: white;
+      padding: 4px 8px;
+      font-weight: bold;
+      width: 35%;
+      text-align: center;
+      border-right: 1px solid #999;
+      font-size: 11pt;
+    }
+    .section-value {
+      padding: 4px 8px;
+      width: 65%;
+      font-size: 11pt;
+      word-break: break-all;
+    }
+    .section-row:nth-child(even) .section-label,
+    .section-row:nth-child(even) .section-value {
+      background: #f5f5f5;
+    }
+    .section-row:last-child {
+      margin-bottom: 0;
+    }
+    .section-title {
+      background: #4d4d4d;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      font-size: 12pt;
+      border-bottom: 1px solid #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>거주자확인서</h1>
+    <span class="doc-number">문서번호: 2024-RES-001</span>
+  </header>
+
+  <!-- 기본정보 -->
+  <table>
+    <tr><th colspan="4" class="section-title">기본정보</th></tr>
+    <tr>
+      <th style="width:20%">주민등록번호</th>
+      <td style="width:30%">900101-1234567</td>
+      <th style="width:20%">성명</th>
+      <td style="width:30%">홍길동</td>
+    </tr>
+    <tr>
+      <th>생년월일</th>
+      <td>1990-01-01</td>
+      <th>휴대전화</th>
+      <td>010-1234-5678</td>
+    </tr>
+    <tr>
+      <th>이메일</th>
+      <td>hong@example.com</td>
+      <th>기타연락처</th>
+      <td>02-123-4567</td>
+    </tr>
+    <tr>
+      <th>우편번호</th>
+      <td>12345</td>
+      <th>주소상세</th>
+      <td>서울시 강남구 테헤란로 123, 4층</td>
+    </tr>
+    <tr>
+      <th>거주기간</th>
+      <td>2020년 3월부터 현재</td>
+      <th>이전주소1</th>
+      <td>서울시 마포구 월드컵로 100</td>
+    </tr>
+    <tr>
+      <th>이전주소2</th>
+      <td>부산시 해운대구 해운대해변로 200</td>
+      <th>이전주소3</th>
+      <td>대구시 중구 동성로 300</td>
+    </tr>
+  </table>
+
+  <!-- 신고 및 확인사항 -->
+  <table>
+    <tr><th colspan="4" class="section-title">신고 및 확인사항</th></tr>
+    <tr>
+      <th>신고일자</th>
+      <td>2024-06-15</td>
+      <th>신고기관</th>
+      <td>서울시 강남구청</td>
+    </tr>
+    <tr>
+      <th>신고유형</th>
+      <td>거주지변경</td>
+      <th>거주지확인</th>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>거주기간확인</th>
+      <td>Y</td>
+      <th>관련서류첨부</th>
+      <td>주민등록등본, 전입신고서</td>
+    </tr>
+  </table>
+
+  <!-- 서명 및 날인 -->
+  <table>
+    <tr><th colspan="4" class="section-title">서명 및 날인</th></tr>
+    <tr>
+      <th>서명일자</th>
+      <td>2024-06-15</td>
+      <th>서명이미지</th>
+      <td>서명_홍길동_20240615.png</td>
+    </tr>
+    <tr>
+      <th>인감날인</th>
+      <td>홍길동_인감</td>
+      <th>확인자명</th>
+      <td>김철수</td>
+    </tr>
+    <tr>
+      <th>확인일자</th>
+      <td>2024-06-15</td>
+      <th>담당자서명</th>
+      <td>김철수_서명_20240615</td>
+    </tr>
+  </table>
+
+  <!-- 첨부파일 및 참고자료 -->
+  <table>
+    <tr><th colspan="4" class="section-title">첨부파일 및 참고자료</th></tr>
+    <tr>
+      <th>첨부파일1</th>
+      <td>주민등록등본.pdf</td>
+      <th>첨부파일2</th>
+      <td>전입신고서.pdf</td>
+    </tr>
+    <tr>
+      <th>첨부파일3</th>
+      <td>임대차계약서.pdf</td>
+      <th>참고문서1</th>
+      <td>거주지확인요청서</td>
+    </tr>
+    <tr>
+      <th>참고문서2</th>
+      <td>신분증사본</td>
+      <th>참고문서3</th>
+      <td>세대주확인서</td>
+    </tr>
+  </table>
+
+  <!-- 거

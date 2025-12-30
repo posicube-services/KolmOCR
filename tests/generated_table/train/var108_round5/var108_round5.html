@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>세금환급신청서</title>
+  <style>
+    body { 
+      font-family: 'Noto Sans KR', sans-serif; 
+      font-size: 12pt; 
+      color: #111; 
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 24pt;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .document-container {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    table { 
+      width: 100%; 
+      border: 1px solid #999; 
+      border-collapse: collapse; 
+      table-layout: fixed; 
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+    th, td { 
+      padding: 8px; 
+      border: 1px solid #999; 
+      text-align: left;
+      vertical-align: top;
+    }
+    th { 
+      background: #999999; 
+      color: #fff; 
+      font-weight: bold; 
+      text-align: center;
+    }
+    td { 
+      background: #f9f9f9; 
+      padding: 8px;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .section-header {
+      background: #ddd;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      font-size: 14pt;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      border-top: 2px solid #666;
+      border-bottom: 2px solid #666;
+    }
+    .subsection-header {
+      background: #eee;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      font-size: 13pt;
+      border-bottom: 1px solid #999;
+    }
+    .field-label {
+      font-weight: bold;
+      width: 150px;
+      padding-right: 10px;
+    }
+    .field-value {
+      width: 300px;
+      background: #f0f0f0;
+      padding: 6px;
+      border: 1px dashed #ccc;
+      min-height: 20px;
+    }
+    .two-column {
+      display: flex;
+      gap: 20px;
+    }
+    .two-column > div {
+      flex: 1;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .row > div {
+      flex: 1;
+    }
+    .row .field-label {
+      width: 120px;
+    }
+    .row .field-value {
+      flex: 1;
+      width: auto;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .small-text {
+      font-size: 10pt;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="document-container">
+    <h1>세금환급신청서</h1>
+
+    <div class="section-header">신청자 기본정보</div>
+
+    <div class="subsection-header">개인정보</div>
+    <div class="subsection-header">신분확인</div>
+    <div class="row">
+      <div>
+        <span class="field-label">성명</span>
+        <span class="field-value">홍길동</span>
+      </div>
+      <div>
+        <span class="field-label">주민등록번호</span>
+        <span class="field-value">900101-1234567</span>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="field-label">전화번호</span>
+        <span class="field-value">010-1234-5678</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="subsection-header">주소정보</div>
+    <div class="row">
+      <div>
+        <span class="field-label">우편번호</span>
+        <span class="field-value">12345</span>
+      </div>
+      <div>
+        <span class="field-label">주소</span>
+        <span class="field-value">서울특별시 강남구 테헤란로 123</span>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="field-label">상세주소</span>
+        <span class="field-value">10층 1001호</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="subsection-header">세액공제 대상자</div>
+    <div class="subsection-header">부양가족</div>
+    <div class="row">
+      <div>
+        <span class="field-label">부양가족 성명</span>
+        <span class="field-value">홍길순</span>
+      </div>
+      <div>
+        <span class="field-label">관계</span>
+        <span class="field-value">자녀</span>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="field-label">생년월일</span>
+        <span class="field-value">2010-05-15</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="subsection-header">장애인 여부</div>
+    <div class="row">
+      <div>
+        <span class="field-label">장애인 여부</span>
+        <span class="field-value">예</span>
+      </div>
+      <div>
+        <span class="field-label">장애등급</span>
+        <span class="field-value">1급</span>
+      </div>
+    </div>
+
+    <div class="section-header">소득 및 세금정보</div>
+
+    <div class="subsection-header">근로소득</div>
+    <div class="subsection-header">급여정보</div>
+    <div class="row">
+      <div>
+        <span class="field-label">급여액</span>
+        <span class="field-value">35000000</span>
+      </div>
+      <div>
+        <span class="field-label">원천징수세액</span>
+        <span class="field-value">2500000</span>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="field-label">고용주명</span>
+        <span class="field-value">삼성전자 주식회사</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="subsection-header">연말정산 내역</div>
+    <div class="row">
+      <div>
+        <span class="field-label">연말정산일</span>
+        <span class="field-value">2024-12-31</span>
+      </div>
+      <div>
+        <span class="field-label">공제합계</span>
+        <span class="field-value">12000000</span>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <span class="field-label">순환급세액</span>
+        <span class="field-value">1500000</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="subsection-header">기타소득</div>
+    <div class="subsection-header">이자/배당</div>
+    <div class="row">
+      <div>
+        <span class="field-label">이자소득</span>
+        <span class="field-value">500000</span>
+      </div>
+      <div>
+        <span class="field-label">배당소득</span>
+        <span class="field-value">300000</span>
+      </div>
+    </div>
+
+    <div class="subsection-header">부동산 임대소득</div>
+    <div class="row">
+      <div>
+        <span class="field-label">임대소득</span>
+        <span class="field-value">12000000</span>
+      </div>
+      <div>
+        <span class="field-label">임대비용</span>
+        <span class="field-value">2000000</span>
+      </div>
+    </div>
+    <div class="row">
+      <

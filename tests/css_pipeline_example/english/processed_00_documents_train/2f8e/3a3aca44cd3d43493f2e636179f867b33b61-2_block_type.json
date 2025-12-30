@@ -1,0 +1,120 @@
+{
+  "3a3aca44cd3d43493f2e636179f867b33b61-2.html": {
+    "blocks": [
+      {
+        "data_id": "b001",
+        "class": "block",
+        "text": "The Owners are an intended third party beneficiary of this Agreement."
+      },
+      {
+        "data_id": "b002",
+        "class": "block",
+        "text": "Two signatures are required, one from an individual who is authorized to make legal commitments on behalf of the Organization and a second by the person who will be responsible for the use of the collection. If these are the same person, that person should sign twice."
+      },
+      {
+        "data_id": "b003",
+        "class": "block",
+        "text": "Agreed to by Organization"
+      },
+      {
+        "data_id": "b004",
+        "class": "block",
+        "text": "Authorized signature:"
+      },
+      {
+        "data_id": "b005",
+        "class": "block",
+        "text": "Signature: ______________ ______________ ______________"
+      },
+      {
+        "data_id": "b006",
+        "class": "block",
+        "text": "Name: ______________ ______________"
+      },
+      {
+        "data_id": "b007",
+        "class": "block",
+        "text": "Position Title: ______________"
+      },
+      {
+        "data_id": "b008",
+        "class": "block",
+        "text": "Organization Name: ______________________________"
+      },
+      {
+        "data_id": "b009",
+        "class": "block",
+        "text": "Date: ______________"
+      },
+      {
+        "data_id": "b010",
+        "class": "block",
+        "text": "Person responsible for use of the Collection:"
+      },
+      {
+        "data_id": "b011",
+        "class": "block",
+        "text": "Signature: ______________________________"
+      },
+      {
+        "data_id": "b012",
+        "class": "block",
+        "text": "Printed Name: ______________________________"
+      },
+      {
+        "data_id": "b013",
+        "class": "block",
+        "text": "Date: ______________"
+      },
+      {
+        "data_id": "b014",
+        "class": "block",
+        "text": "Email Address: ______________________________"
+      }
+    ],
+    "classification": {
+      "b001": {
+        "class": "text"
+      },
+      "b002": {
+        "class": "text"
+      },
+      "b003": {
+        "class": "section_title_lv1"
+      },
+      "b004": {
+        "class": "key_value"
+      },
+      "b005": {
+        "class": "key_value"
+      },
+      "b006": {
+        "class": "key_value"
+      },
+      "b007": {
+        "class": "key_value"
+      },
+      "b008": {
+        "class": "key_value"
+      },
+      "b009": {
+        "class": "key_value"
+      },
+      "b010": {
+        "class": "section_title_lv1"
+      },
+      "b011": {
+        "class": "key_value"
+      },
+      "b012": {
+        "class": "key_value"
+      },
+      "b013": {
+        "class": "key_value"
+      },
+      "b014": {
+        "class": "key_value"
+      }
+    }
+  }
+}

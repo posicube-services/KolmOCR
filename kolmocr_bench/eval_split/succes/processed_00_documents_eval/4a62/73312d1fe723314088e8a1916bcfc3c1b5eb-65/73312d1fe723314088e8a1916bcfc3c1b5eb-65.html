@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Paragraph text */
+[data-id="b001"] {
+  font-family: '맑은 고딕', serif;
+  font-size: calc(10pt * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+/* Block b002: References Heading */
+[data-id="b002"] h1 {
+  font-family: '은 필기', serif;
+  font-size: calc(18pt * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 15px 0;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
+/* Block b003: Table container and styling */
+[data-id="b003"] .table-container {
+  width: 100%;
+  overflow: auto;
+  margin: 15px 0;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+[data-id="b003"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Arial', sans-serif;
+  font-size: calc(9pt * var(--font-scale));
+  line-height: 1.4;
+}
+
+[data-id="b003"] .data-table th,
+[data-id="b003"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+[data-id="b003"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b003"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+[data-id="b003"] .data-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Ensure table fits within page width */
+[data-id="b003"] .data-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Fix for long text in cells */
+[data-id="b003"] .data-table td {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Optional: Add some spacing around the table */
+[data-id="b003"] .table-container {
+  margin: 15px 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.35rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #fdfbf6;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #1e130c;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.block[data-class="header"] {
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  color: #9a8b7c;
+}
+
+
+.block[data-class="quotation"] {
+  font-style: italic;
+  border-left: 3px solid #d97706;
+  padding-left: 16px;
+}
+
+.block[data-class="figure"] {
+  border: 1px dashed rgba(55, 65, 81, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1e130c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #9a8b7c;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #9a8b7c;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.01rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,35,870,53">
+<p>다음은 제공된 텍스트를 구조화된 Markdown 형식으로 작성한 것입니다. 또한, 이미지의 경우 주석으로 1000x1000 normalization된 bounding box를 포함하여 나타내었습니다.</p>
+</div>
+<div class="block" data-class="reference" data-id="b002" data-bbox="104,65,243,77">
+<h1>References</h1>
+</div>
+<div class="block" data-class="reference" data-id="b003" data-bbox="105,92,907,962">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Authors</th><th>Title</th><th>Journal of Retailing</th><th>Volume</th><th>Number</th><th>Page Range</th></tr>
+</thead>
+<tbody>
+<tr><td>Donovan, Robert J., Rossiter, John R., Marcooly, Gilian &amp; Nesdale, Andrew (1994)</td><td>"Store Atmosphere and Purchasing Behavior"</td><td>Vol. 70, No. 3</td><td>pp. 283-294</td><td></td><td></td></tr>
+<tr><td>Drèze, Xavier, Hoch, Stephen, J. &amp; Purk, Mary J. (1994)</td><td>"Shelf Management and Space Elasticity"</td><td>Vol. 70, No. 4</td><td>pp. 301-326</td><td></td><td></td></tr>
+<tr><td>Easterby-Smith, Mark, Thorpe, Richard &amp; Lowe, Andy (2003)</td><td>"Management Research: An Introduction"</td><td>Sage Publications Ltd: London</td><td></td><td></td><td></td></tr>
+<tr><td>Engel, James F., Blackwell, Roger D. &amp; Miniard, Paul W. (1995)</td><td>"Consumer Behavior"</td><td>Dryden Press: Orlando</td><td></td><td></td><td></td></tr>
+<tr><td>Foxall, Gordon (1997)</td><td>"Affective responses to consumer situations"</td><td>The International Review of Retail, Distribution and Consumer Research</td><td>Vol. 7, No. 3</td><td>pp. 191-224</td><td></td></tr>
+<tr><td>Foxall, Gordon R. &amp; Bhate, Seema (1993)</td><td>"Cognitive Style and Personal Involvement as Explicators of Innovative Purchasing of 'Healthy' Food Brands"</td><td>European Journal of Marketing</td><td>Vol. 27, No 2</td><td></td><td></td></tr>
+<tr><td>Gagnon, Jean Paul &amp; Osterhaus, Jane T. (1985)</td><td>"Research Note: Effectiveness of Floor Displays on the sales of Retail Products"</td><td>Journal of Retailing</td><td>Vol. 61, No. 1</td><td>pp 104-116</td><td></td></tr>
+<tr><td>Garbarino, Ellen C. &amp; Edell, Julie, A. (1997)</td><td>"Cognitive effort, affect, and choice"</td><td>Journal of Consumer Research</td><td>Vol. 24, No. 2</td><td>pp. 147-158</td><td></td></tr>
+<tr><td>Gilbert, Linda (1999)</td><td>"Shoppers reach beyond basic nutrition for better health"</td><td>Beverage Industry</td><td>May</td><td></td><td></td></tr>
+<tr><td>Grossbart, Sanford, Hampton, Ronald, Rammohan B. &amp; Lapidus, Richard S. (1990)</td><td>"Environmental Dispositions and Customer Response to Store Atmospherics"</td><td>Journal of Business Research</td><td>Vol. 21, No. 3</td><td>pp. 225-242</td><td></td></tr>
+<tr><td>Holt, Douglas B. (1998)</td><td>"Does Structural Capital Structure American Consumption?"</td><td>The Journal of Consumer Research</td><td>Vol. 25, No. 1</td><td>pp. 1-25</td><td></td></tr>
+<tr><td>Hsee, Christopher, K. &amp; Leclerc, France (1998)</td><td>"Will products look more attractive when presented separately or together?"</td><td>Journal of Consumer Research</td><td>Vol. 25, No. 2</td><td>pp. 175-186</td><td></td></tr>
+<tr><td>Iyer, Easwar S. (1989)</td><td>"Unplanned Purchasing: Knowledge of Shopping Environment and Time Pressure"</td><td>Journal of Retailing</td><td>Vol. 65, No. 1</td><td>pp. 40-57</td><td></td></tr>
+<tr><td>Jansson, Cathrine, Marlow, Nigel &amp; Bristow, Matthew (2004)</td><td>"The influence of colour on visual search times in cluttered environments"</td><td>Journal of Marketing Communications</td><td>Vol.10</td><td>pp. 183-193</td><td></td></tr>
+<tr><td>Kotler, Philip (1973)</td><td>"Atmospherics as a Marketing Tool"</td><td>Journal of Retailing</td><td>Vol. 49, No. 4</td><td>pp. 48-64</td><td></td></tr>
+<tr><td>이렇게 구조화된 Markdown 형식에서 각 논문의 정보가 정리되어 있으며, 각 논문의 저자, 제목, 저널, 권호, 번호, 페이지 범위 등의 정보가 명확하게 표시됩니다.</td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

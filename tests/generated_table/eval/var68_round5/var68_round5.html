@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>대출거래약정서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 11pt;
+            color: #111;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            font-size: 18pt;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .document-container {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #999;
+            margin-bottom: 15px;
+            table-layout: fixed;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #999;
+            text-align: left;
+            vertical-align: top;
+            word-break: break-all;
+            white-space: normal;
+        }
+        th {
+            background: #999999;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        td {
+            background: #f9f9f9;
+            text-align: left;
+        }
+        .section-header {
+            background: #888;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            font-size: 12pt;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .sub-header {
+            background: #aaa;
+            color: #333;
+            font-weight: bold;
+            padding: 6px;
+            font-size: 11pt;
+        }
+        .label-cell {
+            width: 25%;
+            background: #e0e0e0;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 10px;
+        }
+        .value-cell {
+            width: 75%;
+            background: #f5f5f5;
+            text-align: left;
+            padding-left: 10px;
+        }
+        .row {
+            display: flex;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .field {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+            margin-right: 5px;
+            box-sizing: border-box;
+        }
+        .field:last-child {
+            margin-right: 0;
+        }
+        .field-label {
+            font-weight: bold;
+            margin-bottom: 3px;
+            font-size: 10pt;
+        }
+        .field-value {
+            font-size: 11pt;
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <h1>대출거래약정서</h1>
+
+        <div class="section-header">계약 당사자 정보</div>
+
+        <div class="sub-header">차주 정보</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">차주 성명</div>
+                <div class="field-value">홍길동</div>
+            </div>
+            <div class="field">
+                <div class="field-label">주민등록번호</div>
+                <div class="field-value">900101-1234567</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">연락처</div>
+                <div class="field-value">010-1234-5678</div>
+            </div>
+        </div>
+
+        <div class="sub-header">주소 정보</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">주소</div>
+                <div class="field-value">서울시 강남구 테헤란로 123</div>
+            </div>
+            <div class="field">
+                <div class="field-label">우편번호</div>
+                <div class="field-value">06123</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">거주 형태</div>
+                <div class="field-value">자가</div>
+            </div>
+        </div>
+
+        <div class="sub-header">직업 및 소득 정보</div>
+        <div class="sub-header">고용 정보</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">고용주 명</div>
+                <div class="field-value">한국은행</div>
+            </div>
+            <div class="field">
+                <div class="field-label">직위</div>
+                <div class="field-value">차장</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">입사일</div>
+                <div class="field-value">2020-03-01</div>
+            </div>
+        </div>
+
+        <div class="sub-header">소득 정보</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">연소득</div>
+                <div class="field-value">50000000</div>
+            </div>
+            <div class="field">
+                <div class="field-label">소득 출처</div>
+                <div class="field-value">급여</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">세금 신고 상태</div>
+                <div class="field-value">종합소득세 신고 완료</div>
+            </div>
+        </div>
+
+        <div class="section-header">대출 기관 정보</div>
+        <div class="sub-header">기관 기본 정보</div>
+        <div class="sub-header">기관명 및 등록 정보</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">대출 기관명</div>
+                <div class="field-value">신한은행</div>
+            </div>
+            <div class="field">
+                <div class="field-label">금융업 등록번호</div>
+                <div class="field-value">제2024-001호</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">기관 주소</div>
+                <div class="field-value">서울시 중구 남대문로 123</div>
+            </div>
+        </div>
+
+        <div class="sub-header">담당자 정보</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">담당자 성명</div>
+                <div class="field-value">김은행</div>
+            </div>
+            <div class="field">
+                <div class="field-label">담당자 연락처</div>
+                <div class="field-value">02-1234-5678</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">담당자 이메일</div>
+                <div class="field-value">bank@shinhan.com</div>
+            </div>
+        </div>
+
+        <div class="section-header">대출 조건 및 상세</div>
+        <div class="sub-header">대출 기본 조건</div>
+        <div class="sub-header">금액 및 기간</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">대출금액</div>
+                <div class="field-value">100000000</div>
+            </div>
+            <div class="field">
+                <div class="field-label">대출 기간(개월)</div>
+                <div class="field-value">60</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">대출 시작일</div>
+                <div class="field-value">2025-01-01</div>
+            </div>
+        </div>
+
+        <div class="sub-header">이자율 및 상환방식</div>
+        <div class="row">
+            <div class="field">
+                <div class="field-label">연이율(%)</div

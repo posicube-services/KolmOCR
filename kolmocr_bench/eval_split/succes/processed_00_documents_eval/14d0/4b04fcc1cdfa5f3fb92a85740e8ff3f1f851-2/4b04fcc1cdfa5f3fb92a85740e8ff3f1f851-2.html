@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b004"] h2,
+.block[data-id="b006"] h2,
+.block[data-id="b008"] h2,
+.block[data-id="b010"] h2,
+.block[data-id="b012"] h2,
+.block[data-id="b014"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b003"] ul,
+.block[data-id="b005"] ul,
+.block[data-id="b007"] ul,
+.block[data-id="b009"] ul,
+.block[data-id="b011"] ul,
+.block[data-id="b013"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.block[data-id="b003"] li,
+.block[data-id="b005"] li,
+.block[data-id="b007"] li,
+.block[data-id="b009"] li,
+.block[data-id="b011"] li,
+.block[data-id="b013"] li {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 5px 0;
+}
+
+.block[data-id="b015"] .table-container {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
+}
+
+.block[data-id="b015"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.block[data-id="b015"] .data-table th,
+.block[data-id="b015"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b015"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+.block[data-id="b015"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* General list styling */
+ul {
+  list-style-type: disc;
+}
+
+/* Ensure no extra padding/margin on body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "은 궁서", 맑은 고딕, "맑은 고딕", Arial, sans-serif;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.09rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.0rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #317404;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgba(11, 156, 16, 0.841);
+  border-left: 4px solid #04b88e;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #05bc30d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #04cf3a;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(2, 2, 26, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(113, 248, 210, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #027061;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #287103;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: rgb(3, 101, 47);
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.3rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.2rem;
+  color: #111614;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.47rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #ccc !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="95,27,494,41">
+<h1>심한 알칼로미아의 주요 부작용</h1>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="95,53,172,62">
+<h2>심혈관계</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="121,72,492,114">
+<ul>
+<li>동맥류 수축</li>
+<li>관상동맥 혈류 감소</li>
+<li>안질리스 임계 감소</li>
+<li>치료저항성 상심실성 및 심실성 심박부정맥의 경향</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b004" data-bbox="95,124,153,133">
+<h2>호흡기</h2>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="121,143,486,151">
+<ul>
+<li>저환기와 동반되는 고카르복시혈증 및 저산소혈증</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b006" data-bbox="95,161,134,170">
+<h2>대사</h2>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="121,180,443,223">
+<ul>
+<li>무산소성 글리콜리시스 및 유기산 생성 자극</li>
+<li>저칼륨혈증</li>
+<li>혈장 이온화 칼슘 농도 감소</li>
+<li>저마그네슘혈증 및 저포스파테혈증</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b008" data-bbox="95,233,115,241">
+<h2>뇌</h2>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="121,252,448,271">
+<ul>
+<li>뇌혈류 감소</li>
+<li>경련, 발작, 무기력, 혼란, 그리고 무반응 상태</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b010" data-bbox="95,281,235,290">
+<h2>추가적인 요인들</h2>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="121,300,899,326">
+<ul>
+<li>라우테크나 시트레이트, 아세테이트(부모단 영양 솔루션의 일반적인 성분)와 같은 이온화 전구체를 포함한 이온화제의 투여는 중단되어야 합니다. 때로는 흡수 가능한 알칼리가 알칼로미아의 원인일 수 있으며, 예를 들어, 과도한 양의 칼슘 카보네이트 또는 흡수</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="95,336,261,345">
+<h2>효과적인 대처 방법</h2>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="121,355,904,626">
+<ul>
+<li>가능한 알칼리와 유유를 섭취하는 환자에서 심한 대사성 알칼로미아와 다양한 정도의 고칼혈증 및 신장 장애가 발생할 수 있습니다. 알루미늄 하이드록시드와 이온 교환제를 함께 투여하면 흡수되지 않는 알칼리가 흡수 가능해질 수 있습니다. 미네랄코르티코이드 활성 약물, 예를 들어 플루드로코르티손 및 다양한 글루코코르티코이드 합합물이 투여되고 있다면, 그 적응증과 용량을 재검토해야 합니다.</li>
+<li>알칼로미아를 유발하거나 악화시키는 요인들을 해결한 후, 임상의는 기존의 과다 이온화제를 완화하는 데 집중해야 합니다. 체액 부족이 있는 환자에게는 나트륨염화물과 칼륨염화물이 제공되어야 합니다. 현재의 나트륨, 칼륨, 염화물 결핍 및 종종 동반되는 기능성 아즈오테미아를 보완하면, 소변의 알칼리화를 통해 이온화제 배설이 촉진됩니다. 아세타졸라미드(250~375 mg 하루 1~2회)를 투여하면 이온화제 배설을 촉진시킬 수 있지만, 관련된 칼륨 및 인산 배설을 고려해야 합니다.</li>
+<li>알칼로미아의 교정 속도를 빠르게 하려면, 염산을 투여하여 알칼리 저장장을 조절할 수 있습니다. 0.1~0.2 N의 염산(즉, 리터당 100~200 mmol의 수소를 포함하는)을 정맥으로 투여하는 것은 심한 대사성 알칼로미아의 관리에 안전하고 효과적입니다. 이산화물은 그대로 투여되거나, 전해질과 비타민이 포함된 아미노산 및 덱스트로스 솔루션에 첨가되어도 악영향을 미치지 않습니다. 74, 75 염산의 석회화 특성 때문에, 중앙정맥을 통해 1시간당 체중 1kg당 0.2 mmol 이하의 속도로 투여해야 합니다. 그러나 아미노산 솔루션에 첨가하고 지방 에멀젼과 혼합하면, 주변정맥을 통해 투여할 수도 있습니다. 74</li>
+<li>염산 솔루션의 투여량을 계산할 때는 체중의 50%를 이온화제 공간으로 간주합니다. 15 예를 들어, 70kg 환자에서 리터당 10 mmol의 이온화제 초과를 보상하려면, 필요한 염산의 추정량은 10 × 70 × 0.5, 즉 350 mmol입니다. 염산의 전구체인 아모니움염화물(리터당 20 g, 리터당 374 mmol의 수소)과 아르기닌 몬+클로라이드(리터당 100 g, 리터당 475 mmol의 수소)는 염산 대신 사용될 수 있지만, 큰 위험을 수반하며 덜 흥분하게 사용됩니다. 이 두 가지 약물은 저온토틱 솔루션으로, 국소 조직 손상을 피하기 위해 중앙관을 통해 투여해야 합니다. 또한, 아모니움염화물은 간부전 환자에서 혈청 아미노산 농도를 증가시킬 수 있고, 아르기닌 몬+클로라이드는 신부전 환자에서 심각한 고칼륨혈증을 유발할 수 있으며, 특히 간질환이 동반될 경우 더욱 그렇습니다. 69, 71, 76</li>
+<li>심한 염화물 반응성 대사성 알칼로미아의 치료는 심장 또는 신장 기능 장애를 가진 환자에게 더욱 어렵습니다. 69, 71 외부체액 부피의 증가는 알칼로미아와 동반되거나 치료로 인해 발생할 수 있습니다. 칼륨염화물은 신부전 환자에서 고칼륨혈증을 유발할 수 있습니다. 특정 경우에는 이뇨제 치료를 줄이고 아세타졸라미드를 추가하며, 신중하게 나트륨염화물과 칼륨염화물을 투여하는 것이 충분할 수 있습니다. 그러나 많은 다른 경우에는 심장 및 신장 부전이 제한돼 의사가 더 적극적인 조치를 취해야 할 수 있습니다. 염산 투여는 효과적이지만, 관련된 체액 부하가 종종 문제로</li>
+</ul>
+</div>
+<div class="block" data-class="table" data-id="b014" data-bbox="106,659,220,669">
+<h2>HTML Table</h2>
+</div>
+<div class="block" data-class="text" data-id="b015" data-bbox="97,706,906,963">
+<div class="table-container"><table class="data-table">
+<tr>
+<th>심혈관계</th>
+</tr>
+<tr>
+<td>동맥류 수축</td>
+</tr>
+<tr>
+<td>관상동맥 혈류 감소</td>
+</tr>
+<tr>
+<td>안질리스 임계 감소</td>
+</tr>
+<tr>
+<td>치료저항성 상심실성 및 심실성 심박부정맥의 경향</td>
+</tr>
+<tr>
+<th>호흡기</th>
+</tr>
+<tr>
+<td>저환기와 동반되는 고카르복시혈증 및 저산소혈증</td>
+</tr>
+<tr>
+<th>대사</th>
+</tr>
+<tr>
+<td>무산소성 글리콜리시스 및 유기산 생성 자극</td>
+</tr>
+<tr>
+<td>저칼륨혈증</td>
+</tr>
+<tr>
+<td>혈장 이온화 칼슘 농도 감소</td>
+</tr>
+<tr>
+<td>저마그네슘혈증 및 저포스파테혈증</td>
+</tr>
+<tr>
+<th>뇌</th>
+</tr>
+<tr>
+<td>뇌혈류 감소</td>
+</tr>
+<tr>
+<td>경련, 발작, 무기력, 혼란, 그리고 무반응 상태</td>
+</tr>
+</table></div>
+</div>
+</div>
+</body>
+</html>

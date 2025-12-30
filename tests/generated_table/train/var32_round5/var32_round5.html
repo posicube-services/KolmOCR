@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>카드해지신청서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            margin: 20px;
+            background: white;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24pt;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #003366;
+        }
+        table {
+            border: 1px solid #999;
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th {
+            background: #003366;
+            color: #fff;
+            border: 1px solid #999;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            font-size: 11pt;
+        }
+        td {
+            background: #e8f0f8;
+            border: 1px solid #ccc;
+            text-align: left;
+            padding: 8px;
+            word-break: break-all;
+            white-space: normal;
+            font-size: 11pt;
+        }
+        .sub-header {
+            background: #003366;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 6px;
+            font-size: 12pt;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>카드해지신청서</h1>
+
+    <!-- 1. 개인정보 -->
+    <div class="section">
+        <div class="section-title">1. 개인정보</div>
+        <table>
+            <tr><th colspan="4" class="sub-header">기본정보</th></tr>
+            <tr>
+                <th>성명</th><td>홍길동</td>
+                <th>생년월일</th><td>1990-01-01</td>
+            </tr>
+            <tr>
+                <th>휴대폰번호</th><td>010-1234-5678</td>
+                <th>이메일</th><td>user@example.com</td>
+            </tr>
+            <tr><th colspan="4" class="sub-header">주소정보</th></tr>
+            <tr>
+                <th>주소</th><td colspan="3">서울시 강남구 테헤란로 123</td>
+            </tr>
+            <tr>
+                <th>상세주소</th><td>101호</td>
+                <th>우편번호</th><td>06123</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 2. 카드정보 -->
+    <div class="section">
+        <div class="section-title">2. 카드정보</div>
+        <table>
+            <tr>
+                <th>카드종류</th><td>신용카드</td>
+                <th>카드번호</th><td>1234-5678-9012-3456</td>
+            </tr>
+            <tr>
+                <th>카드만료일</th><td>2025-12-31</td>
+                <th>카드상태</th><td>정상</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 3. 해지사유 -->
+    <div class="section">
+        <div class="section-title">3. 해지사유</div>
+        <table>
+            <tr>
+                <th>해지사유</th><td>카드 사용 중단</td>
+                <th>기타사유</th><td>다른 카드로 전환</td>
+            </tr>
+            <tr>
+                <th>해지사유 세부 설명</th><td colspan="3">사용 빈도가 낮아 해지합니다.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 4. 거래내역 -->
+    <div class="section">
+        <div class="section-title">4. 거래내역</div>
+        <table>
+            <tr><th colspan="4" class="sub-header">최근거래</th></tr>
+            <tr>
+                <th>거래일자</th><td>2024-05-15</td>
+                <th>거래금액</th><td>50000</td>
+            </tr>
+            <tr>
+                <th>거래처</th><td colspan="3">스타벅스 강남점</td>
+            </tr>
+            <tr><th colspan="4" class="sub-header">잔고정보</th></tr>
+            <tr>
+                <th>잔고</th><td>0</td>
+                <th>적립포인트</th><td>1500</td>
+            </tr>
+            <tr>
+                <th>사용가능금액</th><td>100000</td>
+                <th></th><td></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 5. 서명 및 확인 -->
+    <div class="section">
+        <div class="section-title">5. 서명 및 확인</div>
+        <table>
+            <tr>
+                <th>신청자서명</th><td>홍길동</td>
+                <th>서명일자</th><td>2024-06-01</td>
+            </tr>
+            <tr>
+                <th>개인정보동의</th><td>동의함</td>
+                <th>해지조건확인</th><td>확인함</td>
+            </tr>
+            <tr>
+                <th>기타동의</th><td>동의함</td>
+                <th></th><td></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 6. 첨부파일 -->
+    <div class="section">
+        <div class="section-title">6. 첨부파일</div>
+        <table>
+            <tr>
+                <th>신분증사본</th><td>첨부됨</td>
+                <th>카드사본</th><td>첨부됨</td>
+            </tr>
+            <tr>
+                <th>기타서류</th><td>없음</td>
+                <th></th><td></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 7. 관리자용정보 -->
+    <div class="section">
+        <div class="section-title">7. 관리자용정보</div>
+        <table>
+            <tr>
+                <th>처리자</th><td>관리자</td>
+                <th>처리일자</th><td>2024-06-01</td>
+            </tr>
+            <tr>
+                <th>처리상태</th><td>완료</td>
+                <th>비고</th><td>-</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

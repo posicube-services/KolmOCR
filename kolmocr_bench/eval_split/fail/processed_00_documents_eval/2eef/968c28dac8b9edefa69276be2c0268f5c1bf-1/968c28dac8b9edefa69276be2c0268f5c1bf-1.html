@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Title */
+[data-id="b002"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  color: #000;
+  margin: 1em 0 0.5em 0;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 0.5em;
+}
+
+/* Section Headers (h2) */
+[data-id="b003"], [data-id="b005"], [data-id="b007"], [data-id="b015"], [data-id="b017"], [data-id="b019"], [data-id="b021"], [data-id="b023"], [data-id="b025"] h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  font-weight: bold;
+  color: #000;
+  margin: 1.2em 0 0.6em 0;
+  border-left: 4px solid #007BFF;
+  padding-left: 10px;
+}
+
+/* Subsection Headers (h3) */
+[data-id="b009"], [data-id="b011"], [data-id="b013"], [data-id="b027"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #000;
+  margin: 1em 0 0.5em 0;
+  border-left: 3px solid #007BFF;
+  padding-left: 10px;
+}
+
+/* Paragraphs */
+[data-id="b001"], [data-id="b008"], [data-id="b014"], [data-id="b016"], [data-id="b020"], [data-id="b022"], [data-id="b024"], [data-id="b026"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0.8em 0;
+  color: #333;
+}
+
+/* Lists */
+[data-id="b004"], [data-id="b010"], [data-id="b018"] ul {
+  margin: 0.8em 0;
+  padding-left: 1.5em;
+}
+
+[data-id="b004"], [data-id="b010"], [data-id="b018"] li {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Table */
+[data-id="b028"] .table-container {
+  overflow-x: auto;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-id="b028"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+[data-id="b028"] .data-table th, [data-id="b028"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+[data-id="b028"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b028"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+[data-id="b028"] .data-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* General spacing and alignment */
+
+
+/* Ensure consistent spacing between blocks */
+.block {
+  margin-bottom: 1em;
+}
+
+/* Remove default margin from first block */
+.block:first-child {
+  margin-top: 0;
+}
+
+/* Ensure no extra padding on last block */
+.block:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.03rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f5f7fb;
+  color: #111827;
+  font-family: "맑은 고딕", "은 궁서", sans-serif;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.25rem;
+  color: #111827;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.6rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #1d4ed8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.block[data-class="text"] {
+  font-size: 1.5rem;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(14, 165, 233, 0.15);
+  border-left: 4px solid #0ea5e9;
+  padding-left: 18px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #111827;
+}
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.26rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,16,905,24">
+<p>이 문서는 한국어로 작성되어 있으며, 구조화된 markdown 형식으로 만들기 위해서는 여러 부분을 분리하고 정리해야 합니다. 아래는 문서의 주요 내용을 분리한 markdown 형식입니다.</p>
+</div>
+<div class="block" data-class="title" data-id="b002" data-bbox="104,38,843,73">
+<h1>생체막 제거를 통한 주입용의 보관 기한 연장</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b003" data-bbox="122,87,196,92">
+<h2>연구자</h2>
+</div>
+<div class="block" data-class="author" data-id="b004" data-bbox="189,99,406,117">
+<ul>
+<li>Alex Josowicz</li>
+<li>Eric Doll</li>
+<li>Mark Wozniak, Ph.D.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="122,123,221,129">
+<h2>연구소개</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b006" data-bbox="104,135,603,138">
+<p>Sterilex Corporation, 111 Lake Front Drive, Hunt Valley, MD 21030</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="122,145,172,150">
+<h2>방법</h2>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,156,904,169">
+<p>주입 시스템에서 생체막 제거 및 위생 확약질 사용의 효과를 평가하기 위해, 미국의 주요 가공육 소통업체에서 보관 기한 연구를 수행했다. 연구는 8월 5일에 진행되었다. 모든 표준적인 7일에 주입된 멸균리드 솔루션이 포함된 다리부위 주입 시스템을 통해 처리되었다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="120,175,179,180">
+<h3>대조군</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="179,186,602,194">
+<ul>
+<li>PerQuat® 처리 시스템 생물: 7/8/13일</li>
+<li>관찰된 보관 기한: PerQuat® 처리 시스템 생물: 7/8/13일</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b011" data-bbox="120,200,205,204">
+<h3>실험 결과</h3>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="104,210,517,214">
+<p>PerQuat® 처리 전 어두운 가공육의 보관 기한: 12/13일</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b013" data-bbox="120,220,159,224">
+<h3>결론</h3>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,230,902,248">
+<p>이 실험의 데이터는 주입 절임액(솔루션, 절임액, 탱크) 위생 프로그램에 생체막 제거기/소독제기(PerQuat®, Sterilex Corporation, Hunt Valley, MD)를 추가하면 어두운 가공육의 보관 기한이 4~9일 연장될 수 있음을 보여준다. 실험 전 관찰된 보관 기한은 대조 군과 최대 미생물 수의 적극적인 감소와 보관 기한의 증정이 일관되었으며, PerQuat® 처리 생물과 대조 샘플 간의 결과는 일관적이었다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b015" data-bbox="122,254,172,259">
+<h2>결과</h2>
+</div>
+<div class="block" data-class="text" data-id="b016" data-bbox="104,265,903,283">
+<p>보관 기한 비교 실험의 결과는 PerQuat® 기술로 처리된 생물에서 대조 샘플에 비해 평균 APC 수와 총 콜로이드 수가 극적으로 감소함을 보여주었다. 대조 샘플은 8~7일째에 보관 기한이 끝났다. PerQuat® 처리 생물은 11~12일째에 보관 기한이 끝났다. 이는 PerQuat® 처리 시스템으로 처리된 생물이 대조 샘플에 비해 보관 기한이 4~5일 연장된 것을 나타낸다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b017" data-bbox="122,289,230,295">
+<h2>대조 결과</h2>
+</div>
+<div class="block" data-class="text" data-id="b018" data-bbox="129,301,608,304">
+<ul>
+<li>PerQuat® 처리 전 어두운 가공육의 보관 기한: 2012년 8월 13일</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b019" data-bbox="122,310,172,316">
+<h2>배경</h2>
+</div>
+<div class="block" data-class="text" data-id="b020" data-bbox="104,322,904,358">
+<p>주입 절임액, 마리네이드 및 인산물을 사용하여 풍미와 질감을 향상시키는 이들은 단백질 제품에 맛을 더하는 동시에 칠감, 색상 및 수분 유지성을 향상시키는 방법으로 근래 많이 첨가되고 있다. 주입 절임액 제품의 경우, 소금이나 절임액의 분비가 제한되어 제품 내부의 물질이 잘 확산되지 않아 부패 반대라야, 내부에 잔류물 및/또는 단백질 성분을 도입할 수 있는 장점적 위치를 포함한다. 주입 공정은 식품의 성장과 복잡성, 절임액 솔루션, 그리고 상대적으로 다공성의 균일 구조로 인해 미생물을 도입에 취약한 영역이다. 식품 산업이 보관 기한을 연장하고 제품의 안전성을 향상시키려(F)는 노력에 따라, 이러한 주입 식품의 보관 기한을 연장하기 위한 효과적인 위생 방식이 필요하게 된다. 따라서 주입 절 라인 구성 요소에 적절한 검증 프로그램을 제공하는 것이 중요하다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b021" data-bbox="122,365,221,370">
+<h2>주의사항</h2>
+</div>
+<div class="block" data-class="text" data-id="b022" data-bbox="104,376,904,399">
+<p>주입 시스템을 청소하는 일반적인 접근 방식은 식품 앞갈림색제거기 시스템을 통해 계속실행시키고, 그 후 물로 세척하는 것이다. 강력한 스포게이트는 열기 기반 솔루션이 종종 사용된다. 그러나 생체막 잔류물, 특히 박테리아라는 나만 내부의 접근이 어려운 곳에 계층적으로 부착된다. 세척 및 세척 후 소독제는 중요한 효과가 아니지만, 그러나 여기에서 제시된 접근 방식은 생체막을 제거하기 위한 신하 또는 제거 프로 그램을 추가한다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b023" data-bbox="122,405,255,410">
+<h2>생체막 제거</h2>
+</div>
+<div class="block" data-class="text" data-id="b024" data-bbox="104,416,902,448">
+<p>생체막은 박테리아, 곰팡이 및 녹조류가 홀리나이드와 기타 유기 섭즈로도 구성된 성분이 젤에 결합된 복잡한 네트워크이다. 생체막은 주입 설비의 많은 표면에서 제거하기 어렵다. 지속적인 부착된 생체막은 주입 가공육의 보관 기한 및 부패 문제의 주요 원인이 된다. 최근에 따르면 생체막은 물과 뇌 기반 액체와의 접촉이 36시간 이상(600분) 동안 전통적인 위생 및 소독에 저항할 수 있다. 즉, 주입 및 절임 시스 템에서 생체막은 뇌 또는 나무 또는 절임액 접촉에 부착될 수 있으며, 주입 중 제품으로 전달될 수 있다. 이러한 도전 들로 인해 효과적인 생체막 제거 프로그램이 필수적이다. 식품 안전 및 경제적 요인을 포함하여 보관 기한 연장과 같 은 효과를 달성할 수 있다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b025" data-bbox="122,454,633,459">
+<h2>PerQuat® (Sterilex Oxide, Corporation)</h2>
+</div>
+<div class="block" data-class="text" data-id="b026" data-bbox="104,465,897,473">
+<p>PerQuat®은 생체막 제거 및 살균로로 설계된 시스템으로 환합될 수 있는 독점 기술이다. 주입 시스템의 단백질, 지방 및 홀리나이드 칸류에 대한 첫소제로도 작용한다. 모든 발표된 연구, 이 연구를</p>
+</div>
+<div class="block" data-class="table_caption" data-id="b027" data-bbox="126,490,175,494">
+<h3>Table</h3>
+</div>
+<div class="block" data-class="table" data-id="b028" data-bbox="111,507,901,977">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>일</th><th>APC (cfu/g)</th><th>콜로이드 (cfu/g)</th><th>제 냄새</th><th>질 감</th><th>모 비고</th></tr>
+</thead>
+<tbody>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>1000000</td><td>1000000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>일</td><td>APC (cfu/g)</td><td>콜로이드 (cfu/g)</td><td>제 냄새</td><td>질 감</td><td>모 비고</td></tr>
+<tr><td>----------</td><td>-------------</td><td>------------------</td><td>---------------</td><td>-------------</td><td>-------------------</td></tr>
+<tr><td>0</td><td>1000</td><td>1000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>5</td><td>10000</td><td>10000</td><td>신선</td><td>정상</td><td>정상</td></tr>
+<tr><td>7</td><td>100000</td><td>100000</td><td>부패</td><td>강함</td><td>모든 부분에 페이스트코팅</td></tr>
+<tr><td>8</td><td>100</td><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

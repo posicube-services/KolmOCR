@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>보안매체재발급신청서</title>
+    <style>
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR';
+            font-size: 13pt;
+            line-height: 1.6;
+            color: #222;
+            margin: 20mm;
+            background: #fff;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border: 1px solid #707070;
+            border-radius: 0;
+            border-spacing: 0;
+            border-collapse: collapse;
+            table-layout: fixed;
+            word-break: break-all;
+            max-width: 190mm;
+            margin: 0 auto 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #707070;
+            word-break: break-all;
+            white-space: normal;
+        }
+        th {
+            background: #707070;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+        td {
+            background: #f5f5f5;
+            text-align: left;
+        }
+        .section-title {
+            background: #707070;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 14pt;
+        }
+        .sub-title {
+            background: #707070;
+            color: #fff;
+            text-align: center;
+            font-weight: 600;
+            padding: 6px;
+            font-size: 12pt;
+        }
+        .value-cell {
+            text-align: left;
+            padding-left: 12px;
+        }
+        .header-row th {
+            border-bottom: 2px solid #999;
+        }
+        .no-border {
+            border: none;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>보안매체재발급신청서</h1>
+
+    <div class="section-title">신청인 기본정보</div>
+    <table>
+        <tr>
+            <th colspan="2" class="sub-title">개인식별정보</th>
+            <th colspan="2" class="sub-title">계좌정보</th>
+        </tr>
+        <tr>
+            <th>신분증 종류</th>
+            <td class="value-cell">주민등록증</td>
+            <th>계좌 소유자</th>
+            <td class="value-cell">홍길동</td>
+        </tr>
+        <tr>
+            <th>신분증 번호</th>
+            <td class="value-cell">900101-1234567</td>
+            <th>은행명</th>
+            <td class="value-cell">국민은행</td>
+        </tr>
+        <tr>
+            <th>유효기간</th>
+            <td class="value-cell">2030-12-31</td>
+            <th>계좌번호</th>
+            <td class="value-cell">123-456-789012</td>
+        </tr>
+        <tr>
+            <th>휴대폰 번호</th>
+            <td class="value-cell">010-1234-5678</td>
+            <th>계좌 종류</th>
+            <td class="value-cell">예금계좌</td>
+        </tr>
+        <tr>
+            <th>이메일 주소</th>
+            <td class="value-cell">user@example.com</td>
+            <td colspan="2" class="no-border"></td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td class="value-cell">서울시 강남구 테헤란로 123</td>
+            <td colspan="2" class="no-border"></td>
+        </tr>
+    </table>
+
+    <div class="section-title">보안매체 정보</div>
+    <table>
+        <tr>
+            <th colspan="2" class="sub-title">재발급 사유</th>
+            <th colspan="2" class="sub-title">기존 보안매체</th>
+        </tr>
+        <tr>
+            <th>사유 선택</th>
+            <td class="value-cell">분실</td>
+            <th>매체 종류</th>
+            <td class="value-cell">USB 토큰</td>
+        </tr>
+        <tr>
+            <th>상세 사유 설명</th>
+            <td class="value-cell">지하철에서 분실함</td>
+            <th>매체 일련번호</th>
+            <td class="value-cell">USBTOK-2023-001</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="no-border"></td>
+            <th>분실/파손 여부</th>
+            <td class="value-cell center">✅</td>
+        </tr>
+        <tr>
+            <th colspan="4" class="sub-title">신규 보안매체</th>
+        </tr>
+        <tr>
+            <th>발급 유형</th>
+            <td class="value-cell">OTP 카드</td>
+            <th>배송지 정보</th>
+            <td class="value-cell">서울시 송파구 올림픽로 300</td>
+        </tr>
+        <tr>
+            <th>배송 방법</th>
+            <td class="value-cell">등기우편</td>
+            <td colspan="2" class="no-border"></td>
+        </tr>
+    </table>
+
+    <div class="section-title">거래내역 확인</div>
+    <table>
+        <tr>
+            <th colspan="2" class="sub-title">최근 거래 목록</th>
+            <th colspan="2" class="sub-title">이체 내역 요약</th>
+        </tr>
+        <tr>
+            <th>거래일자</th>
+            <th>거래유형</th>
+            <th>총 이체 금액</th>
+            <td class="value-cell">1,500,000</td>
+        </tr>
+        <tr>
+            <td class="value-cell">2025-03-01</td>
+            <td class="value-cell">입금</td>
+            <th>최근 3개월 이체 건수</th>
+            <td class="value-cell">12</td>
+        </tr>
+        <tr>
+            <td class="value-cell">2025-03-15</td>
+            <td class="value-cell">출금</td>
+            <td colspan="2" class="no-border"></td>
+        </tr>
+        <tr>
+            <td class="value-cell">2025-04-01</td>
+            <td class="value-cell">이체</td>
+            <td colspan="2" class="no-border"></td>
+        </tr>
+    </table>
+
+    <div class="section-title">동의 및 서명</div>
+    <table>
+        <tr>
+            <th colspan="2" class="sub-title">개인정보 처리 동의</th>
+            <th colspan="2" class="sub-title">서명란</th>
+        </tr>
+        <tr>
+            <th>동의 여부</th>
+            <td class="value-cell center">✅</td>
+            <th>신청인 서명</th>
+            <td class="value-cell">홍길동</td>
+        </tr>
+        <tr>
+            <th>동의일자</th>
+            <td class="value-cell">2025-04-05</td>
+            <th>서명일자</th>
+            <td class="value-cell">2025-04-05</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="no-border"></td>
+            <th>인증 방식</th>
+            <td class="value-cell">전자서명</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #666;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.block[data-id="b002"] {
+  font-size: calc(2.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.block[data-id="b003"], 
+.block[data-id="b005"], 
+.block[data-id="b015"] {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 25px 0 10px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b004"] {
+  margin: 15px 0;
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.block[data-id="b004"] li {
+  margin: 8px 0;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.4;
+}
+
+.block[data-id="b006"] {
+  font-size: calc(1em * var(--font-scale));
+  color: #333;
+  margin: 15px 0;
+}
+
+.block[data-id="b007"], 
+.block[data-id="b009"], 
+.block[data-id="b011"], 
+.block[data-id="b013"] {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  background-color: #e8f4fc;
+  border-left: 4px solid #3498db;
+  padding: 10px 15px;
+  margin: 20px 0;
+}
+
+.block[data-id="b008"], 
+.block[data-id="b010"], 
+.block[data-id="b012"], 
+.block[data-id="b014"] {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 12px 15px;
+  margin: 10px 0;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b016"] {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 10px;
+}
+
+.block[data-id="b017"], 
+.block[data-id="b018"], 
+.block[data-id="b019"], 
+.block[data-id="b020"], 
+.block[data-id="b021"], 
+.block[data-id="b022"], 
+.block[data-id="b023"] {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 15px 0;
+  color: #333;
+}
+
+.block[data-id="b017"] p, 
+.block[data-id="b018"] p, 
+.block[data-id="b019"] p, 
+.block[data-id="b020"] p, 
+.block[data-id="b021"] p, 
+.block[data-id="b022"] p, 
+.block[data-id="b023"] p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Links styling */
+a {
+  color: #3498db;
+  text-decoration: none;
+  border-bottom: 1px dotted #3498db;
+}
+
+a:hover {
+  color: #2980b9;
+  border-bottom-color: #2980b9;
+}
+
+/* Ensure consistent spacing */
+.block + .block {
+  margin-top: 10px;
+}
+
+/* Clear floats if needed */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.47rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f9fafb;
+  font-family: "맑은 고딕", serif;
+  color: #111827;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="key_value"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 1rem;
+  border-left: 4px solid #2563eb;
+  padding-left: 14px;
+}
+
+.block[data-class="equation"] {
+  font-size: 1.15rem;
+  font-family: "나눔손글씨 붓", serif;
+  color: #2563eb;
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #2563eb;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #2563eb;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #2563eb;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #2563eb;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #2563eb;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #111827;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2563eb;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #2563eb;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.36rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,33,507,40">
+<p>Sure, here is the text in structured markdown format:</p>
+</div>
+<div class="block" data-class="title" data-id="b002" data-bbox="154,59,855,93">
+<h1>Document Title</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b003" data-bbox="104,123,462,135">
+<h2>Section 1: Reference Links</h2>
+</div>
+<div class="block" data-class="reference" data-id="b004" data-bbox="179,149,897,194">
+<ol>
+<li>BBC 뉴스. 빅토닉 안경이 맥올라 퇴행 환자의 시력을 향상시킴, 2015년 7월. 2015년 11월 25일에 확인됨. http://www.bbc.co.uk/news/health-33612558</li>
+<li>영국 의학협회 및 영국 왕립 약사회. 영국 국민 약전 70판, 2015.</li>
+<li>국민 건강 및 돌봄 우수성 연구소. 기술 평가 346: 당뇨성 맥올라 부종 치료를 위한 아플리베셉트, 2015. 2015년 11월 25일에 확인됨. https://www.nice.org.uk/guidance/ta346</li>
+</ol>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="104,201,588,212">
+<h2>Section 2: Additional Information</h2>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,228,379,235">
+<p>참고 2은 더 이상 필요하지 않습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="128,253,403,262">
+<h3>Exercise Question 5 - 검토 (b)</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="124,292,874,310">
+<p>명확성을 위해 다음이 추가되었습니다. '60세 이상 모든 사람은 무료 시력 검사를 받을 권리가 있습니다.'</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="128,336,370,345">
+<h3>Exercise Question 6 - 검토</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="124,375,884,402">
+<p>또한, 약사는 환자의 상태가 전문가에 의해 마지막으로 모니터링된 시점을 확인하고 모니터링 간격(각각 12개 월마다 최소한의 간격으로 녹내장, 2년마다 최소한의 간격으로 안구 고혈압 등)을 참조해야 합니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b011" data-bbox="128,429,449,438">
+<h3>Exercise Question 4 - 사례 연구 (d)</h3>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="124,468,869,495">
+<p>AREDS 2에서 사용된 것과 유사한 성분을 가진 보충제를 요약한 유용한 웹사이트는 http://www.areds2.org.uk/supplements입니다. 이 사이트는 성분을 비교하는 뿐만 아니라 월별 총 비용을 나열합니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b013" data-bbox="128,521,271,530">
+<h3>Website Links</h3>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="124,561,885,587">
+<p>이 섹션의 마지막 부분에 있는 웹사이트 'http://www.maculardisease.org/page.asp?section=189&amp;ionTitle=Information+Sheets'는 더 이상 활성화되지 않아 미국 국립 안과 연구소의 연령 관련 안과 질환 연구 결과 요약으로 대체되었습니다. 해당 링크는 https://nei.nih.gov/amd입니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b015" data-bbox="104,606,574,614">
+<h3>Section 3: Related Problems and Questions</h3>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b016" data-bbox="104,629,369,636">
+<p>제5장: 약물 및 질환 관련 안과 문제</p>
+</div>
+<div class="block" data-class="text" data-id="b017" data-bbox="104,642,901,688">
+<p>P 102 - 개요<br/>
+본문은 '수술 후 안정화를 위해 외용 스테로이드가 필요할 수 있다'고 명시하고 있습니다. 수술 후 외용 스테로이드의 사용은 단기적이어야 하며, 일반적으로 1개월에서 6주가 표준입니다. 이는 스테로이드로 인한 부작용을 줄일 수 있습니다. 약사는 외용 코르티코스테로이드의 장기 사용을 확인하여 적절한 모니터링이 이루어지고 있는지 확인해야 합니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b018" data-bbox="104,697,654,733">
+<p>P 103 – P 106 – 약물로 인한 안과 문제<br/>
+아미오다론<br/>
+아미오다론과 비교하여 드로네다론은 안과 부작용이 보고되지 않았습니다 (http://www.ncbi.nlm.nih.gov/pubmed/12919771).</p>
+</div>
+<div class="block" data-class="text" data-id="b019" data-bbox="104,741,895,768">
+<p>항머스카린제<br/>
+또한, 옥시뷰틴은 더 오래된 항머스카린제의 예입니다. 옥시뷰틴은 소리페낙보다 부작용이 더 흔합니다 (혼합).</p>
+</div>
+<div class="block" data-class="text" data-id="b020" data-bbox="104,776,895,822">
+<p>항파킨슨증 치료제<br/>
+레보도파는 약힌 각막을 가진 환자에게는 긍기입니다. 레보도파는 미iosis와 mydriasis를 모두 유발할 수 있습니다. 52년 동안 레보도파의 다성분 제품과 관련된 녹내장 사례는 단 한 건 보고되었습니다. 1963년부터 2015년까지 흐릿한 시야 (5), 시력 저하 (9), 이중 시야 (2), 및 미iosis (2)와 관련된 보고가 몇 건 있었습니다 (https://www.medicinescomplete.com).</p>
+</div>
+<div class="block" data-class="text" data-id="b021" data-bbox="104,830,902,867">
+<p>레보도파는 안구기립위기(oculogyric crisis)를 유발할 수 있습니다. BNF(영국 국민 약전)은 레보도파의 부작용으로 구토와 메스꺼움을 포함하며, 드문 부작용으로는 복통, 흐릿한 시야, 눈꺼풀 경련, 이중 시야, 호른 증후군 활성화, 동공 확대, 안구기립위기, 홉초, 그리고 매우 드물게 각막 폐쇄성 녹내장이 포함된다고 명시하고 있습니다 (http://www.evidence.nhs.uk/formulary/bnf/current).</p>
+</div>
+<div class="block" data-class="text" data-id="b022" data-bbox="104,875,904,902">
+<p>프로사이클리딘의 SPC(사용 설명서)는 이 약물이 구성 성분에 대한 알려진 과민 반응, 치료되지 않은 요로폐색, 폐쇄각 녹내장 및 위장관 폐쇄증을 가진 개인에게 금기임을 명시하고 있습니다 (http://www.medicines.org.uk/EMC/medicine/2171/SPC/Kemadrin+Tablets+5+mg/).</p>
+</div>
+<div class="block" data-class="text" data-id="b023" data-bbox="104,910,902,965">
+<p>BNF는 현재 항머스카린제가 십이지장-식도 역류 질환, 설사, 궤양성 대장염, 자율신경병증, 급성 심근경색, 고혈압, 심박동이 빠른 상태(감상선 기능 항진증, 심부전, 심장 수술 포함), 발열 및 각막 폐쇄성 녹내장에 취약한 개인에게 조심스럽게 사용되어야 한다고 명시하고 있습니다. 또한 다운 증후군 환자, 어린이 및 노인에게도 조심스럽게 사용되어야 합니다.<br/>
+This markdown structure includes the original sections, references, and website links while maintaining the formatting of the document. The <code>Section</code> labels have been added for clarity.</p>
+</div>
+</div>
+</body>
+</html>

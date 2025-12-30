@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>POSICUBE | History</title>
+<style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    :root{
+      --accent:#f08a00;
+      --text:#111;
+      --muted:#666;
+      --rule:#e9e9e9;
+      --bg:#ffffff;
+      --maxw: 210mm;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{
+      height:100%;
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .wrap,
+    .page{
+      width: var(--maxw);
+      margin: 0 auto;
+      padding: 8mm 10mm;
+      background: #fff;
+    }
+
+    /* Header */
+    h1{
+      margin: 0 0 2.5mm;
+      font-size: 11pt;
+      letter-spacing: -0.3px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 8pt;
+      line-height: 1.4;
+    }
+    .lead + .lead{ margin-top: 1.5mm; }
+
+    /* Grid timeline */
+    .grid{
+      margin-top: 6mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 12mm;
+      row-gap: 8mm;
+      align-items: start;
+    }
+
+    .year{
+      display:block;
+    }
+    .year h2{
+      margin: 0 0 2mm;
+      font-size: 14pt;
+      line-height: 1;
+      letter-spacing: -0.2px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .rule{
+      height: 1px;
+      background: #ddd;
+      margin: 0 0 2.5mm;
+      width: 100%;
+    }
+
+    ul{
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    li{
+      margin: 1.5mm 0;
+      font-size: 7.5pt;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    li strong{
+      font-weight: 700;
+    }
+
+    /* Nested note under 2020 item */
+    .subnote{
+      margin-top: 1mm;
+      color: var(--muted);
+      font-size: 7pt;
+      padding-left: 3mm;
+      position: relative;
+      line-height: 1.3;
+    }
+    .subnote:before{
+      content:"-";
+      position:absolute;
+      left: 1mm;
+      color: var(--muted);
+    }
+    em{ font-style: italic; }
+
+    /* Footer */
+    .footer{
+      margin-top: 10mm;
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 6mm;
+    }
+    .brand{
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      font-size: 11pt;
+    }
+    .policy{
+      color: var(--muted);
+      font-size: 7pt;
+      white-space: nowrap;
+    }
+
+    /* Force 2 column layout - disable responsive */
+
+    /* Tight bbox for content blocks */
+    h1.block,
+    h2.block,
+    p.block,
+    li.block,
+    .brand.block,
+    .policy.block {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Rule needs full width (not tracked with bbox) */
+
+    /* Keep blocks measurable */
+    .block {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  </style>
+<script>
+    // Compute per-block bbox in page-local coordinates
+    function updateBBoxes() {
+      const page = document.querySelector(".page") || document.querySelector(".wrap");
+      if (!page) return;
+      const pageRect = page.getBoundingClientRect();
+      const blocks = page.querySelectorAll(".block[data-id]");
+      blocks.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        const x = Math.round(r.left - pageRect.left);
+        const y = Math.round(r.top - pageRect.top);
+        const w = Math.round(r.width);
+        const h = Math.round(r.height);
+        el.setAttribute("data-bbox", `${x},${y},${w},${h}`);
+      });
+    }
+
+    window.addEventListener("load", () => {
+      requestAnimationFrame(() => {
+        updateBBoxes();
+        setTimeout(updateBBoxes, 350);
+        setTimeout(updateBBoxes, 900);
+      });
+    });
+    window.addEventListener("resize", updateBBoxes);
+  </script>
+</head>
+<body>
+<main class="wrap page">
+<h1 class="block" data-bbox="42,30,319,19" data-id="b001">포지큐브는 지금도 새로운 역사를 쓰고 있습니다.</h1>
+<p class="lead block" data-bbox="42,58,465,15" data-id="b002">탁월한 기술력을 바탕으로 시대의 흐름을 주도하는 "AI 전문 서비스" 회사가 되어가고 있습니다.</p>
+<p class="lead block" data-bbox="42,78,402,15" data-id="b003">AI 기술을 통한 혁신은 이미 시작 되었으며, 그 변화의 중심에 포지큐브가 있습니다.</p>
+<section aria-label="회사 연혁" class="grid">
+<article class="year">
+<h2 class="block" data-bbox="42,115,48,18" data-id="b004">2024</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="42,151,224,13" data-id="b006"><strong>05. NIPA의 유망 SaaS 지원과제 개발 사업 선정</strong></li>
+<li class="block" data-bbox="42,169,307,13" data-id="b007"><strong>04. WIS 2024 명예훼손대처 레거시활용통합모듈부문 장관상 수상</strong></li>
+<li class="block" data-bbox="42,188,205,13" data-id="b008"><strong>03. 2024 아시아 태평양 Top Partner 선정</strong></li>
+<li class="block" data-bbox="42,207,232,13" data-id="b009"><strong>02. Microsoft Korea Top Partner of ISV 수상</strong></li>
+<li class="block" data-bbox="42,226,138,13" data-id="b010"><strong>01. 2024 AI-K Top100 선정</strong></li>
+</ul>
+</article>
+<article class="year">
+<h2 class="block" data-bbox="525,115,48,18" data-id="b011">2023</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="525,151,168,13" data-id="b013"><strong>12. 대한민국 성장챔피언 2024 선정</strong></li>
+<li class="block" data-bbox="525,169,369,13" data-id="b014"><strong>11. 2023 대한민국 인공지능대상 우수상 / 정보통신기획평가원장상 우수상 수상</strong></li>
+<li class="block" data-bbox="525,188,200,13" data-id="b015"><strong>10. 2023 KOREA AI STARTUP 100 선정</strong></li>
+<li class="block" data-bbox="525,207,148,13" data-id="b016"><strong>09. 회사 비전 관련 뉴스 등 발표</strong></li>
+<li class="block" data-bbox="525,226,379,13" data-id="b017"><strong>04. 엔터프라이즈(Enterprise)용 GPT 기반 AI 챗봇 및 챗봇 서비스, robi 등 출시</strong></li>
+<li class="block" data-bbox="525,244,433,26" data-id="b018"><strong>03. 2023 상반기 IP-R&amp;D 전략과제 사업 선정(세부사업: 지적재산권 기반 연구개발 관리지원 사업)</strong></li>
+<li class="block" data-bbox="525,277,384,13" data-id="b019"><strong>02. Microsoft Azure OpenAI 기반 상품화 개발가속 승인 (Managed Partners)</strong></li>
+</ul>
+</article>
+<article class="year">
+<h2 class="block" data-bbox="42,325,48,18" data-id="b020">2022</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="42,361,128,13" data-id="b022"><strong>11. 원격식신 우수기업 선정</strong></li>
+<li class="block" data-bbox="42,380,200,13" data-id="b023"><strong>10. 2022 KOREA AI STARTUP 100 선정</strong></li>
+<li class="block" data-bbox="42,398,241,13" data-id="b024"><strong>09. 중기벤처기업부 아노비즈(INNO BIZ) 초급 획득</strong></li>
+<li class="block" data-bbox="42,417,222,13" data-id="b025"><strong>08. 컨버세이션 Total Operation (w/ AI) 시작</strong></li>
+<li class="block" data-bbox="42,436,189,13" data-id="b026"><strong>04. AI 적용 IPCC(상담센터) 솔루션 개발</strong></li>
+<li class="block" data-bbox="42,455,172,13" data-id="b027"><strong>03. 보건사 AI응용매출 확대 100만불</strong></li>
+<li class="block" data-bbox="42,474,190,13" data-id="b028"><strong>02. 헬스케어 제조기업 AICC 서비스 제공</strong></li>
+<li class="block" data-bbox="42,492,187,13" data-id="b029"><strong>01. 보건사 AI 응용매출 도입 (코로나19)</strong></li>
+</ul>
+</article>
+<article class="year">
+<h2 class="block" data-bbox="525,325,48,18" data-id="b030">2021</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="525,361,122,13" data-id="b032"><strong>12. 보험사 AI 침입률 확대</strong></li>
+<li class="block" data-bbox="525,380,145,13" data-id="b033"><strong>10. 시리즈B 투자유치 110억원</strong></li>
+<li class="block" data-bbox="525,398,164,13" data-id="b034"><strong>09. 자회사(인슈어헬스) 3센터 오픈</strong></li>
+<li class="block" data-bbox="525,417,222,13" data-id="b035"><strong>08. Microsoft Partnership(IP Co-sell) 체결</strong></li>
+<li class="block" data-bbox="525,436,164,13" data-id="b036"><strong>07. 자회사(인슈어헬스) 2센터 오픈</strong></li>
+<li class="block" data-bbox="525,455,218,13" data-id="b037"><strong>06. KB 금융지주 형식 AI 시스템 구축 프로젝트</strong></li>
+<li class="block" data-bbox="525,474,162,13" data-id="b038"><strong>05. 헬스케어 공공기관 서비스 오픈</strong></li>
+<li class="block" data-bbox="525,492,170,13" data-id="b039"><strong>04. 조달청 우수제품 선정 (나라장터)</strong></li>
+<li class="block" data-bbox="525,511,164,13" data-id="b040"><strong>03. 자회사(인슈어헬스) 1센터 오픈</strong></li>
+</ul>
+</article>
+<article class="year">
+<h2 class="block" data-bbox="42,560,48,18" data-id="b041">2020</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="42,595,272,13" data-id="b043"><strong>12. 지회사 설립 (인슈어헬스, 보험사와 의료지능 협력센터)</strong></li>
+<li class="block" data-bbox="42,614,102,13" data-id="b044"><strong>10. POST-TIPS 선정</strong></li>
+<li class="block" data-bbox="42,633,118,13" data-id="b045"><strong>09. 조달청 혁신제품 선정</strong></li>
+<li class="block" data-bbox="42,652,211,29" data-id="b046">
+<strong>08. robi 1 (Outbound + Telemarketing)</strong>
+<div class="subnote"><em>고객사: Chubb, GS, SK M&amp;S, 신한 카드</em></div>
+</li>
+<li class="block" data-bbox="42,686,207,13" data-id="b047"><strong>06. Microsoft for Startups 프로그램 선정</strong></li>
+<li class="block" data-bbox="42,705,219,13" data-id="b048"><strong>05. 한국정보통신기술협회(TTA) GS인증 1등급</strong></li>
+<li class="block" data-bbox="42,724,228,13" data-id="b049"><strong>04. SW 고성능 컴퓨팅 200(과학기술정보통신부)</strong></li>
+<li class="block" data-bbox="42,743,162,13" data-id="b050"><strong>03. KB금융지주, KB스타뱅크 선정</strong></li>
+<li class="block" data-bbox="42,761,138,13" data-id="b051"><strong>02. 시리즈A 투자유치 35억원</strong></li>
+</ul>
+</article>
+<article class="year">
+<h2 class="block" data-bbox="525,560,48,18" data-id="b052">2019</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="525,595,140,13" data-id="b054"><strong>12. KB국민카드 AI Call POC</strong></li>
+<li class="block" data-bbox="525,614,293,13" data-id="b055"><strong>11. robi V 고객사 확장 (한-노랑, KB국민카드, 카카오, 페이코)</strong></li>
+<li class="block" data-bbox="525,633,290,13" data-id="b056"><strong>10. robi V 고객사 확장 (토스, 오라클, 농심, 제과점, 현대Pay)</strong></li>
+<li class="block" data-bbox="525,652,298,13" data-id="b057"><strong>05. robi T 고객사 확장 (고객사: 보험사, 인프라보험, 증서 송출)</strong></li>
+</ul>
+</article>
+<article class="year">
+<h2 class="block" data-bbox="42,810,48,18" data-id="b058">2018</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="42,846,261,13" data-id="b060"><strong>11. 농협중앙회 robi T(AI 컨택센터 서비스) 베타 서비스</strong></li>
+<li class="block" data-bbox="42,864,151,13" data-id="b061"><strong>09. 팁스 파트너 Seed 투자 유치</strong></li>
+<li class="block" data-bbox="42,883,92,13" data-id="b062"><strong>04. TIPS 과제 선정</strong></li>
+</ul>
+</article>
+<article class="year">
+<h2 class="block" data-bbox="525,810,48,18" data-id="b063">2017</h2>
+<div class="rule"></div>
+<ul>
+<li class="block" data-bbox="525,846,155,13" data-id="b065"><strong>11. robi V(AI OCR 서비스) 출시</strong></li>
+<li class="block" data-bbox="525,864,331,13" data-id="b066"><strong>07. 한국금융지주 10 Lab 스타트업 5기 (빅데이터 및 자연어 처리 기술)</strong></li>
+<li class="block" data-bbox="525,883,149,13" data-id="b067"><strong>05. 포지큐브(POSICUBE) 창업</strong></li>
+</ul>
+</article>
+</section>
+<div class="rule" style="margin-top: 10mm; margin-bottom: 3mm;"></div>
+<footer aria-label="푸터" class="footer" style="margin-top: 0;">
+<div class="brand block" data-bbox="42,951,89,22" data-id="b068">POSICUBE</div>
+<div class="policy block" data-bbox="876,959,82,14" data-id="b069">개인정보 처리 방침</div>
+</footer>
+</main>
+</body>
+</html>

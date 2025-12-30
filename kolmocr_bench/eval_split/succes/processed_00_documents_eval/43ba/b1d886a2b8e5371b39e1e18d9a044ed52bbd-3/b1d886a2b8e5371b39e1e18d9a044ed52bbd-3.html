@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title "Markdown" */
+[data-id="b001"] h1 {
+  font-family: '은 필기', serif;
+  font-size: calc(24pt * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #333;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+}
+
+/* Block b002: Subtitle "엘레나 세자리저" */
+[data-id="b002"] h2 {
+  font-family: '은 필기', serif;
+  font-size: calc(18pt * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #222;
+}
+
+/* Block b003: Bullet list - Introduction */
+[data-id="b003"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+[data-id="b003"] ul li {
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Block b004: Table - 1881 Event */
+[data-id="b004"] .table-container {
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+[data-id="b004"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b004"] .data-table th,
+[data-id="b004"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+}
+
+[data-id="b004"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Block b005: Bullet list - Early life */
+[data-id="b005"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+[data-id="b005"] ul li {
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Block b006: Table - 1908 Event */
+[data-id="b006"] .table-container {
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+[data-id="b006"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b006"] .data-table th,
+[data-id="b006"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+}
+
+[data-id="b006"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Block b007: Bullet list - Career highlights */
+[data-id="b007"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+[data-id="b007"] ul li {
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Block b008: Table - 1931 Event */
+[data-id="b008"] .table-container {
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+[data-id="b008"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b008"] .data-table th,
+[data-id="b008"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+}
+
+[data-id="b008"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Block b009: Bullet list - Final note */
+[data-id="b009"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+[data-id="b009"] ul li {
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+}
+
+/* General table styling for consistency */
+.table-container {
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-family: '맑은 고딕', serif;
+  font-size: calc(12pt * var(--font-scale));
+}
+
+.data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Ensure consistent spacing between blocks */
+.block {
+  margin-bottom: 15px;
+}
+
+/* Prevent overflow and ensure clean layout */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.17rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.0rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #317404;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgba(11, 156, 16, 0.841);
+  border-left: 4px solid #04b88e;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #05bc30d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #04cf3a;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(2, 2, 26, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(113, 248, 210, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #027061;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #287103;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: rgb(3, 101, 47);
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.3rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.2rem;
+  color: #111614;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.28rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,51,407,80">
+<h1>Markdown</h1>
+</div>
+<div class="block" data-class="author" data-id="b002" data-bbox="104,103,312,123">
+<h2>엘레나 세자리저</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="129,137,504,192">
+<ul>
+<li>극장 손님 - 에브게니 미하일로비치 페퍼.</li>
+<li>안나 파블로바에 대해 이야기; 고전 발레</li>
+<li>올해로 그녀의 탄생 120주년</li>
+</ul>
+</div>
+<div class="block" data-class="table" data-id="b004" data-bbox="111,247,901,309">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Year</th><th>Event</th></tr>
+</thead>
+<tbody>
+<tr><td>1881</td><td>마리insky 극장 발레</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="129,359,643,433">
+<ul>
+<li>8살 때, 《잠자는 미녀》를 보고, 마치 얼어붙은 듯 보았다.</li>
+<li>오로라처럼 춤을 추고 싶었다. 발레에 마음을 주고, 계속</li>
+<li>1899 - 18세 - 솔로 공연을 했고, 극장 학교를 졸업했다.</li>
+<li>1906 - 프리마 발레리나 타이틀.</li>
+</ul>
+</div>
+<div class="block" data-class="table" data-id="b006" data-bbox="111,488,901,550">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Year</th><th>Event</th></tr>
+</thead>
+<tbody>
+<tr><td>1908</td><td>그녀와 20명의 러시아 예술가 첫 공연. 유럽에서 성공을 거두었다.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="129,601,895,750">
+<ul>
+<li>대중: 그녀가 어디를 가든 환영받았다 - 해외에서도 언제나 그랬다.</li>
+<li>그녀의 레퍼토리나 공연을 모두 열거하기는 불가능하다.</li>
+<li>《백조의 호수》, 《지젤》, 《잠자는 미녀》, 《호두까기 인형》</li>
+<li>《죽어가는 백조》를 춤추며 - 러시아 발레의 상징</li>
+<li>그녀가 이 춤을 추면, 백조가 살아나는 듯했다. "Плясс умирающей лебедь."</li>
+<li>고향병이 심했고, 상트페테르부르크를 사랑했다 - 어린 시절, 첫 성공과 공연, 해외에서의 휴식 시간처럼, 축제처럼 느껴졌다.</li>
+<li>러시아로 돌아가고 싶었다</li>
+</ul>
+</div>
+<div class="block" data-class="table" data-id="b008" data-bbox="111,806,901,868">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Year</th><th>Event</th></tr>
+</thead>
+<tbody>
+<tr><td>1931</td><td>사망.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="129,918,508,935">
+<ul>
+<li>그녀가 러시아 춤꾼이라는 자부심과 기쁨.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

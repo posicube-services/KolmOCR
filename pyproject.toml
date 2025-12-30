@@ -52,6 +52,9 @@ dependencies = [
     "transformers==4.55.2",
     "vllm>=0.11.0",
     "zstandard",
+    "playwright>=1.56.0",
+    "pdf2image>=1.17.0",
+    "pymupdf>=1.26.7",
 ]
 license = {file = "LICENSE"}
 
@@ -174,19 +177,21 @@ exclude = '''
 [tool.isort]
 profile = "black"
 multi_line_output = 3
-
-# You can override these pyright settings by adding a personal pyrightconfig.json file.
-[tool.pyright]
-reportPrivateImportUsage = false
-
-[tool.ruff]
-line-length = 160
-target-version = "py311"
-exclude = ["olmocr/train/molmo", "tests/*"]
-ignore = ["E722", "F541"] #igore bare except, and f string without placeholders
-
-[tool.ruff.per-file-ignores]
-"__init__.py" = ["F401"]
+exclude = '''
+(
+            __pycache__
+        | \.git
+        | \.mypy_cache
+        | \.pytest_cache
+        | \.vscode
+        | \.venv
+        | \.env
+        | \.pp_env
+        | \bvenv\b
+        | \bdist\b
+        | \bdoc\b
+)
+'''
 
 [tool.mypy]
 ignore_missing_imports = true

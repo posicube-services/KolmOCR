@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 1em 0;
+  text-align: left;
+  line-height: 1.3;
+  color: #000;
+}
+
+.block[data-id="b002"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0 0 1em 0;
+  text-align: justify;
+  color: #333;
+}
+
+.block[data-id="b003"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
+}
+
+.block[data-id="b004"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0 0 1em 0;
+  text-align: justify;
+  color: #333;
+}
+
+.block[data-id="b005"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
+}
+
+.block[data-id="b006"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0 0 1em 0;
+  text-align: justify;
+  color: #333;
+}
+
+.block[data-id="b007"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
+}
+
+.block[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0 0 1em 0;
+  text-align: justify;
+  color: #333;
+}
+
+.block[data-id="b009"] ul {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0 0 1em 0;
+  padding-left: 1.5em;
+  color: #333;
+}
+
+.block[data-id="b009"] ul li {
+  margin: 0.5em 0;
+}
+
+.block[data-id="b010"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
+}
+
+.block[data-id="b011"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0 0 1em 0;
+  text-align: justify;
+  color: #333;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.28rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  margin: 0;
+  background: #f0f2f5;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #0f172a;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.block[data-class="header"],
+.block[data-class="footer"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.1em;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid #94a3b8;
+  padding: 10px;
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #475569;
+  text-indent: -1.5em;
+  padding-left: 1.6em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.48rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="95,29,885,57">
+<h1>이벤트 발생 후 분석을 포함하는 해결책과 달리, 이 방법은 실시간 탐지를 가능하게 합니다.</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="95,90,905,133">
+<p>테스트 IoT 네트워크 환경은 세 가지 노드 클래스로 구성됩니다: 정당한 노드(LN), 느린 간헐적인 연결을 가진 진정한 노드(SN), 그리고 느린 DoS 공격을 유발하는 악의적인 노드(MN). 실험 결과는 느린 DoS 공격 트래픽이 두 단계 IDS 전략의 일부로 의심스러운 것으로 정확히 분류될 수 있음을 뒷받침합니다. 이 전략은 MN, LN 및 SN 트래픽을 성공적으로 구분하여, 자원 제약이 있는 IoT 환경에서 공격 탐지의 신뢰성을 향상시키고, 최소한의 오버헤드를 초래합니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="95,165,527,179">
+<h2>본 논문의 나머지 부분은 다음과 같이 구성됩니다</h2>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="95,210,905,242">
+<p>제 2장에서는 느린 DoS 공격의 성격과 특징, 그리고 현재의 탐지 방법과 IDS 전략을 검토합니다. 제 3장에서는 사용된 실험 테스트 IoT 환경을 설명하며, 제 4장에서는 새로운 느린 DoS 탐지 기술의 중요한 결과 분석을 제공합니다. 제 5장에서는 결론적 의견과 추가 작업 계획을 제공합니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="95,272,174,284">
+<h3>관련 연구</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="95,314,905,401">
+<p>느린 DoS 공격은 IoT 네트워크 보안 위협 중에서 가장 어려운 문제 중 하나로, 주요 운영 TCP 및 HTTP 매개변수의 내재된 취약점을 이용하여 인기 있는 HTTP 서버를 표적으로 삼습니다. TCP의 작동은 느린 DoS 공격을 실현하는 데 중요한 역할을 합니다. TCP는 연결 지향 프로토콜로, 호스트는 성공적으로 세 가지 손잡이를 협상해야 합니다. 이 과정이 완료되면, 클라이언트와 서버는 데이터 교환을 위해 필요한 매개변수를 설정하기 위해 요청과 응답을 시작합니다. 서버는 애플리케이션이 필요한 작업을 완료하거나 TCP 연결을 닫기 전에 설정된 타임아웃 간격까지 기다립니다. 느린 DoS 공격은 특히 이 연결 지향성과 순서대로 전달되는 구조를 악용하도록 설계되었습니다. 예를 들어, 느린 DoS는 HTTP GET 요청에서 세션을 종료하는 신호를 보내는 문자열을 누락시킴으로써 서버가 클라이언트 응답을 기다리며 불필요한 자원을 소비하도록 만들 수 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="95,432,228,446">
+<h2>느린 DoS 위협</h2>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="95,475,905,552">
+<p>느린 DoS 공격은 많은 관심을 끌었으며, 몇 가지 완화 전략이 제안되었습니다. 그러나 반복적으로 나타나는 발견은 이러한 유형의 공격이 정확하고 신뢰성 있게 탐지하기 어렵다는 것입니다. 이는 공격이 정당한 사용자가 반복적인 대역폭이나 간헐적인 노드 간 연결을 경험하는 것으로 분류될 수 있기 때문입니다. 이로 인해 이러한 진정한 노드가 전통적인 IDS에 의해 잘못된 느린 DoS 공격으로 분류될 수 있습니다. 느린 DoS 공격자의 동기는 대상 웹 서버에 정당한 요청을 포화시키고 서버 자원을 확장하여 운영 서비스를 방해하는 것입니다. Apache HTTP 웹 서버는 크기와 설치의 용이성 때문에 가장 일반적인 인터넷 서버 중 하나로, 웹 기반 인터페이스가 필요한 IoT 장치에 이상적인 선택입니다. 이러한 웹 서버에 악의적인 공격을 가하기 위해 몇 가지 느린 DoS 변종이 등장했으며, 주요 변종은 다음과 같습니다:</p>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="121,583,903,740">
+<ul>
+<li>Slow Read: 이 공격은 TCP 윈도우 크기 매개변수를 악용하여, 동의된 크기와의 불일치로 인해 공격 클라이언트가 서버로부터 응답을 매우 느리게 읽어들여 성능을 저하시킵니다 [14].</li>
+<li>RUDY 또는 Slow HTTP Post: 이 공격은 POST 데이터를 메시지 본문으로 보내며, 이는 매우 느린 속도로 서버로 다시 전송됩니다. 이 속도는 분단 단일 바이트로 줄일 수 있습니다 [15]. RUDY는 웹 서버의 스테드 기본 기능을 표적으로 삼아 모든 사용 가능한 소켓을 차지합니다.</li>
+<li>범위 공격: 이 공격은 HTTP 서버의 범위 요청 기능의 취약점을 표적으로 상습니다. 범위 값은 바이트 단위로 지정되며, 예를 들어 0-50입니다. 공격자는 긴 바이트 스트림을 요청하여 일부가 불법적으로 중첩되도록 함으로써 서버가 자원을 낭비하도록 만듭니다.</li>
+<li>Slowloris: 공격자는 부분적인 HTTP GET 요청을 보내고, 서버는 연결을 열지만, 공격자는 서버와 연결을 완료하기 위해 응답하지 않도록 고의로 하여 타임아웃 값이 도달할 때까지 소켓을 열어둡니다 [16].</li>
+<li>여러 연결 요청이 모든 사용 가능한 웹 서버 소켓을 차지할 수 있습니다. 이 느린 DoS 변종은 LNI에 새로운 연결 또는 느린 연결을 가질 때 진정한 네트워크 활동으로 잘못 인식되기 때문에, 본 논문의 나머지 부분은 이 느린 DoS 공격에 초점을 맞추며, 현재 특정 위협 상황에서 사용되는 탐지 접근법에서 가장 흔한 공격입니다.</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="95,772,896,877">
+<h2>ML 분류기의 성능, 특히 Naive Bayes, Random Forest, Decision Tree, K Nearest Neighbour 및 Multilayer Perceptron이 DDoS 공격 탐지에 대한 분석이 [9]에서 수행되었습니다. 이 평가는 CIDS-001(Coburg Intrusion Detection)이라는 막대한 데이터 셋에서 이루어졌으며, 이는 3200만 개 이상의 네트워크 이벤트를 포함하는 종합적인 데이터셋입니다. 그러나 분석을 위해 데이터셋의 일부만(150만 개의 네트워크 이벤트)이 추출되었기 때문에, IDS 결과는 시간 IoT 환경에서 평가 목적으로 실질적으로 적용하기 어렵습니다.</h2>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="95,908,905,940">
+<p>[11]에서 제안된 대안적 접근법은 PCAP(패킷 캡처) 이벤트 분석을 통해 최소값의 불완전한 HTTP GET 요청을 사용하여 Slowloris 공격 탐지 경보를 생성하는 것입니다. 이 설정은 실시간 환경을 사용했지만, 시뮬레이션된 트래픽 시나리오만 고려했습니다. 패킷 분석은 또한 서명 기반 기술 [19]에서 공격 탐지를 위해 사용되었습니다.</p>
+</div>
+</div>
+</body>
+</html>

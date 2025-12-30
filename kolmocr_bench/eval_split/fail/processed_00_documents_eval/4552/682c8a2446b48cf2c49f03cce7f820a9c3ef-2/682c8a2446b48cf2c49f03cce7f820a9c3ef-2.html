@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: markdown */
+[data-id="b001"] {
+  font-family: monospace;
+  font-size: calc(0.9em * var(--font-scale));
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Block b002: DOWNLOAD link */
+[data-id="b002"] {
+  font-weight: bold;
+  font-size: calc(1.1em * var(--font-scale));
+  color: #000;
+  margin: 15px 0;
+}
+
+[data-id="b002"] strong {
+  color: #000080;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Block b003: Table container */
+[data-id="b003"] {
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-id="b003"] .table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+[data-id="b003"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.95em * var(--font-scale));
+}
+
+[data-id="b003"] .data-table th,
+[data-id="b003"] .data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+[data-id="b003"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b003"] .data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+[data-id="b003"] .data-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.06rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #742004;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.75rem;
+  color: rgba(156, 47, 11, 0.841);
+  border-left: 4px solid #b84304;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #ef5b05d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #cf3704;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(239, 107, 6, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 1.0rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(221, 64, 7, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.25rem;
+  color: #5a2202;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #c05c05;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.4rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.3rem;
+  color: #161211;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.43rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,70,186,86">
+<p>markdown</p>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,99,497,115">
+<p>다운로드를 클릭하여 전체 기사 읽기: <strong>DOWNLOAD</strong></p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="105,129,904,219">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>진화 연구 학회 (The Society for the Study of Evolution)의 사무총장인 줄리 스톤(Judy Stone)에게, www.elaphe.it에서 전체 기사를 게재할 수 있도록 혀락해 주신 데 대해 감사드립니다.</th></tr>
+</thead>
+<tbody>
+<tr><td>This markdown code maintains the structure of the original text and includes the table in HTML format as requested.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

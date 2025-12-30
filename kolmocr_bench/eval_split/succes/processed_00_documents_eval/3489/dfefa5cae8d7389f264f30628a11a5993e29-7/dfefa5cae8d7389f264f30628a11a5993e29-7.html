@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: normal;
+  color: #555;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 15px 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 8px;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b006"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  color: #333;
+  margin: 15px 0;
+  text-align: justify;
+}
+
+.block[data-id="b005"] h4 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 25px 0 10px 0;
+  border-bottom: 1px solid #3498db;
+  padding-bottom: 5px;
+}
+
+/* General paragraph styling for consistency */
+.document p {
+  margin: 15px 0;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+}
+
+/* Ensure headings are not too large and maintain readability */
+h2, h4 {
+  font-family: '은 궁서', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Optional: Add some spacing between blocks */
+.block {
+  margin-bottom: 15px;
+}
+
+/* Ensure no extra padding or margin on the document container */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.45rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #e6edf7;
+  font-family: "맑은 고딕", serif;
+  color: #0f172a;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+}
+
+.block[data-class="header"] {
+  font-size: 0.75rem;
+  letter-spacing: 0.25rem;
+  color: #475569;
+}
+
+.block[data-class="table"] {
+  border: 1px dashed rgba(15, 118, 110, 0.6);
+  padding: 14px;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.85rem;
+  color: #1e1b4b;
+  text-indent: -1.3em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #475569;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.4rem;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.49rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="key_value" data-id="b001" data-bbox="104,61,146,78">
+<h2>yaml</h2>
+</div>
+<div class="block" data-class="title" data-id="b002" data-bbox="104,115,885,211">
+<h2>title: "Dayton 소방서의 페이네 총감이 논의한 사항"</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,249,905,360">
+<p>Dayton 소방서의 페이네 총감은 그의 인원 복지가 최우선 과제임을 논의했다. 그는 가정적 암 법안의 진척 상황을 지지하고 모니터링하며, 이 주제에 대해 상당히 잘 알고 있는 것으로 보인다. 그가 현재 진행 중인 암 예방 조치로는 모든 소방관에게 두 세트의 출동 장비를 구입하고, 새로운 세탁기/추출기를 구입하여 장비를 청소하며, 재정비 작업 중 SCBA(자기 부양 호흡 장비)의 사용을 장려하는 것이 포함된다. 그는 내가 기억하기로는 건강/웰빙 및 그의 소방서에서의 적용 가능성을 광범위하게 논의한 유일한 총감이었다. 페이네 총감은 또한 고등 교육을 지지하는 사람으로, 최근에 해군 사후대학에서 석사 학위를 받았다.</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,381,905,549">
+<p>Columbus 소방부는 오하이오 주에서 가장 큰 소방서로, 34개의 소방서에 약 1,500명의 인원을 배치하고 있다. 오'코너 총감은 그의 2억 3,000만 달러의 예산에 대해 논의하며, 금전적 문제를 어떻게 관리하는지에 대한 통찰을 제공했다. 그는 지속적으로 재정적 책임을 다하는 데 도전을 받고 있으며, 예산의 93%가 인력 운영에 사용된다는 점에서 예산 삭감이 인력에 영향을 미칠 것이라고 말했다. 그는 필요에 따라 요청하고, 그 요청을 정당화할 수 있는 능력을 강조했다. 그는 데이터, 그 데이터의 가치와 중요성에 대해 논의하며, "악랄한 문제"라고 이전에 지적된 사항을 언급했다. 그는 단위/인력 배치를 정당화하기 위해 활용 보고서에 의존한다고 말했는데, 이 접근 방식이 흥미로웠다. 만약 활용 수치가 낮다면, 인력 수준은 부서의 표준 응답 시간 기준(4분)에 의해 지원된다. 그는 "소방서 총감으로서 나는 올바른 일을 해야 한다"는 점을 강조하며, 이는 항상 최선의 접근 방식이라고 생각한다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="104,578,190,596">
+<h4>추천 사항</h4>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,625,905,717">
+<p>이 수업을 즐겼으며, 다양한 규모의 부서의 총감들과의 대화가 제공하는 전망을 보았다. 이 수업은 온라인으로 진행하는 것은 거의 불가능에 가까운, 심지어 범죄에 가까운 일이라고 생각한다. 총감들과의 일대일 회의는 귀중한 경험이었다. 한 가지 우려는 여행이었다. 개인적으로 나는 여행에 반대하지 않았지만, 이 수업 동안 520마일을 운전했다. 하지만, 나는 여행 요구 사항을 과정 설명에 포함시키는 것이 좋을 것이라고 생각한다. 이 점을 널리 알리는 것이 중요하다.</p>
+</div>
+</div>
+</body>
+</html>

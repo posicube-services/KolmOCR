@@ -9,7 +9,6 @@ from typing import Dict, List, Optional, Set, Tuple, Union
 
 import numpy as np
 from bs4 import BeautifulSoup
-from fuzzysearch import find_near_matches
 from rapidfuzz import fuzz
 from tqdm import tqdm
 

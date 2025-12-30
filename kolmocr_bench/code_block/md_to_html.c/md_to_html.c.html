@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko"><head><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+
+<body>
+  <meta charset="utf-8">
+  <title>Log Analyzer (A4 1-page)</title>
+
+  <!-- Prism -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <style>
+    /* =========================
+   A4 1-page hard fit
+   - @page margin 0
+   - 여백은 .page padding으로만 관리
+========================= */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #111;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* =========================
+   Page container
+========================= */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      padding: 10mm;
+      /* ✅ 단 하나의 여백(권장 8~12mm) */
+      box-sizing: border-box;
+      overflow: hidden;
+      /* 1페이지 강제 */
+      position: relative;
+      background: #fff;
+    }
+
+    /* 화면에서 용지 느낌(원치 않으면 삭제 가능) */
+    @media screen {
+      body {
+        background: #f3f4f6;
+      }
+
+      .page {
+        margin: 16px auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    /* =========================
+   Fit wrapper (scale 대상)
+========================= */
+    .fit {
+      --fit-scale: 1;
+      transform: scale(var(--fit-scale));
+      transform-origin: top left;
+      width: calc(100% / var(--fit-scale));
+    }
+
+    /* =========================
+   Single column
+========================= */
+    .document {
+      column-count: 1;
+      column-gap: 0;
+    }
+
+    /* =========================
+   Paragraph blocks (DLA bbox 단위)
+========================= */
+    .block {
+      margin-bottom: 5px;
+      padding: 0;
+      break-inside: avoid;
+    }
+
+    /* =========================
+   Code style (extra compact)
+========================= */
+    pre {
+      margin: 0;
+      padding: 6px 9px;
+      background: #0f172a;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo,
+        Consolas, "Liberation Mono", monospace;
+      font-size: 8.1pt;
+      line-height: 1.18;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    /* Prism print tuning */
+    .token.comment {
+      color: #94a3b8;
+    }
+
+    .token.keyword {
+      color: #60a5fa;
+    }
+
+    .token.string {
+      color: #a7f3d0;
+    }
+
+    .token.number {
+      color: #fcd34d;
+    }
+
+    .token.function {
+      color: #f472b6;
+    }
+
+    @media print {
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+
+      body {
+        background: #fff;
+      }
+    }
+
+    .block:last-child {
+      margin-bottom: 0;
+    }
+
+    .document {
+      padding-bottom: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+
+
+
+  <div class="page" id="page">
+    <div class="fit" id="fit" style="--fit-scale: 0.7253;" data-fit-locked="1">
+      <div class="document">
+
+        <!-- Imports -->
+        <div class="block" data-id="b001" data-type="code" data-role="imports" data-bbox="48,39,904,52">
+          <pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">from</span> collections <span class="token keyword">import</span> Counter</code></pre>
+        </div>
+
+        <!-- Menu -->
+        <div class="block" data-id="b002" data-type="code" data-role="function" data-bbox="48,96,904,83">
+          <pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">print_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\n== Log Analyzer =="</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"1.Errors  2.Count  3.Search  0.Exit"</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"&gt; "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+        </div>
+
+        <!-- File reader -->
+        <div class="block" data-id="b003" data-type="code" data-role="function" data-bbox="48,183,904,114">
+          <pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">read_lines</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"File not found."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">,</span> errors<span class="token operator">=</span><span class="token string">"ignore"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+        </div>
+
+        <!-- Error filter -->
+        <div class="block" data-id="b004" data-type="code" data-role="function" data-bbox="48,302,904,83">
+          <pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">show_errors</span><span class="token punctuation">(</span>lines<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> line <span class="token keyword">in</span> lines<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token string">"ERROR"</span> <span class="token keyword">in</span> line<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>line<span class="token punctuation">.</span>rstrip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+        </div>
+
+        <!-- Level counter -->
+        <div class="block" data-id="b005" data-type="code" data-role="function" data-bbox="48,390,904,207">
+          <pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">count_levels</span><span class="token punctuation">(</span>lines<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    levels <span class="token operator">=</span> Counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> line <span class="token keyword">in</span> lines<span class="token punctuation">:</span>
+        u <span class="token operator">=</span> line<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">"ERROR"</span> <span class="token keyword">in</span> u<span class="token punctuation">:</span>
+            levels<span class="token punctuation">[</span><span class="token string">"ERROR"</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> <span class="token string">"WARN"</span> <span class="token keyword">in</span> u<span class="token punctuation">:</span>
+            levels<span class="token punctuation">[</span><span class="token string">"WARN"</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> <span class="token string">"INFO"</span> <span class="token keyword">in</span> u<span class="token punctuation">:</span>
+            levels<span class="token punctuation">[</span><span class="token string">"INFO"</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">"ERROR"</span><span class="token punctuation">,</span><span class="token string">"WARN"</span><span class="token punctuation">,</span><span class="token string">"INFO"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>k<span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>levels<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></code></pre>
+        </div>
+
+        <!-- Keyword search -->
+        <div class="block" data-id="b006" data-type="code" data-role="function" data-bbox="48,602,904,98">
+          <pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">search_keyword</span><span class="token punctuation">(</span>lines<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    kw <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Keyword: "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> line <span class="token keyword">in</span> lines<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> kw <span class="token keyword">and</span> kw <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>line<span class="token punctuation">.</span>rstrip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+        </div>
+
+        <!-- Main -->
+        <div class="block" data-id="b007" data-type="code" data-role="entrypoint" data-bbox="48,705,904,253">
+          <pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    path <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Log file path: "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    lines <span class="token operator">=</span> read_lines<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> lines<span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        c <span class="token operator">=</span> print_menu<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> c <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">:</span> show_errors<span class="token punctuation">(</span>lines<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> c <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">:</span> count_levels<span class="token punctuation">(</span>lines<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> c <span class="token operator">==</span> <span class="token string">"3"</span><span class="token punctuation">:</span> search_keyword<span class="token punctuation">(</span>lines<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> c <span class="token operator">==</span> <span class="token string">"0"</span><span class="token punctuation">:</span> <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Unknown."</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function highlightThenFit() {
+      if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+      requestAnimationFrame(() => requestAnimationFrame(fitToOnePage));
+    }
+
+    function fitToOnePage() {
+      const page = document.getElementById("page");
+      const fit = document.getElementById("fit");
+      if (!page || !fit) return;
+
+      // reset
+      fit.style.setProperty("--fit-scale", 1);
+
+      // padding 제외한 사용 가능 높이
+      const styles = getComputedStyle(page);
+      const padTop = parseFloat(styles.paddingTop) || 0;
+      const padBot = parseFloat(styles.paddingBottom) || 0;
+      const availableH = page.clientHeight - padTop - padBot;
+
+      const contentH = fit.scrollHeight;
+
+      if (contentH > availableH) {
+        let scale = availableH / contentH;
+        scale = Math.floor(scale * 10000) / 10000;
+        fit.style.setProperty("--fit-scale", scale);
+      }
+    }
+
+    window.addEventListener("load", highlightThenFit);
+    window.addEventListener("resize", fitToOnePage);
+    window.addEventListener("beforeprint", fitToOnePage);
+  </script>
+
+
+
+
+
+</body></html>

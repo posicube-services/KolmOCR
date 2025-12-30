@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>외국환매입신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12pt;
+      color: #111;
+      background: #fff;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .section {
+      margin-bottom: 20px;
+      border: 1px solid #999;
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .section-title {
+      text-align: center;
+      font-weight: bold;
+      background: #999999;
+      color: #fff;
+      padding: 6px;
+      margin: 0 0 10px 0;
+      border-radius: 3px;
+    }
+    .sub-section {
+      margin: 10px 0;
+      padding: 8px;
+      background: #e8e8e8;
+      border: 1px dashed #bbb;
+      border-radius: 3px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 -5px;
+    }
+    .field {
+      flex: 1 1 48%;
+      padding: 0 5px;
+      min-width: 200px;
+    }
+    .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+    }
+    .value {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 6px;
+      min-height: 24px;
+      text-align: right;
+      word-break: break-all;
+      border-radius: 2px;
+    }
+    .full-width {
+      flex: 1 1 100%;
+    }
+    .two-columns {
+      flex: 1 1 48%;
+    }
+    .three-columns {
+      flex: 1 1 31%;
+    }
+    .four-columns {
+      flex: 1 1 23%;
+    }
+  </style>
+</head>
+<body>
+  <h1>외국환매입신청서</h1>
+
+  <!-- 섹션 1: 신청인 기본정보 -->
+  <div class="section">
+    <div class="section-title">신청인 기본정보</div>
+
+    <div class="sub-section">
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">신분증 종류</div>
+          <div class="value">주민등록증</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">휴대폰</div>
+          <div class="value">010-1234-5678</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">신분증 번호</div>
+          <div class="value">900101-1234567</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">이메일</div>
+          <div class="value">user@example.com</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">유효기간</div>
+          <div class="value">2030-12-31</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="row">
+        <div class="field full-width">
+          <div class="label">거주지 주소</div>
+          <div class="value">서울시 강남구 테헤란로 123</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">우편번호</div>
+          <div class="value">06123</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 2: 환전 정보 -->
+  <div class="section">
+    <div class="section-title">환전 정보</div>
+
+    <div class="sub-section">
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">환전 통화</div>
+          <div class="value">USD</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">목적 분류</div>
+          <div class="value">유학비</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">환전 금액</div>
+          <div class="value">1000</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">세부 사유</div>
+          <div class="value">미국 대학교 학비 지급</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">환율 적용일</div>
+          <div class="value">2025-04-05</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 3: 계좌정보 -->
+  <div class="section">
+    <div class="section-title">계좌정보</div>
+
+    <div class="sub-section">
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">은행명</div>
+          <div class="value">국민은행</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">인증 방법</div>
+          <div class="value">전화 인증</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">계좌번호</div>
+          <div class="value">123-456-789012</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">인증 일시</div>
+          <div class="value">2025-04-05 14:30:00</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">예금주명</div>
+          <div class="value">홍길동</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 4: 거래내역 -->
+  <div class="section">
+    <div class="section-title">거래내역</div>
+
+    <div class="sub-section">
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">거래일</div>
+          <div class="value">2025-03-01</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">통화</div>
+          <div class="value">USD</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">금액</div>
+          <div class="value">500</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">상태</div>
+          <div class="value">완료</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">연간 누적</div>
+          <div class="value">5000</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">당월 누적</div>
+          <div class="value">1000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 5: 서명 및 동의 -->
+  <div class="section">
+    <div class="section-title">서명 및 동의</div>
+
+    <div class="sub-section">
+      <div class="row">
+        <div class="field two-columns">
+          <div class="label">서명 이미지</div>
+          <div class="value">서명 이미지</div>
+        </div>
+        <div class="field two-columns">
+          <div class="label">

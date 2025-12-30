@@ -1,0 +1,50 @@
+# Pipeline to run vLLM-backed inference and evaluation.
+# Usage:
+#   python scripts/run_kolmocr_infer_and_eval.py --config configs/pipeline/kolmocr_vllm.yaml --cuda-visible-devices 0,1
+
+run_id: kolmocr_bench_kolmocr_eval_251229
+cuda_visible_devices: "0,1,2,3"
+
+inference:
+  script: olmocr/inference_kolmocr.py
+  config: null # Do not load default transformer.yaml
+  checkpoint: /AIEngine7T/nfs_dir107/checkpoints/qwen2.5-vl-7b-olmocrv4_1epoch_ko_mix1223/checkpoint-3182
+  tokenizer: /AIEngine7T/nfs_dir107/checkpoints/qwen2.5-vl-7b-olmocrv4_1epoch_ko_mix1223/checkpoint-3182 # optional; defaults to checkpoint
+  input_dir: kolmocr_bench
+  output_dir: output/{run_id}/pred/
+  # REQUIRED: Specify which prompt function to use from olmocr/prompts/prompts.py
+  # If not specified, will raise error with list of available functions
+  prompt_function: build_no_anchoring_v4_yaml_prompt_with_bbox_wo_frontmatter
+  # Bbox normalization: true if bboxes are already at image scale, false if they need normalization from 1000x1000
+  is_normalized_bbox: true
+  max_new_tokens: 4000
+  temperature: 0.2
+  top_p: 0.9
+  num_workers: 16
+  # 다른 모델과 동시에 돌릴 때는 api_base의 port 번호를 변경해야 함.
+  api_base: http://localhost:8000/v1
+  api_key: EMPTY
+  launch_vllm: true
+  tensor_parallel_size: 4
+  gpu_memory_utilization: 0.7
+  max_model_len: 16000
+
+evaluate:
+  script: olmocr/kolmocr_eval/scripts/evaluate.py
+  config: null # Do not load default eval config
+  pred_dir: output/{run_id}/pred/
+  gt_dir: kolmocr_bench
+  output_dir: output/{run_id}/eval
+  metrics:
+    - text_edit
+    - table_f1
+    - table_TEDS
+    - table_TEDS_S
+    - code_TED
+    - image_iou
+    - reading_order
+    - overall
+  threshold_headings: 1
+  threshold_table: 0.6
+  version: "1.10"
+  text_include_f1: true

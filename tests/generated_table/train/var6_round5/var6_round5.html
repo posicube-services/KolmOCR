@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border: 2px solid #444;
+            border-collapse: collapse;
+            table-layout: fixed;
+            word-break: break-all;
+            margin-bottom: 20px;
+        }
+        th {
+            background: #666666;
+            color: #fff;
+            padding: 8px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #999;
+            font-size: 14px;
+        }
+        td {
+            background: #e0e0e0;
+            border: 1px solid #666;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .section-header {
+            background: #555555;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .sub-header {
+            background: #777777;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 6px;
+            font-size: 14px;
+        }
+        .value-cell {
+            text-align: left;
+        }
+        .right-align {
+            text-align: right;
+        }
+        .multi-line {
+            white-space: normal;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>공동명의계좌개설동의서</h1>
+
+    <!-- 섹션 1: 기본정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">기본정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">공동명의자 1 - 개인정보</th>
+            <th colspan="2" class="sub-header">공동명의자 1 - 주소정보</th>
+        </tr>
+        <tr>
+            <th>이름</th><td class="value-cell">홍길동</td>
+            <th>주소</th><td class="value-cell multi-line">서울특별시 강남구 테헤란로 123</td>
+        </tr>
+        <tr>
+            <th>주민등록번호</th><td class="value-cell right-align">900101-1234567</td>
+            <th>우편번호</th><td class="value-cell right-align">06123</td>
+        </tr>
+        <tr>
+            <th>휴대폰번호</th><td class="value-cell right-align">010-1234-5678</td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="sub-header">공동명의자 2 - 개인정보</th>
+            <th colspan="2" class="sub-header">공동명의자 2 - 주소정보</th>
+        </tr>
+        <tr>
+            <th>이름</th><td class="value-cell">김철수</td>
+            <th>주소</th><td class="value-cell multi-line">부산광역시 해운대구 센텀동로 56</td>
+        </tr>
+        <tr>
+            <th>주민등록번호</th><td class="value-cell right-align">850505-2345678</td>
+            <th>우편번호</th><td class="value-cell right-align">48058</td>
+        </tr>
+        <tr>
+            <th>휴대폰번호</th><td class="value-cell right-align">010-9876-5432</td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="sub-header">공동명의자 3 - 개인정보</th>
+            <th colspan="2" class="sub-header">공동명의자 3 - 주소정보</th>
+        </tr>
+        <tr>
+            <th>이름</th><td class="value-cell">이영희</td>
+            <th>주소</th><td class="value-cell multi-line">대구광역시 수성구 달구벌대로 1000</td>
+        </tr>
+        <tr>
+            <th>주민등록번호</th><td class="value-cell right-align">920815-3456789</td>
+            <th>우편번호</th><td class="value-cell right-align">42285</td>
+        </tr>
+        <tr>
+            <th>휴대폰번호</th><td class="value-cell right-align">010-2345-6789</td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <th colspan="4" class="sub-header">계좌 기본정보</th>
+        </tr>
+        <tr>
+            <th>계좌 종류</th><td class="value-cell">예금계좌</td>
+            <th>통장 발행 여부</th><td class="value-cell">예</td>
+        </tr>
+        <tr>
+            <th>계좌 개설일</th><td class="value-cell right-align">2025-04-05</td>
+            <td colspan="2"></td>
+        </tr>
+    </table>
+
+    <!-- 섹션 2: 권한 및 거래 설정 -->
+    <table>
+        <tr><th colspan="4" class="section-header">권한 및 거래 설정</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">거래 권한 설정</th>
+            <th colspan="2" class="sub-header">거래 한도 설정</th>
+        </tr>
+        <tr>
+            <th>입금 권한</th><td class="value-cell">예</td>
+            <th>일일 출금 한도</th><td class="value-cell right-align">1000000</td>
+        </tr>
+        <tr>
+            <th>출금 권한</th><td class="value-cell">예</td>
+            <th>월별 거래 한도</th><td class="value-cell right-align">10000000</td>
+        </tr>
+        <tr>
+            <th>모든 거래 권한</th><td class="value-cell">예</td>
+            <th>최대 거래 금액</th><td class="value-cell right-align">5000000</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 3: 거래내역 및 통지 설정 -->
+    <table>
+        <tr><th colspan="4" class="section-header">거래내역 및 통지 설정</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">거래내역 조회</th>
+            <th colspan="2" class="sub-header">통지 설정</th>
+        </tr>
+        <tr>
+            <th>조회 방식</th><td class="value-cell">모바일 뱅킹</td>
+            <th>SMS 통지</th><td class="value-cell">예</td>
+        </tr>
+        <tr>
+            <th>조회 주기</th><td class="value-cell">매일</td>
+            <th>이메일 통지</th><td class="value-cell">예</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <th>앱 푸시 알림</th><td class="value-cell">예</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 4: 서명 및 동의 -->
+    <table>
+        <tr><th colspan="4" class="section-header">서명 및 동의</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">공동명의자 서명</th>
+            <th colspan="2" class="sub-header">은행 직원 확인</th>
+        </tr>
+        <tr>
+            <th>서명란 1</th><td class="value-cell">홍길동</td>
+            <th>직원 이름</th><td class="value-cell">김은행</td>
+        </tr>
+        <tr>
+            <th>서명일 1</th><td class="value-cell right-align">2025-04-05</td>
+            <th>확인 일자</th><td class="value-cell right-align">2025-04-05</td>
+        </tr>

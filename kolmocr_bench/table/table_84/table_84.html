@@ -1,311 +1,544 @@
 <!DOCTYPE html>
-<html lang="ko">
 
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>법인인감증명서 첨부양식</title>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
 
-  <style>
-    /* ==============================
-     A4 PRINT OPTIMIZATION
-  =============================== */
-    @page {
-      size: A4;
-      margin: 12mm 14mm 14mm 14mm;
-    }
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
 
-    @media print {
-      body {
-        margin: 0 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-    }
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
 
-    /* ==============================
-     기본 문서 스타일
-  =============================== */
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 11pt;
-      background: #ffffff;
-      color: #222;
-      max-width: 190mm;
-      margin: 18mm auto;
-      line-height: 1.55;
-    }
 
-    h1 {
-      text-align: center;
-      font-size: 22pt;
-      font-weight: 700;
-      margin-bottom: 18px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #003a8c;
-      color: #003a8c;
-    }
 
-    /* ==============================
-     테이블 스타일
-  =============================== */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 22px;
-      table-layout: fixed;
-    }
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
 
-    th {
-      background: #003a8c;
-      color: #fff;
-      font-weight: 600;
-      padding: 8px;
-      border: 1px solid #2b4f80;
-      font-size: 12pt;
-      text-align: center;
-    }
 
-    td {
-      background: #eef5ff;
-      border: 1px solid #cfd8e5;
-      padding: 8px;
-      font-size: 11pt;
-      color: #111;
-      vertical-align: middle;
-      word-break: break-all;
-    }
 
-    /* ==============================
-     라벨 및 값
-  =============================== */
-    .label {
-      background: #d9e6f7;
-      font-weight: 600;
-      text-align: center;
-      color: #003a8c;
-    }
+/* Block b001: Title */
+[data-id="b001"] h1 {
+  font-size: calc(18pt * var(--font-scale));
+  font-weight: bold;
+  color: #002b5b;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid #002b5b;
+  padding-bottom: 5px;
+}
 
-    .value {
-      background: #ffffff;
-      text-align: left;
-      color: #111;
-    }
+/* Block b002, b006, b009, b017, b026: Table Containers */
+[data-id="b002"] .table-container,
+[data-id="b006"] .table-container,
+[data-id="b009"] .table-container,
+[data-id="b017"] .table-container,
+[data-id="b026"] .table-container {
+  margin: 15px 0;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
 
-    /* ==============================
-     섹션 헤더
-  =============================== */
-    .section-header {
-      background: #003a8c;
-      color: #ffffff;
-      padding: 9px;
-      font-size: 14pt;
-      font-weight: 700;
-      text-align: center;
-      border: 1px solid #2b4f80;
-    }
+/* Table headers */
+[data-id="b002"] .data-table th,
+[data-id="b006"] .data-table th,
+[data-id="b009"] .data-table th,
+[data-id="b017"] .data-table th,
+[data-id="b026"] .data-table th {
+  background-color: #002b5b;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #002b5b;
+}
 
-    .sub-header {
-      background: #d9e6f7;
-      color: #003a8c;
-      font-weight: 600;
-      padding: 7px;
-      font-size: 12pt;
-      text-align: center;
-      border: 1px solid #bfcfe5;
-    }
+/* Table data cells */
+[data-id="b002"] .data-table td,
+[data-id="b006"] .data-table td,
+[data-id="b009"] .data-table td,
+[data-id="b017"] .data-table td,
+[data-id="b026"] .data-table td {
+  border: 1px solid #002b5b;
+  padding: 8px;
+  text-align: left;
+  font-size: calc(10pt * var(--font-scale));
+}
 
-    .center {
-      text-align: center;
-    }
+/* Table row alternating background (optional for readability) */
+[data-id="b002"] .data-table tr:nth-child(even),
+[data-id="b006"] .data-table tr:nth-child(even),
+[data-id="b009"] .data-table tr:nth-child(even),
+[data-id="b017"] .data-table tr:nth-child(even),
+[data-id="b026"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
 
-    .right {
-      text-align: right;
-    }
-  </style>
+/* Table header row spanning */
+[data-id="b002"] .data-table th[colspan="4"],
+[data-id="b006"] .data-table th[colspan="4"],
+[data-id="b009"] .data-table th[colspan="4"],
+[data-id="b017"] .data-table th[colspan="4"],
+[data-id="b026"] .data-table th[colspan="4"] {
+  font-size: calc(12pt * var(--font-scale));
+  padding: 12px;
+}
+
+/* Specific styling for "첨부서류 목록" and "활용 내역" sub-headers */
+[data-id="b009"] .data-table th[colspan="4"]:nth-child(2),
+[data-id="b017"] .data-table th[colspan="4"]:nth-child(2) {
+  font-size: calc(11pt * var(--font-scale));
+  padding: 8px;
+}
+
+/* Specific styling for "사용 제한 사항" row */
+[data-id="b017"] .data-table tr td:nth-child(1)[rowspan="1"] {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+/* Specific styling for "서명 및 날인" section */
+[data-id="b026"] .data-table td:nth-child(4) {
+  text-align: center;
+  font-style: italic;
+}
+
+/* General table styling */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+/* Ensure consistent spacing between blocks */
+.block {
+  margin-bottom: 15px;
+}
+
+/* Optional: Add some padding to the document body */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.15rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1px solid #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.03rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
 </head>
-
 <body>
-
-  <h1>법인인감증명서 첨부양식</h1>
-
-  <!-- ============================
-     1. 기본정보
-============================ -->
-  <table>
-    <tr>
-      <th colspan="4" class="section-header">기본정보</th>
-    </tr>
-
-    <tr>
-      <td class="label">법인명</td>
-      <td class="value">삼성전자 주식회사</td>
-      <td class="label">사업자등록번호</td>
-      <td class="value">123-45-67890</td>
-    </tr>
-
-    <tr>
-      <td class="label">법인등록번호</td>
-      <td class="value">11011-123456789</td>
-      <td class="label">대표자명</td>
-      <td class="value">김삼성</td>
-    </tr>
-
-    <tr>
-      <td class="label">대표자 직위</td>
-      <td class="value">대표이사</td>
-      <td class="label">대표 연락처</td>
-      <td class="value">02-1234-5678</td>
-    </tr>
-  </table>
-
-  <!-- ============================
-     2. 인감정보
-============================ -->
-  <table>
-    <tr>
-      <th colspan="4" class="section-header">인감정보</th>
-    </tr>
-
-    <tr>
-      <td class="label">인감 종류</td>
-      <td class="value">대표이사 인감</td>
-      <td class="label">인감 등록일</td>
-      <td class="value">2020-03-15</td>
-    </tr>
-
-    <tr>
-      <td class="label">인감부본 파일</td>
-      <td class="value">인감부본_20250101.pdf</td>
-      <td class="label">부본 확인일</td>
-      <td class="value">2025-01-05</td>
-    </tr>
-  </table>
-
-  <!-- ============================
-     3. 첨부서류
-============================ -->
-  <table>
-    <tr>
-      <th colspan="4" class="section-header">첨부서류</th>
-    </tr>
-
-    <tr>
-      <td class="label">법인등기부등본</td>
-      <td class="value">등기부등본_20250101.pdf</td>
-      <td class="label">사업자등록증 사본</td>
-      <td class="value">사업자등록증_20250101.jpg</td>
-    </tr>
-
-    <!-- 세부 서류 테이블 -->
-    <tr>
-      <th colspan="4" class="sub-header">첨부서류 목록</th>
-    </tr>
-
-    <tr>
-      <th>서류명</th>
-      <th>발행일자</th>
-      <th>유효기간</th>
-      <th>첨부여부</th>
-    </tr>
-
-    <tr>
-      <td class="value">법인등기부등본</td>
-      <td class="center value">2025-01-01</td>
-      <td class="center value">2026-01-01</td>
-      <td class="center value">Y</td>
-    </tr>
-
-    <tr>
-      <td class="value">사업자등록증</td>
-      <td class="center value">2025-01-02</td>
-      <td class="center value">2026-01-02</td>
-      <td class="center value">Y</td>
-    </tr>
-
-    <tr>
-      <td class="value">대표자 신분증</td>
-      <td class="center value">2025-01-03</td>
-      <td class="center value">2026-01-03</td>
-      <td class="center value">Y</td>
-    </tr>
-
-  </table>
-
-  <!-- ============================
-     4. 사용 목적 및 활용 내역
-============================ -->
-  <table>
-    <tr>
-      <th colspan="4" class="section-header">사용 목적 및 활용 내역</th>
-    </tr>
-
-    <tr>
-      <td class="label">사용 목적</td>
-      <td colspan="3" class="value">금융 거래, 계약서 발급, 대외 제출용</td>
-    </tr>
-
-    <tr>
-      <th colspan="4" class="sub-header">활용 내역</th>
-    </tr>
-
-    <tr>
-      <th>날짜</th>
-      <th>활용 내용</th>
-      <th>담당자</th>
-      <th>비고</th>
-    </tr>
-
-    <tr>
-      <td class="center value">2025-01-10</td>
-      <td class="value">은행 계좌 개설 제출</td>
-      <td class="center value">이은행</td>
-      <td class="center value">완료</td>
-    </tr>
-
-    <tr>
-      <td class="center value">2025-02-15</td>
-      <td class="center value">신용카드 발급 심사 제출</td>
-      <td class="center value">박카드</td>
-      <td class="center value">진행중</td>
-    </tr>
-
-    <tr>
-      <td class="center value">2025-03-05</td>
-      <td class="center value">대출 심사 서류 제출</td>
-      <td class="center value">김대출</td>
-      <td class="center value">대기</td>
-    </tr>
-
-    <tr>
-      <td class="label">사용 제한 사항</td>
-      <td colspan="3" class="value">본 서류는 타인에게 양도하거나 위임할 수 없습니다.</td>
-    </tr>
-
-  </table>
-
-  <!-- ============================
-     5. 서명 및 날인
-============================ -->
-  <table>
-    <tr>
-      <th colspan="4" class="section-header">서명 및 날인</th>
-    </tr>
-
-    <tr>
-      <td class="label">대표자 서명</td>
-      <td class="value">김삼성</td>
-      <td class="label">법인 인감 날인</td>
-      <td class="value">※ 인감 날인 완료</td>
-    </tr>
-
-    <tr>
-      <td class="label">작성일자</td>
-      <td class="value">2025-04-01</td>
-      <td class="label">비고</td>
-      <td class="value"></td>
-    </tr>
-  </table>
-
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,51,492,76">
+<h1>법인인감증명서 첨부양식</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="104,100,905,219">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">기본정보</th>
+</tr>
+<tr>
+<td>법인명</td>
+<td>삼성전자 주식회사</td>
+<td>사업자등록번호</td>
+<td>123-45-67890</td>
+</tr>
+<tr>
+<td>법인등록번호</td>
+<td>11011-123456789</td>
+<td>대표자명</td>
+<td>김삼성</td>
+</tr>
+<tr>
+<td>대표자 직위</td>
+<td>대표이사</td>
+<td>대표 연락처</td>
+<td>02-1234-5678</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b006" data-bbox="104,238,905,329">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">인감정보</th>
+</tr>
+<tr>
+<td>인감 종류</td>
+<td>대표이사 인감</td>
+<td>인감 등록일</td>
+<td>2020-03-15</td>
+</tr>
+<tr>
+<td>인감부본 파일</td>
+<td>인감부본_20250101.pdf</td>
+<td>부본 확인일</td>
+<td>2025-01-05</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b009" data-bbox="104,348,905,561">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">첨부서류</th>
+</tr>
+<tr>
+<td>법인등기부등본</td>
+<td>등기부등본_20250101.pdf</td>
+<td>사업자등록증 사본</td>
+<td>사업자등록증_20250101.jpg</td>
+</tr>
+<tr>
+<th colspan="4">첨부서류 목록</th>
+</tr>
+<tr>
+<th>서류명</th>
+<th>발행일자</th>
+<th>유효기간</th>
+<th>첨부여부</th>
+</tr>
+<tr>
+<td>법인등기부등본</td>
+<td>2025-01-01</td>
+<td>2026-01-01</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>사업자등록증</td>
+<td>2025-01-02</td>
+<td>2026-01-02</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>대표자 신분증</td>
+<td>2025-01-03</td>
+<td>2026-01-03</td>
+<td>Y</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b017" data-bbox="104,580,905,820">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">사용 목적 및 활용 내역</th>
+</tr>
+<tr>
+<td>사용 목적</td>
+<td colspan="3">금융 거래, 계약서 발급, 대외 제출용</td>
+</tr>
+<tr>
+<th colspan="4">활용 내역</th>
+</tr>
+<tr>
+<th>날짜</th>
+<th>활용 내용</th>
+<th>담당자</th>
+<th>비고</th>
+</tr>
+<tr>
+<td>2025-01-10</td>
+<td>은행 계좌 개설 제출</td>
+<td>이은행</td>
+<td>완료</td>
+</tr>
+<tr>
+<td>2025-02-15</td>
+<td>신용카드 발급 심사 제출</td>
+<td>박카드</td>
+<td>진행중</td>
+</tr>
+<tr>
+<td>2025-03-05</td>
+<td>대출 심사 서류 제출</td>
+<td>김대출</td>
+<td>대기</td>
+</tr>
+<tr>
+<td>사용 제한 사항</td>
+<td colspan="3">본 서류는 타인에게 양도하거나 위임할 수 없습니다.</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b026" data-bbox="104,839,905,931">
+<div class="table-container"><table class="data-table">
+<tr>
+<th colspan="4">서명 및 날인</th>
+</tr>
+<tr>
+<td>대표자 서명</td>
+<td>김삼성</td>
+<td>법인 인감 날인</td>
+<td>※ 인감 날인 완료</td>
+</tr>
+<tr>
+<td>작성일자</td>
+<td>2025-04-01</td>
+<td>비고</td>
+<td></td>
+</tr>
+</table></div>
+</div>
+</div>
 </body>
-
 </html>

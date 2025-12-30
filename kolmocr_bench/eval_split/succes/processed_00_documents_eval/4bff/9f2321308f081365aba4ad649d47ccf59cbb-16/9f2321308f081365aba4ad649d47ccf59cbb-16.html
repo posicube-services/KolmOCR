@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  color: #333;
+}
+
+.block[data-id="b002"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #444;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b005"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 10px 0;
+  color: #333;
+  text-align: justify;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Optional: Add a subtle shadow or border for visual separation if needed */
+.block {
+  break-inside: avoid;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.29rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #f2c94c;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgb(7, 5, 109);
+  border-left: 4px solid #64ffda;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #0548bc;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(81, 84, 226, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #3361a7;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #3f0db5;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(248, 113, 113, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #c084fc;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #38bdf8;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.25rem;
+  color: #fef08a;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.1rem;
+  color: #010243;
+  letter-spacing: 0.02em;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #a5b4fc;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #75600c;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.44rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,58,233,82">
+<h1>markdown</h1>
+</div>
+<div class="block" data-class="subtitle" data-id="b002" data-bbox="129,105,169,123">
+<h2>요약</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,138,905,230">
+<p>이러한 요인들은 임무가 부과한 막대한 일정 압력을 극복하는 데 핵심적이었습니다. 결과적으로, 이 우주선은 화려한 예산과 긴 개발 프로그램 없이도 유용한 우주 과학이 달성될 수 있음을 보여주었을 것입니다. 기존 시스템을 활용함으로써 많은 성과를 거둘 수 있습니다. 그러나 우주선은 챌린저호에 탑재된 상태에서 파괴되었지만, 우리는 이 설계 접근 방식이 SPARTAN 우주선을 지능적이고 독창적으로 활용한 것이라고 생각합니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,246,905,300">
+<p>우리는 매우 복잡한 임무를 수행하기 위해 "기본으로 돌아가기"라는 방식으로 간단하고 저렴한 우주선을 활용할 수 있음을 보여주었으며, 이러한 임무는 적응형 임무 우선순위를 반영하는 일정 내에서 수행될 수 있음을 입증했습니다.</p>
+</div>
+<div class="block" data-class="quotation" data-id="b005" data-bbox="132,317,905,390">
+<p>우리는 챌린저호의 최종 승무원 팀의 친구들에게 경의를 표합니다. 그들의 헌신과 개인적인 노력은 임무 준비에 크게 기여했습니다. 또한, GSFC 특수 임무 부서의 휴리데이 팀과 콜로라도 대학의 대기 및 우주 물리 연구소의 헌신적인 노력에 감사의 뜻을 전합니다. 그들의 노력 없이는 우주선이 건설되지 못했을 뿐만 아니라 일정도 유지되지 못했을 것입니다. "어스터를 향해 험난한 길을 걸어라!" (Ad astra per aspera!)</p>
+</div>
+</div>
+</body>
+</html>

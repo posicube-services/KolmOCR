@@ -2,245 +2,374 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>수표발행의뢰서</title>
   <style>
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 12px;
-      background: #ffffff;
-      color: #1a1a1a;
+    @page {
+      size: A4;
       margin: 0;
-      padding: 20px;
-      text-align: center;
     }
 
-    .document-container {
-      max-width: 190mm;
+    :root {
+      --navy: #1a2a4a;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --bg: #ffffff;
+      --paper: #f3f4f6;
+
+      --page-w: 210mm;
+      --page-pad-x: 18mm;
+      --page-pad-y: 16mm;
+
+      --radius: 6px;
+      --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "맑은 고딕",
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Paper */
+    .page {
+      width: var(--page-w);
+      min-height: 297mm;
       margin: 0 auto;
-      background: #ffffff;
-      padding: 20px 25px;
-      border: 1px solid #ccd2d9;
+      background: var(--bg);
+      padding: var(--page-pad-y) var(--page-pad-x);
+      box-shadow: 0 8px 28px rgba(17, 24, 39, .10);
     }
 
-    h1 {
-      color: #0b2a4a;
-      font-size: 22px;
-      margin: 10px 0 25px 0;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #0b2a4a;
-      font-weight: 700;
-      letter-spacing: -0.3px;
+    /* Generic block spacing */
+    .block {
+      break-inside: avoid;
     }
 
-    /* Section Header */
-    .section-header {
-      background: #0a1f35;
+    /* Title wrapper - provides centering */
+    .title-wrapper {
+      text-align: center;
+      margin: 4mm 0 10mm;
+    }
+
+    .title-wrapper .block {
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .title-wrapper .block h1 {
+      margin: 0;
+      font-size: 22pt;
+      letter-spacing: 0.10em;
+      font-weight: 800;
+      color: #333;
+    }
+
+    /* Section bars - provide full-width colored background */
+    .section-bar {
+      background: var(--navy);
       color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 8px;
-      margin: 25px 0 12px 0;
-      border-radius: 2px;
+      text-align: center;
+      font-weight: 800;
+      border-radius: 3px;
+      padding: 10px 12px;
+      margin: 10px 0 8px;
+      letter-spacing: 0.04em;
     }
 
-    /* Sub Header */
-    .sub-header {
-      background: #0b2a4a;
-      color: #fff;
-      font-weight: 600;
-      padding: 6px;
-      font-size: 13px;
-      border-radius: 2px;
-      margin-bottom: 8px;
+    .section-bar.lv1 {
+      font-size: 11.5pt;
+      padding: 12px 12px;
     }
 
-    table {
+    .section-bar.lv2 {
+      font-size: 10.5pt;
+      padding: 11px 12px;
+    }
+
+    .section-bar.lv3 {
+      font-size: 10.2pt;
+      padding: 10px 12px;
+    }
+
+    /* Inner block for measurement - wraps only text */
+    .section-bar .block {
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* Tables (document-like, minimal borders) */
+    .table-container {
+      width: 100%;
+    }
+
+    table.data-table {
       width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
-      margin-bottom: 12px;
     }
 
-    th,
-    .field-label {
-      background: #f3f5f7;
-      color: #333;
-      font-weight: 600;
-      padding: 7px;
-      border: 1px solid #d0d6dd;
-      font-size: 12px;
-      white-space: nowrap;
+    table.data-table th,
+    table.data-table td {
+      padding: 10px 10px;
+      vertical-align: middle;
+      font-size: 10.5pt;
+      line-height: 1.4;
     }
 
-    td.field-value {
-      background: #ffffff;
-      padding: 7px;
-      border: 1px solid #d0d6dd;
-      font-size: 12px;
-      white-space: nowrap;
+    table.data-table th {
+      width: 38%;
+      color: #111827;
+      font-weight: 700;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
     }
 
-    /* Two-column Row system */
-    .row {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 16px;
-      margin-bottom: 15px;
+    table.data-table td {
+      color: #374151;
+      border-bottom: 1px solid var(--line);
     }
 
-    .col {
-      flex: 1;
-      min-width: 0;
+    /* Add subtle row separators like a real form */
+    table.data-table tr:last-child th,
+    table.data-table tr:last-child td {
+      border-bottom: none;
     }
 
-    .table-compact th,
-    .table-compact td {
-      padding: 6px;
-      font-size: 12px;
+    /* Card wrapper around each key-value block */
+    .kv-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 6px 10px;
+      background: #fff;
+      margin: 0 0 10px;
+    }
+
+    /* Small helper for consistent spacing between sections */
+    .spacer {
+      height: 4mm;
+    }
+
+    /* Make “header bars” blocks use section-bar styles */
+    .block[data-id="b002"] p,
+    .block[data-id="b003"] p,
+    .block[data-id="b004"] p,
+    .block[data-id="b006"] p,
+    .block[data-id="b008"] p,
+    .block[data-id="b011"] p,
+    .block[data-id="b012"] p,
+    .block[data-id="b014"] p,
+    .block[data-id="b016"] p {
+      margin: 0;
+    }
+
+    /* Print: remove drop shadow and background */
+    @media print {
+
+      html,
+      body {
+        background: #fff;
+      }
+
+      .page {
+        box-shadow: none;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="document-container">
-
-    <h1>수표발행의뢰서</h1>
-
+  <div class="page">
+    <!-- Title -->
+    <div class="title-wrapper" data-class="title">
+      <div class="block" data-bbox="395,41,604,60" data-id="b001">
+        <h1>수표발행의뢰서</h1>
+      </div>
+    </div>
     <!-- 기본정보 -->
-    <div class="section-header">기본정보</div>
-    <div class="sub-header">의뢰인 정보</div>
-
-    <div class="row">
-      <div class="col">
-        <div class="sub-header">개인정보</div>
-        <table class="table-compact">
-          <tr>
-            <th class="field-label">의뢰인 성명</th>
-            <td class="field-value">김민수</td>
-          </tr>
-          <tr>
-            <th class="field-label">주민등록번호</th>
-            <td class="field-value">920315-1******</td>
-          </tr>
-          <tr>
-            <th class="field-label">연락처</th>
-            <td class="field-value">010-8723-5512</td>
-          </tr>
-        </table>
+    <div class="section-bar lv1" data-class="section_title_lv1">
+      <div class="block" data-bbox="471,87,530,97" data-id="b002">
+        <p>기본정보</p>
       </div>
-
-      <div class="col">
-        <div class="sub-header">계좌정보</div>
-        <table class="table-compact">
+    </div>
+    <div class="section-bar lv2" data-class="section_title_lv2">
+      <div class="block" data-bbox="464,114,536,123" data-id="b003">
+        <p>의뢰인 정보</p>
+      </div>
+    </div>
+    <div class="section-bar lv3" data-class="section_title_lv3">
+      <div class="block" data-bbox="474,140,526,149" data-id="b004">
+        <p>개인정보</p>
+      </div>
+    </div>
+    <div class="block kv-card" data-bbox="68,159,932,232" data-class="key_value" data-id="b005">
+      <div class="table-container">
+        <table class="data-table">
           <tr>
-            <th class="field-label">은행명</th>
-            <td class="field-value">신한은행</td>
+            <th>의뢰인 성명</th>
+            <td>김민수</td>
           </tr>
           <tr>
-            <th class="field-label">계좌번호</th>
-            <td class="field-value">110-234-567890</td>
+            <th>주민등록번호</th>
+            <td>920315-1******</td>
           </tr>
           <tr>
-            <th class="field-label">예금주</th>
-            <td class="field-value">김민수</td>
+            <th>연락처</th>
+            <td>010-8723-5512</td>
           </tr>
         </table>
       </div>
     </div>
-
+    <!-- 계좌정보 -->
+    <div class="section-bar lv2" data-class="section_title_lv2">
+      <div class="block" data-bbox="473,243,527,252" data-id="b006">
+        <p>계좌정보</p>
+      </div>
+    </div>
+    <div class="block kv-card" data-bbox="68,263,932,336" data-class="key_value" data-id="b007">
+      <div class="table-container">
+        <table class="data-table">
+          <tr>
+            <th>은행명</th>
+            <td>신한은행</td>
+          </tr>
+          <tr>
+            <th>계좌번호</th>
+            <td>110-234-567890</td>
+          </tr>
+          <tr>
+            <th>예금주</th>
+            <td>김민수</td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <!-- 수취인 정보 -->
-    <div class="sub-header">수취인 정보</div>
-    <div class="row">
-      <div class="col">
-        <table class="table-compact">
-          <tr>
-            <th class="field-label">수취인명</th>
-            <td class="field-value">박지현</td>
-          </tr>
-          <tr>
-            <th class="field-label">수취인 계좌번호</th>
-            <td class="field-value">333-9210-551234</td>
-          </tr>
-        </table>
+    <div class="section-bar lv2" data-class="section_title_lv2">
+      <div class="block" data-bbox="464,347,536,356" data-id="b008">
+        <p>수취인 정보</p>
       </div>
-      <div class="col">
-        <table class="table-compact">
+    </div>
+    <div class="block kv-card" data-bbox="68,366,932,417" data-class="key_value" data-id="b009">
+      <div class="table-container">
+        <table class="data-table">
           <tr>
-            <th class="field-label">수취인 은행명</th>
-            <td class="field-value">우리은행</td>
+            <th>수취인명</th>
+            <td>박지현</td>
+          </tr>
+          <tr>
+            <th>수취인 계좌번호</th>
+            <td>333-9210-551234</td>
           </tr>
         </table>
       </div>
     </div>
-
+    <div class="block kv-card" data-bbox="68,423,932,452" data-class="key_value" data-id="b010">
+      <div class="table-container">
+        <table class="data-table">
+          <tr>
+            <th>수취인 은행명</th>
+            <td>우리은행</td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <!-- 수표 정보 -->
-    <div class="section-header">수표 정보</div>
-
-    <div class="row">
-      <div class="col">
-        <div class="sub-header">수표 금액</div>
-        <table class="table-compact">
-          <tr>
-            <th class="field-label">한글 금액</th>
-            <td class="field-value">일백오십만원정</td>
-          </tr>
-          <tr>
-            <th class="field-label">숫자 금액</th>
-            <td class="field-value">1,500,000</td>
-          </tr>
-          <tr>
-            <th class="field-label">통화</th>
-            <td class="field-value">KRW</td>
-          </tr>
-        </table>
+    <div class="section-bar lv2" data-class="section_title_lv2">
+      <div class="block" data-bbox="471,463,529,472" data-id="b011">
+        <p>수표 정보</p>
       </div>
-
-      <div class="col">
-        <div class="sub-header">수표 발행 조건</div>
-        <table class="table-compact">
+    </div>
+    <div class="section-bar lv3" data-class="section_title_lv3">
+      <div class="block" data-bbox="472,489,529,498" data-id="b012">
+        <p>수표 금액</p>
+      </div>
+    </div>
+    <div class="block kv-card" data-bbox="68,508,932,581" data-class="key_value" data-id="b013">
+      <div class="table-container">
+        <table class="data-table">
           <tr>
-            <th class="field-label">발행일</th>
-            <td class="field-value">2025-04-07</td>
+            <th>한글 금액</th>
+            <td>일백오십만원정</td>
           </tr>
           <tr>
-            <th class="field-label">만기일</th>
-            <td class="field-value">2025-04-14</td>
+            <th>숫자 금액</th>
+            <td>1,500,000</td>
           </tr>
           <tr>
-            <th class="field-label">지급은행</th>
-            <td class="field-value">신한은행 본점영업부</td>
+            <th>통화</th>
+            <td>KRW</td>
           </tr>
         </table>
       </div>
     </div>
-
+    <!-- 수표 발행 조건 -->
+    <div class="section-bar lv2" data-class="section_title_lv2">
+      <div class="block" data-bbox="455,592,545,601" data-id="b014">
+        <p>수표 발행 조건</p>
+      </div>
+    </div>
+    <div class="block kv-card" data-bbox="68,612,932,685" data-class="key_value" data-id="b015">
+      <div class="table-container">
+        <table class="data-table">
+          <tr>
+            <th>발행일</th>
+            <td>2025-04-07</td>
+          </tr>
+          <tr>
+            <th>만기일</th>
+            <td>2025-04-14</td>
+          </tr>
+          <tr>
+            <th>지급은행</th>
+            <td>신한은행 본점영업부</td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <!-- 거래내역 -->
-    <div class="section-header">거래내역</div>
-
-    <div class="row">
-      <div class="col">
-        <table class="table-compact">
+    <div class="section-bar lv2" data-class="section_title_lv2">
+      <div class="block" data-bbox="473,696,527,705" data-id="b016">
+        <p>거래내역</p>
+      </div>
+    </div>
+    <div class="block kv-card" data-bbox="68,715,932,810" data-class="key_value" data-id="b017">
+      <div class="table-container">
+        <table class="data-table">
           <tr>
-            <th class="field-label">거래 유형</th>
-            <td class="field-value">계약금 지급</td>
+            <th>거래 유형</th>
+            <td>계약금 지급</td>
           </tr>
           <tr>
-            <th class="field-label">거래일자</th>
-            <td class="field-value">2025-04-06</td>
+            <th>거래일자</th>
+            <td>2025-04-06</td>
           </tr>
           <tr>
-            <th class="field-label">거래금액</th>
-            <td class="field-value">500,000</td>
+            <th>거래금액</th>
+            <td>500,000</td>
           </tr>
           <tr>
-            <th class="field-label">적요</th>
-            <td class="field-value">부동산 계약금 일부 지급</td>
+            <th>적요</th>
+            <td>부동산 계약금 일부 지급</td>
           </tr>
         </table>
       </div>
     </div>
-
   </div>
 </body>
 

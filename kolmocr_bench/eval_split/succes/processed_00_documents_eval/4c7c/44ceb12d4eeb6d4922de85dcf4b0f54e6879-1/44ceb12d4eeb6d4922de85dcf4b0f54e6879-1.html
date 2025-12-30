@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title */
+[data-id="b001"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 1em 0;
+  color: #333;
+  text-align: left;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 0.5em;
+}
+
+/* Block b002: Paragraph with h2 */
+[data-id="b002"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: normal;
+  margin: 1em 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Block b003: Paragraph with h3 */
+[data-id="b003"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: normal;
+  margin: 1em 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Block b004: Paragraph with h4 */
+[data-id="b004"] h4 {
+  font-size: calc(1.0em * var(--font-scale));
+  font-weight: normal;
+  margin: 1em 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Block b005: Paragraph with h3 */
+[data-id="b005"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: normal;
+  margin: 1em 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Block b006: Table */
+[data-id="b006"] .table-container {
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
+}
+
+[data-id="b006"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b006"] .data-table th,
+[data-id="b006"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+[data-id="b006"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+[data-id="b006"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Block b007: Unordered list */
+[data-id="b007"] ul {
+  margin: 1em 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
+  color: #333;
+  font-size: calc(0.95em * var(--font-scale));
+}
+
+[data-id="b007"] li {
+  margin: 0.5em 0;
+  line-height: 1.4;
+}
+
+/* Block b008: Heading for references */
+[data-id="b008"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #333;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 0.3em;
+}
+
+/* Block b009: References list */
+[data-id="b009"] ul {
+  margin: 1em 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
+  color: #333;
+  font-size: calc(0.95em * var(--font-scale));
+}
+
+[data-id="b009"] li {
+  margin: 0.5em 0;
+  line-height: 1.4;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.40rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ededed;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #111111;
+}
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block {
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.2rem;
+  color: #111111;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.27rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,49,260,70">
+<h1>Markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,134,904,192">
+<h2>가족 구성원이 노인을 돌보는 것을 선호하는 돌보는 사람들은 또한 모든 의무를 조화롭게 처리해야 한다는 막대한 압박을 느끼는 사람들입니다. 반면, 스웨덴과 가트은 국가에서는 여성의 전업 취업이 일반적인 이 중 소득자/제도적 돌봄 모델의 액략에서 정식 돌봄의 우선성을 기반으로 한 성별 문화가 존재하며, 후자는 정식 돌봄 서비스의 발전에 더 나은 조건을 제공합니다.</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,240,903,279">
+<h3>저자들은 정확히 지적하듯이, 가정 돌봄은 여전히 대부분 비공식적이고 여성의 일로 이루어지는 매우 성별화된 통제 영역입니다. 이는 사실이지만, 그럼에도 불구하고 남성들이 특히 배우자에게 많은 돌봄을 제공한다는 점을 지적해야 합니다. 이는 주로 그들의 삶의 후반부에 발생하며, 일반적으로 은퇴 후에 그렇습니다.</h3>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,326,903,386">
+<h4>유럽 전체적으로 남성들은 약 1/3의 돌봄을 제공하며, 이는 무시할 수 없는 비율입니다 [Eurofamcare 2005]. 저자들은 정책 입안자들의 의제에 있는 주요 항목 중 하나인 여성의 비공식 돌보는 사람으로서의 지속 가능성에 대해 길게 설명합니다. 여성의 부분적 고용 증가로 인해 돌봄 격차가 발생할 위험은, 특히 대부분의 사람들이 '장소 유지로 노후를 맞이하기 원한다'는 선호를 고려할 때, 더 공식적인 가정 돌봄의 필요성을 시사할 수 있습니다. 제4장은 EU의 리스본 의제를 충족하려는 정부들이 점점 늘어가는 인구와 감소하는 자원에 직면하여 직면한 금전적 제약을 명확히 설명합니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,433,901,512">
+<h3>결론적으로, 이 책은 그 목표를 달성했습니다. 즉, 가정 돌봄 통제에 영향을 미치는 다양한 도전 과제에 대한 풍부한 비교적 기록을 제공했습니다. 이는 사회학적, 성별, 경제적, 인구통계적 및 정책 측면을 고려하면서도 특정 국가를 '최고 사례'로 내세우지 않으면서 이루어졌습니다. 이는 매우 야심찬 작업으로, 많은 사례 연구를 포함하고 있습니다. 그 주요 약점은 지리적으로 너무 넓은 범위를 다루었다는 점(아시아, 유럽 및 북미)으로, 각국은 완전히 다른 성별 문화와 사회 경제적 조건을 상속받았기 때문입니다. 더 적은 수의 국가 연구가 더 깊이 있는 문제 분석을 가능케 했을 수 있습니다. 그럼에도 불구하고, 이 책은 현재 가정 돌보는</h3>
+</div>
+<div class="block" data-class="reference" data-id="b006" data-bbox="105,559,907,724">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Name</th><th>Position</th></tr>
+</thead>
+<tbody>
+<tr><td>Frédérique K. Hoffmann</td><td>European Centre for Social Welfare Policy and Research, Vienna</td></tr>
+<tr><td>Huber, M., R. Rodrigues, F. Hoffmann, K. Gasior and B. Marin</td><td>Facts and Figures on Long-Term Care in Europe and North America. Vienna: European Centre for Social Welfare Policy and Research.</td></tr>
+<tr><td>Lewinter, M.</td><td>A Developments in Home Help for Elderly People in Denmark: the Changing Concept of Home and Institution. International Journal of Social Welfare 13 (1): 89–96.</td></tr>
+<tr><td>Mestheneos, E. and J. Triantafillou</td><td>EUROFAMCARE: Supporting Family Carers of Older People in Europe – Empirical Evidence, Policy Trends and Future Perspectives. The Pan-European Background Report. Edited by H. Dohner and C. Kofahl. Hamburg: EUROFAMCARE.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="reference" data-id="b007" data-bbox="128,769,894,791">
+<ul>
+<li>Jan Drahokoupil: Globalization and the State in Central and Eastern Europe. The Politics of Foreign Direct Investment London and New York 2009: Routledge, 237 pp.</li>
+</ul>
+</div>
+<div class="block" data-class="reference" data-id="b008" data-bbox="104,842,171,854">
+<h3>참고문헌</h3>
+</div>
+<div class="block" data-class="reference" data-id="b009" data-bbox="128,899,879,931">
+<ul>
+<li>Eurobarometer. 2008. ‘Family Life and the Needs of an Ageing Population.’ Flash Eurobarometer 247 Survey conducted by The Gallup Organization, Hungary upon the request of the Directorate General for Employment, Social Affairs and Equal Opportunities, European Commission.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

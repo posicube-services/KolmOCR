@@ -1,0 +1,4 @@
+[submodule "external/dvlm"]
+	path = external/dvlm
+	url = org-72906238@github.com:posicube-services/DVLM.git
+	branch = main

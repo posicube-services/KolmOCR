@@ -1,6 +1,8 @@
+<!-- bbox: [345,60,664,79] -->
 # 정기예금가입신청서
 
 <table>
+<!-- bbox: [107,116,908,333] -->
 <tr><th colspan="4">개인정보</th></tr>
 
 <tr><th colspan="4">기본정보</th></tr>
@@ -38,6 +40,7 @@
 </table>
 
 <table>
+<!-- bbox: [107,356,908,636] -->
 <tr><th colspan="4">예금정보</th></tr>
 
 <tr><th colspan="4">예금종류</th></tr>
@@ -84,6 +87,7 @@
 </table>
 
 <table>
+<!-- bbox: [107,660,908,784] -->
 <tr><th colspan="4">계좌정보</th></tr>
 
 <tr>
@@ -107,6 +111,7 @@
 </table>
 
 <table>
+<!-- bbox: [107,807,908,932] -->
 <tr><th colspan="4">거래내역</th></tr>
 
 <tr>

@@ -1,0 +1,155 @@
+---
+primary_language: ko
+is_rotation_valid: True
+rotation_correction: 0
+is_table: True
+is_diagram: False
+---
+# 피보험자변경신청서
+
+기본정보
+
+<table>
+<tr class="header-row">
+<th colspan="4">신청인 정보</th>
+</tr>
+<tr>
+<th>신청인 성명</th>
+<td class="value-cell">홍길동</td>
+<th>신청인 주민등록번호</th>
+<td class="value-cell">900101-1234567</td>
+</tr>
+<tr>
+<th>신청인 연락처</th>
+<td class="value-cell">010-1234-5678</td>
+<th>신청인 주소</th>
+<td class="value-cell">서울시 강남구 테헤란로 123</td>
+</tr>
+<tr>
+<th>신청인 우편번호</th>
+<td class="value-cell">06123</td>
+<th>신청인 이메일</th>
+<td class="value-cell">hong@example.com</td>
+</tr>
+<tr class="header-row">
+<th colspan="4">피보험자 정보</th>
+</tr>
+<tr>
+<th>기존 피보험자 성명</th>
+<td class="value-cell">김철수</td>
+<th>기존 피보험자 주민등록번호</th>
+<td class="value-cell">850505-2345678</td>
+</tr>
+<tr>
+<th>기존 피보험자와의 관계</th>
+<td class="value-cell">자녀</td>
+<th>변경 사유</th>
+<td class="value-cell">결혼으로 인한 성명 변경</td>
+</tr>
+<tr>
+<th>변경 적용일</th>
+<td class="value-cell">2025-04-01</td>
+<th>증빙서류 번호</th>
+<td class="value-cell">변경서류-2025-001</td>
+</tr>
+<tr>
+<th>신규 피보험자 성명</th>
+<td class="value-cell">이영희</td>
+<th>신규 피보험자 주민등록번호</th>
+<td class="value-cell">920815-1234567</td>
+</tr>
+<tr>
+<th>신규 피보험자와의 관계</th>
+<td class="value-cell">배우자</td>
+<th>신규 피보험자 연락처</th>
+<td class="value-cell">010-9876-5432</td>
+</tr>
+<tr>
+<th>신규 피보험자 주소</th>
+<td class="value-cell">부산시 해운대구 해운대로 567</td>
+<th>신규 피보험자 이메일</th>
+<td class="value-cell">lee@example.com</td>
+</tr>
+</table>
+
+보험 계약 정보
+
+<table>
+<tr class="header-row">
+<th colspan="4">계약 기본사항</th>
+</tr>
+<tr>
+<th>보험계약번호</th>
+<td class="value-cell">A123456789</td>
+<th>계약 종류</th>
+<td class="value-cell">종신보험</td>
+</tr>
+<tr>
+<th>계약 시작일</th>
+<td class="value-cell">2020-03-15</td>
+<th>월 보험료</th>
+<td class="value-cell">150000</td>
+</tr>
+</table>
+
+동의 및 서명
+
+<table>
+<tr class="header-row">
+<th colspan="4">동의서</th>
+</tr>
+<tr>
+<th>개인정보 수집 동의</th>
+<td class="value-cell">Y</td>
+<th>개인정보 수집 동의일</th>
+<td class="value-cell">2025-04-01</td>
+</tr>
+<tr>
+<th>개인정보 수집 서명</th>
+<td class="value-cell">홍길동</td>
+<th>변경 동의 여부</th>
+<td class="value-cell">Y</td>
+</tr>
+<tr>
+<th>변경 동의일</th>
+<td class="value-cell">2025-04-01</td>
+<th>변경 동의 서명</th>
+<td class="value-cell">홍길동</td>
+</tr>
+<tr class="header-row">
+<th colspan="4">서명란</th>
+</tr>
+<tr>
+<th>신청인 서명</th>
+<td class="value-cell">홍길동</td>
+<th>서명일</th>
+<td class="value-cell">2025-04-01</td>
+</tr>
+<tr>
+<th>신청인 인쇄 성명</th>
+<td class="value-cell">홍길동</td>
+<th>대리인 서명</th>
+<td class="value-cell">–</td>
+</tr>
+<tr>
+<th>대리인 서명일</th>
+<td class="value-cell">–</td>
+<th>대리인 관계</th>
+<td class="value-cell">–</td>
+</tr>
+</table>
+
+첨부서류
+
+<table>
+<tr class="header-row">
+<th colspan="4">서류 목록</th>
+</tr>
+<tr>
+<th>신분증 사본 파일명</th>
+<td class="value-cell">id_copy_2025.pdf</td>
+<th>신분증 업로드일</th>
+<td class="value-cell">2025-04-01</td>
+</tr>
+<tr>
+<th>신분</th></tr></table>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>급여이체신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12pt;
+      color: #111;
+      background: #fff;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24pt;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .section {
+      margin-bottom: 20px;
+      border: 1px solid #999;
+      padding: 10px;
+      background: #f5f5f5;
+    }
+    .section-title {
+      font-weight: bold;
+      text-align: center;
+      background: #999999;
+      color: #fff;
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 14pt;
+    }
+    .sub-section-title {
+      font-weight: bold;
+      text-align: center;
+      background: #cccccc;
+      color: #333;
+      padding: 6px;
+      margin: 10px 0 8px 0;
+      font-size: 12pt;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+    .field-row {
+      display: flex;
+      align-items: center;
+      padding: 6px;
+      border-bottom: 1px dashed #bbb;
+      background: #e8e8e8;
+    }
+    .field-label {
+      width: 120px;
+      font-weight: bold;
+      text-align: left;
+      padding-right: 10px;
+    }
+    .field-value {
+      flex: 1;
+      text-align: right;
+      padding: 4px;
+      border: 1px solid #ddd;
+      background: #fff;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .field-value.empty {
+      color: #999;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>급여이체신청서</h1>
+
+  <!-- 섹션 1: 개인정보 -->
+  <div class="section">
+    <div class="section-title">개인정보</div>
+    <div class="sub-section-title">기본정보</div>
+    <div class="form-grid">
+      <div class="field-row">
+        <div class="field-label">성명</div>
+        <div class="field-value">홍길동</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">주민등록번호</div>
+        <div class="field-value">900101-1234567</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">생년월일</div>
+        <div class="field-value">1990-01-01</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">휴대폰번호</div>
+        <div class="field-value">010-1234-5678</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">이메일</div>
+        <div class="field-value">hong@example.com</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">주소</div>
+        <div class="field-value">서울시 강남구 테헤란로 123</div>
+      </div>
+    </div>
+    <div class="sub-section-title">고용정보</div>
+    <div class="form-grid">
+      <div class="field-row">
+        <div class="field-label">입사일</div>
+        <div class="field-value">2020-03-01</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">부서</div>
+        <div class="field-value">인사팀</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">직위</div>
+        <div class="field-value">팀장</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">고용형태</div>
+        <div class="field-value">정규직</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">근무시간</div>
+        <div class="field-value">09:00 ~ 18:00</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">계약기간</div>
+        <div class="field-value">2020-03-01 ~ 2025-02-28</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 2: 계좌정보 -->
+  <div class="section">
+    <div class="section-title">계좌정보</div>
+    <div class="sub-section-title">이체계좌</div>
+    <div class="form-grid">
+      <div class="field-row">
+        <div class="field-label">은행명</div>
+        <div class="field-value">국민은행</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">계좌번호</div>
+        <div class="field-value">123-456-789012</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">예금주</div>
+        <div class="field-value">홍길동</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">계좌유형</div>
+        <div class="field-value">입출금계좌</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">통화</div>
+        <div class="field-value">KRW</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">기본계좌</div>
+        <div class="field-value">true</div>
+      </div>
+    </div>
+    <div class="sub-section-title">계좌 인증</div>
+    <div class="form-grid">
+      <div class="field-row">
+        <div class="field-label">인증방법</div>
+        <div class="field-value">은행 인증</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">인증일자</div>
+        <div class="field-value">2024-06-01</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">인증자</div>
+        <div class="field-value">김은행</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">서류종류</div>
+        <div class="field-value">통장사본</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">서류번호</div>
+        <div class="field-value">2024-0001</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">업로드일</div>
+        <div class="field-value">2024-06-01</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 3: 급여정보 -->
+  <div class="section">
+    <div class="section-title">급여정보</div>
+    <div class="sub-section-title">기본급여</div>
+    <div class="form-grid">
+      <div class="field-row">
+        <div class="field-label">기본급</div>
+        <div class="field-value">3,500,000</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">수당</div>
+        <div class="field-value">500,000</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">공제</div>
+        <div class="field-value">800,000</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">지급 주기</div>
+        <div class="field-value">매월 25일</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">다음 지급일</div>
+        <div class="field

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title "markdown" */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 1em 0;
+  color: #333;
+  text-align: left;
+  line-height: 1.3;
+}
+
+/* Block b002: Ordered list with two items */
+[data-id="b002"] ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+  list-style-type: decimal;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+}
+
+[data-id="b002"] ol li {
+  margin: 0.5em 0;
+}
+
+/* Block b003: Main content with paragraphs and line breaks */
+[data-id="b003"] p {
+  margin: 1em 0;
+  line-height: 1.6;
+  font-size: calc(1em * var(--font-scale));
+  text-align: justify;
+}
+
+[data-id="b003"] p br {
+  content: "\A";
+  white-space: pre-line;
+}
+
+/* Ensure consistent spacing for nested lists and sub-items */
+[data-id="b003"] p::before {
+  content: "";
+  display: block;
+  margin-top: 0.5em;
+}
+
+/* Style for sub-items (a, b, c, etc.) within the paragraph */
+[data-id="b003"] p span {
+  display: inline-block;
+  margin-left: 1.5em;
+  font-size: calc(1em * var(--font-scale));
+}
+
+/* Style for sub-sub-items (like a., b., etc.) */
+[data-id="b003"] p span span {
+  margin-left: 1em;
+}
+
+/* Ensure consistent spacing for numbered sections like (1), (2), etc. */
+[data-id="b003"] p::before {
+  content: "";
+  display: block;
+  margin-top: 0.5em;
+}
+
+/* Handle line breaks properly in the content */
+[data-id="b003"] p br {
+  display: block;
+  margin: 0.2em 0;
+}
+
+/* Ensure no extra padding or margin on the last block */
+[data-id="b003"] p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* General paragraph styling for readability */
+.document p {
+  font-family: "맑은 고딕", serif;
+  color: #222;
+  text-align: justify;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 1em;
+}
+
+/* Ensure the document doesn't overflow or break layout */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.20rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f4f4f2;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #0c0c0c;
+}
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.9;
+}
+
+.block[data-class="title"] {
+  font-size: 2.2rem;
+  letter-spacing: 0.3rem;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.9rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.8rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.7rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="header"] {
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.6rem;
+  color: #0c0c0c;
+}
+
+.block[data-class="text"] {
+  font-size: 1.6rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.37rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,56,237,82">
+<h1>markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="129,105,905,204">
+<ol>
+<li>197.300조부터 197.366조까지는 1996년 4월 1일까지 미주리 주에서 진행 중이거나 종결된 소송에 적용되지 않는 것으로 해석되어서는 안 된다. 이 소송에서 미주리 건강 시설 검토 위원회가 42 CFR, 제412.23(e)조에서 설명된 요건을 충족하는 장기 요양 병상에 197.300조부터 197.366조까지를 적용하는 소송의 피고인으로 참여하고 있는 경우다.</li>
+<li>본 장의 다른 조항과 달리:</li>
+</ol>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,229,905,872">
+<p>(1) 제198장에 따라 라이선스를 받은 시설은 라이선스된 병상 수를 다음의 방법으로 증가시킬 수 있다:<br/>
+(a) 건강 및 노인 서비스부와 건강 시설 검토 위원회에 확장 의향서를 제출;<br/>
+(b) 건강 및 노인 서비스부의 인증서로, 시설이:<br/>
+a. 최근 18개월 동안 환자 치료 1등급 결함이 없으며;<br/>
+b. 이전 6분기에 평균 90%의 입원률을 유지하고 있음;<br/>
+(c) 의향서를 제출한 날짜로부터 18개월 동안 병상을 구입하려는 노력을 기울였다. 본 항목의 목적으로 "구입 노력"이란 제안자가 다른 라이선스를 받은 시설로부터 병상을 구입하려는 제안서를 인증한 사본을 의미한다;<br/>
+(d) 판매자와 구매자가 합의에 도달한 경우, 건강 시설 검토 위원회는 판매자의 라이선스를 반납한 후 구매 시설의 확장에 대한 필요성 인증서를 발급하거나;<br/>
+(e) 판매자와 구매자가 합의에 도달하지 않은 경우, 건강 시설 검토 위원회는 다음의 확장을 허용할 수 있다:<br/>
+a. 40개 이상의 병상을 가진 시설은 같은 라이선스 범주에서 라이선스된 병상 수를 25퍼센트 또는 30개 병상 (둘 중 더 큰 수)까지 증가시킬 수 있다. 이 경우, 같은 라이선스 범주에서 이전 6분기에 평균 93퍼센트 이상의 입원률을 기록한 경우;<br/>
+b. 40개 미만의 병상을 가진 시설은 같은 라이선스 범주에서 라이선스된 병상 수를 25퍼센트 또는 10개 병상 (둘 중 더 큰 수)까지 증가시킬 수 있다. 이 경우, 같은 라이선스 범주에서 이전 6분기에 평균 92퍼센트 이상의 입원률을 기록한 경우;<br/>
+c. 본 항목의 a. 또는 b. 하위항에 따라 병상을 추가한 시설은 해당 자격 라이선스 범주에서 라이선스된 병상 수의 50퍼센트를 초과하여 확장하지 않아야 한다;<br/>
+(2) 판매된 모든 병상은 구매자가 재라이선스를 받은 날짜로부터 5년 동안 판매 시설에서 라이선스 없이 사용되지 않아야 한다;<br/>
+(3) 구매한 병상은 구매 날짜로부터 2년 동안 판매 시설의 병상 재고로 유지되며, 사회 서비스부는 본 항목의 목적에 따라 라이선스가 있는 것으로 간주한다;<br/>
+(4) 제198장에 따라 라이선스를 받은 시설이 주거 돌봄 시설은 라이선스 소유권 또는 통제가 동일하고, 서로 6마일 이내에 위치한 다른 시설로 현재 라이선스된 병상의 일부를 이전할 수 있다;<br/>
+(5) 제198장에 따라 라이선스를 받은 시설은 본 항목의 (1)의 (a) 및 (b) 하위항에 따라 자격을 갖춘 시설로 개인 장기 요양 라이선스 병상을 이전하거나 판매할 수 있다. 라이선스 병상을 이전하거나 판매한 시설은 라이선스를 포기한 날짜로부터 5년 동안 해당 라이선스 범주에서 라이선스된 병상 수를 증가시키지 않아야 한다.<br/>
+5. 현재 라이선스를 받고 운영 중인 장기 요양 서비스를 제공하는 의료 시설은, 최근 4개 연속 쿼터 동안 시설이 현재 라이선스된 병상의 50퍼센트만 운영하고 모든 입소자가 개인 방에 거주하는 경우, 현재 위치 또는 현재 위치에서 30마일 이내의 다른 위치에서 라이선스된 병상의 절반을 교체할 수 있다. 이 경우:<br/>
+(1) 시설은 건강 및 노인 서비스부에 최근 4개 연속 쿼터 동안 해당 병상이 입소 불가능 상태임을 보고해야 한다;</p>
+</div>
+</div>
+</body>
+</html>

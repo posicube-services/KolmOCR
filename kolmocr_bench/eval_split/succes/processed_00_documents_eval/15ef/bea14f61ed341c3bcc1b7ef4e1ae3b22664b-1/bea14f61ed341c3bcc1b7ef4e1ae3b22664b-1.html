@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b003"] h3,
+.block[data-id="b004"] h3,
+.block[data-id="b005"] h3,
+.block[data-id="b007"] h3,
+.block[data-id="b009"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #333;
+}
+
+.block[data-id="b006"] p,
+.block[data-id="b010"] p,
+.block[data-id="b011"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  text-align: justify;
+  color: #333;
+}
+
+.block[data-id="b008"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.block[data-id="b008"] li {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 5px 0;
+  color: #333;
+}
+
+.block[data-id="b012"] .table-container {
+  margin: 20px 0;
+  overflow: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.block[data-id="b012"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(1em * var(--font-scale));
+}
+
+.block[data-id="b012"] .data-table th,
+.block[data-id="b012"] .data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.block[data-id="b012"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+.block[data-id="b012"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.block[data-id="b012"] .data-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* General paragraph styling */
+p {
+  margin: 10px 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Ensure headings are not too close to content */
+h1, h2, h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+/* Prevent text overflow in table */
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.10rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #e6edf7;
+  font-family: "맑은 고딕", serif;
+  color: #0f172a;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+}
+
+.block[data-class="header"] {
+  font-size: 0.75rem;
+  letter-spacing: 0.25rem;
+  color: #475569;
+}
+
+.block[data-class="table"] {
+  border: 1px dashed rgba(15, 118, 110, 0.6);
+  padding: 14px;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.85rem;
+  color: #1e1b4b;
+  text-indent: -1.3em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #475569;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.4rem;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.14rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="114,46,895,164">
+<h1>연구 메모: 이민 상태 변경 및 취약성 변화 - 남아프리카의 짐바브웨 이민자에 대한 연구</h1>
+</div>
+<div class="block" data-class="author" data-id="b002" data-bbox="104,186,282,204">
+<h2>인소센트 모요</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="104,222,338,235">
+<h3>남아프리카 쥬룰란드 대학</h3>
+</div>
+<div class="block" data-class="key_value" data-id="b004" data-bbox="104,253,370,266">
+<h3>이메일: moyo@unizulu.ac.za</h3>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="104,283,149,296">
+<h3>요약:</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,312,905,361">
+<p>남아프리카의 짐바브웨 이민자들을 대상으로 한 연구 프로젝트의 데이터를 바탕으로, 저자는 특정 국가 정책이 개인 이민 상태를 규제하는 데 미치는 영향을 고려하고 있다. 이 논의는 2014년 12월부터 2015년 3월까지 4개월 동안 비트브리지 국경, 무시나 마을, 요하네스堡 등 세 곳에서 이루어진 65명의 짐바브웨 이민자의 국경 간 이주와 취약성에 대한 질적 연구에서 비롯되었다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="104,376,169,389">
+<h3>키워드:</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="129,405,212,447">
+<ul>
+<li>이주</li>
+<li>취약성</li>
+<li>짐바브웨인</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="104,463,149,476">
+<h3>본문:</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,492,905,678">
+<p>이민법 및 정책의 변화가 인간 이동성과 이민자의 삶에 중요한 영향을 미친다는 것은 자명한 사실이다. 입법 및 정책 조항이 더 엄격한 이민 제도를 강제하기 위해 설계될 경우, 국경 간 이민자들은 이들의 이동성을 제한하거나 때로는 금지하려는 조치에 직면하게 된다. 이 상황에서 개인들은 이민자로서의 생계를 보호하려고 노력하며, 이 과정에서 이들의 이민 상태의 성격이 변화하는 경우가 많다. 남아프리카의 짐바브웨 이민자를 대상으로 한 연구 프로젝트의 데이터를 바탕으로, 저자는 특정 국가 정책이 개인 이민 상태를 규제하는 데 미치는 영향을 고려하고 있다. 이 논의는 2014년 12월부터 2015년 3월까지 4개월 동안 비트브리지 국경（비트브리지 국경은 짐바브웨와 남아프리카 간의 공식적인 입국 및 출국 지점이다.）, 무시나（무시나는 비트브리지 국경에서 약 17킬로미터 떨어진 남아프리카의 마을이다.） 및 요하네스堡（요하네스堡는 남아프리카에서 가장 큰 도시로, 비트브리지 국경에서 약 521킬로미터 떨어져 있다.）에서 이루어진 65명의 짐바브웨 이민자의 국경 간 이주와 취약성에 대한 질적 연구에서 비롯되었다.（비트브리지 국경에서 12명의 이민자가 인터뷰되었으며, 이 중 여성 3명과 남성 9명이 포함되었다. 무시나에서는 34명의 이민자가 인터뷰되었으며, 이 중 여성 19명과 남성 15명이 포함되었다. 마지막으로, 요하네스堡에서는 19명의 이민자가 인터뷰되었으며, 이 중 여성 6명과 남성 13명이 포함되었다. 인터뷰 대상자들 중 4명은 혼자 국경을 넘었으며, 61명은 남아프리카로 입국하기 위해 밀입국 중개인의 서비스를 이용했다. 응답자 중 56명은 21세에서 49세 사이였으며, 7명은 17세에서 20세 사이였고, 2명은 50세 이상이었다.）</p>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="104,692,905,790">
+<p>과거 20년 동안, 남아프리카의 이민자들은 국가의 이민법 및 정책에 대한 중요한 변화를 경험했다. Peberdy (1998)와 Peberdy 및 Crush (1998)와 같은 저자들은 1994년 남아프리카의 첫 민주적 선거 이후 통과된 외국인 통제 개정법(1995)이 아프르트헤이트 시대의 외국인 통제법(1991년 제96호법)의 일부 잔혹한 조항을 유지함으로써 이민자를 수용하려는 태도를 보이지 않는다는 점을 지적했다. 당시, 남아프리카 정부의 이민 관련 우려는 이민을 장려하는 의도적인 정책이 새로운 정부 체제의 이익을 위협할 수 있다는 인식에서 비롯되었다 (Crush 및 McDonald, 2001; Crush, Campbell, Green, Nanguahl 및 Simelane, 2006; Segatti, 2012). 동시에, Peberdy (2009)는 1994년 이후의 즉각적인 이민 정책이 고도로 숙련된 이민자들에게 이익을 제공했으며, 덜 숙련된 이민자들에게는 그렇지 않았다는 점을 지적했다. 이후의 입법 조치로는</p>
+</div>
+<div class="block" data-class="table" data-id="b012" data-bbox="108,839,904,925">
+<div class="table-container"><table class="data-table">
+<tr>
+<th>대상 국가</th>
+<th>이민자 수</th>
+<th>성별</th>
+<th>연령대</th>
+</tr>
+<tr>
+<td>비트브리지 국경</td>
+<td>12명</td>
+<td>여성 3명 / 남성 9명</td>
+<td>21-49세</td>
+</tr>
+<tr>
+<td>무시나</td>
+<td>34명</td>
+<td>여성 19명 / 남성 15명</td>
+<td>17-50세</td>
+</tr>
+<tr>
+<td>요하네스堡</td>
+<td>19명</td>
+<td>여성 6명 / 남성 13명</td>
+<td>17-50세</td>
+</tr>
+</table></div>
+</div>
+</div>
+</body>
+</html>

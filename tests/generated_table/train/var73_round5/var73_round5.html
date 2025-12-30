@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>금리변경신청서</title>
+  <style>
+    body {
+      font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+      background: #fdfdfd;
+      font-size: 13pt;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24pt;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+      table-layout: fixed;
+      word-break: break-all;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+    }
+    th {
+      background: #0078d7;
+      color: #fff;
+      padding: 8px;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #999;
+    }
+    td {
+      background: #f5f5f5;
+      padding: 8px;
+      text-align: right;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+    .section-header {
+      background: #0078d7;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 8px;
+      font-size: 14pt;
+    }
+    .sub-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+    }
+    .sub-table th,
+    .sub-table td {
+      padding: 4px;
+      font-size: 11pt;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+    .sub-table th {
+      background: #0078d7;
+      color: #fff;
+    }
+    .sub-table td {
+      background: #fff;
+      text-align: left;
+    }
+    .address-cell {
+      text-align: left;
+      padding-left: 12px;
+    }
+    .name-cell {
+      text-align: left;
+      padding-left: 12px;
+    }
+    .right-align {
+      text-align: right;
+    }
+    .left-align {
+      text-align: left;
+      padding-left: 12px;
+    }
+    .center-align {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>금리변경신청서</h1>
+
+  <!-- 섹션 1: 신청인 기본정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">신청인 기본정보</th></tr>
+    <tr>
+      <th>주민등록번호</th>
+      <td class="left-align">900101-1234567</td>
+      <th>성명</th>
+      <td class="left-align">홍길동</td>
+    </tr>
+    <tr>
+      <th>생년월일</th>
+      <td class="left-align">1990-01-01</td>
+      <th>휴대폰번호</th>
+      <td class="left-align">010-1234-5678</td>
+    </tr>
+    <tr>
+      <th>이메일 주소</th>
+      <td class="left-align">hong@example.com</td>
+      <th>우편번호</th>
+      <td class="left-align">12345</td>
+    </tr>
+    <tr>
+      <th>주소</th>
+      <td colspan="3" class="address-cell">서울시 강남구 테헤란로 123</td>
+    </tr>
+    <tr>
+      <th>관계</th>
+      <td class="left-align">부모</td>
+      <th>비상연락처 전화번호</th>
+      <td class="left-align">02-123-4567</td>
+    </tr>
+  </table>
+
+  <!-- 섹션 2: 계좌정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+    <tr>
+      <th>계좌번호</th>
+      <td class="left-align">110-123-456789</td>
+      <th>계좌종류</th>
+      <td class="left-align">예금계좌</td>
+    </tr>
+    <tr>
+      <th>잔액</th>
+      <td class="right-align">1500000</td>
+      <th>변경 전 금리(%)</th>
+      <td class="right-align">3.5</td>
+    </tr>
+    <tr>
+      <th>변경 후 금리(%)</th>
+      <td class="right-align">2.8</td>
+      <th>적용일자</th>
+      <td class="left-align">2025-04-01</td>
+    </tr>
+  </table>
+
+  <!-- 섹션 3: 거래내역 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래내역</th></tr>
+    <tr>
+      <th>거래일자</th>
+      <td class="left-align">2025-03-15</td>
+      <th>거래금액</th>
+      <td class="right-align">500000</td>
+    </tr>
+    <tr>
+      <th>거래유형</th>
+      <td class="left-align">입금</td>
+      <th>최근거래내용</th>
+      <td class="left-align">급여</td>
+    </tr>
+    <tr>
+      <th rowspan="2">거래내역표</th>
+      <td colspan="3">
+        <table class="sub-table">
+          <tr>
+            <th>일자</th>
+            <th>내용</th>
+            <th>금액</th>
+          </tr>
+          <tr>
+            <td class="left-align">2025-03-10</td>
+            <td class="left-align">급여</td>
+            <td class="right-align">500000</td>
+          </tr>
+          <tr>
+            <td class="left-align">2025-03-05</td>
+            <td class="left-align">이체</td>
+            <td class="right-align">200000</td>
+          </tr>
+          <tr>
+            <td class="left-align">2025-02-28</td>
+            <td class="left-align">이자지급</td>
+            <td class="right-align">15000</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" style="height: 10px; padding: 0;"></td>
+    </tr>
+  </table>
+
+  <!-- 섹션 4: 동의 및 서명 -->
+  <table>
+    <tr><th colspan="4" class="section-header">동의 및 서명</th></tr>
+    <tr>
+      <th>동의여부</th>
+      <td class="left-align">동의함</td>
+      <th>동의일자</th>
+      <td class="left-align">2025-03-20</td>
+    </tr>
+    <tr>
+      <th>신청인서명</th>
+      <td class="left-align">홍길동</td>
+      <th>날짜</th>
+      <td class="left-align">2025-03-20</td>
+    </tr>
+    <tr>
+      <th>인증번호</th>
+      <td class="left-align">123456</td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+
+<style>.document {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 15mm 20mm;
+      box-sizing: border-box;
+      background: #fff;
+      column-count: 1;
+      column-gap: 10mm;
+      column-fill: balance;
+      overflow: visible;
+      transform: none;
+      margin-bottom: 2%;
+        }
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b002"] {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.block[data-id="b003"] {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b004"] {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.block[data-id="b005"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b006"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b007"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b008"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b009"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b010"] {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b011"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b012"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b013"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.block[data-id="b014"] {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+/* General paragraph styling */
+p {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Underline styling for signature lines */
+.block[data-id="b005"] p::after,
+.block[data-id="b006"] p::after,
+.block[data-id="b007"] p::after,
+.block[data-id="b008"] p::after,
+.block[data-id="b009"] p::after,
+.block[data-id="b011"] p::after,
+.block[data-id="b012"] p::after,
+.block[data-id="b013"] p::after,
+.block[data-id="b014"] p::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #000;
+  margin-top: 5px;
+}
+</style>
+<style id="fitpage-css">
+.page { width:210mm; height:297mm; margin:10mm auto; background:#fff; box-sizing:border-box; overflow:hidden; position:relative; }
+.page-inner { transform-origin: top left; transform: scale(1); }
+</style>
+<script id="fitpage-js">
+function fitPage() {
+  const page = document.querySelector('.page');
+  const inner = document.querySelector('.page-inner');
+  if (!page || !inner) return;
+
+  // Reset scale before measuring
+  inner.style.transform = 'scale(1)';
+
+  const pageHeight = page.clientHeight;
+  const pageWidth = page.clientWidth;
+  const contentHeight = inner.scrollHeight;
+  const contentWidth = inner.scrollWidth;
+  if (contentHeight === 0 || contentWidth === 0) return;
+
+  const scaleY = pageHeight / contentHeight;
+  const scaleX = pageWidth / contentWidth;
+  const scale = Math.min(1, scaleX, scaleY);
+  inner.style.transform = `scale(${scale})`;
+}
+window.addEventListener('load', () => {
+  if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+    MathJax.startup.promise.then(() => { fitPage(); });
+  } else {
+    fitPage();
+  }
+});
+</script>
+</head>
+<body>
+<div class="page"><div class="page-inner">
+<div class="document">
+  <div class="block" data-id="b001" data-bbox="28,44,525.61,25.59">
+    <ol>
+      <li>The Owners are an intended third party beneficiary of this Agreement.</li>
+    </ol>
+  </div>
+  <div class="block" data-id="b002" data-bbox="28,85.59,1224,51.19">
+    <p>Two signatures are required, one from an individual who is authorized to make legal commitments on behalf of the Organization and a second by the person who will be responsible for the use of the collection. If these are the same person, that person should sign twice.</p>
+  </div>
+  <div class="block" data-id="b003" data-bbox="28,152.78,185.89,25.59">
+    <p>Agreed to by Organization</p>
+  </div>
+  <div class="block" data-id="b004" data-bbox="28,194.38,151.2,25.59">
+    <p>Authorized signature:</p>
+  </div>
+  <div class="block" data-id="b005" data-bbox="28,235.97,460.02,25.59">
+    <p>Signature: ______________ ______________ ______________</p>
+  </div>
+  <div class="block" data-id="b006" data-bbox="28,277.56,305.17,25.59">
+    <p>Name: ______________ ______________</p>
+  </div>
+  <div class="block" data-id="b007" data-bbox="28,319.16,224.19,25.59">
+    <p>Position Title: ______________</p>
+  </div>
+  <div class="block" data-id="b008" data-bbox="28,360.75,413.69,25.59">
+    <p>Organization Name: ______________________________</p>
+  </div>
+  <div class="block" data-id="b009" data-bbox="28,402.34,167.27,25.59">
+    <p>Date: ______________</p>
+  </div>
+  <div class="block" data-id="b010" data-bbox="28,443.94,313.95,25.59">
+    <p>Person responsible for use of the Collection:</p>
+  </div>
+  <div class="block" data-id="b011" data-bbox="28,485.53,344.34,25.59">
+    <p>Signature: ______________________________</p>
+  </div>
+  <div class="block" data-id="b012" data-bbox="28,527.13,373.67,25.59">
+    <p>Printed Name: ______________________________</p>
+  </div>
+  <div class="block" data-id="b013" data-bbox="28,568.72,167.27,25.59">
+    <p>Date: ______________</p>
+  </div>
+  <div class="block" data-id="b014" data-bbox="28,610.31,378.11,25.59">
+    <p>Email Address: ______________________________</p>
+  </div>
+</div>
+</div></div>
+</body>
+</html>

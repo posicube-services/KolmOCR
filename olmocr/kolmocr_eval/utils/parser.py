@@ -6,21 +6,28 @@ from olmocr.kolmocr_eval.utils.data_io import read_md
 # Table 표현 타입:
 # - posicube : <POSICUBE_TABLE_KV> ... </POSICUBE_TABLE_KV>
 # - html     : <table> ... </table>
+# - markdown : | a | b | 형태의 파이프 테이블
 TABLE_PATTERNS = {
     "posicube": re.compile(r"<POSICUBE_TABLE_KV>[\s\S]*?</POSICUBE_TABLE_KV>", re.MULTILINE),
     "html": re.compile(r"<table[\s\S]*?</table>", re.IGNORECASE | re.MULTILINE),
+    # 연속된 파이프 테이블 블록 전체를 감지
+    "markdown": re.compile(r"(?:^\s*\|.*\|\s*$\n?){2,}", re.MULTILINE),
 }
 
 # 이미지 패턴: ![alt](url)
 IMAGE_PATTERN = re.compile(r"!\[(.*?)\]\((.*?)\)")
-# 이미지 bbox 주석: <!-- bbox: [x0,y0,w,h] -->
+# 이미지 bbox 주석: <!-- bbox: [x0,y0,w,h] --> 또는 <!-- [x0,y0,w,h] -->
 BBOX_PATTERN = re.compile(
-    r"<!--\s*bbox:\s*\[\s*([0-9]+(?:\.[0-9]+)?)\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*]\s*-->",
+    r"<!--\s*(?:bbox:\s*)?\[\s*([0-9]+(?:\.[0-9]+)?)\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*]\s*-->",
     re.IGNORECASE,
 )
 # 수식 패턴
 MATH_BLOCK_PATTERN = re.compile(r"\$\$(.+?)\$\$", re.DOTALL)
 MATH_INLINE_PATTERN = re.compile(r"(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)", re.DOTALL)
+
+# Markdown 테이블 감지/파싱용 패턴
+_MD_TABLE_HEADER = re.compile(r"^\s*\|.*\|\s*$")
+_MD_TABLE_DIVIDER = re.compile(r"^\s*\|?\s*:?-{3,}\s*(\|\s*:?-{3,}\s*)+\|?\s*$")
 
 
 def detect_table_type(md: str) -> Optional[str]:
@@ -31,11 +38,74 @@ def detect_table_type(md: str) -> Optional[str]:
     return None
 
 
+def _find_markdown_tables(md: str) -> List[List[str]]:
+    """
+    Markdown 파이프 테이블 블록을 라인 리스트 형태로 추출.
+    헤더-구분선 쌍을 찾고, 이후 파이프가 포함된 라인들을 테이블로 묶는다.
+    """
+    lines = md.splitlines()
+    tables: List[List[str]] = []
+    i = 0
+    n = len(lines)
+    while i + 1 < n:
+        header_line = lines[i]
+        divider_line = lines[i + 1]
+        if not (_MD_TABLE_HEADER.match(header_line) and _MD_TABLE_DIVIDER.match(divider_line)):
+            i += 1
+            continue
+        block = [header_line, divider_line]
+        j = i + 2
+        while j < n and "|" in lines[j]:
+            block.append(lines[j])
+            j += 1
+        tables.append(block)
+        i = j
+    return tables
+
+
+def _md_table_to_html(table_lines: List[str]) -> str:
+    """
+    간단한 Markdown 파이프 테이블을 HTML 테이블 문자열로 변환.
+    헤더/바디만 지원하며 colspan/rowspan은 고려하지 않는다.
+    """
+    if len(table_lines) < 2:
+        return ""
+    header = table_lines[0]
+    data_lines = table_lines[2:]
+
+    def _split_row(row: str) -> List[str]:
+        row = row.strip()
+        if row.startswith("|"):
+            row = row[1:]
+        if row.endswith("|"):
+            row = row[:-1]
+        return [cell.strip() for cell in row.split("|")]
+
+    headers = _split_row(header)
+    rows = [_split_row(r) for r in data_lines]
+
+    parts = ["<table>", "<thead><tr>"]
+    parts.extend(f"<th>{h}</th>" for h in headers)
+    parts.append("</tr></thead>")
+    parts.append("<tbody>")
+    for r in rows:
+        parts.append("<tr>")
+        for cell in r:
+            parts.append(f"<td>{cell}</td>")
+        parts.append("</tr>")
+    parts.append("</tbody>")
+    parts.append("</table>")
+    return "".join(parts)
+
+
 def extract_tables(md: str, table_type: Optional[str] = None) -> List[str]:
     """테이블 블록을 리스트로 추출."""
     detected = table_type or detect_table_type(md)
     if detected is None:
         return []
+    if detected == "markdown":
+        blocks = _find_markdown_tables(md)
+        return [_md_table_to_html(b) for b in blocks if _md_table_to_html(b)]
     pattern = TABLE_PATTERNS.get(detected)
     if pattern is None:
         return []
@@ -52,11 +122,27 @@ def extract_images(md: str) -> List[Dict[str, str]]:
 
 
 def extract_image_bboxes(md: str) -> List[List[float]]:
-    """이미지 bbox 주석을 추출하여 [x0, y0, w, h] 리스트를 반환."""
+    """이미지 bbox 주석을 추출하여 [x0, y0, x1, y1] 리스트를 반환.
+
+    bbox 주석 바로 다음 줄에 이미지 마크다운(![alt](url))이 있는 경우에만 추출한다.
+    """
     bboxes: List[List[float]] = []
-    for match in BBOX_PATTERN.finditer(md):
-        x0, y0, w, h = match.groups()
-        bboxes.append([float(x0), float(y0), float(w), float(h)])
+    lines = md.split('\n')
+
+    for i, line in enumerate(lines):
+        # Check if current line is a bbox comment
+        bbox_match = BBOX_PATTERN.search(line)
+        if not bbox_match:
+            continue
+
+        # Check if next line exists and is an image
+        if i + 1 < len(lines):
+            next_line = lines[i + 1]
+            if IMAGE_PATTERN.search(next_line):
+                # Extract bbox coordinates
+                x0, y0, x1, y1 = bbox_match.groups()
+                bboxes.append([float(x0), float(y0), float(x1), float(y1)])
+
     return bboxes
 
 
@@ -107,7 +193,8 @@ def parse_md(md: str, table_type: Optional[str] = None) -> Dict[str, object]:
         "images": extract_images(md),
         "image_bboxes": extract_image_bboxes(md),
         "formulas": extract_formulas(md),
-        "table_type": detected,
+        # markdown은 HTML로 변환하므로 downstream에서는 html로 취급
+        "table_type": "html" if detected == "markdown" else detected,
     }
 
 

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title */
+[data-id="b001"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  color: #0056b3;
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  text-align: left;
+  line-height: 1.3;
+}
+
+/* Block b002: Main paragraph */
+[data-id="b002"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0 0 16px 0;
+  color: #333;
+}
+
+/* Block b003: Author name */
+[data-id="b003"] p {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #666;
+  text-align: right;
+  margin: 24px 0 16px 0;
+}
+
+/* Block b004: Table container */
+[data-id="b004"] .table-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 24px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-id="b004"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.5;
+}
+
+[data-id="b004"] .data-table tr {
+  border-bottom: 1px solid #eee;
+}
+
+[data-id="b004"] .data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+  color: #444;
+}
+
+[data-id="b004"] .data-table tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+[data-id="b004"] .data-table tr:first-child td {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+[data-id="b004"] .data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Ensure consistent spacing and alignment */
+[data-id="b004"] .data-table td:first-child {
+  font-weight: bold;
+  color: #0056b3;
+}
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.00rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #742004;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.75rem;
+  color: rgba(156, 47, 11, 0.841);
+  border-left: 4px solid #b84304;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #ef5b05d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #cf3704;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(239, 107, 6, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 1.0rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(221, 64, 7, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.25rem;
+  color: #5a2202;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #c05c05;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.4rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.3rem;
+  color: #161211;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.37rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1px solid #ccc !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,50,518,89">
+<h1>드라마와 죽음</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,102,905,413">
+<p><strong>엘로드라마는 디킨스가 동시대의 극장에서 관객들과 소통할 수 있는 매개체였으며, 퓨어스와 세익스피어의 비극도 마찬가지였다. 소설가로서 그가 극장의 어떤 측면에 지속적으로 몰입해 있던 것은 그의 성공에 필수적인 부분이었다. 의심할 여지 없이, 그는 의식적으로는 아니지만 세익스피어로부터 많은 것을 배웠다. 디킨스와 세익스피어는 공통점이 있었다: 그들은 모두 가상 명백한 수준에서 문학에 전문적으로 현신했으며, 다양한 관객에게 무언가를 제공했고, 동시에 구체적이고 신화적인 의미를 지닌 큰 상징적 구조를 추구했다. 따라서 디킨스가 세익스피어의 두 번째 인물이라고 자랑하는 것은 단순한 과장이 아니라 정확한 평행선을 보여주는 것이다. 그러나 그의 진정한 사랑은 벤 존슨이었다. 존슨의 풍자적 유머의 통찰력은 1850년 이전의 디킨스 작품에서 뚜렷하게 나타난다. 소설가 자신은 벤 존슨을 연기했고, 자신의 작품과 의문이 달린 가치를 가진 퓨어스와 로맨틱 코미디를 작곡, 연출, 연기했다. 사실 그는 극장, 생생한 관객의 분위기, 화장과 밑밑 조명을 통해 창조되고 살아가는 가짜 현실에 매료되었다. 이는 "실제" 생활에서 그가 짜증스럽고, 잔인하고, 지배적이며, 우울한 성격을 가진 소설가의 성격을 이해하는 데 큰 도움을 준다. 그러나 어떤 종류의 관객이 있더라도, 그는 모방, 활기찬 정신, 거의 허스티컬한 웃음으로 빛나는 존재로 호흡하고 확장되었다. 또한, 그가 안정된 상태(격어도 길로르는)에 이르렀을 때, 그는 어린 시절 트라우마의 뿌리에서 비롯된 깊은 강박감 때문에 계속해서 금전적, 사회적으로 돈을 벌기 위해 자신을 강화하려는 충동에 몰두했고, 그로 인해 그는 독자들과의 옛날의 민감한 친밀감을 잃어버렸다. 그는 자연스럽게 공개적인 낭독이라는 기술로 물두하게 되었다. 이는 그가 작사가로서의 힘을 관객에게 통제할 수 있는 기쁨을 다시 한번 느낄 수 있게 해주었으며, 자신이 눈으로 물리적 효과를 볼 수 있는 추가적인 이점도 있었다. 그의 낭독은 주로 초기 소설과 크리스마스 이야기들에서 이루어졌으며, 이는 그들의 민중적 매력을 보여주는 뚜렷한 예였다. (그는 맨체스터의 기술자들에게서부터 유행하는 사회의 지도자들까지 다양한 관객에게 낭독했다.) 낭독 자체보다는 디킨스가 그 속에서 발견한 매력이 그를 마지막으로, 예언적으로 매혹적인 질병처럼 만들었다. 우리는 디킨스의 심장박동을 기록하고 있으며, 그가 낭독할 때마다 심장박동이 놀라울 정도로 빨라졌다. 그는 관객과 함께 시대의 숨겨진 갈등과 강박을 연기했다. 올리버 트위스트에서 낸시의 살해는 그의 인기 있는 작품이 되었고, 디킨스는 공연 중에 기절하는 여성들의 수를 명적 인 만족감으로 기록했다. 그는 의사들로부터 더 이상 공연하지 않도록 금지되었지만, 그는 어떤 종류의 격렬한 열정으로 계속 공연을 이어갔다. 그가 경고를 듣고 행동했을 때는 이미 너무 늦었고, 그는 지친 상태로 마비된 채 죽었다. 한편으로, 그의 관객, 또는 그가 관객에 대한 열정을 품었던 점이 그를 파괴했지만, 그의 예술가로서의 열정은 공연자의 가면 아래에서 관객을 형성하고 재창조했으며, 그 과정에서 19세기 영국의 상상적 풍경을 형성했다.</strong></p>
+</div>
+<div class="block" data-class="author" data-id="b003" data-bbox="752,427,905,439">
+<p><strong>가브리엘 피어슨</strong></p>
+</div>
+<div class="block" data-class="reference" data-id="b004" data-bbox="134,452,904,953">
+<div class="table-container"><table class="data-table">
+<tr>
+<td>LAURENCE&amp;WISHART에서출판된 최근 및 예정</td>
+</tr>
+<tr>
+<td>된 작품들</td>
+</tr>
+<tr>
+<td>가치론의 연구</td>
+</tr>
+<tr>
+<td>R.L. 미크</td>
+</tr>
+<tr>
+<td>노동가치론의 진화에 대한 비판적 조사로，현대 비판의 유효성을 논의하는 데 기여한다.</td>
+</tr>
+<tr>
+<td>가용성：30s.</td>
+</tr>
+<tr>
+<td>톰 맨과 그의 시대Vol .11856-1890</td>
+</tr>
+<tr>
+<td>도나 토르</td>
+</tr>
+<tr>
+<td>영국 노동조합 역사의 결정적 시기의 뛰어난 기록. 톰맨의 생애와 1889년 대크리크 스트라이크까지의 활동을 다룬다.</td>
+</tr>
+<tr>
+<td>가용성：21s.</td>
+</tr>
+<tr>
+<td>우토피아에서의 여행존프랜시스브레이</td>
+</tr>
+<tr>
+<td>영국 사회주의 선구자로 알려진 저작가의 미발표 작품. 1830년대 영국을 우토피아 방문자의 시각으로 보여준다.M.F. 라이디-프리차드， M.A.，Ph.D.가 편집및 서문을 담당했다.</td>
+</tr>
+<tr>
+<td>가용성：2월 14일21s.</td>
+</tr>
+<tr>
+<td>티베트：여행의 기록앨런 윈닝턴</td>
+</tr>
+<tr>
+<td>티베트의 사람들과 품습에 대한 가장 완전한 그림. 봉건적 과거에서 탈피하는 사회에 대한 깊이 있는 분석.</td>
+</tr>
+<tr>
+<td>가용성：2월 21일 25s.</td>
+</tr>
+<tr>
+<td>러시아연방공화국경제：통계요약최근소련정부의출판물로，러시아의경제상황에대한 가장완전하고드러난데이터를제공한다.</td>
+</tr>
+<tr>
+<td>가용성：2월 14일21s.</td>
+</tr>
+<tr>
+<td>성가족또는비판적비판의비판마르크스와 엔겔스</td>
+</tr>
+<tr>
+<td>“젊은헤겔파"에대한유명한논쟁，처음으로영어로번역됨.</td>
+</tr>
+<tr>
+<td>가용성：3월 21일7s.6d.</td>
+</tr>
+<tr>
+<td>토마스 윌커의 특이한 사례프리다 나이트</td>
+</tr>
+<tr>
+<td>특별한 전기 연구一프랑스혁명시기에 10년 동안 자신의 급진적 견해 때문에 핍박받았던 맨체스터 기술자의 이야기.</td>
+</tr>
+<tr>
+<td>가용성：4월 18일21s.</td>
+</tr>
+<tr>
+<td>모든 서점에서 구매 가능</td>
+</tr>
+</table></div>
+</div>
+</div>
+</body>
+</html>

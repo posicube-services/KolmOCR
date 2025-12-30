@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 1em 0;
+  text-align: left;
+  color: #000;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b003"] h2,
+.block[data-id="b004"] h2,
+.block[data-id="b005"] h2,
+.block[data-id="b006"] h2,
+.block[data-id="b007"] h2,
+.block[data-id="b008"] h2,
+.block[data-id="b009"] h2,
+.block[data-id="b010"] h2 {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  margin: 0.5em 0;
+  color: #000;
+  line-height: 1.4;
+}
+
+.block[data-id="b011"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  font-style: italic;
+  color: #555;
+  margin: 1em 0 0 0;
+  line-height: 1.5;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.11rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #ccc !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f4f4f2;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #0c0c0c;
+}
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.9;
+}
+
+.block[data-class="title"] {
+  font-size: 2.2rem;
+  letter-spacing: 0.3rem;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.9rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.8rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.7rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="header"] {
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.6rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.6rem;
+  color: #0c0c0c;
+}
+
+.block[data-class="text"] {
+  font-size: 1.6rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.42rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1px solid #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="reference" data-id="b001" data-bbox="104,61,277,87">
+<h1>Reference List</h1>
+</div>
+<div class="block" data-class="reference" data-id="b002" data-bbox="104,114,896,147">
+<h2>1. Iwakiri H, Nagata O, Matsukawa T, Ozaki M, Sessler DI (2003) 프로포폴의 효과 부위 농도는 펜타닐 효과 부위 농도와 거의 독립적으로 의식 회복에 영향을 미친다. Anesth Analg 96: 1651-1655.</h2>
+</div>
+<div class="block" data-class="reference" data-id="b003" data-bbox="104,170,807,204">
+<h2>2. Shafer SL, Varvel JR, Aziz N, Scott JC (1990) 컴퓨터 제어 주입 펌프를 통한 펜타닐 투여의 약동학. Anesthesiology 73:1091-1102.</h2>
+</div>
+<div class="block" data-class="reference" data-id="b004" data-bbox="104,227,898,260">
+<h2>3. Ouchi K, Ohara S, Sunada K, Nagata O. (2008) [펜타닐에서 레미펜타닐로 진통제를 변경하여 총체적 정맥 마취 시 안정된 순환 동역학 경험]. J Clin Anesth (Jpn) 32:782-784.</h2>
+</div>
+<div class="block" data-class="reference" data-id="b005" data-bbox="104,283,896,317">
+<h2>4. Kaneda K, Han TH (2009) 비선형 혼합 효과 모델링을 사용한 펜타닐의 비교 인구 약동학: 화상 vs. 비화상. Burns 35: 790-797.</h2>
+</div>
+<div class="block" data-class="reference" data-id="b006" data-bbox="104,340,746,356">
+<h2>5. Abrams JT, Horrow JC, Bennett JA, Van Riper DF, Storella RJ (1996) 수페네타닐로 인</h2>
+</div>
+<div class="block" data-class="reference" data-id="b007" data-bbox="104,379,889,413">
+<h2>6. Ackerman WE, Phero JC, Theodore GT (1990) 정맥 내 미다졸람과 펜타닐 투여 후 가슴 벽 경직으로 인한 의식 유지 상태에서의 통기 부족. Anesth Prog. 37:46-48.</h2>
+</div>
+<div class="block" data-class="reference" data-id="b008" data-bbox="104,436,891,469">
+<h2>7. Bennett JA, Abrams JT, Van Riper DF, Horrow JC (1997) 수페네타닐로 인해 발생한 마취 후 어려운 또는 불가능한 통기는 주로 목소리 락의 폐쇄로 인해 발생한다. Anesthesiology 87: 1070-1074.</h2>
+</div>
+<div class="block" data-class="reference" data-id="b009" data-bbox="104,492,898,526">
+<h2>8. Comstock MK, Carter JG, Moyers JR, Stevens WC (1981) 높은 농도의 펜타닐로 인해 발생한 마취 시 경직과 고탄소혈증. Anesth Analg60: 362-363.</h2>
+</div>
+<div class="block" data-class="reference" data-id="b010" data-bbox="104,549,891,582">
+<h2>9. Ouchi K, Uno H, Sugiyama K (2012) [로쿠로늄의 예비 투여가 레미펜타닐에 의한 어려운 통기 예방에 미치는 영향]. J Clin Anesth (Jpn). 36:1601-1606.</h2>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="104,606,898,637">
+<p>This is the markdown version of the reference list. The table of references is structured in a numbered list format as per the original text.</p>
+</div>
+</div>
+</body>
+</html>

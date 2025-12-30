@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>중도상환신청서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #fff;
+            color: #222;
+            margin: 20px;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #003a8c;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 25px;
+            border: 1px solid #999;
+            table-layout: fixed;
+            word-break: break-all;
+        }
+        th {
+            background: #003a8c;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #999;
+            padding: 10px;
+            font-size: 14px;
+        }
+        td {
+            background: #e9f2ff;
+            text-align: right;
+            padding: 10px;
+            border: 1px solid #999;
+            font-size: 14px;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .section-header {
+            background: #003a8c;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 12px;
+            font-size: 16px;
+            border-bottom: 2px solid #003a8c;
+        }
+        .sub-header {
+            background: #003a8c;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px;
+            font-size: 14px;
+        }
+        .value-cell {
+            text-align: right;
+            font-weight: normal;
+        }
+        .left-align {
+            text-align: left;
+        }
+        .center-align {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>중도상환신청서</h1>
+
+    <!-- 섹션 1: 신청인 기본정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">신청인 기본정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">개인정보</th>
+            <th colspan="2" class="sub-header">연계정보</th>
+        </tr>
+        <tr>
+            <th>성명</th>
+            <td class="value-cell">홍길동</td>
+            <th>고객번호</th>
+            <td class="value-cell">CUST20240001</td>
+        </tr>
+        <tr>
+            <th>주민등록번호</th>
+            <td class="value-cell">900101-1234567</td>
+            <th>은행명</th>
+            <td class="value-cell">국민은행</td>
+        </tr>
+        <tr>
+            <th>휴대전화번호</th>
+            <td class="value-cell">010-1234-5678</td>
+            <th>계좌번호</th>
+            <td class="value-cell">123-456-789012</td>
+        </tr>
+        <tr>
+            <th>우편번호</th>
+            <td class="value-cell">12345</td>
+            <th rowspan="2">주소</th>
+            <td class="value-cell left-align">서울시 강남구 테헤란로 123</td>
+        </tr>
+        <tr>
+            <th>상세주소</th>
+            <td class="value-cell">10층 1001호</td>
+            <td class="value-cell left-align">123</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 2: 대출정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">대출정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">대출계약정보</th>
+            <th colspan="2" class="sub-header">상환내역</th>
+        </tr>
+        <tr>
+            <th>대출계약번호</th>
+            <td class="value-cell">LOAN2023123456</td>
+            <th>상환스케줄 회차</th>
+            <td class="value-cell center-align">1</td>
+        </tr>
+        <tr>
+            <th>대출금액</th>
+            <td class="value-cell">50,000,000</td>
+            <th>예정일</th>
+            <td class="value-cell">2024-06-01</td>
+        </tr>
+        <tr>
+            <th>대출기간(개월)</th>
+            <td class="value-cell">60</td>
+            <th>원금</th>
+            <td class="value-cell">833,333</td>
+        </tr>
+        <tr>
+            <th>이자율(%)</th>
+            <td class="value-cell">3.5</td>
+            <th>이자</th>
+            <td class="value-cell">145,833</td>
+        </tr>
+        <tr>
+            <th rowspan="2">실제상환내역</th>
+            <td rowspan="2" class="value-cell left-align">2024-05-01, 979,166, 원리금, 49,020,834</td>
+            <th>합계</th>
+            <td class="value-cell">979,166</td>
+        </tr>
+        <tr>
+            <th>일자</th>
+            <td class="value-cell">2024-04-01</td>
+        </tr>
+        <tr>
+            <th>금액</th>
+            <td class="value-cell">979,166</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 3: 중도상환신청내용 -->
+    <table>
+        <tr><th colspan="4" class="section-header">중도상환신청내용</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">신청금액</th>
+            <th colspan="2" class="sub-header">상환일자</th>
+        </tr>
+        <tr>
+            <th>신청금액</th>
+            <td class="value-cell">10,000,000</td>
+            <th>상환일자</th>
+            <td class="value-cell">2024-07-15</td>
+        </tr>
+        <tr>
+            <th>잔액(상환후)</th>
+            <td class="value-cell">40,000,000</td>
+            <th>조정일자</th>
+            <td class="value-cell">2024-07-10</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="sub-header">수수료 및 계산내역</th>
+            <th colspan="2" class="sub-header">약관동의</th>
+        </tr>
+        <tr>
+            <th>벌금/수수료</th>
+            <td class="value-cell">150,000</td>
+            <th>약관동의</th>
+            <td class="value-cell">동의함</td>
+        </tr>
+        <tr>
+            <th>총비용</th>
+            <td class="value-cell">10,150,000</td>
+            <th>개인정보동의</th>
+            <td class="value-cell">동의함</td>
+        </tr>
+        <tr>
+            <th>계산내역</th>
+            <td class="value-cell left-align">원금 10,000,000 + 수수료 150,000</td>
+            <th rowspan="2">서명란</th>
+            <td rowspan="2" class="value-cell left-align">홍길동 (2024-07-15)</td>
+        </tr>
+        <tr>
+            <th>증인서명</th>
+            <td class="value-cell">김철수</td>
+        </tr>
+    </table>
+</body>
+</html>

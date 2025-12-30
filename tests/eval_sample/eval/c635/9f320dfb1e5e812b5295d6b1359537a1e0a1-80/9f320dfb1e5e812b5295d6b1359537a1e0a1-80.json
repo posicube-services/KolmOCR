@@ -1,0 +1,90 @@
+[
+  {
+    "id": "front_matter",
+    "type": "front_matter",
+    "markdown": "primary_language: en\nis_rotation_valid: True\nrotation_correction: 0\nis_table: False\nis_diagram: False",
+    "metadata": {
+      "primary_language": "en",
+      "is_rotation_valid": true,
+      "rotation_correction": 0,
+      "is_table": false,
+      "is_diagram": false
+    }
+  },
+  {
+    "id": "b001",
+    "type": "paragraph",
+    "content": "모든 애플리케이션용 타이머",
+    "markdown": "모든 애플리케이션용 타이머",
+    "bbox": [
+      105,
+      84,
+      810,
+      66
+    ],
+    "page": 1
+  },
+  {
+    "id": "b002",
+    "type": "paragraph",
+    "content": "후지 멀티 모드 타이머, 완전한 기능 사용 편의성: 시간 범위가 조정될 때마다 해당 디스플레이가 변경됩니다. 완전한 기능: 나사 한 번 돌리기로 최대 네 가지 출력 모드를 선택할 수 있습니다. 모든 출력에는 5A, DPDT 릴레이가 포함됩니다. LED 표시등",
+    "markdown": "후지 멀티 모드 타이머, 완전한 기능\n사용 편의성: 시간 범위가 조정될 때마다 해당 디스플레이가 변경됩니다.\n완전한 기능: 나사 한 번 돌리기로 최대 네 가지 출력 모드를 선택할 수 있습니다. 모든 출력에는 5A, DPDT 릴레이가 포함됩니다.\nLED 표시등",
+    "bbox": [
+      105,
+      180,
+      390,
+      105
+    ],
+    "page": 1
+  },
+  {
+    "id": "b003",
+    "type": "paragraph",
+    "content": "미니어처 DIN 타이머는 작고 정확합니다 작은 크기: 1인치 미만. 사용 편의성: 간단한 다이얼로 운영자가 쉽게 설정할 수 있습니다. 정확성: 타이머는 설정의 +/- 1%의 반복 가능한 정확도로 타이밍 기능을 수행합니다.",
+    "markdown": "미니어처 DIN 타이머는 작고 정확합니다\n작은 크기: 1인치 미만.\n사용 편의성: 간단한 다이얼로 운영자가 쉽게 설정할 수 있습니다.\n정확성: 타이머는 설정의 +/- 1%의 반복 가능한 정확도로 타이밍 기능을 수행합니다.",
+    "bbox": [
+      105,
+      170,
+      809,
+      184
+    ],
+    "page": 1
+  },
+  {
+    "id": "b004",
+    "type": "paragraph",
+    "content": "코요 디지털 타이머: 강력하지만 사용하기 쉽습니다 이 전기식 타이머는 모든 기능을 갖추고 있으며, 완전 프로그래밍 가능: 타이밍 범위 및 모드: 초에서 시간까지의 범위와 소수 선택 및 상하 타이밍 모드로 다양한 애플리케이션을 지원합니다. 출력 모드: 5가지 출력 모드, on-delay에서 one-shot까지, 신뢰할 수 있는 2A 릴레이를 사용하여 제어 장치를 작동합니다. 방해 방지: 개별 키에 대해 키 보호를 설정하여 운영자의 실수로 인한 변경을 방지할 수 있습니다.",
+    "markdown": "코요 디지털 타이머: 강력하지만 사용하기 쉽습니다\n이 전기식 타이머는 모든 기능을 갖추고 있으며, 완전 프로그래밍 가능:\n타이밍 범위 및 모드: 초에서 시간까지의 범위와 소수 선택 및 상하 타이밍 모드로 다양한 애플리케이션을 지원합니다.\n출력 모드: 5가지 출력 모드, on-delay에서 one-shot까지, 신뢰할 수 있는 2A 릴레이를 사용하여 제어 장치를 작동합니다.\n방해 방지: 개별 키에 대해 키 보호를 설정하여 운영자의 실수로 인한 변경을 방지할 수 있습니다.",
+    "bbox": [
+      525,
+      210,
+      390,
+      135
+    ],
+    "page": 1
+  },
+  {
+    "id": "b005",
+    "type": "paragraph",
+    "markdown": "<table>\n  <tr>\n    <th></th>\n    <th>ST7P 시리즈</th>\n    <th>MS4S 시리즈</th>\n    <th>KT-V4S 시리즈</th>\n  </tr>\n  <tr>\n    <th>디스플레이</th>\n    <td>수동 다이얼\n시간 설정\n출력 LED 표시등</td>\n    <td>수동 다이얼\n시간 설정\n전원 LED 표시등\n출력 LED 표시등\n출력 모드 설정</td>\n    <td>시간 설정을 위한 4자리 녹색 LED 디스플레이\n현재 시간을 위한 4자리 빨간색 LED 디스플레이\n출력 LED 표시등\n프로그래밍 표시등</td>\n  </tr>\n  <tr>\n    <th>입력 전원</th>\n    <td>100-120 VAC 또는 24 VDC</td>\n    <td>100-240 VAC 또는 24 VDC/AC</td>\n    <td>85-260 VAC 또는 10-26 VDC</td>\n  </tr>\n  <tr>\n    <th>입력</th>\n    <td>타이밍 신호</td>\n    <td>리셋 신호\n시작 신호\n게이트 신호\n타이밍 신호</td>\n    <td>시작 신호\n리셋 신호\n타이밍 신호</td>\n  </tr>\n  <tr>\n    <th>출력</th>\n    <td>정상 개방 DPDT\n정상 닫힘 DPDT</td>\n    <td>정상 개방 DPDT\n정상 닫힘 DPDT</td>\n    <td>1 SPDT\nDC NPN 트랜지스터</td>\n  </tr>\n  <tr>\n    <th>접촉 등급</th>\n    <td>3 A @ 240 VAC (저항성 부하)</td>\n    <td>5 A @ 250 VAC (저항성 부하)</td>\n    <td>기계적: 2 A @ 220 VAC\n트랜지스터: 100 mA @ 24 VDC</td>\n  </tr>\n  <tr>\n    <th>출력 모드</th>\n    <td>on-delay</td>\n    <td>on-delay\n깜빡임\none shot\noff-delay</td>\n    <td>on-delay\n깜빡임\none shot\noff-delay\n누적</td>\n  </tr>\n  <tr>\n    <th>시간 범위</th>\n    <td>0.4초에서 60분</td>\n    <td>0.05초에서 60시간</td>\n    <td>0.001초에서 999.9시간</td>\n  </tr>\n  <tr>\n    <th>케이스 등급</th>\n    <td>NEMA 1</td>\n    <td>NEMA 1</td>\n    <td>IP65 - 패널</td>\n  </tr>\n  <tr>\n    <th>기관 승인</th>\n    <td>UL/CSA/CE/TUV</td>\n    <td>UL/CSA/CE/TUV</td>\n    <td>UL/CSA/CE</td>\n  </tr>\n  <tr>\n    <th>가격</th>\n    <td>40.00부터 시작</td>\n    <td>49.50부터 시작</td>\n    <td>102.00부터 시작</td>\n  </tr>\n</table>\n<!-- bbox_blk_end -->",
+    "bbox": [
+      105,
+      383,
+      810,
+      387
+    ],
+    "page": 1
+  },
+  {
+    "id": "b006",
+    "type": "paragraph",
+    "markdown": "<img src=\"images/dla_unmatched_3.png\" alt=\"image 좌상단\" width=\"37%\">\n<img src=\"images/dla_unmatched_2.png\" alt=\"image 우상단\" width=\"13%\">\n<img src=\"images/dla_unmatched_1.png\" alt=\"image 중간우측\" width=\"33%\">",
+    "bbox": [
+      105,
+      799,
+      842,
+      132
+    ],
+    "page": 1
+  }
+]

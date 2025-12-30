@@ -1,0 +1,104 @@
+{
+  "b7410a6f72a54e08a9ffd09b72559011839f-1.html": {
+    "blocks": [
+      {
+        "data_id": "b001",
+        "class": "block",
+        "text": "HARVARD COLLEGE\nRequest for Dean’s Letter"
+      },
+      {
+        "data_id": "b002",
+        "class": "block",
+        "text": "Mather House\nOffice of the Allston Burr Senior Tutor\nHarvard College, Cambridge, MA 02138\n617-495-4829 (phone); 617-496-2355 (fax)"
+      },
+      {
+        "data_id": "b003",
+        "class": "block",
+        "text": "STUDENT:      Please complete this form and give it to your Allston Burr Senior Tutor."
+      },
+      {
+        "data_id": "b004",
+        "class": "block",
+        "text": "Name of Student (print): ____________________________________   Class: _____________"
+      },
+      {
+        "data_id": "b005",
+        "class": "block",
+        "text": "Preparation and Release of Dean’s Letter"
+      },
+      {
+        "data_id": "b006",
+        "class": "block",
+        "text": "I hereby request that Harvard College prepare a Dean’s Letter in support of my application(s) to professional school or for a fellowship. I understand and agree that, to prepare the Dean’s Letter, officers of the College, including my Allston Burr Senior Tutor and others, will access my educational records."
+      },
+      {
+        "data_id": "b007",
+        "class": "block",
+        "text": "I further request that Harvard College send the Dean’s Letter to the institutions that I designate. I will provide my Allston Burr Senior Tutor with a written list of all such institutions."
+      },
+      {
+        "data_id": "b008",
+        "class": "block",
+        "text": "Student’s signature                                 Date"
+      },
+      {
+        "data_id": "b009",
+        "class": "block",
+        "text": "Waiver of Access to Dean’s Letter"
+      },
+      {
+        "data_id": "b010",
+        "class": "block",
+        "text": "I understand that, under the Family Educational Rights and Privacy Act, 20 U.S.C. § 1232g (“FERPA”), I have the right to see the Dean’s Letter."
+      },
+      {
+        "data_id": "b011",
+        "class": "block",
+        "text": "I hereby ____ WAIVE / ____ DO NOT WAIVE my right of access under FERPA with respect to the Dean’s Letter."
+      },
+      {
+        "data_id": "b012",
+        "class": "block",
+        "text": "Student’s signature                                 Date"
+      }
+    ],
+    "classification": {
+      "b001": {
+        "class": "title"
+      },
+      "b002": {
+        "class": "header"
+      },
+      "b003": {
+        "class": "text"
+      },
+      "b004": {
+        "class": "key_value"
+      },
+      "b005": {
+        "class": "section_title_lv1"
+      },
+      "b006": {
+        "class": "text"
+      },
+      "b007": {
+        "class": "text"
+      },
+      "b008": {
+        "class": "key_value"
+      },
+      "b009": {
+        "class": "section_title_lv1"
+      },
+      "b010": {
+        "class": "text"
+      },
+      "b011": {
+        "class": "key_value"
+      },
+      "b012": {
+        "class": "key_value"
+      }
+    }
+  }
+}

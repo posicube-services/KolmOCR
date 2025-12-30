@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Title - b001 */
+[data-id="b001"] h1 {
+  font-size: calc(18pt * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+/* Authors - b002, b003, b004 */
+[data-id="b002"] p, [data-id="b003"] p, [data-id="b004"] p {
+  font-size: calc(10pt * var(--font-scale));
+  text-align: center;
+  margin: 5px 0;
+  padding: 0;
+}
+
+/* Abstract - b005, b006 */
+[data-id="b005"] h2 {
+  font-size: calc(12pt * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  padding: 0;
+}
+
+[data-id="b006"] p {
+  font-size: calc(10pt * var(--font-scale));
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keywords - b007 */
+[data-id="b007"] p {
+  font-size: calc(10pt * var(--font-scale));
+  font-weight: bold;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+/* Section Headers - b008, b011 */
+[data-id="b008"] h2, [data-id="b011"] h2 {
+  font-size: calc(14pt * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  padding: 0;
+}
+
+/* Subsection Header - b012 */
+[data-id="b012"] h3 {
+  font-size: calc(12pt * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  padding: 0;
+}
+
+/* Body Paragraphs - b009, b010, b013 */
+[data-id="b009"] p, [data-id="b010"] p, [data-id="b013"] p {
+  font-size: calc(10pt * var(--font-scale));
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+/* Example List - b015 */
+[data-id="b015"] ul {
+  font-size: calc(10pt * var(--font-scale));
+  line-height: 1.5;
+  margin: 0 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+/* Code/SQL - b016 */
+[data-id="b016"] p {
+  font-family: monospace;
+  font-size: calc(10pt * var(--font-scale));
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+}
+
+/* Preformatted Code Block - b017, b018 */
+[data-id="b017"] pre, [data-id="b018"] pre {
+  font-family: monospace;
+  font-size: calc(10pt * var(--font-scale));
+  line-height: 1.2;
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  overflow: auto;
+}
+
+[data-id="b017"] code, [data-id="b018"] code {
+  font-family: monospace;
+  font-size: calc(10pt * var(--font-scale));
+  line-height: 1.2;
+  display: block;
+  white-space: pre;
+}
+
+/* Ensure consistent spacing for all blocks */
+.block {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.44rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f9fafb;
+  font-family: "맑은 고딕", serif;
+  color: #111827;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="key_value"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 1rem;
+  border-left: 4px solid #2563eb;
+  padding-left: 14px;
+}
+
+.block[data-class="equation"] {
+  font-size: 1.15rem;
+  font-family: "나눔손글씨 붓", serif;
+  color: #2563eb;
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #2563eb;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #2563eb;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #2563eb;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #2563eb;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #2563eb;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #111827;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2563eb;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #2563eb;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.24rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="186,39,823,58">
+<h1>관계형 데이터베이스를 위한 동적 쿼리 양식</h1>
+</div>
+<div class="block" data-class="author" data-id="b002" data-bbox="268,76,741,87">
+<p><strong>Priyanka Gupta1, Rakesh Kumar Singh2, Rambha Agrahari3</strong></p>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="199,101,833,112">
+<p><strong>M.Tech 학생, CSE, Kamla Nehru Institute of Technology, Sultanpur, U.P., India1,3</strong></p>
+</div>
+<div class="block" data-class="key_value" data-id="b004" data-bbox="229,126,803,137">
+<p><strong>부교수, CSE, Kamla Nehru Institute of Technology, Sultanpur, U.P., India2</strong></p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="104,151,144,164">
+<h2>요약</h2>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,178,904,297">
+<p>현재 과학 데이터베이스와 인터넷 데이터베이스는 급격히 발전하고 있으며, 이러한 데이터베이스는 수천 개의 관계와 속성을 포함하고 있습니다. 따라서 정적 쿼리 양식은 많은 관계와 속성으로 인해 실제 세계 데이터베이스에서 많은 일의 쿼리를 처리하지 못합니다. 따라서 사용자의 요구를 충족하고 실행 시점에 쿼리 양식을 동적으로 생성할 수 있는 시스템이 필요합니다. 본 논문에서는 대규모 및 다중 데이터베이스 문제를 해결하기 위한 동적 쿼리 양식(DQF)을 제안합니다. DQF는 사용자의 관심을 포착하고 쿼리 양식 구성 요소를 제공하여 사용자가 결정을 내릴 수 있도록 돕습니다. DQF는 반복적인 과정이며 각 반복은 사용자의 안내를 받습니다. 각 반복에서 시스템은 구성 요소의 순위 목록을 자동으로 생성하고, 사용자는 필요에 따라 추가 구성 요소를 추가할 수 있습니다. 구성 요소의 순위는 사용자의 선호를 기반으로 생성됩니다. 이제 사용자는 풍부한 쿼리 양식을 작성하고 쿼리를 실행하며 결과를 볼 수 있습니다. 이 과정은 사용자가 만족할 때까지 반복됩니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,314,577,325">
+<p><strong>키워드:</strong> 쿼리 양식, 쿼리 실행, 사용자 상호작용, 쿼리 양식 생성.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b008" data-bbox="104,341,172,356">
+<h2>I. 서론</h2>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,370,904,453">
+<p>데이터베이스는 쿼리 인터페이스가 제공되지 않는 한 유용하지 않습니다. 사용자가 데이터베이스와 소통하지 못한다면 그 데이터베이스는 무용지물입니다. 구조화된 쿼리는 SQL과 XQuery로 작성할 수 있지만, SQL에 대해 아무것도 모르는 사용자에게는 적합하지 않습니다. 이 때문에 쿼리 양식은 이러한 유형의 사용자에게 가장 쉬운 방법입니다. 그들은 단순히 양식의 빈칸을 채우기만 하면 됩니다. 이것이 쿼리 양식이 데이터베이스 인터페이스 제공을 위한 가장 널리 사용되는 기술 중 하나인 이유입니다. 전통적인 쿼리 양식은 개발자나 DBA에 의해 사전 정의되며, 데이터베이스 가 가지고 복잡해지면서 사용자의 임의 쿼리를 충족시키지 못합니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,469,902,539">
+<p>현재 많은 데이터베이스 개발 도구들이 존재합니다. 예를 들어, Easy Query [1], Cold Fusion [2], Microsoft Access와 같은 도구들은 사용자가 쿼리 양식을 사용자 맞춤형으로 만들 수 있는 메커니즘을 제공합니다. 그러나 사용자가 이러한 데이터베이스 도구에 익숙하지 않다면 대규모 데이터베이스를 다루는 것이 쉽지 않습니다. DQF는 쿼리 양식을 동적으로 생성하며, DQF의 각 반복은 쿼리 양식 풍부화와 쿼리 실행을 포함합니다. 기본 쿼리 양식이 사용자에게 제공되며, 이 양식은 사용자와 시스템의 상호작용을 통해 반복적으로 풍부화되며, 사용자가 쿼리 결과에 만족할 때까지 진행됩니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b011" data-bbox="104,555,289,570">
+<h2>II. 쿼리 양식 기술</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="104,584,311,597">
+<h3>A. Query By Example:</h3>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="104,611,902,634">
+<p>이는 관계형 데이터베이스를 위한 데이터베이스 쿼리 언어입니다. 사용자가 명령, 예제 요소 및 조건을 입력할 수 있는 시각적 테이블을 생성하는 데 사용되는 첫 번째 쿼리 언어입니다.</p>
+</div>
+<div class="block" data-class="figure_caption" data-id="b014" data-bbox="104,650,236,660">
+<p>예시 양식 연락처:</p>
+</div>
+<div class="block" data-class="figure" data-id="b015" data-bbox="145,683,215,741">
+<ul>
+<li>이름: X</li>
+<li>주소:</li>
+<li>도시:</li>
+<li>주: Y</li>
+<li>우편번호:</li>
+</ul>
+</div>
+<div class="block" data-class="code" data-id="b016" data-bbox="104,771,394,818">
+<p>결과 SQL:sql<br/>
+SELECT * FROM CONTACTS<br/>
+WHERE NAME='X' AND STATE='Y';</p>
+</div>
+<div class="block" data-class="text" data-id="b017" data-bbox="112,837,1000,894">
+<pre><code>### B. 사용자 맞춤형 쿼리 양식:
+개발자가 쿼리 양식을 생성하거나 사용자 맞춤형으로 만들 수 있는 도구들이 많이 존재합니다. 예를 들어 SAP, Microsoft Access 등이 있습니다. 그러나 이러한 도구들은 데이터베이스에 익숙한 전문 개발자를 대상으로 하며, 데이터베이스에 대해 아무것도 모르는 최종 사용자를 대상으로 하지는 않습니다.
+### C. 자동 정적 쿼리 양식:
+이는 데이터 기반 기술로, 먼저 주로 쿼리되는 데이터 속성을 찾습니다. 그런 다음 이러한 속성 기반으로 쿼리 양식을 생성합니다. 이는 과거 쿼리에 클러스터링 알고리즘을 적용하여 새로운 쿼리를 찾는 과정을 포함합니다. 그런 다음 이러한 새로운 쿼리 기반으로 쿼리 양식을 생성합니다. 이 기술의 문제는 데이터베이스가 매우 크고 복잡할 경우 사용자의 쿼리가 다양해질 수 있다는 점입니다. 이러한 경우, 많은 양식을 미리 생성하더라도 사용자의 요구를 충족시키지 못할 수 있습니다. 또한 많은 쿼리 양식을 생성하면 사용자가 자신의 요구를 충족시키는 양식을 어떻게 찾을지 모를 수 있습니다.
+## III. 기존 시스템
+전통적인 쿼리 양식은 개발자나 DBA에 의해 사전 정의됩니다. 데이터베이스가 가지고 복잡해지면서 정적 쿼리 양식은 사용자의 요구를 충족시키지 못합니다.</code></pre>
+</div>
+<div class="block" data-class="figure" data-id="b018" data-bbox="119,919,890,940">
+<pre><code></code></pre>
+</div>
+</div>
+</body>
+</html>

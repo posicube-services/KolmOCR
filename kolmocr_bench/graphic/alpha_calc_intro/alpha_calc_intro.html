@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="utf-8">
+  <title>AlphaCalc Technologies 발표 자료</title>
+  <style>
+    /* ===== A4 one-page hard target ===== */
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    :root {
+      --page-w: 210mm;
+      --page-h: 297mm;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+
+      /* Use slight compression */
+      --fs-base: 9.6pt;
+      --lh: 1.32;
+      --gap: 4mm;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: #f3f4f6;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Noto Sans KR", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Single page */
+    .page {
+      width: var(--page-w);
+      height: var(--page-h);
+      margin: 0 auto;
+      background: #fff;
+      box-sizing: border-box;
+      padding: 12mm;
+      overflow: hidden;
+      /* 핵심: 1페이지 고정 */
+      position: relative;
+    }
+
+    /* Header */
+    .top {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: var(--gap);
+      align-items: start;
+      padding-bottom: 3mm;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .title {
+      margin: 0;
+      font-size: 18.5pt;
+      line-height: 1.08;
+      letter-spacing: -0.2px;
+    }
+
+    .subtitle {
+      margin: 2mm 0 0 0;
+      font-size: 10.2pt;
+      color: var(--muted);
+    }
+
+    /* Small banner image (keep only one) */
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 34mm;
+      /* 고정 높이로 페이지 제어 */
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero .cap {
+      padding: 2mm 2.5mm;
+      font-size: 8.6pt;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      line-height: 1.2;
+    }
+
+    /* Body grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      padding-top: 4mm;
+    }
+
+    h2 {
+      margin: 0 0 2mm 0;
+      font-size: 12.2pt;
+      line-height: 1.15;
+    }
+
+    p,
+    li {
+      margin: 0 0 2mm 0;
+      font-size: var(--fs-base);
+      line-height: var(--lh);
+    }
+
+    .box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 3.5mm 4mm;
+    }
+
+    .kpi {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5mm;
+      margin-top: 2mm;
+    }
+
+    .kpi .item {
+      border: 1px dashed var(--line);
+      border-radius: 6px;
+      padding: 2.5mm 3mm;
+    }
+
+    .kpi .num {
+      font-size: 12pt;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .kpi .lab {
+      font-size: 8.6pt;
+      color: var(--muted);
+      margin: 0.5mm 0 0 0;
+    }
+
+    /* Product table to compress text */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5mm;
+      font-size: 9.2pt;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 2mm 2.2mm;
+      vertical-align: top;
+    }
+
+    th {
+      text-align: left;
+      background: #f9fafb;
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* Block elements for bbox capture */
+    .block {
+      position: relative;
+    }
+
+    /* Footer note */
+    .footer {
+      position: absolute;
+      left: 12mm;
+      right: 12mm;
+      bottom: 10mm;
+      border-top: 1px solid var(--line);
+      padding-top: 2.5mm;
+      display: flex;
+      justify-content: space-between;
+      gap: 4mm;
+      font-size: 8.8pt;
+      color: var(--muted);
+    }
+
+    /* Prevent accidental breaks */
+    * {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+<style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+
+<body>
+  <div class="page">
+    <!-- Header -->
+    <div class="top">
+      <div>
+        <h1 class="block title" data-id="b001" data-bbox="57,37,458,90">AlphaCalc Technologies<br>전자계산기 제조 기업 발표 자료
+        </h1>
+        <p class="block subtitle" data-id="b001a" data-bbox="57,94,284,110">One-page Company Brief (A4)</p>
+        <div>
+          <div>
+            <p class="num block" data-id="b001d" data-bbox="57,110,92,125">1998</p>
+            <p class="lab block" data-id="b001e" data-bbox="57,131,87,147">설립</p>
+          </div>
+          <div>
+            <p class="num block" data-id="b001g" data-bbox="57,153,95,168">3개국</p>
+            <p class="lab block" data-id="b001h" data-bbox="57,175,125,190">R&amp;D 거점</p>
+          </div>
+          <div>
+            <p class="num block" data-id="b001j" data-bbox="57,197,95,212">7단계</p>
+            <p class="lab block" data-id="b001k" data-bbox="57,218,174,234">출고 전 품질 검사</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero">
+        <!-- 기존 b003 이미지를 배너로만 사용 -->
+        <img alt="AlphaCalc 제품 이미지" class="block" data-id="b002" src="imgs/alpha_calc_intro_7.jpg" data-bbox="619,41,941,156">
+        <div class="cap block" data-id="b002a" data-bbox="631,162,805,176">대표 사무·교육용 계산기 제품</div>
+      </div>
+    </div>
+    <!-- Body -->
+    <div class="grid">
+      <!-- Left column -->
+      <div class="box">
+        <div class="block" data-id="b003" data-bbox="77,276,181,296">
+          <h2>1. 기업 개요</h2>
+        </div>
+        <div class="block" data-id="b004" data-bbox="77,302,470,347">
+          <p>
+            AlphaCalc Technologies는 교육·사무·산업용 전자계산기 솔루션을
+            글로벌로 공급하는 전문 제조 기업이다. 핵심 가치는
+            <strong>정확성</strong>, <strong>사용성</strong>, <strong>내구성</strong>이다.
+          </p>
+        </div>
+        <div class="block" data-id="b005" data-bbox="77,358,257,378">
+          <h2 style="margin-top:4mm;">2. 기술 기반 및 R&amp;D</h2>
+        </div>
+        <div>
+          <p class="block" data-id="b006" data-bbox="77,384,470,429">
+            자체 개발한 <strong>CalcEngine X2</strong> 프로세서와 안정적인 회로 설계를 기반으로
+            초저전력·고정밀 연산 및 장시간 사용 환경을 고려한 내구 설계를 적용한다.
+          </p>
+          <ul style="margin:0; padding-left:4.5mm;">
+            <li class="block" data-id="b006a" data-bbox="99,434,294,450">초저전력 설계 및 발열 최적화</li>
+            <li class="block" data-id="b006b" data-bbox="99,456,279,471">고정밀 연산·신호 처리 기술</li>
+            <li class="block" data-id="b006c" data-bbox="99,478,259,493">고내구 키패드·외장 설계</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Right column -->
+      <div class="box">
+        <div class="block" data-id="b007" data-bbox="530,276,701,296">
+          <h2>3. 생산 및 품질 관리</h2>
+        </div>
+        <div class="block" data-id="b008" data-bbox="530,302,922,347">
+          <p>
+            ISO 9001 기준의 생산 공정과 자동화 조립 라인, 실시간 검사 체계를 운영한다.
+            모든 제품은 출고 전 <strong>7단계 품질 검사</strong>를 통과해야 한다.
+          </p>
+        </div>
+        <div class="block" data-id="b009" data-bbox="530,358,652,378">
+          <h2 style="margin-top:4mm;">4. 제품 라인업</h2>
+        </div>
+        <div class="block" data-id="b010" data-bbox="530,384,922,541">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:26%;">시리즈</th>
+                <th>핵심 포인트</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Basic</strong>
+                  <div class="muted">일상·학습</div>
+                </td>
+                <td>직관적 조작, 높은 내구성, 교육/사무 기본 수요 중심</td>
+              </tr>
+              <tr>
+                <td><strong>Scientific</strong>
+                  <div class="muted">공학·통계</div>
+                </td>
+                <td>과학/공학 기능 및 통계 분석, 고급 수식 처리 지원</td>
+              </tr>
+              <tr>
+                <td><strong>Graph</strong>
+                  <div class="muted">고급·전문</div>
+                </td>
+                <td>그래프 시각화, 데이터 저장, 사용자 프로그램 기능</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="block" data-id="b011" data-bbox="530,553,590,573">
+          <h2 style="margin-top:4mm;">5. 비전</h2>
+        </div>
+        <div class="block" data-id="b012" data-bbox="530,578,922,608">
+          <p>
+            교육·산업·연구 전반에 신뢰할 수 있는
+            <strong>정확하고 지속 가능한 계산 솔루션</strong>을 제공하는 기업으로 성장한다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer block" data-id="b013">
+      <div class="block" data-id="b013a" data-bbox="57,952,318,966">AlphaCalc Technologies | Company Brief</div>
+      <div class="block muted" data-id="b013b" data-bbox="761,952,942,966">A4 1-page optimized layout</div>
+    </div>
+  </div>
+
+
+</body></html>

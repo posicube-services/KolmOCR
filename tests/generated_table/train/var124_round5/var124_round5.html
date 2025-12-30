@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      font-family: 'Noto Serif KR', 'Malgun Gothic', sans-serif; 
+      font-size: 12pt; 
+      margin: 0;
+      padding: 0;
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 18pt;
+      font-weight: bold;
+      padding: 15px 0;
+      background: #e6f0ff;
+      margin: 0;
+      border-bottom: 2px solid #0044cc;
+    }
+    table { 
+      border: 1px solid #666; 
+      border-collapse: collapse; 
+      table-layout: fixed; 
+      word-break: break-all; 
+      width: 100%; 
+      margin: 10px 0;
+    }
+    th { 
+      background: #0044cc; 
+      color: #fff; 
+      text-align: center; 
+      font-weight: bold; 
+      border: 1px solid #999; 
+      padding: 6px;
+      font-size: 11pt;
+    }
+    td { 
+      background: #e6f0ff; 
+      padding: 6px; 
+      text-align: left; 
+      border: 1px solid #999;
+      word-break: break-all; 
+      white-space: normal;
+      font-size: 11pt;
+    }
+    .section-header {
+      background: #0044cc;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      border: 1px solid #999;
+    }
+    .sub-header {
+      background: #0055dd;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 4px;
+      border: 1px solid #999;
+    }
+    .data-cell {
+      text-align: left;
+      padding: 6px;
+      background: #f0f8ff;
+      border: 1px solid #999;
+    }
+    .label-cell {
+      background: #0044cc;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      border: 1px solid #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>거래내역조회신청서</h1>
+
+  <!-- 전체 문서 테이블 -->
+  <table>
+    <!-- 신청인 기본정보 섹션 -->
+    <tr>
+      <th colspan="4" class="section-header">신청인 기본정보</th>
+    </tr>
+    <tr>
+      <th rowspan="5" class="label-cell">개인정보</th>
+      <th colspan="2" class="sub-header">신원 확인</th>
+      <th rowspan="5" class="label-cell">계좌 정보</th>
+    </tr>
+    <tr>
+      <th class="label-cell">성명</th>
+      <td class="data-cell">홍길동</td>
+    </tr>
+    <tr>
+      <th class="label-cell">주민등록번호</th>
+      <td class="data-cell">900101-1234567</td>
+    </tr>
+    <tr>
+      <th class="label-cell">휴대전화</th>
+      <td class="data-cell">010-1234-5678</td>
+    </tr>
+    <tr>
+      <th class="label-cell">주소</th>
+      <td class="data-cell">서울시 강남구 테헤란로 123</td>
+    </tr>
+    <tr>
+      <th rowspan="3" class="label-cell">계좌 기본</th>
+      <th class="label-cell">계좌번호</th>
+      <td class="data-cell">123-456-789012</td>
+      <th class="label-cell">계좌 유형</th>
+      <td class="data-cell">예금</td>
+    </tr>
+    <tr>
+      <th class="label-cell">은행명</th>
+      <td class="data-cell">국민은행</td>
+      <th class="label-cell">통화</th>
+      <td class="data-cell">KRW</td>
+    </tr>
+    <tr>
+      <th class="label-cell">예금주명</th>
+      <td class="data-cell">홍길동</td>
+      <th class="label-cell">개설일</th>
+      <td class="data-cell">2020-05-15</td>
+    </tr>
+
+    <!-- 조회 범위 설정 섹션 -->
+    <tr>
+      <th colspan="4" class="section-header">조회 범위 설정</th>
+    </tr>
+    <tr>
+      <th rowspan="3" class="label-cell">기간 지정</th>
+      <th colspan="2" class="sub-header">시작일</th>
+      <th rowspan="3" class="label-cell">종료일</th>
+    </tr>
+    <tr>
+      <th class="label-cell">조회 시작일</th>
+      <td class="data-cell">2023-01-01</td>
+    </tr>
+    <tr>
+      <th class="label-cell">시작 시각</th>
+      <td class="data-cell">09:00</td>
+    </tr>
+    <tr>
+      <th rowspan="4" class="label-cell">조회 유형</th>
+      <th colspan="2" class="sub-header">거래 유형</th>
+      <th rowspan="4" class="label-cell">정렬 방식</th>
+    </tr>
+    <tr>
+      <th class="label-cell">거래 유형</th>
+      <td class="data-cell">입금</td>
+    </tr>
+    <tr>
+      <th class="label-cell">금액 범위</th>
+      <td class="data-cell">100,000 ~ 5,000,000</td>
+    </tr>
+    <tr>
+      <th class="label-cell">가맹점 유형</th>
+      <td class="data-cell">식당</td>
+    </tr>
+    <tr>
+      <th rowspan="2" class="label-cell">정렬 방식</th>
+      <th class="label-cell">정렬 기준</th>
+      <td class="data-cell">거래일자</td>
+      <th class="label-cell">정렬 순서</th>
+      <td class="data-cell">내림차순</td>
+    </tr>
+
+    <!-- 거래내역 표 섹션 -->
+    <tr>
+      <th colspan="4" class="section-header">거래내역 표</th>
+    </tr>
+    <tr>
+      <th rowspan="2" class="label-cell">테이블 구조</th>
+      <th colspan="2" class="sub-header">컬럼 정의</th>
+      <th rowspan="2" class="label-cell">행 데이터</th>
+    </tr>
+    <tr>
+      <th class="label-cell">컬럼 1</th>
+      <td class="data-cell">거래일자</td>
+    </tr>
+    <tr>
+      <th rowspan="4" class="label-cell">행 데이터</th>
+      <th class="label-cell">1행</th>
+      <td class="data-cell">2023-06-15</td>
+      <th class="label-cell">2행</th>
+      <td class="data-cell">2023-06-16</td>
+    </tr>
+    <tr>
+      <th class="label-cell">1행</th>
+      <td class="data-cell">입금</td>
+      <th class="label-cell">2행</th>
+      <td class="data-cell">출금</td>
+    </tr>
+    <tr>
+      <th class="label-cell">1행</th>
+      <td class="data-cell">500,000</td>
+      <th class="label-cell">2행</th>
+      <td class="data-cell">300,000</td>
+    </tr>
+
+    <!-- 서명 및 동의 섹션 -->
+    <tr>
+      <th colspan="4" class="section-header">서명 및 동의</th>
+    </tr>
+    <tr>
+      <th rowspan="4" class="label-cell">신청자 동의</th>
+      <th colspan="2" class="sub-header">동의 항목</th>
+      <th rowspan="4" class="label-cell">서명 정보</th>
+    </tr>
+    <tr>
+      <th class="label-cell">동의 항목 1</th>
+      <td class="data-cell">개인정보 활용 동의</td>
+    </tr>
+    <tr>
+      <th class

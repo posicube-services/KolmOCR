@@ -1,0 +1,92 @@
+---
+primary_language: en
+is_rotation_valid: True
+rotation_correction: 0
+is_table: True
+is_diagram: False
+---
+# 해외주식거래신청서
+
+<table>
+<tr><th class="section-header" colspan="4">개인정보</th></tr>
+<tr><th class="subsection-header" colspan="4">기본정보</th></tr>
+<tr>
+<th class="two-col">한글 성명</th>
+<td class="two-col">홍길동</td>
+<th class="two-col">영문 성명</th>
+<td class="two-col">Hong Gil-dong</td>
+</tr>
+<tr>
+<th>생년월일</th>
+<td>1990-01-01</td>
+<th>성별</th>
+<td>남성</td>
+</tr>
+<tr>
+<th>국적</th>
+<td>대한민국</td>
+<th>거주국가</th>
+<td>대한민국</td>
+</tr>
+<tr><th class="subsection-header" colspan="4">거주지 주소</th></tr>
+<tr>
+<td colspan="4">서울시 강남구 테헤란로 123</td>
+</tr>
+<tr><th class="subsection-header" colspan="4">연락처</th></tr>
+<tr>
+<th>휴대전화번호</th>
+<td>010-1234-5678</td>
+<th>이메일 주소</th>
+<td>user@example.com</td>
+</tr>
+<tr>
+<th>긴급연락처 이름</th>
+<td>김철수</td>
+<th>긴급연락처 전화번호</th>
+<td>02-123-4567</td>
+</tr>
+</table><table>
+<tr><th class="section-header" colspan="4">계좌정보</th></tr>
+<tr><th class="subsection-header" colspan="4">계좌개설정보</th></tr>
+<tr>
+<th>계좌종류</th>
+<td>일반계좌</td>
+<th>통화종류</th>
+<td>USD</td>
+</tr>
+<tr>
+<th colspan="2">계좌번호</th>
+<td colspan="2">123-456-7890</td>
+</tr>
+<tr><th class="subsection-header" colspan="4">은행정보</th></tr>
+<tr>
+<th>은행명</th>
+<td>미국은행</td>
+<th>지점명</th>
+<td>뉴욕지점</td>
+</tr>
+<tr>
+<th colspan="2">SWIFT 코드</th>
+<td colspan="2">BOFAUS3N</td>
+</tr>
+<tr><th class="subsection-header" colspan="4">계좌연결정보</th></tr>
+<tr>
+<th>국내계좌 연결 여부</th>
+<td>Y</td>
+<th>자동이체 설정 여부</th>
+<td>Y</td>
+</tr>
+</table><table>
+<tr><th class="section-header" colspan="4">거래내역</th></tr>
+<tr><th class="subsection-header" colspan="4">거래유형</th></tr>
+<tr>
+<th>거래 유형</th>
+<td>매수</td>
+<th>주문 방식</th>
+<td>시장가 주문</td>
+</tr>
+<tr>
+<th colspan="2">주문가격</th>
+<td colspan="2">100.50</td>
+</tr>
+</table>

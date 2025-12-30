@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 { 
+  text-align: center; 
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+table { 
+  width: 100%; 
+  border: 2px solid #444; 
+  border-collapse: collapse; 
+  table-layout: fixed; 
+  word-break: break-all; 
+  font-family: 'Malgun Gothic', 'Arial', sans-serif;
+  font-size: 14px;
+}
+th { 
+  background: #666666; 
+  color: #fff; 
+  padding: 8px; 
+  font-weight: bold; 
+  text-align: center; 
+  border: 1px solid #999; 
+  vertical-align: middle;
+}
+td { 
+  background: #e0e0e0; 
+  border: 1px solid #666; 
+  padding: 8px; 
+  text-align: left; 
+  vertical-align: middle;
+  word-break: break-all;
+  white-space: normal;
+}
+header { 
+  border-bottom: 2px solid #444; 
+  padding-bottom: 8px; 
+  margin-bottom: 10px;
+}
+.section-header {
+  background: #555555;
+  font-weight: bold;
+  text-align: center;
+  padding: 6px;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+.subsection-header {
+  background: #777777;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Public Finance Report</h1>
+</header>
+
+<!-- 섹션 1: 기본정보 -->
+<table>
+  <tr><th colspan="4" class="section-header">기본정보</th></tr>
+  <tr><th colspan="4" class="subsection-header">수령자 정보</th></tr>
+  <tr><th colspan="4" class="subsection-header">개인정보</th></tr>
+  <tr>
+    <th colspan="2" style="text-align: center;">기본사항</th>
+    <th colspan="2" style="text-align: center;">주소정보</th>
+  </tr>
+  <tr>
+    <th>수령자 이름</th><td>홍길동</td>
+    <th>우편번호</th><td>12345</td>
+  </tr>
+  <tr>
+    <th>수령자 신분증 번호</th><td>900101-1234567</td>
+    <th>기본 주소</th><td>서울특별시 강남구 테헤란로 123</td>
+  </tr>
+  <tr>
+    <th>수령자 전화번호</th><td>010-1234-5678</td>
+    <th>상세 주소</th><td>10층 1001호</td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">지급자 정보</th></tr>
+  <tr><th colspan="4" class="subsection-header">기관정보</th></tr>
+  <tr><th colspan="4" class="subsection-header">기관명 및 연락처</th></tr>
+  <tr>
+    <th>지급기관명</th><td>한국은행</td>
+    <th>기관 연락처</th><td>02-1234-5678</td>
+  </tr>
+  <tr>
+    <th>부서명</th><td>재무관리팀</td>
+    <th></th><td></td>
+  </tr>
+</table>
+
+<!-- 섹션 2: 수령내역 -->
+<table>
+  <tr><th colspan="4" class="section-header">수령내역</th></tr>
+  <tr><th colspan="4" class="subsection-header">현금수령 요약</th></tr>
+  <tr><th colspan="4" class="subsection-header">금액 및 통화</th></tr>
+  <tr>
+    <th>총 수령 금액</th><td>1500000</td>
+    <th>통화 종류</th><td>KRW</td>
+  </tr>
+  <tr>
+    <th>금액 한자표기</th><td>일佰오십만원</td>
+    <th></th><td></td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">상세 거래내역</th></tr>
+  <tr><th colspan="4" class="subsection-header">거래 테이블</th></tr>
+  <tr>
+    <th>거래일자</th><td>2025-04-01</td>
+    <th>내용</th><td>업무비 지급</td>
+  </tr>
+  <tr>
+    <th>금액</th><td>500000</td>
+    <th>통화</th><td>KRW</td>
+  </tr>
+  <tr>
+    <th>참조ID</th><td>TRN20250401001</td>
+    <th></th><td></td>
+  </tr>
+  <tr>
+    <th>거래일자</th><td>2025-04-02</td>
+    <th>내용</th><td>식비 지급</td>
+  </tr>
+  <tr>
+    <th>금액</th><td>300000</td>
+    <th>통화</th><td>KRW</td>
+  </tr>
+  <tr>
+    <th>참조ID</th><td>TRN20250402001</td>
+    <th></th><td></td>
+  </tr>
+  <tr>
+    <th>거래일자</th><td>2025-04-03</td>
+    <th>내용</th><td>교통비 지급</td>
+  </tr>
+  <tr>
+    <th>금액</th><td>700000</td>
+    <th>통화</th><td>KRW</td>
+  </tr>
+  <tr>
+    <th>참조ID</th><td>TRN20250403001</td>
+    <th></th><td></td>
+  </tr>
+</table>
+
+<!-- 섹션 3: 확인 및 서명 -->
+<table>
+  <tr><th colspan="4" class="section-header">확인 및 서명</th></tr>
+  <tr><th colspan="4" class="subsection-header">수령자 확인</th></tr>
+  <tr><th colspan="4" class="subsection-header">서명 및 날짜</th></tr>
+  <tr>
+    <th>수령자 서명</th><td>홍길동</td>
+    <th>수령일자</th><td>2025-04-05</td>
+  </tr>
+  <tr>
+    <th>수령자 인쇄명</th><td>홍길동</td>
+    <th></th><td></td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">지급자 확인</th></tr>
+  <tr><th colspan="4" class="subsection-header">담당자 서명</th></tr>
+  <tr>
+    <th>지급자 서명</th><td>김철수</td>
+    <th>지급일자</th><td>2025-04-05</td>
+  </tr>
+  <tr>
+    <th>지급자 인쇄명</th><td>김철수</td>
+    <th></th><td></td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">관리자 승인</th></tr>
+  <tr><th colspan="4" class="subsection-header">최종 승인</th></tr>
+  <tr>
+    <th>관리자 승인</th><td>승인됨</td>
+    <th>승인일자</th><td>2025-04-05</td>
+  </tr>
+  <tr>
+    <th>비고</th><td>정상 처리됨</td>
+    <th></th><td></td>
+  </tr>
+</table>
+
+<!-- 섹션 4: 부가정보 -->
+<table>
+  <tr><th colspan="4" class="section-header">

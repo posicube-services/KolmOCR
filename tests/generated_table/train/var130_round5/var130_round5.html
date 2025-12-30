@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>유족확인서</title>
+  <style>
+    body { 
+      font-family: 'Noto Serif KR', 'Malgun Gothic', sans-serif; 
+      font-size: 12pt; 
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    .document-container {
+      max-width: 210mm;
+      margin: 10mm auto;
+      padding: 10mm;
+      background: white;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h1 { 
+      text-align: center; 
+      margin: 0 0 10mm 0;
+      font-size: 20pt;
+      font-weight: bold;
+      color: #000;
+    }
+    .section-header {
+      background: #0044cc;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 4px;
+      border: 1px solid #0044cc;
+      font-size: 12pt;
+    }
+    table { 
+      border: 1px solid #666; 
+      border-collapse: collapse; 
+      table-layout: fixed; 
+      word-break: break-all; 
+      width: 100%; 
+      margin-bottom: 10mm;
+    }
+    th { 
+      background: #0044cc; 
+      color: #fff; 
+      text-align: center; 
+      font-weight: bold; 
+      border: 1px solid #999; 
+      padding: 4px;
+      font-size: 11pt;
+    }
+    td { 
+      background: #e6f0ff; 
+      padding: 4px; 
+      text-align: left; 
+      border: 1px solid #999;
+      font-size: 11pt;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .value-cell {
+      text-align: left;
+      padding-left: 8px;
+    }
+    .sub-header {
+      background: #0055dd;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 4px;
+      border: 1px solid #0044cc;
+      font-size: 11pt;
+    }
+    .section-title {
+      background: #0066ff;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 4px;
+      border: 1px solid #0044cc;
+      font-size: 12pt;
+    }
+  </style>
+</head>
+<body>
+  <div class="document-container">
+    <h1>유족확인서</h1>
+
+    <!-- 기본정보 섹션 -->
+    <table>
+      <tr><th colspan="4" class="section-header">기본정보</th></tr>
+      <tr><th colspan="4" class="sub-header">피보험자 정보</th></tr>
+      <tr><th colspan="4" class="sub-header">개인정보</th></tr>
+      <tr><th colspan="4" class="sub-header">신상정보</th></tr>
+      <tr>
+        <th>성명</th>
+        <td class="value-cell">홍길동</td>
+        <th>주민등록번호</th>
+        <td class="value-cell">900101-1234567</td>
+      </tr>
+      <tr>
+        <th>생년월일</th>
+        <td class="value-cell">1990-01-01</td>
+        <th colspan="2"></th>
+      </tr>
+      <tr><th colspan="4" class="sub-header">연락처</th></tr>
+      <tr>
+        <th>전화번호</th>
+        <td class="value-cell">010-1234-5678</td>
+        <th>이메일</th>
+        <td class="value-cell">hong@example.com</td>
+      </tr>
+      <tr>
+        <th>주소</th>
+        <td class="value-cell" colspan="3">서울시 강남구 테헤란로 123</td>
+      </tr>
+    </table>
+
+    <!-- 유족 정보 섹션 -->
+    <table>
+      <tr><th colspan="4" class="section-header">유족 정보</th></tr>
+      <tr><th colspan="4" class="sub-header">관계자 목록</th></tr>
+      <tr><th colspan="4" class="section-title">유족 1</th></tr>
+      <tr>
+        <th>피보험자와의 관계</th>
+        <td class="value-cell">배우자</td>
+        <th>유족 성명</th>
+        <td class="value-cell">김영희</td>
+      </tr>
+      <tr>
+        <th>유족 연락처</th>
+        <td class="value-cell">010-8765-4321</td>
+        <th colspan="2"></th>
+      </tr>
+      <tr><th colspan="4" class="section-title">유족 2</th></tr>
+      <tr>
+        <th>피보험자와의 관계</th>
+        <td class="value-cell">자녀</td>
+        <th>유족 성명</th>
+        <td class="value-cell">홍민수</td>
+      </tr>
+      <tr>
+        <th>유족 연락처</th>
+        <td class="value-cell">010-5555-6666</td>
+        <th colspan="2"></th>
+      </tr>
+      <tr><th colspan="4" class="section-title">유족 3</th></tr>
+      <tr>
+        <th>피보험자와의 관계</th>
+        <td class="value-cell">부모</td>
+        <th>유족 성명</th>
+        <td class="value-cell">홍영수</td>
+      </tr>
+      <tr>
+        <th>유족 연락처</th>
+        <td class="value-cell">010-9999-8888</td>
+        <th colspan="2"></th>
+      </tr>
+    </table>
+
+    <!-- 보험 관련 정보 섹션 -->
+    <table>
+      <tr><th colspan="4" class="section-header">보험 관련 정보</th></tr>
+      <tr><th colspan="4" class="sub-header">보험계약 정보</th></tr>
+      <tr><th colspan="4" class="sub-header">계약 상세</th></tr>
+      <tr>
+        <th>계약번호</th>
+        <td class="value-cell">C2024000123</td>
+        <th>계약 시작일</th>
+        <td class="value-cell">2024-01-01</td>
+      </tr>
+      <tr>
+        <th>계약 만료일</th>
+        <td class="value-cell">2034-01-01</td>
+        <th colspan="2"></th>
+      </tr>
+      <tr><th colspan="4" class="sub-header">보장내역</th></tr>
+      <tr>
+        <th>보장 유형</th>
+        <td class="value-cell">사망보험금</td>
+        <th>보장 금액</th>
+        <td class="value-cell">50000000</td>
+      </tr>
+      <tr>
+        <th>지급 조건</th>
+        <td class="value-cell">사망 시 100% 지급</td>
+        <th colspan="2"></th>
+      </tr>
+    </table>
+
+    <!-- 지급내역 섹션 -->
+    <table>
+      <tr><th colspan="4" class="section-header">지급내역</th></tr>
+      <tr><th colspan="4" class="sub-header">지급 테이블</th></tr>
+      <tr><th colspan="4" class="sub-header">지급 내역 목록</th></tr>
+      <tr>
+        <th>지급일</th>
+        <td class="value-cell">2024-06-15</td>
+        <th>지급액</th>
+        <td class="value-cell">25000000</td>
+      </tr>
+      <tr>
+        <th>지급일</th>
+        <td class="value-cell">2024-07-01</td>
+        <th>지급액</th>
+        <td class="value-cell">15000000</td>
+      </tr>
+      <tr>
+        <th>지급일</

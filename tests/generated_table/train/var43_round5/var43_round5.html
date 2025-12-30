@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>금융투자상품설명서</title>
+    <style>
+        body {
+            font-family: 'Noto Serif KR', 'Malgun Gothic', sans-serif;
+            font-size: 12pt;
+            margin: 20mm;
+            background: #fff;
+        }
+        h1 {
+            text-align: center;
+            font-size: 18pt;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        header {
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .doc-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 10pt;
+            color: #444;
+        }
+        table {
+            border: 1px solid #000;
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+            word-break: break-all;
+            margin-bottom: 15px;
+        }
+        th {
+            background: #4d4d4d;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #999;
+            padding: 6px 4px;
+            font-size: 11pt;
+        }
+        td {
+            background: #f5f5f5;
+            height: 28px;
+            text-align: left;
+            padding: 6px 8px;
+            border: 1px solid #999;
+            word-break: break-all;
+            white-space: normal;
+            font-size: 11pt;
+        }
+        .seal {
+            color: #b00;
+            font-weight: bold;
+            border: 2px solid #b00;
+            padding: 2px 6px;
+            display: inline-block;
+            font-size: 10pt;
+            margin: 0 2px;
+        }
+        .section-title {
+            background: #555;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            font-size: 12pt;
+        }
+        .sub-table {
+            width: 100%;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+        .sub-table th, .sub-table td {
+            padding: 4px;
+            font-size: 10pt;
+        }
+        .sub-table th {
+            background: #666;
+            border: 1px solid #999;
+        }
+        .sub-table td {
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+        .right-align {
+            text-align: right;
+        }
+        .center-align {
+            text-align: center;
+        }
+        .no-border {
+            border: none;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>금융투자상품설명서</h1>
+        <div class="doc-number">문서번호: 2024-FIS-001</div>
+    </header>
+
+    <!-- 상품 기본 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-title">상품 기본 정보</th></tr>
+        <tr>
+            <th>상품명</th>
+            <td>글로벌 성장형 펀드</td>
+            <th>상품 종류</th>
+            <td>채권형</td>
+        </tr>
+        <tr>
+            <th>운용사</th>
+            <td>한국자산운용</td>
+            <th>투자 목적</th>
+            <td>장기 자본 성장</td>
+        </tr>
+        <tr>
+            <th>투자 전략</th>
+            <td colspan="3">글로벌 주식 및 채권 분산 투자</td>
+        </tr>
+        <tr>
+            <th>주요 투자 자산</th>
+            <td colspan="3">미국 주식, 유럽 채권, 원자재</td>
+        </tr>
+        <tr>
+            <th>설정일</th>
+            <td>2023-05-15</td>
+            <th>만기일</th>
+            <td>2028-05-15</td>
+        </tr>
+        <tr>
+            <th>운용 기간</th>
+            <td>5년</td>
+            <td colspan="2" class="center-align"><span class="seal">발행인 인감</span></td>
+        </tr>
+    </table>
+
+    <!-- 투자자 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-title">투자자 정보</th></tr>
+        <tr>
+            <th>성명</th>
+            <td>홍길동</td>
+            <th>생년월일</th>
+            <td>1990-03-15</td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td colspan="3">서울시 강남구 테헤란로 123</td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td>hong@example.com</td>
+            <th>휴대전화</th>
+            <td>010-1234-5678</td>
+        </tr>
+        <tr>
+            <th>비상 연락처</th>
+            <td>02-123-4567</td>
+            <th>투자 목적</th>
+            <td>자녀 교육비 마련</td>
+        </tr>
+        <tr>
+            <th>위험 감수 능력</th>
+            <td>중간</td>
+            <th>투자 경험</th>
+            <td>3년 이상</td>
+        </tr>
+        <tr>
+            <th>투자 목적</th>
+            <td>자녀 교육비 마련</td>
+            <td colspan="2" class="center-align"><span class="seal">투자자 확인</span></td>
+        </tr>
+    </table>
+
+    <!-- 계좌 및 거래 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-title">계좌 및 거래 정보</th></tr>
+        <tr>
+            <th>계좌번호</th>
+            <td>110-123-456789</td>
+            <th>계좌명</th>
+            <td>홍길동</td>
+        </tr>
+        <tr>
+            <th>거래 테이블</th>
+            <td colspan="3">
+                <table class="sub-table">
+                    <tr>
+                        <th>날짜</th>
+                        <th>거래유형</th>
+                        <th class="right-align">금액</th>
+                        <th class="right-align">잔액</th>
+                        <th>비고</th>
+                    </tr>
+                    <tr>
+                        <td>2023-06-01</td>
+                        <td>입금</td>
+                        <td class="right-align">5,000,000</td>
+                        <td class="right-align">5,000,000</td>
+                        <td>초기 입금</td>
+                    </tr>
+                    <tr>
+                        <td>2023-06-15</td>
+                        <td>수수료</td>
+                        <td class="right-align">-25,000</td>
+                        <td class="right-align">4,975,000</td>
+                        <td>운용 수수료</td>
+                    </tr>
+                    <tr>
+                        <td>2023-07-01</td>
+                        <td>이자</td>
+                        <td class="right-align">30,000</td>
+                        <td class="right-align">5,005,000</td>
+                        <td>이자 지급</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <th>수수료율</th>
+            <td>0.5%</td>
+            <th>세금 적용</th>
+            <td>과세</td>
+        </tr>
+        <tr>
+            <th>예상 세액</th>
+            <td>25,000원</td>
+            <td colspan="2" class="center-align"><span class="seal">금융기관 확인</span></td>
+        </tr>
+    </table>
+
+    <!-- 위험 요소 및 주의사항 -->
+    <table>
+        <tr><th

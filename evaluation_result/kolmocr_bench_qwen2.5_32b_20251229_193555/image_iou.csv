@@ -1,0 +1,15 @@
+filename,image_avg_iou,image_pairs
+average,0.1469,1.6154
+eval_split/fail/processed_00_documents_eval/3465/69cfda07ee3b22dcd97df06f44b767b9127e-2/69cfda07ee3b22dcd97df06f44b767b9127e-2.md,0.0,1.0
+eval_split/succes/processed_00_documents_eval/14d0/4b04fcc1cdfa5f3fb92a85740e8ff3f1f851-5/4b04fcc1cdfa5f3fb92a85740e8ff3f1f851-5.md,0.0,1.0
+graphic/alpha_calc_intro/alpha_calc_intro.md,0.2403,1.0
+graphic/exp1/exp1.md,0.2304,2.0
+graphic/festival_catalog/festival_catalog.md,0.0,1.0
+graphic/figure_in_table/figure_in_table.md,0.0,6.0
+graphic/pic_catalog/pic_catalog.md,0.7714,1.0
+graphic/posicube_1/posicube_1.md,0.3943,1.0
+graphic/posicube_2/posicube_2.md,0.1812,2.0
+graphic/report/report.md,0.092,1.0
+graphic/text_in_fig2/text_in_fig2.md,0.0,2.0
+graphic/text_in_figure/text_in_figure.md,0.0,1.0
+multicolumn/exp1/exp1.md,0.0,1.0

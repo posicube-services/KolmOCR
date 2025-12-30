@@ -1,217 +1,725 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>외국환매도신청서</title>
-
+<meta charset="utf-8"/>
+<title>Document</title>
 <style>
-  /* ---------------------------
-     기본 문서 스타일 (대형은행 공문 스타일)
-  --------------------------- */
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 11pt;
-    margin: 20mm;
-    background: #ffffff;
-    color: #111;
-    line-height: 1.45;
-  }
+    :root {
+      --font-scale: 1;
+      --base-font-size: 10pt;
+      --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+    }
 
-  h1 {
-    text-align: center;
-    font-size: 20pt;
-    font-weight: 700;
-    color: #2c3e50;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #2c3e50;
-    margin-bottom: 18px;
-  }
+    .page {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 15mm 20mm;
+      box-sizing: border-box;
+      background: #fff;
+      column-count: 1;
+      column-gap: 10mm;
+      column-fill: balance;
+      overflow: visible;
+      transform: none;
+      font-size: var(--body-font-size);
+    }
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 6px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #c0c0c0;
-    font-weight: 600;
-    color: #4d4d4d;
-  }
 
-  /* ---------------------------
-     테이블 공통
-  --------------------------- */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    margin-bottom: 20px;
-  }
 
-  th {
-    background: #2f3b52;
-    color: #fff;
-    font-weight: 600;
-    padding: 7px;
-    border: 1px solid #4a4a4a;
-    text-align: center;
-    font-size: 10pt;
-  }
+    :root {
+      --font-scale: 1;
+      --base-font-size: calc(10pt * var(--font-scale));
+      --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+    }
 
-  td {
-    background: #f4f4f6;
-    border: 1px solid #d0d0d0;
-    padding: 7px;
-    font-size: 10pt;
-    word-break: break-all;
-  }
 
-  .label {
-    background: #e1e4e8;
-    font-weight: 600;
-    text-align: center;
-    color: #333;
-  }
 
-  .value {
-    background: #fafafa;
-    text-align: left;
-    color: #111;
-  }
+    /* Title wrapper - provides centering */
+    .title-wrapper {
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
 
-  .value.right {
-    text-align: right;
-  }
+    .title-wrapper .block {
+      display: inline-block;
+      width: fit-content;
+    }
 
-  /* ---------------------------
-     섹션 타이틀
-  --------------------------- */
-  .section-title {
-    font-size: 13pt;
-    font-weight: 700;
-    margin: 25px 0 10px 0;
-    color: #2f3b52;
-    padding-left: 4px;
-    border-left: 4px solid #2f3b52;
-  }
+    .title-wrapper .block h1 {
+      font-size: calc(18pt * var(--font-scale));
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
 
-  .subsection-title {
-    background: #3d4b65;
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-    padding: 8px;
-    font-size: 10.5pt;
-  }
+    /* Header wrapper - provides left alignment */
+    .header-wrapper {
+      text-align: left;
+      margin: 5mm 0 0 0;
+    }
 
-</style>
+    .header-wrapper .block {
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .header-wrapper .block p {
+      font-size: calc(10pt * var(--font-scale));
+      font-style: italic;
+      margin: 0;
+      color: #555;
+    }
+
+    /* Form number wrapper - provides right alignment */
+    .form-number-wrapper {
+      text-align: right;
+      margin: 5mm 0 0 0;
+    }
+
+    .form-number-wrapper .block {
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .form-number-wrapper .block p {
+      font-size: calc(10pt * var(--font-scale));
+      margin: 0;
+      color: #555;
+    }
+
+    /* Section header wrapper - provides left alignment */
+    .section-header-wrapper {
+      text-align: left;
+      margin: 10mm 0 5mm 0;
+    }
+
+    .section-header-wrapper .block {
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .section-header-wrapper .block ol {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .section-header-wrapper .block ol li {
+      font-size: calc(12pt * var(--font-scale));
+      font-weight: bold;
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Table styling for all data tables */
+    .table-container {
+      width: 100%;
+      overflow: hidden;
+      margin: 10mm 0;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: calc(10pt * var(--font-scale));
+      table-layout: fixed;
+    }
+
+    .data-table th {
+      background-color: #2c3e50;
+      color: white;
+      font-weight: bold;
+      padding: 8px 12px;
+      text-align: center;
+      border: 1px solid #34495e;
+    }
+
+    .data-table td {
+      padding: 8px 12px;
+      border: 1px solid #bdc3c7;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .data-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .data-table tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Specific styling for table headers */
+    .data-table th[colspan="4"] {
+      font-size: calc(11pt * var(--font-scale));
+      padding: 10px 12px;
+    }
+
+    /* Styling for table cells */
+    .data-table td:first-child {
+      font-weight: bold;
+      color: #2c3e50;
+      text-align: left;
+    }
+
+    /* Block b005, b008, b012, b014: Table containers */
+    [data-id="b005"] .table-container,
+    [data-id="b008"] .table-container,
+    [data-id="b012"] .table-container,
+    [data-id="b014"] .table-container {
+      margin: 10mm 0;
+    }
+
+    /* Block b014: Signature and bank confirmation */
+    [data-id="b014"] .data-table td:nth-child(2) {
+      font-style: italic;
+      color: #7f8c8d;
+    }
+
+    /* General spacing and alignment */
+    .page>.block {
+      margin-bottom: 10mm;
+    }
+
+    /* Ensure consistent spacing between sections */
+    [data-id="b004"]+.block,
+    [data-id="b007"]+.block,
+    [data-id="b011"]+.block,
+    [data-id="b013"]+.block {
+      margin-top: 15mm;
+    }
+
+    /* Footer or bottom spacing */
+    .page>.block:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Print styling */
+    @media print {
+
+      .data-table {
+        page-break-inside: avoid;
+      }
+    }
+
+
+
+    /* Enforce title/author to body ratio and minimum readable size */
+    .block[data-class="title"],
+    .block[data-class="author"] {
+      font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+    }
+
+    .block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+      font-size: clamp(5px, var(--body-font-size), 999px);
+    }
+
+
+
+    /* Target table blocks specifically */
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      column-span: all !important;
+      -webkit-column-span: all !important;
+      display: block !important;
+      margin: 2rem 0 !important;
+      padding: 0.02rem !important;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 4px !important;
+    }
+
+    .block[data-class="table"] .table-container,
+    .block[data-class*="table"] .table-container {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      min-height: 50px !important;
+      position: static !important;
+    }
+
+    @media print {
+
+      .block[data-class="table"] .table-container,
+      .block[data-class*="table"] .table-container {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+      }
+    }
+
+    .block[data-class="table"] table,
+    .block[data-class*="table"] table {
+      width: 100% !important;
+      display: table !important;
+      table-layout: auto !important;
+      border-collapse: separate !important;
+      border-spacing: 1px !important;
+      min-height: 40px !important;
+      position: static !important;
+    }
+
+    .block[data-class="table"] td,
+    .block[data-class="table"] th,
+    .block[data-class*="table"] td,
+    .block[data-class*="table"] th {
+      padding: 6px 10px !important;
+      border: 1px double #000 !important;
+      min-height: 1.5em !important;
+      line-height: 1.4 !important;
+      position: static !important;
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    .block[data-class="table"] th,
+    .block[data-class*="table"] th {
+      background: #ebebeb !important;
+      font-weight: bold !important;
+    }
+
+    .block[data-class="table"] tr:nth-child(even),
+    .block[data-class*="table"] tr:nth-child(even) {
+      background: #f9f9f9 !important;
+    }
+
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      overflow: visible !important;
+    }
+
+
+
+    .block[data-class="title"] {
+      font-family: "Noto Sans CJK KR", "은 필기", serif;
+      font-size: 2.0rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      color: #317404;
+    }
+
+    .block[data-class="subtitle"] {
+      font-family: "은 궁서", sans-serif;
+      font-size: 1.4rem;
+      color: rgba(11, 156, 16, 0.841);
+      border-left: 4px solid #04b88e;
+      padding-left: 16px;
+    }
+
+    .block[data-class="header"] {
+      font-family: "Noto Sans CJK KR", sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      color: #05bc30d1;
+    }
+
+    .block[data-class="footer"] {
+      font-family: "나눔명조", monospace;
+      font-size: 0.85rem;
+      color: #04cf3a;
+      border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    }
+
+    .block[data-class="figure"] {
+      border: 1px solid rgba(2, 2, 26, 0.4);
+      background: rgba(99, 102, 241, 0.08);
+      font-family: "Noto Sans CJK KR", sans-serif;
+      font-size: 1rem;
+    }
+
+    .block[data-class="figure_caption"] {
+      font-family: "나눔명조", sans-serif;
+      font-size: 0.9rem;
+      color: #111614;
+      font-style: italic;
+    }
+
+    .block[data-class="table"] {
+      font-family: "맑은 고딕", sans-serif;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      background: rgba(15, 118, 110, 0.2);
+    }
+
+    .block[data-class="table_caption"] {
+      font-family: "Noto Sans CJK KR", sans-serif;
+      font-size: 0.85rem;
+      color: #111614;
+      letter-spacing: 0.08em;
+    }
+
+    .block[data-class="reference"] {
+      font-family: "맑은 고딕", serif;
+      font-size: 0.95rem;
+      color: #080b13;
+      text-indent: -1.5em;
+      padding-left: 1.7em;
+    }
+
+    .block[data-class="equation"] {
+      font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+      font-size: 1.15rem;
+      color: #15150c;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(8, 90, 9, 0.4);
+    }
+
+    .block[data-class="formula_caption"] {
+      font-family: "나눔명조", serif;
+      font-size: 0.85rem;
+      color: #121517;
+      font-style: italic;
+    }
+
+    .block[data-class="QRCode"] {
+      font-family: "Noto Sans CJK KR", monospace;
+      font-size: 0.9rem;
+      color: #a5b4fc;
+    }
+
+    .block[data-class="seal"] {
+      font-family: "은 필기", serif;
+      font-size: 1rem;
+      color: #2f1919;
+      text-transform: uppercase;
+      border: 1px dashed rgba(113, 248, 210, 0.7);
+    }
+
+    .block[data-class="invoice_header"] {
+      font-family: "나눔명조", sans-serif;
+      font-size: 1.2rem;
+      color: #0d0e0d;
+      letter-spacing: 0.15em;
+    }
+
+    .block[data-class="key_value"] {
+      font-family: "나눔명조", sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #027061;
+    }
+
+    .block[data-class="section_title_lv1"] {
+      font-family: "Noto Sans CJK KR", sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.25rem;
+      color: #287103;
+    }
+
+    .block[data-class="section_title_lv2"] {
+      font-family: "나눔명조", sans-serif;
+      font-size: 1.5rem;
+      color: rgb(3, 101, 47);
+    }
+
+    .block[data-class="section_title_lv3"] {
+      font-family: "Noto Sans CJK KR", sans-serif;
+      font-size: 1.3rem;
+      color: #013b10;
+    }
+
+    .block[data-class="author"] {
+      font-family: "맑은 고딕", serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #014230;
+    }
+
+    .block[data-class="quotation"] {
+      font-family: "Noto Sans CJK KR", cursive;
+      font-size: 1.2rem;
+      color: #443806;
+      border-left: 4px solid #facc15;
+      padding-left: 18px;
+    }
+
+    .block[data-class="text"] {
+      font-family: "맑은 고딕", "은 필기", serif;
+      font-size: 1.2rem;
+      color: #111614;
+      letter-spacing: 0.02em;
+    }
+
+    /* Target table blocks specifically */
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      column-span: all !important;
+      -webkit-column-span: all !important;
+      display: block !important;
+      margin: 2rem 0 !important;
+      padding: 0.46rem !important;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 4px !important;
+    }
+
+    .block[data-class="table"] .table-container,
+    .block[data-class*="table"] .table-container {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      min-height: 50px !important;
+      position: static !important;
+    }
+
+    @media print {
+
+      .block[data-class="table"] .table-container,
+      .block[data-class*="table"] .table-container {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+      }
+    }
+
+    .block[data-class="table"] table,
+    .block[data-class*="table"] table {
+      width: 100% !important;
+      display: table !important;
+      table-layout: auto !important;
+      border-collapse: collapse !important;
+      min-height: 40px !important;
+      position: static !important;
+    }
+
+    .block[data-class="table"] td,
+    .block[data-class="table"] th,
+    .block[data-class*="table"] td,
+    .block[data-class*="table"] th {
+      padding: 5px 7px !important;
+      border: none !important;
+      border-bottom: 1px solid #ddd !important;
+      min-height: 1.5em !important;
+      line-height: 1.4 !important;
+      position: static !important;
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    .block[data-class="table"] th,
+    .block[data-class*="table"] th {
+      background: #e8e8e8 !important;
+      font-weight: bold !important;
+    }
+
+    .block[data-class="table"] tr:nth-child(even),
+    .block[data-class*="table"] tr:nth-child(even) {
+      background: #fcfcfc !important;
+    }
+
+    .block[data-class="table"],
+    .block[data-class*="table"] {
+      overflow: visible !important;
+    }
+  </style>
+<script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          MathJax.startup.promise.then(() => {
+            console.log('MathJax initial rendering complete');
+            // Force re-typeset after DOM is fully loaded
+            MathJax.typesetPromise().then(() => {
+              console.log('MathJax re-typeset complete');
+            }).catch((err) => console.log('MathJax typeset error:', err));
+          });
+        }
+      }
+    };
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
-
+<div class="page">
+<div class="title-wrapper" data-class="title">
+<div class="block" data-bbox="408,35,592,53" data-id="b001">
 <h1>외국환매도신청서</h1>
-
-<div class="header">
-  <div>대형은행 내부용 문서</div>
-  <div>양식번호: FX-2025-003</div>
 </div>
-
-<!-- 1. 신청인 기본정보 -->
-<div class="section-title">1. 신청인 기본정보</div>
-
-<table>
-  <tr><th colspan="4" class="subsection-title">개인 정보</th></tr>
-  <tr>
-    <td class="label">성명</td><td class="value">김민수</td>
-    <td class="label">주민등록번호</td><td class="value">920315-1******</td>
-  </tr>
-  <tr>
-    <td class="label">신분증 종류</td><td class="value">주민등록증</td>
-    <td class="label">신분증 번호</td><td class="value">123456-1234567</td>
-  </tr>
-  <tr>
-    <td class="label">연락처</td><td class="value">010-8723-5512</td>
-    <td class="label">이메일</td><td class="value">minsu.kim92@gmail.com</td>
-  </tr>
-  <tr>
-    <td class="label">주소</td>
-    <td class="value" colspan="3">서울특별시 서초구 반포대로 212, 601호</td>
-  </tr>
-
-  <tr><th colspan="4" class="subsection-title">입금 예정 계좌정보</th></tr>
-  <tr>
-    <td class="label">예금주명</td><td class="value">김민수</td>
-    <td class="label">계좌번호</td><td class="value">110-234-567890</td>
-  </tr>
-  <tr>
-    <td class="label">은행명</td>
-    <td class="value" colspan="3">신한은행</td>
-  </tr>
+</div>
+<div class="header-wrapper" data-class="header">
+<div class="block" data-bbox="76,65,200,75" data-id="b002">
+<p>대형은행 내부용 문서</p>
+</div>
+</div>
+<div class="form-number-wrapper" data-class="key_value">
+<div class="block" data-bbox="797,87,925,97" data-id="b003">
+<p>양식번호: FX-2025-003</p>
+</div>
+</div>
+<div class="section-header-wrapper" data-class="section_title_lv1">
+<div class="block" data-bbox="76,120,185,132" data-id="b004">
+<ol>
+<li>신청인 기본정보</li>
+</ol>
+</div>
+</div>
+<div class="block" data-bbox="76,156,925,370" data-class="key_value" data-id="b005">
+<div class="table-container">
+<table class="data-table">
+<tr>
+<th colspan="4">개인 정보</th>
+</tr>
+<tr>
+<td>성명</td>
+<td>김민수</td>
+<td>주민등록번호</td>
+<td>920315-1******</td>
+</tr>
+<tr>
+<td>신분증 종류</td>
+<td>주민등록증</td>
+<td>신분증 번호</td>
+<td>123456-1234567</td>
+</tr>
+<tr>
+<td>연락처</td>
+<td>010-8723-5512</td>
+<td>이메일</td>
+<td>minsu.kim92@gmail.com</td>
+</tr>
+<tr>
+<td>주소</td>
+<td colspan="3">서울특별시 서초구 반포대로 212, 601호</td>
+</tr>
+<tr>
+<th colspan="4">입금 예정 계좌정보</th>
+</tr>
+<tr>
+<td>예금주명</td>
+<td>김민수</td>
+<td>계좌번호</td>
+<td>110-234-567890</td>
+</tr>
+<tr>
+<td>은행명</td>
+<td colspan="3">신한은행</td>
+</tr>
 </table>
-
-<!-- 2. 외국환 매도 정보 -->
-<div class="section-title">2. 외국환 매도 정보</div>
-
-<table>
-  <tr><th colspan="4" class="subsection-title">매도 통화 및 환율</th></tr>
-  <tr>
-    <td class="label">매도 통화</td><td class="value">USD (미국달러)</td>
-    <td class="label">매도 금액</td><td class="value right">1,500.00</td>
-  </tr>
-  <tr>
-    <td class="label">적용 환율</td><td class="value">1,352.20 KRW/USD</td>
-    <td class="label">원화 환산금액</td><td class="value right">2,028,300 KRW</td>
-  </tr>
-
-  <tr><th colspan="4" class="subsection-title">거래 목적 및 외화 출처</th></tr>
-  <tr>
-    <td class="label">거래 목적</td>
-    <td class="value" colspan="3">해외 출장 후 잔여 외화 환전</td>
-  </tr>
-  <tr>
-    <td class="label">외화 출처</td>
-    <td class="value" colspan="3">회사 출장비 중 잔여분</td>
-  </tr>
-
-  <tr>
-    <td class="label">거래일자</td><td class="value">2025-04-05</td>
-    <td class="label">거래유형</td><td class="value">현금매도 (Cash Sell)</td>
-  </tr>
+</div>
+</div>
+<div class="section-header-wrapper" data-class="section_title_lv1">
+<div class="block" data-bbox="76,393,189,405" data-id="b007">
+<ol>
+<li>외국환 매도 정보</li>
+</ol>
+</div>
+</div>
+<div class="block" data-bbox="76,428,925,616" data-class="key_value" data-id="b008">
+<div class="table-container">
+<table class="data-table">
+<tr>
+<th colspan="4">매도 통화 및 환율</th>
+</tr>
+<tr>
+<td>매도 통화</td>
+<td>USD (미국달러)</td>
+<td>매도 금액</td>
+<td>1,500.00</td>
+</tr>
+<tr>
+<td>적용 환율</td>
+<td>1,352.20 KRW/USD</td>
+<td>원화 환산금액</td>
+<td>2,028,300 KRW</td>
+</tr>
+<tr>
+<th colspan="4">거래 목적 및 외화 출처</th>
+</tr>
+<tr>
+<td>거래 목적</td>
+<td colspan="3">해외 출장 후 잔여 외화 환전</td>
+</tr>
+<tr>
+<td>외화 출처</td>
+<td colspan="3">회사 출장비 중 잔여분</td>
+</tr>
+<tr>
+<td>거래일자</td>
+<td>2025-04-05</td>
+<td>거래유형</td>
+<td>현금매도 (Cash Sell)</td>
+</tr>
 </table>
-
-<!-- 3. 고객확인(KYC) / AML -->
-<div class="section-title">3. 고객확인(KYC) 및 자금세탁방지(AML)</div>
-
-<table>
-  <tr><th colspan="4" class="subsection-title">고객확인 체크리스트</th></tr>
-  <tr>
-    <td class="label">1만달러 초과 여부</td><td class="value">해당 없음</td>
-    <td class="label">신고대상 외국환거래 여부</td><td class="value">아님</td>
-  </tr>
-  <tr>
-    <td class="label">거래 목적 확인</td><td class="value">확인 완료</td>
-    <td class="label">의심거래 여부</td><td class="value">없음</td>
-  </tr>
+</div>
+</div>
+<div class="section-header-wrapper" data-class="section_title_lv1">
+<div class="block" data-bbox="76,640,343,652" data-id="b011">
+<ol>
+<li>고객확인(KYC) 및 자금세탁방지(AML)</li>
+</ol>
+</div>
+</div>
+<div class="block" data-bbox="76,675,925,756" data-class="key_value" data-id="b012">
+<div class="table-container">
+<table class="data-table">
+<tr>
+<th colspan="4">고객확인 체크리스트</th>
+</tr>
+<tr>
+<td>1만달러 초과 여부</td>
+<td>해당 없음</td>
+<td>신고대상 외국환거래 여부</td>
+<td>아님</td>
+</tr>
+<tr>
+<td>거래 목적 확인</td>
+<td>확인 완료</td>
+<td>의심거래 여부</td>
+<td>없음</td>
+</tr>
 </table>
-
-<!-- 4. 서명 및 확인 -->
-<div class="section-title">4. 신청인 서명 및 은행 확인</div>
-
-<table>
-  <tr><th colspan="4" class="subsection-title">신청인 서명</th></tr>
-  <tr>
-    <td class="label">서명 이미지</td><td class="value">minsu_signature.png</td>
-    <td class="label">서명일자</td><td class="value">2025-04-05</td>
-  </tr>
-
-  <tr><th colspan="4" class="subsection-title">은행 확인</th></tr>
-  <tr>
-    <td class="label">담당자명</td><td class="value">이은영</td>
-    <td class="label">확인일자</td><td class="value">2025-04-05</td>
-  </tr>
-  <tr>
-    <td class="label">처리상태</td>
-    <td class="value" colspan="3">정상 처리 완료</td>
-  </tr>
+</div>
+</div>
+<div class="section-header-wrapper" data-class="section_title_lv1">
+<div class="block" data-bbox="76,780,242,792" data-id="b013">
+<ol>
+<li>신청인 서명 및 은행 확인</li>
+</ol>
+</div>
+</div>
+<div class="block" data-bbox="76,816,925,953" data-class="key_value" data-id="b014">
+<div class="table-container">
+<table class="data-table">
+<tr>
+<th colspan="4">신청인 서명</th>
+</tr>
+<tr>
+<td>서명 이미지</td>
+<td>minsu_signature.png</td>
+<td>서명일자</td>
+<td>2025-04-05</td>
+</tr>
+<tr>
+<th colspan="4">은행 확인</th>
+</tr>
+<tr>
+<td>담당자명</td>
+<td>이은영</td>
+<td>확인일자</td>
+<td>2025-04-05</td>
+</tr>
+<tr>
+<td>처리상태</td>
+<td colspan="3">정상 처리 완료</td>
+</tr>
 </table>
-
+</div>
+</div>
+</div>
 </body>
 </html>

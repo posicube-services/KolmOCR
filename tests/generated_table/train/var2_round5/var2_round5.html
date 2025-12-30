@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>적금가입신청서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #fff;
+            color: #222;
+            margin: 20px;
+            padding: 0;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #003a8c;
+            font-size: 2em;
+            margin: 20px 0;
+            border-bottom: 2px solid #003a8c;
+            padding-bottom: 10px;
+        }
+        .section-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 25px 0 10px 0;
+            color: #003a8c;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+            word-break: break-all;
+            margin-bottom: 25px;
+            border: 1px solid #999;
+        }
+        th {
+            background: #003a8c;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #999;
+            padding: 8px;
+            font-size: 0.9em;
+        }
+        td {
+            background: #e9f2ff;
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #999;
+            font-size: 0.9em;
+        }
+        .sub-header {
+            background: #003a8c;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            border: 1px solid #999;
+        }
+        .sub-header td {
+            background: #003a8c;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            border: 1px solid #999;
+        }
+        .sub-header th {
+            background: #003a8c;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            border: 1px solid #999;
+        }
+        .value-cell {
+            text-align: left;
+            padding: 8px;
+        }
+        .header-cell {
+            background: #003a8c;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>적금가입신청서</h1>
+
+    <!-- 섹션 1: 개인정보 -->
+    <div class="section-title">개인정보</div>
+    <table>
+        <tr>
+            <th colspan="4" class="sub-header">기본정보</th>
+        </tr>
+        <tr>
+            <th colspan="2">신분증 정보</th>
+            <th colspan="2">연락처 정보</th>
+        </tr>
+        <tr>
+            <th>신분증 종류</th>
+            <td>주민등록증</td>
+            <th>휴대전화</th>
+            <td>010-1234-5678</td>
+        </tr>
+        <tr>
+            <th>신분증 번호</th>
+            <td>900101-1234567</td>
+            <th>이메일</th>
+            <td>user@example.com</td>
+        </tr>
+        <tr>
+            <th>발급일자</th>
+            <td>2023-05-15</td>
+            <th>주소</th>
+            <td>서울시 강남구 테헤란로 123</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 2: 적금 계좌 정보 -->
+    <div class="section-title">적금 계좌 정보</div>
+    <table>
+        <tr>
+            <th colspan="4" class="sub-header">적금 상품 선택</th>
+        </tr>
+        <tr>
+            <th>상품명</th>
+            <td>정기적금 12개월</td>
+            <th>적금 기간(개월)</th>
+            <td>12</td>
+        </tr>
+        <tr>
+            <th>월 납입금액</th>
+            <td colspan="3">100000</td>
+        </tr>
+        <tr>
+            <th colspan="4" class="sub-header">자동이체 설정</th>
+        </tr>
+        <tr>
+            <th>은행명</th>
+            <td>국민은행</td>
+            <th>이체일</th>
+            <td>5</td>
+        </tr>
+        <tr>
+            <th>계좌번호</th>
+            <td>123-456-789012</td>
+            <th>예금주명</th>
+            <td>홍길동</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 3: 거래내역 동의사항 -->
+    <div class="section-title">거래내역 동의사항</div>
+    <table>
+        <tr>
+            <th colspan="4" class="sub-header">이용약관 동의</th>
+        </tr>
+        <tr>
+            <th>약관 1</th>
+            <td>적금 이용약관</td>
+            <th>약관 2</th>
+            <td>개인정보 수집 및 이용 동의</td>
+        </tr>
+        <tr>
+            <th>약관 3</th>
+            <td>전자서명 동의서</td>
+            <th>동의 여부</th>
+            <td>동의함</td>
+        </tr>
+        <tr>
+            <th colspan="4" class="sub-header">개인정보 처리 동의</th>
+        </tr>
+        <tr>
+            <th>수집 목적 1</th>
+            <td>적금 계약 이행</td>
+            <th>수집 목적 2</th>
+            <td>고객 관리 및 안내</td>
+        </tr>
+        <tr>
+            <th>보유기간</th>
+            <td>계약 종료 후 5년</td>
+            <th>동의 여부</th>
+            <td>동의함</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 4: 서명 및 제출 -->
+    <div class="section-title">서명 및 제출</div>
+    <table>
+        <tr>
+            <th colspan="4" class="sub-header">서명란</th>
+        </tr>
+        <tr>
+            <th>신청자 서명</th>
+            <td>홍길동</td>
+            <th>서명일자</th>
+            <td>2025-04-05</td>
+        </tr>
+        <tr>
+            <th colspan="4" class="sub-header">제출 정보</th>
+        </tr>
+        <tr>
+            <th>제출방법</th>
+            <td>온라인 제출</td>
+            <th>제출일시</th>
+            <td>2025-04-05 14:30:00</td>
+        </tr>
+        <tr>
+            <th>담당자 확인</th>
+            <td colspan="3">김은행</td>
+        </tr>
+    </table>
+
+    <!-- 섹션 5: 부가정보 -->
+    <div class="section-title">부가정보</div>
+    <table>
+        <tr>
+            <th colspan="4" class="sub-header">추가서류 목록</th>
+        </tr>
+        <tr>
+            <th>첨부파일 1</th>
+            <td>신분증사본.pdf</td>
+            <th>첨부파일 2</th>
+            <td>소득증명서.pdf</td>
+        </tr>
+        <tr>
+            <th>첨부파일 3</th>
+            <td>계좌확인서.pdf</td>
+            <th>서류 제출 여부</th>
+            <td>제출함</td>
+        </tr>
+        <tr>
+            <th colspan="4" class="sub-header">이벤트 참여</th>
+        </tr>
+        <tr>
+            <th>참여 여부</th>
+            <td>참여함</td>
+            <th>이벤트 코드</th>
+            <td>EV202504</td>
+        </

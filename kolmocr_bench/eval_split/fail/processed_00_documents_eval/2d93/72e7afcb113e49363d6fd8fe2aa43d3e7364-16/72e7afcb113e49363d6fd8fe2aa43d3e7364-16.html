@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Main Title */
+[data-id="b001"] h2 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #003366;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+/* Block b002: Subtitle */
+[data-id="b002"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: normal;
+  color: #333;
+  margin: 15px 0 10px 0;
+  text-align: left;
+}
+
+/* Block b003: Table */
+[data-id="b003"] .table-container {
+  width: 100%;
+  overflow: auto;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+[data-id="b003"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+  table-layout: fixed;
+}
+
+[data-id="b003"] .data-table th,
+[data-id="b003"] .data-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+[data-id="b003"] .data-table th {
+  background-color: #e6f2fa;
+  font-weight: bold;
+  color: #003366;
+}
+
+[data-id="b003"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+[data-id="b003"] .data-table tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* Block b004: Note Header */
+[data-id="b004"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #003366;
+  margin: 20px 0 10px 0;
+  text-align: left;
+}
+
+/* Block b005: Footnotes */
+[data-id="b005"] ol {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #333;
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+[data-id="b005"] li {
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+/* Block b006: Image Description Header */
+[data-id="b006"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #003366;
+  margin: 20px 0 10px 0;
+  text-align: left;
+}
+
+/* Block b007: Image Description Code */
+[data-id="b007"] pre {
+  font-family: monospace;
+  font-size: calc(0.9em * var(--font-scale));
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  overflow: auto;
+  border-radius: 4px;
+}
+
+[data-id="b007"] code {
+  color: #333;
+  display: block;
+  white-space: pre;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.11rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #faf9f4;
+  font-family: "맑은 고딕", serif;
+  color: #1c1c1c;
+}
+
+
+.block {
+  margin-bottom: 28px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.4rem;
+  text-transform: uppercase;
+  color: #b45309;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #b45309;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #b45309;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #b45309;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.15rem;
+  line-height: 1.9;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #7c7c7c;
+  text-indent: -1.4em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="figure"] {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 14px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #b45309;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #b45309;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #b45309;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #b45309;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #b45309;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1c1c1c;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.14rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,58,515,106">
+<h2>FCPF 준비기금</h2>
+</div>
+<div class="block" data-class="subtitle" data-id="b002" data-bbox="104,131,475,149">
+<h3>제안된 2011 회계연도 연간 예산 (운영비)</h3>
+</div>
+<div class="block" data-class="table_caption" data-id="b003" data-bbox="108,219,901,517">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>준비기금 활동¹</th><th>2011 회계연도 예산 ($000)</th></tr>
+</thead>
+<tbody>
+<tr><td>REDD 국가를 위한 서비스</td><td>-</td></tr>
+<tr><td>국가별 이행 지원 (20+5)</td><td>2,025</td></tr>
+<tr><td>국가별 자문 서비스</td><td>959</td></tr>
+<tr><td>REDD 방법론 지원 (공유 비용 총액)²</td><td>1,489</td></tr>
+<tr><td>그 중 예상 준비기금 비율</td><td>1,229</td></tr>
+<tr><td>그 중 예상 탄소기금 비율</td><td>260</td></tr>
+<tr><td>FCPF 사무국 (공유 비용 총액)²</td><td>-</td></tr>
+<tr><td>그 중 예상 준비기금 비율</td><td>1,432</td></tr>
+<tr><td>그 중 예상 탄소기금 비율</td><td>303</td></tr>
+<tr><td>준비기금 행정</td><td>472</td></tr>
+<tr><td>총액 – 준비기금</td><td>6,117</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="table_caption" data-id="b004" data-bbox="108,583,515,601">
+<h3>주: 2011 회계연도 제안된 공유 비용 총액 | 3,224</h3>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="129,650,893,714">
+<ol>
+<li>이탤릭체로 표시된 항목 활동은 참조용이며 준비기금의 총 예상 예산에 포함되지 않습니다.</li>
+<li>수치는 PC의 고려를 위해 공유 시설 비용에 대한 FMT의 권고를 반영하며, 탄소기금이 운영에 들어서면 65% (준비기금)와 35% (탄소기금)의 비용 분담이 이루어질 예정입니다. 예상 비율은 탄소기금이 2010년 12월 31일까지 운영에 들어설 것으로 예상된 기준으로 산출되었습니다.</li>
+</ol>
+</div>
+<div class="block" data-class="figure" data-id="b006" data-bbox="123,770,283,788">
+<h3>Image Description</h3>
+</div>
+<div class="block" data-class="figure_caption" data-id="b007" data-bbox="118,845,1000,858">
+<pre><code class="language-plaintext">#(0,0,1000,1000) The image is a Korean document detailing the budget for the FCPF (Forest Carbon Partnership Facility) preparation fund in 2011.</code></pre>
+</div>
+</div>
+</body>
+</html>

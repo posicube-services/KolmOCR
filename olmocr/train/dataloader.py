@@ -41,6 +41,8 @@ from olmocr.prompts.prompts import (
     build_no_anchoring_v4_yaml_prompt,
 )
 
+import inspect
+from olmocr.prompts import prompts
 # Type alias for samples
 Sample: TypeAlias = Dict[str, Any]
 
@@ -302,8 +304,8 @@ class FrontMatterParser(PipelineStep):
         try:
             page_data = self._parse_front_matter(front_matter, text)
         except Exception as e:
-            logger.warning(f"[FrontMatterParser FAILED] File: {md_path}, error: {e}")
-            raise ValueError(f"Error parsing front matter for {sample['markdown_path']}: {e}")
+            logger.warning(f"[FrontMatterParser FAILED] Skipping file: {md_path}, error: {e}")
+            return None  # Skip this sample instead of raising an error
 
         # Only add page_data field
         sample["page_data"] = page_data
@@ -386,8 +388,23 @@ class StaticLengthDocumentAnchoring(PipelineStep):
 class FinetuningPrompt(PipelineStep):
     """Applies the standard fine tuning prompt"""
 
+    prompt_func: str = "build_finetuning_prompt"
+
     def __call__(self, sample: Sample) -> Sample:
-        sample["instruction_prompt"] = build_finetuning_prompt(sample["anchor_text"])
+
+        # Get the prompt function
+        if not hasattr(prompts, self.prompt_func):
+            raise ValueError(f"Prompt function '{self.prompt_func}' not found in olmocr.prompts.prompts")
+
+        prompt_fn = getattr(prompts, self.prompt_func)
+
+        # check if the function takes an argument (anchor_text)
+        sig = inspect.signature(prompt_fn)
+        if len(sig.parameters) > 0:
+            sample["instruction_prompt"] = prompt_fn(sample["anchor_text"])
+        else:
+            sample["instruction_prompt"] = prompt_fn()
+
         return sample
 
 
@@ -435,6 +452,24 @@ is_diagram: {page_data.is_diagram}
         )
 
         return sample
+
+
+@dataclass(frozen=True, slots=True)
+class NoFrontMatterOutputFormat(PipelineStep):
+    """Takes the output and applies the standard yaml formatting to it"""
+    
+    
+    def __call__(self, sample: Sample) -> Sample:
+        page_data = sample["page_data"]
+        assert type(page_data) is PageResponse
+
+        sample["response"] = (
+            f"""{page_data.natural_text if page_data.natural_text is not None and len(page_data.natural_text.strip()) > 0 else ""}
+""".strip()
+        )
+
+        return sample
+
 
 
 @dataclass(frozen=True, slots=True)
@@ -1369,6 +1404,25 @@ class RandomTokenFlipper(PipelineStep):
 
         return sample
 
+
+@dataclass(frozen=True, slots=True)
+class FrontMatterStripper(PipelineStep):
+    """Pipeline step that removes front matter from markdown text."""
+
+    def __call__(self, sample: Sample) -> Sample:
+        """Remove front matter from the markdown text in the sample."""
+        if "markdown_text" not in sample:
+            return sample
+
+        markdown_text = sample["markdown_text"]
+
+        # Use regex to remove front matter (YAML or TOML)
+        front_matter_pattern = re.compile(r"^(---\s*\n.*?\n---\s*\n|:::\s*\n.*?\n:::\s*\n)", re.DOTALL)
+        cleaned_text = front_matter_pattern.sub("", markdown_text, count=1).lstrip()
+
+        sample["markdown_text"] = cleaned_text
+
+        return sample
 
 class MarkdownPDFDocumentDataset(BaseMarkdownPDFDataset):
     """Dataset that includes front matter parsing and PDF rendering by default."""

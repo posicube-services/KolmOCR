@@ -5,8 +5,8 @@ from typing import List
 import pandas as pd
 
 from olmocr.kolmocr_eval.metrics.base import Metric
-from olmocr.kolmocr_eval.metrics.common import round_numeric
-from olmocr.kolmocr_eval.utils.structure import build_code_tree, _build_code_block_tree, CODE_FENCE_PATTERN, CODE_FENCE_LANG_PATTERN
+from olmocr.kolmocr_eval.metrics.common import round_numeric, align_sequences
+from olmocr.kolmocr_eval.utils.structure import _build_code_block_tree, parse_code_blocks
 from olmocr.kolmocr_eval.utils.tree import tree_edit_distance, tree_size, Node
 from olmocr.kolmocr_eval.utils.data_io import list_md_files, read_md
 
@@ -14,30 +14,17 @@ from olmocr.kolmocr_eval.utils.data_io import list_md_files, read_md
 def _extract_code_blocks(md: str) -> list[Node]:
     """
     md에서 코드 블록들을 개별 Node 리스트로 추출.
-    언어 미표기/기타는 code:unknown으로 처리한다.
+    fenced + 들여쓰기 코드 블록을 모두 처리하고, Paddle/OmniDocBench처럼
+    코드 내부는 정규화 후 트리로 변환한다.
     """
     allowed = {"python", "py", "c", "c++", "cpp", "java"}
     blocks: list[Node] = []
-    lines = md.splitlines()
-    i = 0
-    while i < len(lines):
-        m = CODE_FENCE_LANG_PATTERN.match(lines[i])
-        if m:
-            lang = (m.group(1) or "").lower()
-            body = []
-            i += 1
-            while i < len(lines) and not CODE_FENCE_PATTERN.match(lines[i]):
-                body.append(lines[i])
-                i += 1
-            if i < len(lines):
-                i += 1  # closing fence
-            label = f"code:{lang}" if lang and lang in allowed else "code:unknown"
-            node = Node(label)
-            for child in _build_code_block_tree(lang, body):
-                node.add(child)
-            blocks.append(node)
-            continue
-        i += 1
+    for lang, body in parse_code_blocks(md):
+        label = f"code:{lang}" if lang and lang in allowed else "code:unknown"
+        node = Node(label)
+        for child in _build_code_block_tree(lang, body):
+            node.add(child)
+        blocks.append(node)
     return blocks
 
 
@@ -71,29 +58,20 @@ class CodeBlockTEDEvaluator(Metric):
                 # GT에 코드 블록이 없으면 제외
                 continue
 
-            # GT 수만큼의 최고 유사도 매칭 (중복 없이 greedy)
-            combos = []
-            for gi, g in enumerate(gt_blocks):
-                for pi, p in enumerate(pred_blocks):
-                    dist = tree_edit_distance(p, g)
-                    denom = max(tree_size(p), tree_size(g), 1)
-                    sim = max(0.0, 1.0 - dist / denom)
-                    combos.append((sim, dist, gi, pi))
-            combos.sort(key=lambda x: x[0], reverse=True)
-
             sims = [0.0] * len(gt_blocks)  # 매칭되지 않은 GT는 0으로 처리
             dists = [tree_size(g) for g in gt_blocks]  # unmatched는 GT 크기만큼 거리로 둔다
-            used_gt = set()
-            used_pred = set()
-            for sim, dist, gi, pi in combos:
-                if gi in used_gt or pi in used_pred:
-                    continue
-                sims[gi] = sim
+
+            def _sim_block(p, g):
+                dist = tree_edit_distance(p, g)
+                denom = max(tree_size(p), tree_size(g), 1)
+                return max(0.0, 1.0 - dist / denom)
+
+            pairs = align_sequences(pred_blocks, gt_blocks, _sim_block)
+            for gi, pi in pairs:
+                dist = tree_edit_distance(pred_blocks[pi], gt_blocks[gi])
                 dists[gi] = dist
-                used_gt.add(gi)
-                used_pred.add(pi)
-                if len(used_gt) == len(gt_blocks) or len(used_pred) == len(pred_blocks):
-                    break
+                denom = max(tree_size(pred_blocks[pi]), tree_size(gt_blocks[gi]), 1)
+                sims[gi] = max(0.0, 1.0 - dist / denom)
 
             sim_avg = sum(sims) / len(gt_blocks) if gt_blocks else 1.0
             dist_avg = sum(dists) / len(gt_blocks) if gt_blocks else 0.0

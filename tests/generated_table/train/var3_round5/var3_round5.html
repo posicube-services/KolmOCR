@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>계좌해지신청서</title>
+  <style>
+    body {
+      font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+      background: #fdfdfd;
+      font-size: 13pt;
+      margin: 20px;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24pt;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+      table-layout: fixed;
+      word-break: break-all;
+      max-width: 190mm;
+      margin: 0 auto 20px;
+      border: 1px solid #ccc;
+    }
+    th {
+      background: #0078d7;
+      color: #fff;
+      padding: 8px;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #999;
+    }
+    td {
+      background: #f5f5f5;
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ddd;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .section-header {
+      background: #0078d7;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 8px;
+      border: 1px solid #999;
+    }
+    .sub-header {
+      background: #0078d7;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      border: 1px solid #999;
+    }
+    .field-label {
+      background: #0078d7;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      border: 1px solid #999;
+    }
+    .field-value {
+      background: #f5f5f5;
+      padding: 6px;
+      text-align: left;
+      border: 1px solid #ddd;
+      word-break: break-all;
+    }
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .two-column > div {
+      border: 1px solid #ddd;
+      padding: 6px;
+      background: #f5f5f5;
+    }
+    .two-column > div:nth-child(odd) {
+      background: #0078d7;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+    }
+    .two-column > div:nth-child(even) {
+      text-align: left;
+    }
+    .full-width {
+      width: 100%;
+      padding: 6px;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <h1>계좌해지신청서</h1>
+
+  <!-- 개인정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">개인정보</th></tr>
+    <tr><th colspan="4" class="sub-header">기본정보</th></tr>
+    <tr><th colspan="4" class="sub-header">신원확인</th></tr>
+    <tr>
+      <th class="field-label">주민등록번호</th>
+      <td class="field-value">900101-1234567</td>
+      <th class="field-label">성명</th>
+      <td class="field-value">홍길동</td>
+    </tr>
+    <tr>
+      <th class="field-label">생년월일</th>
+      <td class="field-value">1990-01-01</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">연락처</th></tr>
+    <tr>
+      <th class="field-label">휴대전화</th>
+      <td class="field-value">010-1234-5678</td>
+      <th class="field-label">이메일</th>
+      <td class="field-value">user@example.com</td>
+    </tr>
+    <tr>
+      <th class="field-label">주소</th>
+      <td class="field-value" colspan="3">서울시 강남구 테헤란로 123</td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">법정대리인 정보</th></tr>
+    <tr>
+      <th class="field-label">대리인 여부</th>
+      <td class="field-value">Y</td>
+      <th class="field-label">대리인 성명</th>
+      <td class="field-value">김철수</td>
+    </tr>
+    <tr>
+      <th class="field-label">대리인 주민등록번호</th>
+      <td class="field-value" colspan="3">850202-2345678</td>
+    </tr>
+  </table>
+
+  <!-- 계좌정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+    <tr><th colspan="4" class="sub-header">해지계좌 목록</th></tr>
+    <tr>
+      <th class="field-label">계좌번호</th>
+      <td class="field-value">123-456-789012</td>
+      <th class="field-label">계좌종류</th>
+      <td class="field-value">예금계좌</td>
+    </tr>
+    <tr>
+      <th class="field-label">계좌잔액</th>
+      <td class="field-value" colspan="3">1500000</td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">해지사유</th></tr>
+    <tr>
+      <th class="field-label">사유선택</th>
+      <td class="field-value">기타</td>
+      <th class="field-label">기타사유</th>
+      <td class="field-value">타행 이전</td>
+    </tr>
+    <tr>
+      <th class="field-label">해지일자</th>
+      <td class="field-value" colspan="3">2025-06-01</td>
+    </tr>
+  </table>
+
+  <!-- 거래내역 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래내역</th></tr>
+    <tr><th colspan="4" class="sub-header">최근거래내역</th></tr>
+    <tr>
+      <th class="field-label">거래일자</th>
+      <td class="field-value">2025-05-01</td>
+      <th class="field-label">거래금액</th>
+      <td class="field-value">500000</td>
+    </tr>
+    <tr>
+      <th class="field-label">거래구분</th>
+      <td class="field-value" colspan="3">입금</td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">거래내역 테이블</th></tr>
+    <tr>
+      <th class="field-label">거래일자</th>
+      <td class="field-value">2025-05-01</td>
+      <th class="field-label">거래금액</th>
+      <td class="field-value">500000</td>
+    </tr>
+    <tr>
+      <th class="field-label">거래구분</th>
+      <td class="field-value">입금</td>
+      <th class="field-label">잔액</th>
+      <td class="field-value">1000000</td>
+    </tr>
+    <tr>
+      <th class="field-label">거래일자</th>
+      <td class="field-value">2025-04-15</td>
+      <th class="field-label">거래금액</th>
+      <td class="field-value">300000</td>
+    </tr>
+    <tr>
+      <th class="field-label">거래구분</th>
+      <td class="field-value">출금</td>
+      <th class="field-label">잔액</th>
+      <td class="field-value">700000</td>
+    </tr>
+  </table>
+
+  <!-- 서명 및 확인 섹션 -->
+  <table>
+    <tr><th

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title "수학" */
+[data-id="b001"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Block b002: MATH 249 명예 보충 학점: 1 시간. */
+[data-id="b002"] p {
+  font-size: calc(1em * var(--font-scale));
+  margin: 10px 0;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Block b003: Description paragraph */
+[data-id="b003"] p {
+  font-size: calc(1em * var(--font-scale));
+  margin: 10px 0;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Block b004: Table container */
+[data-id="b004"] .table-container {
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-id="b004"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b004"] .data-table th,
+[data-id="b004"] .data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+[data-id="b004"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b004"] .data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+[data-id="b004"] .data-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Block b005: Note paragraph */
+[data-id="b005"] p {
+  font-size: calc(1em * var(--font-scale));
+  margin: 10px 0;
+  line-height: 1.4;
+  color: #333;
+}
+
+[data-id="b005"] strong {
+  color: #0066cc;
+  font-weight: bold;
+}
+
+[data-id="b005"] p br {
+  display: block;
+  margin: 5px 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.22rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f5f7fb;
+  color: #111827;
+  font-family: "맑은 고딕", "은 궁서", sans-serif;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.25rem;
+  color: #111827;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.6rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #1d4ed8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.block[data-class="text"] {
+  font-size: 1.5rem;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(14, 165, 233, 0.15);
+  border-left: 4px solid #0ea5e9;
+  padding-left: 18px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #111827;
+}
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.07rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,65,240,135">
+<h1>수학</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="104,170,368,186">
+<p>MATH 249 명예 보충 학점: 1 시간.</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,208,903,240">
+<p>명예 과목의 추가 자료 또는 특별 프로젝트를 포함하는 보충 학점 시간. 선수 과목: 특별히 지정된 명예 섹션과 동시에 등록 및 학과의 동의.</p>
+</div>
+<div class="block" data-class="table" data-id="b004" data-bbox="107,306,905,361">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>CRN</th><th>유형</th><th>섹션</th><th>시간</th><th>요일</th><th>장소</th><th>강사</th></tr>
+</thead>
+<tbody>
+<tr><td>32044</td><td>강의-토론</td><td>Q1H</td><td>03:00 PM - 03:50 PM</td><td>R</td><td>154 - 헨리 행정관 건물</td><td>Ford, K</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,413,900,479">
+<p>MATH 231 E1H CRN 46909과 동시에 등록이 필요합니다.<br/>
+<strong>Note:</strong> The image was not provided in the format required for conversion to markdown with a table. If you have the image and need it converted into a table, please provide the image file or the text content of the image, and I can assist further.</p>
+</div>
+</div>
+</body>
+</html>

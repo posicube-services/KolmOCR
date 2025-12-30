@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .document {
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .document.columns-2 {
+      column-count: 2;
+      column-gap: 2rem;
+    }
+
+    .document.columns-3 {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+
+    @media print {
+
+      body,
+      .document,
+      .block {
+        page-break-inside: avoid;
+      }
+    }
+
+    table,
+    table.data-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      break-inside: avoid;
+      border: 1px solid #999;
+    }
+
+    table th,
+    table td,
+    table.data-table th,
+    table.data-table td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table th,
+    table.data-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      border: 1px solid #666;
+    }
+
+    table tbody tr:nth-child(even),
+    table.data-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover,
+    table.data-table tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .math-display {
+      display: block;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .math-inline {
+      display: inline;
+    }
+
+    .block {
+      margin: 1rem 0;
+      width: fit-content;
+    }
+
+    ul,
+    ol {
+      margin: 0.5rem 0;
+      padding-left: 2rem;
+    }
+
+    figure {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    figure img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 1.5rem 0 0.5rem 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 1.3rem 0 0.4rem 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.1rem 0 0.3rem 0;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin: 1rem 0 0.3rem 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  </style>
+<style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+<div class="block" data-id="b001" data-bbox="16,38,269,88">
+<h1>robi G 소프트웨어 구성</h1>
+</div>
+<figure>
+<img alt="robi G 소프트웨어 구성도" class="block" data-id="b002" src="imgs/posicube_2_1.png" data-bbox="16,116,490,352">
+<figcaption class="block" data-id="b003a" data-bbox="16,385,151,407">robi G 소프트웨어 구성도</figcaption>
+</figure>
+<div>
+<ul>
+<li class="block" data-id="b004" data-bbox="41,421,159,443">GPT Web Application</li>
+<li class="block" data-id="b005" data-bbox="41,457,139,479">GPT Admin Portal</li>
+<li class="block" data-id="b006" data-bbox="41,493,153,515">Orchestrator Engine</li>
+<li class="block" data-id="b007" data-bbox="41,528,125,551">Scenario Editor</li>
+<li class="block" data-id="b008" data-bbox="41,564,121,586">Data Manager</li>
+<li class="block" data-id="b009" data-bbox="41,600,132,622">Retriever Engine</li>
+<li class="block" data-id="b010" data-bbox="41,636,118,658">Data Backend</li>
+<li class="block" data-id="b011" data-bbox="41,672,96,694">Vector DB</li>
+<li class="block" data-id="b012" data-bbox="41,708,108,730">Backend DB</li>
+<li class="block" data-id="b013" data-bbox="41,744,120,766">Search Engine</li>
+<li class="block" data-id="b014" data-bbox="41,779,162,802">Azure OpenAI Service</li>
+<li class="block" data-id="b015a" data-bbox="41,815,171,837">Azure Form Recognizer</li>
+</ul>
+</div>
+<div class="block" data-id="b016" data-bbox="16,855,335,888">
+<h2>엔터프라이즈를 위한 생성형 AI, robi G</h2>
+</div>
+<figure>
+<img alt="robi G 애플리케이션 화면 예시" class="block" data-id="b017" src="imgs/posicube_2_2.png" data-bbox="509,31,984,324">
+<figcaption class="block" data-id="b018" data-bbox="509,357,672,379">robi G 애플리케이션 화면 예시</figcaption>
+</figure>
+<div>
+<ul>
+<li class="block" data-id="b019" data-bbox="535,393,609,415">대화 시작하기</li>
+<li class="block" data-id="b020" data-bbox="535,429,613,451">대화 이력 관리</li>
+<li class="block" data-id="b021" data-bbox="535,464,586,487">출력 표시</li>
+<li class="block" data-id="b022" data-bbox="535,500,649,522">실시간 문단 스트리밍</li>
+<li class="block" data-id="b023" data-bbox="535,536,625,558">서버 서비스 선택</li>
+<li class="block" data-id="b024" data-bbox="535,572,586,594">질문 보기</li>
+<li class="block" data-id="b025" data-bbox="535,608,625,630">관련 데이터 확인</li>
+</ul>
+</div>
+<div class="block" data-id="b026" data-bbox="509,644,984,983">
+<table class="data-table">
+<thead>
+<tr>
+<th>기능</th>
+<th>robi G</th>
+<th>ChatGPT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기업 내부 문서 활용</td>
+<td>HTML, PDF, Word, Excel 등 기업이 보유한 다양한 문서와 Azure AI 기반 사내 데이터 연동 가능</td>
+<td>개별 파일이나 외부 링크 업로드만 지원 (기업 내부 문서 연동 불가)</td>
+</tr>
+<tr>
+<td>대화 이력 관리</td>
+<td>대화 이력 저장, 검색, 재활용 등 체계적 관리 가능</td>
+<td>대화 이력 저장 및 관리 기능 미제공</td>
+</tr>
+<tr>
+<td>보안 및 개인정보 보호</td>
+<td>기업 전용 서버 및 네트워크 환경에서 안전하게 운영</td>
+<td>외부 서버(해외)로 데이터 전송, 보안 우려 존재</td>
+</tr>
+<tr>
+<td>맞춤형 서비스 제공</td>
+<td>업무별, 부서별 맞춤형 시나리오 및 기능 제공</td>
+<td>일반적인 대화 기능만 제공, 맞춤형 서비스 미제공</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</body></html>

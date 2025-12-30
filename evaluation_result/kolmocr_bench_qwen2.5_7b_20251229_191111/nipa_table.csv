@@ -1,0 +1,7 @@
+Element,F1-score
+Text,0.5816
+Heading,0.4677
+List,0.5072
+Table,0.6837
+Image IoU,0.1309
+Code-Block,0.047

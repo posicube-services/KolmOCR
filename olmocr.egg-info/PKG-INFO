@@ -248,6 +248,8 @@ Requires-Dist: torch>=2.7.0
 Requires-Dist: transformers==4.55.2
 Requires-Dist: vllm>=0.11.0
 Requires-Dist: zstandard
+Requires-Dist: playwright>=1.56.0
+Requires-Dist: pdf2image>=1.17.0
 Provides-Extra: gpu
 Requires-Dist: vllm==0.11.0; extra == "gpu"
 Provides-Extra: dev
@@ -316,7 +318,7 @@ Dynamic: license-file
 
 # KolmOCR 
 
-KolmOCR은 기존의 olmOCR를 한국어/영어 문서에 최적화된 OCR 파이프라인으로, 이미지·PDF를 구조화된 Markdown으로 변환합니다. 한국어 문서에 대한 Markdown 생성 과업에 대한 벤치마크도 함께 제공합니다. 
+KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/영어 문서에 최적화된 OCR 파이프라인으로, 이미지·PDF를 구조화된 Markdown으로 변환합니다. 한국어 문서에 대한 Markdown 생성 과업에 대한 벤치마크도 함께 제공합니다. 
 
 ## Features
 
@@ -340,8 +342,9 @@ KolmOCR은 기존의 olmOCR를 한국어/영어 문서에 최적화된 OCR 파�
 | code_blocks |  10 | 코드/리스트 혼재      |
 | multicolumn |  10 | 다단문서      |
 
-- 상기 모든 split에 대한 평균 F1 score (Image IoU score는 현재 평가 코드상 오류로 N/A로 표시됨.)
-
+## LeaderBoard using KolmOCR Benchmark
+-  KolmOCR Benchmark 모든 split에 대한 `text_edit`(Text), `table_f1`(Table) `image_iou`(Image IoU), `f1_score` (Heading, List) score의 평균 값이 사용됨. Image IoU 현재 평가 코드상 오류로 N/A로 표시됨.
+  
 | Element        | KolmOCR 7B v251129 (Ours) | Qwen2.5-VL-7B-Instruct | Qwen2.5-VL-32B-Instruct |
 | -------------- | ----------------- | ---------------------- | ----------------------- |
 | **Text**       | 0.5695            | 0.5993                 | 0.5938                  |
@@ -351,8 +354,15 @@ KolmOCR은 기존의 olmOCR를 한국어/영어 문서에 최적화된 OCR 파�
 | **Image IoU**  | N/A               | N/A                    | N/A                     |
 | **Code-Block** | 0.0143            | 0.0321                 | 0.037                   |
 
-
-
+## Metrics
+| 메트릭          | 설명                                                                                             | 출력 파일         |
+| --------------- | ------------------------------------------------------------------------------------------------ | ----------------- |
+| `text_edit`     | 본문 기준 Normalized Edit Distance 및 유사도, 헤딩/리스트 F1 점수                                | text_edit.csv     |
+| `table_f1`      | 테이블 블록 매칭 기반 precision/recall/F1 (구조/내용 모두 제공)                                  | table_f1.csv      |
+| `image_iou`     | 이미지 bbox 순서 매칭 기반 평균 IoU                                                              | image_iou.csv     |
+| `code_TED`      | 코드 블록 추출 후 언어별 트리 변환 및 Tree Edit Distance 유사도<br/>(지원: python, c, cpp, java) | code_TED.csv      |
+| `overall`       | 주요 지표 평균: text_edit, reading_order, table_TEDS, table_TEDS_S, formula_cdm                  | overall.csv       |
+| `f1_score`      | 헤딩/리스트 구조 F1 점수만 별도 저장                                                             | f1_score.csv      |
 
 ## Installation (uv 권장)
 
@@ -437,10 +447,11 @@ print("hello kolmocr")
 ```
 ````
 
-# olmocr 코드를 기반으로 추가 작업 진행
-
-아래는 기존 olmocr에 대한 설명
-
+## License
+- 'kolmocr_bench' 폴더의 데이터는 CC-BY-NC 4.0 기준으로 배포합니다. 
+- 나머지 소스코드의 경우 Apache 2.0 으로 배포합니다.
+  
+## 기존 olmocr의 README.md
 ---
 
 <div align="center">

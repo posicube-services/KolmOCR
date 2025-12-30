@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko"><head><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+
+<body>
+    <meta charset="utf-8">
+    <title>Simple Text Notepad (A4 1-page)</title>
+
+    <!-- Prism -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+
+    <style>
+        /* =========================
+   A4 1-page hard fit
+   - @page margin 0
+   - 여백은 .page padding으로만 관리
+========================= */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #fff;
+            color: #111;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 10mm;
+            /* ✅ 단 하나의 여백(원하면 8~12mm) */
+            box-sizing: border-box;
+            overflow: hidden;
+            /* 1페이지 강제 */
+            position: relative;
+            background: #fff;
+        }
+
+        /* 화면에서 용지 느낌(원치 않으면 삭제 가능) */
+        @media screen {
+            body {
+                background: #f3f4f6;
+            }
+
+            .page {
+                margin: 16px auto;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            }
+        }
+
+        /* ✅ scale 대상 */
+        .fit {
+            --fit-scale: 1;
+            transform: scale(var(--fit-scale));
+            transform-origin: top left;
+            width: calc(100% / var(--fit-scale));
+        }
+
+        .document {
+            column-count: 1;
+            column-gap: 0;
+        }
+
+        /* ===== DLA bbox 단위 ===== */
+        .block {
+            margin-bottom: 4px;
+            break-inside: avoid;
+        }
+
+        /* ===== Code style (max compression) ===== */
+        pre {
+            margin: 0;
+            padding: 5px 8px;
+            background: #0f172a;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo,
+                Consolas, "Liberation Mono", monospace;
+            font-size: 8.0pt;
+            line-height: 1.15;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        /* Prism print tuning */
+        .token.comment {
+            color: #94a3b8;
+        }
+
+        .token.keyword {
+            color: #60a5fa;
+        }
+
+        .token.string {
+            color: #a7f3d0;
+        }
+
+        .token.number {
+            color: #fcd34d;
+        }
+
+        .token.function {
+            color: #f472b6;
+        }
+
+        @media print {
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            body {
+                background: #fff;
+            }
+        }
+
+        .block:last-child {
+            margin-bottom: 0;
+        }
+
+        .document {
+            padding-bottom: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+
+
+
+    <div class="page" id="page">
+        <div class="fit" id="fit" style="--fit-scale: 0.4136;" data-fit-locked="1">
+            <div class="document">
+
+                <!-- =========================
+           Includes & Defines
+      ========================= -->
+                <div class="block" data-id="b001" data-role="imports" data-bbox="48,37,904,74">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX_TITLE</span> <span class="token expression"><span class="token number">100</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX_CONTENT</span> <span class="token expression"><span class="token number">1000</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DATA_FILE</span> <span class="token string">"memos.txt"</span></span></code></pre>
+                </div>
+
+                <!-- =========================
+           Struct
+      ========================= -->
+                <div class="block" data-id="b002" data-role="struct" data-bbox="48,113,904,56">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> title<span class="token punctuation">[</span>MAX_TITLE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> content<span class="token punctuation">[</span>MAX_CONTENT<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> Memo<span class="token punctuation">;</span></code></pre>
+                </div>
+
+                <!-- =========================
+           Menu
+      ========================= -->
+                <div class="block" data-id="b003" data-role="function" data-bbox="48,172,904,47">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">print_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n==== Simple Text Notepad ====\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"1.List 2.Add 3.View 4.Delete 0.Exit\n&gt; "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+
+                <!-- =========================
+           List memos
+      ========================= -->
+                <div class="block" data-id="b004" data-role="function" data-bbox="48,222,904,109">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">list_memos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    FILE <span class="token operator">*</span>fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Memo m<span class="token punctuation">;</span> <span class="token keyword">int</span> found<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>fp<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"No memos.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Memo<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ID:%d | %s\n"</span><span class="token punctuation">,</span>m<span class="token punctuation">.</span>id<span class="token punctuation">,</span>m<span class="token punctuation">.</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        found<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>found<span class="token punctuation">)</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Empty.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+
+                <!-- =========================
+           Next ID
+      ========================= -->
+                <div class="block" data-id="b005" data-role="function" data-bbox="48,334,904,91">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">get_next_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    FILE <span class="token operator">*</span>fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Memo m<span class="token punctuation">;</span> <span class="token keyword">int</span> max<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>fp<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Memo<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>id<span class="token operator">&gt;</span>max<span class="token punctuation">)</span> max<span class="token operator">=</span>m<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> max<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+
+                <!-- =========================
+           Add memo
+      ========================= -->
+                <div class="block" data-id="b006" data-role="function" data-bbox="48,428,904,153">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">add_memo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    Memo m<span class="token punctuation">;</span> <span class="token keyword">char</span> line<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    m<span class="token punctuation">.</span>id<span class="token operator">=</span><span class="token function">get_next_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Title: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fgets</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>title<span class="token punctuation">,</span>MAX_TITLE<span class="token punctuation">,</span><span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    m<span class="token punctuation">.</span>title<span class="token punctuation">[</span><span class="token function">strcspn</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>title<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    m<span class="token punctuation">.</span>content<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Content ('.' to end):\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fgets</span><span class="token punctuation">(</span>line<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">strcmp</span><span class="token punctuation">(</span>line<span class="token punctuation">,</span><span class="token string">".\n"</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token operator">+</span><span class="token function">strlen</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token operator">&lt;</span>MAX_CONTENT<span class="token punctuation">)</span>
+            <span class="token function">strcat</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>content<span class="token punctuation">,</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    FILE <span class="token operator">*</span>fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span><span class="token string">"ab"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Memo<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+
+                <!-- =========================
+           View memo
+      ========================= -->
+                <div class="block" data-id="b007" data-role="function" data-bbox="48,585,904,118">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">view_memo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> id<span class="token punctuation">;</span> Memo m<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ID: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>id<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    FILE <span class="token operator">*</span>fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>fp<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Memo<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>id<span class="token operator">==</span>id<span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"[%d] %s\n%s\n"</span><span class="token punctuation">,</span>m<span class="token punctuation">.</span>id<span class="token punctuation">,</span>m<span class="token punctuation">.</span>title<span class="token punctuation">,</span>m<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+
+                <!-- =========================
+           Delete memo
+      ========================= -->
+                <div class="block" data-id="b008" data-role="function" data-bbox="48,705,904,118">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">delete_memo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> id<span class="token punctuation">;</span> Memo m<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ID: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>id<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    FILE <span class="token operator">*</span>fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    FILE <span class="token operator">*</span>tmp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"tmp.txt"</span><span class="token punctuation">,</span><span class="token string">"wb"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Memo<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>id<span class="token operator">!=</span>id<span class="token punctuation">)</span> <span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Memo<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">fclose</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">remove</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">rename</span><span class="token punctuation">(</span><span class="token string">"tmp.txt"</span><span class="token punctuation">,</span>DATA_FILE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+
+                <!-- =========================
+           Main
+      ========================= -->
+                <div class="block" data-id="b009" data-role="entrypoint" data-bbox="48,826,904,136">
+                    <pre class="language-c" tabindex="0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> c<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">print_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>c<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">continue</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token function">list_memos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token function">add_memo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token function">view_memo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token function">delete_memo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function highlightThenFit() {
+            if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+            requestAnimationFrame(() => requestAnimationFrame(fitToOnePage));
+        }
+
+        function fitToOnePage() {
+            const page = document.getElementById("page");
+            const fit = document.getElementById("fit");
+            if (!page || !fit) return;
+
+            // reset
+            fit.style.setProperty("--fit-scale", 1);
+
+            // padding 제외한 사용 가능 높이
+            const styles = getComputedStyle(page);
+            const padTop = parseFloat(styles.paddingTop) || 0;
+            const padBot = parseFloat(styles.paddingBottom) || 0;
+            const availableH = page.clientHeight - padTop - padBot;
+
+            const contentH = fit.scrollHeight;
+
+            if (contentH > availableH) {
+                let scale = availableH / contentH;
+                scale = Math.floor(scale * 10000) / 10000;
+                fit.style.setProperty("--fit-scale", scale);
+            }
+        }
+
+        window.addEventListener("load", highlightThenFit);
+        window.addEventListener("resize", fitToOnePage);
+        window.addEventListener("beforeprint", fitToOnePage);
+    </script>
+
+
+
+
+
+</body></html>

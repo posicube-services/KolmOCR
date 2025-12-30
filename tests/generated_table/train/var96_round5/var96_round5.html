@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>실명확인서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 11pt;
+      margin: 20px;
+      line-height: 1.5;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24pt;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .section-title {
+      font-weight: bold;
+      font-size: 14pt;
+      margin-top: 20px;
+      margin-bottom: 5px;
+      color: #003366;
+      border-bottom: 2px solid #003366;
+      padding-bottom: 3px;
+    }
+    table {
+      border: 1px solid #333;
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 15px;
+      font-size: 11pt;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #003366;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+    td {
+      background-color: #f8f8f8;
+      text-align: left;
+    }
+    .header-row th {
+      text-align: center;
+    }
+    .sub-header {
+      background-color: #1a4d80;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px;
+    }
+    .right-align {
+      text-align: right;
+    }
+    .center-align {
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>실명확인서</h1>
+
+  <div class="section">
+    <div class="section-title">개인정보</div>
+    <table>
+      <tr>
+        <th colspan="4" class="sub-header">기본정보</th>
+      </tr>
+      <tr>
+        <th colspan="2" class="sub-header">신분증 정보</th>
+        <th colspan="2" class="sub-header">연락처 정보</th>
+      </tr>
+      <tr>
+        <th>신분증 종류</th>
+        <td>주민등록증</td>
+        <th>휴대전화</th>
+        <td class="right-align">010-1234-5678</td>
+      </tr>
+      <tr>
+        <th>신분증 번호</th>
+        <td>900101-1234567</td>
+        <th>이메일</th>
+        <td class="right-align">user@example.com</td>
+      </tr>
+      <tr>
+        <th>발급일자</th>
+        <td class="center-align">2020-05-15</td>
+        <th>주소</th>
+        <td>서울시 강남구 테헤란로 123</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">계좌정보</div>
+    <table>
+      <tr>
+        <th colspan="4" class="sub-header">은행 계좌</th>
+      </tr>
+      <tr>
+        <th>계좌 소유자</th>
+        <td>홍길동</td>
+        <th>은행명</th>
+        <td>국민은행</td>
+      </tr>
+      <tr>
+        <th>계좌번호</th>
+        <td>123-456-789012</td>
+        <th>계좌 유형</th>
+        <td>예금계좌</td>
+      </tr>
+      <tr>
+        <th colspan="4" class="sub-header">계좌 인증 정보</th>
+      </tr>
+      <tr>
+        <th>인증 방법</th>
+        <td>전화인증</td>
+        <th>인증 일자</th>
+        <td class="center-align">2024-06-01</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">거래내역</div>
+    <table>
+      <tr>
+        <th colspan="4" class="sub-header">최근 거래</th>
+      </tr>
+      <tr>
+        <th>일자</th>
+        <th>내용</th>
+        <th>금액</th>
+        <th>잔액</th>
+      </tr>
+      <tr>
+        <td class="center-align">2024-05-01</td>
+        <td>상품 구매</td>
+        <td class="right-align">50,000원</td>
+        <td class="right-align">1,200,000원</td>
+      </tr>
+      <tr>
+        <td class="center-align">2024-05-05</td>
+        <td>입금</td>
+        <td class="right-align">200,000원</td>
+        <td class="right-align">1,400,000원</td>
+      </tr>
+      <tr>
+        <td class="center-align">2024-05-10</td>
+        <td>이체</td>
+        <td class="right-align">100,000원</td>
+        <td class="right-align">1,300,000원</td>
+      </tr>
+      <tr>
+        <th colspan="4" class="sub-header">거래 통계</th>
+      </tr>
+      <tr>
+        <th>월별 합계 금액</th>
+        <td class="right-align">150,000</td>
+        <th>연간 합계 금액</th>
+        <td class="right-align">1,800,000</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">서명 및 동의</div>
+    <table>
+      <tr>
+        <th colspan="4" class="sub-header">서명란</th>
+      </tr>
+      <tr>
+        <th>본인 서명</th>
+        <td>홍길동</td>
+        <th>서명 일자</th>
+        <td class="center-align">2024-06-10</td>
+      </tr>
+      <tr>
+        <th colspan="4" class="sub-header">정보 수집 동의</th>
+      </tr>
+      <tr>
+        <th>동의 여부</th>
+        <td>동의함</td>
+        <th>동의 일자</th>
+        <td class="center-align">2024-06-10</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">기타 정보</div>
+    <table>
+      <tr>
+        <th colspan="4" class="sub-header">첨부파일</th>
+      </tr>
+      <tr>
+        <th>파일 목록</th>
+        <td>신분증사본.pdf, 계좌증명서.jpg</td>
+        <th>파일 설명</th>
+        <td>신분증 사본, 계좌 증명서 등</td>
+      </tr>
+      <tr>
+        <th colspan="4" class="sub-header">관리자 메모</th>
+      </tr>
+      <tr>
+        <th>메모 내용</th>
+        <td>추가 확인 필요, 고객 문의 대기 중</td>
+        <th>메모 일자</th>
+        <td class="center-align">2024-06-10</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+  color: #333;
+}
+
+.block[data-id="b002"] p,
+.block[data-id="b004"] p,
+.block[data-id="b006"] p,
+.block[data-id="b007"] p,
+.block[data-id="b008"] p,
+.block[data-id="b009"] p,
+.block[data-id="b010"] p,
+.block[data-id="b011"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+  text-align: justify;
+}
+
+.block[data-id="b003"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+  color: #333;
+}
+
+.block[data-id="b005"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #333;
+}
+
+/* Footnote or citation styling */
+.block[data-id="b010"] p,
+.block[data-id="b011"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #555;
+  margin: 10px 0;
+  text-align: left;
+  font-style: italic;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.03rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.28rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,61,230,85">
+<h1>markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,116,905,185">
+<p>The following cases suggest that in the criminal area, a continuance should be granted for absence of a party only where the disability is involuntary, and a physician's certificate attests to the fact that to go to trial would endanger the defendant's health. Where the trial judge can personally observe the defendant, the certificate may be disregarded if the judge finds that the defendant can stand trial.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b003" data-bbox="104,208,542,229">
+<h2>Conclusions and Recommendations</h2>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,255,905,307">
+<p>It is apparent from the foregoing discussion that no one rule could or should be formulated to cover all situations which may give rise to a motion for a continuance. Thus, several suggestions are offered to cover the situations discussed. Methods of implementing these policies are also discussed.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="104,330,195,349">
+<h3>Counsel</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,370,905,493">
+<p>In the case of withdrawal or discharge of counsel, the good faith of the moving party is of paramount importance. When counsel wishes to withdraw or is discharged from a civil suit, his client should be required to execute a stipulation to the effect that no further delays will be requested on this ground. In criminal cases, the use of the stipulation is also recommended. However, because the right to counsel is strenuously safeguarded, it is recommended that no withdrawal or discharge be permitted within two weeks prior to the trial date. A change occurring two weeks or more before the trial would allow the defendant sufficient time to obtain other representation to prepare the case.</p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,516,905,568">
+<p>In the area of docket conflicts, it is recommended that adequate notice of the trial date be agreed upon by the parties at the pre-trial hearing. This will allow counsel to arrange their schedules so as to eliminate conflicts.</p>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,591,905,696">
+<p>Since there is no right to a particular attorney, except in unusual instances, it is recommended that in civil cases the matter be brought to trial regardless of conflict. Where a party is left without counsel, substitute counsel must be used, or the party should be forced to trial without counsel. Such a procedure has been instituted in the Common Pleas Court of Pittsburgh, Pennsylvania, very successfully. While such sanctions appear to be harsh, they prove to be seldom invoked. Charles H. Starrett, Jr., Administrator of the Pittsburgh Court of Common Pleas, stated:</p>
+</div>
+<div class="block" data-class="quotation" data-id="b009" data-bbox="104,720,905,771">
+<p>...because of the effect upon a lawyer's reputation and the effect of such activity on his malpractice insurance, the trial bar has quickly learned to avoid situations which would require the court to invoke such a sanction.</p>
+</div>
+<div class="block" data-class="reference" data-id="b010" data-bbox="104,795,899,826">
+<p>154 Letter from Silvestri Silvestri, Judge, Com. Pl. Ct., Allegheny County, to Samuel J. Roberts, Justice of the Supreme Ct. of Pa., May 1, 1972.</p>
+</div>
+<div class="block" data-class="reference" data-id="b011" data-bbox="104,849,876,879">
+<p>155 Letter from Charles H. Starrett, Jr. to Steven J. Madson, May 25, 1972. See Budget Laundry Co. v. Munter, No. 2362 (Allegheny County Common Pleas, Pa., April, 1970).</p>
+</div>
+</div>
+</body>
+</html>

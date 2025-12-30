@@ -1,12 +1,11 @@
-
 <div align="center">
   <img width="300" alt="KolmOCR logo" src="./docs/logo.jpg" />
 </div>
 <hr/>
 
-# KolmOCR 
+# KolmOCR
 
-KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/영어 문서에 최적화된 OCR 파이프라인으로, 이미지·PDF를 구조화된 Markdown으로 변환합니다. 한국어 문서에 대한 Markdown 생성 과업에 대한 벤치마크도 함께 제공합니다. 
+KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/영어 문서에 최적화된 OCR 파이프라인으로, 이미지·PDF를 구조화된 Markdown으로 변환합니다. 한국어 문서에 대한 Markdown 생성 과업에 대한 벤치마크도 함께 제공합니다.
 
 ## Features
 
@@ -21,36 +20,38 @@ KolmOCR은 기존의 [olmOCR](https://github.com/allenai/olmocr)를 한국어/�
 - 데이터셋 위치: `kolmocr_bench` 폴더
 - 평가 스크립트: `olmocr/kolmocr_eval/scripts/evaluate.py`
 
-| Split       | Docs | 특징                  |
-| ----------- | ---: | --------------------- |
-| fail document in qwen2.5 7b | 100 | Qwen2.5-7B-Instruct의 MD생성 성능이 미흡한 문서셋 |
-| success document in qwen2.5 7b | 100 | Qwen2.5-7B-Instruct의 MD생성 성능이 좋은 문서셋  |
-| table       | 10 | 셀 병합/멀티헤더 포함 |
-| graphic     | 10 | 이미지 캡션·도표      |
-| code_blocks |  10 | 코드/리스트 혼재      |
-| multicolumn |  10 | 다단문서      |
+| Split                          | Docs | 특징                                              |
+| ------------------------------ | ---: | ------------------------------------------------- |
+| fail document in qwen2.5 7b    |  100 | Qwen2.5-7B-Instruct의 MD생성 성능이 미흡한 문서셋 |
+| success document in qwen2.5 7b |  100 | Qwen2.5-7B-Instruct의 MD생성 성능이 좋은 문서셋   |
+| table                          |   10 | 셀 병합/멀티헤더 포함                             |
+| graphic                        |   10 | 이미지 캡션·도표                                  |
+| code_blocks                    |   10 | 코드/리스트 혼재                                  |
+| multicolumn                    |   10 | 다단문서                                          |
 
 ## LeaderBoard using KolmOCR Benchmark
--  KolmOCR Benchmark 모든 split에 대한 `text_edit`(Text), `table_f1`(Table) `image_iou`(Image IoU), `f1_score` (Heading, List) score의 평균 값이 사용됨. Image IoU 현재 평가 코드상 오류로 N/A로 표시됨.
-  
+
+- KolmOCR Benchmark 모든 split에 대한 `text_edit`(Text), `table_f1`(Table) `image_iou`(Image IoU), `f1_score` (Heading, List) score의 평균 값이 사용됨. Image IoU 현재 평가 코드상 오류로 N/A로 표시됨.
+
 | Element        | KolmOCR 7B v251129 (Ours) | Qwen2.5-VL-7B-Instruct | Qwen2.5-VL-32B-Instruct |
-| -------------- | ----------------- | ---------------------- | ----------------------- |
-| **Text**       | 0.5695            | 0.5993                 | 0.5938                  |
-| **Heading**    | 0.3099            | 0.3775                 | 0.3197                  |
-| **List**       | 0.1931            | 0.3256                 | 0.2448                  |
-| **Table**      | 0.5857            | 0.1333                 | 0.364                   |
-| **Image IoU**  | N/A               | N/A                    | N/A                     |
-| **Code-Block** | 0.0143            | 0.0321                 | 0.037                   |
+| -------------- | ------------------------- | ---------------------- | ----------------------- |
+| **Text**       | 0.8146                    | 0.5816                 | 0.5144                  |
+| **Heading**    | 0.3661                    | 0.4677                 | 0.2425                  |
+| **List**       | 0.6782                    | 0.5072                 | 0.5575                  |
+| **Table**      | 0.7248                    | 0.6837                 | 0.4996                  |
+| **Image IoU**  | 0.3363                    | 0.1309                 | 0.1469                  |
+| **Code-Block** | 0.2122                    | 0.047                  | 0.0952                  |
 
 ## Metrics
-| 메트릭          | 설명                                                                                             | 출력 파일         |
-| --------------- | ------------------------------------------------------------------------------------------------ | ----------------- |
-| `text_edit`     | 본문 기준 Normalized Edit Distance 및 유사도, 헤딩/리스트 F1 점수                                | text_edit.csv     |
-| `table_f1`      | 테이블 블록 매칭 기반 precision/recall/F1 (구조/내용 모두 제공)                                  | table_f1.csv      |
-| `image_iou`     | 이미지 bbox 순서 매칭 기반 평균 IoU                                                              | image_iou.csv     |
-| `code_TED`      | 코드 블록 추출 후 언어별 트리 변환 및 Tree Edit Distance 유사도<br/>(지원: python, c, cpp, java) | code_TED.csv      |
-| `overall`       | 주요 지표 평균: text_edit, reading_order, table_TEDS, table_TEDS_S, formula_cdm                  | overall.csv       |
-| `f1_score`      | 헤딩/리스트 구조 F1 점수만 별도 저장                                                             | f1_score.csv      |
+
+| 메트릭      | 설명                                                                                             | 출력 파일     |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------------- |
+| `text_edit` | 본문 기준 Normalized Edit Distance 및 유사도, 헤딩/리스트 F1 점수                                | text_edit.csv |
+| `table_f1`  | 테이블 블록 매칭 기반 precision/recall/F1 (구조/내용 모두 제공)                                  | table_f1.csv  |
+| `image_iou` | 이미지 bbox 순서 매칭 기반 평균 IoU                                                              | image_iou.csv |
+| `code_TED`  | 코드 블록 추출 후 언어별 트리 변환 및 Tree Edit Distance 유사도<br/>(지원: python, c, cpp, java) | code_TED.csv  |
+| `overall`   | 주요 지표 평균: text_edit, reading_order, table_TEDS, table_TEDS_S, formula_cdm                  | overall.csv   |
+| `f1_score`  | 헤딩/리스트 구조 F1 점수만 별도 저장                                                             | f1_score.csv  |
 
 ## Installation (uv 권장)
 
@@ -79,7 +80,7 @@ python olmocr/train/train.py --config configs/train.yaml
 ### Inference
 
 ```bash
-python olmocr/inference_kolmocr_transformer.py --config configs/infer_config.yaml \
+python olmocr/inference_kolmocr.py --config configs/inference/kolmocr.yaml \
   --checkpoint <모델 경로> --tokenizer <토크나이저 경로> \
   --input-dir <이미지 혹은 md 경로> --output-dir <결과 경로> \
   --num-workers 2
@@ -88,16 +89,16 @@ python olmocr/inference_kolmocr_transformer.py --config configs/infer_config.yam
 ### Evaluate
 
 ```bash
-python olmocr/kolmocr_eval/scripts/evaluate.py --config configs/kolmocr_eval.yaml \
+python olmocr/kolmocr_eval/scripts/evaluate.py --config configs/eval/eval_default.yaml \
   --pred_dir <inference 결과 경로> --gt_dir <GT md/html 경로>
 ```
 
 ## Script Quickstart
 
-- `olmocr/inference_kolmocr_transformer.py`
+- `olmocr/inference_kolmocr.py`
 
   - **용도:** 로컬 HF 모델로 이미지/MD를 Markdown으로 추론. 멀티프로세싱 지원.
-  - **예시:** `python olmocr/inference_kolmocr_transformer.py --checkpoint /path/to/ckpt --tokenizer /path/to/tokenizer --input-dir kolmocr_bench --output-dir output/preds --num-workers 4`
+  - **예시:** `python olmocr/inference_kolmocr.py --checkpoint /path/to/ckpt --tokenizer /path/to/tokenizer --input-dir kolmocr_bench --output-dir output/preds --num-workers 4`
 
 - `olmocr/inference_kolmocr_vllm.py`
 
@@ -136,10 +137,12 @@ print("hello kolmocr")
 ````
 
 ## License
-- 'kolmocr_bench' 폴더의 데이터는 CC-BY-NC 4.0 기준으로 배포합니다. 
+
+- 'kolmocr_bench' 폴더의 데이터는 CC-BY-NC 4.0 기준으로 배포합니다.
 - 나머지 소스코드의 경우 Apache 2.0 으로 배포합니다.
-  
+
 ## 기존 olmocr의 README.md
+
 ---
 
 <div align="center">
@@ -362,6 +365,9 @@ uv sync --active --extra dev --extra train            # creates/refreshes the pe
 # to train with flash attention
 uv pip install flash-attn --no-build-isolation
 
+# install with dvlm (if you want to use functions of dvlm such as evaluation on Docvqa)
+git clone --recurse-submodules <repo address of this package>
+uv pip install -e ./external/dvlm
 
 # inside the shell you can run commands exactly as before (or prefix with `uv run` outside the shell)
 python -m olmocr.pipeline ./localworkspace --markdown --pdfs tests/gnarly_pdfs/*.pdf

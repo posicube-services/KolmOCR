@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+[data-id="b002"] h2,
+[data-id="b008"] h2,
+[data-id="b014"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #000;
+}
+
+[data-id="b003"] h3,
+[data-id="b005"] h3,
+[data-id="b009"] h3,
+[data-id="b011"] h3,
+[data-id="b015"] h3,
+[data-id="b017"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #333;
+}
+
+[data-id="b004"] ul,
+[data-id="b010"] ul,
+[data-id="b016"] ul {
+  margin: 5px 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+[data-id="b006"] ul,
+[data-id="b012"] ul,
+[data-id="b018"] ul {
+  margin: 5px 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+[data-id="b007"] .table-container,
+[data-id="b013"] .table-container,
+[data-id="b019"] .table-container {
+  width: 100%;
+  margin: 15px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+[data-id="b007"] .data-table,
+[data-id="b013"] .data-table,
+[data-id="b019"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b007"] .data-table th,
+[data-id="b013"] .data-table th,
+[data-id="b019"] .data-table th {
+  background-color: #e0e0e0;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+
+[data-id="b007"] .data-table td,
+[data-id="b013"] .data-table td,
+[data-id="b019"] .data-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+[data-id="b020"] pre code {
+  font-family: monospace;
+  white-space: pre;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: block;
+  overflow: auto;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.36rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ededed;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #111111;
+}
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block {
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.2rem;
+  color: #111111;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.46rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="104,34,282,47">
+<h1>일정 및 주요 내용</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,86,193,96">
+<h2>19년 11월</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="104,130,144,140">
+<h3>장소:</h3>
+</div>
+<div class="block" data-class="key_value" data-id="b004" data-bbox="129,166,271,174">
+<ul>
+<li>Tagensvej 86 (T86)</li>
+</ul>
+</div>
+<div class="block" data-class="key_value" data-id="b005" data-bbox="104,207,203,216">
+<h3>회의실 C216</h3>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b006" data-bbox="129,243,341,251">
+<ul>
+<li>테마 6: 덴마크 병원의 어린이들</li>
+</ul>
+</div>
+<div class="block" data-class="table_caption" data-id="b007" data-bbox="116,297,896,329">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>시간</th><th>프로그램</th><th>주요 인물</th></tr>
+</thead>
+<tbody>
+<tr><td>9:15-15:00</td><td>덴마크 병원의 어린이들</td><td>강사 Hanne Selberg, Med.RN</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,369,251,379">
+<h2>2015년 12월 3일</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b009" data-bbox="104,413,144,423">
+<h3>장소:</h3>
+</div>
+<div class="block" data-class="key_value" data-id="b010" data-bbox="129,449,271,457">
+<ul>
+<li>Tagensvej 86 (T86)</li>
+</ul>
+</div>
+<div class="block" data-class="key_value" data-id="b011" data-bbox="104,490,203,499">
+<h3>회의실 C216</h3>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="129,526,246,534">
+<ul>
+<li>테마 7: 외과 간호</li>
+</ul>
+</div>
+<div class="block" data-class="table_caption" data-id="b013" data-bbox="116,580,896,612">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>시간</th><th>프로그램</th><th>주요 인물</th></tr>
+</thead>
+<tbody>
+<tr><td>9:15-14:30 (점심 포함)</td><td>외과 간호</td><td>강사 Lene Brogaard, 성인 학습 및 인적 자원 석사, RN.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,652,263,662">
+<h2>2015년 12월 17일</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b015" data-bbox="104,696,144,706">
+<h3>장소:</h3>
+</div>
+<div class="block" data-class="key_value" data-id="b016" data-bbox="129,732,271,740">
+<ul>
+<li>Tagensvej 86 (T86)</li>
+</ul>
+</div>
+<div class="block" data-class="key_value" data-id="b017" data-bbox="104,773,203,783">
+<h3>회의실 C216</h3>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b018" data-bbox="129,809,311,817">
+<ul>
+<li>테마 8: 노년층의 낙상 예방</li>
+</ul>
+</div>
+<div class="block" data-class="table_caption" data-id="b019" data-bbox="116,863,896,903">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>시간</th><th>프로그램</th><th>주요 인물</th></tr>
+</thead>
+<tbody>
+<tr><td>9:15-14:00 (점심 포함)</td><td>다양한 낙상 유형 6가지 소개 및 다양한 낙상 예방 전략 이해</td><td>강사 Lotte Evron, 박사, 교육학 석사, 학사, RN.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b020" data-bbox="104,933,905,955">
+<pre><code></code></pre>
+</div>
+</div>
+</body>
+</html>

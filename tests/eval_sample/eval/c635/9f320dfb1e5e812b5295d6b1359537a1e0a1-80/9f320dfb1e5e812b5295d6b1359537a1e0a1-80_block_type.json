@@ -1,0 +1,56 @@
+{
+  "9f320dfb1e5e812b5295d6b1359537a1e0a1-80.html": {
+    "blocks": [
+      {
+        "data_id": "b001",
+        "class": "block",
+        "text": "모든 애플리케이션용 타이머"
+      },
+      {
+        "data_id": "b002",
+        "class": "block",
+        "text": "후지 멀티 모드 타이머, 완전한 기능\n사용 편의성: 시간 범위가 조정될 때마다 해당 디스플레이가 변경됩니다.\n완전한 기능: 나사 한 번 돌리기로 최대 네 가지 출력 모드를 선택할 수 있습니다. 모든 출력에는 5A, DPDT 릴레이가 포함됩니다.\nLED 표시등"
+      },
+      {
+        "data_id": "b003",
+        "class": "block",
+        "text": "미니어처 DIN 타이머는 작고 정확합니다\n작은 크기: 1인치 미만.\n사용 편의성: 간단한 다이얼로 운영자가 쉽게 설정할 수 있습니다.\n정확성: 타이머는 설정의 +/- 1%의 반복 가능한 정확도로 타이밍 기능을 수행합니다."
+      },
+      {
+        "data_id": "b004",
+        "class": "block",
+        "text": "코요 디지털 타이머: 강력하지만 사용하기 쉽습니다\n이 전기식 타이머는 모든 기능을 갖추고 있으며, 완전 프로그래밍 가능:\n타이밍 범위 및 모드: 초에서 시간까지의 범위와 소수 선택 및 상하 타이밍 모드로 다양한 애플리케이션을 지원합니다.\n출력 모드: 5가지 출력 모드, on-delay에서 one-shot까지, 신뢰할 수 있는 2A 릴레이를 사용하여 제어 장치를 작동합니다.\n방해 방지: 개별 키에 대해 키 보호를 설정하여 운영자의 실수로 인한 변경을 방지할 수 있습니다."
+      },
+      {
+        "data_id": "b005",
+        "class": "block",
+        "text": "ST7P 시리즈\n    MS4S 시리즈\n    KT-V4S 시리즈\n  \n  \n    디스플레이\n    수동 다이얼\n시간 설정\n출력 LED 표시등\n    수동 다이얼\n시간 설정\n전원 LED 표시등\n출력 LED 표시등\n출력 모드 설정\n    시간 설정을 위한 4자리 녹색 LED 디스플레이\n현재 시간을 위한 4자리 빨간색 LED 디스플레이\n출력 LED 표시등\n프로그래밍 표시등\n  \n  \n    입력 전원\n    100-120 VAC 또는 24 VDC\n    100-240 VAC 또는 24 VDC/AC\n    85-260 VAC 또는 10-26 VDC\n  \n  \n    입력\n    타이밍 신호\n    리셋 신호\n시작 신호\n게이트 신호\n타이밍 신호\n    시작 신호\n리셋 신호\n타이밍 신호\n  \n  \n    출력\n    정상 개방 DPDT\n정상 닫힘 DPDT\n    정상 개방 DPDT\n정상 닫힘 DPDT\n    1 SPDT\nDC NPN 트랜지스터\n  \n  \n    접촉 등급\n    3 A @ 240 VAC (저항성 부하)\n    5 A @ 250 VAC (저항성 부하)\n    기계적: 2 A @ 220 VAC\n트랜지스터: 100 mA @ 24 VDC\n  \n  \n    출력 모드\n    on-delay\n    on-delay\n깜빡임\none shot\noff-delay\n    on-delay\n깜빡임\none shot\noff-delay\n누적\n  \n  \n    시간 범위\n    0.4초에서 60분\n    0.05초에서 60시간\n    0.001초에서 999.9시간\n  \n  \n    케이스 등급\n    NEMA 1\n    NEMA 1\n    IP65 - 패널\n  \n  \n    기관 승인\n    UL/CSA/CE/TUV\n    UL/CSA/CE/TUV\n    UL/CSA/CE\n  \n  \n    가격\n    40.00부터 시작\n    49.50부터 시작\n    102.00부터 시작"
+      },
+      {
+        "data_id": "b006",
+        "class": "block",
+        "text": ""
+      }
+    ],
+    "classification": {
+      "b001": {
+        "class": "title"
+      },
+      "b002": {
+        "class": "text"
+      },
+      "b003": {
+        "class": "text"
+      },
+      "b004": {
+        "class": "text"
+      },
+      "b005": {
+        "class": "table"
+      },
+      "b006": {
+        "class": "figure"
+      }
+    }
+  }
+}

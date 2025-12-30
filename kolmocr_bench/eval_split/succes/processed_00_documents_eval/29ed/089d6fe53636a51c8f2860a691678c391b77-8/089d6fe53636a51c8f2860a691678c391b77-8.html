@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Introductory text */
+[data-id="b001"] {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #666;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+/* Block b002: Title "감사의 글" */
+[data-id="b002"] h1 {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: calc(2.5em * var(--font-scale));
+  text-align: center;
+  margin: 20px 0;
+  color: #333;
+  border-bottom: 3px solid #0066cc;
+  padding-bottom: 10px;
+}
+
+/* Block b003: "Reference List" heading */
+[data-id="b003"] h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: calc(1.8em * var(--font-scale));
+  color: #222;
+  margin: 20px 0 10px 0;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 8px;
+}
+
+/* Block b004: Ordered list of references */
+[data-id="b004"] ol {
+  font-family: '은 필기', serif;
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.6;
+  margin: 15px 0;
+  padding-left: 20px;
+  color: #333;
+}
+
+[data-id="b004"] ol li {
+  margin-bottom: 6px;
+}
+
+[data-id="b004"] ol li::before {
+  content: counter(list-item) ". ";
+  font-weight: bold;
+  color: #0066cc;
+}
+
+/* Ensure consistent spacing and alignment for references */
+[data-id="b004"] ol li a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+[data-id="b004"] ol li a:hover {
+  text-decoration: underline;
+}
+
+/* Optional: Add a subtle shadow or border to the entire document for visual clarity */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.31rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ededed;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #111111;
+}
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block {
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.2rem;
+  color: #111111;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.47rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,33,603,39">
+<p>Here is the document converted to structured Markdown format:</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="422,70,588,83">
+<h1>감사의 글</h1>
+</div>
+<div class="block" data-class="reference" data-id="b003" data-bbox="104,120,310,129">
+<h2>Reference List</h2>
+</div>
+<div class="block" data-class="reference" data-id="b004" data-bbox="129,161,905,957">
+<ol>
+<li>R. Stein, L. Razin, E. Fried, In vitro methylation of hamster adenine phosphoribosyltransferase gene inhibits its expression in mouse L cells. Proc. Natl. Acad. Sci. USA. 89, 623–627 (1992).</li>
+<li>M. Busslinger, J. Hurst, P. R. Flavell, DNA methylation regulates expression of the insulin gene. Cell. 39, 179–186 (1984).</li>
+<li>M. Wigler, D. Levy, M. Perucchio, The somatic repair of DNA by human bone marrow cells. Nature. 241, 33–40 (1981).</li>
+<li>C. K. Meloni, N. Chaille, T. H. Bestor, Transcription of L1AP endogenous retroviruses is constrained by cytosine methylation. Nature. 395, 113–117 (1998).</li>
+<li>E. J. Bérard, P. Jaenisch, Role for DNA methylation in genomic imprinting. Nature. 386, 550–553 (1997).</li>
+<li>S. J. Koss, N. Landsberger, A. P. Wolffe, DNA methylation controls cell type-dependent repression of transcription initiation. Curr. Biol. 7, 157–165 (1997).</li>
+<li>C. Bujard, J. Strahl, F. Rethig, M. Graessmann, A. Graessmann, Chromatin structure is read and altered by transcription in the methylated herpes simplex virus thymidine kinase gene. Proc. Natl. Acad. Sci. U.S.A. 84, 1183–1187 (1987).</li>
+<li>I. M. Caballero, J. Hansen, D. Lierdall, S. M. Thomsen, S. H. Merlie, The MeCP2, Mbd2 and Kaiso are dispensable for mouse embryogenesis but play crucial roles in neural development and differentiation. PLoS One. 4, e4315 (2009).</li>
+<li>M. O’Geen et al., Histone-modifying enzymes interact with DNA methyltransferases. Annu. Rev. Biochem. 74, 481–514 (2005).</li>
+<li>M. Zhang, A. Zill, Controls endogenous retrovirus in embryonic stem cells. Nature. 465, 297–301 (2010).</li>
+<li>K. Mandado, Y. Wang, M. Shintata, A. G. Clark, M. J. Garcia-Garcia, TRIM28 controls germ line inheritance of X chromosome dissort mechanisms during and after early embryonic-wide reprogramming. Cell Rep. 13, 316–327 (2015).</li>
+<li>G. S. Gopal et al., Structure of KAP1 triple-zipper domain reveals molecular interfaces required for retroelement silencing. Proc. Natl. Acad. Sci. U.S.A. 111, E1542–E1551 (2014).</li>
+<li>D. Wolf, S. F. Goff, Embryonic stem cells use two types of silencing viral DNAs. Nature. 458, 1201–1204 (2009).</li>
+<li>N. Zacharias, Y. Akimoto, G. Hart, The O-GlcNAc modification in histone H3. Glycobiology, A. Varki, Ed. (Cold Spring Harbor Laboratory Press, NY, 3 ed. 2017), pp. 358–376.</li>
+<li>G. Magdala, R. J. Clifford, L. Katozurski, J. Tabernero, T. S. Bestor, Envirotype-specific endogenous retroviruses are genomic suppressors. Proc. Natl. Acad. Sci. U.S.A. 106, 9020–9025 (2009).</li>
+<li>T. S. Macfarlan et al., Endogenous non-LTR retroelements and L1s are coordinately repressed by LSD1/KDM1A. Genome Res. 25, 594–607 (2011).</li>
+<li>C. O. C. Yee, Y. Liu, L. Feng, Utilizes the L1-ORF1bST-PAD1 complex and controls the function of L1-type zinc fingers. PLoS One 3, e3255 (2008).</li>
+<li>S. P. Rowbotham et al., Maintenance of silent chromatin through replication requires SWI/SNF-like chromatin remodeler SMARCA5. Genes Dev. 25, 1086–1098 (2011).</li>
+<li>S. Covellino, P. Asp, R. Percipalle, A. J.-O. Farrant, The WSTF-SNF2h chromatin remodeling complex recruits several nuclear proteins in transcription. J. Biol. Chem. 281, 16261–16271 (2006).</li>
+<li>M. O’Geen, A. Meissner, J. Müller, Essential role of the glycosyltransferase superfamily in polycomb repression. Science 325, 93–96 (2009).</li>
+<li>J. Reichmann et al., Microarray analysis of LTR-retrotransposon silencing identifies Head as a regulator of retrotransposon expression in mouse embryonic stem cells. BMC Genomics 8, e1002465 (2012).</li>
+<li>X. Lu et al., The MOV10 helicase inhibits LINE mobility in vivo. Nature. 489, 2149–21160 (2013).</li>
+<li>L. Zhou et al., ENU mutagenesis screen identifies novel and known genes involved in epigenetic processes in the mouse. Genome Biol. 13, R81 (2012).</li>
+<li>Y. Zhang, L. LeRoy, H.-P. Seelig, W. S. Lane, D. Reinberg, The dermatomyositis-specific autoantigen Mi2 is a component of a complex containing histone deacetylase and nucleosome remodeling activities. Cell 95, 279–289 (1998).</li>
+<li>X. Zhu et al., O-GlcNAcylation of histone deacetylases 1 in hepatocellular carcinoma progression. Glycobiology 26, 820–833 (2016).</li>
+<li>P. G. Murray et al., 3-M syndrome: A growth hormone-releasing peptide receptor mutation. Endocr. Connect. 2, 225–235 (2013).</li>
+<li>C. Stadler et al., O-GlcNAcase maintains microtubule and genome integrity. Mol. Cell 54, 91–94 (2014).</li>
+<li>C. Schmiedt, J. Müller, A critical perspective of the diverse roles of O-GlcNAc transferase on chromatin. Chromosomes 124, 429–442 (2015).</li>
+<li>K. Shafi et al., The O-GlcNAc transferase encoded by Gm13056 on the X chromosome and is essential for embryonic stem cell viability and mouse ontogeny. Proc. Natl. Acad. Sci. U.S.A. 107, 7251–7256 (2010).</li>
+<li>R. L. Dennis et al., Structure and mechanism of an O-GlcNAc transferase lacking O-GlcNACase activity. Nat. Struct. Mol. Biol. 13, 365–371 (2006).</li>
+<li>M. A. DeBenedictis, P. Reber-Palacios, D. Bourcis, An epigenetic switch ensures permanent repression via dynamic loss of DNA methylation in embryonic stem cells. eLife 5, R87 (2016).</li>
+<li>A. S. Tey et al., O-GlcNAc transferase suppresses necroptosis and liver fibrosis. JCI Insight 2, 90505 (2017).</li>
+<li>A. Skinner et al., Conserved serine-rich phosphoprotein triggered by phosphorylation controls differential gene expression. Proc. Natl. Acad. Sci. U.S.A. 114, 13453–13458 (2017).</li>
+<li>H. Muñoz et al., PGL2 is regulated by O-linked N-acetylgalactosamine (O-GlcNAc). J. Biol. Chem. 278, 14046–14052 (2003).</li>
+<li>M. R. Cooper et al., The cAMP-responsive transcription (CBP) binding protein interacts preferentially with the glycosylated form of CBP. Mol. Cell. Biol. 24, 5152–5162 (2004).</li>
+<li>J. O’Donnell, O-GlcNAc regulates RNA polymerase II transcription by directly acting on large components of the pluripotency network. Cell Stem Cell 11, 62–74 (2012).</li>
+<li>E. T. Comer, G. W. Hart, Reciprocity between the lysine acetyltransferase GCN5 and the carboxy-terminal domain of RNA polymerase II. Biochemistry 40, 7845–7852 (2001).</li>
+<li>R. G. Warren, T. B. Hahnerman, W. W. Hart, B. A. Lewis, Evidence for the involvement of O-GlcNAcylation of human RNA polymerases II CTD in transcription in vitro and in vivo. J. Biol. Chem. 287, 23549–23558 (2012).</li>
+<li>R. Bruno, M. Mahgoub, T. S. Macfarian, The arms race between KRAB-zinc finger proteins and RNA polymerase II: the impact on mammalian gene regulation. Annu. Rev. Genet. 53, 393–416 (2019).</li>
+<li>Y. Li, L. Zhang, M. Blumenkach, W. Cheng, A common mode of recognition for methylated DNA by bromodomain proteins. Nucleic Acids Res. 41, 1504–1513 (2013).</li>
+<li>S. Dume et al., A Pelicanret growth factor is inserted in mouse embryos by the zinc finger protein ZFP568. Science 356, 767–759 (2017).</li>
+<li>H. Lei et al., De novo DNA cytosine methylation in mouse embryonic stem cells. Development 121, 319–325 (1995).</li>
+<li>A. L. Edwards, T. S. Bestor, RXL1 protects Polycomb-bound genes from hypermethylation. Nat. Genet. 47, 479–485 (2015).</li>
+<li>Y. Zhang et al., Model-based analysis of Massively Parallel Sequencing (MASS). Genome Biol. 9, R137 (2008).</li>
+<li>S. J. Elissa, E. N. Non, N. Diaz, O. C. Allis, A. L. Parnesky, Histone H3K9me2 is required for endogenous retroviral element silencing in embryonic stem cells. Proc. Natl. Acad. Sci. U.S.A. 112, E2390–E244 (2015).</li>
+<li>W. Xie et al., Base-resolution analyses of de novo and parent-of-origin dependent DNA methylation in the mouse genome. Cell 149, 1211–1221 (2014).</li>
+<li>S. P. Jackson, K. Tjian, Purification and analysis of RNA polymerase II transcription factors by using gel filtration and affinity chromatography. Proc. Natl. Acad. Sci. U.S.A. 84, 7643–7647 (1987).</li>
+<li>D. T. Trig, M. Kyba, G. Q. Daley, Inducible transgene expression in mouse stem cells. Methods Mol. Biol. 261, 15–26 (2005).</li>
+<li>S. K. Ooi et al., Dynamic instability of gene expression patterns in pluripotent stem cells. Epigenetics Chromatin 3, 17 (2010).</li>
+<li>J. Kingsmead, S. L. Salzberg, Fast gapped-read realignment with Bowtie 2. Nat. Methods 9, 357–359 (2012).</li>
+<li>Y. Kim et al., Randal2: Accurate alignment of transcriptomes in the presence of insertions, deletions and gene fusions. Genome Biol. 14, R36 (2013).</li>
+<li>Y. Liao, G. K. Smyth, W. Shi, FeatureCounts: gene-wise comparison of Illumina whole-genome shotgun reads to genomic features. Bioinformatics 30, 923–930 (2014). Note: This text includes references that may need to be linked to specific resources or databases for full context and verification.</li>
+</ol>
+</div>
+</div>
+</body>
+</html>

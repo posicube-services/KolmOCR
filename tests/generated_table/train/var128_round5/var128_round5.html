@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>사기피해신고서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            color: #111;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24pt;
+            font-weight: bold;
+        }
+        .document-container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #999;
+            border-collapse: collapse;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+        .section-title {
+            background: #888;
+            color: #fff;
+            font-weight: bold;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 14pt;
+        }
+        .row {
+            display: flex;
+            border-bottom: 1px dashed #bbb;
+        }
+        .label-cell {
+            width: 25%;
+            background: #ddd;
+            padding: 8px 12px;
+            border-right: 1px dashed #bbb;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top;
+            box-sizing: border-box;
+        }
+        .value-cell {
+            width: 75%;
+            background: #f9f9f9;
+            padding: 8px 12px;
+            text-align: left;
+            vertical-align: top;
+            box-sizing: border-box;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .value-cell pre {
+            margin: 0;
+            font-family: inherit;
+            white-space: pre-wrap;
+        }
+        .sub-row {
+            display: flex;
+            border-bottom: 1px dashed #bbb;
+        }
+        .sub-label-cell {
+            width: 30%;
+            background: #eee;
+            padding: 6px 10px;
+            border-right: 1px dashed #bbb;
+            font-size: 11pt;
+            text-align: left;
+        }
+        .sub-value-cell {
+            width: 70%;
+            background: #fafafa;
+            padding: 6px 10px;
+            text-align: left;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .multi-line {
+            white-space: pre-line;
+            font-family: inherit;
+        }
+        .header-row {
+            display: flex;
+            background: #999;
+            color: #fff;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-bottom: 1px solid #777;
+        }
+        .header-label {
+            width: 30%;
+            text-align: center;
+        }
+        .header-value {
+            width: 70%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>사기피해신고서</h1>
+    <div class="document-container">
+
+        <!-- Section 1: 신고자 기본정보 -->
+        <div class="section">
+            <div class="section-title">신고자 기본정보</div>
+            <div class="row">
+                <div class="label-cell">신고자 성명</div>
+                <div class="value-cell">홍길동</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">전화번호</div>
+                <div class="value-cell">010-1234-5678</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">주소</div>
+                <div class="value-cell">서울시 강남구 테헤란로 123</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">우편번호</div>
+                <div class="value-cell">06123</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">주민등록번호</div>
+                <div class="value-cell">900101-1234567</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">이메일 주소</div>
+                <div class="value-cell">hong@example.com</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">법정대리인 있음</div>
+                <div class="value-cell">False</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">대리인 성명</div>
+                <div class="value-cell">김철수</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">대리인 전화번호</div>
+                <div class="value-cell">02-123-4567</div>
+            </div>
+        </div>
+
+        <!-- Section 2: 피해사건 정보 -->
+        <div class="section">
+            <div class="section-title">피해사건 정보</div>
+            <div class="row">
+                <div class="label-cell">사건 유형</div>
+                <div class="value-cell">전화사기</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">사건 발생일시</div>
+                <div class="value-cell">2025-04-05T14:30:00</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">사건 발생 장소</div>
+                <div class="value-cell">서울역 앞 상점</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">금전적 피해 금액</div>
+                <div class="value-cell">5000000 KRW</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">비금전적 피해 내용</div>
+                <div class="value-cell">개인정보 유출로 인한 정신적 고통</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">피해 계좌번호</div>
+                <div class="value-cell">123-456-789012</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">은행명</div>
+                <div class="value-cell">국민은행</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">사기 수법</div>
+                <div class="value-cell">가짜 공무원 전화</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">사기 경위</div>
+                <div class="value-cell">전화로 공무원을 사칭하여 계좌이체를 유도함</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">증거자료 목록</div>
+                <div class="value-cell">통화녹음파일, 문자메시지 캡처</div>
+            </div>
+        </div>
+
+        <!-- Section 3: 피해자 진술 및 서명 -->
+        <div class="section">
+            <div class="section-title">피해자 진술 및 서명</div>
+            <div class="row">
+                <div class="label-cell">진술 요약</div>
+                <div class="value-cell">사기 당일 상황 요약</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">상세 진술</div>
+                <div class="value-cell">사기 과정을 시간순으로 상세히 기술</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">신고자 서명</div>
+                <div class="value-cell">서명</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">서명일자</div>
+                <div class="value-cell">2025-04-05</div>
+            </div>
+            <div class="row">
+                <div class="label-cell">첨부파일 목록</div>
+                <div class="value-cell">첨부파일 없음</div>
+            </div>
+        </div>
+
+        <!-- Section 4: 조사 및 처리 기록 -->
+        <div class="section">
+            <div class="section-title">조사 및 처리 기록</div>
+            <div class="row">
+                <div class="label-cell">조사 담당자</div>
+                <div class="value-cell">이지영</div>
+            </div>
+            <

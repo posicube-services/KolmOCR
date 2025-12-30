@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #666;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+
+.block[data-id="b002"] h1,
+.block[data-id="b005"] h1,
+.block[data-id="b008"] h1 {
+  font-size: calc(2em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  color: #000;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b006"] p,
+.block[data-id="b009"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin-bottom: 1em;
+  text-align: justify;
+}
+
+.block[data-id="b004"] ul,
+.block[data-id="b007"] ul {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+.block[data-id="b004"] li,
+.block[data-id="b007"] li {
+  margin-bottom: 0.5em;
+}
+
+/* Ensure consistent spacing and alignment */
+.block {
+  break-inside: avoid;
+}
+
+/* Handle line breaks in paragraphs */
+.block[data-id="b006"] p br,
+.block[data-id="b009"] p br {
+  display: block;
+  margin: 0.5em 0;
+}
+
+/* Ensure proper spacing for references */
+.block[data-id="b009"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Ensure no extra padding or margin on the last block */
+.block:last-of-type {
+  margin-bottom: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.27rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #f2c94c;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgb(7, 5, 109);
+  border-left: 4px solid #64ffda;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #0548bc;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(81, 84, 226, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #3361a7;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #3f0db5;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(248, 113, 113, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #c084fc;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #38bdf8;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.25rem;
+  color: #fef08a;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.1rem;
+  color: #010243;
+  letter-spacing: 0.02em;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #a5b4fc;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #75600c;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.08rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,59,885,86">
+<p>Sure! Below is the markdown version of the document with tables in HTML format and normalized bounding box coordinates for any images.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="104,116,167,139">
+<h1>요약</h1>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,157,905,186">
+<p>핵력에 의존하는 독특한 에너지 정책 때문에, 이 결과는 프랑스의 세 가지 동반 기준의 일관성 부족을 더 강화시켰다:</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="129,199,661,254">
+<ul>
+<li>온실가스(GHG) 배출 저감,</li>
+<li>에너지 효율성 향상,</li>
+<li>재생에너지 목표. 이러한 기준들은 기후 변화에 대응하기 위한 것이다.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="104,287,167,309">
+<h1>결론</h1>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,327,905,484">
+<p>프랑스의 에너지 소비 절감 대안 시나리오에 대한 평가는, 프랑스의 CO2 배출을 저감하고 재생 에너지를 촉진하기 위해 유럽 연합이 제시한 에너지 효율성 관련 권고문의 관련성을 검토하는 문제를 제기했다. 이러한 장기 계획 작업들은 기후 변화 문제를 다룰 때 목표의 "적절한 활용"이 중요함을 강조했다. 이는 국제적 의무가 명확하지 않은 기준이나 정의에 기반한다면, 일부 국가가 불이익을 받을 수 있음을 시사한다. 또한, 제정된 목표가 온실가스 저감 목표를 달성하는데 실효성이 없다면, 자유로이 타인의 노력을 이용하려는 "免費搭便車" 현상이 발생할 수 있다. 따라서 국가 상황에 독립적인 저감 목표를 채택하려면 기준을 더욱 명확하게 정의해야 한다.<br/>
+에너지 효율성으로 돌아가보면, 에너지 체인에서의 손실을 특정화함으로써 그 잠재력을 정확히 측정할 수 있다 [3]. 또한, 원시 에너지의 변환 단계를 통해 생산자와 소비자가 연결되며, 이는 최종 에너지에서 유용 에너지로의 변환을 거친다. 2002년을 기준으로 추정된 손실은 다음과 같다:</p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="129,497,903,660">
+<ul>
+<li>유용 에너지 3,857 Mtep를 위해 전 세계 원시 에너지 소비량이 10.4 Gtep [4], 이는 전 세계 에너지 체인의 수율이 37%임을 의미한다;</li>
+<li>전기의 경우, 전 세계 평가에서 원시 전력의 3,300 Mtep와 유용 전력의 900 Mtep를 차지하며, 전기 수율은 27%로, 전 세계 체인의 수율보다 낮다. 에너지 체인 전체에 걸쳐 나타나는 손실의 중요성은 에너지 효율성을 예측하는데 도움을 준다. 특히, 2000년 프랑스의 경우, 최종 에너지에서 유용 에너지로의 변환 수율은 최종 에너지의 45% 이상이 절감 가능하다는 것을 나타냈다 [5]. 주요 잠재력은 교통 분야에 있으며, 이어 주거(주거 및 산업) 분야가 있다. 위의 요소들은 에너지 효율성 향상을 단순히 원시 에너지나 최종 에너지 소비 절감으로 번역하는 것이 만족스러운 단순화로 간주될 수 없다는 점을 강조한다. 결론적으로, "전세계적으로 생각하고 지역적으로 행동"하기 위해, 명확하고 투명한 기준과 목표를 신중하게 선택해야 한다.</li>
+</ul>
+</div>
+<div class="block" data-class="reference" data-id="b008" data-bbox="108,690,240,716">
+<h1>참고문헌</h1>
+</div>
+<div class="block" data-class="reference" data-id="b009" data-bbox="108,733,905,940">
+<p>[1] Fishbone L.G, Abilock H. "MARKAL, a linear programming model for energy systems analysis: technical description of the BNL version". International journal of Energy research 1981;vol. 5, 353-375.<br/>
+[2] Maïzi N., Assoumou E. "Modélisation prospective et spécificités de la politique énergétique française", JSeA 6, (2007).<br/>
+[3] Mazauric V., Maïzi N. and Wendling P., "A Global Approach of Electromagnetism Dedicated to Energy Efficiency", International Power Engineering Conference - IPEC2007, 3 - 6 Dec 2007, Singapore.<br/>
+[4] Key world energy statistics. International Energy Agency 2004.<br/>
+[5] Radanne P. "La division par 4 des émissions de dioxyde de carbone en France d'ici 2050 - Introduction au débat". Rapport de mission pour la Mission Interministérielle de l'Effet de Serre du Ministère de l'Ecologie et du Développement Durable 2004.<br/>
+[6] Centre d'Analyse Stratégique, "Les perspectives énergétiques de la France à l'horizon 2020-2050", Commission Energie, Rapport Syrota, 2007.<br/>
+Note: Since there were no images provided, no bounding box coordinates are included.</p>
+</div>
+</div>
+</body>
+</html>

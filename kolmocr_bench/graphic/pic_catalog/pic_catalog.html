@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .document {
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .document.columns-2 {
+      column-count: 2;
+      column-gap: 2rem;
+    }
+
+    .document.columns-3 {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+
+    @media print {
+
+      body,
+      .document,
+      .block {
+        page-break-inside: avoid;
+      }
+    }
+
+    table,
+    table.data-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      break-inside: avoid;
+      border: 1px solid #999;
+    }
+
+    table th,
+    table td,
+    table.data-table th,
+    table.data-table td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table th,
+    table.data-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      border: 1px solid #666;
+    }
+
+    table tbody tr:nth-child(even),
+    table.data-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover,
+    table.data-table tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .math-display {
+      display: block;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .math-inline {
+      display: inline;
+    }
+
+    .block {
+      margin: 1rem 0;
+      width: fit-content;
+    }
+
+    ul,
+    ol {
+      margin: 0.5rem 0;
+      padding-left: 2rem;
+    }
+
+    figure {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    figure img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 1.5rem 0 0.5rem 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 1.3rem 0 0.4rem 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.1rem 0 0.3rem 0;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin: 1rem 0 0.3rem 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  </style>
+<style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+<div class="block" data-id="b001" data-bbox="16,44,252,102">
+<h1>꿈돌이 패밀리와 찰칵!</h1>
+</div>
+<figure>
+<img alt="꿈돌이 패밀리와 찰칵! 캐릭터 이미지" class="block" data-id="b002a" src="imgs/pic_catalog_1.png" data-bbox="16,134,490,482">
+<figcaption class="block" data-id="b002b" data-bbox="16,521,212,546">꿈돌이 패밀리와 찰칵! 캐릭터 이미지</figcaption>
+</figure>
+<div class="block" data-id="b003" data-bbox="16,567,148,606">
+<h2>꿈씨패밀리 소개</h2>
+</div>
+<div class="block" data-id="b004" data-bbox="16,622,211,647">
+<p>#꿈씨패밀리 #꿈부부 #외계인친구들</p>
+</div>
+<table class="data-table block" data-id="b015" data-bbox="509,20,984,557">
+<tbody><tr>
+<td><b>이름</b></td>
+<td><b>설명</b></td>
+</tr>
+<tr>
+<td>꿈부부의 첫째 아이 꿈빛이</td>
+<td>과학을 가장 좋아하는 꿈씨패밀리의 첫째 아이. 제일 꼼꼼하고 부부를 쏙 빼닮아 단정하다.</td>
+</tr>
+<tr>
+<td>꿈부부의 둘째 아이 꿈결이</td>
+<td>대화와 예절을 사랑하는 꿈씨패밀리 둘째 아이. 엄마 꿈순이를 쏙 빼닮은 것이 특징이다.</td>
+</tr>
+<tr>
+<td>꿈부부의 막내 쌍둥이 꿈별이</td>
+<td>꿈부부가 가장 최근에 낳은 막내 이란성 쌍둥이.</td>
+</tr>
+<tr>
+<td>꿈부부의 막내 쌍둥이 꿈달이</td>
+<td>꿈부부가 가장 최근에 낳은 막내 이란성 쌍둥이.</td>
+</tr>
+<tr>
+<td>꿈부부의 막내 쌍둥이 꿈동이</td>
+<td>꿈동이는 꿈돌이의 친동생으로, 쌍둥이 막내 중 한 명이다.</td>
+</tr>
+<tr>
+<td>외계행성 대표 네브</td>
+<td>외계행성에서 온 대표로, 꿈씨패밀리와 친구가 되었다.</td>
+</tr>
+<tr>
+<td>꿈씨 가족의 반려견 몽몽</td>
+<td>늘 밝고 건강한 성격의 반려견. 꿈씨패밀리와 함께 지낸다.</td>
+</tr>
+<tr>
+<td>소꿉친구 도르</td>
+<td>꿈씨패밀리와 어릴 때부터 함께한 소꿉친구.</td>
+</tr>
+</tbody></table>
+<div class="block" data-id="b005" data-bbox="509,575,585,606">
+<h3>등장 캐릭터</h3>
+</div>
+<ul>
+<li class="block" data-id="b006" data-bbox="535,622,644,647">외계행성 대표 [네브]</li>
+<li class="block" data-id="b007" data-bbox="535,663,605,689">반려견 [몽몽]</li>
+<li class="block" data-id="b008" data-bbox="535,705,656,730">꿈돌이의 동생 [꿈동이]</li>
+<li class="block" data-id="b009" data-bbox="535,746,605,772">첫째 [꿈빛이]</li>
+<li class="block" data-id="b010" data-bbox="535,788,570,813">꿈돌이</li>
+<li class="block" data-id="b011" data-bbox="535,829,570,855">꿈순이</li>
+<li class="block" data-id="b012" data-bbox="535,871,605,896">둘째 [꿈결이]</li>
+<li class="block" data-id="b013" data-bbox="535,912,655,938">막내들 [꿈별이·꿈달이]</li>
+<li class="block" data-id="b014" data-bbox="535,954,617,980">소꿉친구 [도르]</li>
+</ul>
+</div>
+</body></html>

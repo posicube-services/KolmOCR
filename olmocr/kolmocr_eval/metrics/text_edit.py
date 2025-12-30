@@ -1,6 +1,11 @@
 import json
 import os
 import re
+import html
+import unicodedata
+import uuid
+import shutil
+import subprocess
 from datetime import datetime
 from collections import defaultdict
 from typing import List, Tuple
@@ -28,7 +33,62 @@ CODE_BLOCK_PATTERN = re.compile(r"```[\s\S]*?```|~~~[\s\S]*?~~~", re.MULTILINE)
 HTML_TABLE_PATTERN = re.compile(r"<table[\s\S]*?</table>", re.IGNORECASE | re.MULTILINE)
 POSICUBE_TABLE_PATTERN = re.compile(r"<POSICUBE_TABLE_KV>[\s\S]*?</POSICUBE_TABLE_KV>", re.IGNORECASE | re.MULTILINE)
 YAML_FRONT_MATTER_PATTERN = re.compile(r"^---[\\s\\S]*?---\\s*", re.MULTILINE)
+LATEX_TABULAR_PATTERN = re.compile(r"\\begin{tabular}[\s\S]*?\\end{tabular}", re.MULTILINE)
+HORIZONTAL_RULE_PATTERN = re.compile(r"^[ \t]*[-*_]{3,}[ \t]*$", re.MULTILINE)
 
+LATEX_TOKEN_MAP = {
+    r"\alpha": "α",
+    r"\beta": "β",
+    r"\gamma": "γ",
+    r"\delta": "δ",
+    r"\epsilon": "ϵ",
+    r"\zeta": "ζ",
+    r"\eta": "η",
+    r"\theta": "θ",
+    r"\iota": "ι",
+    r"\kappa": "κ",
+    r"\lambda": "λ",
+    r"\mu": "μ",
+    r"\nu": "ν",
+    r"\xi": "ξ",
+    r"\pi": "π",
+    r"\rho": "ρ",
+    r"\sigma": "σ",
+    r"\tau": "τ",
+    r"\upsilon": "υ",
+    r"\phi": "φ",
+    r"\chi": "χ",
+    r"\psi": "ψ",
+    r"\omega": "ω",
+    r"\Gamma": "Γ",
+    r"\Delta": "Δ",
+    r"\Theta": "Θ",
+    r"\Lambda": "Λ",
+    r"\Xi": "Ξ",
+    r"\Pi": "Π",
+    r"\Sigma": "Σ",
+    r"\Upsilon": "Υ",
+    r"\Phi": "Φ",
+    r"\Psi": "Ψ",
+    r"\Omega": "Ω",
+    r"\times": "×",
+    r"\leq": "≤",
+    r"\geq": "≥",
+    r"\rightarrow": "→",
+    r"\leftarrow": "←",
+    r"\uparrow": "↑",
+    r"\downarrow": "↓",
+    r"\pm": "±",
+    r"\neq": "≠",
+    r"\approx": "≈",
+    r"\infty": "∞",
+    r"\degree": "°",
+    r"\deg": "°",
+    r"\cdot": "·",
+}
+
+INLINE_MATH_BOUNDARY = "__INLINE_FORMULA_BOUNDARY__"
+INLINE_REGEX = re.compile(r"\$(.*?)\$|\\\((.*?)\\\)")
 
 def normalized_levenshtein(a: str, b: str) -> float:
     """Edit distance / max length (0 best, 1 worst)."""
@@ -40,6 +100,208 @@ def normalized_levenshtein(a: str, b: str) -> float:
 def _collapse_repeated_symbols(text: str) -> str:
     """Limit long runs of divider-like symbols to length 3."""
     return re.sub(r"([=_~\\-]{3,})", lambda m: m.group(1)[0] * 3, text)
+
+
+def _remove_markdown_fences(content: str) -> str:
+    content = re.sub(r"^```(?:markdown|html|latex)\n?", "", content, flags=re.MULTILINE)
+    content = re.sub(r"```\n?$", "", content, flags=re.MULTILINE)
+    return content
+
+
+def _replace_repeated_chars(input_str: str) -> str:
+    input_str = re.sub(r"_{4,}", "____", input_str)
+    input_str = re.sub(r" {4,}", "    ", input_str)
+    return input_str
+
+
+def _fullwidth_to_halfwidth(s: str) -> str:
+    result = []
+    for ch in s:
+        code = ord(ch)
+        if code == 0x3000:
+            code = 0x0020
+        elif 0xFF01 <= code <= 0xFF5E:
+            code -= 0xFEE0
+        result.append(chr(code))
+    return "".join(result)
+
+
+def _strip_bom_and_normalize_newlines(text: str) -> str:
+    """Remove BOM and unify newline styles."""
+    text = text.lstrip("\ufeff")
+    return text.replace("\r\n", "\n").replace("\r", "\n")
+
+
+def _remove_system_headers(text: str) -> str:
+    """Remove common system headers like '# Document', '## Page X'."""
+    lines = []
+    for ln in text.splitlines():
+        if re.match(r"^\s*#\s*(document|markdown output)\s*$", ln, flags=re.IGNORECASE):
+            continue
+        if re.match(r"^\s*##\s*page\s+\d+\s*$", ln, flags=re.IGNORECASE):
+            continue
+        lines.append(ln)
+    return "\n".join(lines)
+
+
+def _remove_horizontal_rules(text: str) -> str:
+    """Remove markdown horizontal rules like --- *** ___."""
+    return HORIZONTAL_RULE_PATTERN.sub("", text)
+
+
+def _remove_indent_code_blocks(text: str) -> str:
+    """Remove indented code blocks (4 spaces or tab)."""
+    pattern = re.compile(r"(?:^|\n)((?:[ \t]{4}.*\n?)+)")
+    return pattern.sub("\n", text)
+
+
+def _normalize_indentation(text: str) -> str:
+    """Normalize indentation to spaces for consistent parsing."""
+    return text.replace("\t", "    ")
+
+
+def _normalize_symbols(text: str) -> str:
+    """Normalize punctuation/whitespace variants."""
+    replacements = {
+        "“": '"',
+        "”": '"',
+        "‘": "'",
+        "’": "'",
+        "…": "...",
+        "\u2008": " ",
+        "\u2009": " ",
+        "\u200a": " ",
+        "\u200b": " ",
+        "\u3000": " ",
+        "\ufeff": "",
+    }
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+    return text
+
+
+def _normalize_latex_tokens(expr: str) -> str:
+    """Normalize simple LaTeX tokens to unicode text."""
+    def repl(match: re.Match) -> str:
+        token = match.group(0)
+        if token in LATEX_TOKEN_MAP:
+            return LATEX_TOKEN_MAP[token]
+        if token.startswith(r"\mathrm{") or token.startswith(r"\text{"):
+            return token.split("{", 1)[1].rstrip("}")
+        return token
+
+    expr = re.sub(r"\\[a-zA-Z]+", repl, expr)
+    expr = expr.replace("{", "").replace("}", "")
+    expr = re.sub(r"\s+", " ", expr).strip()
+    return expr
+
+
+def _normalize_inline_math(text: str) -> str:
+    """Replace inline math markers with normalized unicode-friendly text."""
+    def normalize(match: re.Match) -> str:
+        body = match.group(1)
+        return _normalize_latex_tokens(body)
+
+    text = INLINE_MATH_PATTERN.sub(normalize, text)
+    text = INLINE_LATEX_PATTERN.sub(normalize, text)
+    return text
+
+
+def _textblock_to_unicode(text: str) -> str:
+    """
+    Inline LaTeX를 Unicode 텍스트로 변환 (LatexNodes2Text가 없으면 토큰만 치환).
+    """
+    try:
+        from pylatexenc.latex2text import LatexNodes2Text  # type: ignore
+    except Exception:
+        return _normalize_inline_math(text)
+
+    inline_matches = INLINE_REGEX.finditer(text)
+    removal_positions = []
+    for match in inline_matches:
+        start, end = match.start(), match.end()
+        content = match.group(1) if match.group(1) is not None else match.group(2)
+        clean = re.sub(r"\\([\\_&%^])", "", content)
+        try:
+            unicode_content = LatexNodes2Text().latex_to_text(clean)
+        except Exception:
+            continue
+        removal_positions.append((start, end, unicode_content))
+
+    for start, end, uni in sorted(removal_positions, reverse=True):
+        text = text[:start] + uni.strip() + text[end:]
+    return text
+
+
+def _textblock_with_norm_formula(text: str) -> str:
+    """
+    인라인 수식의 스타일 태그/공백을 정리해 본문에 포함.
+    """
+    inline_matches = INLINE_REGEX.finditer(text)
+    removal_positions = []
+    filter_list = [
+        "\\mathbf",
+        "\\mathrm",
+        "\\mathnormal",
+        "\\mathit",
+        "\\mathbb",
+        "\\mathcal",
+        "\\mathscr",
+        "\\mathfrak",
+        "\\mathsf",
+        "\\mathtt",
+        "\\textbf",
+        "\\text",
+        "\\boldmath",
+        "\\boldsymbol",
+        "\\operatorname",
+        "\\bm",
+        "\\symbfit",
+        "\\mathbfcal",
+        "\\symbf",
+        "\\scriptscriptstyle",
+        "\\notag",
+        "\\setlength",
+        "\\coloneqq",
+        "\\space",
+        "\\thickspace",
+        "\\thinspace",
+        "\\medspace",
+        "\\nobreakspace",
+        "\\negmedspace",
+        "\\quad",
+        "\\qquad",
+        "\\enspace",
+        "\\substackw",
+        " ",
+        "$$",
+        "\\left",
+        "\\right",
+        "\\displaystyle",
+        "\\text",
+    ]
+
+    for match in inline_matches:
+        start, end = match.start(), match.end()
+        content = match.group(1) if match.group(1) is not None else match.group(2)
+        if not content:
+            continue
+        text_norm = content.strip().strip("$").strip("\n")
+        text_norm = re.sub(r"\\\[(.+?)(?<!\\)\\\]", r"\1", text_norm)
+        text_norm = re.sub(r"\\tag\{.*?\}", "", text_norm)
+        text_norm = re.sub(r"\\hspace\{.*?\}", "", text_norm)
+        text_norm = re.sub(r"\\begin\{.*?\}", "", text_norm)
+        text_norm = re.sub(r"\\end\{.*?\}", "", text_norm)
+        text_norm = re.sub(r"\\arraycolsep.*?\}", "", text_norm)
+        text_norm = text_norm.strip(".")
+        for f in filter_list:
+            text_norm = text_norm.replace(f, "")
+        text_norm = text_norm.lower()
+        removal_positions.append((start, end, text_norm))
+
+    for start, end, norm in sorted(removal_positions, reverse=True):
+        text = text[:start] + norm.strip() + text[end:]
+    return text
 
 
 def _remove_markdown_tables(text: str) -> str:
@@ -88,31 +350,56 @@ def _strip_markdown_syntax(text: str) -> str:
 
 def _normalize_whitespace(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
+    text = text.replace("\t", "    ")
     text = re.sub(r"[ \t]+", " ", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 
 
+def _fix_hyphenation(text: str) -> str:
+    """Merge words broken by line breaks (e.g., 're-\nconstruction' -> 'reconstruction')."""
+    return re.sub(r"(\w+)-\s*\n\s*(\w+)", r"\1\2", text)
+
+
 def _prepare_text_for_text_edit(md: str, table_version: str = "") -> str:
     """
     PaddleOCR-VL / OmniDocBench 방식에 맞춰 순수 텍스트만 남긴다.
+    - 헤더/구분선 등 시스템용 마크다운 요소 제거
     - 이미지/테이블/코드블록/블록수식 제거
-    - 인라인 수식 기호 제거 후 본문에 포함
+    - 인라인 수식 LaTeX를 유니코드/텍스트로 정규화
     - 마크다운 헤더/리스트/링크 문법 제거
-    - 반복 심볼/공백 정규화
+    - 공백/기호/하이픈 라인브레이크 정규화
     """
-    text = remove_images_from_md(md)
+    text = _strip_bom_and_normalize_newlines(md)
+    text = _normalize_indentation(text)
+    text = _remove_system_headers(text)
+    text = YAML_FRONT_MATTER_PATTERN.sub("", text)
+    text = _remove_markdown_fences(text)
+    text = _fullwidth_to_halfwidth(text)
+    text = _replace_repeated_chars(text)
+
+    text = remove_images_from_md(text)
     text = remove_tables_from_md(text, table_version)
+    text = LATEX_TABULAR_PATTERN.sub(" ", text)
     text = HTML_TABLE_PATTERN.sub(" ", text)
     text = POSICUBE_TABLE_PATTERN.sub(" ", text)
     text = _remove_markdown_tables(text)
-    text = CODE_BLOCK_PATTERN.sub(" ", text)
     text = BLOCK_MATH_PATTERN.sub(" ", text)
     text = BLOCK_MATH_BRACKET_PATTERN.sub(" ", text)
-    text = YAML_FRONT_MATTER_PATTERN.sub("", text)
+    text = CODE_BLOCK_PATTERN.sub(" ", text)
+    text = _remove_indent_code_blocks(text)
+
+    # Remove HTML comments (including bbox annotations)
+    text = re.sub(r'<!--.*?-->', '', text, flags=re.DOTALL)
+
+    text = _remove_horizontal_rules(text)
     text = _collapse_repeated_symbols(text)
-    text = _strip_inline_math(text)
+    text = _textblock_to_unicode(text)
+    text = _textblock_with_norm_formula(text)
+    text = _normalize_inline_math(text)
     text = _strip_markdown_syntax(text)
+    text = _normalize_symbols(text)
+    text = _fix_hyphenation(text)
     text = _normalize_whitespace(text)
     return text
 

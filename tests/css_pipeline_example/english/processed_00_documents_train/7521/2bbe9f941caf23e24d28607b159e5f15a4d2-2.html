@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>.document {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 15mm 20mm;
+      box-sizing: border-box;
+      background: #fff;
+      column-count: 1;
+      column-gap: 10mm;
+      column-fill: balance;
+      overflow: visible;
+      transform: none;
+      margin-bottom: 2%;
+        }
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b002"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b003"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b004"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b005"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.block[data-id="b006"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.block[data-id="b007"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.block[data-id="b008"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.block[data-id="b009"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.block[data-id="b010"] {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* General paragraph styling for all blocks */
+.block p {
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+
+/* Handle line breaks in addresses */
+.block p br {
+  display: block;
+  margin: 0.5em 0;
+}
+</style>
+<style id="fitpage-css">
+.page { width:210mm; height:297mm; margin:10mm auto; background:#fff; box-sizing:border-box; overflow:hidden; position:relative; }
+.page-inner { transform-origin: top left; transform: scale(1); }
+</style>
+<script id="fitpage-js">
+function fitPage() {
+  const page = document.querySelector('.page');
+  const inner = document.querySelector('.page-inner');
+  if (!page || !inner) return;
+
+  // Reset scale before measuring
+  inner.style.transform = 'scale(1)';
+
+  const pageHeight = page.clientHeight;
+  const pageWidth = page.clientWidth;
+  const contentHeight = inner.scrollHeight;
+  const contentWidth = inner.scrollWidth;
+  if (contentHeight === 0 || contentWidth === 0) return;
+
+  const scaleY = pageHeight / contentHeight;
+  const scaleX = pageWidth / contentWidth;
+  const scale = Math.min(1, scaleX, scaleY);
+  inner.style.transform = `scale(${scale})`;
+}
+window.addEventListener('load', () => {
+  if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+    MathJax.startup.promise.then(() => { fitPage(); });
+  } else {
+    fitPage();
+  }
+});
+</script>
+</head>
+<body>
+<div class="page"><div class="page-inner">
+<div class="document">
+  <div class="block" data-id="b001" data-bbox="28,44,606.52,25.59">
+    <ol>
+      <li>The Petitioners have agreed to allocate their time as follows (if the Court agrees):</li>
+    </ol>
+  </div>
+  <div class="block" data-id="b002" data-bbox="28,85.59,1224,51.19">
+    <p>The Attorney General will take twenty (20) minutes and will speak first. Following the Attorney General, the Counties of Palm Beach and Broward will take five (5) minutes each and Petitioners, The Florida Democratic Party and Vice President Al Gore will take thirty (30) minutes.</p>
+  </div>
+  <div class="block" data-id="b003" data-bbox="28,152.78,1224,51.19">
+    <p>Each Petitioner will announce in Court the amount of time that Petitioner wishes to reserve for Rebuttal. No Petitioner wishes realignment of the Parties so that the Harris Respondents be realigned as a Petitioner, or that the time allotment to each side previously set by the Court be changed or modified.</p>
+  </div>
+  <div class="block" data-id="b004" data-bbox="28,219.97,673.28,25.59">
+    <p>All of the Petitioners have informed counsel filing this response that they agree to this proposal.</p>
+  </div>
+  <div class="block" data-id="b005" data-bbox="28,261.56,400.22,25.59">
+    <p>Respectfully submitted this 19th day of November, 2000.</p>
+  </div>
+  <div class="block" data-id="b006" data-bbox="28,303.16,191.23,179.16">
+    <p>W. Dexter Douglass<br>
+Florida Bar No. 0200263<br>
+Douglass Law Firm<br>
+211 East Call Street<br>
+Tallahassee, Florida 32302<br>
+Telephone: 850/224-6191<br>
+Facsimile: 850/224-3644</p>
+  </div>
+  <div class="block" data-id="b007" data-bbox="28,498.31,292.64,179.16">
+    <p>Mitchell W. Berger<br>
+Florida Bar No. 311340<br>
+Berger Davis &amp; Singerman<br>
+350 East Las Olas Boulevard, Suite 1000<br>
+Fort Lauderdale, Florida 33301<br>
+Telephone: 954/525-9900<br>
+Facsimile: 954/523-2872</p>
+  </div>
+  <div class="block" data-id="b008" data-bbox="28,693.47,255.28,179.16">
+    <p>John D. C. Newton, II<br>
+Florida Bar No. 0244538<br>
+Berger Davis &amp; Singerman<br>
+215 South Monroe Street, Suite 705<br>
+Tallahassee, Florida 32301<br>
+Telephone: 850/561-3010<br>
+Facsimile: 850/561-3013</p>
+  </div>
+  <div class="block" data-id="b009" data-bbox="28,888.63,241.61,153.56">
+    <p>David Boies<br>
+Boies, Schiller &amp; Flexner LLP<br>
+80 Business Park Drive, Suite 110<br>
+Armonk, New York 10504<br>
+Telephone: 914/273-9800<br>
+Facsimile: 914/273-9810</p>
+  </div>
+  <div class="block" data-id="b010" data-bbox="28,1058.19,102.27,25.59">
+    <p>Karen Gievers</p>
+  </div>
+</div>
+</div></div>
+</body>
+</html>

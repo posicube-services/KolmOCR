@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1em 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b008"] h2,
+.block[data-id="b010"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #333;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 0.2em;
+}
+
+.block[data-id="b003"] h3,
+.block[data-id="b012"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2em;
+}
+
+.block[data-id="b004"] ul,
+.block[data-id="b009"] ul,
+.block[data-id="b011"] ul {
+  margin: 1em 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+.block[data-id="b004"] li,
+.block[data-id="b009"] li,
+.block[data-id="b011"] li {
+  margin: 0.5em 0;
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+}
+
+.block[data-id="b005"] h4,
+.block[data-id="b006"] h4,
+.block[data-id="b007"] h4 {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  margin: 1em 0;
+  color: #444;
+  line-height: 1.4;
+}
+
+.block[data-id="b013"] .table-container {
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.block[data-id="b013"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.block[data-id="b013"] .data-table th,
+.block[data-id="b013"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+.block[data-id="b013"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.block[data-id="b014"] pre {
+  font-family: monospace;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 1em 0;
+  overflow: auto;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+/* General spacing and alignment */
+.block {
+  margin-bottom: 1em;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0.2em 0;
+}
+
+/* Ensure consistent line height for readability */
+body {
+  line-height: 1.6;
+}
+
+/* Prevent overflow in table cells */
+.table-container table td,
+.table-container table th {
+  word-break: break-word;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.30rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #fdfbf6;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #1e130c;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.block[data-class="header"] {
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  color: #9a8b7c;
+}
+
+
+.block[data-class="quotation"] {
+  font-style: italic;
+  border-left: 3px solid #d97706;
+  padding-left: 16px;
+}
+
+.block[data-class="figure"] {
+  border: 1px dashed rgba(55, 65, 81, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1e130c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #9a8b7c;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #9a8b7c;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.37rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="344,50,665,72">
+<h1>교사 평가 시스템의 이해와 적용</h1>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="104,100,260,118">
+<h2>지역 교장들의 역할</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b003" data-bbox="104,138,344,154">
+<h3>교사 평가 시스템의 채택 및 지원</h3>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="129,173,901,221">
+<ul>
+<li>지역의 교장들이 교사 평가 시스템을 채택하고 사용하도록 지원하는 조치가 필요합니다.</li>
+<li>지역은 교사 평가를 일반적으로 지원하며, 교장들이 이 분야에서의 작업을 지원하는 몇 가지 중요한 방식으로 할 수 있습니다.</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,236,902,278">
+<h4>첫째, 지역은 새로운 교사 평가 시스템이 도입될 때 학교와 교사들에게 시기적절하고 투명한 소통을 제공하는 데 주의를 기울여야 합니다. 교사들이 숙련되고 강력한 교사 실천이 어떤 모습인지 더 깊이 이해할 수 있도록 지속적인 학습 기회를 제공하는 것이 현명할 것입니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,293,738,308">
+<h4>이러한 조치는 교사들이 교사 평가 과정에 대한 신뢰를 구축하는 데 기초를 마련할 수 있습니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,323,903,351">
+<h4>예를 들어, SLO 프로세스는 다양한 지역 도구와 루틴이 교사 평가 과정의 요소들과 일치하는지, 그리고 교사들이 이러한 루틴과 도구에 익숙해지는 데 주의를 기울여야 합니다.</h4>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b008" data-bbox="104,370,320,388">
+<h2>교장 준비 프로그램의 역할</h2>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="129,408,904,503">
+<ul>
+<li>교장 준비 프로그램도 후보자들이 교장직을 향해 준비하는 데 필요한 학습 요구를 지원하는 데 중요한 역할을 할 수 있습니다.</li>
+<li>이 때문에, 준비 프로그램은 새로운 교사 평가 시스템에 대해 배우고, 교수 지도 과정, 교장 임무 경험, 그리고 이러한 새로운 시스템 간의 일치를 적극적으로 구축하여 교사 평가 시스템의 더 강력한 실행을 위해 필요한 개념적 이해를 키울 수 있도록 해야 합니다.</li>
+<li>또한, 교장 후보자들은 새로운 교장 평가 시스템에 대해 익숙해지고, 어떻게 평가될지 이해하려 노력해야 합니다.</li>
+</ul>
+</div>
+<div class="block" data-class="reference" data-id="b010" data-bbox="104,522,182,540">
+<h2>참고 문헌</h2>
+</div>
+<div class="block" data-class="reference" data-id="b011" data-bbox="129,559,897,631">
+<ul>
+<li>65 Firestone 등, "교사 실천 평가 도구에 대한 훈련 전략: 뉴저지 주 교사 평가 시범 지역의 조언."</li>
+<li>66 Halverson, Kelley 및 Kimball, "교사 평가 시스템의 도입"; 뉴저지 주 교육부, "평가 시범 자문 위원회 최종 보고서".</li>
+<li>67 뉴저지 주 교육부, "평가 시범 자문 위원회 최종 보고서".</li>
+<li>68 뉴저지 주 교육부, "평가 시범 자문 위원회 최종 보고서".</li>
+</ul>
+</div>
+<div class="block" data-class="table" data-id="b012" data-bbox="112,687,161,703">
+<h3>Table</h3>
+</div>
+<div class="block" data-class="table_caption" data-id="b013" data-bbox="113,757,899,870">
+<div class="table-container"><table class="data-table">
+<tr>
+<th>참고 문헌</th>
+<th>제목</th>
+</tr>
+<tr>
+<td>65 Firestone 등</td>
+<td>"교사 실천 평가 도구에 대한 훈련 전략: 뉴저지 주 교사 평가 시범 지역의 조언."</td>
+</tr>
+<tr>
+<td>66 Halverson, Kelley 및 Kimball</td>
+<td>"교사 평가 시스템의 도입"</td>
+</tr>
+<tr>
+<td>뉴저지 주 교육부</td>
+<td>"평가 시범 자문 위원회 최종 보고서".</td>
+</tr>
+<tr>
+<td>뉴저지 주 교육부</td>
+<td>"평가 시범 자문 위원회 최종 보고서".</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,919,905,936">
+<pre><code></code></pre>
+</div>
+</div>
+</body>
+</html>

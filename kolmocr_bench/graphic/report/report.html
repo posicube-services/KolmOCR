@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Document</title>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .document {
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .document.columns-2 {
+      column-count: 2;
+      column-gap: 2rem;
+    }
+
+    .document.columns-3 {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+
+    @media print {
+
+      body,
+      .document,
+      .block {
+        page-break-inside: avoid;
+      }
+    }
+
+    table,
+    table.data-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      break-inside: avoid;
+      border: 1px solid #999;
+    }
+
+    table th,
+    table td,
+    table.data-table th,
+    table.data-table td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table th,
+    table.data-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      border: 1px solid #666;
+    }
+
+    table tbody tr:nth-child(even),
+    table.data-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover,
+    table.data-table tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .math-display {
+      display: block;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .math-inline {
+      display: inline;
+    }
+
+    .block {
+      margin: 1rem 0;
+      width: fit-content;
+    }
+
+    ul,
+    ol {
+      margin: 0.5rem 0;
+      padding-left: 2rem;
+    }
+
+    figure {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    figure img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 1.5rem 0 0.5rem 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 1.3rem 0 0.4rem 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.1rem 0 0.3rem 0;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin: 1rem 0 0.3rem 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  </style>
+<style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+<body>
+<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+<div class="block" data-id="b001" data-bbox="16,96,221,186">
+<h2>Ⅱ. 가구 구성표 분석 결과</h2>
+</div>
+<figure>
+<img alt="Bar chart showing the distribution of multicultural households by 16 cities/provinces (2015, 2018, 2021)" class="block" data-id="b002" src="imgs/report_1.png" data-bbox="16,261,490,900">
+<figcaption class="block" data-id="b003" data-bbox="509,47,984,828">다문화가구의 16개 시·도별 분포(2015, 2018, 2021)[그림 Ⅱ-1]
+        다문화가구의 16개 시·도별 분포(2015, 2018, 2021)다문화가구 지역별 분포를 우리나라 전체
+        가구의 지역별 분포와 비교하면, 경기, 인천, 서울, 경남, 충남·세종, 전남, 충북, 제주와 같은 지역은 우리나라 전체 가구의 분포 비율보다 다문화가구의 분포 비율이 상대적으로 높다. 특히 경기의
+        경우, 우리나라 전체 가구에서 차지하는 비율은 24.9% 수준이나, 다문화가구에서는 30.1%가 집중되어 있어 상대적 비율의 차이가 매우 큰 편이다. 반면, 경남, 부산, 대구, 강원, 광주, 대전,
+        울산과 같은 지역은 전체 가구의 분포 비율보다 다문화가구의 비율이 상대적으로 낮으며, 특히 부산(다문화 4.1%, 전체 6.6%)과 대구(다문화 2.9%, 전체 4.5%)가 특히 전체 가구 비율 대비
+        다문화가구의 비율이 눈에 띄게 낮은 편이다.Bar chart comparing multicultural households and total households by 16
+        cities/provinces다문화가구의 16개 시·도별 분포(국내 가구 전체)[그림 Ⅱ-2] 다문화가구의 16개 시·도별 분포(국내 가구 전체)자료: 우리나라 전체 가구, 행정안전부, 주민등록
+        인구통계, 주민등록 인구 및 세대현황. 2022년 3월 2일자 통계현황. http://27.101.213.4/index.jsp#</figcaption>
+</figure>
+</div>
+</body></html>

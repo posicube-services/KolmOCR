@@ -1,180 +1,213 @@
-<!-- front_matter
-primary_language: en
-is_rotation_valid: True
-rotation_correction: 0
-is_table: False
-is_diagram: False
--->
-<style>
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.document {
-  max-width: 100%;
-  padding: 20px;
-}
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>2-Column (Explicit Grid) with Per-Column BBox</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      background: #fff;
+    }
 
-.document.columns-2 {
-  column-count: 2;
-  column-gap: 2rem;
-}
+    .page {
+      padding: 20px;
+    }
 
-.document.columns-3 {
-  column-count: 3;
-  column-gap: 2rem;
-}
+    /* ✅ 명시적 2컬럼: column-count 제거 */
+    .document.columns-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1.5rem;
+      align-items: start;
+      max-width: 100%;
+    }
 
-/* Prevent page breaks during printing */
-@media print {
-  body, .document, .block {
-    page-break-inside: avoid;
-  }
-}
+    /* 컬럼 컨테이너 */
+    .col {
+      min-width: 0;
+    }
 
-/* Table styling */
-table,
-table.data-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1rem 0;
-  break-inside: avoid;
-  border: 1px solid #999;
-}
+    /* Block styling */
+    .block {
+      margin: 1rem 0;
+      width: 100%;
+      /* ✅ bbox 안정화: fit-content 제거 */
+      box-sizing: border-box;
+    }
 
-table th,
-table td,
-table.data-table th,
-table.data-table td {
-  border: 1px solid #999;
-  padding: 8px 12px;
-  text-align: left;
-}
+    /* List styling */
+    ul,
+    ol {
+      margin: 0.5rem 0;
+      padding-left: 2rem;
+    }
 
-table th,
-table.data-table th {
-  background-color: #f5f5f5;
-  font-weight: bold;
-  border: 1px solid #666;
-}
+    /* Table styling */
+    table,
+    table.data-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      break-inside: avoid;
+      border: 1px solid #999;
+    }
 
-table tbody tr:nth-child(even),
-table.data-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
+    table th,
+    table td,
+    table.data-table th,
+    table.data-table td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
 
-table tbody tr:hover,
-table.data-table tbody tr:hover {
-  background-color: #f0f0f0;
-}
+    table th,
+    table.data-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      border: 1px solid #666;
+    }
 
-/* Math rendering */
-.math-display {
-  display: block;
-  margin: 1rem 0;
-  overflow-x: auto;
-}
+    table tbody tr:nth-child(even),
+    table.data-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
 
-.math-inline {
-  display: inline;
-}
+    table tbody tr:hover,
+    table.data-table tbody tr:hover {
+      background-color: #f0f0f0;
+    }
 
-/* Block styling */
-.block {
-  margin: 1rem 0;
-  width: fit-content;
-}
+    /* Figure styling */
+    figure {
+      margin: 1rem 0;
+      text-align: center;
+    }
 
-/* List styling */
-ul, ol {
-  margin: 0.5rem 0;
-  padding-left: 2rem;
-}
+    figure img {
+      max-width: 100%;
+      height: auto;
+    }
 
-/* Figure styling */
-figure {
-  margin: 1rem 0;
-  text-align: center;
-}
+    figcaption {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
 
-figure img {
-  max-width: 100%;
-  height: auto;
-}
+    /* Heading styling */
+    h1 {
+      font-size: 2rem;
+      margin: 1.5rem 0 0.5rem 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
 
-figcaption {
-  font-style: italic;
-  color: #666;
-  margin-top: 0.5rem;
-}
+    h2 {
+      font-size: 1.5rem;
+      margin: 1.3rem 0 0.4rem 0;
+    }
 
-/* Heading styling */
-h1 {
-  font-size: 2rem;
-  margin: 1.5rem 0 0.5rem 0;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 0.3rem;
-}
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.1rem 0 0.3rem 0;
+    }
 
-h2 {
-  font-size: 1.5rem;
-  margin: 1.3rem 0 0.4rem 0;
-}
+    h4,
+    h5,
+    h6 {
+      margin: 1rem 0 0.3rem 0;
+    }
 
-h3 {
-  font-size: 1.2rem;
-  margin: 1.1rem 0 0.3rem 0;
-}
+    p {
+      margin: 0.5rem 0;
+    }
 
-h4, h5, h6 {
-  margin: 1rem 0 0.3rem 0;
-}
+    @media print {
 
-/* Paragraph styling */
-p {
-  margin: 0.5rem 0;
-}
-</style>
-<div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
-  <div class="block" data-id="b001" data-bbox="22,76,479,154">
-    <h3>대학.我们现在分别，但分别只是为了再次相遇——我们希望，再次在这个生命中，但无论怎样，我们分别，我们相信，将在另一个更好生命中再次相遇，在他面前相遇，他使那个生命像他自己一样不朽。</h3>
+      body,
+      .document,
+      .block {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="document columns-2">
+      <!-- LEFT COLUMN -->
+      <div class="col">
+        <div class="block" data-bbox="24,41,462,236" data-id="b001">
+          <h3>대학. 우리는 지금 이별하지만, 이 이별은 다시 만나기 위한 것입니다.
+            우리는 다시 이 생에서 만나기를 소망하며, 어떤 경우에도 이별은 불가피하지만, 우리는 믿습니다. 더 나은 또 다른 생에서 다시 만날 것이며, 그의 앞에서 재회할 것이고, 그가 그 생을 자신처럼
+            불멸하게 하실 것임을.</h3>
+        </div>
+        <div class="block" data-bbox="24,295,462,169" data-id="b002">
+          <p>일요일 저녁, 인도에서 15년 이상 활발히 선교 활동을 해 온 J. L. 필립스 목사가 신학 학교에서 연례 연설을 했습니다. 필립스 씨는 그의 설교 본문을 잠언 11장 28절에서 선택했습니다:
+            "물려 주는 자는 또한 자신도 물려 받을 것이다." 설교의 주제는 "외국 선교 사업은 본국 교회에 다방면의 축복을 가져다 준다"였습니다.</p>
+        </div>
+        <div class="block" data-bbox="24,482,462,112" data-id="b003">
+          <p>많은 청중들이 집중한 모습은 기본 복음의 개념, 희생의 반사적 영향이 얼마나 잘 그리고 흥미롭게 제시되었는지를 보여주었습니다. 이 법칙은 모든 문학과 시대에 가르쳐지지만, 외국 선교의 경우에
+            종종
+            부인됩니다.</p>
+        </div>
+        <!-- ✅ b004를 컬럼-조각별 bbox로 분리하기 위해 요소를 분할 -->
+        <div class="block" data-bbox="24,612,462,338" data-id="b004a">
+          <p>연설자는 선교 사업이 교회의 기초석 중 하나임을 주장했습니다. 외국 선교 사업은 복음을 위한 감사의 자극을 통해 교회에 축복을 가져다 준다고 했습니다. 또한, 기독교 종교가 모든 상황에
+            적합함을
+            보여줌으로써 우리의 기독교 종교에 대한 평가가 크게 높아진다고 했습니다. 그리고 이방인의 조건과 주장에 대한 설명은 교회를 활발한 일에 참여하도록 가장 효과적으로 자극한다고 했습니다. 또한,
+            선교
+            사업을
+            수행하는 데 필요한 성결은 본국 교회에 축복을 가져다 준다고 했습니다. 기독교인들은 자신의 돈과 서비스를 하나님의 일에 바치는 데 교육받았다고 했습니다. 그리고 교회의 열심히 일하는 사람들은
+            선교지에서
+            훈련된 사람들이라고 했습니다.</p>
+        </div>
+      </div>
+      <!-- RIGHT COLUMN -->
+      <div class="col">
+        <!-- ✅ b004의 오른쪽 컬럼 조각(마지막 문장)만 분리: 텍스트는 동일 -->
+        <div class="block" data-bbox="514,40,462,56" data-id="b004b">
+          <p>선교 사업은 마치 모든 기독교인들을 조화로운 연합으로 묶는 사슬과도 같다고 했습니다.</p>
+        </div>
+        <div class="block" data-bbox="514,113,462,56" data-id="b005">
+          <p>필립스 씨는 그가 설교한 학교에 이 훌륭한 일을 위해 관심을 가질 것을 간절히 호소하며 설교를 마쳤습니다.</p>
+        </div>
+        <div class="block" data-bbox="514,187,462,169" data-id="b006">
+          <p>월요일 저녁, 주니어 반 학생들의 연설이 포트랜드의 메인 스트리트 자유 박스터 교회에서 많은 관심을 받는 청중 앞에서 발표되었습니다. 볼lard 오케스트라는 그들의 최고의 음악 중 일부를
+            제공했습니다.
+            기도는 포트랜드의 C. S. 퍼킨스 목사가 했으며, 체니 총장이 진행을 맡았습니다. 아래는 프로그램입니다:</p>
+        </div>
+        <div class="block" data-bbox="514,374,462,84" data-id="b007">
+          <p>MUSIC.<br />
+            PRAYER.<br />
+            MUSIC.</p>
+        </div>
+        <div class="block" data-bbox="514,476,462,394" data-id="b008">
+          <ol>
+            <li>Power of Circumstances. Francis Oliver Mower.</li>
+            <li>The Land and Its Story. Clarence Elwood Broekway.</li>
+            <li>Earnestness as a Condition of Success. Ezra Bonney Vining. MUSIC.</li>
+            <li>Duty of the Critic. Ernest Varian Scribner.</li>
+            <li>The Ministry of Nature. Henry Albert Rundlett.</li>
+            <li>Joan of Arc. John Wesley Hutchins. MUSIC.</li>
+            <li>Public Opinion as a Standard of Right. Frank David George.</li>
+            <li>Self-Denial as an Element of Greatness. Frank Hewitt Bartlett.</li>
+            <li>Uniformity of Natural Law. Charles Edwin Hussey. MUSIC. BENEDICTION.</li>
+          </ol>
+        </div>
+        <div class="block" data-bbox="514,887,462,56" data-id="b009">
+          <p>Mower는 환경이 자신의 길을 형성하는 데 미치는 힘을 인정했습니다.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="block" data-id="b002" data-bbox="22,259,479,172">
-    <p>일요일 저녁, 인도에서 15년 이상 활발히 선교 활동을 해 온 J. L. 필립스 목사가 신학 학교에서 연례 연설을 했습니다. 필립스 씨는 그의 설교 본문을 잠언 11장 28절에서 선택했습니다: &quot;물려 주는 자는 또한 자신도 물려 받을 것이다.&quot; 설교의 주제는 &quot;외국 선교 사업은 본국 교회에 다방면의 축복을 가져다 준다&quot;였습니다.</p>
-  </div>
-  <div class="block" data-id="b003" data-bbox="22,457,479,129">
-    <p>많은 청중들이 집중한 모습은 기본 복음의 개념, 희생의 반사적 영향이 얼마나 잘 그리고 흥미롭게 제시되었는지를 보여주었습니다. 이 법칙은 모든 문학과 시대에 가르쳐지지만, 외국 선교의 경우에 종종 부인됩니다.</p>
-  </div>
-  <div class="block" data-id="b004" data-bbox="22,613,479,387">
-    <p>연설자는 선교 사업이 교회의 기초석 중 하나임을 주장했습니다. 외국 선교 사업은 복음을 위한 감사의 자극을 통해 교회에 축복을 가져다 준다고 했습니다. 또한, 기독교 종교가 모든 상황에 적합함을 보여줌으로써 우리의 기독교 종교에 대한 평가가 크게 높아진다고 했습니다. 그리고 이방인의 조건과 주장에 대한 설명은 교회를 활발한 일에 참여하도록 가장 효과적으로 자극한다고 했습니다. 또한, 선교 사업을 수행하는 데 필요한 성결은 본국 교회에 축복을 가져다 준다고 했습니다. 기독교인들은 자신의 돈과 서비스를 하나님의 일에 바치는 데 교육받았다고 했습니다. 그리고 교회의 열심히 일하는 사람들은 선교지에서 훈련된 사람들이라고 했습니다. 선교 사업은 마치 모든 기독교인들을 조화로운 연합으로 묶는 사슬과도 같다고 했습니다.</p>
-  </div>
-  <div class="block" data-id="b005" data-bbox="521,47,479,86">
-    <p>필립스 씨는 그가 설교한 학교에 이 훌륭한 일을 위해 관심을 가질 것을 간절히 호소하며 설교를 마쳤습니다.</p>
-  </div>
-  <div class="block" data-id="b006" data-bbox="521,159,479,172">
-    <p>월요일 저녁, 주니어 반 학생들의 연설이 포트랜드의 메인 스트리트 자유 박스터 교회에서 많은 관심을 받는 청중 앞에서 발표되었습니다. 볼lard 오케스트라는 그들의 최고의 음악 중 일부를 제공했습니다. 기도는 포트랜드의 C. S. 퍼킨스 목사가 했으며, 체니 총장이 진행을 맡았습니다. 아래는 프로그램입니다:</p>
-  </div>
-  <div class="block" data-id="b007" data-bbox="521,359,55,129">
-    <p>MUSIC.<br>
-PRAYER.<br>
-MUSIC.</p>
-  </div>
-  <div class="block" data-id="b008" data-bbox="521,515,449,387">
-    <ol>
-      <li>Power of Circumstances. Francis Oliver Mower.</li>
-      <li>The Land and Its Story. Clarence Elwood Broekway.</li>
-      <li>Earnestness as a Condition of Success. Ezra Bonney Vining. MUSIC.</li>
-      <li>Duty of the Critic. Ernest Varian Scribner.</li>
-      <li>The Ministry of Nature. Henry Albert Rundlett.</li>
-      <li>Joan of Arc. John Wesley Hutchins. MUSIC.</li>
-      <li>Public Opinion as a Standard of Right. Frank David George.</li>
-      <li>Self-Denial as an Element of Greatness. Frank Hewitt Bartlett.</li>
-      <li>Uniformity of Natural Law. Charles Edwin Hussey. MUSIC. BENEDICTION.</li>
-    </ol>
-  </div>
-  <div class="block" data-id="b009" data-bbox="521,928,370,44">
-    <p>Mower는 환경이 자신의 길을 형성하는 데 미치는 힘을 인정했습니다.</p>
-  </div>
-</div>
+</body>
+
+</html>

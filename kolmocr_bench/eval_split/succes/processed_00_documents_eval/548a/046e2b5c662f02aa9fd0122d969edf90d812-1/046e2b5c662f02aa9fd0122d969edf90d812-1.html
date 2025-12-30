@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Main Title */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: left;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+/* Block b002: Contact Information Header */
+[data-id="b002"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 5px 0;
+  color: #000;
+}
+
+/* Block b003: Contact List */
+[data-id="b003"] ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+}
+
+[data-id="b003"] li {
+  margin: 5px 0;
+}
+
+/* Block b004: Main Content Header */
+[data-id="b004"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 5px 0;
+  color: #000;
+}
+
+/* Block b005: Main Heading */
+[data-id="b005"] p {
+  font-weight: bold;
+  font-size: calc(1.1em * var(--font-scale));
+  margin: 10px 0;
+  color: #000;
+}
+
+/* Block b006: Subheading/Emphasized Text */
+[data-id="b006"] p {
+  font-style: italic;
+  font-size: calc(1em * var(--font-scale));
+  margin: 10px 0;
+  color: #555;
+}
+
+/* Block b007, b009, b010: Body Paragraphs */
+[data-id="b007"] p,
+[data-id="b009"] p,
+[data-id="b010"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Block b008: Quote Paragraph */
+[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+  font-style: normal;
+  padding-left: 10px;
+  border-left: 3px solid #000;
+}
+
+/* General paragraph styling for consistency */
+.document p {
+  margin: 10px 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.21rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #0f172a;
+  font-family: "Noto Sans CJK KR", "맑은 고딕", sans-serif;
+  color: #0f172a;
+}
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.85;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block[data-class="subtitle"] {
+  color: #475569;
+  font-size: 1.2rem;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.85rem;
+  color: #475569;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="header"] {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #475569;
+  font-style: italic;
+}
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+}
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+  font-style: italic;
+}
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #475569;
+}
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.2rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.36rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="header" data-id="b001" data-bbox="104,61,745,120">
+<h1>Media Alert FOR IMMEDIATE RELEASE February 17, 2021</h1>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="104,154,340,175">
+<h2>Contact Information</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="129,202,378,285">
+<ul>
+<li>Leslie Baker: 757/728-5316</li>
+<li>leslie.baker@hamptoncvb.com</li>
+<li>Yuri R. Milligan: 757/728-5328</li>
+<li>yuri.milligan@hamptoncvb.com</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b004" data-bbox="104,311,255,333">
+<h2>Main Content</h2>
+</div>
+<div class="block" data-class="title" data-id="b005" data-bbox="104,359,880,485">
+<p><strong>Hampton Roads Convention Center Has Achieved GBAC STAR™ Facility Accreditation</strong></p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,509,877,544">
+<p><em>Hampton, VA – The Hampton Roads Convention Center in Hampton, Virginia has achieved the Global Biorisk Advisory Council® (GBAC) STAR™ accreditation, the gold standard for prepared facilities.</em></p>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,568,865,621">
+<p>Under the guidance of GBAC, a Division of ISSA, the worldwide cleaning industry association, The Hampton Roads Convention Center has implemented the most stringent protocols for cleaning, disinfection and infectious disease prevention. The Center is currently serving as a vaccination site.</p>
+</div>
+<div class="block" data-class="quotation" data-id="b008" data-bbox="120,645,905,697">
+<p>"At the Hampton Roads Convention Center, the safety of our guests and employees is our top priority," said Eric Nealy, general manager at the Hampton Roads Convention Center. "We have established key best practices to ensure a clean, healthy and safe environment for all our clients, guests and visitors."</p>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,721,897,809">
+<p>As the cleaning industry's only outbreak prevention, response and recovery accreditation, GBAC STAR™ helps organizations establish protocols and procedures, offers expert-led training and assesses a facility's readiness for biorisk situations. The program verifies that the Hampton Roads Convention Center implements best practices to prepare for, respond to and recover from outbreaks and pandemics.</p>
+</div>
+<div class="block" data-class="quotation" data-id="b010" data-bbox="104,834,892,904">
+<p>"GBAC STAR accreditation empowers facility owners and managers to assure workers, customers and key stakeholders that they have proven systems in place to maintain clean and healthy environments," said GBAC Executive Director Patricia Olinger. "By taking this important step to pursue GBAC STAR, the Hampton Roads Convention Center has"</p>
+</div>
+</div>
+</body>
+</html>

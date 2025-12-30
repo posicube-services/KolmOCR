@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Exercise headings */
+.block[data-id="b001"] h1,
+.block[data-id="b003"] h1,
+.block[data-id="b007"] h1,
+.block[data-id="b012"] h1,
+.block[data-id="b016"] h1,
+.block[data-id="b019"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #000;
+}
+
+/* Exercise content paragraphs */
+.block[data-id="b002"] p,
+.block[data-id="b004"] p,
+.block[data-id="b005"] p,
+.block[data-id="b006"] p,
+.block[data-id="b008"] p,
+.block[data-id="b009"] p,
+.block[data-id="b010"] p,
+.block[data-id="b011"] p,
+.block[data-id="b013"] p,
+.block[data-id="b014"] p,
+.block[data-id="b015"] p,
+.block[data-id="b017"] p,
+.block[data-id="b018"] p,
+.block[data-id="b020"] p,
+.block[data-id="b021"] p,
+.block[data-id="b022"] p,
+.block[data-id="b023"] p,
+.block[data-id="b024"] p,
+.block[data-id="b025"] p,
+.block[data-id="b026"] p,
+.block[data-id="b027"] p,
+.block[data-id="b028"] p,
+.block[data-id="b029"] p,
+.block[data-id="b030"] p,
+.block[data-id="b031"] p,
+.block[data-id="b032"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0.5em 0;
+  color: #333;
+}
+
+/* MathJax display equations */
+.block[data-id="b017"] p > div.math {
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+/* Checkboxes in Exercise 5.3 */
+.block[data-id="b011"] p > span {
+  display: block;
+  margin: 0.2em 0;
+}
+
+.block[data-id="b011"] p > span::before {
+  content: "□ ";
+  font-weight: bold;
+}
+
+/* Note at the end */
+.block[data-id="b032"] p strong {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 1em;
+}
+
+/* Prevent line breaks inside math expressions */
+.block p {
+  white-space: normal;
+}
+
+/* Ensure MathJax renders properly */
+.block p > span.math {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.42rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #faf9f4;
+  font-family: "맑은 고딕", serif;
+  color: #1c1c1c;
+}
+
+
+.block {
+  margin-bottom: 28px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.4rem;
+  text-transform: uppercase;
+  color: #b45309;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #b45309;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #b45309;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #b45309;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.15rem;
+  line-height: 1.9;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #7c7c7c;
+  text-indent: -1.4em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="figure"] {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 14px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #b45309;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #b45309;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #b45309;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #b45309;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #b45309;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1c1c1c;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.10rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv2" data-id="b001" data-bbox="104,40,249,53">
+<h1>Exercise 5.1.</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,67,702,77">
+<p>가정: $B = v_1, \ldots, v_n$은 $\mathbb{R}^n$의 직교 기저이다. $B$가 $\mathbb{R}^n$의 기저임을 보여라. (4점)</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b003" data-bbox="104,89,249,102">
+<h1>Exercise 5.2.</h1>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,116,474,125">
+<p>가정: $A \in \mathbb{R}^{n \times n}$는 직교 행렬이다. 다음을 보여라:</p>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,139,393,148">
+<p>a) 임의의 $x \in \mathbb{R}^n$에 대해: $|Ax| = |x|$,</p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,161,510,171">
+<p>b) 임의의 $x, y \in \mathbb{R}^n$에 대해: $\langle Ax, Ay \rangle = \langle x, y \rangle$. (8점)</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="104,184,249,197">
+<h1>Exercise 5.3.</h1>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,211,650,230">
+<p>가정: $s_\tau : \mathbb{R}^n \to \mathbb{R}^n$는 $x$의 항목을 $\tau$만큼 순환적으로 이동시키는 함수로, $s_\tau(x) := (x_{\tau}, x_{\tau+1}, \ldots, x_n, x_1, \ldots, x_{\tau-1})^T$.</p>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,243,342,253">
+<p>a) 행렬 $S_\tau \in \mathbb{R}^{n \times n}$를 구성하라.</p>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,266,757,276">
+<p>b) $S_\tau$는 어떤 성질을 가지는가? 올바른 모든 선택지를 표시하라 (그리고 단지 그것들만):</p>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="104,289,430,345">
+<p>□ $S$는 정사각 행렬이다,<br/>
+□ $S$는 대칭 행렬이다,<br/>
+□ $S$는 가역 행렬이다,<br/>
+□ $S$는 직교 행렬이다,<br/>
+□ $S$는 항등 행렬의 배수이다,<br/>
+□ $S$는 그래프의 인접 행렬일 수 있다. (6점)</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="104,359,249,372">
+<h1>Exercise 5.4.</h1>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="104,386,903,406">
+<p>가정: $v^{(1)}, \ldots, v^{(n)}$는 $\mathbb{R}^n$의 직교 정규 기저이다. 임의의 $x \in \mathbb{R}^n$에 대해, $y \in \mathbb{R}^n$을 $x$를 $v^{(1)}, \ldots, v^{(n)}$에 대한 계수 벡터로 나타낸다 (즉, $y = (y_1, \ldots, y_n)^T$이며 $x = \sum_{j=1}^n y_j v^{(j)}$).</p>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,419,315,428">
+<p>a) 다음을 보여라: $|y| = |x|$.</p>
+</div>
+<div class="block" data-class="text" data-id="b015" data-bbox="104,442,903,461">
+<p>b) $\tilde{y} := \sum_{j=1}^k y_j v^{(j)} \ (k &lt; n)$라고 하며, $\sum_{j=1}^k (y_j)^2 \geq 0.9 \sum_{j=1}^n (y_j)^2$를 가정하자. $|\tilde{y}|$와 $|y|$를 비교하여 무엇을 말할 수 있는가? (6점)</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b016" data-bbox="104,475,249,488">
+<h1>Exercise 5.5.</h1>
+</div>
+<div class="block" data-class="text" data-id="b017" data-bbox="104,501,892,535">
+<p>가정: $A = \begin{pmatrix} a &amp; b \ c &amp; d \end{pmatrix} \in \mathbb{R}^{2 \times 2}$이다. $\lambda \in \mathbb{R}$가 $A$의 고윳값임을 보이기 위해서는 $\lambda$가 다음 방정식을 만족해야 한다:<br/>
+$$<br/>
+\lambda^2 - (a + d)\lambda + ad - bc = 0.<br/>
+$$</p>
+</div>
+<div class="block" data-class="text" data-id="b018" data-bbox="104,549,478,558">
+<p>이 방정식의 해를 계산하는 공식을 제시하라. (4점)</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b019" data-bbox="104,572,249,585">
+<h1>Exercise 5.6.</h1>
+</div>
+<div class="block" data-class="text" data-id="b020" data-bbox="104,598,380,608">
+<p>가정: $A \in \mathbb{R}^{m \times n}$는 정사각 행렬이다.</p>
+</div>
+<div class="block" data-class="text" data-id="b021" data-bbox="104,621,900,655">
+<p>a) 행렬 $B \in \mathbb{R}^{n \times m}$가 존재한다고 가정하자 (즉, 행과 열의 수가 각각 바뀌었다!) $BA = I \in \mathbb{R}^{n \times n}$는 $n \times n$ 항등 행렬이다; 이러한 행렬 $B$는 $A$의 왼쪽 역행렬이라고 한다. 모든 $b \in \mathbb{R}^m$에 대해, 선형 방정식 시스템<br/>
+$$<br/>
+Ax = b<br/>
+$$</p>
+</div>
+<div class="block" data-class="text" data-id="b022" data-bbox="104,670,724,678">
+<p>이 해를 가지는지 보여라. 해는 반드시 유일한가. 아니면 여러 개일 수 있는가? (3점)</p>
+</div>
+<div class="block" data-class="text" data-id="b023" data-bbox="104,693,891,711">
+<p>b) $A \in \mathbb{R}^{n \times n}$라고 하자. $A$가 가역임을 보이기 위해서는 모든 $b \in \mathbb{R}^n$에 대해 선형 방정식 시스템 $Ax = b$가 정확히 하나의 해 $x \in \mathbb{R}^n$를 가지는지 보여라. (6점)</p>
+</div>
+<div class="block" data-class="text" data-id="b024" data-bbox="104,725,823,734">
+<p>c) $A \in m \times n$라고 하며, $A$에 기본 행 연산을 적용하여 행 계단형 행렬 $A'$를 얻는다고 가정하자.</p>
+</div>
+<div class="block" data-class="text" data-id="b025" data-bbox="104,748,292,756">
+<p>다음 두 명제를 고려하라:</p>
+</div>
+<div class="block" data-class="text" data-id="b026" data-bbox="104,771,655,780">
+<p>(i) 임의의 $b \in \mathbb{R}^m$에 대해, 방정식 시스템 $Ax = b$은 해 $x \in \mathbb{R}^n$를 가지며;</p>
+</div>
+<div class="block" data-class="text" data-id="b027" data-bbox="104,794,611,803">
+<p>(ii) 행렬 $A'$의 계수는 $m$이며, 즉, 정확히 $m$개의 주요 원소를 가진다.</p>
+</div>
+<div class="block" data-class="text" data-id="b028" data-bbox="104,816,890,835">
+<p>이 두 명제가 동치임을 보여라, 즉, 하나가 다른 하나를 함의함을 보여라. 또한 (ii)가 $m \leq n$을 함의함을 보여라. (7점)</p>
+</div>
+<div class="block" data-class="text" data-id="b029" data-bbox="104,849,700,858">
+<p>d) $A$와 $A'$는 Part c)에서와 같이 정의한다고 가정하자. 다음 두 명제를 고려하라:</p>
+</div>
+<div class="block" data-class="text" data-id="b030" data-bbox="104,872,774,881">
+<p>(iii) 임의의 $b \in \mathbb{R}^m$에 대해, 방정식 시스템 $Ax = b$는 정확히 하나의 해 $x \in \mathbb{R}^n$를 가지며;</p>
+</div>
+<div class="block" data-class="text" data-id="b031" data-bbox="104,895,900,922">
+<p>(iv) $m = n$이며, 행렬 $A'$의 계수는 $n$이며, $n$개의 대각선 상의 비례로 항목, 대각선 아래의 항목은 0이며, 대각선 위의 항목은 임의의 값이 가능하다 (즉, $A'$의 항목 $ a'(ij) $는 a(ii) $ \neq 0 $이고 a(iii) $ = 0 $ ($i &gt; j$), 1 $ \leq q $ \leq n $를 만족한다).</p>
+</div>
+<div class="block" data-class="text" data-id="b032" data-bbox="104,937,797,955">
+<p>명제 (iii)와 (iv)가 동치임을 보여라. (6점)<br/>
+<strong>Note:</strong> The bounding box coordinates for the image were not included in the provided text.</p>
+</div>
+</div>
+</body>
+</html>

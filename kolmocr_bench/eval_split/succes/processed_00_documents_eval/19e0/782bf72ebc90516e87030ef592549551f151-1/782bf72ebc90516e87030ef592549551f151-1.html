@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+  color: #333;
+}
+
+[data-id="b002"] h2,
+[data-id="b004"] h2,
+[data-id="b006"] h2,
+[data-id="b008"] h2,
+[data-id="b010"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #333;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+[data-id="b003"] ul,
+[data-id="b005"] ul,
+[data-id="b007"] ul,
+[data-id="b009"] ul,
+[data-id="b011"] ul {
+  margin: 5px 0 10px 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+[data-id="b003"] li,
+[data-id="b005"] li,
+[data-id="b007"] li,
+[data-id="b009"] li,
+[data-id="b011"] li {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+}
+
+[data-id="b007"] li {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.6;
+}
+
+[data-id="b012"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #333;
+}
+
+[data-id="b013"] .table-container {
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+[data-id="b013"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b013"] .data-table th,
+[data-id="b013"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+[data-id="b013"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+[data-id="b013"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Ensure no extra margin on first block */
+.block:first-child {
+  margin-top: 0;
+}
+
+/* Ensure consistent font for all text */
+.document * {
+  font-family: '맑은 고딕', Helvetica, Arial, sans-serif;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.35rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #fdfbf6;
+  font-family: "Noto Sans CJK KR", serif;
+  color: #1e130c;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.block[data-class="header"] {
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  color: #9a8b7c;
+}
+
+
+.block[data-class="quotation"] {
+  font-style: italic;
+  border-left: 3px solid #d97706;
+  padding-left: 16px;
+}
+
+.block[data-class="figure"] {
+  border: 1px dashed rgba(55, 65, 81, 0.4);
+  padding: 12px;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #9a8b7c;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #9a8b7c;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1e130c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #9a8b7c;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #9a8b7c;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.40rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,50,265,71">
+<h1>Slide Content</h1>
+</div>
+<div class="block" data-class="key_value" data-id="b002" data-bbox="104,103,273,119">
+<h2>Date and Speaker</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="129,137,561,164">
+<ul>
+<li>Date: January 28</li>
+<li>Speaker: Seth Fraden (Brandeis) hosted by Bogdan Dragnea</li>
+</ul>
+</div>
+<div class="block" data-class="title" data-id="b004" data-bbox="104,191,198,221">
+<h2>Title</h2>
+</div>
+<div class="block" data-class="title" data-id="b005" data-bbox="129,241,877,293">
+<ul>
+<li>Title: 합성 구조생물학: 바이러스 조립 원리의 활용을 통한 항바이러스 전략</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b006" data-bbox="104,320,184,336">
+<h2>Abstract</h2>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="129,353,905,524">
+<ul>
+<li>1962년 Caspar와 Klug는 자연적인 바이러스 캡시드의 구조를 규명하기 위해, 주어진 크기의 이코사헤드론 겹질을 형성하기 위해 필요한 최소의 독립적인 국부 대칭성을 제공함으로써, 바이러스 캡시드의 기하학적 원리를 밝혀냈습니다. 그러나 이러한 대칭성 규칙만으로는 자연에서의 조립을 완전히 이해하거나 합성 캡시드를 설계하는 공학적 원리를 결정할 수 없습니다. 본 연구에서는 이코사헤드론 바이러스와 유사한 겹질을 de-novo로 생성하는 일반적이고 모듈식 솔루션을 제공함으로써, Caspar와 Klug의 이론을 합성 캡시드 설계를 위한 공학적 원리로 확장했습니다. 우리는 DNA 오리가미 기법을 사용하여 정확히 설계된 단단한 볼록으로 자가 조립되는 DNA 단일사슬을 설계했습니다. 43 메가달톤에서 925 메가달톤까지의 분자 질량을 가지며, 내부 공극 직경이 57 나노미터에서 280 나노미터까지 다양한 5가지 서로 다른 크기의 바이러스와 유사한 캡시드를 생성했습니다. 우리는 캡시드의 구조와 그 기본 단위를 저온 전자 현미경을 통해 검증했으며, 실험적 방법과 계산 모델을 사용하여 캡시드 조립 과정을 연구하여, 목표 구조의 동역학 및 수율이 제어 매개변수에 어떻게 의존하는지 규명했습니다. 항바이러스 약물 개발을 위한 응용으로, 바이러스를 포획하고 비감염성으로 만드는 항체로 기능화된 오리가미 개방 캡시드를 설계했습니다. 원리적으로, 우리의 방법은 단일 항체만으로도 바이러스를 완전히 비활성화할 수 있습니다.</li>
+</ul>
+</div>
+<div class="block" data-class="reference" data-id="b008" data-bbox="104,551,207,567">
+<h2>References</h2>
+</div>
+<div class="block" data-class="reference" data-id="b009" data-bbox="129,585,904,626">
+<ul>
+<li>Sigl, C., Willner, E. M., Engelen, W., Kretzmann, J. A., Sachenbacher, K., Liedl, A., Kolbe, F., Wilsch, F., Aghvami, S. A., Protzer, U., Hagan, M. F., Fraden, S. and Dietz, H. (2021). Programmable icosahedral shell system for virus trapping. Nature Materials, 20(1), pp.1-8. DOI: 10.1038/s41563-021-01020-4</li>
+</ul>
+</div>
+<div class="block" data-class="figure_caption" data-id="b010" data-bbox="104,652,244,668">
+<h2>Figure Caption</h2>
+</div>
+<div class="block" data-class="figure_caption" data-id="b011" data-bbox="129,685,705,698">
+<ul>
+<li>저온 전자 현미경으로 촬영된 DNA 오리가미 겹질과 헤파티티스 B 바이러스 코어.</li>
+</ul>
+</div>
+<div class="block" data-class="table" data-id="b012" data-bbox="112,755,340,770">
+<h3>HTML Table of References</h3>
+</div>
+<div class="block" data-class="table_caption" data-id="b013" data-bbox="113,818,899,914">
+<div class="table-container"><table class="data-table">
+<tr>
+<th>Author(s)</th>
+<th>Title</th>
+<th>Journal</th>
+<th>Year</th>
+<th>DOI</th>
+</tr>
+<tr>
+<td>Sigl, C., Willner, E. M., Engelen, W., Kretzmann, J. A., Sachenbacher, K., Liedl, A., Kolbe, F., Wilsch, F., Aghvami, S. A., Protzer, U., Hagan, M. F., Fraden, S. and Dietz, H.</td>
+<td>Programmable icosahedral shell system for virus trapping</td>
+<td>Nature Materials</td>
+<td>2021</td>
+<td>10.1038/s41563-021-01020-4</td>
+</tr>
+</table></div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b003"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 3px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.block[data-id="b004"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 3px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.block[data-id="b005"] h4,
+.block[data-id="b012"] h4,
+.block[data-id="b013"] h4,
+.block[data-id="b015"] h4,
+.block[data-id="b019"] h4 {
+  font-size: calc(1.0em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.block[data-id="b006"] h5,
+.block[data-id="b007"] h5,
+.block[data-id="b008"] h5,
+.block[data-id="b009"] h5,
+.block[data-id="b010"] h5,
+.block[data-id="b011"] h5,
+.block[data-id="b014"] h5,
+.block[data-id="b016"] h5 {
+  font-size: calc(0.9em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.block[data-id="b017"] h4 {
+  font-size: calc(1.0em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.block[data-id="b018"] .table-container {
+  width: 100%;
+  overflow: auto;
+  margin: 10px 0;
+}
+
+.block[data-id="b018"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+.block[data-id="b018"] .data-table th,
+.block[data-id="b018"] .data-table td {
+  border: 1px solid #0066cc;
+  padding: 8px;
+  text-align: left;
+}
+
+.block[data-id="b018"] .data-table th {
+  background-color: #0066cc;
+  color: white;
+}
+
+.block[data-id="b018"] .data-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.block[data-id="b020"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #333;
+  margin: 10px 0;
+  white-space: pre-wrap;
+}
+
+/* Ensure image is displayed properly */
+.block[data-id="b020"] img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
+
+/* General paragraph styling for consistency */
+.document p {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.4;
+  color: #333;
+  margin: 8px 0;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.00rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f7f7f4;
+  color: #1c1c1c;
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+}
+
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.block[data-class="title"] {
+  font-family: "맑은 고딕", serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+
+.block[data-class^="section_title"] {
+  font-family: "나눔명조", serif;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.block[data-class="author"] {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  text-indent: -1.4em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 3px solid #10b981;
+  padding-left: 16px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1c1c1c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2f2f2f;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.33rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="4,34,10,49">
+<h1>markdown</h1>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b002" data-bbox="4,71,24,80">
+<h2>2.2.7. Type 10, Type 4, Type 5 또는 Type 6 방수 중 하나.</h2>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b003" data-bbox="4,100,36,124">
+<h2>2.2.8. Type RR-1. 계획서에 명시된 두께의 보호 코스를 가진 부틸 라이너 또는 EPDM 막, 아스팔트 판 또는 아스팔트 매트.</h2>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="4,145,6,153">
+<h3>3. 건설</h3>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="4,173,36,205">
+<h4>3.1. 일반. 방수 재료를 손상이 발생하지 않도록 저장하십시오. 모든 시간에 재료를 건조 상태로 유지하고, 추운 날씨에 사용하기 전에는 따뜻한 장소에 보관하고, 더운 날씨에는 직사광선을 피하도록 하십시오. 아스팔트 판, 아스팔트 매트 및 아스팔트 패널을 변형 및 파손을 방지할 수 있도록 보관하십시오.</h4>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b006" data-bbox="4,223,36,241">
+<h5>3.1.1. 콘크리트 덱 및 방수 처리될 기타 형성되지 않은 콘크리트 표면에 목재 플로트상을 제공하십시오. 방수 처리될 콘크리트 표면은 방수 처리를 시작하기 전에 최소 7일 동안 응결시키거나, 방수 처리 재료 제조업체의 지침에 따라 처리하십시오.</h5>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b007" data-bbox="4,258,36,298">
+<h5>3.1.2. 방수 처리될 강철 또는 콘크리트 덱 표면이 깨끗하고 건조하며 매끄럽고, 날개, 날카로운 가장자리 및 느슨한 물질이 없는지 확인하십시오. 필요에 따라 그라인더를 사용하여 방수 막을 짧을 수 있는 돌출부를 제거하십시오. 표면에 형성제제거제, 왁스 기반 응결제, 기름, 그리고 기름때와 같은 오염물이 없는지 확인하십시오. 오염물을 제거하기 위해 애브라시브 블래스트 클리닝을 사용하십시오. 완성된 방수 처리 표면의 수평 표면에 움푹 들어간 곳이나 주머니가 없는지 확인하십시오.</h5>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b008" data-bbox="4,315,36,344">
+<h5>3.1.3. 확장 접합부 및 기타 홍수 DMS-6300 "Waterproofing"의 요구 사항에 부합하는 플라스틱 시멘트로 채우십시오. 계획서에 다른 요구 사항이 없는 경우. 접합부를 채우기 전에 건조하고 깨끗한 상태로 유지하십시오. 약간 과잉 채우기를 통해 건조 중의 수축을 허용하십시오.</h5>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b009" data-bbox="4,361,36,379">
+<h5>3.1.4. 방수 처리될 영역을 철저히 휩쓸거나 진공 청소하거나 공기로 불어내어 먼지, 더러움 및 느슨한 이물질을 제거하십시오. 방수 처리가 완료될 때까지 덕을 깨끗한 상태로 유지하십시오.</h5>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b010" data-bbox="4,396,36,415">
+<h5>3.1.5. 방수 처리 작업이 시작되거나 작업이 완료되고 커버 시트가 설치되고 덱에 적절한 블라스트 쿠션이 설치될 때까지, 다리에 차량 또는 장비 교통을 허용하지 마십시오. 방수 처리를 모든 원인으로부터 보호하십시오.</h5>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b011" data-bbox="4,432,36,461">
+<h5>3.1.6. DMS-6300 "Waterproofing"에서 정의된 대로 지지대 뒷면, 보조벽 또는 기초에 방수 보호가 표시된 경우, 지상 아래에 아스팔트를 사용하여 닫으십시오. DMS-6300 "Waterproofing"에서 정의된 대로 다리 덱의 방수 처리에 지상 위에 아스팔트를 사용하여 닫으십시오.</h5>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="4,478,36,498">
+<h4>3.2. Type 1. 습한 날씨 또는 주변 온도가 50°F 이하일 때 방수 처리를 적용하지 마십시오. 라이너 막이 찢임, 주머니 또는 접힌 부분이 없는지 확인하십시오.</h4>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b013" data-bbox="4,516,36,536">
+<h4>3.2.1. 배수 구멍 및 캐스팅에 막을 걸어 넣으십시오. 방수 처리될 구성 요소의 측면 및 끝 부분에서 방수 처리가 효과적으로 작동하도록 특별히 주의하십시오.</h4>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b014" data-bbox="4,553,36,593">
+<h5>3.2.1.1. 부틸 라이너 막을 설치하기 위해 먼저 막 제조업체의 권장대로 접착제를 적용하십시오. 방수 처리될 표면 및 필요한 접합부에 접착제를 적용하십시오. 가장자리에서 약 36인치 뒤로 확장된 고체 영역에 적용하십시오. 이전에 적용된 접착제에 단단하고 균일하게 압력을 가하여 막을 설치하십시오. 주름과 구겨짐을 피하십시오. 막 제조업체의 권장 절차에 따라 접합부, 겹침 및 플라싱을 수행하십시오.</h5>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b015" data-bbox="4,611,36,667">
+<h4>3.2.2. Type 2. 아스팔트 닦기 전에 최소 24시간 전에 아스팔트 프라이머를 적용하십시오. 닦기 전에 프라이머가 완전히 건조되었는지 확인하십시오. 프라이머를 균일한 코팅을 제공하도록 작업하십시오. 닦기용 아스팔트는 방열 온도계가 장착된 주전자에서 가열하되, 350°F를 초과하지 않도록 하십시오. 가열 중에 아스팔트를 자주 저어주십시오. 표면 100 제곱 피트당 최소 4 갤런의 속도로 닦기 코팅을 적용하십시오. 불완전한 부분이 나타나면 수정될 때까지 추가 코팅을 적용하십시오.</h4>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b016" data-bbox="4,685,36,714">
+<h5>3.2.2.1. Type 3. 아스팔트 닦기 전에 최소 24시간 전에 아스팔트 프라이머를 적용하십시오. 닦기 전에 프라이머가 완전히 건조되었는지 확인하십시오. 프라이머를 균일한 코팅을 제공하도록 작업하십시오. 닦기용 아스팔트는 방열 온도계가 장착된 주전자에서 가열하되, 350°F를 초과하지 않도록 하십시오. 가열 중에 아스팔트를 자주 저어주십시오. 사용하십시오.</h5>
+</div>
+<div class="block" data-class="table" data-id="b017" data-bbox="4,755,6,765">
+<h4>Table:</h4>
+</div>
+<div class="block" data-class="table" data-id="b018" data-bbox="4,801,36,859">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Type 10</td><td>Type 1, Type 4, Type 5 또는 Type 6 방수 중 하나.</td></tr>
+<tr><td>Type RR-1</td><td>계획서에 명시된 두께의 보호 코스를 가진 부틸 라이너 또는 EPDM 막, 아스팔트 판 또는 아스팔트 매트.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="figure" data-id="b019" data-bbox="4,895,7,905">
+<h4>Figure:</h4>
+</div>
+<div class="block" data-class="figure" data-id="b020" data-bbox="4,919,1000,954">
+<p>&lt;div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;"&gt;<br/>
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABZpJREFUeNrs291rVZcUXPfXzK//mD+//v6+//v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7</p>
+</div>
+</div>
+</body>
+</html>

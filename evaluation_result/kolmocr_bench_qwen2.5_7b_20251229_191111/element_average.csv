@@ -1,0 +1,6 @@
+element,heading_structure_f1,list_f1,table_struct_f1,code_ted,image_avg_iou,text_edit,table_teds,table_teds_s,table_struct_p,table_struct_r,table_struct_avg_sim,table_semantic_p,table_semantic_r,table_semantic_f1,table_semantic_avg_sim,image_pairs,code_ted_distance,code_nodes_pred,code_nodes_gt,heading_structure_p,heading_structure_r,level_p,level_r,level_f1,list_p,list_r,text_edit_ned,contents_sim,reading_order,reading_order_ned,overall,formula_cdm,text_edit_sim,paragraph_pairs
+heading,0.4677,0.5072,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.5056,0.476,0.4165,0.3976,0.3884,0.5072,0.5072,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+table,N/A,N/A,0.6837,N/A,N/A,N/A,0.7359,0.7006,0.6623,0.7326,N/A,0.6173,0.6666,0.6323,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+list,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+code-block,N/A,N/A,N/A,0.047,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,14.8738,35.8,32.2,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+image,N/A,N/A,N/A,N/A,0.1309,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,1.6154,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

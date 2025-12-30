@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>POSICUBE | 회사소개</title>
+<style>
+        @page {
+            size: 297mm 210mm;
+            margin: 0;
+        }
+
+        :root {
+            --page-w: 500mm;
+            --page-h: 210mm;
+            --pad-x: 10mm;
+            --pad-y: 8mm;
+
+            --text: #111;
+            --muted: #666;
+            --line: #e9e9e9;
+
+            --accent: #f08a00;
+            /* orange */
+            --panel: #faefe3;
+            /* light beige header bar */
+            --card-bg: #fff;
+            --shadow: 0 0 0 rgba(0, 0, 0, 0);
+            --radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+                "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Page canvas */
+        .page {
+            width: var(--page-w);
+            height: var(--page-h);
+            margin: 0 auto;
+            background: #fff;
+            padding: var(--pad-y) var(--pad-x);
+            overflow: hidden;
+        }
+
+        /* Main three-column layout */
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12mm;
+            height: 100%;
+            align-items: start;
+        }
+
+        /* Left column */
+        .h1 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin: 0 0 10px;
+        }
+
+        .intro-lines {
+            margin: 0 0 14px;
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.55;
+            font-weight: 700;
+        }
+
+        .intro-lines .muted {
+            font-weight: 600;
+        }
+
+        .hero {
+            margin: 8px 0 14px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #ddd;
+            height: 235px;
+            /* tuned to resemble screenshot */
+            box-shadow: var(--shadow);
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .body-text {
+            margin: 0;
+            font-size: 13px;
+            color: #222;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .body-text+.body-text {
+            margin-top: 6px;
+        }
+
+        /* Middle column: Mission and Vision cards */
+        .middle {
+            display: grid;
+            grid-template-rows: auto auto;
+            gap: 8mm;
+        }
+
+        /* Right column: Photo and Core Values */
+        .right {
+            display: grid;
+            grid-template-rows: auto auto;
+            gap: 8mm;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border: 0;
+        }
+
+        .card .card-hd {
+            background: var(--panel);
+            padding: 10px 12px;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.2px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card .card-bd {
+            padding: 12px 12px 0;
+        }
+
+        .p {
+            margin: 0 0 10px;
+            font-size: 12px;
+            line-height: 1.7;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .p.muted {
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .p strong {
+            font-weight: 900;
+        }
+
+        .photo {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 238px;
+            background: #ddd;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Core values panel on the right bottom */
+        .values {
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .values .card-hd {
+            background: var(--panel);
+            padding: 10px 12px;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.2px;
+        }
+
+        .values .list {
+            padding: 10px 12px 0;
+        }
+
+        .val {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin: 14px 0;
+        }
+
+        .val .no {
+            min-width: 28px;
+            color: var(--accent);
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .val .txt {
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 800;
+            color: #222;
+            margin-top: -2px;
+        }
+
+        /* Small visual tweaks to better match screenshot spacing */
+        .tight {
+            padding-bottom: 12px;
+        }
+
+        /* Fit content width for bbox tracking */
+        .h1.block,
+        .intro-lines.block,
+        .body-text.block,
+        .p.block,
+        .val.block {
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        /* Text spans inside card headers for bbox */
+        .card-hd .block {
+            width: fit-content;
+            display: inline-block;
+        }
+
+        .hero.block,
+        .photo.block {
+            width: fit-content;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive behavior disabled for fixed 3-column print layout */
+        /* @media screen and (max-width: 900px) {
+
+            html,
+            body {
+                background: #fff;
+            }
+
+            .page {
+                width: 100%;
+                height: auto;
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .top-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 220px;
+            }
+
+            .photo {
+                height: 220px;
+            }
+        } */
+    </style>
+</head>
+<body>
+<main class="page">
+<section class="layout">
+<!-- LEFT -->
+<section>
+<div class="h1 block" data-bbox="27,43,73,49" data-id="b001">회사소개</div>
+<p class="intro-lines block" data-bbox="27,106,279,62" data-id="b002">
+                    포지큐브는 AI 기술 전문 회사로<br/>
+                    공공기관 및 민간기업에게 <span class="muted">AI Voice &amp; Vision 서비스를 제공합니다</span>
+</p>
+<div class="hero block" data-bbox="27,188,294,336" data-id="b003">
+<img alt="POSICUBE intro image 1" src="imgs/posicube_intro_1.jpg"/>
+</div>
+<p class="body-text block" data-bbox="27,544,294,63" data-id="b004">
+                    우리는 삶과 비즈니스에 실제로 적용되는 AI 프로덕트와 서비스를 만들고 있습니다.
+                </p>
+<p class="body-text block" data-bbox="27,615,294,63" data-id="b005">
+                    주요 사업 영역은 생성형 AI (GPT 챗봇)와 대화형 AI (AICC, AI 전화 음대 서비스) 및 비전 AI (AI OCR, Fake Detection) 입니다.
+                </p>
+<p class="body-text block" data-bbox="27,687,288,32" data-id="b006">
+                    AI 기술이 우리 삶의 당연한 일부분이 되는 그 날을 향해 노력하고 있습니다.
+                </p>
+</section>
+<!-- MIDDLE COLUMN -->
+<section class="middle">
+<!-- Mission -->
+<article class="card tight">
+<div class="card-hd"><span class="block" data-bbox="362,57,23,31" data-id="b007">미션</span></div>
+<div class="card-bd">
+<p class="p block" data-bbox="362,120,256,29" data-id="b008"><strong>포지큐브는 고객이 AI를 통해 보다 높은 가치를 만들 수 있도록 돕습니다.</strong></p>
+<p class="p block" data-bbox="362,164,207,29" data-id="b009"><strong>포지큐브는 비즈니스를 위한 AI 기술과 서비스를 만듭니다.</strong></p>
+<p class="p muted block" data-bbox="362,207,277,87" data-id="b010">
+                                단순히 AI 기술로 보여줄 수 있는 새로운 무엇인가를 만들어내거나, 인간을 대체하는 생산성을 위한 도구만을 개발하는 회사가 아닙니다.
+                                AI 기술은 실제 사용자가 원하는 방식으로 설계되고 서비스로서 활용되어야 합니다.
+                            </p>
+<p class="p block" data-bbox="362,309,179,29" data-id="b011"><strong>포지큐브의 AI는 사람들을 도와주는 협력자입니다.</strong></p>
+<p class="p muted block" data-bbox="362,352,277,117" data-id="b012">
+                                AI는 모든 영역에서 사람의 일을 대체할 수 없습니다. 기존의 SW 슬루션으로 해결하지 못하는 영역과 단순하고 반복적인 영역을 효율화하는데 집중합니다.
+                                기업과 고객들이 AI 기술과 서비스를 사용하여 보다 더 나은 가치를 만들 수 있도록 돕습니다.
+                            </p>
+</div>
+</article>
+<div class="photo block" data-bbox="384,543,232,340" data-id="b017">
+<img alt="POSICUBE intro image 2" src="imgs/posicube_intro_2.jpg"/>
+</div>
+</section>
+<!-- RIGHT COLUMN -->
+<section class="right">
+<!-- Vision -->
+<article class="card tight">
+<div class="card-hd"><span class="block" data-bbox="688,57,23,31" data-id="b013">비전</span></div>
+<div class="card-bd">
+<p class="p block" data-bbox="688,120,277,58" data-id="b014"><strong>포지큐브는 AI 기술을 기반으로 비즈니스를 직접 운영하고 성장하는 기업입니다.</strong></p>
+<p class="p muted block" data-bbox="688,193,277,58" data-id="b015">
+                                포지큐브는 AI 기술과 제품, 서비스를 만들고 제공합니다. 영업 비즈니스는 컨택센터 사업부를 통해서 확장합니다.
+                            </p>
+<p class="p muted block" data-bbox="688,265,277,87" data-id="b016">
+                                실체가 있는 비즈니스 운영을 통해서, 시장과 고객의 니즈를 확인하고, AI 기술과 세품/서비스를 개발합니다.
+                                또한, AI가 접목되었을 때의 실질적인 변화와 성과는 포지큐브의 기술적 경쟁우위를 만듭니다.
+                            </p>
+</div>
+</article>
+<aside class="values">
+<div class="card-hd"><span class="block" data-bbox="688,442,47,31" data-id="b018">핵심가치</span></div>
+<div class="list">
+<div class="val block" data-bbox="688,522,197,27" data-id="b019">
+<div class="no">01</div>
+<div class="txt">시장과 고객이 원하는 AI 기술을 개발합니다.</div>
+</div>
+<div class="val block" data-bbox="688,569,194,27" data-id="b020">
+<div class="no">02</div>
+<div class="txt">사용자 관점의 제품과 서비스를 설계합니다.</div>
+</div>
+<div class="val block" data-bbox="688,615,195,27" data-id="b021">
+<div class="no">03</div>
+<div class="txt">비즈니스에서 사용될 AI 서비스를 만듭니다.</div>
+</div>
+</div>
+</aside>
+</section>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Pipeline config for running KolmOCR inference + evaluation on the table benchmark.
+# All string paths support `{run_id}` formatting.
+
+# Optional fixed run identifier. If omitted/null, the runner will use a timestamp.
+run_id: qwen2.5-vl-7b-olmocrv4_1epoch_ko_mix1215_test1
+
+inference:
+  script: olmocr/inference_kolmocr.py
+  checkpoint: /home/jheum/KolmOCRprivate/output/model/qwen2.5-vl-7b-olmocrv4_1epoch_ko_mix1215/checkpoint-2000
+  input_dir: tests/eval_sample
+  output_dir: output/kolmocr_bench/preds/{run_id}
+  prompt: "이 문서를 구조화된 markdown으로 만들어줘. Table은 html형식으로 출력하고 출력에는 HTML 문법만 포함시켜줘. 어떤 설명도 추가할 필요없어."
+  max_new_tokens: 4000
+  temperature: 0.2
+  top_p: 0.9
+  # device_map: auto  # Uncomment to pin device map (defaults to auto when CUDA is available).
+
+evaluate:
+  script: olmocr/kolmocr_eval/scripts/evaluate.py
+  pred_dir: output/kolmocr_bench/preds/{run_id}
+  # If gt_html_dir is set, the runner will copy .html files to .md under gt_dir before evaluation.
+  gt_html_dir: tests/eval_sample
+  gt_dir: tests/eval_sample
+  output_dir: output/kolmocr_bench/eval
+  metrics:
+    - table_f1
+    - table_TEDS
+    - table_TEDS_S
+  threshold_headings: 1
+  threshold_table: 0.6
+  version: "1.10"
+  text_include_f1: true

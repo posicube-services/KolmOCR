@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      font-family: 'Noto Sans KR', sans-serif; 
+      font-size: 12pt; 
+      color: #111; 
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 24pt; 
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .document-container {
+      max-width: 190mm;
+      margin: 0 auto;
+      background: #999;
+      padding: 20px;
+      border-radius: 4px;
+    }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      table-layout: fixed; 
+      word-break: break-all; 
+      margin-bottom: 15px;
+    }
+    th { 
+      background: #999999; 
+      color: #fff; 
+      font-weight: bold; 
+      padding: 8px; 
+      text-align: center; 
+      border: 1px solid #777; 
+      font-size: 11pt;
+    }
+    td { 
+      background: #e8e8e8; 
+      border: 1px dashed #bbb; 
+      padding: 8px; 
+      text-align: right; 
+      word-break: break-all; 
+      white-space: normal; 
+      font-size: 11pt;
+    }
+    .section-header {
+      background: #777;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 8px;
+      margin: 15px 0 10px 0;
+      font-size: 14pt;
+    }
+    .sub-header {
+      background: #888;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      font-size: 12pt;
+    }
+    .field-label {
+      text-align: left;
+      font-weight: normal;
+      padding-right: 8px;
+      background: #ccc;
+      border-right: 1px solid #999;
+    }
+    .field-value {
+      text-align: right;
+      background: #f0f0f0;
+      border-left: 1px solid #999;
+    }
+    .table-container {
+      margin: 10px 0;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .col {
+      flex: 1;
+      min-width: 0;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .signature-section {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .signature-box {
+      flex: 1;
+      background: #e8e8e8;
+      padding: 10px;
+      border: 1px solid #999;
+    }
+    .signature-label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .signature-content {
+      min-height: 60px;
+    }
+    .table-compact th, .table-compact td {
+      padding: 5px;
+      font-size: 10pt;
+    }
+    .table-compact {
+      margin: 5px 0;
+    }
+    .no-border {
+      border: none;
+    }
+    .dashed-border {
+      border: 1px dashed #bbb;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .text-right {
+      text-align: right;
+    }
+    .text-left {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="document-container">
+    <h1>수표발행의뢰서</h1>
+
+    <!-- 기본정보 -->
+    <div class="section-header">기본정보</div>
+    <div class="sub-header">의뢰인 정보</div>
+    
+    <div class="row">
+      <div class="col">
+        <div class="sub-header">개인정보</div>
+        <table class="table-compact">
+          <tr>
+            <td class="field-label">의뢰인 성명</td>
+            <td class="field-value">홍길동</td>
+          </tr>
+          <tr>
+            <td class="field-label">주민등록번호</td>
+            <td class="field-value">900101-1234567</td>
+          </tr>
+          <tr>
+            <td class="field-label">연락처</td>
+            <td class="field-value">010-1234-5678</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="sub-header">계좌정보</div>
+        <table class="table-compact">
+          <tr>
+            <td class="field-label">은행명</td>
+            <td class="field-value">국민은행</td>
+          </tr>
+          <tr>
+            <td class="field-label">계좌번호</td>
+            <td class="field-value">123-456-789012</td>
+          </tr>
+          <tr>
+            <td class="field-label">예금주</td>
+            <td class="field-value">홍길동</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-header">수취인 정보</div>
+    <div class="row">
+      <div class="col">
+        <table class="table-compact">
+          <tr>
+            <td class="field-label">수취인명</td>
+            <td class="field-value">김철수</td>
+          </tr>
+          <tr>
+            <td class="field-label">수취인 계좌번호</td>
+            <td class="field-value">987-654-321098</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col">
+        <table class="table-compact">
+          <tr>
+            <td class="field-label">수취인 은행명</td>
+            <td class="field-value">신한은행</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 수표 정보 -->
+    <div class="section-header">수표 정보</div>
+    
+    <div class="row">
+      <div class="col">
+        <div class="sub-header">수표 금액</div>
+        <table class="table-compact">
+          <tr>
+            <td class="field-label">한글 금액</td>
+            <td class="field-value">일백만원</td>
+          </tr>
+          <tr>
+            <td class="field-label">숫자 금액</td>
+            <td class="field-value">1000000</td>
+          </tr>
+          <tr>
+            <td class="field-label">통화</td>
+            <td class="field-value">KRW</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="sub-header">수표 발행 조건</div>
+        <table class="table-compact">
+          <tr>
+            <td class="field-label">발행일</td>
+            <td class="field-value">2025-04-05</td>
+          </tr>
+          <tr>
+            <td class="field-label">만기일</td>
+            <td class="field-value">2025-04-12</td>
+          </tr>
+          <tr>
+            <td class="field-label">지급은행</td>
+            <td class="field-value">국민은행 본점</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 거래내역 -->
+    <div class="section-header">거래내역</div>
+    
+    <div class="row">
+      <div class="col">
+        <table class="table-compact">
+          <tr>
+            <td class="field-label">거래 유형</td>
+            <td class="field-value">구매대금</td>
+          </tr>
+          <tr>
+            <td class="field-label">거래일자</td>
+            <td class="field-value">2025-04-01</td>
+          </tr>
+          <tr>
+            <td class="field-label">거래금액</td>
+            <td class="field-value">500000</td>
+          </tr>
+          <tr>
+            <td class="field-label">적요</td>
+            <td class="field-value">상품 구매 대금</td>
+          </tr>
+        </table>
+      </

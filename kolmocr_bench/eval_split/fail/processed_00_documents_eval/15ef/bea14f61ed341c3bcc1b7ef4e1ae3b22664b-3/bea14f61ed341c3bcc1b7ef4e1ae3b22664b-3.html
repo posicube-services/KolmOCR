@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #0056b3;
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b003"] h2,
+.block[data-id="b004"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  color: #0056b3;
+  margin: 10px 0;
+  padding-left: 10px;
+  border-left: 4px solid #0056b3;
+}
+
+.block[data-id="b005"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  color: #d65a00;
+  border-bottom: 2px solid #d65a00;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b006"] h3,
+.block[data-id="b009"] h3,
+.block[data-id="b011"] h3,
+.block[data-id="b013"] h3,
+.block[data-id="b015"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  color: #0056b3;
+  margin: 15px 0;
+  border-bottom: 1px solid #0056b3;
+  padding-bottom: 3px;
+}
+
+.block[data-id="b007"] p,
+.block[data-id="b008"] p,
+.block[data-id="b010"] p,
+.block[data-id="b012"] p,
+.block[data-id="b014"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+  text-align: justify;
+}
+
+.block[data-id="b016"] .table-container {
+  overflow-x: auto;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.block[data-id="b016"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+.block[data-id="b016"] .data-table th,
+.block[data-id="b016"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.block[data-id="b016"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.block[data-id="b016"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.block[data-id="b017"] pre {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: calc(0.9em * var(--font-scale));
+  margin: 15px 0;
+}
+
+/* General paragraph styling for consistency */
+.block p {
+  margin: 10px 0;
+  line-height: 1.5;
+  color: #333;
+  text-align: justify;
+}
+
+/* Ensure strong text is bold and consistent */
+strong {
+  font-weight: bold;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.35rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #161b22;
+  color: #346bd7;
+  font-family: "Noto Sans CJK KR", sans-serif;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #38383b;
+}
+
+.block[data-class="title"] {
+  font-size: 1.9rem;
+  letter-spacing: 0.25rem;
+  color: #091e87;
+}
+
+.block[data-class="subtitle"] {
+  color: #0d62c3;
+  font-size: 1.2rem;
+}
+
+.block[data-class="header"] {
+  font-size: 0.8rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  border: 1px solid rgba(14, 71, 163, 0.45);
+  padding: 12px;
+  background: rgba(9, 65, 154, 0.404);
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.0rem;
+  color: #93c5fd;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.0rem;
+  color: #93c5fd;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.0rem;
+  color: #2e2503;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #93c5fd;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #f87171;
+  border: 1px dashed #f87171;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #bbf7d0;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #2b406b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #313755;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #527092;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #527092;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.21rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="key_value" data-id="b001" data-bbox="104,30,165,43">
+<h1>yaml</h1>
+</div>
+<div class="block" data-class="title" data-id="b002" data-bbox="122,59,789,139">
+<h2>title: "Zimbabweans and Temporary Residence Permits in South Africa"</h2>
+</div>
+<div class="block" data-class="author" data-id="b003" data-bbox="122,152,435,166">
+<h2>author: "Dr. Jane Doe"</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b004" data-bbox="122,177,308,188">
+<h2>date: "2023-03-15"</h2>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,199,189,210">
+<h2>주요 내용</h2>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b006" data-bbox="104,224,428,234">
+<h3>1.0. ZSP 제도의 개요와 남아프리카의 상황</h3>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,246,905,264">
+<p><strong>짐바브웨인들은 남아프리카에서 일하거나 기타 형태의 거주 허가를 받기 위해 고향으로 돌아가야 하며, 이러한 허가가 반드시 발급될 보장은 없다.</strong></p>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,273,905,309">
+<p><strong>그럼에도 불구하고, 이 새로운 임시 거주 허가(7년)의 기간 동안 개인들은 남아프리카에서 오랜 시간 동안 거주하며, 그곳에서 일자리와 사업을 확립할 것이다. 남아프리카 이민 비자를 짐바브웨에서 신청해야 한다는 요구는 ZSPH1과 같은 응답자들에게 "짐바브웨인들을 남아프리카에서 쫓아내는 것"에 해당한다고 여겨졌으며, 그들의 ZSP가 만료될 경우 남아프리카에 계속 머물기 위해 다른 방법을 찾아야 하는 상황이라고 여겨졌다.</strong></p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b009" data-bbox="104,319,373,328">
+<h3>2.0. 불법 이민자들의 행태와 문제점</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,341,905,449">
+<p><strong>짐바브웨인들이 2017년에 ZSP가 만료된 후에도 남아프리카에서 불법 체류 상태를 유지하거나 추방된 후 다시 돌아가려는 경우, 그들의 이민 지위 변경은 복잡한 불법 국경 이동과 관련된 다양한 취약성에 노출될 가능성을 야기할 수 있다. 비트브리지 국경에서 불법 이동은 단일한 사건이나 개인 활동이 아니라 다양한 활동을 포함하며, 이는 립포카 가즈을 건너는 것8, 국경 울타리를 넘는 것, 공식 국경을 여행 문서 없이 공직자들의 도움을 받으며 건너는 것 등이 포함된다. 불법 이민자들의 이동은 택시 운영자, 정부 관료, 그리고 다른 이민자들(Aaria, 2009)과 같은 주요 참가자들이 관여한다. 택시 운영자들은 지부아웨의 다양한 지역에서 비트브리지 시내의 특정 지점으로 개인들을 운송한다9. Mr. OM 1은, 잠재적 이민자가 상당한 수(30-40명)가 도착하면, 택시 운영자와 협력하는 가이다(izimpisi10)들이 그들을 특정 통과 지점으로 국경을 건너게 한다고 언급했다. 이 가이다들은 해당 지역에 익숙하며, 남아프리카 경찰서(SAPS)와/또는 남아프리카 국방군(SANDF)이 국경을 순찰하는 상황에서 비교적 안전한 통과 지점을 알고 있다. 불법 이민자들이 국경을 건너면, 택시 운영자들은 비트브리지와 무시나 사이의 고속도로 특정 지점에서 그들을 태운다(Aaria, 2009). 비트브리지 국경에서 이민 절차에 익숙한 이민자들은 동료 이민자들이 남아프리카로 건너갈 수 있도록 돕는다(Aaria, 2009). 마지막으로, 불법 이민자들은 양쪽 국경의 관료들과 협상하여 여행 문서 없이 남아프리카로 입국한다(ZM 1).</strong></p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b011" data-bbox="104,459,394,468">
+<h3>3.0. 불법 이민자들의 위험과 해결 방안</h3>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="104,480,905,534">
+<p><strong>오말라이타와 마呱마呱마의 서비스는 불법 이민자들에게 성공적인 국경 통과를 가능하게 하지만, 이 서비스 자체는 잠재적인 어려움을 내포하고 있다. 블라웨이오의 젊은 남성(ZM3)은 그의 형이 그가 요하네스버그에 도착하면 국경을 건너는 데 비용을 지불할 것이라는 조건으로 오말라이타의 서비스를 이용했다고 설명했다. 남아프리카에 도착한 후, 그의 오말라이타는 형에게 안전하게 국경을 건넜다는 것을 확인하기 위해 전화를 걸었다. 형의 전화가 음성메일로 전환되자, 그들은 무시나에서 그를 버렸다. 돈도 없고, 무시나에 사회적 네트워크나 가족 및 친족도 없는 그는 건설 현장에서 일자리를 구했으며, 그곳에서 계속해서 그의 불법 이민 상태를 받아들이는 고용주에게 일하고 있다.</strong></p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b013" data-bbox="104,544,377,554">
+<h3>4.0. 지역 사회의 역할과 정부의 대응</h3>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,566,905,638">
+<p><strong>비트브리지 국경에서의 불법 국경 통과는 개인들이 무책임한 집단인 오마呱마呱마11에 의해 강도와 폭행을 당할 위험성을 감수하는 위험한 여정을 포함할 수 있다. Ndlovu(2013)는 일부 오마呱마呱마가 처음에는 불법적인 짐바브웨인들을 남아프리카로 건너가도록 도왔지만, 이후에 그들이 국경을 건넜던 사람들에게 타겟을 삼는다고 제안했다. Aaria(2009)는 이(ncu와 굽A GV마가 같은 사람일 수 있다고 지적하며, 이는 사람 밀매업자들이 고객에게 반항하는 경우라고 언급했다. 그러나 Mdlongwa와 Moyo(2014)는 이들이 이(ncu와 오말라이타와 독립적으로 작동하는 불량 요소들이라고 제안했다. 다른 연구들은 오마呱마呱마가 조직화된 집단 또는 "립포포 강변에 이주하여 이민자를 노리는 밴디츠" (UN 인도주의 조정 사무소, 2010: 19)일 수 있거나, 또한 홀연용 당배와 같은 고가의 물품 밀매에도 관여한다고 제안했다.</strong></p>
+</div>
+<div class="block" data-class="table_caption" data-id="b015" data-bbox="108,671,880,680">
+<h3>Table 1: Key Points on Zimbabweans and Temporary Residence Permits in South Africa</h3>
+</div>
+<div class="block" data-class="table" data-id="b016" data-bbox="110,717,902,919">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th><strong>Points</strong></th><th><strong>Details</strong></th></tr>
+</thead>
+<tbody>
+<tr><td><strong>짐바브웨인들의 거주 허가</strong></td><td>- 짐바브웨인들은 남아프리카에서 일하거나 기타 형태의 거주 허가를 받기 위해 고향으로 돌아가야 합니다.&lt;br&gt;- 이러한 허가가 반드시 발급될 보장은 없습니다.&lt;br&gt;- 새로운 임시 거주 허가(7년)의 기간 동안 개인들은 남아프리카에서 오랜 시간 동안 거주하며, 그곳에서 일자리와 사업을 확립할 것입니다.</td></tr>
+<tr><td><strong>불법 이민자들의 이동과 문제점</strong></td><td>- 불법 이민자들은 다양한 활동을 포함하며, 이는 립포카 가즈을 건너는 것, 국경 울타리를 넘는 것, 공식 국경을 여행 문서 없이 공직자들의 도움을 받으며 건너는 것 등이 포함됩니다.&lt;br&gt;- 택시 운영자들은 지부아웨의 다양한 지역에서 비트브리지 시내의 특정 지점으로 개인들을 운송합니다.&lt;br&gt;- 비트브리지 국경에서 이민 절차에 익숙한 이민자들은 동료 이민자들이 남아프리카로 건너갈 수 있도록 돕습니다.</td></tr>
+<tr><td><strong>불법 이민자들의 위험과 해결 방안</strong></td><td>- 오말라이타와 마呱마呱마의 서비스는 불법 이민자들에게 성공적인 국경 통과를 가능하게 하지만, 이 서비스 자체는 잠재적인 어려움을 내포하고 있습니다.&lt;br&gt;- 블라웨이오의 젊은 남성(ZM3)은 그의 형이 그가 요하네스버그에 도착하면 국경을 건너는 데 비용을 지불할 것이라는 조건으로 오말라이타의 서비스를 이용했다고 설명했습니다.&lt;br&gt;- 형의 전화가 음성메일로 전환되자, 그들은 무시나에서 그를 버렸다. 돈도 없고, 무시나에 사회적 네트워크나 가족 및 친족도 없는 그는 건설 현장에서 일자리를 구했으며, 그곳에서 계속해서 그의 불법 이민 상태를 받아들이는 고용주에게 일하고 있습니다.</td></tr>
+<tr><td><strong>지역 사회의 역할과 정부의 대응</strong></td><td>- 비트브리지 국경에서의 불법 국경 통과는 개인들이 무책임한 집단인 오마呱마呱마11에 의해 강도와 폭행을 당할 위험성을 감수하는 위험한 여정을 포함할 수 있습니다.&lt;br&gt;- Ndlovu(2013)는 일부 오마呱마呱마가 처음에는 불법적인 짐바브웨인들을 남아프리카로 건너가도록 도왔지만, 이후에 그들이 국경을 건넜던 사람들에게 타겟을 삼는다고 제안했습니다.&lt;br&gt;- Aaria(2009)는 이(ncu와 굽A GV마가 같은 사람일 수 있다고 지적하며, 이는 사람 밀매업자들이 고객에게 반항하는 경우라고 언급했습니다.&lt;br&gt;- 다른 연구들은 오마呱마呱마가 조직화된 집단 또는 "립포포 강변에 이주하여 이민자를 노리는 밴디츠" (UN 인도주의 조정 사무소, 2010: 19)일 수 있거나, 또한 홀연용 당배와 같은 고가의 물품 밀매에도 관여한다고 제안했습니다.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="text" data-id="b017" data-bbox="104,951,905,961">
+<pre><code></code></pre>
+</div>
+</div>
+</body>
+</html>

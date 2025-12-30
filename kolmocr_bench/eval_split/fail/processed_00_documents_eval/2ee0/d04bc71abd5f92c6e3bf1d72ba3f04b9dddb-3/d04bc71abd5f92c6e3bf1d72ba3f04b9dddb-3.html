@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h2 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #003366;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b002"] .table-container {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b002"] .data-table th, 
+.block[data-id="b002"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.block[data-id="b002"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.block[data-id="b003"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b004"] .table-container {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b004"] .data-table th, 
+.block[data-id="b004"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.block[data-id="b004"] .data-table th {
+  background-color: #e6f2ff;
+  font-weight: bold;
+  color: #003366;
+}
+
+.block[data-id="b005"] h2 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #990000;
+  border-bottom: 2px solid #cc0000;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b006"] .table-container {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b006"] .data-table th, 
+.block[data-id="b006"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.block[data-id="b006"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.block[data-id="b007"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b008"] .table-container {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.block[data-id="b008"] .data-table th, 
+.block[data-id="b008"] .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.block[data-id="b008"] .data-table th {
+  background-color: #e6f2ff;
+  font-weight: bold;
+  color: #003366;
+}
+
+.block[data-id="b009"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b010"] pre {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.4;
+  margin-top: 10px;
+}
+
+.block[data-id="b010"] code {
+  color: #333;
+  white-space: pre;
+}
+
+/* General table styling */
+.table-container {
+  margin: 10px 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.data-table th, .data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Ensure consistent spacing */
+h2, h3 {
+  margin: 10px 0;
+}
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.19rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #161b22;
+  color: #346bd7;
+  font-family: "Noto Sans CJK KR", sans-serif;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #38383b;
+}
+
+.block[data-class="title"] {
+  font-size: 1.9rem;
+  letter-spacing: 0.25rem;
+  color: #091e87;
+}
+
+.block[data-class="subtitle"] {
+  color: #0d62c3;
+  font-size: 1.2rem;
+}
+
+.block[data-class="header"] {
+  font-size: 0.8rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  border: 1px solid rgba(14, 71, 163, 0.45);
+  padding: 12px;
+  background: rgba(9, 65, 154, 0.404);
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.0rem;
+  color: #93c5fd;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.0rem;
+  color: #93c5fd;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.0rem;
+  color: #2e2503;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #93c5fd;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #f87171;
+  border: 1px dashed #f87171;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #bbf7d0;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #2b406b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #313755;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #527092;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #527092;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.41rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="104,25,288,35">
+<h2>24 September</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b002" data-bbox="104,44,307,87">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>위치:</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Tagsensvej 86 (T86)</td><td></td></tr>
+<tr><td>회의실: C216</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b003" data-bbox="104,94,443,102">
+<h3>테마 2: 덴마크의 약물 사용과 소외된 환자</h3>
+</div>
+<div class="block" data-class="table" data-id="b004" data-bbox="114,127,896,166">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>시간</th><th>프로그램</th><th>주요 인물</th></tr>
+</thead>
+<tbody>
+<tr><td>09:30-11:00</td><td>도심 건강 클리닉 현장 방문</td><td>니나 카펠 교수, Ph.D., MSc in Nursing, RN</td></tr>
+<tr><td>12:00-14:00</td><td>덴마크의 약물 사용과 소외된 환자</td><td>니나 카펠 교수, Ph.D., MSc in Nursing, RN</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="104,186,243,196">
+<h2>8 October</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b006" data-bbox="104,206,307,248">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>위치:</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Tagsensvej 86 (T86)</td><td></td></tr>
+<tr><td>회의실: C216</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="104,255,594,263">
+<h3>테마 3: 가정 돌봄 환자 중 만성 환자의 환자 참여와 자가 관리</h3>
+</div>
+<div class="block" data-class="table" data-id="b008" data-bbox="114,288,896,321">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>시간</th><th>프로그램</th><th>주요 인물</th></tr>
+</thead>
+<tbody>
+<tr><td>09:15-14:00 (점심 포함)</td><td>가정 돌봄 환자 중 만성 환자의 환자 참여와 자가 관리</td><td>카트린 헤이그 피 교수, Ph.D., MSc in Anthropology</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="figure" data-id="b009" data-bbox="104,342,201,350">
+<h3>이미지 정보</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="118,363,722,968">
+<pre><code class="language-json">[
+    {
+        "bbox_2d": [16, 40, 137, 86], 
+        "label": "24 September"
+    },
+    {
+        "bbox_2d": [23, 130, 82, 144], 
+        "label": "위치:"
+    },
+    {
+        "bbox_2d": [23, 195, 154, 208], 
+        "label": "Tagsensvej 86 (T86)"
+    },
+    {
+        "bbox_2d": [23, 261, 84, 275], 
+        "label": "회의실:"
+    },
+    {
+        "bbox_2d": [92, 261, 145, 275], 
+        "label": "C216"
+    },
+    {
+        "bbox_2d": [23, 324, 137, 339], 
+        "label": "테마 2: 덴마크의 약물 사용과 소외된 환자"
+    },
+    {
+        "bbox_2d": [23, 402, 26, 408], 
+        "label": "시간"
+    },
+    {
+        "bbox_2d": [118, 402, 129, 408], 
+        "label": "프로그램"
+    },
+    {
+        "bbox_2d": [222, 402, 233, 408], 
+        "label": "주요 인물"
+    },
+    {
+        "bbox_2d": [23, 437, 64, 451], 
+        "label": "09:30-11:00"
+    },
+    {
+        "bbox_2d": [119, 437, 196, 451], 
+        "label": "도심 건강 클리닉 현장 방문"
+    },
+    {
+        "bbox_2d": [222, 437, 386, 451], 
+        "label": "니나 카펠 교수, Ph.D., MSc in Nursing, RN"
+    },
+    {
+        "bbox_2d": [23, 465, 64, 479], 
+        "label": "12:00-14:00"
+    },
+    {
+        "bbox_2d": [119, 465, 332, 479], 
+        "label": "덴마크의 약물 사용과 소외된 환자"
+    },
+    {
+        "bbox_2d": [222, 465, 386, 479], 
+        "label": "니나 카펠 교수, Ph.D., MSc in Nursing, RN"
+    },
+    {
+        "bbox_2d": [23, 542, 26, 548], 
+        "label": "8 October"
+    },
+    {
+        "bbox_2d": [23, 611, 26, 617], 
+        "label": "위치:"
+    },
+    {
+        "bbox_2d": [23, 668, 154, 681], 
+        "label": "Tagsensvej 86 (T86)"
+    },
+    {
+        "bbox_2d": [23, 737, 84, 750], 
+        "label": "회의실:"
+    },
+    {
+        "bbox_2d": [92, 737, 145, 750], 
+        "label": "C216"
+    },
+    {
+        "bbox_2d": [23, 798, 137, 813], 
+        "label": "테마 3: 가정 돌봄 환자 중 만성 환자의 환자 참여와 자가 관리"
+    },
+    {
+        "bbox_2d": [23, 882, 26, 888], 
+        "label": "시간"
+    },
+    {
+        "bbox_2d": [118, 882, 129, 888], 
+        "label": "프로그램"
+    },
+    {
+        "bbox_2d": [222, 882, 233, 888], 
+        "label": "주요 인물"
+    },
+    {
+        "bbox_2d": [23, 916, 64, 930], 
+        "label": "09:15-14:00 (점심 포함)"
+    },
+    {
+        "bbox_2d": [119, 916, 268, 930], 
+        "label": "가정 돌봄 환자 중 만성 환자의 환자 참여와 자가 관리"
+    },
+    {
+        "bbox_2d": [222, 916, 762, 930], 
+        "label": "카트린 헤이그 피 교수, Ph.D., MSc in Anthropology"
+    }
+]</code></pre>
+</div>
+</div>
+</body>
+</html>

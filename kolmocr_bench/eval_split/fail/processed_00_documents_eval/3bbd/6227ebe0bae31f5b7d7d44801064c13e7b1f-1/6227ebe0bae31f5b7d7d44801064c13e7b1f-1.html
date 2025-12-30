@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  border-bottom: 2px solid #003366;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+[data-id="b002"] p {
+  margin: 10px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b003"] h2,
+[data-id="b005"] h2,
+[data-id="b006"] h2,
+[data-id="b007"] h3,
+[data-id="b009"] h3,
+[data-id="b011"] h3,
+[data-id="b013"] h3,
+[data-id="b015"] h3,
+[data-id="b017"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin-top: 15px;
+  color: #003366;
+}
+
+[data-id="b004"] ul,
+[data-id="b010"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+[data-id="b004"] li,
+[data-id="b010"] li {
+  margin: 5px 0;
+  font-size: calc(0.95em * var(--font-scale));
+  color: #333;
+}
+
+[data-id="b008"] p,
+[data-id="b012"] p,
+[data-id="b014"] p,
+[data-id="b016"] p {
+  margin: 10px 0;
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+}
+
+[data-id="b018"] .table-container {
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+[data-id="b018"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.95em * var(--font-scale));
+}
+
+[data-id="b018"] .data-table th,
+[data-id="b018"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+[data-id="b018"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #003366;
+}
+
+[data-id="b018"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+[data-id="b018"] .data-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.19rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.33rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,53,230,70">
+<h1>markdown</h1>
+</div>
+<div class="block" data-class="key_value" data-id="b002" data-bbox="104,93,290,105">
+<p><strong>Date:</strong> 2018년 11월 20일</p>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="104,127,189,141">
+<h2>Receiver:</h2>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="129,157,442,238">
+<ul>
+<li>모든 군 복지국장</li>
+<li>모든 군 행정관</li>
+<li>모든 군 메디컬 프로그램 전문가/연락책임자</li>
+<li>모든 군 보건 행정관</li>
+<li>모든 컨소시엄/SAWS 프로젝트 매니저</li>
+</ul>
+</div>
+<div class="block" data-class="key_value" data-id="b005" data-bbox="104,263,366,277">
+<h2>Document Number: 18-13E</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b006" data-bbox="104,299,903,326">
+<h2>Subject: 2018/2019 가족 구성원 기본 배정 금액 오류 수정 (참조: 모든 군 복지국장 서한 번호 17-22)</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="104,349,405,362">
+<h3>Purpose of ACWDL 오류 수정:</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,378,892,402">
+<p>The purpose of the ACWDL error correction is to adjust the Family Medical Benefit Amount (FMBA) based on the revised amount.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="104,425,493,438">
+<h3>Method of Recording ACWDL 18-13:</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="129,455,468,484">
+<ul>
+<li>Deleted terms are indicated with strikethrough.</li>
+<li>New terms are underlined and bolded.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b011" data-bbox="104,508,849,522">
+<h3>Purpose of the Army Welfare and Discharge Office (ACWDL) Order:</h3>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="104,538,878,573">
+<p>This document aims to provide updated FMBA amounts to the Army in accordance with Section 1924(d) of the Social Security Act. The FMBA amount is used to determine the portion that the family member can receive from the LTC (Long Term Care) benefits.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b013" data-bbox="104,597,497,610">
+<h3>FMBA Amount for LTC Beneficiaries:</h3>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,626,863,662">
+<p>For the period from July 1, 2018, to June 30, 2019, the FMBA amount for LTC beneficiaries (Community Caregiver and Family Member of LTC beneficiary, referring to Work Sheet B, Medical Condition MC 176W (05/08), IX, A.2, and B.2) is 2,057.50. The FMBA amount for 2017 - 2018 was 2,030.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b015" data-bbox="104,685,346,698">
+<h3>Implementation Plan:</h3>
+</div>
+<div class="block" data-class="text" data-id="b016" data-bbox="104,715,902,738">
+<p>The National Welfare System (SAWS) will implement programming changes for the 2018 FMBA amount during the next SAWS release.</p>
+</div>
+<div class="block" data-class="table_caption" data-id="b017" data-bbox="112,795,167,809">
+<h2>Table:</h2>
+</div>
+<div class="block" data-class="table" data-id="b018" data-bbox="113,856,899,923">
+<div class="table-container"><table class="data-table">
+<tr>
+<th>Year</th>
+<th>FMBA Amount</th>
+</tr>
+<tr>
+<td>2017-2018</td>
+<td>2,030</td>
+</tr>
+<tr>
+<td>2018-2019</td>
+<td>2,057.50</td>
+</tr>
+</table></div>
+</div>
+</div>
+</body>
+</html>

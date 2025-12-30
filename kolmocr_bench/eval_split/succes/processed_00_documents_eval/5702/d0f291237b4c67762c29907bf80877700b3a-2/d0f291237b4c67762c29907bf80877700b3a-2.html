@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px 0;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b004"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 10px 0;
+}
+
+.block[data-id="b003"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.block[data-id="b003"] ul li {
+  font-size: calc(0.95em * var(--font-scale));
+  color: #555;
+  margin: 5px 0;
+}
+
+.block[data-id="b005"] h3,
+.block[data-id="b007"] h3,
+.block[data-id="b009"] h3,
+.block[data-id="b011"] h3,
+.block[data-id="b013"] h3,
+.block[data-id="b015"] h3,
+.block[data-id="b017"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #16a045;
+  margin: 15px 0 10px 0;
+}
+
+.block[data-id="b006"] p,
+.block[data-id="b008"] p,
+.block[data-id="b010"] p,
+.block[data-id="b012"] p,
+.block[data-id="b014"] p {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.6;
+  color: #333;
+  margin: 10px 0;
+}
+
+.block[data-id="b016"] .table-container {
+  overflow-x: auto;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.block[data-id="b016"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+.block[data-id="b016"] .data-table th,
+.block[data-id="b016"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.block[data-id="b016"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.block[data-id="b016"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.block[data-id="b018"] figure {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.block[data-id="b018"] img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.block[data-id="b018"] figcaption {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #666;
+  margin: 5px 0 0 0;
+  font-style: italic;
+}
+
+/* General paragraph styling */
+.document p {
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Ensure headings are not too close to content */
+h2, h3 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/* Ensure list items are properly spaced */
+ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+li {
+  margin: 5px 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.17rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ededed;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #111111;
+}
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block {
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.2rem;
+  color: #111111;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.22rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,29,202,40">
+<h1>본문 번역</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="104,73,213,82">
+<h2>1. 기본 정보</h2>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="129,107,271,132">
+<ul>
+<li>작성자: [저자 이름]</li>
+<li>작성일: [날짜]</li>
+<li>문서 제목: [문서 제목]</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="104,161,213,170">
+<h2>2. 주요 내용</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="104,197,448,206">
+<h3>2.1. 공학 부문의 학생 준비 및 유지율 향상</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,231,897,245">
+<p>... 및 최종적으로 공학 학위를 취득할 가능성이 높아지는 점 [26]. STEM 학부의 학생 준비 및 유지율을 높이기 위해, 그린넬리 대학의 학생들을 대상으로 유사한 공간 기술 과목을 개발하고 가르칠 것입니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="104,273,384,282">
+<h3>2.2. 과학부 수업 과정과 펀딩 기간</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,307,905,351">
+<p>가을 학기의 첫 주에, 과학부 100수준의 첫 번째 수업을 듣는 모든 학생들에게는 해당 학부의 전공 과정에 포함되는 과목을 위해 약 5-10분 정도의 짧은 공기느 기술 사전 테스트가 제공될 것입니다. 사전 테스트 문제는 주로 미국 국립 과학재단(NSF)의 공간 지능 및 학습 센터(SILC)에서 제공되는 평가 도구에서 모아질 것입니다. 테스트 문제는 그린넬리 대학에서 과학부 수업을 듣는 학생들이 필요한 기술 집합을 반영하도록 선택되며, 특히 3D 시각화(1D, 2D 및 3D 데이터의 언어 표현 포함)에 중점을 둘 것입니다. 과학부 모든 부서의 교수진은 최종 평가 도구를 준비하는 데 참여하여, 평가가 과학부 전체의 과정 내용을 반영하도록 보장합니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="104,378,384,387">
+<h3>2.3. 사전 테스트와 평가 도구 활용</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,412,903,494">
+<p>사전 테스트에서 낮은 점수를 받은 학생들은 그린넬리 대학에서 펀딩 기간의 두 번째 및 세 번째 해에 제가 가르칠 1학점 공간 기술 과목에 참여하도록 초대받을 것입니다. 펀딩 기간의 첫 해는 제가 주니어 사보타날 휴가 중에 공간 기술 평가 도구 및 관련 과정 자료를 개발하는 데 사용될 것입니다. 공간 기술 과목에 참여하는 학생들의 선발은 특정 소수 집단을 직접 대상으로 하지는 않지만, 경험적으로 많은 초대받은 학생들이 이 집단(첫 대학생 포함)에서 올 가능성이 높습니다. 초대받은 학생들은 수강을 의무화하지 않지만, 강력히 권장될 것입니다. 과목에 참여하도록 초대받은 학생들의 학부 지도교수는 이 사실을 통보받고, 학생들과 후속 조치를 취하도록 요청될 것입니다. 이 과정은 캠퍼스 내에서 이미 존재하는 구조와 유사합니다. 즉, 신입생들은 수업 첫 주에 읽기, 쓰기, 수학 평가를 받고, 이후 읽기, 쓰기, 수학 각각의 주제에 대해 1학점 기술 과목에 수강할 수 있습니다. 공간 기술 과목에 초대받을 학생들의 점수 기준은 최대 20명의 학생을 초대하는 목표를 달성하기 위해 초기에 설정될 것입니다. 이 수치는 이후에 유리하다고 판단될 경우 확대될 수 있지만, 그린넬리 대학의 수업은 일반적으로 각 과목의 섹션에 30명 이상의 학생이 등록하지 않습니다. 만약 많은 학생들이 평가 시험에서 매우 낮은 점수를 받는다면, STEM 전공을 희망하는 신입생들에게 우선적으로 과목 수강 기회가 제공될 것입니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b011" data-bbox="104,521,324,530">
+<h3>2.4. 공간 기술 과목의 구조</h3>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="104,555,902,651">
+<p>공간 기술 과목은 가을 학기 동안 매주 한 번 진행되며, 과학 전반에 적용 가능한 공간 추론 기술에 초점을 맞출 것입니다 — 그래픽 추론, 3D 시각화, 모델링 및 데이터의 시각적 표현. 일부 자료는 미시간 테크놀로지 대학의 공간 추론 프로그램에서 가져올 예정이지만, 그린넬리 대학에서 가르치는 1년차 과학 수업과 더 밀접하게 연관된 새로운 자료를 개발할 예정입니다. 수업은 실습형으로 진행되며, 많은 양의 지도된 그룹 작업이 포함될 것입니다. 이는 종종 여러 학생들이 함께 완료하도록 설계된 활동으로 진행됩니다. 수업에서 저는 "클릭러" 기술도 활용할 예정입니다 — 그린넬리 대학은 여러 세트의 교실 반응 시스템 클릭러를 소유하고 있습니다. 학생들은 "생각-짝궁-공유" 방법론에 따라, 기기로 짧은 선택형 문제를 풀게 될 것입니다. 이 과정에서 학생들은 먼저 스스로 생각한 후 문제를 풀고(생각), 그다음 동료들과 답을 논의하고(짝궁), 같은 문제를 다시 풀고 전체 수업에서 올바른 답을 공유하는 방식으로(공유) 진행됩니다. 이 과정을 통해 학생들은 자신의 학습 과정에 대한 형성적 이해를 구축하고, 학기 동안 자신의 성장을 추적할 수 있습니다. 저는 그린넬리 대학에서 진행한 수업에서 이러한 상호작용형 교수법을 많이 적용한 경험이 있습니다 — 저는 일반적으로 메일 클릭러를 사용하는 100수준의 강의 기반 수업을 가르치며, 그린넬리 대학에서의 6학기 중 5학기에 그룹 작업 기반의 "워크숍" 물리 수업을 가르친 경험이 있습니다. 이러한 경험을 바탕으로, 제가 다른 100수준 물리 수업에서 가장 효과적으로 사용한 전략을 적용할 것입니다. 학기가 진행됨에 따라, 수업 시간 내외로 배정된 일부 과제는 학생들이 과학부 수업에서 받은 과제와 직접 관련이 있을 수 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b013" data-bbox="104,679,384,687">
+<h3>2.5. 공간 추론 과목의 목표와 협업</h3>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="104,713,903,742">
+<p>공간 추론 과목의 목표는 준비가 부족한 학생들(주로, 하지만 항상은 아니지만, 소수 집단 학생들과 일치하는 경우가 많음)에게 추가적인 훈련을 제공하여 동료들과 동등한 기반을 제공하는 것입니다. 이 준비 개입에서 공간 기술을 특정적으로 타겟팅하는 이유 중 하나는, 이 과목이 학생들에게 보충 수업으로 보이지 않을 것이라는 점 입니다. 공간 추론은 일반적으로 명시적으로 가르치지 않습니다.</p>
+</div>
+<div class="block" data-class="table" data-id="b015" data-bbox="110,778,376,787">
+<h3>Table: 테스트 문제 및 평가 도구</h3>
+</div>
+<div class="block" data-class="table_caption" data-id="b016" data-bbox="111,812,901,871">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th><strong>테스트 문제</strong></th><th><strong>평가 도구</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>미시언 테크놀로지 대학의 공간 추론 프로그램</td><td>미시언 테크놀로지 대학의 공간 추론 프로그램</td></tr>
+<tr><td>그린넬리 대학 1년차 과학 수업 자료</td><td>그린넬리 대학 1년차 과학 수업 자료</td></tr>
+<tr><td>"클릭러" 기술</td><td>"클릭러" 기술</td></tr>
+<tr><td>메일 클릭러</td><td>메일 클릭러</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="figure" data-id="b017" data-bbox="104,906,356,914">
+<h3>Figure: 공간 기술 과목의 구조</h3>
+</div>
+<div class="block" data-class="figure_caption" data-id="b018" data-bbox="104,942,905,957">
+<p><figure>
+<img alt="공간 기술 과목의 구조" src="https://example.com/image.png" style="width:100%;height:100%;"/>
+<figcaption>그림 1. 공간 기술 과목의 구조</figcaption>
+</figure></p>
+</div>
+</div>
+</body>
+</html>

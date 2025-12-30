@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>외화결제계좌신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 11pt;
+      margin: 20mm;
+      line-height: 1.4;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #003366;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    .header h1 {
+      font-size: 18pt;
+      font-weight: bold;
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header .doc-info {
+      font-size: 10pt;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .section-title {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 5px;
+      color: #003366;
+    }
+    table {
+      border: 1px solid #003366;
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
+      margin-bottom: 15px;
+      font-size: 10.5pt;
+    }
+    th {
+      background: #003366;
+      color: #fff;
+      border: 1px solid #999;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px;
+      vertical-align: middle;
+    }
+    td {
+      background: #f0f7ff;
+      border: 1px solid #999;
+      padding: 5px;
+      text-align: left;
+      vertical-align: middle;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .section-header {
+      background: #003366;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px;
+      border: 1px solid #999;
+    }
+    .sub-header {
+      background: #e0e8f0;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px;
+      border: 1px solid #999;
+    }
+    .label {
+      font-weight: bold;
+      text-align: right;
+      background: #e0e8f0;
+      padding: 5px;
+      border: 1px solid #999;
+    }
+    .value {
+      background: #f0f7ff;
+      padding: 5px;
+      border: 1px solid #999;
+      text-align: left;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .two-col {
+      width: 50%;
+    }
+    .three-col {
+      width: 33.33%;
+    }
+    .four-col {
+      width: 25%;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div style="flex-grow: 1; text-align: left; font-size: 10pt;">기업용 신청서 양식</div>
+    <h1>외화결제계좌신청서</h1>
+    <div class="doc-info">문서번호: FX-2025-001</div>
+  </div>
+
+  <!-- 1. 신청인 기본정보 -->
+  <div class="section-title">1. 신청인 기본정보</div>
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">개인정보</th>
+    </tr>
+    <tr>
+      <th colspan="2" class="sub-header">신상정보</th>
+      <th colspan="2" class="sub-header">연락처</th>
+    </tr>
+    <tr>
+      <td class="label">성명</td>
+      <td class="value">홍길동</td>
+      <td class="label">휴대폰번호</td>
+      <td class="value">010-1234-5678</td>
+    </tr>
+    <tr>
+      <td class="label">생년월일</td>
+      <td class="value">1990-01-01</td>
+      <td class="label">이메일</td>
+      <td class="value">hong@example.com</td>
+    </tr>
+    <tr>
+      <td class="label">성별</td>
+      <td class="value">남</td>
+      <td colspan="2" class="value"></td>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">주소정보</th>
+    </tr>
+    <tr>
+      <td class="label">거주지 주소</td>
+      <td colspan="3" class="value">서울시 강남구 테헤란로 123</td>
+    </tr>
+    <tr>
+      <td class="label">우편번호</td>
+      <td class="value">06100</td>
+      <td colspan="2" class="value"></td>
+    </tr>
+  </table>
+
+  <!-- 2. 계좌정보 -->
+  <div class="section-title">2. 계좌정보</div>
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">외화계좌 종류</th>
+    </tr>
+    <tr>
+      <td class="label">계좌구분</td>
+      <td class="value">일반계좌</td>
+      <td class="label">통화종류</td>
+      <td class="value">USD</td>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">계좌개설정보</th>
+    </tr>
+    <tr>
+      <td class="label">개설일자</td>
+      <td class="value">2025-04-05</td>
+      <td class="label">계좌번호</td>
+      <td class="value">123-456-789012</td>
+    </tr>
+  </table>
+
+  <!-- 3. 거래내역 -->
+  <div class="section-title">3. 거래내역</div>
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">최근 거래</th>
+    </tr>
+    <tr>
+      <th class="label">일자</th>
+      <th class="label">내용</th>
+      <th class="label">금액</th>
+      <th class="label">잔액</th>
+    </tr>
+    <tr>
+      <td class="value">2025-03-01</td>
+      <td class="value">해외송금</td>
+      <td class="value">1500.00</td>
+      <td class="value">8500.00</td>
+    </tr>
+    <tr>
+      <td class="value">2025-03-15</td>
+      <td class="value">입금</td>
+      <td class="value">2000.00</td>
+      <td class="value">10500.00</td>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">월별 거래요약</th>
+    </tr>
+    <tr>
+      <th class="label">월</th>
+      <th class="label">입금합계</th>
+      <th class="label">출금합계</th>
+      <th class="label">순잔고</th>
+    </tr>
+    <tr>
+      <td class="value">2025-01</td>
+      <td class="value">5000.00</td>
+      <td class="value">2000.00</td>
+      <td class="value">3000.00</td>
+    </tr>
+  </table>
+
+  <!-- 4. 서명 및 확인 -->
+  <div class="section-title">4. 서명 및 확인</div>
+  <table>
+    <tr>
+      <th colspan="4" class="section-header">신청인 서명</th>
+    </tr>
+    <tr>
+      <td class="label">서명란</td>
+      <td class="value">홍길동</td>
+      <td class="label">서명일자</td>
+      <td class="value">2025-04-05</td>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">은행 확인란</th>
+    </tr>
+    <tr>
+      <td class="label">담당자</td>
+      <td class="

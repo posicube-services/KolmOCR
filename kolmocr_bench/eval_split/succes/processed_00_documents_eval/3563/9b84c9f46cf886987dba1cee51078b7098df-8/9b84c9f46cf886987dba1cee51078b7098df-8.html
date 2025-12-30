@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Heading 2 */
+[data-id="b001"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 0.5em 0;
+  line-height: 1.4;
+  color: #222;
+}
+
+/* Block b002: Heading 3 */
+[data-id="b002"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: normal;
+  margin: 0.8em 0;
+  line-height: 1.5;
+  color: #333;
+  text-align: justify;
+}
+
+/* Block b003: Table */
+[data-id="b003"] .table-container {
+  overflow-x: auto;
+  margin: 1em 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-id="b003"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.6;
+}
+
+[data-id="b003"] .data-table th,
+[data-id="b003"] .data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+[data-id="b003"] .data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+}
+
+[data-id="b003"] .data-table tr:last-child td {
+  border-bottom: none;
+}
+
+[data-id="b003"] .data-table img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Block b004: Figure caption */
+[data-id="b004"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.5;
+  margin: 1em 0;
+  color: #555;
+  text-align: justify;
+  font-style: italic;
+}
+
+/* General paragraph styling for consistency */
+.document p {
+  margin: 1em 0;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+}
+
+/* Ensure images in table are responsive */
+[data-id="b003"] .data-table td img {
+  max-height: 40px;
+  width: auto;
+}
+
+/* Fix for table layout in single column */
+[data-id="b003"] .data-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.03rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #ccc !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.39rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,65,899,107">
+<h2>환경친화적이다. 또 다른 돋보이는 특징은 일반적인 수용성 및 산성 환경에서 작동할 수 있다는 점이다.</h2>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,131,905,306">
+<h3>나노재료 합성은 생에너지, 촉매(Levis, 1993), 전자공학(Li et al., 2005), 광학(Murphy et al., 2005), 의학(Salata, 2004) 및 환경 복구(Gupta et al., 2011) 등 다양한 분야에서의 잠재적 응용 가능성이 있어 매우 흥미로운 분야이다. 금속 나노입자 및 금속-반도체 나노복합체를 합성하기 위한 다양한 방법(화학적, 물리적 및 생물학적)이 존재한다(Kalathil et al., 2011b, in press; Khan et al., 2012, 2013a,b.). 일반적으로 사용되는 나노입자 합성용 화학적 방법은 NaBH₄ 또는 시트레이트와 같은 강력한 환원제를 사용하며, 나노입자를 오염시킬 수 있는 대량의 화학물질을 필요로 한다(Dornjgiann et al., 2008). 많은 미생물, 예를 들어 박테리아(Kalimuth et al., 2008; Klaus et al., 1999; Nair and Pradeep, 2002; Zhang et al., 2005), 곰팡이(Mukherjee et al., 2001; Vigneshwaran et al., 2007), 그리고 효모(Kowshik et al.,</h3>
+</div>
+<div class="block" data-class="figure" data-id="b003" data-bbox="105,329,904,769">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>이미지</th><th>설명</th></tr>
+</thead>
+<tbody>
+<tr><td><img alt="a" src="https://example.com/image_a.png"/></td><td>생성된 금 나노입자의 저배율 TEM 이미지</td></tr>
+<tr><td><img alt="b" src="https://example.com/image_b.png"/></td><td>생성된 금 나노입자의 SAED 패턴</td></tr>
+<tr><td><img alt="c" src="https://example.com/image_c.png"/></td><td>육각형</td></tr>
+<tr><td><img alt="d" src="https://example.com/image_d.png"/></td><td>지오이드</td></tr>
+<tr><td><img alt="e" src="https://example.com/image_e.png"/></td><td>삼각형</td></tr>
+<tr><td><img alt="f" src="https://example.com/image_f.png"/></td><td>절단 삼각형</td></tr>
+<tr><td><img alt="g" src="https://example.com/image_g.png"/></td><td>피라미드형</td></tr>
+<tr><td><img alt="h" src="https://example.com/image_h.png"/></td><td>보트</td></tr>
+<tr><td><img alt="i" src="https://example.com/image_i.png"/></td><td>오각형 막대</td></tr>
+<tr><td><img alt="j" src="https://example.com/image_j.png"/></td><td>샌드위치</td></tr>
+<tr><td><img alt="k" src="https://example.com/image_k.png"/></td><td>및 생성된 금 나노입자의 손기락 모양 구조</td></tr>
+<tr><td><img alt="l" src="https://example.com/image_l.png"/></td><td>구형 다중 이중 구조</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="figure_caption" data-id="b004" data-bbox="104,792,905,857">
+<p>그림 7. 미생물을 연료전지 음극에서 다양한 이국적인 형태로 생성된 금 나노입자의 TEM 이미지. (a) 생성된 금 나노입자의 저배율 TEM 이미지, (b) 생성된 금 나노입자의 SAED 패턴, (c) 육각형, (d) 지오이드, (e) 삼각형, (f) 절단 삼각형, (g) 피라미드형, (h) 보트, (i) 오각형 막대, (j) 샌드위치, (k) 및 생성된 금 나노입자의 손기락 모양 구조. (l) 구형 다중 이중 구조(Kalathil et al., 2013에 의한 수정 후 그림).</p>
+</div>
+</div>
+</body>
+</html>

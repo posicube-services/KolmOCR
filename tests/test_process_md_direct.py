@@ -4,7 +4,7 @@ from typing import List
 
 import pytest
 
-from lab.tr_md.main import ColumnAnalysisResult
+from lab.utils.document.model import ColumnAnalysisResult
 from lab.mdg_dataset import process_md_direct as pipeline
 
 STAGE_DATASET = Path("tests/sample_dataset/stage_test")
@@ -63,16 +63,19 @@ def test_pipeline_stages_write_annotations(tmp_path: Path, monkeypatch: pytest.M
     monkeypatch.setattr(pipeline, "_render_pdf_page", lambda pdf_path, target, dim: (1000, 1200))
 
     async def fake_run_layout_detection(detector, image_path):
-        return ([
-            {
-                "boxes": [
-                    {"label": "text", "coordinate": [0, 0, 1000, 200]},
-                    {"label": "text", "coordinate": [0, 400, 1000, 600]},
-                    {"label": "text", "coordinate": [0, 900, 1000, 1100]},
-                    {"label": "text", "coordinate": [0, 1300, 1000, 1500]},
-                ]
-            }
-        ], None)
+        return (
+            [
+                {
+                    "boxes": [
+                        {"label": "text", "coordinate": [0, 0, 1000, 200]},
+                        {"label": "text", "coordinate": [0, 400, 1000, 600]},
+                        {"label": "text", "coordinate": [0, 900, 1000, 1100]},
+                        {"label": "text", "coordinate": [0, 1300, 1000, 1500]},
+                    ]
+                }
+            ],
+            None,
+        )
 
     monkeypatch.setattr(pipeline, "run_layout_detection", fake_run_layout_detection)
     monkeypatch.setattr(pipeline, "VLLMClient", _DummyVLLMClient)
@@ -97,9 +100,7 @@ def test_pipeline_stages_write_annotations(tmp_path: Path, monkeypatch: pytest.M
 
 
 def test_mul_column_dataset_split() -> None:
-    doc_path = Path(
-        "tests/sample_dataset/mul_column_data/documents/0222/6b570831ee1cdf68b601450e4023369892b6-3.md"
-    )
+    doc_path = Path("tests/sample_dataset/mul_column_data/documents/0222/6b570831ee1cdf68b601450e4023369892b6-3.md")
     state = pipeline._extract_doc_ele_markdown(
         doc_path,
         "mul_column_data/0222/6b570831ee1cdf68b601450e4023369892b6-3",
@@ -118,9 +119,7 @@ def test_mul_column_dataset_split() -> None:
     assert state.text_ranges[0].type == "text"
 
 
-async def _fake_analyze_columns(
-    pdf_path, input_root, render_cache, client, doc_registry
-):
+async def _fake_analyze_columns(pdf_path, input_root, render_cache, client, doc_registry):
     for doc in doc_registry.values():
         doc.column_analysis = ColumnAnalysisResult(
             page=1,

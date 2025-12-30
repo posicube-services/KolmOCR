@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .document {
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .document.columns-2 {
+      column-count: 2;
+      column-gap: 2rem;
+    }
+
+    .document.columns-3 {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+
+    @media print {
+
+      body,
+      .document,
+      .block {
+        page-break-inside: avoid;
+      }
+    }
+
+    table,
+    table.data-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      break-inside: avoid;
+      border: 1px solid #999;
+    }
+
+    table th,
+    table td,
+    table.data-table th,
+    table.data-table td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table th,
+    table.data-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      border: 1px solid #666;
+    }
+
+    table tbody tr:nth-child(even),
+    table.data-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover,
+    table.data-table tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .math-display {
+      display: block;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .math-inline {
+      display: inline;
+    }
+
+    .block {
+      margin: 1rem 0;
+      width: fit-content;
+    }
+
+    ul,
+    ol {
+      margin: 0.5rem 0;
+      padding-left: 2rem;
+    }
+
+    figure {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    figure img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 1.5rem 0 0.5rem 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 1.3rem 0 0.4rem 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.1rem 0 0.3rem 0;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin: 1rem 0 0.3rem 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+<style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+
+<body>
+  <div class="document columns-2" style="column-count: 2; column-gap: 1.5rem;">
+    <div class="block" data-id="b001" data-bbox="16,60,357,138">
+      <h1>2. 두 개 이상의 공동주택인 경우</h1>
+    </div>
+    <figure>
+      <img alt="공동주택 구내배선도 예시" class="block" data-id="b002" src="imgs/text_in_fig2_1.png" data-bbox="16,181,490,682">
+      <figcaption class="block" data-id="b003" data-bbox="16,734,491,873">공동주택 구내배선도 예시주) 국선단자함과 동단자함이 광다중화 기능을 갖는 경우,
+        구내간선케이블은 광섬유케이블 8코어 이상. 동단자함에서 세대단자함 또는 인출구까지의 건물간선케이블 및
+        수평배선케이블은 단위세대당 1회선(4쌍 꼬임케이블 기준) 이상 또는 광섬유케이블 2코어 이상으로 설치할 수 있다.[별표 12] (제33조제2항 관련)</figcaption>
+    </figure>
+    <div class="block" data-id="b004" data-bbox="16,901,346,953">
+      <h2>업무용 및 기타건축물의 구내배선 표준도</h2>
+    </div>
+    <div class="block" data-id="b005" data-bbox="509,27,667,69">
+      <h3>1. 한 개의 건축물인 경우</h3>
+    </div>
+    <figure>
+      <img alt="업무용 및 기타건축물 구내배선도 예시" class="block" data-id="b006" src="imgs/text_in_fig2_2.png" data-bbox="509,112,984,860">
+      <figcaption class="block" data-id="b007" data-bbox="509,912,734,947">업무용 및 기타건축물 구내배선도 예시134</figcaption>
+    </figure>
+  </div>
+
+
+</body></html>

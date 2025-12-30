@@ -31,8 +31,14 @@ class TableTEDSEvaluator(Metric):
             if not has_table_gt:
                 # GT에 테이블이 없으면 해당 샘플은 table_TEDS에서 제외
                 continue
+            pred_tables = parsed_pred["tables"]
+            gt_tables = parsed_gt["tables"]
+            missing_tables = max(len(gt_tables) - len(pred_tables), 0)
+            if missing_tables > 0:
+                pred_tables = pred_tables + [""] * missing_tables  # 부족한 pred 테이블은 0 점수로 처리
+
             table_type = parsed_gt["table_type"] or parsed_pred["table_type"]
-            table_scores = compute_table_scores(parsed_pred["tables"], parsed_gt["tables"], table_type)
+            table_scores = compute_table_scores(pred_tables, gt_tables, table_type)
             records.append(
                 {
                     "filename": rel,

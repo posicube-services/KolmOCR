@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko"><head><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+
+<body>
+  <meta charset="utf-8">
+  <title>Document</title>
+
+  <!-- Prism: theme + python -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <style>
+    /* =========================
+       Print: A4 hard fit
+       - @page 마진은 0
+       - 여백은 .page padding으로만 관리
+    ========================= */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      padding: 10mm;
+      /* ✅ 단 하나의 여백(권장 8~12mm) */
+      box-sizing: border-box;
+      overflow: hidden;
+      /* 1페이지 보장 */
+      position: relative;
+      background: #fff;
+    }
+
+    /* 화면에서 용지 느낌(원치 않으면 삭제 가능) */
+    @media screen {
+      body {
+        background: #f3f4f6;
+      }
+
+      .page {
+        margin: 16px auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    /* =========================
+       Fit wrapper (scale 대상)
+    ========================= */
+    .fit {
+      --fit-scale: 1;
+      transform: scale(var(--fit-scale));
+      transform-origin: top left;
+      width: calc(100% / var(--fit-scale));
+    }
+
+    .document {
+      column-count: 1;
+      column-gap: 0;
+      max-width: 100%;
+    }
+
+    .code-card {
+      margin: 0;
+      padding: 9px 11px;
+      border-radius: 10px;
+      background: #0f172a;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-sizing: border-box;
+    }
+
+    .block {
+      margin: 0;
+      width: 100%;
+    }
+
+    .block+.block {
+      margin-top: 2px;
+    }
+
+    .block p {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 8.2pt;
+      line-height: 1.20;
+      color: #e5e7eb;
+    }
+
+    .block p code {
+      white-space: pre;
+    }
+
+    @media print {
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+
+      body {
+        background: #fff;
+      }
+    }
+
+    .block:last-child {
+      margin-bottom: 0;
+    }
+
+    .document {
+      padding-bottom: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+
+
+
+  <div class="page" id="page">
+    <div class="fit" id="fit" style="--fit-scale: 0.8038;" data-fit-locked="1">
+      <div class="document">
+        <div class="code-card">
+
+          <!-- paragraph 단위로 분할 (DLA bbox 목적) -->
+          <div class="block" data-id="b001" data-bbox="60,41,880,35">
+            <p><code class="language-python"><span class="token keyword">import</span> json<span class="token punctuation">,</span> os<span class="token punctuation">,</span> random
+
+DATA_FILE <span class="token operator">=</span> <span class="token string">"flashcards.json"</span></code></p>
+          </div>
+
+          <div class="block" data-id="b002" data-bbox="60,77,880,94">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">load_cards</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> <span class="token punctuation">(</span>json<span class="token punctuation">.</span>JSONDecodeError<span class="token punctuation">,</span> OSError<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></code></p>
+          </div>
+
+          <div class="block" data-id="b003" data-bbox="60,173,880,35">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">save_cards</span><span class="token punctuation">(</span>cards<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>cards<span class="token punctuation">,</span> f<span class="token punctuation">,</span> ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b004" data-bbox="60,209,880,47">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\n== Flashcards =="</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"1.List  2.Add  3.Practice  4.WrongOnly  0.Exit"</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"&gt; "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b005" data-bbox="60,258,880,106">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">list_cards</span><span class="token punctuation">(</span>cards<span class="token punctuation">,</span> limit<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> cards<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"No cards."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">for</span> i<span class="token punctuation">,</span> c <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>cards<span class="token punctuation">[</span><span class="token punctuation">:</span>limit<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        ok<span class="token punctuation">,</span> bad <span class="token operator">=</span> c<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"correct"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"wrong"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token string">. </span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'front'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string"> -&gt; </span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'back'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string"> (ok:</span><span class="token interpolation"><span class="token punctuation">{</span>ok<span class="token punctuation">}</span></span><span class="token string">, bad:</span><span class="token interpolation"><span class="token punctuation">{</span>bad<span class="token punctuation">}</span></span><span class="token string">)"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>cards<span class="token punctuation">)</span> <span class="token operator">&gt;</span> limit<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"... (</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">len</span><span class="token punctuation">(</span>cards<span class="token punctuation">)</span><span class="token operator">-</span>limit<span class="token punctuation">}</span></span><span class="token string"> more)"</span></span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b006" data-bbox="60,365,880,94">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">add_card</span><span class="token punctuation">(</span>cards<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    front <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Front: "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    back  <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Back : "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> front <span class="token keyword">or</span> <span class="token keyword">not</span> back<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Both required."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    cards<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"front"</span><span class="token punctuation">:</span> front<span class="token punctuation">,</span> <span class="token string">"back"</span><span class="token punctuation">:</span> back<span class="token punctuation">,</span> <span class="token string">"correct"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"wrong"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Added."</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b007" data-bbox="60,460,880,282">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">practice</span><span class="token punctuation">(</span>cards<span class="token punctuation">,</span> only_wrong<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> cards<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"No cards."</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+
+    pool <span class="token operator">=</span> cards
+    <span class="token keyword">if</span> only_wrong<span class="token punctuation">:</span>
+        pool <span class="token operator">=</span> <span class="token punctuation">[</span>c <span class="token keyword">for</span> c <span class="token keyword">in</span> cards <span class="token keyword">if</span> c<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"wrong"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> c<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"correct"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> pool<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"No wrong-dominant cards."</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Type 'q' to quit.\n"</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        c <span class="token operator">=</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>pool<span class="token punctuation">)</span>
+        ans <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Q: </span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'front'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">  A: "</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> ans<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"q"</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">if</span> ans<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">str</span><span class="token punctuation">(</span>c<span class="token punctuation">[</span><span class="token string">"back"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            c<span class="token punctuation">[</span><span class="token string">"correct"</span><span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"correct"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"OK"</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            c<span class="token punctuation">[</span><span class="token string">"wrong"</span><span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"wrong"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"NO -&gt; </span><span class="token interpolation"><span class="token punctuation">{</span>c<span class="token punctuation">[</span><span class="token string">'back'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b008" data-bbox="60,744,880,188">
+            <p><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cards <span class="token operator">=</span> load_cards<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        ch <span class="token operator">=</span> menu<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> ch <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">:</span>
+            list_cards<span class="token punctuation">(</span>cards<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> ch <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">:</span>
+            add_card<span class="token punctuation">(</span>cards<span class="token punctuation">)</span><span class="token punctuation">;</span> save_cards<span class="token punctuation">(</span>cards<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> ch <span class="token operator">==</span> <span class="token string">"3"</span><span class="token punctuation">:</span>
+            practice<span class="token punctuation">(</span>cards<span class="token punctuation">)</span><span class="token punctuation">;</span> save_cards<span class="token punctuation">(</span>cards<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> ch <span class="token operator">==</span> <span class="token string">"4"</span><span class="token punctuation">:</span>
+            practice<span class="token punctuation">(</span>cards<span class="token punctuation">,</span> only_wrong<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">;</span> save_cards<span class="token punctuation">(</span>cards<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> ch <span class="token operator">==</span> <span class="token string">"0"</span><span class="token punctuation">:</span>
+            save_cards<span class="token punctuation">(</span>cards<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Bye."</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Unknown."</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+          <div class="block" data-id="b009" data-bbox="60,933,880,23">
+            <p><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function highlightThenFit() {
+      if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+      requestAnimationFrame(() => requestAnimationFrame(fitToOnePage));
+    }
+
+    function fitToOnePage() {
+      const page = document.getElementById("page");
+      const fit = document.getElementById("fit");
+      if (!page || !fit) return;
+
+      // reset
+      fit.style.setProperty("--fit-scale", 1);
+
+      // ✅ padding 제외한 사용 가능 높이
+      const styles = getComputedStyle(page);
+      const padTop = parseFloat(styles.paddingTop) || 0;
+      const padBot = parseFloat(styles.paddingBottom) || 0;
+      const availableH = page.clientHeight - padTop - padBot;
+
+      const contentH = fit.scrollHeight;
+
+      if (contentH > availableH) {
+        let scale = availableH / contentH;
+        scale = Math.floor(scale * 10000) / 10000;
+        fit.style.setProperty("--fit-scale", scale);
+      }
+    }
+
+    window.addEventListener("load", highlightThenFit);
+    window.addEventListener("resize", fitToOnePage);
+    window.addEventListener("beforeprint", fitToOnePage);
+  </script>
+
+
+
+
+
+
+</body></html>

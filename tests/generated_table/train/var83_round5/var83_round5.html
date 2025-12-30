@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    h1 { 
+      text-align: center; 
+      font-family: 'Malgun Gothic', sans-serif;
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    table { 
+      width: 100%; 
+      border: 2px solid #444; 
+      border-collapse: collapse; 
+      table-layout: fixed; 
+      word-break: break-all; 
+      font-family: 'Malgun Gothic', sans-serif;
+      font-size: 14px;
+    }
+    th { 
+      background: #666666; 
+      color: #fff; 
+      padding: 8px; 
+      font-weight: bold; 
+      text-align: center; 
+      border: 1px solid #999; 
+      vertical-align: middle;
+    }
+    td { 
+      background: #e0e0e0; 
+      border: 1px solid #666; 
+      padding: 8px; 
+      text-align: left; 
+      vertical-align: middle;
+      word-break: break-all;
+      white-space: normal;
+    }
+    header { 
+      border-bottom: 2px solid #444; 
+      padding-bottom: 8px; 
+      margin-bottom: 15px;
+    }
+    .section-header {
+      background: #555555;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid #444;
+    }
+    .subsection-header {
+      background: #777777;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+      padding: 6px;
+      border: 1px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Public Finance Report</h1>
+  </header>
+
+  <!-- 기본정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">기본정보</th></tr>
+    <tr><th colspan="4" class="subsection-header">법인명 및 등록정보</th></tr>
+    <tr>
+      <th style="width: 20%;">법인명</th>
+      <td style="width: 30%;">삼성전자 주식회사</td>
+      <th style="width: 20%;">사업자등록번호</th>
+      <td style="width: 30%;">123-45-67890</td>
+    </tr>
+    <tr>
+      <th>설립일자</th>
+      <td>1969-12-01</td>
+      <th></th>
+      <td></td>
+    </tr>
+    <tr><th colspan="4" class="subsection-header">대표자정보</th></tr>
+    <tr>
+      <th>성명</th>
+      <td>이재용</td>
+      <th>주민등록번호</th>
+      <td>800101-1234567</td>
+    </tr>
+    <tr>
+      <th>직위</th>
+      <td>회장</td>
+      <th></th>
+      <td></td>
+    </tr>
+  </table>
+
+  <!-- 계좌정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+    <tr>
+      <th style="width: 20%;">계좌종류</th>
+      <td style="width: 30%;">예금계좌</td>
+      <th style="width: 20%;">계좌명</th>
+      <td style="width: 30%;">삼성전자 법인계좌</td>
+    </tr>
+    <tr>
+      <th>계좌개설목적</th>
+      <td colspan="3">사업자금 관리</td>
+    </tr>
+    <tr><th colspan="4" class="subsection-header">계좌관리자정보</th></tr>
+    <tr>
+      <th>관리자명</th>
+      <td>김철수</td>
+      <th>연락처</th>
+      <td>010-1234-5678</td>
+    </tr>
+    <tr>
+      <th>이메일</th>
+      <td colspan="3">manager@company.com</td>
+    </tr>
+  </table>
+
+  <!-- 거래내역 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래내역</th></tr>
+    <tr>
+      <th style="width: 25%;">예상거래금액(원)</th>
+      <td colspan="3" style="width: 75%;">100000000</td>
+    </tr>
+    <tr><th colspan="4" class="subsection-header">주요거래처</th></tr>
+    <tr>
+      <th>거래처명</th>
+      <td>LG전자</td>
+      <th>거래유형</th>
+      <td>매출</td>
+    </tr>
+    <tr>
+      <th>연간거래규모(원)</th>
+      <td colspan="3">5000000000</td>
+    </tr>
+    <tr><th colspan="4" class="subsection-header">거래내역표</th></tr>
+    <tr>
+      <th>거래일자</th>
+      <td>2024-01-15</td>
+      <th>거래처명</th>
+      <td>현대자동차</td>
+    </tr>
+    <tr>
+      <th>거래금액</th>
+      <td>25000000</td>
+      <th>비고</th>
+      <td>부품대금</td>
+    </tr>
+    <tr>
+      <th>거래일자</th>
+      <td>2024-02-10</td>
+      <th>거래처명</th>
+      <td>SK하이닉스</td>
+    </tr>
+    <tr>
+      <th>거래금액</th>
+      <td>18000000</td>
+      <th>비고</th>
+      <td>반도체구매</td>
+    </tr>
+  </table>
+
+  <!-- 서명 및 인감 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">서명 및 인감</th></tr>
+    <tr>
+      <th style="width: 25%;">대표자서명</th>
+      <td colspan="3" style="width: 75%; height: 40px;"></td>
+    </tr>
+    <tr>
+      <th>날짜</th>
+      <td colspan="3"></td>
+    </tr>
+    <tr><th colspan="4" class="subsection-header">은행직원확인</th></tr>
+    <tr>
+      <th>확인자명</th>
+      <td></td>
+      <th>확인일자</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>비고</th>
+      <td colspan="3"></td>
+    </tr>
+    <tr><th colspan="4" class="subsection-header">첨부서류</th></tr>
+    <tr>
+      <th>법인등기부등본</th>
+      <td></td>
+      <th>사업자등록증사본</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>대표자신분증사본</th>
+      <td></td>
+      <th>기타서류</th>
+      <td></td>
+    </tr>
+  </table>
+</body>
+</html>

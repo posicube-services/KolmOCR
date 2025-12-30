@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>위임장</title>
+  <style>
+    body { 
+      font-family: 'Noto Sans KR', sans-serif; 
+      background: #fff; 
+      color: #222; 
+      margin: 0;
+      padding: 20px;
+      max-width: 190mm;
+      margin: 0 auto;
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 24px;
+      margin: 10px 0 20px 0;
+      font-weight: bold;
+    }
+    th { 
+      background: #003a8c; 
+      color: #fff; 
+      font-weight: bold; 
+      text-align: center; 
+      border: 1px solid #999; 
+      padding: 8px;
+      font-size: 14px;
+    }
+    td { 
+      background: #e9f2ff; 
+      text-align: left; 
+      padding: 8px;
+      border: 1px solid #999;
+      font-size: 14px;
+      word-break: break-all;
+      white-space: normal;
+    }
+    table { 
+      border-collapse: collapse; 
+      width: 100%; 
+      table-layout: fixed; 
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .section-header {
+      font-size: 18px;
+      font-weight: bold;
+      background: #003a8c;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #999;
+      margin-bottom: 10px;
+    }
+    .sub-header {
+      background: #003a8c;
+      color: white;
+      padding: 6px 8px;
+      text-align: center;
+      font-weight: bold;
+      border: 1px solid #999;
+    }
+    .label-cell {
+      background: #003a8c;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid #999;
+      width: 25%;
+    }
+    .value-cell {
+      background: #e9f2ff;
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #999;
+      width: 25%;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      background: #003a8c;
+      color: white;
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #999;
+      margin: 15px 0 5px 0;
+    }
+    .row-spacer {
+      height: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>위임장</h1>
+
+  <!-- 기본 정보 섹션 -->
+  <div>
+    <div class="section-header">기본 정보</div>
+    
+    <table>
+      <tr><td colspan="4" class="sub-header">위임자 정보</td></tr>
+      <tr><td colspan="4" class="sub-header">개인 정보</td></tr>
+      <tr><td colspan="4" class="sub-header">신원 확인</td></tr>
+      <tr>
+        <td class="label-cell">위임자 이름</td>
+        <td class="value-cell">홍길동</td>
+        <td class="label-cell">주민등록번호</td>
+        <td class="value-cell">900101-1234567</td>
+      </tr>
+      <tr>
+        <td class="label-cell">연락처</td>
+        <td class="value-cell">010-1234-5678</td>
+        <td class="label-cell">현 거주지 주소</td>
+        <td class="value-cell">서울시 강남구 테헤란로 123</td>
+      </tr>
+      <tr>
+        <td class="label-cell">본적 주소</td>
+        <td class="value-cell">경기도 수원시 장안구 팔달로 456</td>
+        <td class="label-cell">성년 여부</td>
+        <td class="value-cell">예</td>
+      </tr>
+      <tr>
+        <td class="label-cell">정신적 판단능력</td>
+        <td class="value-cell">정상</td>
+        <td colspan="2"></td>
+      </tr>
+    </table>
+
+    <table>
+      <tr><td colspan="4" class="sub-header">피위임자 정보</td></tr>
+      <tr><td colspan="4" class="sub-header">개인 정보</td></tr>
+      <tr><td colspan="4" class="sub-header">신원 확인</td></tr>
+      <tr>
+        <td class="label-cell">피위임자 이름</td>
+        <td class="value-cell">김철수</td>
+        <td class="label-cell">피위임자 주민등록번호</td>
+        <td class="value-cell">850505-2345678</td>
+      </tr>
+      <tr>
+        <td class="label-cell">피위임자 연락처</td>
+        <td class="value-cell">010-8765-4321</td>
+        <td class="label-cell">일반위임</td>
+        <td class="value-cell">예</td>
+      </tr>
+      <tr>
+        <td class="label-cell">특수위임</td>
+        <td class="value-cell">아니오</td>
+        <td class="label-cell">재산관리권</td>
+        <td class="value-cell">예</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 위임 내용 섹션 -->
+  <div>
+    <div class="section-header">위임 내용</div>
+    
+    <table>
+      <tr><td colspan="4" class="sub-header">위임 목적</td></tr>
+      <tr><td colspan="4" class="sub-header">법적 목적</td></tr>
+      <tr>
+        <td class="label-cell">위임 사유</td>
+        <td class="value-cell">해외 출장으로 인한 업무 대행</td>
+        <td class="label-cell">관련 법률 조항</td>
+        <td class="value-cell">민법 제750조</td>
+      </tr>
+      <tr><td colspan="4" class="sub-header">실무 목적</td></tr>
+      <tr>
+        <td class="label-cell">업무 처리 목적</td>
+        <td class="value-cell">은행 계좌 이체 및 서류 제출</td>
+        <td class="label-cell">시간적 제약 사유</td>
+        <td class="value-cell">출장 중으로 직접 처리 불가</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr><td colspan="4" class="sub-header">위임 범위</td></tr>
+      <tr><td colspan="4" class="sub-header">재산 관련</td></tr>
+      <tr><td colspan="4" class="sub-header">계좌 정보</td></tr>
+      <tr>
+        <td class="label-cell">계좌번호</td>
+        <td class="value-cell">123-456-789012</td>
+        <td class="label-cell">은행명</td>
+        <td class="value-cell">국민은행</td>
+      </tr>
+      <tr>
+        <td class="label-cell">계좌 소유자</td>
+        <td class="value-cell">홍길동</td>
+        <td colspan="2"></td>
+      </tr>
+      <tr><td colspan="4" class="sub-header">부동산 정보</td></tr>
+      <tr>
+        <td class="label-cell">부동산 주소</td>
+        <td class="value-cell">서울시 서초구 반포대로 123</td>
+        <td colspan="2"></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 서명 및 인증 섹션 -->
+  <div>
+    <div class="section-header">서명 및 인증</div>
+    
+    <table>
+      <tr><td colspan="4" class="sub-header">위임자 서명</td></tr>
+      <tr>
+        <td class="label-cell">위임자 서명</td>
+        <td class="value-cell">홍길동</td>
+        <td class="label-cell">서명일자</td>
+        <td class="value-cell">2025-

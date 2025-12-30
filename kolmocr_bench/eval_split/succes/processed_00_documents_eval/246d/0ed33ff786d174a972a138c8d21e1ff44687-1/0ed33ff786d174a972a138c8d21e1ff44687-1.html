@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #000;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.block[data-id="b002"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 15px 0 10px 0;
+  color: #333;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.block[data-id="b003"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: normal;
+  margin: 15px 0 10px 0;
+  color: #444;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.block[data-id="b004"] h4 {
+  font-size: calc(1.05em * var(--font-scale));
+  font-weight: normal;
+  margin: 15px 0 10px 0;
+  color: #555;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.block[data-id="b005"] h5 {
+  font-size: calc(1.0em * var(--font-scale));
+  font-weight: normal;
+  margin: 15px 0 10px 0;
+  color: #666;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.block[data-id="b006"] h6 {
+  font-size: calc(0.95em * var(--font-scale));
+  font-weight: normal;
+  margin: 15px 0 10px 0;
+  color: #777;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.block[data-id="b007"] ul {
+  margin: 10px 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+  color: #444;
+  line-height: 1.6;
+}
+
+.block[data-id="b007"] li {
+  margin: 5px 0;
+  font-size: calc(0.95em * var(--font-scale));
+}
+
+.block[data-id="b008"] pre {
+  font-family: monospace;
+  white-space: pre-wrap;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 4px;
+  overflow: auto;
+  font-size: calc(0.9em * var(--font-scale));
+  color: #333;
+}
+
+.block[data-id="b008"] code {
+  font-family: monospace;
+  color: #000;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.47rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #f2c94c;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgb(7, 5, 109);
+  border-left: 4px solid #64ffda;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #0548bc;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(81, 84, 226, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #3361a7;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #3f0db5;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(248, 113, 113, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #c084fc;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #38bdf8;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.25rem;
+  color: #fef08a;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.1rem;
+  color: #010243;
+  letter-spacing: 0.02em;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #a5b4fc;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #75600c;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.43rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,54,837,178">
+<h1>FSB, 러시아에 대한 동료 평가 완료</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,188,746,207">
+<h2>금융 안정 보드(FSB)는 오늘 러시아에 대한 동료 평가를 발표했습니다.</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,222,901,318">
+<h3>이 동료 평가는 두 가지 주제를 다루었습니다: 매크로 금융 정책 프레임워크 및 도구; 그리고 은행 해결 프레임워크. 이 주제들은 FSB 회원국 전체의 금융 안정에 관련이 있으며, 다른 FSB 국가 동료 평가에서도 다루어지고 있습니다. 이 평가는 러시아 당국이 이 두 분야에서 개혁을 실행하기 위해 취한 조치를 중점적으로 조사했으며, 2011년 국제통화기금(IMF)의 금융 부문 평가 프로그램(FSAP) 보고서에서 제시된 관련 권고 사항을 이행하는 과정도 포함되었습니다.</h3>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,334,895,450">
+<h4>동료 평가는 러시아 당국이 이 두 주제에 대한 FSAP 권고 사항을 처리하는 데 있어 좋은 진전을 보였지만, 추가로 해야 할 작업이 남아 있음을 결론지었습니다. 매크로 금융 정책 측면에서는 당국이 금융 안정 보장 국립 위원회(FSC)의 임무를 명확히 하고, 러시아 중앙은행(CBR)의 매크로 금융 정책 프레임워크를 구체화해야 한다고 지적했습니다. 은행 해결 측면에서는 당국이 즉각적인 보완 조치 프레임워크를 더욱 강화하고, 해결 도구의 범위를 확대하며, 실패한 시스템적 은행의 재활 프로세스를 검토하여 효율성과 효과성을 더욱 향상시키는 것이 필요하다고 권고했습니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,467,905,605">
+<h5>특히, 동료 평가는 러시아 당국이 FSAP 이후 금융 안정을 위한 기관적 프레임워크를 강화했다고 밝혔습니다. CBR은 명시적인 금융 안정 임무를 부여받았으며, 매크로 금융 정책 결정 과정을 제도화하고, 시스템적 위험 모니터링 능력을 향상시키며, 매크로 금융 정책에 사용할 수 있는 도구의 범위를 확대하는 데 적극적으로 노력하고 있습니다. 최근 몇 년 동안 이러한 도구들은 혁신적인 방식으로 활용되어, 금융 안정 우려를 일으켰던 무담보 소비자 대출의 급격한 성장세를 억제하는데 기여했습니다. 또한, FSC는 최근에 다부처 자문 기구로 설립되었으며, 당국은 이 기구가 금융 안정 문제에 대한 고위급 논의를 위한 유용한 플랫폼으로 작용되고 있다고 언급했습니다.</h5>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,622,899,658">
+<h6>매크로 금융 정책 프레임워크의 효율성을 더욱 향상시키기 위해, 동료 평가는 다음과 같은 권고 사항을 제시했습니다:</h6>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="129,671,904,763">
+<ul>
+<li>FSC의 매크로 금융 정책 프레임워크 내 역할을 명확히 하여 CBR과의 임무 및 책임의 중복 가능성을 제거하는 것.</li>
+<li>FSC의 기관적 및 운영적 구조를 강화하는 것, 예를 들어, CBR의 역할을 강화하고, 의무된 임무를 수행하기 위한 공식적 구조를 발전시키며, 공공 부문 당국에 대해 준수 또는 설명 기반으로 권고를 내릴 수 있는 권한을 부여하는 것.</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,778,905,798">
+<pre><code></code></pre>
+</div>
+</div>
+</body>
+</html>

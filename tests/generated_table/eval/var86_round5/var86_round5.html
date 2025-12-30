@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>법인대표자확인서</title>
+  <style>
+    body {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 12pt;
+      margin: 20mm;
+      line-height: 1.4;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18pt;
+      margin: 0 0 10pt 0;
+      font-weight: bold;
+    }
+    .header {
+      border-bottom: 2px solid #000;
+      padding-bottom: 8pt;
+      margin-bottom: 12pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .doc-number {
+      font-size: 11pt;
+      color: #444;
+      font-weight: normal;
+    }
+    table {
+      border: 1px solid #000;
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      word-break: break-all;
+      margin-bottom: 20pt;
+    }
+    th {
+      background: #4d4d4d;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #999;
+      padding: 6pt 4pt;
+      font-size: 11pt;
+    }
+    td {
+      background: #f9f9f9;
+      border: 1px solid #999;
+      padding: 6pt 4pt;
+      text-align: right;
+      font-size: 11pt;
+      height: auto;
+      vertical-align: top;
+    }
+    .label {
+      text-align: left;
+      font-weight: normal;
+      background: #666;
+      color: #fff;
+    }
+    .value {
+      text-align: right;
+    }
+    .seal {
+      color: #b00;
+      font-weight: bold;
+      border: 2px solid #b00;
+      padding: 2pt 6pt;
+      display: inline-block;
+      font-size: 10pt;
+    }
+    .section-header {
+      background: #555;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 6pt 0;
+      font-size: 12pt;
+    }
+    .sub-header {
+      background: #666;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 4pt 0;
+      font-size: 11pt;
+    }
+    .table-header {
+      background: #4d4d4d;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 4pt 0;
+      font-size: 11pt;
+    }
+    .no-border {
+      border: none;
+    }
+    .signature-box {
+      height: 50pt;
+      vertical-align: bottom;
+    }
+    .center {
+      text-align: center;
+    }
+    .right {
+      text-align: right;
+    }
+    .left {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>법인대표자확인서</h1>
+    <div class="doc-number">문서번호: 2024-0001</div>
+  </div>
+
+  <!-- 기본정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">기본정보</th></tr>
+    <tr>
+      <th rowspan="3" class="label">법인명 및 등록정보</th>
+      <th class="label">법인명</th>
+      <td class="value">삼성전자 주식회사</td>
+      <th class="label">사업자등록번호</th>
+      <td class="value">123-45-67890</td>
+    </tr>
+    <tr>
+      <th class="label">설립일자</th>
+      <td class="value">1969-12-26</td>
+      <td colspan="2" class="no-border"></td>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">대표자 정보</th>
+    </tr>
+    <tr>
+      <th rowspan="2" class="label">대표자 정보</th>
+      <th class="label">성명</th>
+      <td class="value">이재용</td>
+      <th class="label">주민등록번호</th>
+      <td class="value">800101-1234567</td>
+    </tr>
+    <tr>
+      <th class="label">직위</th>
+      <td class="value">회장</td>
+      <td colspan="2" class="no-border"></td>
+    </tr>
+  </table>
+
+  <!-- 계좌정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+    <tr>
+      <th rowspan="3" class="label">은행명 및 계좌번호</th>
+      <th class="label">은행명</th>
+      <td class="value">국민은행</td>
+      <th class="label">계좌번호</th>
+      <td class="value">123-456-789012</td>
+    </tr>
+    <tr>
+      <th class="label">예금주</th>
+      <td class="value">삼성전자 주식회사</td>
+      <td colspan="2" class="no-border"></td>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">계좌 유형 및 용도</th>
+    </tr>
+    <tr>
+      <th rowspan="2" class="label">계좌 유형 및 용도</th>
+      <th class="label">계좌유형</th>
+      <td class="value">당좌</td>
+      <th class="label">사용목적</th>
+      <td class="value">사업자금 관리</td>
+    </tr>
+    <tr>
+      <th class="label">계좌개설일</th>
+      <td class="value">2020-03-15</td>
+      <td colspan="2" class="no-border"></td>
+    </tr>
+  </table>
+
+  <!-- 거래내역 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래내역</th></tr>
+    <tr>
+      <th rowspan="3" class="label">최근 거래 요약</th>
+      <th class="label">거래일자</th>
+      <td class="value">2024-06-01</td>
+      <th class="label">거래금액</th>
+      <td class="value">5000000</td>
+    </tr>
+    <tr>
+      <th class="label">거래내용</th>
+      <td class="value">상품 구매 대금 지급</td>
+      <td colspan="2" class="no-border"></td>
+    </tr>
+    <tr>
+      <th colspan="4" class="sub-header">거래내역 테이블</th>
+    </tr>
+    <tr>
+      <th class="table-header">일자</th>
+      <th class="table-header">금액</th>
+      <th class="table-header">내용</th>
+      <th class="table-header">잔액</th>
+    </tr>
+    <tr>
+      <td class="value">2024-06-01</td>
+      <td class="value">5000000</td>
+      <td class="value">상품 구매 대금</td>
+      <td class="value">12000000</td>
+    </tr>
+    <tr>
+      <td class="value">2024-06-05</td>
+      <td class="value">2500000</td>
+      <td class="value">세금 납부</td>
+      <td class="value">9500000</td>
+    </tr>
+    <tr>
+      <td class="value">2024-06-10</td>
+      <td class="value">1000000</td>
+      <td class="value">직원 급여 지급</td>
+      <td class="value">8500000</td>
+    </tr>
+  </table>
+
+  <!-- 서명 및 확인란 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">서명 및 확인란</th></tr>
+    <tr>
+      <th rowspan="3" class

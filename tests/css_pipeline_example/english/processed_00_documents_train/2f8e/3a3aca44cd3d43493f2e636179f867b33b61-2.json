@@ -1,0 +1,198 @@
+[
+  {
+    "id": "front_matter",
+    "type": "front_matter",
+    "markdown": "primary_language: en\nis_rotation_valid: True\nrotation_correction: 0\nis_table: False\nis_diagram: False",
+    "metadata": {
+      "primary_language": "en",
+      "is_rotation_valid": true,
+      "rotation_correction": 0,
+      "is_table": false,
+      "is_diagram": false
+    }
+  },
+  {
+    "id": "b001",
+    "type": "list",
+    "ordered": true,
+    "items": [
+      "The Owners are an intended third party beneficiary of this Agreement."
+    ],
+    "bbox": [
+      35,
+      39,
+      662,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b002",
+    "type": "paragraph",
+    "content": "Two signatures are required, one from an individual who is authorized to make legal commitments on behalf of the Organization and a second by the person who will be responsible for the use of the collection. If these are the same person, that person should sign twice.",
+    "markdown": "Two signatures are required, one from an individual who is authorized to make legal commitments on behalf of the Organization and a second by the person who will be responsible for the use of the collection. If these are the same person, that person should sign twice.",
+    "bbox": [
+      35,
+      76,
+      1542,
+      46
+    ],
+    "page": 1
+  },
+  {
+    "id": "b003",
+    "type": "paragraph",
+    "content": "Agreed to by Organization",
+    "markdown": "Agreed to by Organization",
+    "bbox": [
+      35,
+      136,
+      234,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b004",
+    "type": "paragraph",
+    "content": "Authorized signature:",
+    "markdown": "Authorized signature:",
+    "bbox": [
+      35,
+      173,
+      190,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b005",
+    "type": "paragraph",
+    "content": "Signature: ______________ ______________ ______________",
+    "markdown": "Signature: ______________ ______________ ______________",
+    "bbox": [
+      35,
+      210,
+      579,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b006",
+    "type": "paragraph",
+    "content": "Name: ______________ ______________",
+    "markdown": "Name: ______________ ______________",
+    "bbox": [
+      35,
+      247,
+      384,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b007",
+    "type": "paragraph",
+    "content": "Position Title: ______________",
+    "markdown": "Position Title: ______________",
+    "bbox": [
+      35,
+      284,
+      282,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b008",
+    "type": "paragraph",
+    "content": "Organization Name: ______________________________",
+    "markdown": "Organization Name: ______________________________",
+    "bbox": [
+      35,
+      322,
+      521,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b009",
+    "type": "paragraph",
+    "content": "Date: ______________",
+    "markdown": "Date: ______________",
+    "bbox": [
+      35,
+      359,
+      211,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b010",
+    "type": "paragraph",
+    "content": "Person responsible for use of the Collection:",
+    "markdown": "Person responsible for use of the Collection:",
+    "bbox": [
+      35,
+      396,
+      395,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b011",
+    "type": "paragraph",
+    "content": "Signature: ______________________________",
+    "markdown": "Signature: ______________________________",
+    "bbox": [
+      35,
+      433,
+      434,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b012",
+    "type": "paragraph",
+    "content": "Printed Name: ______________________________",
+    "markdown": "Printed Name: ______________________________",
+    "bbox": [
+      35,
+      470,
+      471,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b013",
+    "type": "paragraph",
+    "content": "Date: ______________",
+    "markdown": "Date: ______________",
+    "bbox": [
+      35,
+      507,
+      211,
+      23
+    ],
+    "page": 1
+  },
+  {
+    "id": "b014",
+    "type": "paragraph",
+    "content": "Email Address: ______________________________",
+    "markdown": "Email Address: ______________________________",
+    "bbox": [
+      35,
+      544,
+      476,
+      23
+    ],
+    "page": 1
+  }
+]

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>해외송금사유신고서</title>
+    <style>
+        body {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 12pt;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f8ff;
+        }
+        .document-header {
+            text-align: center;
+            padding: 15px 0;
+            background: #e6f0ff;
+            border-bottom: 2px solid #0044cc;
+            margin-bottom: 10px;
+        }
+        .document-title {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #000;
+            margin: 0;
+        }
+        .section-header {
+            background: #0044cc;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 6px;
+            border: 1px solid #999;
+        }
+        .subsection-header {
+            background: #0055dd;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+            border: 1px solid #999;
+        }
+        .table-container {
+            margin: 10px 0;
+            width: 100%;
+            max-width: 190mm;
+            border: 1px solid #666;
+            border-collapse: collapse;
+        }
+        .table-container th {
+            background: #0044cc;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #999;
+            padding: 6px;
+        }
+        .table-container td {
+            background: #e6f0ff;
+            padding: 4px;
+            text-align: right;
+            border: 1px solid #999;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .table-container td.left-align {
+            text-align: left;
+        }
+        .table-container td.center-align {
+            text-align: center;
+        }
+        .table-container td.bold {
+            font-weight: bold;
+        }
+        .table-container td.value {
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="document-header">
+        <h1 class="document-title">해외송금사유신고서</h1>
+    </div>
+
+    <!-- 기본정보 -->
+    <div class="table-container">
+        <table>
+            <tr><th colspan="4" class="section-header">기본정보</th></tr>
+            <tr><th colspan="4" class="subsection-header">신청자정보</th></tr>
+            <tr><th colspan="4" class="subsection-header">개인정보</th></tr>
+            <tr><th colspan="4" class="subsection-header">신분증명</th></tr>
+            <tr>
+                <th>성명</th>
+                <td class="left-align">홍길동</td>
+                <th>주민등록번호</th>
+                <td class="left-align">900101-1234567</td>
+            </tr>
+            <tr>
+                <th>국적</th>
+                <td class="left-align">대한민국</td>
+                <th>전화번호</th>
+                <td class="left-align">010-1234-5678</td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td class="left-align">hong@example.com</td>
+                <th>주소</th>
+                <td class="left-align">서울시 강남구 테헤란로 123</td>
+            </tr>
+            <tr><th colspan="4" class="subsection-header">계좌정보</th></tr>
+            <tr><th colspan="4" class="subsection-header">송금계좌</th></tr>
+            <tr>
+                <th>송금은행명</th>
+                <td class="left-align">국민은행</td>
+                <th>송금계좌번호</th>
+                <td class="left-align">123-456-789012</td>
+            </tr>
+            <tr>
+                <th>계좌소유자명</th>
+                <td class="left-align">홍길동</td>
+                <th>수취은행명</th>
+                <td class="left-align">HSBC 은행</td>
+            </tr>
+            <tr>
+                <th>수취계좌번호</th>
+                <td class="left-align">GB29NWBK60161331926819</td>
+                <th>수취인명</th>
+                <td class="left-align">Hong Gil-dong</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 거래정보 -->
+    <div class="table-container">
+        <table>
+            <tr><th colspan="4" class="section-header">거래정보</th></tr>
+            <tr><th colspan="4" class="subsection-header">송금내역</th></tr>
+            <tr><th colspan="4" class="subsection-header">금액정보</th></tr>
+            <tr>
+                <th>송금금액(KRW)</th>
+                <td class="right-align">10000000</td>
+                <th>송금금액(외화)</th>
+                <td class="right-align">7500</td>
+            </tr>
+            <tr>
+                <th>통화코드</th>
+                <td class="center-align">USD</td>
+                <th>환율</th>
+                <td class="right-align">1335.50</td>
+            </tr>
+            <tr>
+                <th>수수료</th>
+                <td class="right-align">50000</td>
+                <th>총비용</th>
+                <td class="right-align">10050000</td>
+            </tr>
+            <tr><th colspan="4" class="subsection-header">사유정보</th></tr>
+            <tr><th colspan="4" class="subsection-header">사유분류</th></tr>
+            <tr>
+                <th>사유분류</th>
+                <td class="left-align">유학비</td>
+                <th>사유상세</th>
+                <td class="left-align">미국 대학 학비 및 생활비</td>
+            </tr>
+            <tr>
+                <th>관련서류번호</th>
+                <td class="left-align">학비납부확인서-2025-001</td>
+                <th>수취인과의 관계</th>
+                <td class="left-align">자녀</td>
+            </tr>
+            <tr>
+                <th>수취인 주소</th>
+                <td class="left-align">123 Main St, New York, NY 10001, USA</td>
+                <th>수취인 전화번호</th>
+                <td class="left-align">+1-212-555-1234</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 서명 및 확인 -->
+    <div class="table-container">
+        <table>
+            <tr><th colspan="4" class="section-header">서명 및 확인</th></tr>
+            <tr><th colspan="4" class="subsection-header">신청자확인</th></tr>
+            <tr><th colspan="4" class="subsection-header">서명란</th></tr>
+            <tr>
+                <th>서명</th>
+                <td class="left-align">홍길동</td>
+                <th>서명일자</th>
+                <td class="center-align">2025-04-05</td>
+            </tr>
+            <tr>
+                <th>IP주소</th>
+                <td class="center-align">192.168.1.1</td>
+                <th>개인정보 동의</th>
+                <td class="center-align">동의함</td>
+            </tr>
+            <tr>
+                <th>외환거래 동의</th>
+                <td class="center-align">동의함</td>
+                <th>사기방지 동의</th>
+                <td class="center-align">동의함</td>
+            </tr>
+            <tr><th colspan="4" class="subsection-header">은행확인</th></tr>
+            <tr><th colspan="4" class="subsection-header">처리정보</th></tr>
+            <tr>
+                <th>처리자</th>
+                <td class="left-align">김은행</td>
+                <th>처리일자</th>
+                <

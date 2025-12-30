@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #000; padding: 20px; }
+    h1 { text-align: center; font-size: 24px; margin-bottom: 10px; }
+    table { border-collapse: collapse; width: 100%; table-layout: fixed; word-break: break-all; margin-bottom: 20px; }
+    th { padding: 8px 6px; font-weight: bold; color: #000; background: #d4d4d4; text-align: center; border: 1px solid #999; font-size: 14px; }
+    td { background: #f9f9f9; border: 1px solid #ccc; padding: 8px 6px; text-align: left; word-break: break-all; white-space: normal; font-size: 14px; }
+    .section-header { background: #e0e0e0; text-align: center; font-weight: bold; font-size: 16px; padding: 8px; border: 1px solid #999; }
+    .subsection-header { background: #e8e8e8; text-align: center; font-weight: bold; font-size: 15px; padding: 6px; border: 1px solid #999; }
+    .data-row td { border-bottom: 1px dashed #ccc; }
+    .data-row:last-child td { border-bottom: 1px solid #ccc; }
+    .multi-line { white-space: pre-line; text-align: left; }
+  </style>
+</head>
+<body>
+
+<h1>서명등록신청서</h1>
+
+<!-- 섹션 1: 개인정보 입력 -->
+<table>
+  <tr><th colspan="4" class="section-header">개인정보 입력</th></tr>
+  <tr><th colspan="4" class="subsection-header">기본 정보</th></tr>
+  <tr><th colspan="4" class="subsection-header">신분 확인</th></tr>
+  <tr class="data-row">
+    <th>주민등록번호</th>
+    <td>900101-1234567</td>
+    <th>성명</th>
+    <td>홍길동</td>
+  </tr>
+  <tr class="data-row">
+    <th>생년월일</th>
+    <td>1990-01-01</td>
+    <th>휴대폰 번호</th>
+    <td>010-1234-5678</td>
+  </tr>
+  <tr class="data-row">
+    <th>이메일 주소</th>
+    <td>user@example.com</td>
+    <th>우편번호</th>
+    <td>12345</td>
+  </tr>
+  <tr class="data-row">
+    <th>상세 주소</th>
+    <td class="multi-line">서울시 강남구 테헤란로 123</td>
+    <th>비상 우편번호</th>
+    <td>54321</td>
+  </tr>
+  <tr class="data-row">
+    <th>비상 상세 주소</th>
+    <td class="multi-line">부산시 해운대구 해운대해변로 100</td>
+    <td colspan="2"></td>
+  </tr>
+</table>
+
+<!-- 섹션 2: 계좌 및 인증 정보 -->
+<table>
+  <tr><th colspan="4" class="section-header">계좌 및 인증 정보</th></tr>
+  <tr><th colspan="4" class="subsection-header">계좌 정보</th></tr>
+  <tr class="data-row">
+    <th>은행명</th>
+    <td>국민은행</td>
+    <th>계좌번호</th>
+    <td>123-456-789012</td>
+  </tr>
+  <tr class="data-row">
+    <th>예금주명</th>
+    <td>홍길동</td>
+    <th>비밀번호</th>
+    <td>mypassword123</td>
+  </tr>
+  <tr class="data-row">
+    <th>생체인증 사용</th>
+    <td>Y</td>
+    <th>인증 토큰</th>
+    <td>abc123xyz456</td>
+  </tr>
+</table>
+
+<!-- 섹션 3: 거래내역 및 동의사항 -->
+<table>
+  <tr><th colspan="4" class="section-header">거래내역 및 동의사항</th></tr>
+  <tr><th colspan="4" class="subsection-header">최근 거래내역</th></tr>
+  <tr class="data-row">
+    <th>날짜</th>
+    <td>2025-04-05</td>
+    <th>내용</th>
+    <td>입금</td>
+  </tr>
+  <tr class="data-row">
+    <th>금액</th>
+    <td>1,000,000</td>
+    <th>잔액</th>
+    <td>2,500,000</td>
+  </tr>
+  <tr class="data-row">
+    <th>날짜</th>
+    <td>2025-04-04</td>
+    <th>내용</th>
+    <td>출금</td>
+  </tr>
+  <tr class="data-row">
+    <th>금액</th>
+    <td>500,000</td>
+    <th>잔액</th>
+    <td>1,500,000</td>
+  </tr>
+  <tr><th colspan="4" class="subsection-header">약관 동의</th></tr>
+  <tr class="data-row">
+    <th>개인정보 처리 동의</th>
+    <td>Y</td>
+    <th>전자서명 동의</th>
+    <td>Y</td>
+  </tr>
+  <tr class="data-row">
+    <th>이용약관 동의</th>
+    <td>Y</td>
+    <td colspan="2"></td>
+  </tr>
+</table>
+
+<!-- 섹션 4: 서명 및 제출 -->
+<table>
+  <tr><th colspan="4" class="section-header">서명 및 제출</th></tr>
+  <tr><th colspan="4" class="subsection-header">전자서명란</th></tr>
+  <tr class="data-row">
+    <th>서명 이미지</th>
+    <td>base64 또는 URL</td>
+    <th>서명 날짜</th>
+    <td>2025-04-05</td>
+  </tr>
+  <tr class="data-row">
+    <th>서명자 확인</th>
+    <td>Y</td>
+    <th>제출일시</th>
+    <td>2025-04-05 14:30:00</td>
+  </tr>
+  <tr class="data-row">
+    <th>제출자 IP</th>
+    <td>192.168.0.1</td>
+    <th>제출 상태</th>
+    <td>완료</td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>CMA계좌개설신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Serif KR', 'Malgun Gothic', sans-serif;
+      font-size: 12pt;
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24pt;
+      margin: 10px 0 20px 0;
+      font-weight: bold;
+    }
+    .document-header {
+      background: #e6f0ff;
+      padding: 10px;
+      border-bottom: 2px solid #0044cc;
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 20px;
+      border: 1px solid #666;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 190mm;
+      table-layout: fixed;
+      word-break: break-all;
+    }
+    .section th {
+      background: #0044cc;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      border: 1px solid #999;
+      padding: 4px;
+      font-size: 11pt;
+    }
+    .section td {
+      background: #e6f0ff;
+      padding: 4px;
+      text-align: left;
+      border: 1px solid #999;
+      word-break: break-all;
+      white-space: normal;
+      font-size: 11pt;
+    }
+    .section-title {
+      font-weight: bold;
+      text-align: center;
+      background: #0044cc;
+      color: white;
+      padding: 4px;
+      border: 1px solid #999;
+    }
+    .subsection-title {
+      font-weight: bold;
+      text-align: center;
+      background: #1a52cc;
+      color: white;
+      padding: 4px;
+      border: 1px solid #999;
+    }
+    .field-label {
+      font-weight: bold;
+      text-align: center;
+      background: #0044cc;
+      color: white;
+      padding: 4px;
+      border: 1px solid #999;
+    }
+    .field-value {
+      text-align: left;
+      background: #e6f0ff;
+      padding: 4px;
+      border: 1px solid #999;
+      word-break: break-all;
+    }
+    .checkbox-cell {
+      text-align: center;
+      font-size: 14pt;
+    }
+    .two-column {
+      display: flex;
+      gap: 10px;
+    }
+    .two-column > div {
+      flex: 1;
+      min-width: 0;
+    }
+    .two-column td {
+      padding: 4px;
+      border: 1px solid #999;
+      word-break: break-all;
+    }
+    .two-column th {
+      background: #0044cc;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      border: 1px solid #999;
+      padding: 4px;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .no-border {
+      border: none;
+    }
+    .signature-section {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="document-header">
+    <h1>CMA계좌개설신청서</h1>
+  </div>
+
+  <!-- 기본정보 -->
+  <table class="section">
+    <tr><th colspan="4" class="section-title">기본정보</th></tr>
+    <tr><th colspan="4" class="subsection-title">개인정보</th></tr>
+    <tr><th colspan="4" class="subsection-title">신상정보</th></tr>
+    <tr>
+      <th class="field-label">성명</th>
+      <td class="field-value" colspan="2">홍길동</td>
+      <th class="field-label">생년월일</th>
+      <td class="field-value" colspan="2">1990-01-01</td>
+    </tr>
+    <tr>
+      <th class="field-label">성별</th>
+      <td class="field-value" colspan="2">남</td>
+      <td colspan="3" class="no-border"></td>
+    </tr>
+    <tr><th colspan="6" class="subsection-title">연락처</th></tr>
+    <tr>
+      <th class="field-label">휴대폰번호</th>
+      <td class="field-value" colspan="2">010-1234-5678</td>
+      <th class="field-label">이메일</th>
+      <td class="field-value" colspan="2">user@example.com</td>
+    </tr>
+    <tr>
+      <th class="field-label">주소</th>
+      <td class="field-value" colspan="5">서울시 강남구 테헤란로 123</td>
+    </tr>
+    <tr><th colspan="6" class="subsection-title">직업정보</th></tr>
+    <tr>
+      <th class="field-label">직업분류</th>
+      <td class="field-value" colspan="2">회사원</td>
+      <th class="field-label">소득금액</th>
+      <td class="field-value" colspan="2">50000000</td>
+    </tr>
+    <tr>
+      <th class="field-label">고용형태</th>
+      <td class="field-value" colspan="2">정규직</td>
+      <td colspan="3" class="no-border"></td>
+    </tr>
+  </table>
+
+  <!-- 계좌정보 -->
+  <table class="section">
+    <tr><th colspan="4" class="section-title">계좌정보</th></tr>
+    <tr><th colspan="4" class="subsection-title">계좌종류</th></tr>
+    <tr>
+      <th class="field-label">계좌종류</th>
+      <td class="field-value" colspan="2">CMA</td>
+      <th class="field-label">계좌명의</th>
+      <td class="field-value" colspan="2">홍길동</td>
+    </tr>
+    <tr>
+      <th class="field-label">계좌번호</th>
+      <td class="field-value" colspan="5">123-456-789012</td>
+    </tr>
+    <tr><th colspan="6" class="subsection-title">연동계좌</th></tr>
+    <tr>
+      <th class="field-label">은행명</th>
+      <td class="field-value" colspan="2">국민은행</td>
+      <th class="field-label">계좌번호</th>
+      <td class="field-value" colspan="2">123-456-789012</td>
+    </tr>
+    <tr>
+      <th class="field-label">예금주</th>
+      <td class="field-value" colspan="5">홍길동</td>
+    </tr>
+  </table>
+
+  <!-- 거래내역 -->
+  <table class="section">
+    <tr><th colspan="4" class="section-title">거래내역</th></tr>
+    <tr><th colspan="4" class="subsection-title">거래목적</th></tr>
+    <tr>
+      <th class="field-label">투자 목적</th>
+      <td class="field-value checkbox-cell">✓</td>
+      <th class="field-label">예금 목적</th>
+      <td class="field-value checkbox-cell">✓</td>
+    </tr>
+    <tr>
+      <th class="field-label">기타 목적</th>
+      <td class="field-value" colspan="3">자금관리</td>
+    </tr>
+    <tr><th colspan="4" class="subsection-title">거래제한</th></tr>
+    <tr>
+      <th class="field-label">일일거래한도</th>
+      <td class="field-value">10000000</td>
+      <th class="field-label">월간거래한도</th>
+      <td class="field-value">50000000</td>
+    </tr>
+    <tr>
+      <th class="field-label">기타제한</th>
+      <td class="field-value" colspan="3"></td>
+    </tr>
+  </table>
+
+  <!-- 서명 및 동의 -->
+  <table class="section">
+    <tr><th colspan="4" class="section-title">서명 및 동의</th></tr>
+    <tr><th colspan="4" class="subsection-title">개인정보동의</th></tr>
+    <tr>
+      <th class="field-label">

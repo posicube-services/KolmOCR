@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+      background: #fdfdfd;
+      font-size: 13pt;
+      margin: 20px;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24pt;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+      table-layout: fixed;
+      word-break: break-all;
+      margin-bottom: 20px;
+      border: 1px solid #999;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #999;
+      word-break: break-all;
+      white-space: normal;
+    }
+    th {
+      background: #0078d7;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px;
+    }
+    td {
+      background: #f5f5f5;
+      padding: 8px;
+    }
+    .section-header {
+      background: #0078d7;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      font-size: 16pt;
+    }
+    .sub-header {
+      background: #1a8cff;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+    }
+    .label-cell {
+      background: #0078d7;
+      color: #fff;
+      font-weight: bold;
+      text-align: left;
+      padding: 8px 12px;
+      width: 25%;
+    }
+    .value-cell {
+      background: #f5f5f5;
+      text-align: left;
+      padding: 8px 12px;
+      width: 25%;
+    }
+  </style>
+</head>
+<body>
+  <h1>기업인터넷뱅킹신청서</h1>
+
+  <!-- 기본정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">기본정보</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">사업자정보</th>
+      <th colspan="2" class="sub-header">사업장주소</th>
+    </tr>
+    <tr>
+      <td class="label-cell">사업자등록번호</td>
+      <td class="value-cell">123-45-67890</td>
+      <td class="label-cell">주소</td>
+      <td class="value-cell">서울시 서초구 강남대로 123</td>
+    </tr>
+    <tr>
+      <td class="label-cell">법인명</td>
+      <td class="value-cell">삼성전자 주식회사</td>
+      <td class="label-cell">우편번호</td>
+      <td class="value-cell">06750</td>
+    </tr>
+    <tr>
+      <td class="label-cell">대표자명</td>
+      <td class="value-cell">김삼성</td>
+      <td class="label-cell">전화번호</td>
+      <td class="value-cell">02-1234-5678</td>
+    </tr>
+  </table>
+
+  <!-- 계좌정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+    <tr>
+      <th colspan="3" class="sub-header">계좌목록</th>
+      <th class="sub-header">계좌권한설정</th>
+    </tr>
+    <tr>
+      <td class="label-cell">계좌1</td>
+      <td class="value-cell">110-123-456789</td>
+      <td class="label-cell">권한그룹명</td>
+      <td class="value-cell">관리자그룹</td>
+    </tr>
+    <tr>
+      <td class="label-cell">예금주명</td>
+      <td class="value-cell">삼성전자</td>
+      <td class="label-cell">권한그룹명</td>
+      <td class="value-cell">조회그룹</td>
+    </tr>
+    <tr>
+      <td class="label-cell">은행명</td>
+      <td class="value-cell">국민은행</td>
+      <td class="label-cell">권한그룹명</td>
+      <td class="value-cell">송금그룹</td>
+    </tr>
+    <tr>
+      <td class="label-cell">계좌2</td>
+      <td class="value-cell">110-987-654321</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td class="label-cell">예금주명</td>
+      <td class="value-cell">삼성전자</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td class="label-cell">은행명</td>
+      <td class="value-cell">신한은행</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td class="label-cell">계좌3</td>
+      <td class="value-cell">110-555-666777</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td class="label-cell">예금주명</td>
+      <td class="value-cell">삼성전자</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td class="label-cell">은행명</td>
+      <td class="value-cell">하나은행</td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+
+  <!-- 사용자정보 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">사용자정보</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">관리자정보</th>
+      <th colspan="2" class="sub-header">사용자권한테이블</th>
+    </tr>
+    <tr>
+      <td class="label-cell">관리자1</td>
+      <td class="value-cell">김관리</td>
+      <td class="label-cell">사용자명</td>
+      <td class="value-cell">김관리</td>
+    </tr>
+    <tr>
+      <td class="label-cell">관리자 ID</td>
+      <td class="value-cell">admin001</td>
+      <td class="label-cell">권한등급</td>
+      <td class="value-cell">관리자</td>
+    </tr>
+    <tr>
+      <td class="label-cell">전화번호</td>
+      <td class="value-cell">010-1234-5678</td>
+      <td class="label-cell">접근가능계좌</td>
+      <td class="value-cell">110-123-456789</td>
+    </tr>
+    <tr>
+      <td class="label-cell">관리자2</td>
+      <td class="value-cell">이운영</td>
+      <td class="label-cell">사용자명</td>
+      <td class="value-cell">이운영</td>
+    </tr>
+    <tr>
+      <td class="label-cell">관리자 ID</td>
+      <td class="value-cell">admin002</td>
+      <td class="label-cell">권한등급</td>
+      <td class="value-cell">조회자</td>
+    </tr>
+    <tr>
+      <td class="label-cell">전화번호</td>
+      <td class="value-cell">010-9876-5432</td>
+      <td class="label-cell">접근가능계좌</td>
+      <td class="value-cell">110-987-654321</td>
+    </tr>
+  </table>
+
+  <!-- 거래내역설정 섹션 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래내역설정</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">거래유형</th>
+      <th colspan="2" class="sub-header">알림설정</th>
+    </tr>
+    <tr>
+      <td class="label-cell">송금 한도</td>
+      <td class="value-cell">10000000</td>
+      <td class="label-cell">SMS 알림 여부</td>
+      <

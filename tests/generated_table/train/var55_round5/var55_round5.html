@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>위험고지확인서</title>
+  <style>
+    body { 
+      font-family: 'Noto Sans KR', sans-serif; 
+      font-size: 11pt; 
+      color: #111; 
+      margin: 20px;
+      background: #fff;
+    }
+    h1 { 
+      text-align: center; 
+      font-size: 18pt; 
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    table { 
+      width: 100%; 
+      border: 1px solid #999; 
+      border-collapse: collapse; 
+      table-layout: fixed; 
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+    th { 
+      background: #999999; 
+      color: #fff; 
+      font-weight: bold; 
+      padding: 6px; 
+      text-align: center; 
+      border: 1px solid #999;
+      font-size: 10pt;
+    }
+    td { 
+      background: #f5f5f5; 
+      border: 1px solid #ddd; 
+      padding: 6px; 
+      text-align: left; 
+      vertical-align: top;
+      font-size: 10pt;
+    }
+    .section-header {
+      background: #888;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      font-size: 12pt;
+    }
+    .sub-header {
+      background: #aaa;
+      color: #333;
+      font-weight: bold;
+      text-align: center;
+      padding: 6px;
+      font-size: 11pt;
+    }
+    .label {
+      font-weight: bold;
+      text-align: right;
+      padding-right: 8px;
+      background: #eee;
+    }
+    .value {
+      background: #fafafa;
+      text-align: left;
+      padding-left: 8px;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .two-col {
+      width: 50%;
+    }
+    .three-col {
+      width: 33.33%;
+    }
+    .four-col {
+      width: 25%;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 -5px;
+    }
+    .col {
+      flex: 1;
+      min-width: 200px;
+      padding: 0 5px;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+    }
+    .section-title {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .section-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .field-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .field-label {
+      width: 150px;
+      font-weight: bold;
+      text-align: right;
+      padding-right: 10px;
+    }
+    .field-value {
+      flex: 1;
+      padding: 5px;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>위험고지확인서</h1>
+
+  <!-- 1. 개인정보 수집 및 이용 동의 -->
+  <div class="section">
+    <div class="section-title">개인정보 수집 및 이용 동의</div>
+    <div class="section-content">
+      <div class="field-row">
+        <div class="field-label">성명</div>
+        <div class="field-value">홍길동</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">생년월일</div>
+        <div class="field-value">1990-01-01</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">성별</div>
+        <div class="field-value">남성</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">휴대폰 번호</div>
+        <div class="field-value">010-1234-5678</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">이메일 주소</div>
+        <div class="field-value">user@example.com</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">주소</div>
+        <div class="field-value">서울시 강남구 테헤란로 123</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">개인정보 수집 목적</div>
+        <div class="field-value">투자 상담 및 계약 체결을 위한 정보 수집</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">제3자 제공 동의</div>
+        <div class="field-value">동의함</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">보유 및 이용 기간</div>
+        <div class="field-value">계약 종료 후 5년</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 위험 고지 사항 -->
+  <div class="section">
+    <div class="section-title">위험 고지 사항</div>
+    <div class="section-content">
+      <div class="field-row">
+        <div class="field-label">투자 원금 손실 가능성</div>
+        <div class="field-value">투자 원금이 손실될 수 있습니다.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">시장 변동성</div>
+        <div class="field-value">시장 상황에 따라 수익률이 변동될 수 있습니다.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">유동성 위험</div>
+        <div class="field-value">자금 회수가 어려울 수 있습니다.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">채권형 상품 위험</div>
+        <div class="field-value">이자 지급 지연 위험이 있습니다.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">주식형 상품 위험</div>
+        <div class="field-value">주가 변동에 따라 손실이 발생할 수 있습니다.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">파생상품 위험</div>
+        <div class="field-value">레버리지로 인한 손실 확대 위험이 있습니다.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">1등급 설명</div>
+        <div class="field-value">원금 보장형</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">1등급 적합성</div>
+        <div class="field-value">초보자 적합</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">2등급 설명</div>
+        <div class="field-value">소액 손실 가능성</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">2등급 적합성</div>
+        <div class="field-value">보통 투자자 적합</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 거래 내역 및 조건 -->
+  <div class="section">
+    <div class="section-title">거래 내역 및 조건</div>
+    <div class="section-content">
+      <div class="field-row">
+        <div class="field-label">상품명</div>
+        <div class="field-value">예: 안정형 투자 상품</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">투자 금액</div>
+        <div class="field-value">1000000</div>
+      </div>
+      <div class="field-row">
+        <div class="field-label">예상 수익률</div>
+        <div class="field-value">5.5%</div>
+      </div>
+      <div class="field-row">
+        <div

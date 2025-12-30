@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title */
+[data-id="b001"] h1 {
+  font-family: '맑은 고딕', Helvetica, Arial, sans-serif;
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Block b002: Paragraph */
+[data-id="b002"] p {
+  font-family: '맑은 고딕', Helvetica, Arial, sans-serif;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Block b003: List */
+[data-id="b003"] ul {
+  font-family: '맑은 고딕', Helvetica, Arial, sans-serif;
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  padding-left: 20px;
+  color: #333;
+}
+
+[data-id="b003"] li {
+  margin: 5px 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.36rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ccd0d8;
+  color: #162537;
+  font-family: "Noto Sans CJK KR", sans-serif;
+}
+
+
+.block {
+  margin-bottom: 22px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.25rem;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2193c3;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #38bdf8;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.2rem;
+}
+
+.block[data-class="equation"] {
+  font-family: "Noto Sans CJK KR", serif;
+  font-size: 1.2rem;
+  color: #37362e;
+  background: rgba(253, 224, 71, 0.15);
+  border-radius: 14px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #1a1f21;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #171919;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #fef9c3;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #38bdf8;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #f87171;
+  border: 1px dashed #f87171;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #1e2122;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #4c4d4f;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.45rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="127,74,254,98">
+<h1>Markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="127,173,872,242">
+<p>다수의 교정된 HST 데이터 제품은 이제 공통의 절대 참조 프레임에 맞춰져 있지만, 드리즐 팩(drizzlepac) 도구를 사용한 수동 재정렬을 통해 추가적인 개선이 가능할 수 있습니다. 특히, WCSNAME에 문자열 'FIT_SVM_GAIA'가 포함되지 않은 동일한 방문에서 획득된 노출의 경우 더욱 그렇습니다. 표준 드리즐 데이터 제품에 대해:</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="152,313,881,463">
+<ul>
+<li>동일한 방문에서 획득된 짧은 노출과 긴 노출은 Gaia와의 일치 수가 다르기 때문에 더 이상 정렬되지 않을 수 있습니다.</li>
+<li>동일한 방문에서 획득된 다른 필터(예: 좁은 대역 vs. 넓은 대역)의 노출은 서로 더 이상 정렬되지 않을 수 있습니다. 예를 들어, 각 필터가 Gaia와의 일치 수가 다르다면.</li>
+<li>또한, 그림 이미지는 이제 직접 이미지와의 오프셋이 생길 수 있으며, 그 중 후자만이 외부 참조 카탈로그에 정렬될 수 있습니다. 그림 이미지와 직접 이미지 간의 상대 정렬을 유지하려면, 사용자는 파이썬 노트북의 'Updated astrometry solutions 사용' 섹션 5에서 설명된 대로 업데이트된 WCS 솔루션을 완전히 되돌려야 할 수 있습니다.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

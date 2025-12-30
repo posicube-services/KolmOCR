@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Main Title */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1em 0;
+  padding: 0;
+  border-bottom: 1px solid #000;
+  color: #000;
+}
+
+/* Block b002: Section Title */
+[data-id="b002"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: #000;
+}
+
+/* Block b003: List of Publications */
+[data-id="b003"] ul {
+  margin: 0.5em 0 1em 0;
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+[data-id="b003"] li {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0.2em 0;
+  color: #000;
+}
+
+/* Block b004: Page Continuation */
+[data-id="b004"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  text-align: center;
+  margin: 1em 0;
+  color: #000;
+  font-style: italic;
+}
+
+/* Block b005: Table Title */
+[data-id="b005"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: #000;
+}
+
+/* Block b006: Table Styling */
+[data-id="b006"] .table-container {
+  overflow-x: auto;
+  margin: 1em 0;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+[data-id="b006"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+[data-id="b006"] .data-table th,
+[data-id="b006"] .data-table td {
+  border: 1px solid #000;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+[data-id="b006"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+[data-id="b006"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+[data-id="b006"] .data-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* General text styling for consistency */
+.document * {
+  color: #000;
+  line-height: 1.4;
+}
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.02rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  margin: 0;
+  background: #f0f2f5;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #0f172a;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.block[data-class="header"],
+.block[data-class="footer"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.1em;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid #94a3b8;
+  padding: 10px;
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #475569;
+  text-indent: -1.5em;
+  padding-left: 1.6em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.13rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="271,19,729,29">
+<h1>선택된 출판물 및 보고서 — 11페이지 이어짐</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="95,50,179,58">
+<h2>논문 및 장</h2>
+</div>
+<div class="block" data-class="reference" data-id="b003" data-bbox="122,76,902,293">
+<ul>
+<li>트로이 H.J. 안드라데, "하와이 '78: 집단 기억과 Kānaka Maoli를 위한 보상 조치의 미해결된 법적 역사" (24 University of Pennsylvania Journal of Law and Social Change 85, 2021)</li>
+<li>트로이 H.J. 안드라데, "E OLA KA 'ŌLELO HAWAII': 하와이어 보호와 Kānaka Maoli를 위한 평등" (6(1) Indigenous People's Journal of Law, Culture &amp; Resistance 3-52, 2020)</li>
+<li>사샤 도브 바흐만과 이케추쿠우 우구, "하디의 "공유지의 비극": 원주민 권리와 환경 보호: 원주민 권리 보호를 향한 신호 규범으로의 이동?" (6 Oil and Gas, Natural Resources and Energy Journal 547, 2021)</li>
+<li>베티 베이커, "Smart as SLIK: 중앙 북극해 어업 협정의 지식 기반 요구사항을 이행하기 위한 혁신적인 자문 기구" (Wilson Center, Polar Institute, Polar Perspectives No. 4, 2021)</li>
+<li>실바누스 바르나바스, "아프리카 원주민의 땅 권리 보호: 니гер리아 아부자 인디언족과 케냐 오기 에크 인디언족의 비교적 땅 권리" (African Journal of Legal Studies (forthcoming))</li>
+<li>아마르 바티아, "주권, 캐나다의 주권, 그리고 원주민 법적 관계의 내국화 시도" in Sujith Xavier et al (eds), Decolonizing Law: Indigenous, Third World and Settler Perspectives (Routledge, 2021)</li>
+<li>매기 블랙호크, "권력과 법에 관하여: McGirt v. Oklahoma" (Supreme Court Review, 2021)</li>
+<li>톨라 로페즈 카발레로, "구성 중인 인디겐리즘. 인디겐리즘 국제 연구소 초기 (1940-1946)의 감보 이터아메리카노와 현장 조사" (70:4 Historia Mexicana 1715–1764, 2021)</li>
+<li>크리스틴 카펜터와 알렉세이 초카레프, "원주민의 국제법에 미치는 영향" (115 AJIL Unbound 118-122, 2021)</li>
+<li>클레어 차터스, "형식주의와 공정성 사이의 달콤한 점: 원주민의 국제법에 대한 기여" (115 AJIL Unbound 123-128, 2021)</li>
+<li>앵젤리크 이글우먼, "미국과의 조약을 통한 영구적 본토: McGirt 판결 이후 족보국-미국 관계의 신뢰 회복" (47 Mitchell Hamline Law Review 640, 2021)</li>
+<li>툴리아 F. 팔레티, "정치학에서의 시각적 미사유: 변화하는 세계에서의 원주민 정치" (83(1) The Journal of Politics e5, 2021)</li>
+<li>조지 K. 포스터, "참여 원칙과 주권 공유의 논리" (44 Seattle University Law Review, 2021)</li>
+<li>키스티 고버, "원주민 권리가 국제적 국적법에 미칠 잠재적 영향" (115 AJIL Unbound 135-139, 2021)</li>
+<li>로저 해밀턴과 하워드 키실로비츠, "심사 기준과 원주민과의 상담 및 수용 의무: Vavilov의 영향은 무엇인가?" (59(1) Alberta Law Review, 2021)</li>
+<li>카를로리나 아세베도 데 라 하르페, "칠레의 원주민 권리의 포함: 아메리카 대륙의 헌법 제정 모델" (20:58 Polis 22-42, 2021)</li>
+<li>폴 스탠턴 키벨, "인류의 얼굴을 가진 내류 흐름: 삼문어와 어업을 위한 원주민의 물 권리" (35(3) Emory International Law Review 377-412, 2021)</li>
+<li>라우나 쿠오칸넨, "북극의 원주민 자치: 누나부트, 그린란드 및 사미의 범위와 정당성 평가" in Timo Koivurova et al (eds), Routledge Handbook of Indigenous Peoples in the Arctic (Routledge, 2021)</li>
+<li>말콤 라보와 모이라 (울스텐홀름) 라보, "원주민기관과 원주민 법의 원칙" (101 Supreme Court Law Review 325, 2021)</li>
+<li>베아트리스 데 알메이다 마토스, 브루노 페레이라, 카를리나 리베이로 산타나, 파브리시오 아모리모, 레오나르도 레닌, 루카스 크라보 데 울리베이라, "코로나19 팬데믹 기간 중에 고립된 원주민과 최근 접촉 원주민의 건강 권리 침해" (12:1 Mundo Amazônico 106-138, 2021)</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="439,312,561,318">
+<p>--- 13페이지 이어짐</p>
+</div>
+<div class="block" data-class="table_caption" data-id="b005" data-bbox="98,353,147,360">
+<h3>Table</h3>
+</div>
+<div class="block" data-class="table" data-id="b006" data-bbox="99,380,903,964">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Author(s)</th><th>Title</th><th>Journal/Journal Volume Issue Year</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>H.J. Truo, J. Andrade</td><td>"Hawai'i '78: Collective Memory and the Unresolved Legal History of Compensation for Kanaka Maoli"</td><td>24 University of Pennsylvania Journal of Law and Social Change 85 (2021)</td><td>-</td></tr>
+<tr><td>H.J. Truo</td><td>"E Ola Ka 'Ōlelo Hawai'i: Protecting Hawaiian Language and Kanaka Maoli"</td><td>6(1) Indigenous People's Journal of Law, Culture &amp; Resistance 3-52 (2020)</td><td>-</td></tr>
+<tr><td>Dov S. Babbitt and Ikechukwu Ugu</td><td>"The Ethics of 'Common Property': Indigenous Rights and Environmental Protection: A Shift from Indigenous Rights to an Environmental Regulation Framework?"</td><td>6 Oil and Gas, Natural Resources and Energy Journal 547 (2021)</td><td>-</td></tr>
+<tr><td>Betty Baker</td><td>"Smart as SLIK: Promoting Compliance with the Central Arctic Treaty Agreement on Indigenous Knowledge through Innovative Advisory Bodies"</td><td>Wilson Center, Polar Institute, Polar Perspectives No. 4 (2021)</td><td>-</td></tr>
+<tr><td>Silvanus Barnabas</td><td>"Indigenous Land Rights in Africa: Nigeria’s Fulani and Kenya’s Ogikwe Indigenous Peoples’ Comparative Land Rights"</td><td>African Journal of Legal Studies (forthcoming)</td><td>-</td></tr>
+<tr><td>Amar Batia</td><td>"Sovereignty, Canadian Sovereignty, and Indigenous Legal Relations in Canada"</td><td>In Sujith Xavier et al (eds), Decolonizing Law: Indigenous, Third World and Settler Perspectives (Routledge, 2021)</td><td>-</td></tr>
+<tr><td>Maggie Blackhawk</td><td>"Power and Law: McGirt v. Oklahoma"</td><td>Supreme Court Review (2021)</td><td>-</td></tr>
+<tr><td>Tolila Lopez Caballero</td><td>"The Making of Indigenous Jurisprudence: An Overview of the Indigenous Jurisprudence Research Institute (1940-1946) and its Impact on Indigenous American and Mexican Constitutional Law"</td><td>70:4 Historia Mexicana 1715–1764 (2021)</td><td>-</td></tr>
+<tr><td>Kristin Carpenter and Alexey Chokarev</td><td>"The Impact of International Law on Indigenous Peoples"</td><td>115 AJIL Unbound 118-122 (2021)</td><td>-</td></tr>
+<tr><td>Claire Charteris</td><td>"The Sweet Spot between Formalism and Fairness: Indigenous Peoples' Contributions to International Law"</td><td>115 AJIL Unbound 123-128 (2021)</td><td>-</td></tr>
+<tr><td>Angelique Eglumune</td><td>"The Treaty of Friendship and Cooperation: The Restoration of the United States-Mexican Relationship after the McGirt Decision"</td><td>47 Mitchell Hamline Law Review 640 (2021)</td><td>-</td></tr>
+<tr><td>Tulya F. Palletti</td><td>"Political Science from a Visionary Perspective: Indigenous Politics in a Changing World"</td><td>83(1) The Journal of Politics e5 (2021)</td><td>-</td></tr>
+<tr><td>George K. Foster</td><td>"Participation Principles and the Principle of Shared Sovereignty: A Critical Theory of Indigenous Self-Determination"</td><td>44 Seattle University Law Review (2021)</td><td>-</td></tr>
+<tr><td>Kirsty Gober</td><td>"The Potential Impacts of Indigenous Rights on International Citizenship Law"</td><td>115 AJIL Unbound 135-139 (2021)</td><td>-</td></tr>
+<tr><td>Roger Hamilton and Howard Kisilovich</td><td>"The Standards of Scrutiny and Consultation and Accommodation Obligations under Indigenous Law: The Vavilov Case and Beyond"</td><td>59(1) Alberta Law Review (2021)</td><td>-</td></tr>
+<tr><td>Carolina Acevedo de La Harpe</td><td>"Indigenous Rights in Chile: The Constitution of the Americas"</td><td>20:58 Polis 22-42 (2021)</td><td>-</td></tr>
+<tr><td>Paul Statten Kibel</td><td>"Human Faces in the Flow of Rivers: Indigenous Water Rights for Fishing and Hunting"</td><td>35(3) Emory International Law Review 377-412 (2021)</td><td>-</td></tr>
+<tr><td>Laurana Kuokkanen</td><td>"Inuit Autonomy in the Arctic: The Scope and Justification of Inuit Rights"</td><td>In Timo Koivurova et al (eds), Routledge Handbook of Indigenous Peoples in the Arctic (Routledge, 2021)</td><td>-</td></tr>
+<tr><td>Malcolm Rabor and Maira (Wstenholm) Rabor</td><td>"The Institutions and Principles of Indigenous Law"</td><td>101 Supreme Court Law Review 325 (2021)</td><td>-</td></tr>
+<tr><td>Beatriz de Almeida Matos, Bruno Pereira, Carlina Reiberio Santana, Fabrício Amorim, Leonardo Leinn, Lucas Cravo de Oliveira, "Isolation of Indigenous People and Recent Contact Indigenous People’s Health Rights during the COVID-19 Pandemic"</td><td>12:1 Mundo Amazônico 106-138 (2021)</td><td>-</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

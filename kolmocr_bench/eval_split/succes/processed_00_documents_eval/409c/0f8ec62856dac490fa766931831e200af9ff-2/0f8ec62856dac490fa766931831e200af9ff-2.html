@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 1em 0;
+  text-align: left;
+  line-height: 1.3;
+}
+
+[data-id="b002"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  margin: 0 0 1em 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+[data-id="b003"] h2,
+[data-id="b007"] h2,
+[data-id="b011"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #222;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
+}
+
+[data-id="b004"] p,
+[data-id="b006"] p,
+[data-id="b008"] p,
+[data-id="b010"] p,
+[data-id="b012"] p,
+[data-id="b014"] p {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.6;
+  margin: 0.5em 0;
+  text-align: justify;
+  color: #333;
+}
+
+[data-id="b005"] ol,
+[data-id="b009"] ul,
+[data-id="b013"] ol,
+[data-id="b015"] ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+  list-style-type: decimal;
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.6;
+}
+
+[data-id="b009"] ul {
+  list-style-type: disc;
+}
+
+[data-id="b005"] li,
+[data-id="b009"] li,
+[data-id="b013"] li,
+[data-id="b015"] li {
+  margin: 0.3em 0;
+  color: #333;
+}
+
+/* Ensure consistent spacing and alignment */
+.document p {
+  text-align: justify;
+  margin: 0.5em 0;
+}
+
+.document ol,
+.document ul {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+/* Remove default spacing for block elements */
+.block {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure no extra spacing around headings */
+h1, h2 {
+  margin: 0;
+}
+
+/* Fix for line breaks in author list */
+[data-id="b002"] br {
+  display: block;
+  margin: 0.5em 0;
+}
+
+/* Ensure consistent font for all text */
+.document * {
+  font-family: '맑은 고딕', serif;
+  color: #333;
+}
+
+/* Ensure no extra padding/margin on body */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: var(--body-font-size);
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.18rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #ccc !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f7f7f4;
+  color: #1c1c1c;
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+}
+
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.block[data-class="title"] {
+  font-family: "맑은 고딕", serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+
+.block[data-class^="section_title"] {
+  font-family: "나눔명조", serif;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.block[data-class="author"] {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  text-indent: -1.4em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 3px solid #10b981;
+  padding-left: 16px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1c1c1c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2f2f2f;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.49rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="95,34,892,139">
+<h1>에너지 효율성과 "트리플 20" 유럽 정책: 프랑스 사례에서 얻은 교훈</h1>
+</div>
+<div class="block" data-class="author" data-id="b002" data-bbox="95,166,905,259">
+<p><strong>Nadia Maizi</strong>, Centre for Applied Mathematics, Mines Paris/ParisTech, France, nadia.maizi@ensmp.fr<br/><br/>
+<strong>Edi Assoumou</strong>, Centre for Applied Mathematics, Mines Paris/ParisTech, France, edi.assoumou@ensmp.fr<br/><br/>
+<strong>Vincent Mazauric</strong>, Schneider Electric and Centre for Applied Mathematics, Mines Paris/ParisTech, France, vincent.mazauric@schneider-electric.com</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b003" data-bbox="95,278,136,291">
+<h2>개요</h2>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="95,314,905,362">
+<p>유럽 연합의 기후 보호에 대한 주요 목표는 최근에 수준 대비 2020년까지 최소 20%의 온실가스(GHG) 배출 감축을 달성하는 독립적이고 확고한 약속으로 명시되었습니다. 2020년 목표를 달성하기 위해, 유럽理事会(2007년 3월 8일~9일)는 "에너지 효율성과 재생 에너지의 실질적인 발전이 GHG 배출을 줄일 것"이라는 자 신감을 표명했습니다. 더 구체적으로, 다음과 같은 특정 추가 권고 사항이 제시되었습니다:</p>
+</div>
+<div class="block" data-class="quotation" data-id="b005" data-bbox="119,380,893,418">
+<ol>
+<li>"EU의 에너지 효율성을 높여 2020년 예측치 대비 EU의 에너지 소비를 20% 절감하는 목표를 달성해야 한다는 필요성을 강조한다."</li>
+<li>"2020년까지 전체 EU 에너지 소비의 20%를 재생 에너지로 구성하는 의무적 목표를 설정한다."</li>
+</ol>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="95,436,905,509">
+<p>본 논문은 프랑스 사례에서 GHG 감축을 위한 레버리지로서 발표된 에너지 효율성 목표(즉, 에너지 소비 절감으로 해석됨)의 관련성을 검토합니다. 우리는 2020년까지 20%의 CO2 배출 감축과 함께, 일차 및 최종 에너지 소비 절감의 영향을 조사합니다. 이를 위해 프랑스를 대상으로 Markal/Times 모델링 도구를 사용한 장기 계획 작업을 수행했습니다. 결과는 에너지 소비 절감이 미래의 에너지 혼합에 미치는 영향을 보여줍니다. 이를 "프랑스 모델" 프레임워크에서 논의하며, 이 모델은 전 세계에서 가장 높은 핵융합 에너지 비율에 의존하게 만든 독특한 에너지 정책을 기반으로 합니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="95,528,136,541">
+<h2>방법</h2>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="95,564,905,624">
+<p>본 논문의 주요 주제를 다루기 위해, 우리는 Markal/Times 겹근법 [1], [2]를 기반으로 한 하향식 프랑스 모델을 사용합니다. 다양한 연습은 50년 기간(2000~2050)에 걸쳐 "창조" 저탄소 사회 시나리오(수요 관리에 대한 기본 가정 포함 [6])를 기반으로 평가되었습니다. 에너지 시스템은 수평선에 걸쳐 요구되는 수요를 충족해야 하며, CO2 배출 수준에 대한 계약을 충족해야 합니다. 즉, 1990년 수준 대비 2020년까지 20%의 배출 감축이 요구됩니다. 대안 시나리오는 두 가지 다른 상황을 묘사합니다:</p>
+</div>
+<div class="block" data-class="quotation" data-id="b009" data-bbox="119,642,575,668">
+<ul>
+<li>2020년까지 일차 소비 감소로 정의된 에너지 효율성 향상: 20%</li>
+<li>2020년까지 최종 소비 감소로 정의된 에너지 효율성 향상: 20%</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="95,686,905,709">
+<p>결과는 2000~2050년 기간 동안 프랑스의 CO2 배출 변화, 재생 에너지 수준, 기술 및 부문별 일차 및 최종 에너지 소비에 미치는 에너지 절감의 영향을 보여줍니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b011" data-bbox="95,728,136,741">
+<h2>결과</h2>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="95,763,905,824">
+<p>2020년까지 20%의 CO2 감축 목표를 포함하는 참조 저탄소 시나리오를 기반으로, 이전의 두 가지 에너지 소비 절감 대안 시나리오를 평가했습니다. 우리는 일차 소비 계약이 핵융합 에너지에서 가스와 바이오매스로의 전환을 유도한다는 것을 관찰했습니다. 이는 도표 1에서 보여지며, 참조 시나리오와 일차 에너지 소비 절감 시나리오의 부문별 일차 소비 결과가 제공됩니다. 따라서, 일차 소비 계약은 제로 CO2 배출 기술(주로 핵융합 전력)에 불리한 영향을 미칩니다. 두 막대 그래프에서 부문은 다음과 같은 순서와 색상으로 나열됩니다:</p>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="119,842,574,852">
+<ol>
+<li>농업, 산업/주거, 산업, 운송, 발전, 열 및 전력, 에너지, 비에너지</li>
+</ol>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="95,871,905,906">
+<p>도표 1에서, 최종 에너지 소비 계약이 재생 에너지에 불리한 영향을 미칩니다. 예를 들어, 주거 부문에서 기술별 유용 열 에너지에 초점을 맞추면, 최종 에너지를 20% 줄이는 것은 바이오매스에서 가스로의 전환을 의미합니다. 일반적으로, 결과는 혼합에서 효율성이 낮은 재생 에너지원의 퇴출을 확인합니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b015" data-bbox="119,924,900,947">
+<ol>
+<li>일차 에너지는 추출된 에너지, 최종 에너지는 상업적 목적으로 적합한 형태로 생산된 에너지, 그리고 유용 에너지는 최신 기술을 고려할 때 실제로 필요한 에너지로 정의되어야 한다고 명시되어야 합니다.</li>
+</ol>
+</div>
+</div>
+</body>
+</html>

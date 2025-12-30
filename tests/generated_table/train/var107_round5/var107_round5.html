@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>납세증명서발급신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #fff;
+      color: #000;
+      margin: 20px;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      word-break: break-all;
+      margin-bottom: 20px;
+      border: 1px solid #999;
+    }
+    th, td {
+      padding: 8px 6px;
+      border: 1px solid #999;
+      text-align: center;
+      vertical-align: middle;
+    }
+    th {
+      font-weight: bold;
+      background: #e0e0e0;
+      color: #000;
+    }
+    td {
+      background: #fff;
+      text-align: right;
+    }
+    .section-header {
+      background: #e0e0e0;
+      text-align: center;
+      font-weight: bold;
+      padding: 8px;
+      border: 1px solid #999;
+    }
+    .sub-header {
+      background: #f0f0f0;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      border: 1px solid #999;
+    }
+    .data-cell {
+      text-align: right;
+      padding: 6px;
+      border: 1px solid #ccc;
+    }
+    .label-cell {
+      text-align: left;
+      padding: 6px;
+      border: 1px solid #ccc;
+      font-weight: normal;
+      background: #fff;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .two-col {
+      width: 50%;
+    }
+    .three-col {
+      width: 33.33%;
+    }
+    .four-col {
+      width: 25%;
+    }
+    .dashed-bottom {
+      border-bottom: 1px dashed #ccc;
+    }
+    .bold {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>납세증명서발급신청서</h1>
+
+  <!-- 신청인 기본정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">신청인 기본정보</th></tr>
+    <tr><th colspan="4" class="sub-header">개인정보</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">성명 및 주민등록번호</th>
+      <th colspan="2" class="sub-header">연락처 및 주소</th>
+    </tr>
+    <tr>
+      <td class="label-cell">신청인 성명</td>
+      <td class="data-cell">홍길동</td>
+      <td class="label-cell">휴대전화번호</td>
+      <td class="data-cell">010-1234-5678</td>
+    </tr>
+    <tr>
+      <td class="label-cell">주민등록번호</td>
+      <td class="data-cell">900101-1234567</td>
+      <td class="label-cell">이메일 주소</td>
+      <td class="data-cell">user@example.com</td>
+    </tr>
+    <tr>
+      <td class="label-cell">거주지 주소</td>
+      <td class="data-cell">서울시 강남구 테헤란로 123</td>
+      <td class="label-cell">법인명</td>
+      <td class="data-cell">주식회사 테크솔루션</td>
+    </tr>
+    <tr>
+      <td class="label-cell">사업자등록번호</td>
+      <td class="data-cell">123-45-67890</td>
+      <td class="label-cell">대표자 성명</td>
+      <td class="data-cell">김대표</td>
+    </tr>
+    <tr>
+      <td class="label-cell">담당자 연락처</td>
+      <td class="data-cell">02-1234-5678</td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+
+  <!-- 발급 요청 정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">발급 요청 정보</th></tr>
+    <tr><th colspan="4" class="sub-header">증명서 유형</th></tr>
+    <tr>
+      <td class="label-cell">증명서 종류</td>
+      <td class="data-cell">소득세 납세증명서</td>
+      <td class="label-cell">과세연도</td>
+      <td class="data-cell">2023</td>
+    </tr>
+    <tr>
+      <td class="label-cell">발급 목적</td>
+      <td class="data-cell">은행 대출 심사용</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">발급 범위</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">세목별 내역</th>
+      <th colspan="2" class="sub-header">기간 설정</th>
+    </tr>
+    <tr>
+      <td class="label-cell">소득세 금액</td>
+      <td class="data-cell">5000000</td>
+      <td class="label-cell">시작일</td>
+      <td class="data-cell">2023-01-01</td>
+    </tr>
+    <tr>
+      <td class="label-cell">부가가치세 금액</td>
+      <td class="data-cell">3000000</td>
+      <td class="label-cell">종료일</td>
+      <td class="data-cell">2023-12-31</td>
+    </tr>
+    <tr>
+      <td class="label-cell">재산세 금액</td>
+      <td class="data-cell">1500000</td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+
+  <!-- 거래 내역 및 첨부서류 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래 내역 및 첨부서류</th></tr>
+    <tr><th colspan="4" class="sub-header">관련 거래 목록</th></tr>
+    <tr>
+      <th>거래일자</th>
+      <th>거래처명</th>
+      <th>금액</th>
+      <th>비고</th>
+    </tr>
+    <tr>
+      <td class="data-cell">2023-03-15</td>
+      <td class="data-cell">(주)테크놀로지</td>
+      <td class="data-cell">10,000,000원</td>
+      <td class="data-cell">계약금</td>
+    </tr>
+    <tr>
+      <td class="data-cell"></td>
+      <td class="data-cell"></td>
+      <td class="data-cell"></td>
+      <td class="data-cell"></td>
+    </tr>
+    <tr>
+      <td class="data-cell"></td>
+      <td class="data-cell"></td>
+      <td class="data-cell"></td>
+      <td class="data-cell"></td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">첨부서류 목록</th></tr>
+    <tr>
+      <td class="label-cell">첨부서류명</td>
+      <td colspan="3" class="data-cell">사업자등록증 사본, 대표자 신분증</td>
+    </tr>
+    <tr>
+      <td class="label-cell">첨부서류 수</td>
+      <td colspan="3" class="data-cell">2</td>
+    </tr>
+  </table>
+
+  <!-- 동의 및 서명 -->
+  <table>
+    <tr><th colspan="4" class="section-header">동의 및 서명</th></tr>
+    <tr><th colspan="4" class="sub-header">개인정보 수집 동의</th></tr>
+    <tr>
+      <td class="label-cell">개인정보 수집 동의</td>
+      <td class="data-cell">동의함</td>
+      <td class="label-cell">동의일자</td>
+      <td class="data-cell">2024-06-01</td>
+    </

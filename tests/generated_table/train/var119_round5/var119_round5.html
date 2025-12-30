@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1 { 
+            text-align: center; 
+            font-family: 'Malgun Gothic', Arial, sans-serif;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        table { 
+            width: 100%; 
+            border: 2px solid #444; 
+            border-collapse: collapse; 
+            table-layout: fixed; 
+            word-break: break-all;
+            font-family: 'Malgun Gothic', Arial, sans-serif;
+            font-size: 14px;
+        }
+        th { 
+            background: #666666; 
+            color: #fff; 
+            padding: 8px; 
+            font-weight: bold; 
+            text-align: center; 
+            border: 1px solid #999; 
+            vertical-align: middle;
+        }
+        td { 
+            background: #e0e0e0; 
+            border: 1px solid #666; 
+            padding: 8px; 
+            text-align: left; 
+            vertical-align: middle;
+        }
+        header { 
+            border-bottom: 2px solid #444; 
+            padding-bottom: 8px; 
+            margin-bottom: 15px;
+        }
+        .section-header {
+            background: #666666;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px;
+            border: 1px solid #999;
+        }
+        .sub-header {
+            background: #777777;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 6px;
+            border: 1px solid #999;
+        }
+        .data-cell {
+            text-align: left;
+            background: #f0f0f0;
+            padding: 6px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Public Finance Report</h1>
+    </header>
+
+    <!-- 섹션 1: 신청자 기본정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">신청자 기본정보</th></tr>
+        <tr><th colspan="4" class="sub-header">개인정보</th></tr>
+        <tr><th colspan="4" class="sub-header">신분증 정보</th></tr>
+        <tr>
+            <th>신분증 종류</th>
+            <td class="data-cell">주민등록증</td>
+            <th>신분증 번호</th>
+            <td class="data-cell">900101-1234567</td>
+        </tr>
+        <tr>
+            <th>발급일자</th>
+            <td class="data-cell">2020-05-15</td>
+            <th></th>
+            <td class="data-cell"></td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">연락처 정보</th></tr>
+        <tr>
+            <th>휴대폰 번호</th>
+            <td class="data-cell">010-1234-5678</td>
+            <th>이메일 주소</th>
+            <td class="data-cell">user@example.com</td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td class="data-cell" colspan="3">서울시 강남구 테헤란로 123</td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">계좌정보</th></tr>
+        <tr>
+            <th>은행명</th>
+            <td class="data-cell">국민은행</td>
+            <th>계좌번호</th>
+            <td class="data-cell">123-456-789012</td>
+        </tr>
+        <tr>
+            <th>예금주명</th>
+            <td class="data-cell">홍길동</td>
+            <th></th>
+            <td class="data-cell"></td>
+        </tr>
+    </table>
+
+    <!-- 섹션 2: 전자서명 설정 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">전자서명 설정 정보</th></tr>
+        <tr><th colspan="4" class="sub-header">서명방식</th></tr>
+        <tr>
+            <th>비밀번호 방식</th>
+            <td class="data-cell">123456</td>
+            <th>생체인식 방식</th>
+            <td class="data-cell">지문인식</td>
+        </tr>
+        <tr>
+            <th>OTP 방식</th>
+            <td class="data-cell">789012</td>
+            <th></th>
+            <td class="data-cell"></td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">서명용 인증서</th></tr>
+        <tr>
+            <th>인증서 발급기관</th>
+            <td class="data-cell">공인인증기관</td>
+            <th>인증서 유효기간</th>
+            <td class="data-cell">2025-12-31</td>
+        </tr>
+        <tr>
+            <th>인증서 시리얼번호</th>
+            <td class="data-cell">CERT-2024-0001</td>
+            <th></th>
+            <td class="data-cell"></td>
+        </tr>
+    </table>
+
+    <!-- 섹션 3: 동의 및 서명란 -->
+    <table>
+        <tr><th colspan="4" class="section-header">동의 및 서명란</th></tr>
+        <tr><th colspan="4" class="sub-header">이용약관 동의</th></tr>
+        <tr>
+            <th>개인정보 수집 및 이용 동의</th>
+            <td class="data-cell">동의</td>
+            <th>전자서명 동의</th>
+            <td class="data-cell">동의</td>
+        </tr>
+        <tr>
+            <th>제3자 제공 동의</th>
+            <td class="data-cell">동의</td>
+            <th></th>
+            <td class="data-cell"></td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">서명란</th></tr>
+        <tr>
+            <th>전자서명 이미지</th>
+            <td class="data-cell">data:image/png;base64,...</td>
+            <th>서명일자</th>
+            <td class="data-cell">2024-06-01</td>
+        </tr>
+        <tr>
+            <th>서명자 명</th>
+            <td class="data-cell">홍길동</td>
+            <th></th>
+            <td class="data-cell"></td>
+        </tr>
+    </table>
+
+    <!-- 섹션 4: 첨부파일 목록 -->
+    <table>
+        <tr><th colspan="4" class="section-header">첨부파일 목록</th></tr>
+        <tr>
+            <th>신분증 사본</th>
+            <td class="data-cell">업로드됨</td>
+            <th>계좌확인서</th>
+            <td class="data-cell">업로드됨</td>
+        </tr>
+        <tr>
+            <th>서명용 인증서 파일</th>
+            <td class="data-cell">업로드됨</td>
+            <th></th>
+            <td class="data-cell"></td>
+        </tr>
+    </table>
+
+    <!-- 섹션 5: 거래내역 요약 -->
+    <table>
+        <tr><th colspan="4" class="section-header">거래내역 요약</th></tr>
+        <tr><th colspan="4" class="sub-header">최근 거래 목록</th></tr>
+        <tr>
+            <th>거래일자</th>
+            <th>거래금액</th>
+            <th>거래유형</th>
+            <th>상대방</th>
+        </tr>
+        <tr>
+            <td class="data-cell">2024-05-01</td>
+            <td class="data-cell">1,500,000</td>
+            <td class="data-cell">입금</td>
+            <td class="data-cell">김철수</td>
+        </tr>
+        <tr>
+            <td class="data-cell">2024-05-15</td>
+            <td class="data-cell">500,000</td>
+            <td class="data-cell">출금</

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h2 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #003366;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.block[data-id="b002"] h3,
+.block[data-id="b007"] h3 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #003366;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b005"] p,
+.block[data-id="b006"] p,
+.block[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  margin: 10px 0;
+  text-align: justify;
+  color: #333;
+}
+
+.block[data-id="b006"] h3 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #003366;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 5px;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Ensure no extra margin on first block */
+.block:first-child {
+  margin-top: 0;
+}
+
+/* Ensure no extra margin on last block */
+.block:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.20rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #161b22;
+  color: #346bd7;
+  font-family: "Noto Sans CJK KR", sans-serif;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #38383b;
+}
+
+.block[data-class="title"] {
+  font-size: 1.9rem;
+  letter-spacing: 0.25rem;
+  color: #091e87;
+}
+
+.block[data-class="subtitle"] {
+  color: #0d62c3;
+  font-size: 1.2rem;
+}
+
+.block[data-class="header"] {
+  font-size: 0.8rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  border: 1px solid rgba(14, 71, 163, 0.45);
+  padding: 12px;
+  background: rgba(9, 65, 154, 0.404);
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.0rem;
+  color: #93c5fd;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.0rem;
+  color: #93c5fd;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.0rem;
+  color: #2e2503;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #93c5fd;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #f87171;
+  border: 1px dashed #f87171;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #bbf7d0;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #2b406b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #313755;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #527092;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #527092;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.26rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="104,54,394,78">
+<h2>UN 및 조약 기구의 권고사항</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="104,104,270,124">
+<h3>인권위원회 (HRC)</h3>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,148,905,181">
+<p>인권위원회는 2021년 3월 1일부터 26일까지 열린 제131차 (가상) 회의에서 핀란드의 제7차 기획보고서 (CCPR/C/FIN/7) 및 케냐의 제4차 기획보고서 (CCPR/C/KEN/4)에 대한 종결 의견을 채택했습니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,199,905,354">
+<p>핀란드의 조치를 인정하면서도, "사미인의 권리 증진을 위한 노력, 특히 진실과 화해 위원회 설립이 진행중"이라는 점을 인정했지만, HRC는 "사미의회법, 특히 사미의 정의를 규정하는 제3조 및 사미의회와의 협상이 사미가 원주민으로서의 지위에 영향을 미칠 수 있는 중요한 조치에 있어 의무를 규정하는 제9조가 사미인의 자결권을 보장하는 방향으로 개정되지 않았다"는 점에 대해 우려를 표명했습니다. HRC는 "2019년 7월 5일 최고행정법원의 결정과 2019년 9월 사미의회 선거를 취소하거나 연기하지 않은 정부의 결정이 위원회가 사미에 대해 채택한 견해와 모순된다는 점"을 지적했습니다. 또한, HRC는 "사미 문화와 전통적 생계에 미칠 영향을 평가하는 모호한 기준으로 인해 당국이 자유롭고 사전에 충분한 정보를 제공받은 동의를 얻기 위한 의미 있는 상담에 참여하지 못한 보고"에 대해 우려를 표명했습니다. 위원회는 또한 "국가 당사자가 국제노동기구 1989년 원주민 및 원시민족 협약 (No. 169) (제1조, 제25조 및 제27조)을 체결하지 않은 점"을 지적했습니다 (CCPR/C/FIN/7 para 42).</p>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,372,905,439">
+<p>HRC는 핀란드에 대해 "(a) 사미의회법, 특히 사미의 정의를 규정하는 제3조 및 자유롭고 사전에 충분한 정보를 제공받은 동의의 원칙을 규정하는 제9조를 개정하는 과정을 가속화하여 사미인의 자결권을 존중할 수 있도록 하라" "(b) 사미인의 권리 및 이익에 영향을 미칠 수 있는 활동을 규제하는 기존 법률, 정책 및 관행을 검토하라" "(c) 국제노동기구 1989년 원주민 및 원시민족 협약 (No. 169)을 체결하도록 고려하라" 등 여</p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,458,903,767">
+<h3>케냐에 대해, HRC는 "강제적이고 때로는 폭력적인 추방이 계속되는 보고, 특히 숲 지역의 원주민 인구에 대한 것, (...) 적절한 통보와 영향을 받는 사람들의 사전에 의미 있는 상담을 포함한 절차적 요건을 충분히 고려하지 않은 점"에 대해 우려를 표명했습니다 (CCPR/C/KEN/4 para 40). 또한, HRC는 국내법에서 원주민 권리에 대한 특정 보호가 부족한 점과 일반적인 토지 권리 관련 법령의 천천히 그리고 부족한 실행에 대해 우려를 표명했습니다 (CCPR/C/KEN/4 para 50). HRC는 케냐에 대해 "(a) 원주민 권리에 대한 특정 보호를 확대하기 위한 정확한 전담 법령을 제정하라" "(b) 원주민의 강제 추방에 대한 방어를 강화하고, 원주민 공동체가 전통적으로 사용, 점유 또는 소유한 땅에서 개발 또는 기타 활동이 이루어지기 전에 자유롭고 사전에 충분한 정보를 제공받은 동의의 원칙이 일반되게 및 효과적으로 적용되도록 하라"는 권리를 제시했습니다. 또한, HRC는 "(d) 아프리카 인권 및 민족권 법원의 결정에 따라 오기크 마우 공동체의 권리를 보장하기 위해 정부에 자문하는 태스크포스의 권고를 지연 없이 공표하고, 법원의 결정을 이행하라" 등 여러 권고사항을 제시했습니다 (CCPR/C/KEN/4 para 51).</h3>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="104,791,381,812">
+<h3>여성차별철폐위원회 (CEDAW)</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,836,905,938">
+<p>2021년 6월 24일, 여성차별철폐위원회 (CEDAW)는 제79차 회의에서 원주민 여성과 소녀의 권리를 검토하기 위해 온라인으로 일반토의의 날을 개최했습니다. 다양한 주제 중에서, 위원회는 원주민 여성과 소녀가 경험하는 다양한 형태의 차별에 대해 논의했습니다. 이들은 교육, 의료, 조상의 땅에 대한 접근 부족, 그리고 비율적으로 높은 빈곤율을 경험하며, 성별 기반 폭력과 성적 학대의 피해자로 될 가능성이 높습니다. 토의의 날은 두 세션으로 구성되었습니다 (세션 1 - 원주민 여성과 소녀 및 교차적 차별 형태에 초점을 맞춘 평등과 차별금지; 세션 2 - 원주민 여성과 소녀의 정치 및 공공 생활에서의 효과적인 참여, 상담 및 동의). 위원회 위원들은</p>
+</div>
+</div>
+</body>
+</html>

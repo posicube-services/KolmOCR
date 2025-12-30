@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>전자금융서비스해지신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 12pt;
+      margin: 20mm;
+      line-height: 1.4;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18pt;
+      margin: 10px 0 5px 0;
+      font-weight: bold;
+    }
+    header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .doc-number {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 10pt;
+      color: #444;
+    }
+    table {
+      border: 1px solid #000;
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      margin-bottom: 15px;
+      font-size: 11pt;
+    }
+    th {
+      background: #4d4d4d;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #999;
+      padding: 6px 4px;
+      vertical-align: middle;
+      font-size: 11pt;
+    }
+    td {
+      background: #f5f5f5;
+      height: 26px;
+      text-align: left;
+      padding: 6px 8px;
+      border: 1px solid #999;
+      vertical-align: middle;
+      font-size: 11pt;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .seal {
+      color: #b00;
+      font-weight: bold;
+      border: 2px solid #b00;
+      padding: 4px 8px;
+      display: inline-block;
+      font-size: 11pt;
+      margin-top: 10px;
+    }
+    .section-header {
+      background: #555;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      font-size: 12pt;
+      border: 1px solid #333;
+    }
+    .sub-header {
+      background: #666;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 5px;
+      font-size: 11pt;
+      border: 1px solid #444;
+    }
+    .label {
+      font-weight: bold;
+      text-align: right;
+      background: #666;
+      color: #fff;
+      padding: 5px 8px;
+      border: 1px solid #444;
+    }
+    .value {
+      text-align: left;
+      padding: 5px 8px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    .multi-row {
+      vertical-align: top;
+    }
+    .no-border {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>전자금융서비스해지신청서</h1>
+    <div class="doc-number">문서번호: EF-2024-001</div>
+  </header>
+
+  <!-- 개인정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">개인정보</th></tr>
+    <tr><th colspan="4" class="sub-header">기본정보</th></tr>
+    <tr><th colspan="4" class="sub-header">신분확인</th></tr>
+    <tr>
+      <td class="label">주민등록번호</td>
+      <td class="value">900101-1234567</td>
+      <td class="label">성명</td>
+      <td class="value">홍길동</td>
+    </tr>
+    <tr>
+      <td class="label">생년월일</td>
+      <td class="value">1990-01-01</td>
+      <td class="label"></td>
+      <td class="value"></td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">연락처</th></tr>
+    <tr>
+      <td class="label">휴대폰번호</td>
+      <td class="value">010-1234-5678</td>
+      <td class="label">이메일</td>
+      <td class="value">user@example.com</td>
+    </tr>
+    <tr>
+      <td class="label">주소</td>
+      <td class="value" colspan="3">서울시 강남구 테헤란로 123</td>
+    </tr>
+  </table>
+
+  <!-- 계좌정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+    <tr><th colspan="4" class="sub-header">해지계좌목록</th></tr>
+    <tr><th colspan="4" class="sub-header">계좌테이블</th></tr>
+    <tr>
+      <td class="label">계좌번호</td>
+      <td class="value">123-456-789012</td>
+      <td class="label">은행명</td>
+      <td class="value">국민은행</td>
+    </tr>
+    <tr>
+      <td class="label">계좌종류</td>
+      <td class="value">예금계좌</td>
+      <td class="label">잔액</td>
+      <td class="value">1500000</td>
+    </tr>
+    <tr>
+      <td class="label">계좌번호</td>
+      <td class="value">987-654-321098</td>
+      <td class="label">은행명</td>
+      <td class="value">신한은행</td>
+    </tr>
+    <tr>
+      <td class="label">계좌종류</td>
+      <td class="value">적금계좌</td>
+      <td class="label">잔액</td>
+      <td class="value">3000000</td>
+    </tr>
+    <tr>
+      <td class="label">계좌번호</td>
+      <td class="value">456-789-012345</td>
+      <td class="label">은행명</td>
+      <td class="value">하나은행</td>
+    </tr>
+    <tr>
+      <td class="label">계좌종류</td>
+      <td class="value">체크카드계좌</td>
+      <td class="label">잔액</td>
+      <td class="value">850000</td>
+    </tr>
+    <tr><th colspan="4" class="sub-header">계좌해지방법</th></tr>
+    <tr>
+      <td class="label">잔액처리방법</td>
+      <td class="value">계좌이체</td>
+      <td class="label">환불계좌지정</td>
+      <td class="value">123-456-789012</td>
+    </tr>
+  </table>
+
+  <!-- 거래내역 -->
+  <table>
+    <tr><th colspan="4" class="section-header">거래내역</th></tr>
+    <tr><th colspan="4" class="sub-header">최근거래조회</th></tr>
+    <tr><th colspan="4" class="sub-header">거래내역테이블</th></tr>
+    <tr>
+      <td class="label">거래일시</td>
+      <td class="value">2024-06-01 14:30:00</td>
+      <td class="label">거래금액</td>
+      <td class="value">50000</td>
+    </tr>
+    <tr>
+      <td class="label">거래구분</td>
+      <td class="value">입금</td>
+      <td class="label">상대계좌</td>
+      <td class="value">987-654-321098</td>
+    </tr>
+    <tr>
+      <td class="label">거래일시</td>
+      <td class="value">2024-05-28 09:15:00</td>
+      <td class="label">거래금액</td>
+      <td class="value">120000</td>
+    </tr>
+    <tr>
+      <td class="label

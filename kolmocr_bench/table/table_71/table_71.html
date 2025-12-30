@@ -1,264 +1,620 @@
 <!DOCTYPE html>
-<html lang="ko">
+
+<html>
 <head>
-<meta charset="UTF-8">
-<title>연대보증서</title>
-
+<meta charset="utf-8"/>
+<title>Document</title>
 <style>
-    /* =============================
-       기본 문서 스타일
-    ============================= */
-    body {
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 10.5pt;
-        margin: 18mm;
-        background: #ffffff;
-        color: #222;
-        line-height: 1.55;
-    }
 
-    h1 {
-        text-align: center;
-        font-size: 20pt;
-        font-weight: 700;
-        margin-bottom: 20px;
-        padding-bottom: 12px;
-        color: #333;
-        border-bottom: 2px solid #666;
-    }
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
 
-    /* =============================
-       테이블 공통 설정
-    ============================= */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed;
-        margin-bottom: 20px;
-    }
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
 
-    th {
-        background: #4b4b4b;
-        color: #fff;
-        font-weight: 600;
-        padding: 8px;
-        border: 1px solid #5a5a5a;
-        text-align: center;
-        font-size: 11pt;
-    }
 
-    td {
-        background: #fafafa;
-        border: 1px solid #d0d0d0;
-        padding: 8px;
-        font-size: 10.5pt;
-        vertical-align: middle;
-    }
 
-    /* =============================
-       라벨 / 값 정렬 규칙
-    ============================= */
-    .label {
-        background: #e5e5e5;
-        font-weight: 600;
-        text-align: center;
-        color: #333;
-        vertical-align: middle;
-    }
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
 
-    .value {
-        background: #ffffff;
-        text-align: left;
-        color: #111;
-    }
 
-    .value-right {
-        text-align: right;
-    }
 
-    /* =============================
-       섹션 타이틀
-    ============================= */
-    .section-title {
-        margin-top: 26px;
-        margin-bottom: 10px;
-        padding-left: 6px;
-        font-size: 13.5pt;
-        font-weight: 700;
-        border-left: 5px solid #4b4b4b;
-        color: #303030;
-    }
+/* Block b001: Title */
+[data-id="b001"] h1 {
+  text-align: center;
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 2px solid #333;
+  color: #333;
+}
 
-    /* =============================
-       서브 타이틀
-    ============================= */
-    .sub-title {
-        background: #666;
-        color: #fff;
-        text-align: center;
-        font-weight: 600;
-        padding: 8px;
-        font-size: 11pt;
-        letter-spacing: 0.5px;
-    }
+/* Block b002, b005, b008, b011, b018: Section Headers */
+[data-id="b002"] ol, [data-id="b005"] ol, [data-id="b008"] ol, [data-id="b011"] ol, [data-id="b018"] ol {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 15px 0;
+  border-left: 4px solid #333;
+  padding-left: 10px;
+}
 
+[data-id="b002"] ol li, [data-id="b005"] ol li, [data-id="b008"] ol li, [data-id="b011"] ol li, [data-id="b018"] ol li {
+  font-weight: bold;
+  font-size: calc(1.1em * var(--font-scale));
+  color: #333;
+  margin: 8px 0;
+}
+
+/* Table styling for all data tables */
+.table-container {
+  margin: 15px 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.data-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Specific styling for table headers with colspan */
+.data-table th[colspan="4"] {
+  font-size: calc(1.1em * var(--font-scale));
+  padding: 10px 12px;
+}
+
+/* Styling for table cells with colspan */
+.data-table td[colspan="3"] {
+  text-align: left;
+  padding: 8px 12px;
+}
+
+/* Ensure consistent spacing between blocks */
+.block {
+  margin-bottom: 15px;
+}
+
+/* Optional: Add a subtle shadow or border to tables for better visual separation */
+.table-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Optional: Add a top margin to the first block after title */
+[data-id="b002"] {
+  margin-top: 20px;
+}
+
+/* Optional: Add a bottom margin to the last block */
+[data-id="b019"] {
+  margin-bottom: 20px;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.40rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #f2c94c;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgb(7, 5, 109);
+  border-left: 4px solid #64ffda;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #0548bc;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(81, 84, 226, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #3361a7;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #3f0db5;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(248, 113, 113, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #c084fc;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #38bdf8;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.25rem;
+  color: #fef08a;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.1rem;
+  color: #010243;
+  letter-spacing: 0.02em;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #a5b4fc;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #75600c;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.36rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
 </style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
-
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="345,43,664,86">
 <h1>연대보증서</h1>
-
-<!-- =============================
-     1. 보증인 기본 정보
-============================= -->
-<div class="section-title">1. 보증인 기본정보</div>
-
-<table>
-    <tr><th colspan="4" class="sub-title">개인 정보</th></tr>
-    <tr>
-        <td class="label">보증인 성명</td>
-        <td class="value">홍길동</td>
-        <td class="label">주민등록번호</td>
-        <td class="value">900101-1******</td>
-    </tr>
-    <tr>
-        <td class="label">주소</td>
-        <td colspan="3" class="value">서울특별시 강남구 테헤란로 123</td>
-    </tr>
-
-    <tr><th colspan="4" class="sub-title">연락처</th></tr>
-    <tr>
-        <td class="label">휴대전화</td>
-        <td class="value">010-1234-5678</td>
-        <td class="label">이메일</td>
-        <td class="value">hong@example.com</td>
-    </tr>
-    <tr>
-        <td class="label">비상연락처</td>
-        <td colspan="3" class="value">02-123-4567</td>
-    </tr>
-</table>
-
-<!-- =============================
-     2. 재직 및 소득 정보
-============================= -->
-<div class="section-title">2. 재직 및 소득정보</div>
-
-<table>
-    <tr><th colspan="4" class="sub-title">재직 정보</th></tr>
-    <tr>
-        <td class="label">회사명</td>
-        <td class="value">삼성전자</td>
-        <td class="label">직위</td>
-        <td class="value">팀장</td>
-    </tr>
-    <tr>
-        <td class="label">재직 시작일</td>
-        <td colspan="3" class="value">2020-03-01</td>
-    </tr>
-
-    <tr><th colspan="4" class="sub-title">소득 정보</th></tr>
-    <tr>
-        <td class="label">연 소득</td>
-        <td class="value-right value">50,000,000원</td>
-        <td class="label">소득 원천</td>
-        <td class="value">급여</td>
-    </tr>
-    <tr>
-        <td class="label">종합소득세 신고</td>
-        <td colspan="3" class="value">신고 완료</td>
-    </tr>
-</table>
-
-<!-- =============================
-     3. 채무자 정보
-============================= -->
-<div class="section-title">3. 채무자 정보</div>
-
-<table>
-    <tr><th colspan="4" class="sub-title">기본 정보</th></tr>
-    <tr>
-        <td class="label">채무자 성명</td>
-        <td class="value">김철수</td>
-        <td class="label">주민등록번호</td>
-        <td class="value">850505-1******</td>
-    </tr>
-    <tr>
-        <td class="label">주소</td>
-        <td colspan="3" class="value">부산광역시 해운대구 센텀로 789</td>
-    </tr>
-
-    <tr><th colspan="4" class="sub-title">연락처</th></tr>
-    <tr>
-        <td class="label">휴대전화</td>
-        <td class="value">010-9876-5432</td>
-        <td class="label">이메일</td>
-        <td class="value">kim@example.com</td>
-    </tr>
-    <tr>
-        <td class="label">비상연락처</td>
-        <td colspan="3" class="value">051-987-6543</td>
-    </tr>
-</table>
-
-<!-- =============================
-     4. 채무 정보 및 상환 계획
-============================= -->
-<div class="section-title">4. 채무 정보 및 상환 계획</div>
-
-<table>
-    <tr><th colspan="4" class="sub-title">대출 정보</th></tr>
-
-    <tr>
-        <td class="label">대출 금액</td>
-        <td class="value-right value">100,000,000원</td>
-        <td class="label">대출 목적</td>
-        <td class="value">주택 구입</td>
-    </tr>
-
-    <tr>
-        <td class="label">대출 기간</td>
-        <td colspan="3" class="value">5년</td>
-    </tr>
-
-    <tr><th colspan="4" class="sub-title">상환 계획</th></tr>
-
-    <tr>
-        <td class="label">상환 주기</td>
-        <td class="value">매월 1일</td>
-        <td class="label">월 상환액</td>
-        <td class="value-right value">2,000,000원</td>
-    </tr>
-
-    <tr>
-        <td class="label">최종 상환일</td>
-        <td colspan="3" class="value">2028-03-01</td>
-    </tr>
-</table>
-
-<!-- =============================
-     5. 보증 조건
-============================= -->
-<div class="section-title">5. 보증 조건</div>
-
-<table>
-    <tr><th colspan="4" class="sub-title">보증 범위</th></tr>
-    <tr>
-        <td class="label">보증 원금</td>
-        <td class="value-right value">100,000,000원</td>
-        <td class="label">보증 포함 항목</td>
-        <td class="value">이자, 연체료, 법적 비용 포함</td>
-    </tr>
-
-    <tr>
-        <td class="label">보증 기간</td>
-        <td colspan="3" class="value">채무 완제 시까지</td>
-    </tr>
-    <tr>
-        <td class="label">보증 형태</td>
-        <td colspan="3" class="value">연대보증(채무자와 동일 책임)</td>
-    </tr>
-</table>
-
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b002" data-bbox="122,104,284,116">
+<ol>
+<li>보증인 기본정보</li>
+</ol>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="105,126,907,276">
+<div class="table-container"><table class="data-table">
+<tr><th colspan="4">개인 정보</th></tr>
+<tr>
+<td>보증인 성명</td>
+<td>홍길동</td>
+<td>주민등록번호</td>
+<td>900101-1******</td>
+</tr>
+<tr>
+<td>주소</td>
+<td colspan="3">서울특별시 강남구 테헤란로 123</td>
+</tr>
+<tr><th colspan="4">연락처</th></tr>
+<tr>
+<td>휴대전화</td>
+<td>010-1234-5678</td>
+<td>이메일</td>
+<td>hong@example.com</td>
+</tr>
+<tr>
+<td>비상연락처</td>
+<td colspan="3">02-123-4567</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="122,285,295,298">
+<ol>
+<li>재직 및 소득정보</li>
+</ol>
+</div>
+<div class="block" data-class="key_value" data-id="b006" data-bbox="105,307,907,458">
+<div class="table-container"><table class="data-table">
+<tr><th colspan="4">재직 정보</th></tr>
+<tr>
+<td>회사명</td>
+<td>삼성전자</td>
+<td>직위</td>
+<td>팀장</td>
+</tr>
+<tr>
+<td>재직 시작일</td>
+<td colspan="3">2020-03-01</td>
+</tr>
+<tr><th colspan="4">소득 정보</th></tr>
+<tr>
+<td>연 소득</td>
+<td>50,000,000원</td>
+<td>소득 원천</td>
+<td>급여</td>
+</tr>
+<tr>
+<td>종합소득세 신고</td>
+<td colspan="3">신고 완료</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b008" data-bbox="122,467,241,479">
+<ol>
+<li>채무자 정보</li>
+</ol>
+</div>
+<div class="block" data-class="key_value" data-id="b009" data-bbox="105,488,907,639">
+<div class="table-container"><table class="data-table">
+<tr><th colspan="4">기본 정보</th></tr>
+<tr>
+<td>채무자 성명</td>
+<td>김철수</td>
+<td>주민등록번호</td>
+<td>850505-1******</td>
+</tr>
+<tr>
+<td>주소</td>
+<td colspan="3">부산광역시 해운대구 센텀로 789</td>
+</tr>
+<tr><th colspan="4">연락처</th></tr>
+<tr>
+<td>휴대전화</td>
+<td>010-9876-5432</td>
+<td>이메일</td>
+<td>kim@example.com</td>
+</tr>
+<tr>
+<td>비상연락처</td>
+<td colspan="3">051-987-6543</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b011" data-bbox="122,648,358,660">
+<ol>
+<li>채무 정보 및 상환 계획</li>
+</ol>
+</div>
+<div class="block" data-class="key_value" data-id="b012" data-bbox="105,670,907,820">
+<div class="table-container"><table class="data-table">
+<tr><th colspan="4">대출 정보</th></tr>
+<tr>
+<td>대출 금액</td>
+<td>100,000,000원</td>
+<td>대출 목적</td>
+<td>주택 구입</td>
+</tr>
+<tr>
+<td>대출 기간</td>
+<td colspan="3">5년</td>
+</tr>
+<tr><th colspan="4">상환 계획</th></tr>
+<tr>
+<td>상환 주기</td>
+<td>매월 1일</td>
+<td>월 상환액</td>
+<td>2,000,000원</td>
+</tr>
+<tr>
+<td>최종 상환일</td>
+<td colspan="3">2028-03-01</td>
+</tr>
+</table></div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b018" data-bbox="122,829,219,842">
+<ol>
+<li>보증 조건</li>
+</ol>
+</div>
+<div class="block" data-class="key_value" data-id="b019" data-bbox="105,851,907,950">
+<div class="table-container"><table class="data-table">
+<tr><th colspan="4">보증 범위</th></tr>
+<tr>
+<td>보증 원금</td>
+<td>100,000,000원</td>
+<td>보증 포함 항목</td>
+<td>이자, 연체료, 법적 비용 포함</td>
+</tr>
+<tr>
+<td>보증 기간</td>
+<td colspan="3">채무 완제 시까지</td>
+</tr>
+<tr>
+<td>보증 형태</td>
+<td colspan="3">연대보증(채무자와 동일 책임)</td>
+</tr>
+</table></div>
+</div>
+</div>
 </body>
 </html>

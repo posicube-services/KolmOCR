@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자동결제계좌등록신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12pt;
+      margin: 20mm;
+      line-height: 1.4;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #003366;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    .header .title {
+      font-size: 14pt;
+      font-weight: bold;
+    }
+    .header .version {
+      font-size: 10pt;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    .section-title {
+      font-weight: bold;
+      color: #003366;
+      margin-top: 20px;
+      margin-bottom: 5px;
+      font-size: 13pt;
+    }
+    table {
+      border: 1px solid #999;
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
+      max-width: 190mm;
+      margin-bottom: 15mm;
+      font-size: 11pt;
+    }
+    th {
+      background: #003366;
+      color: #fff;
+      border: 1px solid #999;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px;
+      vertical-align: middle;
+    }
+    td {
+      background: #f0f7ff;
+      border: 1px solid #ccc;
+      text-align: left;
+      padding: 5px;
+      vertical-align: middle;
+      word-break: break-all;
+      white-space: normal;
+    }
+    .sub-header {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      padding: 5px;
+      border: 1px solid #999;
+    }
+    .section-caption {
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 5px;
+      color: #003366;
+      font-size: 12pt;
+    }
+    .rowspan-cell {
+      vertical-align: middle;
+      text-align: center;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">기업용 신청서 양식</div>
+    <h1>자동결제계좌등록신청서</h1>
+    <div class="version">버전: 2025.01</div>
+  </div>
+
+  <!-- 섹션 1: 신청자 기본정보 -->
+  <div class="section-title">1. 신청자 기본정보</div>
+  <table>
+    <tr>
+      <th colspan="4" class="sub-header">1.1 개인정보</th>
+    </tr>
+    <tr>
+      <th rowspan="3" class="rowspan-cell">신상정보</th>
+      <th>성명</th>
+      <td>홍길동</td>
+      <th>주민등록번호</th>
+      <td>900101-1234567</td>
+    </tr>
+    <tr>
+      <th>휴대폰번호</th>
+      <td>010-1234-5678</td>
+      <th>우편번호</th>
+      <td>12345</td>
+    </tr>
+    <tr>
+      <th>주소</th>
+      <td colspan="3">서울특별시 강남구 테헤란로 123</td>
+    </tr>
+    <tr>
+      <th rowspan="2" class="rowspan-cell">주소정보</th>
+      <th>상세주소</th>
+      <td colspan="3">10층 1001호</td>
+    </tr>
+    <tr>
+      <th>고객유형</th>
+      <td>개인</td>
+      <th>회원등급</th>
+      <td>골드</td>
+    </tr>
+    <tr>
+      <th rowspan="1" class="rowspan-cell">기타정보</th>
+      <th>가입일자</th>
+      <td>2023-05-15</td>
+      <th>고객유형</th>
+      <td>개인</td>
+    </tr>
+  </table>
+
+  <!-- 섹션 2: 계좌정보 -->
+  <div class="section-title">2. 계좌정보</div>
+  <table>
+    <tr>
+      <th colspan="4" class="sub-header">2.1 계좌등록</th>
+    </tr>
+    <tr>
+      <th rowspan="3" class="rowspan-cell">은행선택</th>
+      <th>은행명</th>
+      <td>국민은행</td>
+      <th>지점명</th>
+      <td>강남지점</td>
+    </tr>
+    <tr>
+      <th>계좌번호</th>
+      <td>123-456-789012</td>
+      <th>계좌유형</th>
+      <td>예금계좌</td>
+    </tr>
+    <tr>
+      <th>예금주명</th>
+      <td>홍길동</td>
+      <th>계좌상태</th>
+      <td>정상</td>
+    </tr>
+    <tr>
+      <th rowspan="2" class="rowspan-cell">결제설정</th>
+      <th>결제주기</th>
+      <td>매월</td>
+      <th>결제일</th>
+      <td>2025-01-05</td>
+    </tr>
+    <tr>
+      <th>최대결제금액</th>
+      <td>500000</td>
+      <th>최종결제일</th>
+      <td>2024-12-05</td>
+    </tr>
+  </table>
+
+  <!-- 섹션 3: 자동결제설정 -->
+  <div class="section-title">3. 자동결제설정</div>
+  <table>
+    <tr>
+      <th colspan="4" class="sub-header">3.1 결제조건</th>
+    </tr>
+    <tr>
+      <th rowspan="2" class="rowspan-cell">결제조건</th>
+      <th>결제주기</th>
+      <td>매월</td>
+      <th>결제일</th>
+      <td>2025-01-05</td>
+    </tr>
+    <tr>
+      <th>최대결제금액</th>
+      <td>500000</td>
+      <th>누적결제금액</th>
+      <td>1200000</td>
+    </tr>
+    <tr>
+      <th rowspan="2" class="rowspan-cell">결제내역</th>
+      <th>최종결제일</th>
+      <td>2024-12-05</td>
+      <th>다음결제일</th>
+      <td>2025-01-05</td>
+    </tr>
+    <tr>
+      <th>최종결제금액</th>
+      <td>50000</td>
+      <th>결제상태</th>
+      <td>정상</td>
+    </tr>
+  </table>
+
+  <!-- 섹션 4: 거래내역 -->
+  <div class="section-title">4. 거래내역</div>
+  <table>
+    <tr>
+      <th colspan="4" class="sub-header">4.1 최근거래</th>
+    </tr>
+    <tr>
+      <th rowspan="3" class="rowspan-cell">거래목록</th>
+      <th>거래일자</th>
+      <td>2024-12-01</td>
+      <th>거래금액</th>
+      <td>50000</td>
+    </tr>
+    <tr>
+      <th>거래내용</th>
+      <td>자동결제</td>
+      <th>거래상태</th>
+      <td>정상</td>
+    </tr>
+    <tr>
+      <th>변경일자</th>
+      <td>2024-12-01</td>
+      <th>변경사유</th>
+      <td>계좌변경</td>
+    </

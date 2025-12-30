@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>LLM 한국어-영어 통합 방법 실험</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #111;
+    }
+
+    /* A4 landscape canvas */
+    .page {
+      width: 400mm;
+      height: 210mm;
+      margin: 0 auto;
+      background: #fff;
+      box-sizing: border-box;
+      padding: 12mm 12mm 10mm 12mm;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 3 explicit columns (stable bboxes) */
+    .grid-3 {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1.04fr 0.98fr 0.98fr;
+      column-gap: 11mm;
+      align-items: start;
+    }
+
+    .col {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* tighter vertical rhythm to match the reference */
+    .block {
+      display: inline-block;
+      width: fit-content;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin: 0 0 6mm 0;
+      /* reduced */
+    }
+
+    .block:has(h1),
+    .block:has(h2),
+    .block:has(h3) {
+      margin-bottom: 2mm;
+    }
+
+    /* --- typography (closer to the reference) --- */
+    h1 {
+      font-size: 26pt;
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+    }
+
+    h2 {
+      font-size: 15.5pt;
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.35px;
+    }
+
+    h3 {
+      font-size: 12.2pt;
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+    }
+
+    p,
+    li {
+      font-size: 10.3pt;
+      line-height: 1.52;
+      margin: 0 0 2.2mm 0;
+      color: #222;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 2mm 1.05em;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 1.6mm;
+    }
+
+    /* table similar density to screenshot */
+    .block:has(table),
+    .block:has(figure) {
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+      margin: 2mm 0 0 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #dedede;
+      padding: 5px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    thead th {
+      font-weight: 900;
+      background: #fafafa;
+    }
+
+    /* ------- FIGURE CONTROL (THIS IS THE MAIN FIX) ------- */
+    figure {
+      margin: 0;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #e7e7e7;
+      border-radius: 6px;
+      object-fit: contain;
+      /* prevent stretch */
+    }
+
+    figcaption {
+      font-size: 9.3pt;
+      color: #444;
+      margin-top: 1.7mm;
+    }
+
+    /* Per-image max-heights to preserve the first screenshot layout */
+    .img-small img {
+      max-height: 44mm;
+    }
+
+    /* small panels */
+    .img-mid img {
+      max-height: 54mm;
+    }
+
+    /* mid panels */
+    .img-big img {
+      max-height: 70mm;
+    }
+
+    /* big panel (top-right) */
+
+    /* prevent large blocks from expanding too much */
+    .tight {
+      margin-bottom: 4mm;
+    }
+
+    @media print {
+      .block {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+  <script>
+    // Compute per-block bbox in page-local coordinates and write into data-bbox: "x,y,w,h"
+    function updateBBoxes() {
+      const page = document.querySelector(".page");
+      if (!page) return;
+      const pageRect = page.getBoundingClientRect();
+      const blocks = page.querySelectorAll(".block[data-id]");
+      blocks.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        const x = Math.round(r.left - pageRect.left);
+        const y = Math.round(r.top - pageRect.top);
+        const w = Math.round(r.width);
+        const h = Math.round(r.height);
+        el.setAttribute("data-bbox", `${x},${y},${w},${h}`);
+      });
+    }
+
+    window.addEventListener("load", () => {
+      requestAnimationFrame(() => {
+        updateBBoxes();
+        // ensure after images load
+        setTimeout(updateBBoxes, 350);
+        setTimeout(updateBBoxes, 900);
+      });
+    });
+    window.addEventListener("resize", updateBBoxes);
+  </script>
+</head>
+
+<body>
+  <div class="page">
+    <div class="grid-3">
+      <div class="col">
+        <div class="block" data-bbox="28,48,297,48" data-id="b001">
+          <h1>LLM 한국어-영어 통합 방법 실험</h1>
+        </div>
+        <div class="block tight" data-bbox="28,104,25,28" data-id="b002">
+          <h2>목표</h2>
+        </div>
+        <div class="block tight" data-bbox="28,140,309,53" data-id="b002-1">
+          <p>Llama 모델의 vocab expansion 버전을 한국어와 영어가 같은 semantic space에서 표현되도록 변경</p>
+        </div>
+        <div class="block tight" data-bbox="28,209,208,109" data-id="b002-2">
+          <ul>
+            <li>영어와 같은 의미의 한글 입력에 대해 동일한 출력 생성</li>
+            <li>한글에서도 영어 benchmark와 비슷한 성능 달성</li>
+            <li>준비된 학습 Dataset
+              <ul>
+                <li>Parallel dataset - stage 1에서 활용</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="block tight" data-bbox="28,334,309,215" data-id="b002-3">
+          <table>
+            <thead>
+              <tr>
+                <th>데이터셋</th>
+                <th>설명</th>
+                <th>Train</th>
+                <th>Validation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AIhubK2EBroadcast</td>
+                <td>방송콘텐츠 번역 말뭉치</td>
+                <td>521,651</td>
+                <td>65,431</td>
+              </tr>
+              <tr>
+                <td>AIhubK2ECorpus</td>
+                <td>병렬 번역 말뭉치</td>
+                <td>1,602,418</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>AIhubK2ESciTech</td>
+                <td>전문분야 한영 말뭉치</td>
+                <td>1,195,228</td>
+                <td>149,403</td>
+              </tr>
+              <tr>
+                <td>AIhubK2ESoSci</td>
+                <td>기술과학 번역 말뭉치</td>
+                <td>1,210,529</td>
+                <td>151,316</td>
+              </tr>
+              <tr>
+                <td>AIhubK2EExpert</td>
+                <td>사회과학 번역 말뭉치</td>
+                <td>1,200,000</td>
+                <td>150,000</td>
+              </tr>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td></td>
+                <td><strong>5,729,826</strong></td>
+                <td><strong>516,150</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="block tight" data-bbox="28,565,68,28" data-id="b003">
+          <h2>평가 metric</h2>
+        </div>
+        <div class="block tight" data-bbox="28,601,309,228" data-id="b003-1">
+          <ul>
+            <li>evaluation task
+              <ul>
+                <li>영어 원본이 한글로 번역된 데이터 (arc_challenge → ko_arc_challenge)</li>
+                <li>정확히 1:1 대응되는 데이터 셋으로 영어 지식이 한글로 trasfer되었는지 살펴보기 좋은 데이터 셋</li>
+              </ul>
+            </li>
+            <li>영어 - 한글 dataset에서 align되는 정도 (일치도)
+              <ul>
+                <li>위 평가 task에서 각 example 의 output으로 같은 응답을 출력하는지, 같은 응답을 출력하는 응답의 비율</li>
+              </ul>
+            </li>
+            <li>평가 툴
+              <ul>
+                <li>https://github.com/davidkim205/kollm_evaluation을 활용한</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="block" data-bbox="28,845,57,28" data-id="b004">
+          <h2>Baselines</h2>
+        </div>
+        <div class="block" data-bbox="28,881,309,80" data-id="b004-1">
+          <ul>
+            <li><strong>princeton-nlp/Sheared-LLaMA-1.3B-ShareGPT</strong>: 실험 중인 모델의 base 모델 (대조군)</li>
+            <li><strong>EleutherAI/polyglot-ko-1.3b</strong>: 한국어를 잘하는 1.3B 모델</li>
+          </ul>
+        </div>
+      </div>
+      <!-- =========================
+           COLUMN 2 (Middle): Experiments + Stage1 chart + cosine chart + Stage2 chart
+      ========================== -->
+      <div class="col">
+        <div class="block tight" data-bbox="363,48,37,28" data-id="b005">
+          <h2>실험들</h2>
+        </div>
+        <div class="block tight" data-bbox="363,84,291,124" data-id="b005-1">
+          <ul>
+            <li>실험 0) 3개의 stage로 나누어 실험 (<strong>1st stage</strong>: consrastive learning(CL) → <strong>2nd
+                stage</strong>: training LM head with freezing the other layers → <strong>3rd stage</strong>:
+              pretraining with Korean and English)</li>
+            <li>Stage1) contrastive learning to train embedding layer and all of the transformer layers for integrating
+              Korean and English</li>
+          </ul>
+        </div>
+        <!-- Stage1 loss chart (mid) -->
+        <div class="block img-mid tight" data-bbox="363,224,291,217" data-id="b006">
+          <figure>
+            <img alt="image.png" src="./imgs/exp1_1.png" />
+          </figure>
+        </div>
+        <!-- cosine similarity chart (small, with caption just below) -->
+        <div class="block img-small tight" data-bbox="363,457,291,201" data-id="b007">
+          <figure>
+            <img alt="validation set의 한국어 representation과 영어 representation 사이의 cosine similarity"
+              src="./imgs/exp1_2.png" />
+            <figcaption>validation set의 한국어 representation과 영어 representation 사이의 cosine similarity</figcaption>
+          </figure>
+        </div>
+      </div>
+      <!-- =========================
+           COLUMN 3 (Right): Big top chart + Stage3 note + chart + Eval target
+      ========================== -->
+      <div class="col">
+        <div class="block tight" data-bbox="680,48,274,31" data-id="b008">
+          <p>Stage2) training LM head with freezing the other layers and Korean data.</p>
+        </div>
+        <!-- Stage2 chart (mid) -->
+        <div class="block img-mid" data-bbox="680,94,291,217" data-id="b009">
+          <figure>
+            <img alt="image.png" src="./imgs/exp1_3.png" />
+          </figure>
+        </div>
+        <div class="block tight" data-bbox="680,335,291,74" data-id="b010">
+          <ul>
+            <li>Stage3) pretraining with Korean and English for injecting knowledge
+              <ul>
+                <li>데이터에 영어와 한국어서 섞여서 그런지 시작하는 loss가 Stage2)의 것보다 좀 높다</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- Big top-right chart like the reference -->
+        <div class="block img-big tight" data-bbox="680,425,291,281" data-id="b011">
+          <figure>
+            <img alt="image.png" src="./imgs/exp1_4.png" />
+          </figure>
+        </div>
+        <div class="block" data-bbox="680,721,40,23" data-id="b012">
+          <h3>평가 대상</h3>
+        </div>
+        <div class="block" data-bbox="680,753,163,30" data-id="b012-1">
+          <ul>
+            <li>3번째 stage인 full finetuning이 끝난 모델</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

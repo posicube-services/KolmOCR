@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>사망통지서</title>
+  <style>
+    body {
+      font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+      margin: 20px;
+      background: #fff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      border: 2px solid #444;
+      border-collapse: collapse;
+      table-layout: fixed;
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+    th {
+      background: #666666;
+      color: #fff;
+      padding: 8px;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #999;
+      font-size: 14px;
+    }
+    td {
+      background: #f5f5f5;
+      border: 1px solid #666;
+      padding: 8px;
+      text-align: left;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    .section-header {
+      background: #555555;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      border: 1px solid #444;
+    }
+    .sub-header {
+      background: #777777;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 6px;
+      border: 1px solid #666;
+    }
+    .value-cell {
+      text-align: left;
+      padding-left: 10px;
+    }
+    .rowspan-cell {
+      vertical-align: middle;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>사망통지서</h1>
+
+  <!-- 기본 정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">기본 정보</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">사망자 정보</th>
+      <th colspan="2" class="sub-header">신고자 정보</th>
+    </tr>
+    <tr>
+      <th>사망자 성명</th>
+      <td class="value-cell">홍길동</td>
+      <th>신고자 성명</th>
+      <td class="value-cell">김철수</td>
+    </tr>
+    <tr>
+      <th>주민등록번호</th>
+      <td class="value-cell">900101-1234567</td>
+      <th>관계</th>
+      <td class="value-cell">아들</td>
+    </tr>
+    <tr>
+      <th>생년월일</th>
+      <td class="value-cell">1990-01-01</td>
+      <th>연락처</th>
+      <td class="value-cell">010-1234-5678</td>
+    </tr>
+    <tr>
+      <th>본적지</th>
+      <td class="value-cell">서울특별시 종로구 종로1가</td>
+      <th>신고자 주소</th>
+      <td class="value-cell">서울특별시 서초구 반포대로 123</td>
+    </tr>
+    <tr>
+      <th>거주지</th>
+      <td class="value-cell">서울특별시 강남구 테헤란로 123</td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+
+  <!-- 사망 관련 정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">사망 관련 정보</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">사망 일시 및 장소</th>
+      <th colspan="2" class="sub-header">의료기관 정보</th>
+    </tr>
+    <tr>
+      <th>사망 일시</th>
+      <td class="value-cell">2025-04-05 14:30</td>
+      <th>의료기관명</th>
+      <td class="value-cell">서울대학교병원</td>
+    </tr>
+    <tr>
+      <th>사망 장소</th>
+      <td class="value-cell">서울대학교병원 응급실</td>
+      <th>담당 의사명</th>
+      <td class="value-cell">박의사</td>
+    </tr>
+    <tr>
+      <th>사인</th>
+      <td class="value-cell">심근경색</td>
+      <th>의료기관 주소</th>
+      <td class="value-cell">서울특별시 종로구 대학로 101</td>
+    </tr>
+  </table>
+
+  <!-- 유산 및 상속 정보 -->
+  <table>
+    <tr><th colspan="4" class="section-header">유산 및 상속 정보</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">유산 목록</th>
+      <th colspan="2" class="sub-header">상속인 정보</th>
+    </tr>
+    <tr>
+      <th>부동산</th>
+      <td class="value-cell">서울시 강남구 아파트 101동 1001호</td>
+      <th>상속인 목록</th>
+      <td class="value-cell">김철수(아들), 이영희(배우자)</td>
+    </tr>
+    <tr>
+      <th>은행 계좌</th>
+      <td class="value-cell">국민은행 123-456-7890</td>
+      <th>상속 비율</th>
+      <td class="value-cell">50%</td>
+    </tr>
+    <tr>
+      <th>투자 상품</th>
+      <td class="value-cell">삼성전자 주식 100주, 연금보험</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <th>기타 자산</th>
+      <td class="value-cell"></td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+
+  <!-- 서명 및 확인란 -->
+  <table>
+    <tr><th colspan="4" class="section-header">서명 및 확인란</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">신고자 서명</th>
+      <th colspan="2" class="sub-header">관계 기관 확인</th>
+    </tr>
+    <tr>
+      <th>서명</th>
+      <td class="value-cell">김철수</td>
+      <th>지자체 확인</th>
+      <td class="value-cell">서울시 종로구청</td>
+    </tr>
+    <tr>
+      <th>날짜</th>
+      <td class="value-cell">2025-04-05</td>
+      <th>법원 확인</th>
+      <td class="value-cell">서울중앙지방법원</td>
+    </tr>
+  </table>
+
+  <!-- 첨부서류 -->
+  <table>
+    <tr><th colspan="4" class="section-header">첨부서류</th></tr>
+    <tr>
+      <th colspan="2" class="sub-header">필수 첨부서류</th>
+      <th colspan="2" class="sub-header">선택 첨부서류</th>
+    </tr>
+    <tr>
+      <th>사망진단서</th>
+      <td class="value-cell">첨부됨</td>
+      <th>유언장</th>
+      <td class="value-cell">첨부됨</td>
+    </tr>
+    <tr>
+      <th>가족관계증명서</th>
+      <td class="value-cell">첨부됨</td>
+      <th>상속세 신고서</th>
+      <td class="value-cell">첨부됨</td>
+    </tr>
+    <tr>
+      <th>신분증 사본</th>
+      <td class="value-cell">첨부됨</td>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+</body>
+</html>

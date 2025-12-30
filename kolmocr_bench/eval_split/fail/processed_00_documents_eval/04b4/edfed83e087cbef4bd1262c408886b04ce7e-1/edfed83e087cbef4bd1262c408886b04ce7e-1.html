@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title */
+[data-id="b001"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* Block b002: Date */
+[data-id="b002"] p {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  color: #34495e;
+  margin: 10px 0;
+  padding: 0;
+}
+
+/* Block b003: Reading of Ethics Statement */
+[data-id="b003"] h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #bdc3c7;
+  padding-bottom: 5px;
+}
+
+/* Block b004: Ethics Statement Content */
+[data-id="b004"] p {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  color: #34495e;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Block b005: Roll Call */
+[data-id="b005"] h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #bdc3c7;
+  padding-bottom: 5px;
+}
+
+/* Block b006: Roll Call Description */
+[data-id="b006"] p {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  color: #34495e;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Block b007: Table */
+[data-id="b007"] .table-container {
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px 0;
+  width: 100%;
+}
+
+[data-id="b007"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(1em * var(--font-scale));
+}
+
+[data-id="b007"] .data-table th,
+[data-id="b007"] .data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+[data-id="b007"] .data-table th {
+  background-color: #dfe3e6;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+[data-id="b007"] .data-table tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+[data-id="b007"] .data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Block b008: Closed Session */
+[data-id="b008"] h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #bdc3c7;
+  padding-bottom: 5px;
+}
+
+/* Block b009: Closed Session Content */
+[data-id="b009"] p {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  color: #34495e;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* General paragraph styling */
+.document p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.43rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #ededed;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #111111;
+}
+.block[data-class="title"] {
+  font-size: 1.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.block {
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.2rem;
+  color: #4b5563;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.2rem;
+  color: #111111;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.27rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 10px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,40,806,201">
+<h1>East Carolina University Board of Trustees Minutes</h1>
+</div>
+<div class="block" data-class="key_value" data-id="b002" data-bbox="104,236,290,247">
+<p><strong>Date:</strong> November 8, 2021</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b003" data-bbox="104,292,426,308">
+<h2>Reading of Ethics Statement</h2>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,350,851,373">
+<p>According to the main body's ethics statement, Scott Shuck asked for a report on any incidents of plagiarism and whether anyone was aware of it. No incidents were found.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="104,418,198,434">
+<h2>Roll Call</h2>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,476,855,487">
+<p>Scott Shuck called for a roll call, which was conducted by Megan Ayers, the secretary of the board.</p>
+</div>
+<div class="block" data-class="table" data-id="b007" data-bbox="111,541,901,791">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>Present</th><th>Absent</th></tr>
+</thead>
+<tbody>
+<tr><td>Cassandra Bert</td><td>Angela Moss</td></tr>
+<tr><td>Lake Panning</td><td></td></tr>
+<tr><td>Dave Tysel</td><td></td></tr>
+<tr><td>Tom Poor</td><td></td></tr>
+<tr><td>Ben Ayles</td><td></td></tr>
+<tr><td>Filing Miller</td><td></td></tr>
+<tr><td>Jason Pool</td><td></td></tr>
+<tr><td>Jefferie Rob茨</td><td></td></tr>
+<tr><td>Im Segelev</td><td></td></tr>
+<tr><td>Scott Shuck</td><td></td></tr>
+<tr><td>Vince Smith</td><td></td></tr>
+<tr><td>Chandler Wood</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b008" data-bbox="104,844,274,860">
+<h2>Closed Session</h2>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,902,861,936">
+<p>Scott Shuck requested a vote on moving to a closed meeting.<br/>
+This markdown captures the essence of the provided image and organizes it in a structured format suitable for rendering with HTML tables.</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>고객불만접수서</title>
+    <style>
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            background: #fff; 
+            color: #000; 
+            padding: 20px;
+            max-width: 190mm;
+            margin: 0 auto;
+        }
+        h1 { 
+            text-align: center; 
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            table-layout: fixed; 
+            word-break: break-all; 
+            margin-bottom: 20px;
+            border: 1px solid #999;
+        }
+        th { 
+            padding: 8px 6px; 
+            font-weight: bold; 
+            color: #000; 
+            background: #e0e0e0; 
+            text-align: center; 
+            border: 1px solid #999;
+            font-size: 14px;
+        }
+        td { 
+            background: #fff; 
+            border: 1px solid #ddd; 
+            padding: 8px 6px; 
+            text-align: left; 
+            word-break: break-all; 
+            white-space: normal;
+            font-size: 14px;
+        }
+        .section-header {
+            background: #e0e0e0;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #999;
+            font-size: 16px;
+        }
+        .sub-header {
+            background: #f0f0f0;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            border: 1px solid #999;
+            font-size: 14px;
+        }
+        .dashed-bottom {
+            border-bottom: 1px dashed #ccc !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>고객불만접수서</h1>
+
+    <!-- 고객 기본 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">고객 기본 정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">개인정보</th>
+            <th colspan="2" class="sub-header">주소 정보</th>
+        </tr>
+        <tr>
+            <th>고객 성명</th><td>홍길동</td>
+            <th>거주지 주소</th><td>서울시 강남구 테헤란로 123</td>
+        </tr>
+        <tr>
+            <th>연락처</th><td>010-1234-5678</td>
+            <th>우편번호</th><td>06123</td>
+        </tr>
+        <tr>
+            <th>이메일 주소</th><td colspan="3">hong@example.com</td>
+        </tr>
+    </table>
+
+    <!-- 불만 관련 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">불만 관련 정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">불만 유형</th>
+            <th colspan="2" class="sub-header">발생 일시 및 장소</th>
+        </tr>
+        <tr>
+            <th>서비스 불만 유형</th><td>상담 응대 불만</td>
+            <th>불만 발생 일자</th><td>2025-04-05</td>
+        </tr>
+        <tr>
+            <th>제품 불만 유형</th><td>제품 결함</td>
+            <th>불만 발생 시간</th><td>14:30</td>
+        </tr>
+        <tr>
+            <th>처리 지연 사유</th><td>답변 지연</td>
+            <th>불만 발생 장소</th><td>강남지점</td>
+        </tr>
+    </table>
+
+    <!-- 불만 상세 내용 -->
+    <table>
+        <tr><th colspan="4" class="section-header">불만 상세 내용</th></tr>
+        <tr><th colspan="4" class="sub-header">사건 개요</th></tr>
+        <tr>
+            <td colspan="4">고객 상담 시 불친절한 응대를 받음</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="sub-header">관련 증거 자료</th>
+            <th colspan="2" class="sub-header">요청 사항</th>
+        </tr>
+        <tr>
+            <th>첨부 파일 목록</th><td>불만증빙_20250405.pdf</td>
+            <th>요청 사항</th><td>사과 및 환불 요청</td>
+        </tr>
+        <tr>
+            <th>사진/스크린샷</th><td colspan="3">스크린샷_20250405.png</td>
+        </tr>
+    </table>
+
+    <!-- 처리 내역 -->
+    <table>
+        <tr><th colspan="4" class="section-header">처리 내역</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">접수 정보</th>
+            <th colspan="2" class="sub-header">처리 진행 상황</th>
+        </tr>
+        <tr>
+            <th>접수 담당자</th><td>김민지</td>
+            <th>처리 상태</th><td>접수 완료</td>
+        </tr>
+        <tr>
+            <th>접수 일시</th><td>2025-04-05 15:20</td>
+            <th>처리 담당자</th><td>박지훈</td>
+        </tr>
+        <tr>
+            <th colspan="2"></th>
+            <th>예상 완료일</th><td>2025-04-10</td>
+        </tr>
+        <tr><th colspan="4" class="sub-header">처리 결과</th></tr>
+        <tr>
+            <td colspan="4">사과문 전달 및 10% 포인트 지급</td>
+        </tr>
+    </table>
+
+    <!-- 확인 및 서명 -->
+    <table>
+        <tr><th colspan="4" class="section-header">확인 및 서명</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">고객 확인</th>
+            <th colspan="2" class="sub-header">담당자 확인</th>
+        </tr>
+        <tr>
+            <th>고객 서명</th><td>홍길동</td>
+            <th>담당자 서명</th><td>박지훈</td>
+        </tr>
+        <tr>
+            <th>고객 확인 일시</th><td>2025-04-05 16:00</td>
+            <th>담당자 확인 일시</th><td>2025-04-05 16:10</td>
+        </tr>
+    </table>
+
+    <!-- 추가 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">추가 정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">관련 문서</th>
+            <th colspan="2" class="sub-header">이전 불만 기록</th>
+        </tr>
+        <tr>
+            <th>참조 문서 목록</th><td>문서1.pdf, 문서2.docx</td>
+            <th>기록 테이블</th><td>1. 상담 지연 / 2025-03-01 / 처리 완료</td>
+        </tr>
+        <tr>
+            <th>문의 전화</th><td colspan="3">1588-1234</td>
+        </tr>
+    </table>
+</body>
+</html>

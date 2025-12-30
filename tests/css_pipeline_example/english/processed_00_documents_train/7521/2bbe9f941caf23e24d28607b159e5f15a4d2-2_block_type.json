@@ -1,0 +1,88 @@
+{
+  "2bbe9f941caf23e24d28607b159e5f15a4d2-2.html": {
+    "blocks": [
+      {
+        "data_id": "b001",
+        "class": "block",
+        "text": "The Petitioners have agreed to allocate their time as follows (if the Court agrees):"
+      },
+      {
+        "data_id": "b002",
+        "class": "block",
+        "text": "The Attorney General will take twenty (20) minutes and will speak first. Following the Attorney General, the Counties of Palm Beach and Broward will take five (5) minutes each and Petitioners, The Florida Democratic Party and Vice President Al Gore will take thirty (30) minutes."
+      },
+      {
+        "data_id": "b003",
+        "class": "block",
+        "text": "Each Petitioner will announce in Court the amount of time that Petitioner wishes to reserve for Rebuttal. No Petitioner wishes realignment of the Parties so that the Harris Respondents be realigned as a Petitioner, or that the time allotment to each side previously set by the Court be changed or modified."
+      },
+      {
+        "data_id": "b004",
+        "class": "block",
+        "text": "All of the Petitioners have informed counsel filing this response that they agree to this proposal."
+      },
+      {
+        "data_id": "b005",
+        "class": "block",
+        "text": "Respectfully submitted this 19th day of November, 2000."
+      },
+      {
+        "data_id": "b006",
+        "class": "block",
+        "text": "W. Dexter Douglass\nFlorida Bar No. 0200263\nDouglass Law Firm\n211 East Call Street\nTallahassee, Florida 32302\nTelephone: 850/224-6191\nFacsimile: 850/224-3644"
+      },
+      {
+        "data_id": "b007",
+        "class": "block",
+        "text": "Mitchell W. Berger\nFlorida Bar No. 311340\nBerger Davis & Singerman\n350 East Las Olas Boulevard, Suite 1000\nFort Lauderdale, Florida 33301\nTelephone: 954/525-9900\nFacsimile: 954/523-2872"
+      },
+      {
+        "data_id": "b008",
+        "class": "block",
+        "text": "John D. C. Newton, II\nFlorida Bar No. 0244538\nBerger Davis & Singerman\n215 South Monroe Street, Suite 705\nTallahassee, Florida 32301\nTelephone: 850/561-3010\nFacsimile: 850/561-3013"
+      },
+      {
+        "data_id": "b009",
+        "class": "block",
+        "text": "David Boies\nBoies, Schiller & Flexner LLP\n80 Business Park Drive, Suite 110\nArmonk, New York 10504\nTelephone: 914/273-9800\nFacsimile: 914/273-9810"
+      },
+      {
+        "data_id": "b010",
+        "class": "block",
+        "text": "Karen Gievers"
+      }
+    ],
+    "classification": {
+      "b001": {
+        "class": "text"
+      },
+      "b002": {
+        "class": "text"
+      },
+      "b003": {
+        "class": "text"
+      },
+      "b004": {
+        "class": "text"
+      },
+      "b005": {
+        "class": "text"
+      },
+      "b006": {
+        "class": "key_value"
+      },
+      "b007": {
+        "class": "key_value"
+      },
+      "b008": {
+        "class": "key_value"
+      },
+      "b009": {
+        "class": "key_value"
+      },
+      "b010": {
+        "class": "author"
+      }
+    }
+  }
+}

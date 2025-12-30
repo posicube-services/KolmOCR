@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Main Title */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Block b002: Section Title */
+[data-id="b002"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #000;
+  margin: 20px 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Block b003: Subsection Title */
+[data-id="b003"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin: 15px 0 5px 0;
+  padding-left: 10px;
+  border-left: 4px solid #0066cc;
+}
+
+/* Block b004: Bullet List */
+[data-id="b004"] ul {
+  margin: 5px 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+[data-id="b004"] li {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 5px 0;
+}
+
+/* Block b005: Subsection Title */
+[data-id="b005"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin: 15px 0 5px 0;
+  padding-left: 10px;
+  border-left: 4px solid #0066cc;
+}
+
+/* Block b006: Bullet List */
+[data-id="b006"] ul {
+  margin: 5px 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+[data-id="b006"] li {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 5px 0;
+}
+
+/* Block b007: Section Title */
+[data-id="b007"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #000;
+  margin: 20px 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Block b008: Subsection Title */
+[data-id="b008"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin: 15px 0 5px 0;
+  padding-left: 10px;
+  border-left: 4px solid #0066cc;
+}
+
+/* Block b009: Bullet List */
+[data-id="b009"] ul {
+  margin: 5px 0 10px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+[data-id="b009"] li {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 5px 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.39rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.0rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #317404;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgba(11, 156, 16, 0.841);
+  border-left: 4px solid #04b88e;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #05bc30d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #04cf3a;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(2, 2, 26, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(113, 248, 210, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #027061;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #287103;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: rgb(3, 101, 47);
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.3rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.2rem;
+  color: #111614;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.26rem !important;
+                    background: rgba(248, 248, 248, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="104,58,454,84">
+<h1>풍경 저항 모델과 유전 패턴</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,107,552,125">
+<h2>효과적으로 최적화된 풍경 저항 모델을 검증했다.</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b003" data-bbox="122,144,346,158">
+<h3>유전 알고리즘 접근법의 장점</h3>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="129,164,888,217">
+<ul>
+<li>유전 알고리즘 접근법은 풍경 저항 표면을 관찰된 공간 유전 패턴에 맞게 더 효율적으로 매개변수 공간을 탐색할 수 있으며,</li>
+<li>컴퓨팅 기술의 발전에 따라 곧 쉽게 사용 가능해질 수 있다 (Spear et al 2010).</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="122,231,214,246">
+<h3>분석의 능력</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="129,251,902,338">
+<ul>
+<li>낮은 표본 밀도, 특히 브리티시 컬럼비아에서는 풍경 특성, 예를 들어 고속도로와 같은 요소의 영향을 검출하는 분석의 능력을 제한할 수 있다.</li>
+<li>이러한 제한에도 불구하고, 나는 풍경 저항에 의해 유전 격리가 나타나는 모델을 도출할 수 있었으며, 이 모델은 유전 구조와 높은 상관관계를 보였다. 이 모델은 개체군 연결성을 향상시키고 이식 이벤트의 효율성을 최적화하는 데 도움이 될 수 있다.</li>
+</ul>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="104,357,446,379">
+<h2>연구 지역의 유전자 흐름 모델링</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b008" data-bbox="122,397,312,411">
+<h3>유전자 흐름 모델의 특징</h3>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="129,417,902,619">
+<ul>
+<li>4개의 우선순위가 있는 통로 보호 지역을 식별했다.</li>
+<li>해안 범위에서 북 캐스케이드로의 유전자 흐름은 주로 99번 고속도로와, 덜한 수준에서 5번 고속도로를 따라 몇 가지 협소 지점으로 집중된다 (그림 8).</li>
+<li>오키나간의 농업 및 도시 지역은 퓨셀 산맥에서 캐스케이드로의 모델된 이동을 집중시킨다.</li>
+<li>마지막으로, I-90을 통해 북 캐스케이드에서 남 캐스케이드로 이동하는 유전자는 심각하게 제한되어 있으며, 몇 개의 좁은 통로를 통해 제한된다. 이러한 협소 지점을 통해 연결성을 유지하고 개선하면 개체의 이동에 대한 풍경의 투과성을 높이고 연구 지역 내의 유전자 흐름을 유지할 수 있다.</li>
+<li>이 유전자 흐름 모델은 I-90을 가로지르는 현재 건설 중인 야생동물 통로가 상당히 유용할 수 있음을 시사한다 (미국 국토교통부 연방도로국 및 워싱턴주 도로국). 그러나 산양이 이러한 통로 구조를 사용할지 여부는 아직 불확실하지만, 개발이 덜 된 지역에 야생동물 통로를 전략적으로 배치하면 이 지역을 가로지르는 이동을 촉진할 수 있다.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

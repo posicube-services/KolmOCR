@@ -68,8 +68,8 @@ def extract_headings(md: str) -> list[dict]:
 
 
 def extract_lists(md: str) -> list[str]:
-    """Extract list item texts (unordered lists)."""
-    items = re.findall(r"^[ \t]*[-*+]\s+(.*)", md, re.MULTILINE)
+    """Extract list item texts (unordered and ordered lists)."""
+    items = re.findall(r"^[ \t]*(?:[-*+]|\d+\.)\s+(.*)", md, re.MULTILINE)
     return [i.strip() for i in items if i.strip()]
 
 
@@ -97,11 +97,12 @@ def get_index2file(path_):
 def list_md_files(base_dir):
     """
     base_dir 하위의 모든 .md 파일을 재귀적으로 찾아 상대 경로 리스트로 반환.
+    _gt.md로 끝나는 파일은 제외한다.
     """
     md_paths = []
     for root, _, files in os.walk(base_dir):
         for f in files:
-            if f.endswith(".md"):
+            if f.endswith(".md") and not f.endswith("_gt.md"):
                 abs_path = os.path.join(root, f)
                 rel_path = os.path.relpath(abs_path, base_dir)
                 md_paths.append(rel_path)

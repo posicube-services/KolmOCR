@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .document {
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .document.columns-2 {
+      column-count: 2;
+      column-gap: 2rem;
+    }
+
+    .document.columns-3 {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+
+    @media print {
+
+      body,
+      .document,
+      .block {
+        page-break-inside: avoid;
+      }
+    }
+
+    table,
+    table.data-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+      break-inside: avoid;
+      border: 1px solid #999;
+    }
+
+    table th,
+    table td,
+    table.data-table th,
+    table.data-table td {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table th,
+    table.data-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      border: 1px solid #666;
+    }
+
+    table tbody tr:nth-child(even),
+    table.data-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover,
+    table.data-table tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    .math-display {
+      display: block;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .math-inline {
+      display: inline;
+    }
+
+    .block {
+      margin: 1rem 0;
+      width: fit-content;
+    }
+
+    ul,
+    ol {
+      margin: 0.5rem 0;
+      padding-left: 2rem;
+    }
+
+    figure {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    figure img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 1.5rem 0 0.5rem 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 1.3rem 0 0.4rem 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.1rem 0 0.3rem 0;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin: 1rem 0 0.3rem 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @media screen {
+      body {
+        background: #fff !important;
+      }
+
+      /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .document {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+<style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style><style type="text/css">
+@media screen {
+  body { background: #fff !important; }
+  /* Critical: remove preview margin/shadow so .page stays fully inside viewport */
+  .page { margin: 0 !important; box-shadow: none !important; }
+  .document { margin: 0 !important; box-shadow: none !important; }
+}
+</style></head>
+
+<body>
+  <div class="document" style="column-count: 1; column-gap: 1.5rem; ">
+    <div class="block" data-id="b001" data-bbox="16,35,391,69">
+      <h2>착공 전 설계도 확인 및 사용 전 검사 기준 해설</h2>
+    </div>
+    <div>
+      <ul>
+        <li class="block" data-id="b002" data-bbox="41,82,643,104">과학기술정보통신부장관이 별도로 고시하는 경우에는 이에 따라야 함 ※ '18년 12월 현재
+          별도로
+          정한 고시는 없음
+        </li>
+        <li class="block" data-id="b003" data-bbox="41,118,984,163">(제2항제2호) 이용자는 도로와 택지 또는 공동주택단지의 각 단지와의 경계점인 대지경계점을
+          기준으로, 대지경계선 안쪽에 설치하는 방송통신설비에 대해 설치·유지 및 관리의 책임을 가지며, 그
+          바깥쪽에 설치하는 설비는 사업자가 설치·유지 및 관리의 책임을 가짐(관로 분계점 또는 대지분계점)
+        </li>
+        <li class="block" data-id="b004" data-bbox="41,176,981,199">다만, 통신선의 경우에는 예외적으로 이용자의 건축물에 설치되어 사업자의 통신선(국선)과
+          이용자의
+          통신선(구내선)을 연결하는 접속점(국선단자함)을 분계점으로 함(선로 분계점)</li>
+        <li>
+          <div class="block" data-id="b005" data-bbox="41,212,984,257">구내통신설비 기술기준 제26조제2항 및 제3항에 따라 이용자가 국선을 지하로 인입하기
+            위하여
+            사업자의 인입맨홀, 핸드홀 또는 인입주까지 지하배관을 설치하는 경우, 사업자의 인입맨홀 등을 그
+            분계점으로 함
+          </div> <br>
+          <img alt="방송통신설비 분계점 설명도" class="block" data-id="b006" src="imgs/text_in_figure_1.png" data-bbox="41,307,949,788"><br>
+          <figcaption class="block" data-id="b007" data-bbox="41,822,605,844">방송통신설비 분계점 설명도: 사업자와 이용자 책임 구분, 도로와 택지의
+            경계점, 국선과 구내선의 분계점 등</figcaption>
+          <table class="data-table block" data-id="b008" data-bbox="41,858,984,969">
+            <tbody>
+              <tr>
+                <td>사업용방송통신설비와 이용자방송통신설비의 분계점</td>
+                <td>사업자 책임</td>
+                <td>이용자 책임</td>
+              </tr>
+              <tr>
+                <td>국선과 구내선의 분계점</td>
+                <td>사업자 책임(국선)</td>
+                <td>이용자 책임(구내선)</td>
+              </tr>
+              <tr>
+                <td>5회선 미만·건축주가 지하배관을 설치하는 경우</td>
+                <td>사업자 책임</td>
+                <td>이용자 책임</td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+</body></html>

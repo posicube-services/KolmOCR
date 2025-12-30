@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #222; margin: 20px; }
+    h1 { text-align: center; font-size: 24px; margin-bottom: 20px; }
+    th { background: #003a8c; color: #fff; font-weight: bold; text-align: center; border: 1px solid #999; padding: 8px; }
+    td { background: #e9f2ff; text-align: left; border: 1px solid #ccc; padding: 8px; }
+    table { border-collapse: collapse; width: 100%; table-layout: fixed; word-break: break-all; max-width: 190mm; margin: 10px 0; }
+    .section-header { background: #003a8c; color: #fff; text-align: center; font-weight: bold; padding: 8px; border: 1px solid #999; }
+    .sub-header { background: #f0f7ff; color: #003a8c; text-align: center; font-weight: bold; padding: 6px; border: 1px solid #999; }
+    .label { font-weight: bold; background: #003a8c; color: #fff; text-align: center; padding: 6px; }
+    .value { background: #e9f2ff; text-align: left; padding: 6px; }
+    .full-width { width: 100%; }
+    .half-width { width: 50%; }
+    .quarter-width { width: 25%; }
+  </style>
+</head>
+<body>
+
+<h1>외화환전신청서</h1>
+
+<!-- 섹션 1: 신청인 기본정보 -->
+<table>
+  <tr><th colspan="4" class="section-header">신청인 기본정보</th></tr>
+  <tr><th colspan="4" class="sub-header">개인정보</th></tr>
+  <tr><th colspan="4" class="sub-header">신분증 정보</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">신분증 종류</th>
+    <td class="value" style="width: 25%;">주민등록증</td>
+    <th class="label" style="width: 25%;">신분증 번호</th>
+    <td class="value" style="width: 25%;">123456-1234567</td>
+  </tr>
+  <tr>
+    <th class="label" style="width: 25%;">유효기간</th>
+    <td class="value" colspan="3" style="width: 75%;">2030-12-31</td>
+  </tr>
+  <tr><th colspan="4" class="sub-header">연락처 정보</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">휴대전화</th>
+    <td class="value" style="width: 25%;">010-1234-5678</td>
+    <th class="label" style="width: 25%;">이메일</th>
+    <td class="value" style="width: 25%;">user@example.com</td>
+  </tr>
+  <tr>
+    <th class="label" style="width: 25%;">주소</th>
+    <td class="value" colspan="3" style="width: 75%;">서울시 강남구 테헤란로 123</td>
+  </tr>
+</table>
+
+<!-- 섹션 2: 환전 정보 -->
+<table>
+  <tr><th colspan="4" class="section-header">환전 정보</th></tr>
+  <tr><th colspan="4" class="sub-header">환전 통화 및 금액</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">환전 통화</th>
+    <td class="value" style="width: 25%;">USD</td>
+    <th class="label" style="width: 25%;">환전 금액</th>
+    <td class="value" style="width: 25%;">1000</td>
+  </tr>
+  <tr>
+    <th class="label" style="width: 25%;">환율 정보</th>
+    <td class="value" colspan="3" style="width: 75%;">1350.50</td>
+  </tr>
+  <tr><th colspan="4" class="sub-header">수령 방법</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">수령 통화</th>
+    <td class="value" style="width: 25%;">KRW</td>
+    <th class="label" style="width: 25%;">수령 방식</th>
+    <td class="value" style="width: 25%;">현장 수령</td>
+  </tr>
+  <tr>
+    <th class="label" style="width: 25%;">수령 장소</th>
+    <td class="value" colspan="3" style="width: 75%;">서울 강남지점</td>
+  </tr>
+</table>
+
+<!-- 섹션 3: 계좌 및 결제 정보 -->
+<table>
+  <tr><th colspan="4" class="section-header">계좌 및 결제 정보</th></tr>
+  <tr><th colspan="4" class="sub-header">출금 계좌</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">계좌 종류</th>
+    <td class="value" style="width: 25%;">예금계좌</td>
+    <th class="label" style="width: 25%;">계좌번호</th>
+    <td class="value" style="width: 25%;">123-456-789012</td>
+  </tr>
+  <tr>
+    <th class="label" style="width: 25%;">은행명</th>
+    <td class="value" colspan="3" style="width: 75%;">국민은행</td>
+  </tr>
+  <tr><th colspan="4" class="sub-header">결제 수단</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">결제 방식</th>
+    <td class="value" style="width: 25%;">카드 결제</td>
+    <th class="label" style="width: 25%;">카드번호</th>
+    <td class="value" style="width: 25%;">1234-5678-9012-3456</td>
+  </tr>
+  <tr>
+    <th class="label" style="width: 25%;">카드 유효기간</th>
+    <td class="value" colspan="3" style="width: 75%;">25-12</td>
+  </tr>
+</table>
+
+<!-- 섹션 4: 거래 내역 및 목적 -->
+<table>
+  <tr><th colspan="4" class="section-header">거래 내역 및 목적</th></tr>
+  <tr><th colspan="4" class="sub-header">환전 목적</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">목적 분류</th>
+    <td class="value" style="width: 25%;">여행</td>
+    <th class="label" style="width: 25%;">세부 사유</th>
+    <td class="value" style="width: 25%;">해외 여행 비용 지급</td>
+  </tr>
+  <tr><th colspan="4" class="sub-header">거래 이력</th></tr>
+  <tr>
+    <th class="label" style="width: 25%;">최근 거래일</th>
+    <td class="value" style="width: 25%;">2024-06-01</td>
+    <th class="label" style="width: 25%;">거래 금액 합계</th>
+    <td class="value" style="width: 25%;">500000</td>
+  </tr>
+  <tr>
+    <th colspan="4" class="sub-header">거래 테이블</th>
+  </tr>
+  <tr>
+    <th class="label" style="width: 25%;">일자</th><td class="value" style="width: 25%;">2024-05-01</td>

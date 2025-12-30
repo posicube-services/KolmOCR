@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.block[data-id="b002"] p,
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b006"] p,
+.block[data-id="b008"] p,
+.block[data-id="b009"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  color: #333;
+  margin: 10px 0;
+  text-align: justify;
+}
+
+.block[data-id="b005"] h2,
+.block[data-id="b007"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Optional: Add a subtle border or background for visual separation if needed */
+.block {
+  break-inside: avoid;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.34rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f7f7f4;
+  color: #1c1c1c;
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+}
+
+
+.block {
+  margin-bottom: 26px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.block[data-class="title"] {
+  font-family: "맑은 고딕", serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+
+.block[data-class^="section_title"] {
+  font-family: "나눔명조", serif;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.block[data-class="author"] {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  text-indent: -1.4em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 3px solid #10b981;
+  padding-left: 16px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #1c1c1c;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #2f2f2f;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.24rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="104,64,231,84">
+<h1>온라인 교정</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,113,905,165">
+<p>대응 저자들은 온라인 교정 시스템에 대한 링크가 포함된 이메일을 받게 되며, 이는 온라인에서 교정 및 주석을 추가할 수 있도록 합니다. 이 환경은 MS Word와 유사하며, 텍스트 편집 외에도 그림/표에 대한 주석을 달고, 편집자로부터 온 질문에 답변할 수 있습니다. 웹 기반 교정은 직접 교정을 입력할 수 있어 오류를 줄이고, 더 빠른 과정을 제공합니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,190,905,224">
+<p>원하는 경우, 여전히 PDF 버전에서 주석을 달고 업로드하는 옵션도 있습니다. 교정에 대한 모든 지침은 저자들에게 보내는 이메일에 포함되며, 온라인 버전과 PDF 버전의 대안적인 방법도 포함됩니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,248,905,336">
+<p>우리는 가능한 한 빠르고 정확하게 논문을 출판하기 위해 모든 노력을 기울일 것입니다. 이 교정본은 편집, 완성도 및 텍스트, 표, 그림의 정확성을 확인하는데만 사용하십시오. 출판이 확정된 논문에 대한 중요한 변경 사항은 편집자의 허가가 있을 경우에만 이 단계에서 고려됩니다. 모든 교정이 한 번의 통신으로 보내져야 한다는 점을 확인하는 것이 중요합니다. 답변하기 전에 주의 깊게 확인해 주십시오. 이후의 교정이 포함될 수 없음을 보장할 수 없기 때문입니다. 교정은 전적으로 저자의 책임입니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="104,365,166,383">
+<h2>인쇄본</h2>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,417,905,523">
+<p>대응 저자는 ScienceDirect에서 최종 출판된 논문의 50일간 무료 액세스를 제공하는 맞춤형 공유 링크를 무료로 받게 됩니다. 이 공유 링크는 이메일 및 소셜 미디어를 포함한 모든 통신 채널을 통해 논문을 공유할 수 있습니다. 추가 비용을 지불하면, 논문이 출판 확정된 후에 제공되는 인쇄본 주문 양식을 통해 인쇄본을 주문할 수 있습니다. 대응 저자와 공동 저자 모두 Elsevier 웹숍을 통해 언제든지 인쇄본을 주문할 수 있습니다. 골드 오픈 액세스로 출판된 논문의 대응 저자는 공유 링크를 받지 않으며, 그들의 최종 출판된 논문은 ScienceDirect에서 오픈 액세스로 이용 가능하며, 논문 DOI 링크를 통해 공유할 수 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="104,551,194,569">
+<h2>저자 문의</h2>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,603,905,638">
+<p>Elsevier 지원 센터를 방문하여 필요한 답변을 찾으십시오. 여기서는 자주 묻는 질문부터 연락 방법까지 다양한 정보를 찾을 수 있습니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,662,732,679">
+<p>또한, 제출된 논문의 상태를 확인하거나 출판 확정된 논문의 출판 일정을 확인할 수 있습니다.</p>
+</div>
+</div>
+</body>
+</html>

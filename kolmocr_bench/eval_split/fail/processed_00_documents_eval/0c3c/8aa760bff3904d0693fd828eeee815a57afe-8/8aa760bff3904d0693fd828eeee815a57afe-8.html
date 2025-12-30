@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 1em 0;
+  text-align: center;
+  color: #333;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b009"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #222;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
+}
+
+.block[data-id="b006"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.5em 0;
+  color: #222;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b005"] p,
+.block[data-id="b007"] p,
+.block[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 0.5em 0;
+  text-align: justify;
+  color: #333;
+}
+
+.block[data-id="b010"] p,
+.block[data-id="b011"] p,
+.block[data-id="b012"] p,
+.block[data-id="b013"] p,
+.block[data-id="b014"] p,
+.block[data-id="b015"] p,
+.block[data-id="b016"] p,
+.block[data-id="b017"] p,
+.block[data-id="b018"] p,
+.block[data-id="b019"] p,
+.block[data-id="b020"] p,
+.block[data-id="b021"] p,
+.block[data-id="b022"] p,
+.block[data-id="b023"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.4;
+  margin: 0.3em 0;
+  text-align: left;
+  color: #444;
+  padding-left: 0.5em;
+  position: relative;
+}
+
+/* MathJax rendering fix for inline math */
+.block p {
+  word-break: break-word;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 0.5em;
+}
+
+/* Optional: Add a subtle shadow or border for reference */
+.block {
+  break-inside: avoid;
+}
+
+/* For references, add a small indent to simulate hanging indent */
+.block[data-id^="b010"] p::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.5em;
+  color: #888;
+}
+
+/* Ensure references are aligned properly */
+.block[data-id^="b010"] p {
+  text-indent: -1em;
+  padding-left: 1.5em;
+}
+
+/* Make sure the document doesn't overflow */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.30rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  margin: 0;
+  background: #f0f2f5;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #0f172a;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.block[data-class="header"],
+.block[data-class="footer"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.1em;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid #94a3b8;
+  padding: 10px;
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #475569;
+  text-indent: -1.5em;
+  padding-left: 1.6em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.50rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="385,27,615,41">
+<h1>구조화된 Markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="95,72,132,83">
+<h2>본문</h2>
+</div>
+<div class="block" data-class="figure_caption" data-id="b003" data-bbox="95,110,905,137">
+<p><strong>그림 10</strong>: Igea 모델을 1024x1024로 렌더링할 때 일반 맵핑을 사용하는 경우와 일반 맵핑을 사용하지 않는 경우(첫 번째 행의 프레임률 결과. surfel 크기는 $r_{inner} = w_s$ 로 제한됩니다.(예: $r_{sil} = 2$). 첫 번째 행의 최종 이미지는 2(a)에 표시되어 있고, 마지막 행은 2(c)에 표시되어 있습니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="95,161,905,179">
+<p>우리는 더 적은 수의 surfels로 인해 프레임률이 크게 증가하는 이점을 볼 수 있습니다, 특히 큰 일반 맵을 사용할 때 더욱 그렇습니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="95,203,905,267">
+<p>이 표는 또한 $S^{i-1}$ 및 텍스처링(첫 번째 및 두 번째 행)에 사용되는 추가적인 꼭짓점/프레그먼트 쉐이더 연산으로 인한 일반 맵핑 오버헤드를 보여줍니다. 한편, $S^{i-1}$ 을 계산하는 데는 꼭짓점 쉐이더에서 많은 연산이 필요합니다. 다른 한편, 꼭짓점 수가 매우 감소되어, 이 오버헤드를 더 보상합니다. 또한 프레그먼트 단계에서는 더 적은 큰 splats를 사용할 때보다 더 많은 작은 splats를 사용할 때 더 많은 프레그먼트를 그릴 필요가 없습니다. 이 외에도, 텍스처링 surfels는 프레그먼트 쉐이더에서 몇 가지 추가가 연산만 필요합니다(3.3 참조). 이는 중요합니다. 왜냐하면 프레그먼트 쉐이딩은 특히 점 기반 렌더링에서 여전히 병목 현상이기 때문입니다. 우리는 일반 맵핑이 일반 맵을 위한 필요한 텍스처 메모리로 인해 만 상당한 오버헤드를 초래한다는 결론을 내릴 수 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b006" data-bbox="95,291,248,301">
+<h3>1. 결론 및 향후 작업</h3>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="95,324,905,361">
+<p>본 논문에서는 일반 맵핑과 실루엣 정제를 사용하여 객체 표면 내부의 surfels 수를 시각적 단점 없이 줄이는 접근법을 제안했습니다. 이는 프레임률이 크게 증가하는 결과를 가져왔습니다. 또한, 다양한 유형의 점 계층에 대한 일반 맵을 생성하는 방법을 레이 캐싱 접근법을 사용하여 보여주었습니다. 이는 점 계층에서 제공되는 재귀적 표면 분할을 사용하여 가속화됩니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="95,385,905,421">
+<p>우리의 프레임워크는 거의 모든 종류의 점 기반 표면 설명을 지원하지만, 향후 작업에 대한 몇 가지 의견이 있습니다. 여러 개의 일반 맵이 필요할 경우(예: 계층 내에 많은 surfels이 있는 경우) 적절한 맵을 선택하기 위해 많은 그래픽 라이브러리 프로시저 호출을 피하기 위해 렌더링될 surfels의 지능적인 그룹화가 필요합니다. 또 다른 작업 주제는 텍스처 메모리</p>
+</div>
+<div class="block" data-class="reference" data-id="b009" data-bbox="97,445,171,456">
+<h2>참고문헌</h2>
+</div>
+<div class="block" data-class="reference" data-id="b010" data-bbox="152,481,771,489">
+<p>[BE05] G. Barequet 및 G. Elber. 3차원 벡터의 최적 경계. Inf. Process. Lett., 93(2):83–89, 2005.</p>
+</div>
+<div class="block" data-class="reference" data-id="b011" data-bbox="105,511,888,527">
+<p>[BK03] M. Botsch 및 L. Kobbelt. 현대 GPU에서의 고품질 점 기반 렌더링. In PG'03 conf.proc., page 335. IEEE Computer Society, 2003.</p>
+</div>
+<div class="block" data-class="reference" data-id="b012" data-bbox="105,548,838,564">
+<p>[CAZ01] J. D. Cohen, D. G. Aliaga 및 W. Zhang. 하이브리드 단순화: 다중 해상도 폴리곤 및 점 렌더링 결합. In Vis'01 conf.proc., pages 37–44. IEEE Computer Society, 2001.</p>
+</div>
+<div class="block" data-class="reference" data-id="b013" data-bbox="105,586,881,601">
+<p>[CN01] B. Chen 및 M. X. Nguyen. Pop: 대규모 데이터를 위한 하이브리드 점 및 폴리곤 렌더링 시스템. In Vis'01 conf.proc., pages 45–52. IEEE Computer Society, 2001.</p>
+</div>
+<div class="block" data-class="reference" data-id="b014" data-bbox="105,623,877,631">
+<p>[DVS03] C. Dachsbacher, C. Vogelsang 및 M. Stamminger. 순차적 점 트리. ACM Trans. Graph., 22(3):657–662, 2003.</p>
+</div>
+<div class="block" data-class="reference" data-id="b015" data-bbox="105,652,806,660">
+<p>[Her92] G.T. Herman. 이산 다차원 요단 표면. CVGIP: Graph. Models Image Process., 54(6):507–515, 1992.</p>
+</div>
+<div class="block" data-class="reference" data-id="b016" data-bbox="105,682,893,690">
+<p>[LH01] D. Luebke 및 B. Hallen. 인지 기반 상호작용 렌더링. Technical Report #CS-2001-01, University of Virginia, 2001.</p>
+</div>
+<div class="block" data-class="reference" data-id="b017" data-bbox="105,712,822,727">
+<p>[LW85] M. Levoy 및 T. Whitted. 점을 표시 기본 요소로 사용하기. Technical Report 85-022, Computer Science Department, University of North Carolina at Chapel Hill, 1985.</p>
+</div>
+<div class="block" data-class="reference" data-id="b018" data-bbox="105,749,873,765">
+<p>[PGK02] M. Pauly, M. Gross 및 L. P. Kobbelt. 점 샘플링 표면의 효율적인 단순화. In VIS '02 conf.proc., pages 163–170, Washington, DC, USA, 2002.</p>
+</div>
+<div class="block" data-class="reference" data-id="b019" data-bbox="105,786,880,802">
+<p>[PZvBG00] H. Pfister, M. Zwicker, J. van Baar 및 M. Gross. Surfels: 렌더링 기본 요소로서의 표면 요소. In SIGGRAPH'00 conf.proc., pages 335–342, New York, NY, USA, 2000.</p>
+</div>
+<div class="block" data-class="reference" data-id="b020" data-bbox="105,824,829,839">
+<p>[RLOO] S. Rusinkiewicz 및 M. Levoy. Qsplat: 대규모 메시에 대한 다중 해상도 점 렌더링 시스템. In SIGGRAPH'00 conf.proc., pages 343–352. ACM Press/Addison-Wesley Publishing Co., 2000.</p>
+</div>
+<div class="block" data-class="reference" data-id="b021" data-bbox="105,861,879,877">
+<p>[RPZ02] L. Ren, H. Pfister 및 M. Zwicker. 객체 공간 EWA 표면 splatting: 고품질 점 렌더링을 위한 하드웨어 가속화 접근법, 2002.</p>
+</div>
+<div class="block" data-class="reference" data-id="b022" data-bbox="105,898,899,914">
+<p>[ZPvBG01] M. Zwicker, H. Pfister, J. van Baar 및 M. Gross. 표면 splatting. In SIGGRAPH'01 conf.proc., pages 371–378. ACM Press, 2001.</p>
+</div>
+<div class="block" data-class="reference" data-id="b023" data-bbox="105,936,888,951">
+<p>[ZRB+04] M. Zwicker, J. Räisänen, M. Botsch, C. Dachsbacher 및 M. Pauly. 관점 정확한 splatting. In GI'04 conf.proc., pages 247–254, University of Waterloo, 2004.</p>
+</div>
+</div>
+</body>
+</html>

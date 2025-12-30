@@ -5,8 +5,9 @@ from typing import List
 import pandas as pd
 
 from olmocr.kolmocr_eval.metrics.base import Metric
-from olmocr.kolmocr_eval.metrics.common import normalized_edit_distance, similarity_from_distance, round_numeric
+from olmocr.kolmocr_eval.metrics.common import normalized_edit_distance, similarity_from_distance, round_numeric, align_sequences, average
 from olmocr.kolmocr_eval.utils.data_io import list_md_files, read_md
+from olmocr.kolmocr_eval.metrics.text_edit import _prepare_text_for_text_edit, _split_paragraphs
 
 
 class ReadingOrderEvaluator(Metric):
@@ -23,11 +24,27 @@ class ReadingOrderEvaluator(Metric):
                 continue
             md_pred = read_md(pred_dir)
             md_gt = read_md(gt_dir)
-            # 문서 전체 라인 시퀀스 기반 읽기 순서 비교 (빈 줄 제외, 양끝 공백 제거)
-            reading_pred = "\n".join([ln.strip() for ln in md_pred.splitlines() if ln.strip()])
-            reading_gt = "\n".join([ln.strip() for ln in md_gt.splitlines() if ln.strip()])
-            reading_ned = normalized_edit_distance(reading_pred, reading_gt)
-            reading_score = similarity_from_distance(reading_ned)
+
+            # 문단 단위 블록을 추출해 순서를 비교 (Adjacency alignment)
+            text_pred = _prepare_text_for_text_edit(md_pred)
+            text_gt = _prepare_text_for_text_edit(md_gt)
+            blocks_pred = _split_paragraphs(text_pred)
+            blocks_gt = _split_paragraphs(text_gt)
+
+            if not blocks_gt:
+                continue
+
+            sims = [0.0] * len(blocks_gt)
+
+            def _sim(p, g):
+                return similarity_from_distance(normalized_edit_distance(p, g))
+
+            pairs = align_sequences(blocks_pred, blocks_gt, _sim)
+            for gi, pi in pairs:
+                sims[gi] = _sim(blocks_pred[pi], blocks_gt[gi])
+
+            reading_score = average(sims) if sims else 1.0
+            reading_ned = 1.0 - reading_score
 
             records.append(
                 {

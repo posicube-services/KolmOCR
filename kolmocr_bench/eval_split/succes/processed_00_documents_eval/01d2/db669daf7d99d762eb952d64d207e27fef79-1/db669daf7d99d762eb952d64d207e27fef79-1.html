@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] p,
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b006"] p,
+.block[data-id="b008"] p,
+.block[data-id="b010"] p,
+.block[data-id="b012"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  color: #333;
+  margin: 10px 0;
+}
+
+.block[data-id="b005"] h2,
+.block[data-id="b007"] h3,
+.block[data-id="b009"] h2,
+.block[data-id="b011"] h2 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b013"] .table-container {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.block[data-id="b013"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.block[data-id="b013"] .data-table th,
+.block[data-id="b013"] .data-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.block[data-id="b013"] .data-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.block[data-id="b013"] .data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Handle any potential overflow or alignment issues */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.34rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 2.0rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #317404;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.4rem;
+  color: rgba(11, 156, 16, 0.841);
+  border-left: 4px solid #04b88e;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #05bc30d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #04cf3a;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(2, 2, 26, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(113, 248, 210, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #027061;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.25rem;
+  color: #287103;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: rgb(3, 101, 47);
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.3rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.2rem;
+  color: #111614;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.27rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1px solid #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e8e8e8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="104,41,502,59">
+<h1>저 레닌 고혈압(LREH)의 특징</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,73,900,98">
+<p>저 레닌 고혈압(LREH)은 고혈압 환자 집단의 중요한 하위 집단을 차지하며, 소금 민감성과 이뇨제 반응과 관련이 있으며, 흔한 환자들에서 흔히 관찰됩니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,109,901,174">
+<p>LREH의 흥미로운 특징 중 하나는 정상 수준의 혈장 알도스테론이 존재한다는 것입니다. 1,2 혈장 알도스테론과 레닌 활성의 비율은 부신 종양 및 과대증을 검출하는 데 사용되며, 혈장 레닌 활성이 ng/mL/hr로 표현되고 알도스테론 농도가 ng/dL로 표현될 때 일반적으로 100 이상입니다. LREH에서는 혈장 알도스테론/혈장 레닌 활성 비율이 약간 높을 수 있습니다 (30 이상이지만 100 미만), 특히 24시간 동안의 소변 나트륨 배설량이 200 mEq를 초과할 경우 더욱 중요합니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,185,902,237">
+<p>이 상황에서 알도스테론 분비를 조절하는 메커니즘이나 실제 미네랄코르티코이드 과잉 여부는 아직 명확하지 않습니다. LREH에서 심한 소금 제한 또는 체액 부족으로 인한 혈장 레닌 활성의 지속적인 억제에 대한 과도한 이전의 강조는 문제가 될 수 있으며, 1 노인에서 혈장 레닌 활성과 기본 알도스테론 분비의 억제도 LREH 분석을 복잡하게 만들 수 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="104,251,337,266">
+<h2>Fisher 등2의 연구</h2>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,280,904,385">
+<p>Fisher 등2의 연구는 LREH, 정상 레닌 고혈압, 그리고 정상 대조군에서 식이 소금 섭취에 따른 부신 및 알박 반응에 초점을 맞추고 있습니다. 특히 LREH와 정상 혈장 레닌 활성(NMEH)을 가진 "비조절" 고혈압 간의 기능적 유사점이 두드러지며, 이는 다음과 같은 특징을 포함합니다: (1) 혈압의 소금 민감성; (2) 5일간 엄격한 식이 나트륨 제한 후 Ang II 투여 및 수적 자세에 대한 혈장 알도스테론 반응의 감소; (3) 상대적으로 낮은 기본 혈장 알도스테론 농도. 이들 특징은 식이 소금 섭취를 200 mEq로 증가시키면 정상 대조군과 "조절" 고혈압 환자와의 차이가 사라집니다. 이 결과는 고소금 섭취 시 혈장 Ang II 활성의 억제와 Ang II 수용체의 재감수성 및 Ang II 반응성의 향상과 일치합니다. 따라서 나트륨 제한 시 Ang II 반응성의 감소는 지속적인 Ang II 생성과 Ang II 수용체의下调과 관련이 있을 수 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="104,399,450,415">
+<h3>LREH 정의와 Ang II 반응성</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,428,904,520">
+<p>Fisher 등2는 LREH와 Ang II 반응성의 정의를 5일간의 나트륨 제한(10 mEq/24시간)을 받은 환자 기준으로 설정했습니다. "짧은" 프로토콜과 함께 이뇨제를 병용 투여하는 것보다 더 긴 제한 기간을 사용한 것입니다. 연구 대상이 실제로 나트륨 균형에 도달했는지 확인하는 것이 중요합니다. 이는 기본 혈장 알도스테론 농도의 해석에 영향을 미칠 수 있기 때문입니다. LREH 및 NMEH 환자의 낮은 기본 혈장 알도스테론 농도는 식이 소금 제한에도 불구하고 상대적 체액 확장의 결과일 수 있습니다. 이와 관련하여, 5일째에 이르면 이 2개 그룹의 24시간 소변 나트륨 배설률은 정상 대조군 및 정상 조절 고혈압 환자에 비해 약간(하지만 유의하게) 높았습니다 (참조 2의 Table 1 참조).</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b009" data-bbox="104,534,467,549">
+<h2>신장관 운반체 결함에 대한 이해</h2>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,563,902,695">
+<p>최근 몇 년 동안 신장관 운반체 결함에 대한 우리의 이해가 확장되었습니다. 이는 상피 운반체 과정 및 이러한 운반체의 돌연변이로 인해 발생하는 임상 증후군에 대한 독특한 통찰을 제공합니다. 6 연구의 주요 초점 중 하나는 상피 나트륨 채널(ENaC)으로, 이는 미네랄코르티코이드 반응성 신장수집관에서 나트륨 흡수를 조절하는 속도 결정 장벽입니다. 7 ENaC은 돌연변이 또는 미네랄코르티코이드에 대한 반응 또는 생성의 변화에 의해 직접 영향을 받을 수 있습니다. 8,9 결과적으로,我们现在定义了孟德尔综合征，其中ENaC活性“失调”，随后发展为可归因于原发性肾机制的系统性血压紊乱。ENaC 채널의 서브유닛에 직접 영향을 미치는 돌연변이는 기능获得(리들 증후군) 또는 기능 상실(가짜 저알도스테론증 1형)을 초래하며, 영향받은 개인의 예측 가능한 임상 양상을 나타냅니다. 식이 소금 과잉에 대한 정상 반응은 ENaC 활성의下跌으로, 수질관에서의 나트륨 재흡수가 감소됩니다. 이 과정에 문제가 있으면 ENaC 활성의 조절 실패, 지속적인 나트륨 재흡수 및 체액 확장이 발생할 수 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b011" data-bbox="104,709,348,724">
+<h2>리들 증후군의 재조명</h2>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="104,738,904,829">
+<p>리들 증후군의 원래 설명은 유럽계 환자에서 이루어졌습니다. 10,11 임상 양상에 대한 재조명 후, 12 아프리카계 조상의 환자에서도 심한 저 레닌 고혈압과 알도스테론 분비의 극심한 억제가 관찰되었으며, 종종 저칼륨성 대사성 알칼로지와 동반되었습니다. 13 이 중요한 대상 집단에서 LREH의 원인을 정의하는 데 있어 회망이 있음에도 불구하고, 다양한 민족 집단에 대한 수많은 검사 노력은 리들 증후군이 인간 LREH의 드문 원인이라는 원래의 견해를 바꾸지 못했습니다. ENaC 서브유닛의 다형성이 ENaC의 cAMP 민감도를 증가시켜거나 14 알도스테론 분비를 억제하는 데 관련될 수 있지만, 이는 LREH의 주요 원인으로 간주되지 않습니다.</p>
+</div>
+<div class="block" data-class="key_value" data-id="b013" data-bbox="105,844,904,946">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>날짜</th><th>2023-10-01</th></tr>
+</thead>
+<tbody>
+<tr><td>저 레닌 고혈압(LREH)의 특징</td><td></td></tr>
+<tr><td>Fisher 등2의 연구</td><td></td></tr>
+<tr><td>LREH 정의와 Ang II 반응성</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+---
+primary_language: ko
+is_rotation_valid: True
+rotation_correction: 0
+is_table: True
+is_diagram: False
+---
+# 투자위험고지서
+
+개인정보 수집 및 이용 동의
+
+<table>
+<tr>
+<th rowspan="5">기본 정보</th>
+<th colspan="2">신원 확인</th>
+<th rowspan="5">동의 사항</th>
+</tr>
+<tr>
+<th>성명</th>
+<td class="content-cell">홍길동</td>
+</tr>
+<tr>
+<th>생년월일</th>
+<td class="content-cell">1990-01-01</td>
+</tr>
+<tr>
+<th>주민등록번호</th>
+<td class="content-cell">900101-1234567</td>
+</tr>
+<tr>
+<th>휴대폰 번호</th>
+<td class="content-cell">010-1234-5678</td>
+</tr>
+<tr>
+<th>이메일 주소</th>
+<td class="content-cell" colspan="2">user@example.com</td>
+<td class="content-cell">동의함</td>
+</tr>
+<tr>
+<th>개인정보 수집 동의</th>
+<td class="content-cell" colspan="2"></td>
+<td class="content-cell">동의함</td>
+</tr>
+<tr>
+<th>개인정보 이용 동의</th>
+<td class="content-cell" colspan="2"></td>
+<td class="content-cell">동의함</td>
+</tr>
+<tr>
+<th>제3자 제공 동의</th>
+<td class="content-cell" colspan="2"></td>
+<td class="content-cell">동의함</td>
+</tr>
+</table>
+
+투자 상품 정보
+
+<table>
+<tr>
+<th rowspan="3">상품 기본 정보</th>
+<th>상품명</th>
+<td class="content-cell">글로벌 주식형 펀드</td>
+<th rowspan="3">투자 조건</th>
+</tr>
+<tr>
+<th>상품 코드</th>
+<td class="content-cell">FUND001</td>
+</tr>
+<tr>
+<th>상품 발행일</th>
+<td class="content-cell">2023-05-01</td>
+</tr>
+<tr>
+<th>최소 투자금액</th>
+<td class="content-cell">1000000</td>
+<th>최대 투자금액</th>
+<td class="content-cell">100000000</td>
+</tr>
+<tr>
+<th>투자 기간</th>
+<td class="content-cell">3년</td>
+<th>예상 수익률</th>
+<td class="content-cell">5.5%</td>
+</tr>
+<tr>
+<th>수익 유형</th>
+<td class="content-cell">배당형</td>
+<th>지급 일정</th>
+<td class="content-cell">분기별 지급</td>
+</tr>
+</table>
+
+투자 위험 고지
+
+<table>
+<tr>
+<th rowspan="3">시장 위험</th>
+<th>시장 위험 설명</th>
+<td class="content-cell">시장 변동에 따라 원금 손실 가능</td>
+<th rowspan="3">신용 위험</th>
+</tr>
+<tr>
+<th>시장 위험 등급</th>
+<td class="content-cell">고위험</td>
+</tr>
+<tr>
+<th>시장 위험 완화 방법</th>
+<td class="content-cell">다양한 자산 분산 투자</td>
+</tr>
+<tr>
+<th>신용 위험 설명</th>
+<td class="content-cell">발행사 부도 시 손실 발생 가능</td>
+<th>신용 위험 등급</th>
+<td class="content-cell">중위험</td>
+</tr>
+<tr>
+<th>신용 위험 완화 방법</th>
+<td class="content-cell">우량 채권 중심 투자</td>
+<th>위험 등급 평가</th>
+<td class="content-cell">고위험</td>
+</tr>
+</table>
+
+투자자 유형 및 적합성 판단
+
+<table>
+<tr>
+<th rowspan="3">투자자 유형</th>
+<th>투자자 유형</th>
+<td class="content-cell">일반투자자</td>
+<th rowspan="3">적합성 판단 결과</th>
+</tr>
+<tr>
+<th>위험 허용도</th>
+<td class="content-cell">중간</td>
+</tr>
+<tr>
+<th>투자 경험</th>
+<td class="content-cell">3년 이상</td>
+</tr>
+<tr>
+<th>적합성 판단 결과</th>
+<td class="content-cell">적합</td>
+<th>적합성 판단 근거</th>
+<td class="content-cell">투자 목적 및 위험 감수 능력 일치</td>
+</tr>
+<tr>
+<th>추천자</th>
+<td class="content-cell">김자산관리사</td>
+<th>추천일</th>
+<td class="content-cell">2023-06-01</td>
+</tr>
+</table>
+
+거래 내역 및 수수료
+
+<table>
+<tr>
+<th rowspan="3">거래 요약</th></tr></table>

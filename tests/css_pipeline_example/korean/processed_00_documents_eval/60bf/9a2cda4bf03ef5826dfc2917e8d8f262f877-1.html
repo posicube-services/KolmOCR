@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root {
+  --font-scale: 1;
+}
+
+/* 페이지 / 문서 레이아웃 */
+.document {
+  width: 210mm;
+  margin: 0 auto;
+  padding: 15mm 20mm;
+  box-sizing: border-box;
+  background: #fff;
+  column-count: 1;
+  column-gap: 10mm;
+  column-fill: balance;
+  overflow: visible;
+  transform: none;
+  font-size: calc(10pt * var(--font-scale));
+}
+
+/* 공통 block 스타일 */
+.block {
+  width: 100%;
+  margin: 8pt 0;
+}
+
+/* title: 문서/섹션 제목 (b002, b004, b006, b008) */
+.block.title h1,
+.block.title h2 {
+  color: #222;
+  font-weight: bold;
+  margin: 0 0 12pt 0;
+}
+
+.block.title h1 {
+  font-size: calc(1.8em * var(--font-scale));
+}
+
+.block.title h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+/* text: 일반 문단/요약/키워드 리스트 등 (나머지 block) */
+.block.text p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 15px 0;
+  text-align: justify;
+}
+
+/* b001: YAML front-matter는 코드 블록으로 유지 */
+.block.text pre {
+  margin: 0 0 15px 0;
+}
+
+/* 리스트(주요 키워드) */
+.block.text ul {
+  margin: 0 0 15px 20px;
+  padding: 0;
+}
+
+.block.text li {
+  margin: 0 0 5px 0;
+}
+
+/* 코드 블록 스타일 (front matter) */
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 10px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.4;
+  border-radius: 4px;
+}
+
+code {
+  font-family: monospace;
+  font-size: calc(0.9em * var(--font-scale));
+  color: #333;
+}
+
+/* 공통 heading 기본값 (필요 시) */
+h1, h2 {
+  color: #222;
+  font-weight: bold;
+}
+
+/* 페이지 wrapper */
+.page {
+  width:210mm;
+  max-height:297mm;
+  margin:10mm auto;
+  background:#fff;
+  box-sizing:border-box;
+  overflow:hidden;
+  position:relative;
+}
+.page-inner {
+  transform-origin: top left;
+  transform: scale(1);
+}
+</style>
+
+<style id="fitpage-css">
+.page { width:210mm; max-height:297mm; margin:10mm auto; background:#fff; box-sizing:border-box; overflow:hidden; position:relative; }
+.page-inner { transform-origin: top left; transform: scale(1); }
+</style>
+
+<script>
+function fitFontToPageOnce() {
+  const page = document.querySelector('.page');
+  const doc  = document.querySelector('.document');
+  if (!page || !doc) return;
+
+  const pageHeight = page.clientHeight;
+
+  const MIN_SCALE = 0.5;  // 6px
+  const MAX_SCALE = 1.0;  // 12px
+
+  document.documentElement.style.setProperty('--font-scale', String(MAX_SCALE));
+  void doc.offsetHeight;
+
+  let low = MIN_SCALE;
+  let high = MAX_SCALE;
+  let best = MIN_SCALE;
+
+  for (let i = 0; i < 12; i++) {
+    const mid = (low + high) / 2;
+    document.documentElement.style.setProperty('--font-scale', String(mid));
+    void doc.offsetHeight;
+
+    const contentHeight = doc.scrollHeight;
+
+    if (contentHeight <= pageHeight) {
+      best = mid;
+      low  = mid;
+    } else {
+      high = mid;
+    }
+  }
+
+  const finalScale = Math.max(MIN_SCALE, best * 0.98);
+  document.documentElement.style.setProperty('--font-scale', String(finalScale));
+}
+</script>
+</head>
+<body>
+<div class="page"><div class="page-inner">
+<div class="document">
+  <!-- b001: text (front matter 코드) -->
+  <div class="block text" data-id="b001" data-bbox="28,44,4829.06,62.39">
+    <pre><code class="language-yaml">---
+title: Inflammatory metastasis is a metastatic tumor associated with fever, skin changes, soft tissue inflammation, and laboratory abnormalities, suggesting an inflammation that obscures the underlying malignancy. We report a 69-year-old male with inflammatory metastatic carcinoma of sternum. He presented with clinical findings mimicking osteomyelitis of the sternum. The chest CT scan showed the parasternal soft tissue masses and cortical disruption of sternum which was continuous with air bubbles spreading through the pectoralis muscles. He was diagnosed as poorly-differentiated carcinoma with unknown origin.
+---</code></pre>
+  </div>
+
+  <!-- b002: title (문서 제목) -->
+  <div class="block title" data-id="b002" data-bbox="28,130.39,317.78,57.98">
+    <h1>지방종양의 염증성 전이</h1>
+  </div>
+
+  <!-- b003: text (요약/소개 문단) -->
+  <div class="block text" data-id="b003" data-bbox="28,204.38,1224,76.78">
+    <p>염증성 전이는 발열, 피부 변화, 부드러운 조직의 염증 및 실험실 이상을 동반하는 전이성 종양으로, 이는 기저에 있는 악성 종양을 가리치는 염증을 암시합니다. 본 연구에서는 69세 남성 환자에게서 관찰된 염증성 전이성 갑상선 종양을 보고합니다. 환자는 갑상선의 골수염과 유사한 임상 소견을 보였으며, 가슴 CT 검사에서 갑상선의 부위에 공기포가 퍼져 있는 것을 관찰할 수 있었습니다. 최종 진단은 갑상선의 기원 불명의 미분화된 전이성 암으로 확인되었습니다.</p>
+  </div>
+
+  <!-- b004: title (섹션 헤더: 주요 키워드) -->
+  <div class="block title" data-id="b004" data-bbox="28,301.95,121.67,38.39">
+    <h2>주요 키워드</h2>
+  </div>
+
+  <!-- b005: text (키워드 리스트) -->
+  <div class="block text" data-id="b005" data-bbox="28,356.34,498.06,127.97">
+    <ul>
+      <li>Sternum (갑상선)</li>
+      <li>Bone Metastases (골 전이)</li>
+      <li>Gas Gangrene (가스성 괴사)</li>
+      <li>Carcinoma, Squamous (평상상피암)</li>
+      <li>Multidetector Computed Tomography (다중검출기 컴퓨터 단층촬영)</li>
+    </ul>
+  </div>
+
+  <!-- b006: title (섹션 헤더: 서론) -->
+  <div class="block title" data-id="b006" data-bbox="28,505.11,46,38.39">
+    <h2>서론</h2>
+  </div>
+
+  <!-- b007: text (서론 본문) -->
+  <div class="block text" data-id="b007" data-bbox="28,559.5,1224,76.78">
+    <p>앞쪽 가슴 벽의 통증과 부종이 염증성 증상을 동반할 경우, 감염이나 관절염과 같은 염증 과정과 관련이 있을 수 있습니다 (1). 때로는 암과 같은 기저의 병리 과정이 감염으로 오해될 수 있으며, 이는 환자와 의료진 모두에게 치명적인 결과를 초래할 수 있습니다. 본 연구에서는 처음에는 가슴 근육의 가스성 괴사와 갑상선의 골수염으로 진단되었으나, 최종적으로 갑상선의 기원 불명의 전이성 암으로 진단된 고령 남성 환자의 사례를 보고합니다.</p>
+  </div>
+
+  <!-- b008: title (섹션 헤더: 사례 보고) -->
+  <div class="block title" data-id="b008" data-bbox="28,657.08,98.67,38.39">
+    <h2>사례 보고</h2>
+  </div>
+
+  <!-- b009: text (사례 보고 첫 문단) -->
+  <div class="block text" data-id="b009" data-bbox="28,711.47,1224,102.38">
+    <p>69세 남성이 발열과 가슴 앞 벽의 통증으로 입원하여 평가를 받았습니다. 그는 3개월 동안 가슴 앞 벽의 통증으로 여러 정형외과 클리닉을 방문했지만, 증상이 호전되지 않고 악화되었습니다. 입원 당시 체온은 39.8°C로 측정되었습니다. 통증은 가슴 앞 벽에 집중되어 있었으며, 특히 갑상선 주변에서 심했습니다. 가슴 앞 벽의 부드러운 조직은 부어오르고, 피부는 약간 발적되어 있었으며, 국소적으로 열감이 느껴졌습니다. 체격 검사 시, 균열 소리와 심한 통증이 동반되었습니다. 나머지 신체 검사에서 10년 전 발생한 뇌졸중으로 인한 왼쪽 반신 마비가 확인되었으며, 당뇨병의 병력은 없었습니다.</p>
+  </div>
+
+  <!-- b010: text (사례 보고 두 번째 문단: 검사 결과) -->
+  <div class="block text" data-id="b010" data-bbox="28,829.84,1224,51.19">
+    <p>전혈구 검사 결과 혈색소 수치는 13.0 g/dL, 백혈구 수치는 21,900/mm³ (중립구 88%, 림프구 4.4%)였으며, 혈소판 수치는 240,000/mm³로 나타났습니다. 적혈구 침강 반응(ESR)은 1시간 후 121 mm로 측정되었고, C-반응 단백질(CRP)은 30 mg/L로 검출되었습니다 (정상 범위 &lt; 0.7).</p>
+  </div>
+</div>
+</div></div>
+</body>
+</html>

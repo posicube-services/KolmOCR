@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>외화수취통지서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12pt;
+      color: #111;
+      background-color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 18pt;
+      font-weight: bold;
+    }
+    .document-container {
+      max-width: 100%;
+      background: #999;
+      padding: 20px;
+      border-radius: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-bottom: 20px;
+      background: #999;
+      border: none;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: none;
+      vertical-align: top;
+      word-break: break-all;
+      white-space: normal;
+    }
+    th {
+      color: #fff;
+      font-weight: normal;
+      font-size: 11pt;
+    }
+    td {
+      background: #e8e8e8;
+      font-size: 12pt;
+      font-weight: bold;
+      text-align: right;
+    }
+    .section-header {
+      font-weight: bold;
+      text-align: center;
+      background: #999;
+      color: #fff;
+      padding: 6px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 11pt;
+    }
+    .sub-header {
+      font-weight: normal;
+      text-align: center;
+      background: #999;
+      color: #fff;
+      padding: 4px;
+      font-size: 10pt;
+    }
+    .field-label {
+      font-weight: bold;
+      color: #fff;
+      text-align: left;
+      padding-right: 5px;
+    }
+    .field-value {
+      background: #e8e8e8;
+      padding: 4px 8px;
+      border-bottom: 1px dashed #bbb;
+      font-weight: bold;
+      text-align: right;
+    }
+    .two-column {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+    }
+    .table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 5px;
+    }
+    .table-cell {
+      display: flex;
+      flex-direction: column;
+      width: 48%;
+    }
+    .table-cell-label {
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 2px;
+      font-size: 11pt;
+    }
+    .table-cell-value {
+      background: #e8e8e8;
+      padding: 4px 8px;
+      border-bottom: 1px dashed #bbb;
+      font-weight: bold;
+      text-align: right;
+      font-size: 12pt;
+    }
+    .multi-line {
+      display: flex;
+      flex-direction: column;
+    }
+    .multi-line-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .multi-line-label {
+      font-weight: bold;
+      color: #fff;
+      font-size: 11pt;
+      width: 30%;
+    }
+    .multi-line-value {
+      background: #e8e8e8;
+      padding: 2px 5px;
+      border-bottom: 1px dashed #bbb;
+      font-weight: bold;
+      text-align: right;
+      font-size: 12pt;
+      width: 70%;
+    }
+    .transaction-table {
+      width: 100%;
+      margin-top: 10px;
+      background: #e8e8e8;
+      border: 1px solid #bbb;
+    }
+    .transaction-header {
+      background: #999;
+      color: #fff;
+      padding: 4px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 10pt;
+    }
+    .transaction-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px;
+      border-bottom: 1px dashed #bbb;
+    }
+    .transaction-col {
+      width: 25%;
+      text-align: right;
+      font-size: 11pt;
+    }
+    .signature-section {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>외화수취통지서</h1>
+  <div class="document-container">
+    <div class="section-header">기본 정보</div>
+    <div class="sub-header">수취인 정보</div>
+    <div class="sub-header">개인 정보</div>
+    <div class="sub-header">신원 확인</div>
+    <div class="two-column">
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">성명</div>
+          <div class="field-value">홍길동</div>
+        </div>
+        <div class="table-row">
+          <div class="field-label">전화번호</div>
+          <div class="field-value">010-1234-5678</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">주민등록번호</div>
+          <div class="field-value">900101-1234567</div>
+        </div>
+      </div>
+    </div>
+    <div class="sub-header">주소 정보</div>
+    <div class="two-column">
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">주소</div>
+          <div class="field-value">서울시 강남구 테헤란로 123</div>
+        </div>
+        <div class="table-row">
+          <div class="field-label">국가</div>
+          <div class="field-value">대한민국</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">우편번호</div>
+          <div class="field-value">06123</div>
+        </div>
+      </div>
+    </div>
+    <div class="sub-header">송금인 정보</div>
+    <div class="sub-header">기관 정보</div>
+    <div class="sub-header">기관명 및 코드</div>
+    <div class="two-column">
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">은행명</div>
+          <div class="field-value">국민은행</div>
+        </div>
+        <div class="table-row">
+          <div class="field-label">지점 코드</div>
+          <div class="field-value">001</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">SWIFT 코드</div>
+          <div class="field-value">KOOKKRSE</div>
+        </div>
+      </div>
+    </div>
+    <div class="sub-header">계좌 정보</div>
+    <div class="two-column">
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">계좌번호</div>
+          <div class="field-value">123-456-789012</div>
+        </div>
+        <div class="table-row">
+          <div class="field-label">계좌 소유자</div>
+          <div class="field-value">김영희</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">통화</div>
+          <div class="field-value">USD</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">거래 내역</div>
+    <div class="sub-header">수취 내역 요약</div>
+    <div class="sub-header">기본 거래 정보</div>
+    <div class="two-column">
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">거래번호</div>
+          <div class="field-value">TX20240601001</div>
+        </div>
+        <div class="table-row">
+          <div class="field-label">수취금액</div>
+          <div class="field-value">1500.00</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="table-row">
+          <div class="field-label">

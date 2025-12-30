@@ -14,11 +14,9 @@ from collections import defaultdict
 from typing import Dict, List
 
 import pypdf
-from anthropic import AsyncAnthropic
 from bs4 import BeautifulSoup
 from markdownify import SPACES, MarkdownConverter
 from playwright.async_api import async_playwright
-from syntok.segmenter import process
 from tqdm import tqdm
 
 from olmocr.bench.tests import TableTest, TestType, parse_html_tables

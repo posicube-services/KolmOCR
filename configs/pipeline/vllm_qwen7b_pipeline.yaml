@@ -1,0 +1,49 @@
+# Pipeline to run vLLM (Qwen2.5-VL-7B) inference and evaluation independently.
+# Usage:
+#   python olmocr/inference_kolmocr.py --config configs/inference/vllm_qwen.yaml --checkpoint Qwen/Qwen2.5-VL-7B-Instruct --output-dir output/qwen7b/preds/{run_id}
+#   python olmocr/kolmocr_eval/scripts/evaluate.py --config configs/eval/eval_vllm.yaml --pred_dir output/qwen7b/preds/{run_id}
+
+# TODO: you need to write run_id
+run_id: kolmocr_bench_qwen7b_eval_251229
+cuda_visible_devices: "0,1,2,3"
+
+inference:
+  script: olmocr/inference_kolmocr.py
+  config: configs/inference/vllm_qwen.yaml
+  hf_model: Qwen/Qwen2.5-VL-7B-Instruct
+  # 다른 모델과 동시에 돌릴 때는 api_base의 port 번호를 변경해야 함.
+  api_base: http://localhost:8001/v1
+  api_key: EMPTY
+  input_dir: kolmocr_bench
+  output_dir: output/{run_id}/pred
+  prompt_function: build_no_anchoring_v4_yaml_prompt_with_bbox_wo_frontmatter_for_qwen
+  is_normalized_bbox: false
+  max_new_tokens: 4000
+  temperature: 0.2
+  top_p: 0.9
+  num_workers: 16
+  launch_vllm: true
+  tensor_parallel_size: 4
+  gpu_memory_utilization: 0.7
+  max_model_len: 16000
+
+evaluate:
+  script: olmocr/kolmocr_eval/scripts/evaluate.py
+  config: configs/eval/eval_vllm.yaml
+  pred_dir: output/{run_id}/pred
+  gt_md_dir: kolmocr_bench
+  gt_dir: output/{run_id}/gt
+  output_dir: output/{run_id}/eval
+  metrics:
+    - text_edit
+    - table_f1
+    - table_TEDS
+    - table_TEDS_S
+    - code_TED
+    - image_iou
+    - reading_order
+    - overall
+  threshold_headings: 1
+  threshold_table: 0.6
+  version: "1.10"
+  text_include_f1: true

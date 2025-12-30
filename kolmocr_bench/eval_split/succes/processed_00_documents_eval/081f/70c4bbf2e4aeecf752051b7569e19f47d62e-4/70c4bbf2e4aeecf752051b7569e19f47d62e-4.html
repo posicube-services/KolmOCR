@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1em 0;
+  color: #333;
+  line-height: 1.3;
+}
+
+.block[data-id="b002"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0 0 1em 0;
+  color: #333;
+}
+
+.block[data-id="b003"] h2 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.8em 0;
+  color: #444;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3em;
+}
+
+.block[data-id="b004"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0 0 1em 0;
+  color: #333;
+}
+
+.block[data-id="b005"] h3 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin: 1.5em 0 0.8em 0;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3em;
+}
+
+.block[data-id="b006"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0 0 1em 0;
+  color: #333;
+}
+
+.block[data-id="b007"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 2em 0 1em 0;
+  color: #333;
+  line-height: 1.3;
+}
+
+.block[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0 0 1em 0;
+  color: #333;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.39rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", "은 필기", serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #742004;
+}
+
+.block[data-class="subtitle"] {
+  font-family: "은 궁서", sans-serif;
+  font-size: 1.75rem;
+  color: rgba(156, 47, 11, 0.841);
+  border-left: 4px solid #b84304;
+  padding-left: 16px;
+}
+
+.block[data-class="header"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #ef5b05d1;
+}
+
+.block[data-class="footer"] {
+  font-family: "나눔명조", monospace;
+  font-size: 0.85rem;
+  color: #cf3704;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.block[data-class="figure"] {
+  border: 1px solid rgba(239, 107, 6, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1rem;
+}
+
+.block[data-class="figure_caption"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 0.9rem;
+  color: #111614;
+  font-style: italic;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(15, 118, 110, 0.2);
+}
+
+.block[data-class="table_caption"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  color: #111614;
+  letter-spacing: 0.08em;
+}
+
+.block[data-class="reference"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 1.0rem;
+  color: #080b13;
+  text-indent: -1.5em;
+  padding-left: 1.7em;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", "나눔손글씨 붓", serif;
+  font-size: 1.15rem;
+  color: #15150c;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(8, 90, 9, 0.4);
+}
+
+.block[data-class="formula_caption"] {
+  font-family: "나눔명조", serif;
+  font-size: 0.85rem;
+  color: #121517;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-family: "Noto Sans CJK KR", monospace;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+.block[data-class="seal"] {
+  font-family: "은 필기", serif;
+  font-size: 1rem;
+  color: #2f1919;
+  text-transform: uppercase;
+  border: 1px dashed rgba(221, 64, 7, 0.7);
+}
+
+.block[data-class="invoice_header"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.2rem;
+  color: #0d0e0d;
+  letter-spacing: 0.15em;
+}
+
+.block[data-class="key_value"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1b087b;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.25rem;
+  color: #5a2202;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-family: "나눔명조", sans-serif;
+  font-size: 1.5rem;
+  color: #c05c05;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.4rem;
+  color: #013b10;
+}
+
+.block[data-class="author"] {
+  font-family: "맑은 고딕", serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #014230;
+}
+
+.block[data-class="quotation"] {
+  font-family: "Noto Sans CJK KR", cursive;
+  font-size: 1.2rem;
+  color: #443806;
+  border-left: 4px solid #facc15;
+  padding-left: 18px;
+}
+
+.block[data-class="text"] {
+  font-family: "맑은 고딕", "은 필기", serif;
+  font-size: 1.3rem;
+  color: #161211;
+  letter-spacing: 0.02em;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.11rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 3px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="347,38,663,59">
+<h1>디킨스와 그의 독자들</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,72,905,122">
+<p>디킨스와 그의 독자들은 열정적이며 반응적이며 흥미로운 관객이었다. 이는 창작 과정에 필수적인 자극이었다. 그의 마지막 미완성 소설인 《에드윈 드루드》가 젊은 작가 윌키 콜린스가 인기화시킨 탐정 스릴러의 유형으로 설계되었다는 것은 중요한 점이다. 마지막 순간까지, 그는 존경받는 시대착오적 존재로 전락하는 것을 수용하지 않았다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b003" data-bbox="104,141,321,158">
+<h2>돈과 민간 인물들</h2>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,173,905,439">
+<p>부분적으로 출판된 소설은 당연히 매우 독특한 효과를 가져왔다. 완성되기 전에 작가와 판매가 이루어졌기 때문에, 서두르고, 월별 위기 상황을 초래하며, 전체적인 패턴을 위해 수정하거나 조작하는 허식을 허용하지 않았다. 이것이 우리가 디킨스의 소설을 "전적적인 디킨스식 소설"이라고 생각할 때 느슨한 구조, 분산된 구성, 그리고 종종 부족한 결말로 인해 발생하는 요인 중 하나이다. 또한, 부정적인 측면에서는 디킨스가 자신의 시대를 대표하는 작가로서 확고한 지위를 획득하기 전에, 판매 지표가 하락하는 징후가 나타나면, 문학적 지지 않은 기법을 사용하여 수요를 끌어올리려고 했다. 예를 들어, 《마틴 처클위트》에서 판매가 감소하자, 그는 대규모 미국 여행을 삽입했다. 그는 자신의 미국 여행 기록이 최근에 화제가 되었기 때문에, 이는 독자들에게 강력한 호소력을 가질 것이라고 추론했다. (사실, 대중은 그의 검새를 알아차리지 않았고, 이는 훌륭한 취향을 보여준 것으로 나타났다.) 그러나 긍정적인 측면에서는 월별 출판이 이러한 놀라운 결과를 가져왔다: 작가와 독자들이 매우 밀접한 관계를 유지함으로써(판매 통계뿐만 아니라, 편지와 더 응집되지 않은 형태의 반응을 통해), 그들은 함께 작품을 창조했다. 작가는 단순히 완성된 것을 제공하는 것이 아니라, 독자들 속으로 들어가 그들을 위해, 그리고 어느 정도는 그들을 통해 창조했다. 독자들은 초기 빅토리아 시대의 영국 전체였다. 디킨스는 지식인(물론 여기서는 처음부터 이익을 제기한 사람들도 있었다)과 노동계급 모두에게 열광적으로 읽혔다. 이는 교육법이 제정되기 전의 시대였으며, 대중이 대량 유통되는 언론에 사로잡혀 있던 시기였다. 디킨스의 많은 독자들은 운명이었지만, 독서 클럽을 통해 접근 가능했다. 이 클럽에서 한 명의 문맹이 아닌 회원이 나머지 사람들에게 읽어주었다. 디킨스는 또한 가족 독서도 인기 있었으며, 대체로 그는 자신의 토론 승인받고 도덕적인 수준을 유지하는 데 신경을 썼다. 그는 d-mns와 G-ds 같은 욕설을 사용하지 않았다. 디킨스는 대중과의 비정상적으로 밀접한 접촉을 통해, 예술적 경력의 첫 번째 절반에서, 다른 작가가 이후로도 달성하지 못한 진정한 민간 인물을 창조할 수 있었다. 그의 인물들이 피크윅, 패킨, 스루지, 쿨프는 단순히 그들의 대중적 기원을 명확히 드러내는 것뿐만 아니라, 팬텀, 대중 매체, 영화, 라디오를 통해 현재의 신화로 되돌아와 계속해서 재생산되고 있다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b005" data-bbox="104,456,275,471">
+<h3>1850년대까지</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,483,905,635">
+<p>1850년대까지, 디킨스의 민간 영웅 창조 시대는 끝났다. 이 변화의 원인은 매우 복잡하지만, 도시화와 그에 따른 전통의 상실, 독자의 자각의 증가, 그리고 디킨스 자신이 현대적 예술가로의 의식적인 발전 등과 관련이 있다. 원인과 결과를 분리할 수 있을지 의문이지만, 이 변화는 크리스마스 이야기의 운영에서 명확히 드러난다. 《크리스마스 카를》은 그의 거칠고 감성적인 부분에도 불구하고, 현재의 계절적 인기로 보아, 지속적으로 대중적인 호소력을 가지고 있다. 디킨스는 그들의 인기를 활용하여, 예술적 경력 동안 크리스마스 이야기를 계속해서 출판했다. 그들은 여전히 대량으로 판매되었지만, 이제는 기계적이고 대량 생산된 것으로 보인다. 거의 인정된 대로, 그들은 요리책 수준으로 퇴화했지만, 여전히 어떤 요리가 끓고 있는지를 보여주는 기능을 유지했다. 디킨스는 그의 마지막 소설들에서 인간 유머의 초기 형태로 돌아가려고 노력했다. 그러나 1850년 이후로, 패킨, 세이리 게임, 산 와일더, 그리고 전형적인 "디킨스식" 인물들은 그의 예술에서 어떠게든 피신했다. 《우리의 상호 친구》의 실라 웨그나 《대기대》의 유포살이 헬립을 연기하는 면장과 같은 후기 시도들은 성공적이지 않았다. 디킨스는 그때쯤 더 깊고 어두운 주제로 이동했다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="316,664,694,685">
+<h1>드라마, 멜로드라마, 죽음</h1>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,698,905,952">
+<p>디킨스의 독자들은 현대 영화의 의미에서 "드라마"를 원했고, 작가는 매우 복잡한 방식으로 이를 제공했다. 디킨스 소설의 대략적인 동시대성은 소설의 사회적 내용을 제공하지 않으며, 대신 일반적인 사회적 비전의 특정한 의미를 부여하는 상징적 구조를 제공한다. 예를 들어, 《어두운 집》의 "테마"는 존경받고 쇠퇴하는 재판소인 찬서리 법원의 악명항에 관한 것이며(이와 유사하게, 《올리버 트위스트》는 가난한 법을 공격하고, 《니콜라스 니클비》는 요크셔 학교를 공격하며, 《리 드 로드리트》는 크림 전쟁의 관료적 무능을 둘러싼 회피 적 사무소를 통해 풍자하고, 《우리의 상호 친구》는 1860년대 런던에서 큰 이익을 얻기 위해 판매된 실제 쓰레기 더미를 상징으로 사용한다)—이 소설은 명백 한 공공 스크랜들을 해결하는 데 관한 것이다. 이러한 특정한 공격은 디킨스의 드라마적 자극물이었다. 그의 초기 경력에서 작가는 일정한 논란을 겪었으며, 심지어 확고한 지위를 얻은 후에도, 그는 정부의 부드러운 부분들을 공격하는 경향이 있어, 많은 공식적이고 보수적인 측면에서 불쾌하게 여겨졌다. 이 활동은 명백히 위에서 논의된 scoop 저널리즘의 능력과 많은 공통점을 가지고 있다. 이는 그가 독자를 사로잡고, 현대의 성적 소설(이것이 존재했다: 디킨스와 그의 독자들 참조)과 경쟁할 수 있게 한 방법 중 하나였다. 그러나 가장 중요한 것은, 그가 자신의 개인적 비전을 언제나 존중하는 개별적인 사회 현실과 통합하는 방법이었다. 찬서리 법원은 사회적 비판을 초래한 명백한 스크랜들로 디킨스가 날카롭게 집중했다. 그러나 디킨스의 특징적 인 점은, 공격받는 쇠퇴한 사회의 일부를 다시 전체 사회를 상징하는 것으로 사용하는 것이다. 중심적인 상징이나 명확한 관심사 주변에서 디킨스는 예상치 못하고 불가사의한 관계를 둘러싼 복잡한 태피스트리를 짜낸다; 희귀한 우연과 흐릿한 연결, 그리고 귀족이 배제된 자와의 궁극적인 연결을 보여주는 플롯(예: 《어두운 집》의 레이디 데드락과 요, 횡단보도 청소부). 결국 모든 것이 동일한 사회적적 용어로 축소될 수 있다는 것을 보여준다. 디킨스는 사회가 그의 모든 경직성과 명백한 계층 구조를 뛰어넘어, 유기적으로 상상될 수 있음을 잘 표현한다.</p>
+</div>
+</div>
+</body>
+</html>

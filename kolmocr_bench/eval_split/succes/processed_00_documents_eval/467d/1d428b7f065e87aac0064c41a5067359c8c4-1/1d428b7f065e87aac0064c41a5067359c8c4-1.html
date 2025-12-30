@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 10px 0;
+  text-align: left;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  color: #333;
+  margin: 15px 0 10px 0;
+  text-align: left;
+}
+
+.block[data-id="b003"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+.block[data-id="b004"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b005"] h4 {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  color: #333;
+  margin: 15px 0 10px 0;
+  line-height: 1.5;
+}
+
+.block[data-id="b006"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+.block[data-id="b007"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b008"] h4,
+.block[data-id="b009"] h4,
+.block[data-id="b010"] h4,
+.block[data-id="b011"] h4 {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  color: #333;
+  margin: 15px 0 10px 0;
+  line-height: 1.5;
+}
+
+.block[data-id="b012"] h3 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #0066cc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b013"] p,
+.block[data-id="b014"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+.block[data-id="b015"] p {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: bold;
+  color: #0066cc;
+  margin: 15px 0 10px 0;
+  text-align: left;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.24rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px solid #666 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fcfcfc !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  margin: 0;
+  background: #f0f2f5;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #0f172a;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.block[data-class="header"],
+.block[data-class="footer"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.1em;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid #94a3b8;
+  padding: 10px;
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #475569;
+  text-indent: -1.5em;
+  padding-left: 1.6em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.34rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1px double #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="95,26,694,54">
+<h1>HST 아스트로메트리 개선</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="95,82,892,106">
+<h2>2022년 8월, 새로운 ACS/WFC3 기기 과학 보고서(ACS ISR 2022-03; WFC3 ISR 2022-06)가 발행되었습니다.</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="95,132,878,150">
+<p>이 보고서는 'ACS 및 WFC3 데이터 제품의 개선된 절대 아스트로메트리'라는 제목으로, MAST 데이터의 업데이트된 WCS 솔루션과 두 가지 새로운 유형의 허블 고급 제품에 대해 설명하고 있습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b004" data-bbox="95,175,135,185">
+<h3>요약:</h3>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="95,212,904,286">
+<h4>2019년 말부터, MAST의 ACS 및 WFC3 데이터 제품에는 이미지 헤더의 세계 좌표 시스템(WCS)에 개선된 절대 아스트로메트리가 포함됩니다. 업데이트된 WCS 솔루션은 HST 이미지의 소스를 선택한 참조 카탈로그(예: Gaia eDR3)와 정렬하는 파이프라인 처리 중에 계산됩니다. 각 검출기의 정량 비율에 대한 통계를 계산하고, 다른 참조 카탈로그와 정렬할 때 WCS 솔루션의 불확실성을 추정합니다. 또한, 2020년 말과 2022년 중순에 각각 생산이 시작된 두 가지 새로운 유형의 허블 고급 제품(HAP)에 대해 설명합니다. 이들은 단일 방문 모자이크(SVMs)와 다중 방문 모자이크(MVMs)로 불립니다. SVM 제품은 방문 내 필터 간의 추가 상대 정렬을 포함하며, 드리리 이미지는 파이프라인 처리 중 점원 및 세그먼트 카탈로그를 생성하는 데 사용됩니다. 이 카탈로그는 허블 레거시 아카이브에서 생성된 것들을 대체하고 허블 소스 카탈로그의 다음 버전의 기초가 될 것입니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="95,311,903,357">
+<p>MVM 데이터 제품은 각 검출기/필터에 대해 사전 정의된 2.0′ × 2.0′ 하늘 섬 내에 있는 모든 ACS/WFC, WFC3/UVIS 또는 WFC3/IR 이미지를 결합하여 공통의 전 하늘 픽셀 그리드로 드리리 처리합니다. 큰 날짜 범위에 걸쳐 관측을 결합할 경우, MVM은 몇 퍼센트의 광도 오류 또는 다른 카탈로그 솔루션과 결합할 때 시스템 적 정렬 오류를 포함할 수 있습니다. 따라서, MVM은 다른 검출기 및 파스밴드의 관측을 비교하는 '발견 이미지'로 사용되며 정밀한 광도 측정에는 사용하지 않는 것이 좋습니다.</p>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b007" data-bbox="95,383,212,392">
+<h3>이전 뉴스 항목:</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="95,420,902,522">
+<h4>2019년 12월 3일, MAST에서 개선된 아스트로메트리 데이터의 첫 번째 세트가 공개되었습니다. WFC3 및 ACS 데이터 세트의 모든 이미지 헤더의 세계 좌표 시스템(WCS)이 업데이트되었으며, 하나 이상의 수정을 포함할 수 있습니다. 첫 번째 수정은 허블 가이드 스타 카탈로그(GSC)의 새 버전(2.4.0)을 사용하는 것으로, Gaia DR1의 위치를 기반으로 가이드 스타의 좌표를 업데이트합니다. 이는 가이드 스타의 위치에 대한 일반적인 불확실성을 전혀 하늘에서 약 200 마스로 줄입니다. 이와 함께 기기 외곽에 대한 지식을 활용하여 사전 수정이 이루어졌습니다. 가능할 경우, HST 이미지의 소스를 직접 Gaia 카탈로그와 정렬하여 추가 수정(사후 수정)을 적용할 수 있습니다. 그러나 일부 관측 모드(예: 그리즘 및 이동 목표 관측)는 Gaia와 정렬할 수 없거나, HST 이미지 또는 Gaia 카탈로그에 소스가 부족하여 정렬이 실패할 수 있습니다. 그럼에도 불구하고, 약 80%의 ACS/WFC 및 50%의 WFC3/IR 프레임이 직접 정렬되었습니다. 이러한 데이터 제품의 일반적인 위치 불확실성은 약 40 마스로 줄어듭니다. 업데이트된 WCS는 이미지 헤더에 포함되어 참조 제품(예: DR1, DR2, 0.5 타일 또는 DR2)을 생성하는 데 사용됩니다. 이 업데이트된 파이프라인 제품은 허블 소스 카탈로그 광도 카탈로그 기사에서 설명됩니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="95,547,904,630">
+<h4>2020년 12월 17일, MAST는 HST 데이터 교정 파이프라인에서 새로운 ACS 및 WFC3 제품의 생산을 시작했습니다(다음 MAST 뉴스레터 기사 참조). 이 허블 레거시 아카이브(HLA) 스타일의 모자이크는 단일 HST 방문의 데이터를 공통 아스트로메트리 참조 프레임에 정렬합니다. 이 새로운 허블 고급 제품(HAP)은 '단일 방문 모자이크'(SVMs)로 불립니다, 2020년 12월 MAST 뉴스레터 기사에서 설명됩니다. 데이터 제품은 모두 동일한 북쪽을 위로 향하는 픽셀 그리드에 드리리를 처리되며, 동일 방문 내에서 필터 간의 개선된 상대 정렬을 포함할 수 있어 여러 필터를 통해 이미지를 쉽게 비교할 수 있습니다. 가능할 경우, 이미지의 소스는 Gaia 카탈로그와 직접 정렬되어 WCS를 개선합니다. SVM 데이터 제품이 필터별로 견고한 상대 정렬 및 Gaia와의 절대 정렬을 포함하는 경우, 이미지 헤더의 과학 확장에 있는 'WCSNAME' 키워드에 문자열 'FIT_WCSM_GAI'가 포함됩니다. 이 새로운 데이터 제품을 계산하는 데 사용된 소프트웨어는 단일 방문 모자이크 처리를 위한 DrizzlePac 문서에서 설명됩니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="95,655,902,692">
+<h4>2021년 11월 23일, MAST는 SVM 데이터 제품의 일부로 소스 카탈로그를 생성하기 시작했습니다. SVM 제품은 방문 내 필터 간의 추가 상대 정렬을 포함하므로, 드리리를 이미지는 파이프라인 처리 중 점원 및 세그먼트 카탈로그를 생성하는 데 사용될 수 있습니다. 이 카탈로그는 허블 레거시 아카이브에서 생성된 것들을 대체하고 허블 소스 카탈로그의 다음 버전의 기초가 될 것입니다.</h4>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="95,717,902,754">
+<h4>2022년 4월 26일, HST 데이터 교정 및 아카이브 파이프라인은 MAST를 통해 배포될 새로운 허블 고급 제품(HAP)을 생성하기 시작했습니다. 이 제품은 다중 방문 모자이크(MVM)로 볼리며, ACS 및 WFC3로 여러 번 관측된 필드의 공공 관측을 결합하여 사전 정의된 공통 픽셀 그리드에 드리리를 처리된 제품 세트를 생성합니다. 이 새로운 제품은 2022년 5월 MAST 뉴스레터 기사에서 설명되었으며, 2020년 12월에 출시된 기존 HAP 단일 방문 모자이크(SVM)와 보완됩니다.</h4>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b012" data-bbox="95,779,174,789">
+<h3>사용 방법:</h3>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="95,816,897,853">
+<p>새로운 강화된 파이프라인 제품 코드로 재처리된 후 아카이브에서 다운로드한 이미지는 FITS 파일에 추가 확장으로 헤더킷이 추가됩니다. 새로운 파이썬 노트북 'Updated astrometry solutions 사용'은 새로운 FITS 이미지의 구조를 사용자에게 익숙하게 만들고, 기본 WCS를 다른 선호 솔루션으로 변경하는 방법을 보여줍니다. 이 지침은 필요에 따라 새로운 WCS 업데이트를 완전히 되돌릴 수 있는 방법도 보여줍니다(아래 '주의사항' 섹션 참조).</p>
+</div>
+<div class="block" data-class="text" data-id="b014" data-bbox="95,878,900,915">
+<p>또한, MAST/STScI에서 별도의 헤더킷 파일로 새로운 WCS 솔루션을 다운로드하여 기존 데이터에 적용할 수 있습니다. 기존 데이터를 수동으로 재처리하려는 사용자에게는 강화된 파이프라인 제품 코드에서 사용되는 STWCS 패키지의 'updatewcs' 작업을 통해 자동으로 아스트로메트리 데이터베이스에 연결하여 헤더킷을 검색하고 적용할 수 있습니다. FITS 이미지에 헤더킷을 생성, 업데이트 및 적용하는 파이썬 함수는 헤더킷 사용자 인터페이스를 통해 설명됩니다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b015" data-bbox="95,940,242,949">
+<p>가이드 스타 카탈로그</p>
+</div>
+</div>
+</body>
+</html>

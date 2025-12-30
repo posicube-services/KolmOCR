@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block b001: Title */
+[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Block b002 & b004: Section Headers */
+[data-id="b002"] h2,
+[data-id="b004"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #333;
+}
+
+/* Block b003 & b005: Tables */
+[data-id="b003"] .table-container,
+[data-id="b005"] .table-container {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+[data-id="b003"] .data-table,
+[data-id="b005"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+[data-id="b003"] .data-table th,
+[data-id="b005"] .data-table th {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: bold;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+[data-id="b003"] .data-table td,
+[data-id="b005"] .data-table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  font-size: calc(0.9em * var(--font-scale));
+}
+
+[data-id="b003"] .data-table tr:nth-child(even),
+[data-id="b005"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Block b006: Note Header */
+[data-id="b006"] h3 {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: normal;
+  margin: 20px 0 5px 0;
+  color: #555;
+}
+
+/* Block b007: Note List */
+[data-id="b007"] ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: calc(0.9em * var(--font-scale));
+  color: #666;
+}
+
+[data-id="b007"] li {
+  margin: 5px 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.19rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: none !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ddd !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f9f9f9 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.12rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 10px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #ebebeb !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="104,58,835,159">
+<h1>주거 감독 소위원회 (HSSC) 행동 로그</h1>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b002" data-bbox="104,186,238,205">
+<h2>진행 중인 행동</h2>
+</div>
+<div class="block" data-class="table" data-id="b003" data-bbox="107,270,903,379">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>번호</th><th>참조</th><th>행동</th><th>담당자</th><th>기한</th><th>반응</th></tr>
+</thead>
+<tbody>
+<tr><td>1.</td><td>HSSC 11/09/2017 항목 3</td><td>HSSC 2018/19 작업 계획에 '임차인의 서비스 요금'에 대한 특별 세션 추가</td><td>Zakia Variava</td><td>2018년 7월 3일</td><td>2018/19 작업 계획에 제안될 예정</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b004" data-bbox="104,441,211,459">
+<h2>완료된 행동</h2>
+</div>
+<div class="block" data-class="table" data-id="b005" data-bbox="107,524,903,619">
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr><th>번호</th><th>참조</th><th>행동</th><th>담당자</th><th>기한</th><th>업데이트/기한</th></tr>
+</thead>
+<tbody>
+<tr><td>1.</td><td>HSSC 2018년 3월</td><td>지역별로 비어 있는 부동산의 수를 OSC에 제공</td><td>Martin Ling</td><td>2018년 6월 18일</td><td>별도 첨부파일 참조</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block" data-class="quotation" data-id="b006" data-bbox="104,680,145,697">
+<h3>Note:</h3>
+</div>
+<div class="block" data-class="figure_caption" data-id="b007" data-bbox="129,718,403,732">
+<ul>
+<li>The image is normalized to [1000,1000].</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

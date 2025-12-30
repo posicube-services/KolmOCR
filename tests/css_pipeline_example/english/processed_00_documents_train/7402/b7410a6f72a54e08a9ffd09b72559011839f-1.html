@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>.document {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 15mm 20mm;
+      box-sizing: border-box;
+      background: #fff;
+      column-count: 1;
+      column-gap: 10mm;
+      column-fill: balance;
+      overflow: visible;
+      transform: none;
+      margin-bottom: 2%;
+        }
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.block[data-id="b002"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.block[data-id="b003"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.block[data-id="b004"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.block[data-id="b005"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.block[data-id="b006"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.block[data-id="b007"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.block[data-id="b008"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.block[data-id="b009"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.block[data-id="b010"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.block[data-id="b011"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.block[data-id="b012"] {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* General paragraph styling for all blocks */
+.block p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+</style>
+<style id="fitpage-css">
+.page { width:210mm; height:297mm; margin:10mm auto; background:#fff; box-sizing:border-box; overflow:hidden; position:relative; }
+.page-inner { transform-origin: top left; transform: scale(1); }
+</style>
+<script id="fitpage-js">
+function fitPage() {
+  const page = document.querySelector('.page');
+  const inner = document.querySelector('.page-inner');
+  if (!page || !inner) return;
+
+  // Reset scale before measuring
+  inner.style.transform = 'scale(1)';
+
+  const pageHeight = page.clientHeight;
+  const pageWidth = page.clientWidth;
+  const contentHeight = inner.scrollHeight;
+  const contentWidth = inner.scrollWidth;
+  if (contentHeight === 0 || contentWidth === 0) return;
+
+  const scaleY = pageHeight / contentHeight;
+  const scaleX = pageWidth / contentWidth;
+  const scale = Math.min(1, scaleX, scaleY);
+  inner.style.transform = `scale(${scale})`;
+}
+window.addEventListener('load', () => {
+  if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+    MathJax.startup.promise.then(() => { fitPage(); });
+  } else {
+    fitPage();
+  }
+});
+</script>
+</head>
+<body>
+<div class="page"><div class="page-inner">
+<div class="document">
+  <div class="block" data-id="b001" data-bbox="28,44,182.03,51.19">
+    <p>HARVARD COLLEGE<br>
+Request for Dean’s Letter</p>
+  </div>
+  <div class="block" data-id="b002" data-bbox="28,111.19,304.22,102.38">
+    <p>Mather House<br>
+Office of the Allston Burr Senior Tutor<br>
+Harvard College, Cambridge, MA 02138<br>
+617-495-4829 (phone); 617-496-2355 (fax)</p>
+  </div>
+  <div class="block" data-id="b003" data-bbox="28,229.56,578.92,25.59">
+    <p>STUDENT:      Please complete this form and give it to your Allston Burr Senior Tutor.</p>
+  </div>
+  <div class="block" data-id="b004" data-bbox="28,271.16,664.56,25.59">
+    <p>Name of Student (print): ____________________________________   Class: _____________</p>
+  </div>
+  <div class="block" data-id="b005" data-bbox="28,312.75,294.13,25.59">
+    <p>Preparation and Release of Dean’s Letter</p>
+  </div>
+  <div class="block" data-id="b006" data-bbox="28,354.34,1224,51.19">
+    <p>I hereby request that Harvard College prepare a Dean’s Letter in support of my application(s) to professional school or for a fellowship. I understand and agree that, to prepare the Dean’s Letter, officers of the College, including my Allston Burr Senior Tutor and others, will access my educational records.</p>
+  </div>
+  <div class="block" data-id="b007" data-bbox="28,421.53,1224,51.19">
+    <p>I further request that Harvard College send the Dean’s Letter to the institutions that I designate. I will provide my Allston Burr Senior Tutor with a written list of all such institutions.</p>
+  </div>
+  <div class="block" data-id="b008" data-bbox="28,488.72,174.94,25.59">
+    <p>Student’s signature                                 Date</p>
+  </div>
+  <div class="block" data-id="b009" data-bbox="28,530.31,239.22,25.59">
+    <p>Waiver of Access to Dean’s Letter</p>
+  </div>
+  <div class="block" data-id="b010" data-bbox="28,571.91,1011.5,25.59">
+    <p>I understand that, under the Family Educational Rights and Privacy Act, 20 U.S.C. § 1232g (“FERPA”), I have the right to see the Dean’s Letter.</p>
+  </div>
+  <div class="block" data-id="b011" data-bbox="28,613.5,795.63,25.59">
+    <p>I hereby ____ WAIVE / ____ DO NOT WAIVE my right of access under FERPA with respect to the Dean’s Letter.</p>
+  </div>
+  <div class="block" data-id="b012" data-bbox="28,655.09,174.94,25.59">
+    <p>Student’s signature                                 Date</p>
+  </div>
+</div>
+</div></div>
+</body>
+</html>

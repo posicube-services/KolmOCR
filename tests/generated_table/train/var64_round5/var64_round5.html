@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>보험계약해지신청서</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12pt;
+      color: #111;
+      margin: 20px;
+      background: #fff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24pt;
+      margin-bottom: 20px;
+    }
+    .container {
+      max-width: 100%;
+      background: #999;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      word-break: break-all;
+      background: #e8e8e8;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ccc;
+    }
+    th {
+      background: #999999;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+    }
+    td {
+      background: #f5f5f5;
+      text-align: right;
+    }
+    .section-title {
+      font-weight: bold;
+      text-align: center;
+      background: #999999;
+      color: #fff;
+      padding: 8px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+    .label {
+      font-weight: bold;
+      text-align: left;
+      width: 150px;
+    }
+    .value {
+      text-align: right;
+      width: 250px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .group {
+      margin-bottom: 15px;
+    }
+    .signature-box {
+      background: #f0f0f0;
+      padding: 15px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+    .signature-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .signature-label {
+      font-weight: bold;
+      width: 120px;
+    }
+    .signature-value {
+      width: 300px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <h1>보험계약해지신청서</h1>
+  <div class="container">
+    <!-- 신청인 기본정보 -->
+    <div class="section-title">신청인 기본정보</div>
+    <div class="group">
+      <div class="row">
+        <div class="label">성명</div>
+        <div class="value">홍길동</div>
+        <div class="label">생년월일</div>
+        <div class="value">1990-01-01</div>
+      </div>
+      <div class="row">
+        <div class="label">성별</div>
+        <div class="value">남</div>
+        <div class="label">휴대폰</div>
+        <div class="value">010-1234-5678</div>
+      </div>
+      <div class="row">
+        <div class="label">이메일</div>
+        <div class="value">hong@example.com</div>
+        <div class="label">현주소</div>
+        <div class="value">서울시 강남구 테헤란로 123</div>
+      </div>
+      <div class="row">
+        <div class="label">우편번호</div>
+        <div class="value">06123</div>
+        <div class="label"></div>
+        <div class="value"></div>
+      </div>
+    </div>
+
+    <!-- 보험계약정보 -->
+    <div class="section-title">보험계약정보</div>
+    <div class="group">
+      <div class="row">
+        <div class="label">계약번호</div>
+        <div class="value">C2024000123</div>
+        <div class="label">보험종류</div>
+        <div class="value">생명보험</div>
+      </div>
+      <div class="row">
+        <div class="label">가입일자</div>
+        <div class="value">2020-03-15</div>
+        <div class="label">납입방식</div>
+        <div class="value">자동이체</div>
+      </div>
+      <div class="row">
+        <div class="label">월납보험료</div>
+        <div class="value">50000</div>
+        <div class="label"></div>
+        <div class="value"></div>
+      </div>
+      <div class="row">
+        <div class="label">해지사유</div>
+        <div class="value">재정적 사정으로 인한 해지</div>
+        <div class="label">해지일자</div>
+        <div class="value">2025-06-30</div>
+      </div>
+    </div>
+
+    <!-- 환급금 및 계좌정보 -->
+    <div class="section-title">환급금 및 계좌정보</div>
+    <div class="group">
+      <div class="row">
+        <div class="label">은행명</div>
+        <div class="value">국민은행</div>
+        <div class="label">계좌번호</div>
+        <div class="value">123-456-789012</div>
+      </div>
+      <div class="row">
+        <div class="label">예금주명</div>
+        <div class="value">홍길동</div>
+        <div class="label"></div>
+        <div class="value"></div>
+      </div>
+      <div class="row">
+        <div class="label">기본환급금</div>
+        <div class="value">1200000</div>
+        <div class="label">이자환급금</div>
+        <div class="value">50000</div>
+      </div>
+      <div class="row">
+        <div class="label">합계</div>
+        <div class="value">1250000</div>
+        <div class="label"></div>
+        <div class="value"></div>
+      </div>
+    </div>
+
+    <!-- 서명 및 확인사항 -->
+    <div class="section-title">서명 및 확인사항</div>
+    <div class="signature-box">
+      <div class="signature-row">
+        <div class="signature-label">신청인 서명</div>
+        <div class="signature-value">홍길동</div>
+      </div>
+      <div class="signature-row">
+        <div class="signature-label">동의여부</div>
+        <div class="signature-value">동의</div>
+        <div class="signature-label">개인정보처리동의</div>
+        <div class="signature-value">동의</div>
+      </div>
+      <div class="signature-row">
+        <div class="signature-label">처리자명</div>
+        <div class="signature-value">김관리</div>
+        <div class="signature-label">처리일자</div>
+        <div class="signature-value">2025-06-30</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

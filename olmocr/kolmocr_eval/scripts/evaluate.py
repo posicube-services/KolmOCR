@@ -6,6 +6,7 @@ from pathlib import Path
 import shutil
 
 import yaml
+import pandas as pd
 
 from olmocr.kolmocr_eval.metrics.registry import run_metric, supported_metrics
 from olmocr.kolmocr_eval.metrics.common import round_numeric
@@ -16,8 +17,57 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 logger = logging.getLogger(__name__)
 
 
+def postprocess_prediction_files(pred_dir: Path) -> None:
+    """
+    Postprocess prediction markdown files before evaluation.
+
+    Transformations:
+    1. Remove <!-- bbox_blk_end --> comments
+    2. Convert <|box_start|> x,y,w,h <|box_end|> to <!-- [x,y,w,h] -->
+
+    Args:
+        pred_dir: Directory containing prediction .md files
+    """
+    import re
+
+    if not pred_dir.exists():
+        logger.warning(f"[postprocess] pred_dir does not exist: {pred_dir}")
+        return
+
+    # Pattern 1: Remove bbox_blk_end comments
+    pattern_blk_end = re.compile(r'<!--\s*bbox_blk_end\s*-->\s*\n?')
+
+    # Pattern 2: Convert <|box_start|> coords <|box_end|> to <!-- [coords] -->
+    # Example: <|box_start|> 104,469,359,491 <|box_end|> -> <!-- [104,469,359,491] -->
+    pattern_box = re.compile(r'<\|box_start\|>\s*([\d,\s]+?)\s*<\|box_end\|>')
+
+    md_files = list(pred_dir.rglob("*.md"))
+    modified_count = 0
+
+    for md_file in md_files:
+        try:
+            content = md_file.read_text(encoding='utf-8')
+            original_content = content
+
+            # Apply transformations
+            content = pattern_blk_end.sub('', content)
+            content = pattern_box.sub(lambda m: f'<!-- [{m.group(1).strip()}] -->', content)
+
+            # Write back if changed
+            if content != original_content:
+                md_file.write_text(content, encoding='utf-8')
+                modified_count += 1
+        except Exception as e:
+            logger.warning(f"[postprocess] Failed to process {md_file}: {e}")
+
+    if modified_count > 0:
+        logger.info(f"[postprocess] Modified {modified_count} / {len(md_files)} files")
+    else:
+        logger.info(f"[postprocess] No modifications needed for {len(md_files)} files")
+
+
 def main():
-    default_config = PROJECT_ROOT / "configs" / "kolmocr_eval.yaml"
+    default_config = PROJECT_ROOT / "configs" / "eval" / "eval_default.yaml"
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     parser = argparse.ArgumentParser()
@@ -160,6 +210,11 @@ def main():
 
     output_files = {}
     avg_rows_dict = {}
+
+    # Postprocess prediction files before evaluation
+    if args.pred_dir:
+        postprocess_prediction_files(Path(args.pred_dir))
+
     for metric in args.metrics:
         run_metric(metric, args)
         # 예상 파일명을 기록
@@ -181,8 +236,6 @@ def main():
 
     # 메트릭별 average 행을 모아 average.csv 작성
     try:
-        import pandas as pd
-
         rows = []
         for metric, path in output_files.items():
             if not os.path.exists(path):
@@ -335,16 +388,41 @@ def main():
                 return "\n".join(lines) + "\n"
 
             nipa_md_path = os.path.join(args.run_dir, "nipa_table.md")
-            with open(nipa_md_path, "w", encoding="utf-8") as f:
-                f.write(_df_to_markdown_table(nipa_df_rounded))
-            logger.info("[nipa_table] Markdown saved to %s", nipa_md_path)
-            # Also place a copy at output root for quick access.
+            md_parts = []
+            md_parts.append("### Element Metrics\n")
+            md_parts.append(_df_to_markdown_table(nipa_df_rounded))
+
+            # Input folder별 요약 (overall 기준)
             try:
-                nipa_md_copy = output_root / "nipa_table.md"
-                shutil.copyfile(nipa_md_path, nipa_md_copy)
-                logger.info("[nipa_table] Markdown copy saved to %s", nipa_md_copy)
+                overall_path = Path(args.run_dir) / "overall.csv"
+                if overall_path.exists():
+                    df_overall = pd.read_csv(overall_path)
+                    df_overall = df_overall[df_overall["filename"] != "average"]
+                    if not df_overall.empty and "overall" in df_overall.columns:
+                        folder_predicates = {
+                            "fail": lambda p: "/fail/" in p,
+                            "success": lambda p: ("/succes/" in p) or ("/success/" in p),
+                            "code": lambda p: "code" in p or "coding" in p,
+                            "complex_table": lambda p: "complex_table" in p,
+                            "multi_column": lambda p: "multi_column" in p,
+                        }
+                        folder_rows = []
+                        for name, pred in folder_predicates.items():
+                            mask = df_overall["filename"].apply(lambda x: pred(str(x)))
+                            subset = df_overall[mask]
+                            if subset.empty:
+                                continue
+                            folder_rows.append({"Input Folder": name, "overall": subset["overall"].mean()})
+                        if folder_rows:
+                            folder_df = round_numeric(pd.DataFrame(folder_rows))
+                            md_parts.append("\n### Input Folder Metrics (overall)\n")
+                            md_parts.append(_df_to_markdown_table(folder_df))
             except Exception as e:
-                logger.warning("[nipa_table] Failed to copy markdown to output root: %s", e)
+                logger.warning("[nipa_table] Failed to add input-folder summary to markdown: %s", e)
+
+            with open(nipa_md_path, "w", encoding="utf-8") as f:
+                f.write("\n".join(md_parts))
+            logger.info("[nipa_table] Markdown saved to %s", nipa_md_path)
             try:
                 img_path = render_csv_table_image(nipa_path)
                 logger.info("[nipa_table] Image saved to %s", img_path)
@@ -352,6 +430,75 @@ def main():
                 logger.warning("[nipa_table] Failed to render image: %s", e)
     except Exception as e:
         logger.warning("[average] Skipped creating average.csv due to error: %s", e)
+
+    # fail/success subset summary based on overall metric
+    try:
+        overall_path = Path(args.run_dir) / "overall.csv"
+        if not overall_path.exists():
+            logger.info("[fail_success] overall.csv not found. Skipping fail/success summary.")
+            return
+
+        df_overall = pd.read_csv(overall_path)
+        if "filename" not in df_overall.columns:
+            logger.info("[fail_success] 'filename' column missing in overall.csv. Skipping summary.")
+            return
+
+        # Drop the global average row; only per-file rows are used for subset averages.
+        per_file_df = df_overall[df_overall["filename"] != "average"].copy()
+        if per_file_df.empty:
+            logger.info("[fail_success] No per-file rows in overall.csv. Skipping summary.")
+            return
+
+        # Collect known fail/success file lists from kolmocr_bench (if available).
+        bench_root = PROJECT_ROOT / "kolmocr_bench"
+        split_dirs = {
+            "fail": bench_root / "eval_split" / "fail",
+            # 'succes' is intentionally spelled without the second 's' in the dataset.
+            "success": bench_root / "eval_split" / "success",
+            "success_alt": bench_root / "eval_split" / "succes",
+        }
+        split_sets = {"fail": set(), "success": set()}
+        for name, dir_path in split_dirs.items():
+            if not dir_path.exists():
+                continue
+            rel_paths = [
+                os.path.relpath(str(p), bench_root).replace("\\", "/")
+                for p in dir_path.rglob("*.md")
+            ]
+            key = "success" if name.startswith("success") else "fail"
+            split_sets[key].update(rel_paths)
+
+        def _belongs(filename: str, split: str) -> bool:
+            norm = str(filename).replace("\\", "/")
+            if split_sets[split]:
+                return norm in split_sets[split]
+            # Fallback to substring check if predefined split set is empty.
+            markers = ["succes", "success"] if split == "success" else ["fail"]
+            return any(f"/{m}/" in norm for m in markers)
+
+        metric_cols = [c for c in per_file_df.columns if c != "filename"]
+        summary_rows = []
+        for split in ["fail", "success"]:
+            mask = per_file_df["filename"].apply(lambda x: _belongs(x, split))
+            subset = per_file_df[mask]
+            if subset.empty:
+                continue
+            row = {"split": split, "count": len(subset)}
+            for col in metric_cols:
+                row[col] = subset[col].mean()
+            summary_rows.append(row)
+
+        if summary_rows:
+            summary_df = pd.DataFrame(summary_rows)
+            ordered_cols = ["split", "count"] + metric_cols
+            summary_df = summary_df[ordered_cols]
+            summary_path = Path(args.run_dir) / "fail_success_metrics.csv"
+            round_numeric(summary_df).to_csv(summary_path, index=False)
+            logger.info("[fail_success] Saved to %s", summary_path)
+        else:
+            logger.info("[fail_success] No rows matched fail/success splits. Skipped summary.")
+    except Exception as e:
+        logger.warning("[fail_success] Failed to create fail/success summary: %s", e)
 
 
 if __name__ == "__main__":

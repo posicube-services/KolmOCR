@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  color: #555;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.block[data-id="b002"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
+  color: #333;
+}
+
+.block[data-id="b003"] h2 {
+  font-size: calc(1.4em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #222;
+}
+
+.block[data-id="b004"] h3 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+.block[data-id="b005"] h4 {
+  font-size: calc(1.1em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #444;
+}
+
+.block[data-id="b006"] h5,
+.block[data-id="b008"] h5 {
+  font-size: calc(1em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #555;
+}
+
+.block[data-id="b007"] p {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.4;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+.block[data-id="b009"] p {
+  font-size: calc(0.95em * var(--font-scale));
+  line-height: 1.4;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+.block[data-id="b010"] ol {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.5;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+  color: #333;
+}
+
+.block[data-id="b010"] ol li {
+  margin-bottom: 0.5em;
+}
+
+.block[data-id="b011"] p {
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.5;
+  margin-bottom: 1em;
+  color: #555;
+}
+
+.block[data-id="b012"] .table-container {
+  margin: 1em 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.block[data-id="b012"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(0.9em * var(--font-scale));
+  line-height: 1.4;
+}
+
+.block[data-id="b012"] .data-table th,
+.block[data-id="b012"] .data-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.block[data-id="b012"] .data-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+}
+
+.block[data-id="b012"] .data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.block[data-id="b012"] .data-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+.block[data-id="b012"] .data-table strong {
+  font-weight: bold;
+  color: #222;
+}
+
+/* General paragraph styling */
+.document p {
+  margin: 0.8em 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Ensure consistent spacing for headings */
+h1, h2, h3, h4, h5 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+/* Remove default list styling */
+ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+
+/* Ensure table is responsive within column layout */
+.table-container {
+  page-break-inside: avoid;
+}
+
+/* Prevent overflow issues */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.29rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f0f0f0 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.31rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,28,878,34">
+<p>아래는 주어진 텍스트를 구조화된 markdown 형식으로 변환한 내용입니다. 테이블은 HTML 코드로 표현되었습니다.</p>
+</div>
+<div class="block" data-class="title" data-id="b002" data-bbox="104,44,688,96">
+<h1>Missouri Revised Statutes</h1>
+</div>
+<div class="block" data-class="section_title_lv1" data-id="b003" data-bbox="104,110,558,120">
+<h2>Title XII Public Health and Welfare</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b004" data-bbox="104,129,641,137">
+<h3>Chapter 197 Medical Treatment Facility Licenses</h3>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b005" data-bbox="104,146,270,153">
+<h4>Certificate of Need</h4>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b006" data-bbox="104,162,297,169">
+<h5>197.300. Citation of law.</h5>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="104,178,725,205">
+<p>Sections 197.300 to 197.366 shall be known as the "Missouri Certificate of Need Law".<br/>
+(L. 1979 H.B. 222 § 1, A.L. 1996 H.B. 1362)<br/>
+Effective 7-12-96<br/>
+7/12/1996</p>
+</div>
+<div class="block" data-class="section_title_lv3" data-id="b008" data-bbox="104,214,267,221">
+<h5>197.305. Definitions.</h5>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="104,230,583,236">
+<p>As used in sections 197.300 to 197.366, the following terms mean:</p>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="127,246,904,467">
+<ol>
+<li>"Affected persons": The person proposing the development of a new institutional health service, the public to be served, and health care facilities within the service area in which the proposed new health care service is to be developed;</li>
+<li>"Agency": The certificate of need program of the Missouri department of health and senior services;</li>
+<li>"Capital expenditure": An expenditure by or on behalf of a health care facility which, under generally accepted accounting principles, is not properly chargeable as an expense of operation and maintenance;</li>
+<li>"Certificate of need": A written certificate issued by the committee setting forth the committee’s affirmative finding that a proposed project sufficiently satisfies the criteria prescribed for such projects by sections 197.300 to 197.366;</li>
+<li>"Develop": To undertake those activities which on their completion will result in the offering of a new institutional health service or the incurring of a financial obligation in relation to the offering of such a service;</li>
+<li>For beds in existing or proposed health care facilities licensed pursuant to chapter 198 and long-term care beds in a hospital as described in subdivision (3) of subsection 1 of section 198.012, six hundred thousand dollars in the case of capital expenditures, or four hundred thousand dollars in the case of major medical equipment, provided, however, that prior to January 1, 2003, the expenditure minimum for beds in such a facility and long-term care beds in a hospital described in section 198.012 shall be zero, subject to the provisions of subsection 7* of section 197.318;</li>
+<li>For beds or equipment in a long-term care hospital meeting the requirements described in 42 CFR, Section 412.23(e), the expenditure minimum shall be zero; and</li>
+<li>For health care facilities, new institutional health services or beds not described in paragraph (a) or (b) of this subdivision one million dollars in the case of capital expenditures, excluding major medical equipment, and one million dollars in the case of medical equipment;</li>
+<li>"Health service area": A geographic region appropriate for the effective planning and development of health services, determined on the basis of factors including population and the availability of resources, consisting of a population of not less than five hundred thousand or more than three million;</li>
+<li>"Major medical equipment": Medical equipment used for the provision of medical and other health services;</li>
+<li>The development of a new health care facility costing in excess of the applicable expenditure minimum;</li>
+<li>The acquisition, including acquisition by lease, of any health care facility, or major medical equipment costing in excess of the expenditure minimum;</li>
+</ol>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="104,477,902,497">
+<p>This translation maintains the original Markdown structure and leaves the YAML front matter, code fences, and inline code snippets unchanged.<br/>
+이 markdown 파일은 HTML 테이블을 포함하여 다음과 같이 변환될 수 있습니다:</p>
+</div>
+<div class="block" data-class="text" data-id="b012" data-bbox="105,507,907,965">
+<div class="table-container"><table class="data-table">
+<tr>
+<td><strong>197.300. Citation of law.</strong></td>
+<td>Sections 197.300 to 197.366 shall be known as the "Missouri Certificate of Need Law".</td>
+</tr>
+<tr>
+<td>(L. 1979 H.B. 222 § 1, A.L. 1996 H.B. 1362)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Effective 7-12-96</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>7/12/1996</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>197.305. Definitions.</strong></td>
+<td>As used in sections 197.300 to 197.366, the following terms mean:</td>
+</tr>
+<tr>
+<td>1. **"Affected persons"**:</td>
+<td>The person proposing the development of a new institutional health service, the public to be served, and health care facilities within the service area in which the proposed new health care service is to be developed;</td>
+</tr>
+<tr>
+<td>2. **"Agency"**:</td>
+<td>The certificate of need program of the Missouri department of health and senior services;</td>
+</tr>
+<tr>
+<td>3. **"Capital expenditure"**:</td>
+<td>An expenditure by or on behalf of a health care facility which, under generally accepted accounting principles, is not properly chargeable as an expense of operation and maintenance;</td>
+</tr>
+<tr>
+<td>4. **"Certificate of need"**:</td>
+<td>A written certificate issued by the committee setting forth the committee’s affirmative finding that a proposed project sufficiently satisfies the criteria prescribed for such projects by sections 197.300 to 197.366;</td>
+</tr>
+<tr>
+<td>5. **"Develop"**:</td>
+<td>To undertake those activities which on their completion will result in the offering of a new institutional health service or the incurring of a financial obligation in relation to the offering of such a service;</td>
+</tr>
+<tr>
+<td>6. **"Expenditure minimum"**:</td>
+<td>Shall mean:</td>
+</tr>
+<tr>
+<td>a)</td>
+<td>For beds in existing or proposed health care facilities licensed pursuant to chapter 198 and long-term care beds in a hospital as described in subdivision (3) of subsection 1 of section 198.012, six hundred thousand dollars in the case of capital expenditures, or four hundred thousand dollars in the case of major medical equipment, provided, however, that prior to January 1, 2003, the expenditure minimum for beds in such a facility and long-term care beds in a hospital described in section 198.012 shall be zero, subject to the provisions of subsection 7* of section 197.318;</td>
+</tr>
+<tr>
+<td>b)</td>
+<td>For beds or equipment in a long-term care hospital meeting the requirements described in 42 CFR, Section 412.23(e), the expenditure minimum shall be zero; and</td>
+</tr>
+<tr>
+<td>c)</td>
+<td>For health care facilities, new institutional health services or beds not described in paragraph (a) or (b) of this subdivision one million dollars in the case of capital expenditures, excluding major medical equipment, and one million dollars in the case of medical equipment;</td>
+</tr>
+<tr>
+<td>7. **"Health service area"**:</td>
+<td>A geographic region appropriate for the effective planning and development of health services, determined on the basis of factors including population and the availability of resources, consisting of a population of not less than five hundred thousand or more than three million;</td>
+</tr>
+<tr>
+<td>8. **"Major medical equipment"**:</td>
+<td>Medical equipment used for the provision of medical and other health services;</td>
+</tr>
+<tr>
+<td>9. **"New institutional health service"**:</td>
+<td>a) The development of a new health care facility costing in excess of the applicable expenditure minimum;</td>
+</tr>
+<tr>
+<td></td>
+<td>b) The acquisition, including acquisition by lease, of any health care facility, or major medical equipment costing in excess of the expenditure minimum;</td>
+</tr>
+</table><br/>
+이 markdown 파일과 HTML 테이블을 사용하면 원문의 구조를 잘 유지하면서 텍스트와 테이블을 정리할 수 있습니다.</div>
+</div>
+</div>
+</body>
+</html>

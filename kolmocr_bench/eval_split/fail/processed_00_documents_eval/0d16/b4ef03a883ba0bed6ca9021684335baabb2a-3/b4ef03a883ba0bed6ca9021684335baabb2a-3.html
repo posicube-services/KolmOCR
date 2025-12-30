@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  text-align: center;
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] p,
+.block[data-id="b003"] p,
+.block[data-id="b004"] p,
+.block[data-id="b005"] p,
+.block[data-id="b006"] p {
+  line-height: 1.6;
+  text-align: justify;
+  margin: 10px 0;
+}
+
+.block[data-id="b007"] ol {
+  list-style-type: decimal;
+  margin: 10px 0;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+.block[data-id="b007"] ol li {
+  margin: 5px 0;
+}
+
+/* Ensure consistent spacing and alignment */
+.block {
+  margin-bottom: 15px;
+}
+
+/* Handle any potential table-like content in the last block */
+.block[data-id="b007"] ol li::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Fix for any potential table or markdown-like content in the last block */
+.block[data-id="b007"] ol li > * {
+  display: block;
+  margin: 5px 0;
+}
+
+/* Ensure no extra spacing from the table-like content */
+.block[data-id="b007"] ol li > *:first-child {
+  margin-top: 0;
+}
+
+.block[data-id="b007"] ol li > *:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.36rem !important;
+                    background: transparent !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 5px 7px !important;
+                    border: 2px double #333 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #e6edf7;
+  font-family: "맑은 고딕", serif;
+  color: #0f172a;
+}
+
+.block {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.block[data-class="title"] {
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+}
+
+.block[data-class="header"] {
+  font-size: 0.75rem;
+  letter-spacing: 0.25rem;
+  color: #475569;
+}
+
+.block[data-class="table"] {
+  border: 1px dashed rgba(15, 118, 110, 0.6);
+  padding: 14px;
+}
+
+.block[data-class="reference"] {
+  font-size: 0.85rem;
+  color: #1e1b4b;
+  text-indent: -1.3em;
+  padding-left: 1.5em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #475569;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #475569;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.4rem;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #475569;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.15rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 1px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1.5px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="section_title_lv1" data-id="b001" data-bbox="480,50,530,70">
+<h1>목표</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,93,905,153">
+<p>짧은 기간 내에 뇌를 가르치기 위해서는 교사가 뇌해부학의 모든 기능과 수준을 극도로 집중적이고 체계적인 방식으로 다루어야 합니다. 뇌의 계층 구조를 세심하고 체계적인 접근 없이 이 자료를 가르치려는 모든 시도는 실패로 끝날 수밖에 없습니다. 따라서 논리적이고 체계적인 방식으로 그 해부학의 각 수준을 따라가는 단위를 준비하는 것이 필요합니다. 이것이 다이어그램 기반 접근법이 방정식에 맞춰지는 지점입니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="104,170,905,230">
+<p>포괄적인 스키마 다이어그램을 만드는 목표는 수업이 뇌의 다양한 수준의 기능을 분해할 수 있도록 하는 방식으로 달성될 수 있습니다. 학생들은 시스템의 복잡성을 이해하면서도 뇌의 지리적 구조와 기능을 종이에 적을 수 있는 형태로 단순화해야 합니다. 이는 주제를 과도하게 복잡한 전체로 다루는 대신 소화하기 쉬운 조각으로 나누어 학습한 내용을 나중에 기억하는 데 도움을 줄 것입니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,247,905,322">
+<p>이 과정은 결국 학생들이 자신의 방식으로 학습할 수 있도록 허용될 때 더 성공적으로 이 자료를 배울 수 있다는 이해 위에 기반하고 있습니다. 이 때문에 학생들은 그들에게 제시된 다이어그램을 단순히 복사하도록 요구받지 않을 것입니다. 그들은 필요한 정보를 보여주는 한도 내에서 최소 또는 최대의 추상화를 사용하여 다이어그램을 그릴 자유를 가질 것입니다. 단위의 초기 단계에서는 변동이 거의 없을 수 있지만, 단위의 끝부분에는 학생들 간의 작업에서 큰 다양성이 나타날 것입니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="104,339,905,368">
+<p>이 단위의 목적으로는 이 과정을 다음의 특정 학습 목표로 분해할 것입니다. 각 목표는 하나의 완전한 수업을 나타내며, 수업실에서 하루 이상 지속될 수 있습니다.</p>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,385,526,398">
+<p>이 단위를 통해 학생들은 다음을 할 수 있게 될 것입니다.</p>
+</div>
+<div class="block" data-class="key_value" data-id="b007" data-bbox="129,427,905,937">
+<ol>
+<li>신경 세포의 부분과 기능을 식별할 수 있다.</li>
+<li>신경계의 수준과 기능을 설명하고 시각화할 수 있다. a. 신경 세포 b. 중추신경계와 말초신경계 c. 자율신경계 (교감신경계와 부교감신경계) d. 체성신경계 (감각신경계와 운동신경계)</li>
+<li>내분비계를 분석하고 다이어그램화할 수 있다.</li>
+<li>뇌간을 분석하고 다이어그램화할 수 있다.</li>
+<li>대뇌피질의 루브와 구조 및 그 기능을 분석하고 다이어그램화할 수 있다.</li>
+<li>뇌, 신경계 및 내분비계의 포괄적인 다이어그램을 작성하여 그 수준, 상호작용, 기능 및 행동에 미치는 영향을 보여줄 수 있다. | --- | | 목표 | | 짧은 기간 내에 뇌를 가르치기 위해서는 교사가 뇌해부학의 모든 기능과 수준을 극도로 집중적이고 체계적인 방식으로 다루어야 합니다. 뇌의 계층 구조를 세심하고 체계적인 접근 없이 이 자료를 가르치려는 모든 시도는 실패로 끝날 수밖에 없습니다. 따라서 논리적이고 체계적인 방식으로 그 해부학의 각 수준을 따라가는 단위를 준비하는 것이 필요합니다. 이것이 다이어그램 기반 접근법이 방정식에 맞춰지는 지점입니다. | | 포괄적인 스키마 다이어그램을 만드는 목표는 수업이 뇌의 다양한 수준의 기능을 분해할 수 있도록 하는 방식으로 달성될 수 있습니다. 학생들은 시스템의 복잡성을 이해하면서도 뇌의 지리적 구조와 기능을 종이에 적을 수 있는 형태로 단순화해야 합니다. 이는 주제를 과도하게 복잡한 전체로 다루는 대신 소화하기 쉬운 조각으로 나누어 학습한 내용을 나중에 기억하는 데 도움을 줄 것입니다. | | 이 과정은 결국 학생들이 자신의 방식으로 학습할 수 있도록 허용될 때 더 성공적으로 이 자료를 배울 수 있다는 이해 위에 기반하고 있습니다. 이 때문에 학생들은 그들에게 제시된 다이어그램을 단순히 복사하도록 요구받지 않을 것입니다. 그들은 필요한 정보를 보여주는 한도 내에서 최소 또는 최대의 추상화를 사용하여 다이어그램을 그릴 자유를 가질 것입니다. 단위의 초기 단계에서는 변동이 거의 없을 수 있지만, 단위의 끝부분에는 학생들 간의 작업에서 큰 다양성이 나타날 것입니다. | | 이 단위의 목적으로는 이 과정을 다음의 특정 학습 목표로 분해할 것입니다. 각 목표는 하나의 완전한 수업을 나타내며, 수업실에서 하루 이상 지속될 수 있습니다. | | 이 단위를 통해 학생들은 다음을 할 수 있게 될 것입니다. | | 1. 신경 세포의 부분과 기능을 식별할 수 있다. | | 2. 신경계의 수준과 기능을 설명하고 시각화할 수 있다. a. 신경 세포 b. 중추신경계와 말초신경계 c. 자율신경계 (교감신경계와 부교감신경계) d. 체성신경계 (감각신경계와 운동신경계) | | 3. 내분비계를 분석하고 다이어그램화할 수 있다. | | 4. 뇌간을 분석하고 다이어그램화할 수 있다. | | 5. 대뇌피질의 루브와 구조 및 그 기능을 분석하고 다이어그램화할 수 있다. | | 6. 뇌, 신경계 및 내분비계의 포괄적인 다이어그램을 작성하여 그 수준, 상호작용, 기능 및 행동에 미치는 영향을 보여줄 수 있다. |</li>
+</ol>
+</div>
+</div>
+</body>
+</html>

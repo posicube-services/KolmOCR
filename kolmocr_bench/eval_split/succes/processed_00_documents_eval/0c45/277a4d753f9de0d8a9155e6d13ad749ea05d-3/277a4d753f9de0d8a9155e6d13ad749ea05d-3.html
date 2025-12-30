@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] h2,
+.block[data-id="b009"] h2 {
+  font-size: calc(1.2em * var(--font-scale));
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b003"] p,
+.block[data-id="b005"] p,
+.block[data-id="b007"] p,
+.block[data-id="b010"] p,
+.block[data-id="b013"] p {
+  margin: 10px 0;
+  line-height: 1.5;
+  font-size: calc(1em * var(--font-scale));
+}
+
+.block[data-id="b004"] ul,
+.block[data-id="b006"] ul,
+.block[data-id="b008"] ul,
+.block[data-id="b012"] ul {
+  margin: 10px 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.block[data-id="b004"] li,
+.block[data-id="b006"] li,
+.block[data-id="b008"] li,
+.block[data-id="b012"] li {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.block[data-id="b011"] p {
+  font-weight: bold;
+  font-size: calc(1.1em * var(--font-scale));
+  margin: 10px 0;
+  color: #007BFF;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 10px;
+}
+
+/* Ensure MathJax renders properly */
+mjx-container {
+  display: inline-block;
+  line-height: 1;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.17rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  margin: 0;
+  background: #f0f2f5;
+  font-family: "Noto Sans CJK KR", sans-serif;
+  color: #0f172a;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.block[data-class="header"],
+.block[data-class="footer"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.block[data-class="text"] {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.block[data-class="title"] {
+  font-size: 1.7rem;
+  letter-spacing: 0.1em;
+}
+
+.block[data-class="table"] {
+  font-family: "맑은 고딕", sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid #94a3b8;
+  padding: 10px;
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.block[data-class="reference"] {
+  font-size: 0.9rem;
+  color: #475569;
+  text-indent: -1.5em;
+  padding-left: 1.6em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.4rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.block[data-class="text"] {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.05rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: 1px solid #f0f0f0 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="95,38,227,56">
+<h1>Markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="95,97,627,112">
+<h2>적합한 데이터는 365명의 소년과 305명의 소녀에서 수집되었다.</h2>
+</div>
+<div class="block" data-class="text" data-id="b003" data-bbox="95,151,579,164">
+<p>두 성별의 나이와 인체 측정 데이터(평균 ± 표준편차)는 다음과 같았다:</p>
+</div>
+<div class="block" data-class="table" data-id="b004" data-bbox="123,226,581,286">
+<ul>
+<li>나이(년), 11.53 ± 3.37 및 11.74 ± 3.23 (p &gt; 0.05)</li>
+<li>키(미터), 1.49 ± 0.18 및 1.45 ± 0.14 (p &lt; 0.01)</li>
+<li>체중(킬로그램), 44.56 ± 18.42 및 40.97 ± 13.82 (p &lt; 0.01)</li>
+<li>체질량 지수(Kg/m²), 19.04 ± 4.43 및 18.75 ± 3.91 (p &gt; 0.05)</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b005" data-bbox="95,322,732,334">
+<p>나이 분포는 표 1에 나타나 있다. 소년의 중앙 값, (범위) 및 사분위 범위(IQR)는 다음과 같았다:</p>
+</div>
+<div class="block" data-class="table" data-id="b006" data-bbox="123,397,431,440">
+<ul>
+<li>나이(년): 11, (6~17), IQR: 9~14</li>
+<li>키(미터): 1.5, (1.09~1.91), IQR: 1.35~1.65</li>
+<li>체중(킬로그램): 44, (15~98), IQR: 28~58</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b007" data-bbox="95,476,414,488">
+<p>소녀의 중앙값, (범위) 및 IQR은 다음과 같았다:</p>
+</div>
+<div class="block" data-class="table" data-id="b008" data-bbox="123,551,431,595">
+<ul>
+<li>나이(년): 11, (6~17), IQR: 9~15</li>
+<li>키(미터): 1.48, (1.09~1.7), IQR: 1.35~1.58</li>
+<li>체중(킬로그램): 41, (15~78), IQR: 30~51</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b009" data-bbox="95,638,542,653">
+<h2>소년과 소녀의 폐 기능은 전체 샘플에 대해 비교되었다.</h2>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="95,692,896,743">
+<p>FVC, FEV₁ 및 PEFR는 소년에서 유의하게 더 높았다. 그러나 흐름 값, F₅₀, F₂₅ 및 F₂₅–7₅은 유의한 차이가 없었다. 표 3은 소년과 소녀의 나이, 키 및 체중과 FVC 및 FEV₁ 간의 상관관계를 보여준다. 표 4는 소년과 소녀의 나이, 키 및 체중과 PEFR, F₂₅–7₅, F₅₀ 및 F₂₅ 간의 상관관계를 보여준다. 개발된 회귀 방정식은 표 5에 제공된다. 방정식은 다음과 같이 표현된다:</p>
+</div>
+<div class="block" data-class="equation" data-id="b011" data-bbox="95,778,419,791">
+<p><strong>Spirometric parameter = Constant +</strong></p>
+</div>
+<div class="block" data-class="equation" data-id="b012" data-bbox="121,825,412,869">
+<ul>
+<li>(β Coefficient for height x 키 in cm) +</li>
+<li>(β Coefficient for age x 나이 in years) +</li>
+<li>(β Coefficient for weight x 체중 in Kg)</li>
+</ul>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="95,904,886,929">
+<p>SEE는 정상 하한 계산을 위해 제공된다. FEV₁/FVC는 소년에서 나이와 키에 독립적이었으며, 소녀에서는 나이와 약한 상관관계를 보였기 때문에 이 파라미터에 대한 방정식은 개발되지 않았다.</p>
+</div>
+</div>
+</body>
+</html>

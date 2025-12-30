@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1em 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5em;
+}
+
+.block[data-id="b002"] p,
+.block[data-id="b003"] p,
+.block[data-id="b005"] p,
+.block[data-id="b006"] p,
+.block[data-id="b007"] p,
+.block[data-id="b008"] p {
+  margin: 0.5em 0;
+  font-weight: bold;
+}
+
+.block[data-id="b004"] ul,
+.block[data-id="b013"] ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.block[data-id="b004"] li,
+.block[data-id="b013"] li {
+  margin: 0.25em 0;
+}
+
+.block[data-id="b009"] h2,
+.block[data-id="b010"] h3,
+.block[data-id="b012"] h3,
+.block[data-id="b014"] h3 {
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+  color: #000;
+}
+
+.block[data-id="b011"] p,
+.block[data-id="b015"] p,
+.block[data-id="b016"] p,
+.block[data-id="b017"] p {
+  margin: 0.5em 0;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 0.5em;
+}
+
+/* Adjust for Korean text alignment and spacing */
+body {
+  font-family: 'Malgun Gothic', '맑은 고딕', 'AppleGothic', sans-serif;
+  line-height: 1.5;
+}
+
+/* Ensure no extra padding/margin on the document container */
+
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.26rem !important;
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 7px 9px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f8f8f8 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #f7f7f7 !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f2f3f7;
+  color: #0f172a;
+  font-family: "맑은 고딕", sans-serif;
+}
+
+.block {
+  margin-bottom: 24px;
+}
+
+.block[data-class="title"] {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.block[data-class="subtitle"] {
+  color: #6b7280;
+  font-size: 1.25rem;
+}
+
+
+
+.block[data-class="table"] {
+  border: 1px solid #9ca3af;
+  background: rgba(15, 118, 110, 0.08);
+  padding: 12px;
+}
+
+.block[data-class="reference"] {
+  font-size: 1.0rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #0f766e;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1.3rem;
+  color: #0f172a;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.2rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.block[data-class="text"] {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.21rem !important;
+                    background: transparent !important;
+                    border: 1px solid #e8e8e8 !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 2px solid #000 !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #f5f5f5 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="title" data-id="b001" data-bbox="251,46,759,84">
+<h1>복합재용 섬유 구조</h1>
+</div>
+<div class="block" data-class="key_value" data-id="b002" data-bbox="104,132,275,144">
+<p><strong>프로젝트 코드:</strong> S92-12</p>
+</div>
+<div class="block" data-class="key_value" data-id="b003" data-bbox="104,162,192,174">
+<p><strong>책임연구자:</strong></p>
+</div>
+<div class="block" data-class="key_value" data-id="b004" data-bbox="129,191,415,204">
+<ul>
+<li>아우번: Sabit Adanur, Yasser Gowayed</li>
+</ul>
+</div>
+<div class="block" data-class="key_value" data-id="b005" data-bbox="104,221,529,233">
+<p><strong>클램슨:</strong> Mike Drews, B. Goswami, C. Huey, G. Lickfield</p>
+</div>
+<div class="block" data-class="key_value" data-id="b006" data-bbox="104,251,458,263">
+<p><strong>조지아 테크:</strong> S. Kumar, R. Parachuru, Y. Wang</p>
+</div>
+<div class="block" data-class="key_value" data-id="b007" data-bbox="104,280,720,292">
+<p><strong>노스캐롤라이나 주립대:</strong> Aly El-Sheikh, M. Mohamed (프로젝트 리더), C. Pastore</p>
+</div>
+<div class="block" data-class="author" data-id="b008" data-bbox="104,311,694,327">
+<p><strong>작성자:</strong> Mansour H. Mohamed, 노스캐롤라이나 주립대</p>
+</div>
+<div class="block" data-class="subtitle" data-id="b009" data-bbox="104,346,229,364">
+<h2>연차보고서</h2>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b010" data-bbox="104,382,148,396">
+<h3>목적:</h3>
+</div>
+<div class="block" data-class="text" data-id="b011" data-bbox="104,413,905,438">
+<p>이 작업의 전체적인 목적은 섬유 가공의 경계를 확장하여, 최종적으로 복합재용 새로운 다차원 섬유 구조를 생산하는 것이다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b012" data-bbox="104,455,187,469">
+<h3>장기목표:</h3>
+</div>
+<div class="block" data-class="text" data-id="b013" data-bbox="129,488,895,619">
+<ol>
+<li>층화 및 수직 바느질 섬유, 2D 및 3D 브레이딩, 2D 및 3D 직조, 그리고 경사직과 횡직 날개직기 등을 이용한 섬유 전처리 제조 방법의 적용 및 개발.</li>
+<li>다양한 침투 및 결합 시스템을 사용하여 이러한 복잡한 섬유 구조로부터 복합재를 생산하는 것.</li>
+<li>공정 및 강화 구조에 따라 복합재의 행위를 이해하기 위한 분석 기법의 개발 및 검증.</li>
+<li>이러한 재료의 제조를 위한 가공 과학 및 기술 기반을 구축하고, 가공 성능 간의 상호작용을 이해하는 것.</li>
+<li>기계적 특성, 형상 형성 능력, 그리고 경제성에 대한 "성능 맵"을 개발하여, 최종 제품에 적용할 때의 설계 가이드로 사용할 수 있도록 하기.</li>
+</ol>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b014" data-bbox="104,638,148,652">
+<h3>요약:</h3>
+</div>
+<div class="block" data-class="text" data-id="b015" data-bbox="104,669,905,694">
+<p>이 프로젝트는 아우번 대학, 클램슨 대학, 조지아 테크, 노스캐롤라이나 주립대 간의 공동 노력이다. 교수진은 제작, 결합, 분석 및 테스트를 위한 팀으로 나뉘어 있다.</p>
+</div>
+<div class="block" data-class="text" data-id="b016" data-bbox="104,710,905,886">
+<p>다음 섬유 전처리가 E-glass 섬유로 구성되어 사용되었다:<br/>
+(1) [0/90] 이방성 층화;<br/>
+(2) [9/90] 층화는 두께 방향으로 직조를 통해 상호 연결된 것, 또는 이른바 3D 직조 샘플 (경사직/횡직/두께 방향의 날개 비율은 0.329/.184/.035);<br/>
+(3) 2D 직조 [0/90] 직조;<br/>
+(4) 2D 직조 [0/90] 직물은 두께 방향으로 바느질된 것. 2D 직조 직물은 평직직으로, 경사직과 횡직의 비율이 약 1:3.1이다. 2D 직조 전처리의 두께 방향 기게 바느질은 Kevlar™ 날개를 사용하여 일방성 및 이방성으로 수행되었으며, 바느질 선은 5 또는 10mm 간격으로 배치되었다. 강화재는 저점도의 에폭시 이소프탈 A 레진, Shell Epon® DPL 862와 경화제 W를 혼합하여 강철 틀에서 침투되었다. Resin Transfer Molding (RTM) 기계 VRM 2.5는 Liquid Control Corp.에서 사용되었다. 비교를 위해, 같은 강철 틀에서 손으로 층화된 샘플도 제작되었다. 침투된 전처리는 130°C에서 6시간 동안 경화되었다. 층화 패널의 섬유 부피 분수는 약 55%였으며, 2D 직조 패널의 경우 45%에서 60% 사이였다. RTM 패널의 공극 함량은 약 1.5%에서 2%였고, 손으로 층화된 패널의 경우 1%에서 3.5%였다. 경화된 패널은 다이아몬드 사포 블레이드를 사용하여 테스트 쿠폰으로 절단되었다. 모든 직조 복합재 샘플은 경사직 방향으로 테스트되었다.</p>
+</div>
+<div class="block" data-class="text" data-id="b017" data-bbox="104,902,905,940">
+<p>또한, 표준 쿠폰 시험편 외에도, 이른바 미니 샌드위치 시험편도 제작되었다 [13]. 미니 샌드위치 시험편은 에폭시 코어와 에폭시 코어의 상하 표면에 침투된 직조 직물의 단일 층으로 구성되었다 (그림 1 참조). 유리/에폭시로 만든 탭은 에폭시 코어의 상하 양쪽에 부착되었다.</p>
+</div>
+</div>
+</body>
+</html>

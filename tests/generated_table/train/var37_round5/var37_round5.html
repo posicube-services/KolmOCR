@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      font-family: 'Noto Serif KR', sans-serif; 
+      font-size: 11pt; 
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .document-header {
+      text-align: center;
+      padding: 15px 0;
+      background: #f0f8ff;
+      border-bottom: 2px solid #0044cc;
+      margin-bottom: 10px;
+    }
+    .document-title {
+      font-size: 24pt;
+      font-weight: bold;
+      color: #000;
+      margin: 0;
+    }
+    .section-table {
+      width: 100%;
+      max-width: 190mm;
+      border-collapse: collapse;
+      margin: 10px auto;
+      border: 1px solid #666;
+      table-layout: fixed;
+    }
+    .section-header {
+      background: #0044cc;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      font-size: 14pt;
+      border: 1px solid #999;
+    }
+    .field-label {
+      background: #0044cc;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+      border: 1px solid #999;
+      width: 25%;
+      vertical-align: middle;
+    }
+    .field-value {
+      background: #e6f0ff;
+      text-align: right;
+      padding: 6px;
+      border: 1px solid #999;
+      word-break: break-all;
+      white-space: normal;
+      vertical-align: middle;
+    }
+    .full-width {
+      width: 100%;
+    }
+    .two-column {
+      width: 50%;
+    }
+    .three-column {
+      width: 33.33%;
+    }
+    .four-column {
+      width: 25%;
+    }
+  </style>
+</head>
+<body>
+  <div class="document-header">
+    <h1 class="document-title">주식매매주문서</h1>
+  </div>
+
+  <!-- 고객 기본 정보 -->
+  <table class="section-table">
+    <tr><th colspan="4" class="section-header">고객 기본 정보</th></tr>
+    <tr>
+      <td class="field-label">성명</td>
+      <td class="field-value">홍길동</td>
+      <td class="field-label">주민등록번호</td>
+      <td class="field-value">900101-1234567</td>
+    </tr>
+    <tr>
+      <td class="field-label">휴대폰번호</td>
+      <td class="field-value">010-1234-5678</td>
+      <td class="field-label">주소</td>
+      <td class="field-value">서울시 강남구 테헤란로 123</td>
+    </tr>
+    <tr>
+      <td class="field-label">우편번호</td>
+      <td class="field-value">06123</td>
+      <td class="field-label">이메일</td>
+      <td class="field-value">hong@example.com</td>
+    </tr>
+    <tr>
+      <td class="field-label">계좌번호</td>
+      <td class="field-value">123-456-789012</td>
+      <td class="field-label">은행명</td>
+      <td class="field-value">국민은행</td>
+    </tr>
+    <tr>
+      <td class="field-label">예금주</td>
+      <td class="field-value">홍길동</td>
+      <td class="field-label">계좌 상태</td>
+      <td class="field-value">정상</td>
+    </tr>
+    <tr>
+      <td class="field-label">잔액</td>
+      <td class="field-value">15000000</td>
+      <td class="field-label">사용 가능 잔액</td>
+      <td class="field-value">14500000</td>
+    </tr>
+  </table>
+
+  <!-- 주문 정보 -->
+  <table class="section-table">
+    <tr><th colspan="4" class="section-header">주문 정보</th></tr>
+    <tr>
+      <td class="field-label">주문 유형</td>
+      <td class="field-value">매수</td>
+      <td class="field-label">주문 방법</td>
+      <td class="field-value">시장가</td>
+    </tr>
+    <tr>
+      <td class="field-label">주문 시간</td>
+      <td class="field-value">2025-04-05 09:30:00</td>
+      <td class="field-label">가격 유형</td>
+      <td class="field-value">지정가</td>
+    </tr>
+    <tr>
+      <td class="field-label">지정가</td>
+      <td class="field-value">50000</td>
+      <td class="field-label">스탑가</td>
+      <td class="field-value">48000</td>
+    </tr>
+    <tr>
+      <td class="field-label">종목코드</td>
+      <td class="field-value">005930</td>
+      <td class="field-label">종목명</td>
+      <td class="field-value">삼성전자</td>
+    </tr>
+    <tr>
+      <td class="field-label">시장구분</td>
+      <td class="field-value">코스피</td>
+      <td class="field-label">주문 수량</td>
+      <td class="field-value">100</td>
+    </tr>
+    <tr>
+      <td class="field-label">단가</td>
+      <td class="field-value">50000</td>
+      <td class="field-label">총금액</td>
+      <td class="field-value">5000000</td>
+    </tr>
+  </table>
+
+  <!-- 거래 내역 -->
+  <table class="section-table">
+    <tr><th colspan="4" class="section-header">거래 내역</th></tr>
+    <tr>
+      <td class="field-label">수수료율</td>
+      <td class="field-value">0.015</td>
+      <td class="field-label">세율</td>
+      <td class="field-value">0.002</td>
+    </tr>
+    <tr>
+      <td class="field-label">총 수수료</td>
+      <td class="field-value">75000</td>
+      <td class="field-label">최근 거래일</td>
+      <td class="field-value">2025-04-04</td>
+    </tr>
+    <tr>
+      <td class="field-label">종목</td>
+      <td class="field-value">삼성전자</td>
+      <td class="field-label">유형</td>
+      <td class="field-value">매수</td>
+    </tr>
+    <tr>
+      <td class="field-label">수량</td>
+      <td class="field-value">50</td>
+      <td class="field-label">가격</td>
+      <td class="field-value">49000</td>
+    </tr>
+    <tr>
+      <td class="field-label">금액</td>
+      <td class="field-value">2450000</td>
+      <td class="field-label">처리 상태</td>
+      <td class="field-value">완료</td>
+    </tr>
+  </table>
+
+  <!-- 확인 및 서명 -->
+  <table class="section-table">
+    <tr><th colspan="4" class="section-header">확인 및 서명</th></tr>
+    <tr>
+      <td class="field-label">동의항목1</td>
+      <td class="field-value">주문 조건을 확인하였습니다.</td>
+      <td class="field-label">동의항목2</td>
+      <td class="field-value">수수료 정책에 동의합니다.</td>
+    </tr>
+    <tr>
+      <td class="field-label">동의항목3</td>
+      <td class="field-value">개인정보 활용에 동의합니다.</td>
+      <td class="field-label">서명</td>
+      <td class="field-value">홍길동</td>
+    </tr>
+    <tr>
+      <td class="field-label">서명일</td>
+      <td class="field-value">2025-04-05</td>

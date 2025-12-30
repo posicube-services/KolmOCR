@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Smart e-Form</title>
+    <style>
+        body { 
+            font-family: 'Roboto', 'Noto Sans KR', sans-serif; 
+            background: #fdfdfd; 
+            font-size: 13pt; 
+            padding: 20px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        h1 { 
+            text-align: center; 
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-size: 24pt;
+            font-weight: bold;
+        }
+        table { 
+            width: 100%; 
+            border-spacing: 0; 
+            border-collapse: collapse; 
+            table-layout: fixed; 
+            word-break: break-all;
+            margin-bottom: 20px;
+            border: 1px solid #999;
+        }
+        th { 
+            background: #0078d7; 
+            color: #fff; 
+            padding: 8px; 
+            font-weight: bold; 
+            text-align: center; 
+            border: 1px solid #999;
+            font-size: 12pt;
+        }
+        td { 
+            background: #f5f5f5; 
+            border: 1px solid #ddd; 
+            padding: 6px 8px; 
+            text-align: right; 
+            word-break: break-all; 
+            white-space: normal;
+            font-size: 12pt;
+        }
+        .section-header {
+            background: #0078d7;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px;
+            border: 1px solid #999;
+            font-size: 14pt;
+        }
+        .sub-header {
+            background: #1e88e5;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 6px;
+            border: 1px solid #999;
+            font-size: 12pt;
+        }
+        .value-cell {
+            text-align: right;
+            padding: 6px 8px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+        }
+        .label-cell {
+            text-align: left;
+            padding: 6px 8px;
+            background: #e3f2fd;
+            border: 1px solid #ddd;
+            font-weight: bold;
+        }
+        .two-column {
+            display: flex;
+            gap: 10px;
+        }
+        .two-column > table {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>원천징수영수증</h1>
+
+    <!-- 기본정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">기본정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">발행기관 정보</th>
+            <th colspan="2" class="sub-header">수령인 정보</th>
+        </tr>
+        <tr>
+            <td class="label-cell">기관명</td><td class="value-cell">한국은행</td>
+            <td class="label-cell">성명</td><td class="value-cell">홍길동</td>
+        </tr>
+        <tr>
+            <td class="label-cell">사업자등록번호</td><td class="value-cell">123-45-67890</td>
+            <td class="label-cell">주민등록번호</td><td class="value-cell">900101-1234567</td>
+        </tr>
+        <tr>
+            <td class="label-cell">주소</td><td class="value-cell">서울시 중구 세종대로 123</td>
+            <td class="label-cell">연락처</td><td class="value-cell">010-1234-5678</td>
+        </tr>
+    </table>
+
+    <!-- 소득 및 세액 정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">소득 및 세액 정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">소득 항목</th>
+            <th colspan="2" class="sub-header">세액 계산</th>
+        </tr>
+        <tr>
+            <td class="label-cell">급여 소득</td><td class="value-cell">3500000</td>
+            <td class="label-cell">소득세</td><td class="value-cell">250000</td>
+        </tr>
+        <tr>
+            <td class="label-cell">상여금</td><td class="value-cell">1200000</td>
+            <td class="label-cell">지방소득세</td><td class="value-cell">25000</td>
+        </tr>
+        <tr>
+            <td class="label-cell">기타소득</td><td class="value-cell">500000</td>
+            <td class="label-cell">농어촌특별세</td><td class="value-cell">5000</td>
+        </tr>
+    </table>
+
+    <!-- 거래 내역 상세 -->
+    <table>
+        <tr><th colspan="4" class="section-header">거래 내역 상세</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">월별 소득 내역</th>
+            <th colspan="2" class="sub-header">세액 공제 내역</th>
+        </tr>
+        <tr>
+            <td class="label-cell">1월 소득</td><td class="value-cell">3500000</td>
+            <td class="label-cell">보험료 공제</td><td class="value-cell">150000</td>
+        </tr>
+        <tr>
+            <td class="label-cell">2월 소득</td><td class="value-cell">3600000</td>
+            <td class="label-cell">연금 공제</td><td class="value-cell">100000</td>
+        </tr>
+        <tr>
+            <td class="label-cell">3월 소득</td><td class="value-cell">3700000</td>
+            <td class="label-cell">기부금 공제</td><td class="value-cell">50000</td>
+        </tr>
+    </table>
+
+    <!-- 서명 및 확인란 -->
+    <table>
+        <tr><th colspan="4" class="section-header">서명 및 확인란</th></tr>
+        <tr>
+            <td class="label-cell">수령인 서명</td><td class="value-cell">홍길동</td>
+            <td class="label-cell">발행일자</td><td class="value-cell">2025-04-05</td>
+        </tr>
+        <tr>
+            <td class="label-cell">확인자 이름</td><td class="value-cell">김철수</td>
+            <td class="label-cell">확인자 직위</td><td class="value-cell">재무팀장</td>
+        </tr>
+    </table>
+
+    <!-- 첨부 문서 목록 -->
+    <table>
+        <tr><th colspan="4" class="section-header">첨부 문서 목록</th></tr>
+        <tr>
+            <td class="label-cell">첨부 문서 1 이름</td><td class="value-cell">급여명세서.pdf</td>
+            <td class="label-cell">첨부 문서 1 일자</td><td class="value-cell">2025-03-31</td>
+        </tr>
+        <tr>
+            <td class="label-cell">첨부 문서 2 이름</td><td class="value-cell">연말정산서.pdf</td>
+            <td class="label-cell">첨부 문서 2 일자</td><td class="value-cell">2025-03-15</td>
+        </tr>
+        <tr>
+            <td class="label-cell">첨부 문서 3 이름</td><td class="value-cell">기부금영수증.pdf</td>
+            <td class="label-cell">첨부 문서 3 일자</td><td class="value-cell">2025-02-28</td>
+        </tr>
+    </table>
+
+    <!-- 세부 항목 테이블 -->
+    <table>
+        <tr><th colspan="4" class="section-header">세부 항목 테이블</th></tr>
+        <tr><th colspan="4" class="sub-header">세액 세부 내역</th></tr>
+        <tr>
+            <td class="label-cell">항

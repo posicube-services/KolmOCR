@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Document</title>
+<style>
+
+:root {
+--font-scale: 1;
+--base-font-size: 10pt;
+--body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+.document {
+width: 210mm;
+margin: 0 auto;
+padding: 15mm 20mm;
+box-sizing: border-box;
+background: #fff;
+column-count: 1;
+column-gap: 10mm;
+column-fill: balance;
+overflow: visible;
+transform: none;
+font-size: var(--body-font-size);
+}
+
+
+
+:root {
+  --font-scale: 1;
+  --base-font-size: calc(10pt * var(--font-scale));
+  --body-font-size: max(5px, calc(var(--base-font-size) * var(--font-scale)));
+}
+
+
+
+/* Block-specific styles */
+.block[data-id="b001"] h1 {
+  font-size: calc(1.8em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #000;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b002"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+.block[data-id="b003"] h2 {
+  font-size: calc(1.5em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #000;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b004"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+.block[data-id="b005"] h3 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #000;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b006"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+.block[data-id="b007"] h3 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #000;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b008"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+.block[data-id="b009"] h3 {
+  font-size: calc(1.3em * var(--font-scale));
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #000;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.block[data-id="b010"] p {
+  font-size: calc(1em * var(--font-scale));
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Code block styling for the last paragraph */
+code {
+  font-family: monospace;
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: #333;
+}
+
+/* Ensure consistent spacing between blocks */
+.block + .block {
+  margin-top: 15px;
+}
+
+/* Ensure no extra margin for first block */
+.block:first-child {
+  margin-top: 0;
+}
+
+/* Ensure consistent line height for all paragraphs */
+p {
+  line-height: 1.5;
+}
+
+
+
+/* Enforce title/author to body ratio and minimum readable size */
+.block[data-class="title"],
+.block[data-class="author"] {
+font-size: clamp(5px, calc(var(--body-font-size) * 1.4), 999px);
+}
+.block[data-class]:not([data-class="title"]):not([data-class="author"]) {
+font-size: clamp(5px, var(--body-font-size), 999px);
+}
+
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.45rem !important;
+                    background: rgba(250, 250, 250, 0.3) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: separate !important;
+                    border-spacing: 2px !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 8px 12px !important;
+                    border: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #d8d8d8 !important;
+                    font-weight: bold !important;
+                }
+                
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+
+body {
+  background: #f5f7fb;
+  color: #111827;
+  font-family: "맑은 고딕", "은 궁서", sans-serif;
+}
+
+
+.block {
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+.block[data-class="title"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.25rem;
+  color: #111827;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="section_title_lv1"] {
+  font-size: 1.6rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv2"] {
+  font-size: 1.3rem;
+  color: #1d4ed8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.block[data-class="section_title_lv3"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.block[data-class="text"] {
+  font-size: 1.5rem;
+}
+
+.block[data-class="table"] {
+  font-family: "Noto Sans CJK KR", sans-serif;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.block[data-class="equation"] {
+  font-family: "나눔손글씨 붓", serif;
+  font-size: 1.1rem;
+  background: rgba(14, 165, 233, 0.15);
+  border-left: 4px solid #0ea5e9;
+  padding-left: 18px;
+}
+
+.block[data-class="figure_caption"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="table_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="formula_caption"] {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+  font-style: italic;
+}
+
+.block[data-class="QRCode"] {
+  font-size: 0.9rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="seal"] {
+  font-size: 1rem;
+  color: #b91c1c;
+  border: 1px dashed #b91c1c;
+}
+
+.block[data-class="invoice_header"] {
+  font-size: 1.1rem;
+  color: #1d4ed8;
+}
+
+.block[data-class="key_value"] {
+  font-size: 1rem;
+  color: #111827;
+}
+
+
+                /* Target table blocks specifically */
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    column-span: all !important;
+                    -webkit-column-span: all !important;
+                    display: block !important;
+                    margin: 2rem 0 !important;
+                    padding: 0.13rem !important;
+                    background: rgba(245, 245, 245, 0.2) !important;
+                    border: none !important;
+                    border-radius: 4px !important;
+                }
+
+                .block[data-class="table"] .table-container,
+                .block[data-class*="table"] .table-container {
+                    display: block !important;
+                    width: 100% !important;
+                    overflow-x: auto !important;
+                    min-height: 50px !important;
+                    position: static !important;
+                }
+
+                @media print {
+                    .block[data-class="table"] .table-container,
+                    .block[data-class*="table"] .table-container {
+                        overflow-x: visible !important;
+                        overflow-y: visible !important;
+                    }
+                }
+
+                .block[data-class="table"] table,
+                .block[data-class*="table"] table {
+                    width: 100% !important;
+                    display: table !important;
+                    table-layout: auto !important;
+                    border-collapse: collapse !important;
+                    min-height: 40px !important;
+                    position: static !important;
+                }
+
+                .block[data-class="table"] td,
+                .block[data-class="table"] th,
+                .block[data-class*="table"] td,
+                .block[data-class*="table"] th {
+                    padding: 6px 8px !important;
+                    border: none !important;
+                    border-bottom: 1px solid #ddd !important;
+                    min-height: 1.5em !important;
+                    line-height: 1.4 !important;
+                    position: static !important;
+                    color: #000 !important;
+                    background: #fff !important;
+                }
+
+                .block[data-class="table"] th,
+                .block[data-class*="table"] th {
+                    background: #e0e0e0 !important;
+                    font-weight: bold !important;
+                }
+                
+                .block[data-class="table"] tr:nth-child(even),
+                .block[data-class*="table"] tr:nth-child(even) {
+                    background: #fafafa !important;
+                }
+
+                .block[data-class="table"],
+                .block[data-class*="table"] {
+                    overflow: visible !important;
+                }
+                
+</style>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: false,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    startup: {
+        ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+                console.log('MathJax initial rendering complete');
+                // Force re-typeset after DOM is fully loaded
+                MathJax.typesetPromise().then(() => {
+                    console.log('MathJax re-typeset complete');
+                }).catch((err) => console.log('MathJax typeset error:', err));
+            });
+        }
+    }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="document">
+<div class="block" data-class="text" data-id="b001" data-bbox="104,56,257,82">
+<h1>Markdown</h1>
+</div>
+<div class="block" data-class="text" data-id="b002" data-bbox="104,111,889,141">
+<p>제품 선택. 또한, 많은 소비자들이 펜을 사용하여 구매한 제품을 체크하는 경우가 많아서, 관찰자로서 이를 쇼핑 리스트임을 확인하는 것이 상대적으로 쉬웠다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b003" data-bbox="104,165,874,215">
+<h2>Study Package (선택된 제품) 및 Study Packages (선택된 제품 이외의 제품)</h2>
+</div>
+<div class="block" data-class="text" data-id="b004" data-bbox="104,242,897,353">
+<p>패키지 연구는 분명히 제품 조합 연구와 관련이 있지만, 이 경우 소비자가 다른 제품을 비교하거나 선택된 제품을 연구하는 더 직접적인 대안 평가를 의미한다. Study Assortment과 마찬가지로, 이 변수는 관여도와 관련이 있으며, 패키지를 연구하는 것은 브라우징의 한 형태로 간주될 수 있다. 제품을 연구한다는 것은 제품을 집어 들고 연구하는 것을 의미한다. 이는 제품을 뒤집어 뒷면을 살펴보는 것일 수도 있고, 영양 정보가 앞면에 표시된 경우라면 패키지 앞면을 읽는 것일 수도 있다. 일반적으로 소비자가 패키지에 적힌 내용 중 일부를 읽는 것처럼 보이는 것이 중요했다. 만약 그가 제품을 집어 들고 잠깐만 보고 바구니에 넣거나 다시 선반에 놓는다면, 우리는 그가 패키지를 연구한다고 보지 않았다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b005" data-bbox="104,377,327,395">
+<h3>Study Assortment</h3>
+</div>
+<div class="block" data-class="text" data-id="b006" data-bbox="104,423,904,534">
+<p>관여도와 관련된 또 다른 요소는 대안(제품 조합)의 검색 및 평가가 어느 정도 이루어지는지에 대한 것이다. 높은 관여도는 제품 선택 시 인지적 노력이 증가하여 제품 조합 연구를 증가시킬 수 있다(Lockshin et al., 1997). 소비자가 어떻게 제품 조합을 연구하는지 관찰하기 위해 우리는 소비자 옆에서 서서 Underhill(2003)가 제안한 바와 가트이 그에게 영향을 미치지 않도록 했다. 일부 소비자는 제품 조합을 연구하지 않고 바로 제품으로 이동했다. 다른 소비자는 제품 조합을 연구하기 위해 선반 앞에 서 있거나 걸어다니는 경우도 있었다. 대부분의 경우 두 가지가 결합되어 사용되었기 때문에, 우리는 소비자가 제품 조합을 연구했는지 또는 바로 선택된 제품으로 이동했는지만 관찰했다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b007" data-bbox="104,557,292,575">
+<h3>과도한 통로 혼잡도</h3>
+</div>
+<div class="block" data-class="text" data-id="b008" data-bbox="104,603,904,682">
+<p>Grossbart et al.(1990)에 따르면, 혼잡은 소비자 행동에 영향을 미칠 수 있으며, 예를 들어 시간 소비와 브라우징에 영향을 줄 수 있다. 통로가 혼잡한지 여부를 측정하기 위해, 소비자와 동시에 통로에 다른 사람들이 있는지를 관찰했다. 이는 관찰자 외에 다른 사람들이 통로에 들어오거나 소비자가 통로에 있을 때 이미 통로에 있던 경우에 해당했다. 통로에 머문 시간은 고려하지 않았다. 이 변수는 간격별로 측정되었으며, 소비자와 관찰자 외에 추가로 한 명의 사람이 통로에 있을 때부터 시작했다.</p>
+</div>
+<div class="block" data-class="section_title_lv2" data-id="b009" data-bbox="104,705,362,723">
+<h3>Large Price Signs 연구</h3>
+</div>
+<div class="block" data-class="text" data-id="b010" data-bbox="104,751,904,926">
+<p>가격 표지판은 소매점에서 소비자에게 영향을 미치고, 일반 제품과 할인 제품 모두의 판매를 촉진할 수 있다(McKinnon et al., 1981). Sinha와 Uniyal(2005)의 연구에 따르면, 가격 표지판을 연구하는 것은 소비자가 가격 검색에 얼마나 중요한지를 나타낼 수 있으며, 따라서 소비자가 더 절약하는 행동을 하는지 여부를 알 수 있다. 가격 표지판 연구는 관여도 수준과도 관련이 있으며, Lockshin et al.(1997)이 제안한 바와 같이 높은 소비자 관여도로 인해 발생하는 브라우징의 연장으로 볼 수 있다. 고객이 가격 표지판을 연구했는지 관찰하기 위해 우리는 고객과 비교적 가까이 있어야 했지만, 동시에 그 바로 뒤에 서지 않도록 주의해야 했다. 만약 고객이 머리를 돌려 더 긴 시간 동안 큰 가격 표지판을 바라보는 경우, 우리는 그가 가격 표지판을 연구했다고 가정했다. 또한, 소비자가 동행자에게 가격을 언급하는 경우도 있어, 가격 표지판이 연구되었는지 쉽게 확인할 수 있었다.<br/>
+This markdown document includes the text from the image, with proper formatting and structure. The <code>table</code> tag was not included in this markdown as it is not present in the image content.</p>
+</div>
+</div>
+</body>
+</html>

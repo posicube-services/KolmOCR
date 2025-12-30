@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>보험가입신청서</title>
+    <style>
+        body { 
+            font-family: 'Roboto', 'Noto Sans KR', sans-serif; 
+            background: #fdfdfd; 
+            font-size: 13pt; 
+            padding: 20px;
+            margin: 0;
+        }
+        h1 { 
+            text-align: center; 
+            font-size: 24pt; 
+            font-weight: bold; 
+            margin-bottom: 20px;
+        }
+        table { 
+            width: 100%; 
+            border-spacing: 0; 
+            border-collapse: collapse; 
+            table-layout: fixed; 
+            word-break: break-all;
+            margin-bottom: 20px;
+            border: 1px solid #999;
+        }
+        th, td { 
+            padding: 8px; 
+            text-align: center; 
+            border: 1px solid #999;
+        }
+        th { 
+            background: #0078d7; 
+            color: #fff; 
+            font-weight: bold; 
+            padding: 10px;
+        }
+        td { 
+            background: #f9f9f9; 
+            font-weight: normal;
+        }
+        .section-header {
+            background: #0078d7;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            font-size: 16pt;
+        }
+        .sub-header {
+            background: #2a9df4;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+        }
+        .label-cell {
+            background: #1e88e5;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            width: 25%;
+        }
+        .value-cell {
+            background: #f9f9f9;
+            text-align: left;
+            padding-left: 15px;
+            width: 75%;
+        }
+        .two-col {
+            width: 50%;
+        }
+        .three-col {
+            width: 33.33%;
+        }
+        .four-col {
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+    <h1>보험가입신청서</h1>
+
+    <!-- 기본정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">기본정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">개인정보</th>
+            <th colspan="2" class="sub-header">직업정보</th>
+        </tr>
+        <tr>
+            <td class="label-cell">성명</td>
+            <td class="value-cell">홍길동</td>
+            <td class="label-cell">직업분류</td>
+            <td class="value-cell">사무직</td>
+        </tr>
+        <tr>
+            <td class="label-cell">생년월일</td>
+            <td class="value-cell">1990-01-01</td>
+            <td class="label-cell">재직회사명</td>
+            <td class="value-cell">삼성전자</td>
+        </tr>
+        <tr>
+            <td class="label-cell">성별</td>
+            <td class="value-cell">남성</td>
+            <td class="label-cell">직위</td>
+            <td class="value-cell">과장</td>
+        </tr>
+        <tr>
+            <td class="label-cell">휴대폰번호</td>
+            <td class="value-cell">010-1234-5678</td>
+            <td colspan="2" class="value-cell">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="label-cell">이메일주소</td>
+            <td class="value-cell">user@example.com</td>
+            <td colspan="2" class="value-cell">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="label-cell">주소</td>
+            <td class="value-cell">서울시 강남구 테헤란로 123</td>
+            <td colspan="2" class="value-cell">&nbsp;</td>
+        </tr>
+    </table>
+
+    <!-- 보험정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">보험정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">가입상품</th>
+            <th colspan="2" class="sub-header">특약사항</th>
+        </tr>
+        <tr>
+            <td class="label-cell">보험상품명</td>
+            <td class="value-cell">종합건강보험</td>
+            <td class="label-cell">특약1</td>
+            <td class="value-cell">입원비 보장</td>
+        </tr>
+        <tr>
+            <td class="label-cell">보험기간</td>
+            <td class="value-cell">10년</td>
+            <td class="label-cell">특약2</td>
+            <td class="value-cell">수술비 보장</td>
+        </tr>
+        <tr>
+            <td class="label-cell">월보험료</td>
+            <td class="value-cell">50000</td>
+            <td class="label-cell">특약3</td>
+            <td class="value-cell">진단비 보장</td>
+        </tr>
+    </table>
+
+    <!-- 건강정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">건강정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">질병력</th>
+            <th colspan="2" class="sub-header">건강검진</th>
+        </tr>
+        <tr>
+            <td class="label-cell">과거병력</td>
+            <td class="value-cell">고혈압</td>
+            <td class="label-cell">최근검진일</td>
+            <td class="value-cell">2023-06-15</td>
+        </tr>
+        <tr>
+            <td class="label-cell">현재병력</td>
+            <td class="value-cell">당뇨</td>
+            <td class="label-cell">검진결과</td>
+            <td class="value-cell">정상</td>
+        </tr>
+        <tr>
+            <td class="label-cell">수술경력</td>
+            <td class="value-cell">복강경 수술</td>
+            <td colspan="2" class="value-cell">&nbsp;</td>
+        </tr>
+    </table>
+
+    <!-- 계좌정보 -->
+    <table>
+        <tr><th colspan="4" class="section-header">계좌정보</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">납입계좌</th>
+            <th colspan="2" class="sub-header">환급계좌</th>
+        </tr>
+        <tr>
+            <td class="label-cell">은행명</td>
+            <td class="value-cell">국민은행</td>
+            <td class="label-cell">은행명</td>
+            <td class="value-cell">신한은행</td>
+        </tr>
+        <tr>
+            <td class="label-cell">계좌번호</td>
+            <td class="value-cell">123-456-7890</td>
+            <td class="label-cell">계좌번호</td>
+            <td class="value-cell">987-654-3210</td>
+        </tr>
+        <tr>
+            <td class="label-cell">예금주</td>
+            <td class="value-cell">홍길동</td>
+            <td class="label-cell">예금주</td>
+            <td class="value-cell">홍길동</td>
+        </tr>
+    </table>
+
+    <!-- 동의서 -->
+    <table>
+        <tr><th colspan="4" class="section-header">동의서</th></tr>
+        <tr>
+            <th colspan="2" class="sub-header">개인정보동의</th>
+            <th colspan="2" class="sub-header">전자서명</th>
+        </tr>
+        <tr>
+            <td class="label-cell">수집목적</td>
+            <td class="value-cell">보험심사 및 관리</td>
+            <td class="label-cell">서명일자</td>
+            <td class="value-cell">2025-04-05</td>
+        </tr>
+        <tr>
+            <td class="label-cell">제3자제공</td>
+            <td class="value-cell">없음</td>
+            <td class="label-cell">서명자</td>
+            <td class="

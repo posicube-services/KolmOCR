@@ -1,0 +1,17 @@
+# Evaluation defaults for vLLM 파이프라인.
+pred_dir: output/vllm/qwen7b/preds
+gt_dir: kolmocr_bench
+output_dir: output/qwen7b/eval
+metrics:
+  - text_edit
+  - table_f1
+  - table_TEDS
+  - table_TEDS_S
+  - code_TED
+  - image_iou
+  - reading_order
+  - overall
+threshold_headings: 1
+threshold_table: 0.6
+version: "1.10"
+text_include_f1: true

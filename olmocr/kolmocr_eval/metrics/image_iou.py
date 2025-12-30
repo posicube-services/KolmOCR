@@ -1,26 +1,21 @@
 import os
 from itertools import zip_longest
 from datetime import datetime
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 import pandas as pd
 
 from olmocr.kolmocr_eval.metrics.base import Metric
-from olmocr.kolmocr_eval.metrics.common import round_numeric
+from olmocr.kolmocr_eval.metrics.common import round_numeric, align_sequences
 from olmocr.kolmocr_eval.utils.parser import parse_md
 from olmocr.kolmocr_eval.utils.data_io import list_md_files, read_md
-
-
-def _bbox_to_xyxy(b: List[float]) -> Tuple[float, float, float, float]:
-    x0, y0, w, h = b
-    return x0, y0, x0 + w, y0 + h
 
 
 def _compute_iou(b1: Optional[List[float]], b2: Optional[List[float]]) -> float:
     if not b1 or not b2:
         return 0.0
-    x1_min, y1_min, x1_max, y1_max = _bbox_to_xyxy(b1)
-    x2_min, y2_min, x2_max, y2_max = _bbox_to_xyxy(b2)
+    x1_min, y1_min, x1_max, y1_max = b1
+    x2_min, y2_min, x2_max, y2_max = b2
 
     inter_xmin = max(x1_min, x2_min)
     inter_ymin = max(y1_min, y2_min)
@@ -40,7 +35,7 @@ def _compute_iou(b1: Optional[List[float]], b2: Optional[List[float]]) -> float:
 
 def _match_bboxes(pred_boxes: List[List[float]], gt_boxes: List[List[float]]):
     """
-    모든 조합을 계산해 pred 개수만큼 중복 없이 최고 IoU를 매칭.
+    Adjacency-style 매칭으로 GT 순서를 유지하며 IoU 합을 극대화.
     - GT가 없으면 스킵
     - pred가 더 적으면 남은 GT는 IoU 0으로 처리
     """
@@ -51,24 +46,10 @@ def _match_bboxes(pred_boxes: List[List[float]], gt_boxes: List[List[float]]):
     if num_gt == 0:
         return {"avg_iou": 1.0, "pairs": 0}
 
-    # 모든 조합 IoU를 구한 뒤, GT 수만큼 중복 없는 최고 IoU를 선택
-    combos: List[Tuple[float, int, int]] = []
-    for gi, gt in enumerate(gt_list):
-        for pi, pred in enumerate(pred_list):
-            combos.append((_compute_iou(pred, gt), gi, pi))
-    combos.sort(key=lambda x: x[0], reverse=True)
-
+    pairs = align_sequences(pred_list, gt_list, lambda p, g: _compute_iou(p, g))
     matched_ious = [0.0] * num_gt
-    used_gt = set()
-    used_pred = set()
-    for iou, gi, pi in combos:
-        if gi in used_gt or pi in used_pred:
-            continue
-        matched_ious[gi] = iou
-        used_gt.add(gi)
-        used_pred.add(pi)
-        if len(used_gt) == num_gt or len(used_pred) == num_pred:
-            break
+    for gi, pi in pairs:
+        matched_ious[gi] = _compute_iou(pred_list[pi], gt_list[gi])
 
     avg_iou = sum(matched_ious) / num_gt if num_gt > 0 else 1.0
 

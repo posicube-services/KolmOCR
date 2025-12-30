@@ -170,6 +170,45 @@ def build_no_anchoring_v4_yaml_prompt() -> str:
     )
 
 
+def build_no_anchoring_v4_yaml_prompt_with_bbox() -> str:
+    return (
+        "Attached is one page of a document that you must process. "
+        "Just return the plain text representation of this document as if you were reading it naturally. Convert equations to LateX and tables to HTML.\n"
+        "If there are any figures or charts, label them with the following markdown syntax ![Alt text describing the contents of the figure](page_startx_starty_width_height.png)\n"
+        "For each block of text or image or table, please add a bounding box annotation in the format <|box_start|> x0, y0, x1, y1 <|box_end|>.\n"
+        "Return your output as markdown, with a front matter section on top specifying values for the primary_language, is_rotation_valid, rotation_correction, is_table, and is_diagram parameters."
+    )
+
+
+def build_no_anchoring_v4_yaml_prompt_wo_frontmatter() -> str:
+    return (
+        "Attached is one page of a document that you must process. "
+        "Just return the plain text representation of this document as if you were reading it naturally. Convert equations to LateX and tables to HTML.\n"
+        "If there are any figures or charts, label them with the following markdown syntax ![Alt text describing the contents of the figure](page_startx_starty_width_height.png)\n"
+        "Return your output as markdown."
+    )
+
+def build_no_anchoring_v4_yaml_prompt_with_bbox_wo_frontmatter() -> str:
+    return (
+        "Attached is one page of a document that you must process. "
+        "Return a faithful textual representation of the document in reading order. Convert equations to LaTeX and tables to HTML.\n"
+        "For each block of text, image, table or formula, For each block, output exactly one line in the following format:\n <|box_start|> x0,y0,x1,y1 <|box_end|>\nCONTENT\n [BBOX_BLK_END]\n"
+        "If there are any figures or charts, include the Markdown image tag inside the block content.![Alt text describing the contents of the figure](NAME_##.png) or where ## is a unique identifier for each unique figure or chart, where NAME is either 'matched' or 'unmatched', chosen randomly.\n"
+        "Return your output as markdown."
+    )
+
+def build_no_anchoring_v4_yaml_prompt_with_bbox_wo_frontmatter_for_qwen() -> str:
+    return (
+        "Attached is one page of a document that you must process. "
+        "Return a faithful textual representation of the document in reading order. Convert equations to LaTeX and tables to HTML.\n"
+        "For each block of text, image, table or formula, For each block, output exactly one line in the following format:\n <!-- [x0,y0,x1,y1] -->\nCONTENT\n "
+        "You should use HTML comments <!-- [x0,y0,x1,y1] --> to denote the bounding box coordinates of each block.\n"
+        "Each paragraph, heading, list item, table, formula, and image must have its own bbox comment. Do not group multiple paragraphs into a single bbox.\n"
+        "If there are any figures or charts, include the Markdown image tag inside the block content.![Alt text describing the contents of the figure](NAME_##.png) or where ## is a unique identifier for each unique figure or chart, where NAME is either 'matched' or 'unmatched', chosen randomly.\n"
+        "Return md file with bbox comments that can download."
+    )
+
+
 # Extracts the anchor text component from an existing prompt string
 def extract_raw_text(prompt: str) -> str:
     pattern = r"RAW_TEXT_START\s*\n(.*?)\nRAW_TEXT_END"

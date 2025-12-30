@@ -1,6 +1,6 @@
 # KolmOCR 트랜스포머 이미지 추론
 
-`olmocr/inference_kolmocr_transformer.py`는 디렉터리 안의 이미지(PNG/JPG/JPEG)를 순회하며 KolmOCR(Qwen2.5-VL 계열) 체크포인트로 마크다운을 생성합니다. 입력 폴더 구조를 그대로 따라 `output_dir` 아래에 `.md` 파일을 저장합니다.
+`olmocr/inference_kolmocr.py`는 디렉터리 안의 이미지(PNG/JPG/JPEG)를 순회하며 KolmOCR(Qwen2.5-VL 계열) 체크포인트로 마크다운을 생성합니다. 입력 폴더 구조를 그대로 따라 `output_dir` 아래에 `.md` 파일을 저장합니다.
 
 ## 준비 사항
 
@@ -13,11 +13,11 @@
 
 ```bash
 # config에 checkpoint/input/output 등을 정의해 두고 실행
-python olmocr/inference_kolmocr_transformer.py \
+python olmocr/inference_kolmocr.py \
   --config configs/kolmocr_infer.yaml
 
 # 또는 CLI로 직접 지정
-python olmocr/inference_kolmocr_transformer.py \
+python olmocr/inference_kolmocr.py \
   --checkpoint /path/to/kolmocr-checkpoint \
   --input-dir data/images \
   --output-dir output/markdown \

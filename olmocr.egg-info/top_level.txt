@@ -1,3 +1,6 @@
 configs
 kolmocr_bench
+lab
 olmocr
+output
+sampled_kolmocr_bench

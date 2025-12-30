@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>환불신청서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            color: #111;
+            margin: 0;
+            padding: 20px;
+            background: #fff;
+        }
+        h1 {
+            text-align: center;
+            margin: 0 0 15px 0;
+            font-size: 24pt;
+            font-weight: bold;
+        }
+        .document-container {
+            background: #999;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            background: #e8e8e8;
+            border: 1px solid #999;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px dashed #bbb;
+            vertical-align: top;
+        }
+        th {
+            background: #999999;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
+        .section-header {
+            background: #999999;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            margin: 10px 0 5px 0;
+            font-size: 14pt;
+        }
+        .subsection-header {
+            background: #999999;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            margin: 5px 0;
+            font-size: 12pt;
+        }
+        .label {
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .value {
+            display: inline-block;
+            width: calc(100% - 130px);
+            vertical-align: top;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .two-column > div {
+            flex: 1;
+        }
+        .three-column {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .three-column > div {
+            flex: 1;
+        }
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>환불신청서</h1>
+    <div class="document-container">
+
+        <!-- 섹션 1: 신청자 기본정보 -->
+        <div class="section-header">신청자 기본정보</div>
+
+        <div class="subsection-header">개인정보</div>
+        <div class="two-column">
+            <div>
+                <div class="row">
+                    <span class="label">성명</span>
+                    <span class="value">홍길동</span>
+                </div>
+                <div class="row">
+                    <span class="label">생년월일</span>
+                    <span class="value">1990-01-01</span>
+                </div>
+                <div class="row">
+                    <span class="label">성별</span>
+                    <span class="value">남성</span>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <span class="label">휴대폰번호</span>
+                    <span class="value">010-1234-5678</span>
+                </div>
+                <div class="row">
+                    <span class="label">이메일주소</span>
+                    <span class="value">user@example.com</span>
+                </div>
+                <div class="row">
+                    <span class="label">주소</span>
+                    <span class="value">서울시 강남구 테헤란로 123</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-header">계좌정보</div>
+        <div class="two-column">
+            <div>
+                <div class="row">
+                    <span class="label">은행명</span>
+                    <span class="value">국민은행</span>
+                </div>
+                <div class="row">
+                    <span class="label">예금주</span>
+                    <span class="value">홍길동</span>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <span class="label">계좌번호</span>
+                    <span class="value">123-456-789012</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 섹션 2: 환불사유 및 거래내역 -->
+        <div class="section-header">환불사유 및 거래내역</div>
+
+        <div class="subsection-header">환불사유</div>
+        <div class="row">
+            <span class="label">환불사유 코드</span>
+            <span class="value">상품불량</span>
+        </div>
+        <div class="row">
+            <span class="label">환불사유 상세</span>
+            <span class="value">상품이 파손되어 도착했습니다.</span>
+        </div>
+        <div class="row">
+            <span class="label">첨부파일</span>
+            <span class="value">사진_파손상품.jpg</span>
+        </div>
+
+        <div class="subsection-header">거래내역</div>
+        <div class="three-column">
+            <div>
+                <div class="row">
+                    <span class="label">거래일자</span>
+                    <span class="value">2025-03-15</span>
+                </div>
+                <div class="row">
+                    <span class="label">금액</span>
+                    <span class="value">25000</span>
+                </div>
+                <div class="row">
+                    <span class="label">거래일자</span>
+                    <span class="value">2025-03-10</span>
+                </div>
+                <div class="row">
+                    <span class="label">금액</span>
+                    <span class="value">45000</span>
+                </div>
+                <div class="row">
+                    <span class="label">거래일자</span>
+                    <span class="value">2025-02-28</span>
+                </div>
+                <div class="row">
+                    <span class="label">금액</span>
+                    <span class="value">65000</span>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <span class="label">상품명</span>
+                    <span class="value">스마트폰 케이스</span>
+                </div>
+                <div class="row">
+                    <span class="label">결제수단</span>
+                    <span class="value">신용카드</span>
+                </div>
+                <div class="row">
+                    <span class="label">상품명</span>
+                    <span class="value">무선충전기</span>
+                </div>
+                <div class="row">
+                    <span class="label">결제수단</span>
+                    <span class="value">계좌이체</span>
+                </div>
+                <div class="row">
+                    <span class="label">상품명</span>
+                    <span class="value">헤드폰</span>
+                </div>
+                <div class="row">
+                    <span class="label">결제수단</span>
+                    <span class="value">카카오페이</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 섹션 3: 서명 및 동의 -->
+        <div class="section-header">서명 및 동의</div>
+
+        <div class="subsection-header">동의서</div>
+        <div class="row">
+            <span class="label">이용약관 동의</span>
+            <span class="value">동의함</span>
+        </div>
+        <div class="row">
+            <span class="label">개인정보 수집 동의</span>
+            <span class="value">동의함</span>
+        </div>
+        <div class="row">
+            <span class="label">환불정책 동의</span>
+            <span class="value">동의함</span>
+        </div>
+
+        <div class="subsection-header">서명란</div>
+        <div class="two-column">

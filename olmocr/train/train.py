@@ -454,11 +454,13 @@ def main():
     if "wandb" in config.training.report_to and accelerator.is_main_process:
         wandb.init(project=config.project_name, name=config.run_name, config=config.to_dict())
 
-    # Load processor for tokenization
+    # Load processor/tokenizer (allow overriding tokenizer source)
+    tokenizer_source = config.model.tokenizer_name or config.model.name
     if accelerator.is_main_process:
-        logger.info(f"Loading processor: {config.model.name}")
+        logger.info("Loading processor from: %s", tokenizer_source)
     processor = AutoProcessor.from_pretrained(
-        config.model.name,
+        tokenizer_source,
+        trust_remote_code=config.model.trust_remote_code,
     )
     ensure_bbox_special_tokens(processor)
 
