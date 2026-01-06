@@ -119,6 +119,24 @@ print("hello kolmocr")
 ```
 ````
 
+## Citing
+
+KolmOCR을 사용하셨다면 다음과 같이 인용해주세요:
+
+```bibtex
+@misc{kolmocr2025,
+      title={KolmOCR: Korean/English Document OCR with Vision Language Models},
+      author={Yeonchan Ahn, Eum-ho Um, Young-hun An},
+      year={2025},
+      howpublished={\url{https://huggingface.co/posicube/KolmOCR_v251229}},
+      note={Model: \url{https://huggingface.co/posicube/KolmOCR_v251229}, Code: \url{https://github.com/posicube-services/KolmOCR}}
+}
+```
+
+**Resources:**
+- 🤗 Model: [https://huggingface.co/posicube/KolmOCR_v251229](https://huggingface.co/posicube/KolmOCR_v251229)
+- 💻 Source Code: [https://github.com/posicube-services/KolmOCR](https://github.com/posicube-services/KolmOCR)
+
 ## License
 
 - 'kolmocr_bench' 폴더의 데이터는 CC-BY-NC 4.0 기준으로 배포합니다.
