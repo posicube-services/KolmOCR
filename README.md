@@ -125,11 +125,11 @@ KolmOCR을 사용하셨다면 다음과 같이 인용해주세요:
 
 ```bibtex
 @misc{kolmocr2025,
-      title={KolmOCR: Korean/English Document OCR with Vision Language Models},
-      author={Yeonchan Ahn, Eum-ho Um, Young-hun An},
+      title={KolmOCR: Korean/English Document OCR with Vision Language Models and Korean Markown Generation Benchmark},
+      author={Yeonchan Ahn, Jiho Eum, Younghoon Ahn},
       year={2025},
       howpublished={\url{https://huggingface.co/posicube/KolmOCR_v251229}},
-      note={Model: \url{https://huggingface.co/posicube/KolmOCR_v251229}, Code: \url{https://github.com/posicube-services/KolmOCR}}
+      note={Model: \url{https://huggingface.co/posicube/KolmOCR_v251229}, Code: \url{https://github.com/posicube-services/KolmOCR, Yeonchan Ahn and Jiho Eum contributed equally to this work}}
 }
 ```
 
